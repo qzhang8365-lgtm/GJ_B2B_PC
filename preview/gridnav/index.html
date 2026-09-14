@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>GJ Design System · 宫格导航 GridNav</title>
+  <link rel="stylesheet" href="../../assets/styles/gj-b2b-tokens.css?v=gridnav-3">
+  <link rel="stylesheet" href="../../assets/styles/gj-b2b-components.css?v=gridnav-3">
+  <link rel="stylesheet" href="../../assets/styles/component-docs.css?v=2">
+  <style>
+    *{box-sizing:border-box}
+    body{margin:0;background:transparent;color:var(--ds-text-primary);font:14px/1.6 var(--ds-font-family-ui)}
+    button,input,select{font:inherit}.docs-sheet{overflow:visible}
+    .example-stack{display:grid;gap:20px}.example-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}.example-head strong{font-size:14px;line-height:22px}.example-head span{color:var(--ds-text-tertiary);font-size:12px}
+    .gridnav-scroll{max-width:100%;overflow-x:auto;padding:2px}.gridnav-scroll>.gj-gridnav{width:max-content}
+    .state-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.state-card{min-height:132px;display:grid;place-items:center;align-content:center;gap:12px;border-radius:8px;background:var(--ds-background-container)}.state-card>span{color:var(--ds-text-tertiary);font-size:12px}
+    .playground{display:grid;grid-template-columns:minmax(0,3fr) minmax(300px,2fr);gap:16px;align-items:stretch}.interaction-stage{min-width:0;min-height:300px;display:grid;place-items:center;padding:24px;border-radius:8px;background:var(--ds-background-container);overflow:auto}.preview-card{width:max-content;max-width:none}
+    .controls{padding:20px;border-radius:8px;background:var(--ds-background-container)}.controls h3{margin:0 0 16px;font-size:16px;line-height:24px}.control-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 16px}.field{display:grid;gap:6px;min-width:0}.field-wide{grid-column:1/-1}.field label{color:var(--ds-text-secondary)}.field select,.field input{width:100%;min-width:0;height:36px;border:1px solid var(--ds-border-secondary);border-radius:6px;padding:0 10px;background:var(--ds-background-container);color:var(--ds-text-primary)}.field input:focus,.field select:focus{outline:3px solid var(--ds-background-bt-b20);border-color:var(--ds-text-blue)}
+    .scene-layout{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(320px,.9fr);gap:16px;align-items:stretch}.scene-figure{margin:0;padding:20px;border-radius:8px;background:var(--ds-background-background);display:grid;place-items:center;overflow:hidden}.scene-figure img{display:block;width:100%;height:auto;border-radius:8px}
+    .badge-dot{position:absolute;right:-2px;top:-2px;width:8px;height:8px;border-radius:50%;background:var(--ds-feedback-error-rise);border:2px solid var(--ds-text-reversal);box-sizing:content-box}.badge-number{position:absolute;right:-8px;top:-7px;min-width:18px;height:18px;padding:0 5px;border-radius:999px;background:var(--ds-feedback-error-rise);border:2px solid var(--ds-text-reversal);color:var(--ds-text-reversal);font-size:10px;line-height:14px;font-weight:600;display:grid;place-items:center}
+    .toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,12px);padding:9px 14px;border-radius:8px;background:var(--ds-background-mk-80);color:var(--ds-text-reversal);font-size:13px;opacity:0;pointer-events:none;transition:.18s;z-index:50}.toast.show{opacity:1;transform:translate(-50%,0)}
+    @media(max-width:960px){.playground,.scene-layout{grid-template-columns:1fr}.state-grid{grid-template-columns:1fr}}
+    @media(max-width:640px){.control-fields{grid-template-columns:1fr}.field-wide{grid-column:auto}.interaction-stage{padding:16px}}
+  </style>
+  <script src="../../assets/scripts/font-runtime.js"></script>
+</head>
+<body>
+<main class="docs-shell">
+  <header class="docs-page-head">
+    <div class="docs-eyebrow">导航组件 · Navigation</div>
+    <h1>宫格导航 GridNav</h1>
+    <p>将一组平级、高频的功能入口组织成规则宫格，适用于首页快捷区、工作台功能区和业务入口聚合。</p>
+  </header>
+  <article class="docs-sheet">
+    <section class="docs-section">
+      <div class="docs-section-head"><div><h2>基础类型</h2><p>根据容器宽度选择 4 列或 5 列；入口较多时可使用双行，但不持续向下堆叠。</p></div></div>
+      <div class="example-stack">
+        <div><div class="example-head"><strong>4 × 1 · 常用快捷入口</strong><span>308 × 70px</span></div><div class="docs-stage docs-surface-white"><div class="gridnav-scroll"><div id="basicGrid4"></div></div></div></div>
+        <div><div class="example-head"><strong>5 × 2 · 工作台入口</strong><span>388 × 148px</span></div><div class="docs-stage docs-surface-white"><div class="gridnav-scroll"><div id="basicGrid5"></div></div></div></div>
+      </div>
+    </section>
+    <section class="docs-section">
+      <div class="docs-section-head"><div><h2>徽标组合</h2><p>GridNav 本身保持稳定尺寸；提醒状态由 Badge 组件叠加在图标右上角，不挤压标题。</p></div></div>
+      <div class="docs-stage docs-surface-gray"><div class="state-grid" id="itemStateRow"></div></div>
+    </section>
+    <section class="docs-section">
+      <div class="docs-section-head"><div><h2>交互演示</h2><p>检查列数、行数、标题省略、徽标和整项点击反馈；真实组件始终保持固定单项尺寸。</p></div></div>
+      <div class="docs-stage docs-surface-gray"><div class="playground">
+        <div class="interaction-stage"><div class="preview-card"><div id="previewGrid"></div></div></div>
+        <div class="controls"><h3>属性控制</h3><div class="control-fields">
+          <div class="field"><label for="gridSelect">Grid</label><select id="gridSelect"><option value="4*1">4 × 1</option><option value="5*1">5 × 1</option><option value="4*2">4 × 2</option><option value="5*2" selected>5 × 2</option></select></div>
+          <div class="field"><label for="badgeSelect">Badge</label><select id="badgeSelect"><option value="none">None</option><option value="dot">Dot</option><option value="number">Number</option></select></div>
+          <div class="field field-wide"><label for="textInput">首项标题</label><input id="textInput" value="最多6个字标题"></div>
+          <div class="field"><label for="badgeNumber">Badge Number</label><input id="badgeNumber" type="number" min="1" max="99" value="8"></div>
+          <div class="field"><label for="clickMode">Click</label><select id="clickMode"><option value="toast">反馈点击项</option><option value="none">无反馈</option></select></div>
+        </div></div>
+      </div></div><span id="props" hidden></span>
+    </section>
+    <section class="docs-section">
+      <div class="docs-section-head"><div><h2>结构与尺寸</h2><p>固定单项尺寸与列间距，避免响应式收窄时入口被拉伸或末列被裁切。</p></div></div>
+      <div class="docs-spec-table-wrap"><table class="docs-spec-table"><thead><tr><th>结构</th><th>规格</th><th>约束</th></tr></thead><tbody>
+        <tr><td>GridNav-item</td><td>68 × 70px</td><td>垂直内边距 4px；整项为点击热区</td></tr>
+        <tr><td>图标槽</td><td>36 × 36px · 圆角 8px</td><td>Glass / Effect Icon 默认透明底；非 Glass 图标可按需使用填充槽</td></tr>
+        <tr><td>标题</td><td>S9-CN-R · 图文距 8px</td><td>建议不超过 6 个中文字；超长单行省略</td></tr>
+        <tr><td>宫格间距</td><td>列 12px · 行 8px</td><td>4 列宽 308px；5 列宽 388px</td></tr>
+        <tr><td>徽标</td><td>Badge 组件组合</td><td>固定在图标右上角，不改变单项占位尺寸</td></tr>
+      </tbody></table></div>
+    </section>
+    <section class="docs-section">
+      <div class="docs-section-head"><div><h2>选用规则</h2><p>宫格导航是局部快捷入口，不替代产品主导航和完整信息架构。</p></div></div>
+      <div class="scene-layout">
+        <figure class="scene-figure"><img src="../../assets/images/preview/gridnav-scene-workbench.png" alt="宫格导航在工作台中的应用示意"></figure>
+        <div class="docs-spec-table-wrap"><table class="docs-spec-table"><thead><tr><th>主题</th><th>建议</th></tr></thead><tbody>
+          <tr><td>入口层级</td><td>同一宫格只放平级、可直接到达的功能，不混入父子层级或纯状态信息。</td></tr>
+          <tr><td>数量控制</td><td>优先使用 4 / 5 列和 1 / 2 行；超出一屏可读范围时按业务分类或切换展示。</td></tr>
+          <tr><td>复杂导航</td><td>入口长期庞大、分类复杂时改用 Sidebar、完整功能目录或独立导航页。</td></tr>
+          <tr><td>图标选用</td><td>优先从已上传图标资源中选择语义接近的图标；状态由颜色或 Badge 表达。</td></tr>
+          <tr><td>交互边界</td><td>整项可点击并提供 Hover / Focus；不可用状态不得响应点击。</td></tr>
+        </tbody></table></div>
+      </div>
+    </section>
+  </article>
+</main>
+<div class="toast" id="toast" role="status"></div>
+<script>
+const GLASS_ICONS=[["account","account.png"],["ai","ai.png"],["assetCustody","assetCustody.png"],["businessProcessing","businessProcessing.png"],["data","data.png"],["digitalPlatform","digitalPlatform.png"],["fundResearch","fundResearch.png"],["home","home.png"],["menu","menu.png"],["message","message.png"],["trade","trade.png"],["functionSettings","functionSettings.png"]];
+const iconBase='../../assets/icons/glassicon/png/',iconMap=Object.fromEntries(GLASS_ICONS),$=id=>document.getElementById(id);
+const names=['首页','数据中心','交易服务','研报','账户','消息中心','投研平台','业务办理','功能设置','更多功能'];
+const icons=['home','data','trade','fundResearch','account','message','digitalPlatform','businessProcessing','functionSettings','menu'];
+function escapeHtml(s){return String(s).replace(/[&<>\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[c]))}
+function iconUrl(name){return iconBase+(iconMap[name]||iconMap.home)+'?v=20260817'}
+function badgeMarkup(type,value){if(type==='dot')return '<span class="badge-dot" aria-hidden="true"></span>';if(type==='number'){const n=Math.max(1,Math.min(99,Number(value)||1));return '<span class="badge-number" aria-label="'+n+' 条提醒">'+n+'</span>'}return ''}
+function itemMarkup(item,index,clickable=true){const tag=clickable?'button':'div',attrs=clickable?' type="button" data-nav-index="'+index+'"':'';return '<'+tag+' class="gj-gridnav-item"'+attrs+' title="'+escapeHtml(item.text)+'"><span class="gj-gridnav-icon-wrap"><img class="gj-gridnav-icon" src="'+iconUrl(item.icon)+'" alt="">'+badgeMarkup(item.badge,item.badgeValue)+'</span><span class="gj-gridnav-label">'+escapeHtml(item.text)+'</span></'+tag+'>'}
+function gridInfo(grid){const p=grid.split('*').map(Number);return {cols:p[0],rows:p[1],count:p[0]*p[1]}}
+function demoItems(){return names.map((text,i)=>({text,icon:icons[i],badge:'none'}))}
+function renderGrid(target,grid,items,clickable=true){const info=gridInfo(grid),list=Array.from({length:info.count},(_,i)=>items[i]||items[i%items.length]);target.innerHTML='<div class="gj-gridnav gj-gridnav-cols-'+info.cols+'">'+list.map((x,i)=>itemMarkup(x,i,clickable)).join('')+'</div>';if(clickable)target.querySelectorAll('[data-nav-index]').forEach(btn=>btn.addEventListener('click',()=>handleClick(list[Number(btn.dataset.navIndex)])))}
+function showToast(text){const t=$('toast');t.textContent=text;t.classList.add('show');clearTimeout(window.__toast);window.__toast=setTimeout(()=>t.classList.remove('show'),1400)}
+function handleClick(item){if($('clickMode')&&$('clickMode').value==='none')return;showToast('已点击「'+item.text+'」')}
+function renderStatic(){renderGrid($('basicGrid4'),'4*1',demoItems());renderGrid($('basicGrid5'),'5*2',demoItems());const states=[{name:'无徽标',badge:'none'},{name:'圆点徽标',badge:'dot'},{name:'数字徽标',badge:'number',badgeValue:8}];$('itemStateRow').innerHTML=states.map((s,i)=>'<div class="state-card"><div id="state-'+i+'"></div><span>'+s.name+'</span></div>').join('');states.forEach((s,i)=>$('state-'+i).innerHTML=itemMarkup({text:'功能入口',icon:['home','message','trade'][i],badge:s.badge,badgeValue:s.badgeValue},i,false))}
+function renderInteractive(){const grid=$('gridSelect').value,info=gridInfo(grid),text=$('textInput').value.trim()||'最多6个字标题',badge=$('badgeSelect').value,badgeValue=$('badgeNumber').value;$('badgeNumber').disabled=badge!=='number';const items=demoItems();items[0]={text,icon:'home',badge,badgeValue};for(let i=1;i<info.count;i++)items[i]={...items[i%items.length],badge:'none'};renderGrid($('previewGrid'),grid,items,true);$('props').textContent=JSON.stringify({grid,text,badge,badgeValue})}
+renderStatic();renderInteractive();['gridSelect','badgeSelect','badgeNumber','clickMode'].forEach(id=>$(id).addEventListener('change',renderInteractive));$('textInput').addEventListener('input',renderInteractive);
+</script>
+</body>
+</html>

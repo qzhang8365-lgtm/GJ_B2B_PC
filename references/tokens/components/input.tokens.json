@@ -1,0 +1,425 @@
+{
+  "$schema": "gj-design-skill/component-tokens/v1",
+  "component": "Input",
+  "source": {
+    "figmaNode": "4744:3963",
+    "figmaNodes": [
+      "3271:5231",
+      "2911:4644",
+      "2996:2903",
+      "2996:2880",
+      "2996:3027"
+    ],
+    "figmaReadDate": "2026-09-10",
+    "componentSchema": "references/components/input/schema.json",
+    "componentMapping": "references/components/input/mapping.json",
+    "confirmedRules": "references/components/input/rules.md",
+    "implementation": "assets/styles/gj-b2b-components.css#.gj-input-wrap"
+  },
+  "properties": {
+    "type": {
+      "default": "text",
+      "values": [
+        "text",
+        "textarea",
+        "password"
+      ]
+    },
+    "appearance": {
+      "default": "outlined",
+      "values": [
+        "outlined",
+        "filled"
+      ]
+    },
+    "size": {
+      "default": "medium",
+      "values": [
+        "small",
+        "medium",
+        "large"
+      ]
+    },
+    "visualState": {
+      "default": "default",
+      "values": [
+        "default",
+        "hover",
+        "focused",
+        "filled",
+        "error",
+        "disabled"
+      ],
+      "publicProp": false
+    }
+  },
+  "tokens": {
+    "size.small.height": {
+      "value": "{Components/control-S}",
+      "resolved": 24,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-size-small-height"
+    },
+    "size.small.paddingInline": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-size-small-padding-inline"
+    },
+    "size.small.radius": {
+      "value": "{Radius/Radius-XS}",
+      "resolved": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-size-small-radius"
+    },
+    "size.small.iconSize": {
+      "value": 14,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-size-small-icon"
+    },
+    "size.small.textStyle": {
+      "value": "{中文/S8-CN-R}",
+      "cssClass": "gj-type-cn-s8"
+    },
+    "size.medium.height": {
+      "value": "{Components/control-M}",
+      "resolved": 32,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-size-medium-height"
+    },
+    "size.medium.paddingInline": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-size-medium-padding-inline"
+    },
+    "size.medium.radius": {
+      "value": "{Radius/Radius-SM}",
+      "resolved": 6,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-size-medium-radius"
+    },
+    "size.medium.iconSize": {
+      "value": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-size-medium-icon"
+    },
+    "size.medium.textStyle": {
+      "value": "{中文/S8-CN-R}",
+      "cssClass": "gj-type-cn-s8"
+    },
+    "size.large.height": {
+      "value": "{Components/control-L}",
+      "resolved": 40,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-size-large-height"
+    },
+    "size.large.paddingInline": {
+      "value": "{Interval/space4}",
+      "resolved": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-size-large-padding-inline"
+    },
+    "size.large.radius": {
+      "value": "{Radius/Radius-MD}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-size-large-radius"
+    },
+    "size.large.iconSize": {
+      "value": 18,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-size-large-icon"
+    },
+    "size.large.textStyle": {
+      "value": "{中文/S7-CN-R}",
+      "cssClass": "gj-type-cn-s7"
+    },
+    "size.large.paddingBlock": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-size-large-padding-block"
+    },
+    "textarea.height": {
+      "value": 80,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-textarea-height"
+    },
+    "textarea.paddingInline": {
+      "value": "{Interval/space4}",
+      "resolved": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-textarea-padding-inline"
+    },
+    "textarea.paddingBlock": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-textarea-padding-block"
+    },
+    "textarea.radius": {
+      "value": "{Radius/Radius-SM}",
+      "resolved": 6,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-textarea-radius",
+      "note": "2026-09-08 设计确认：跟随当前尺寸档圆角，默认 medium = Radius-SM。Figma Middle textarea 字面曾为 8px，不以该字面实现。"
+    },
+    "label.height": {
+      "value": "{Components/control-M}",
+      "resolved": 32,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-label-height"
+    },
+    "label.color": {
+      "value": "{Text/Primary}",
+      "resolved": "#101828",
+      "cssVariable": "--ds-component-input-label-color"
+    },
+    "label.textStyle": {
+      "value": "{中文/S8-CN-R}",
+      "cssClass": "gj-type-cn-s8"
+    },
+    "error.gap": {
+      "value": "{Interval/space2}",
+      "resolved": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-error-gap"
+    },
+    "error.color": {
+      "value": "{Feedback/error&rise}",
+      "resolved": "#F93838",
+      "cssVariable": "--ds-component-input-error-color"
+    },
+    "error.textStyle": {
+      "value": "{中文/S9-CN-R}",
+      "cssClass": "gj-type-cn-s9"
+    },
+    "count.color": {
+      "value": "{Text/Tertiary}",
+      "resolved": "#8D96A3",
+      "cssVariable": "--ds-component-input-count-color"
+    },
+    "count.textStyle": {
+      "value": "{中文/S9-CN-R}",
+      "cssClass": "gj-type-cn-s9"
+    },
+    "hint.color": {
+      "value": "{Text/Tertiary}",
+      "resolved": "#8D96A3",
+      "cssVariable": "--ds-component-input-hint-color",
+      "note": "独立件 input_item/hint 3271:5231。与 Form help.text 同绑。"
+    },
+    "hint.textStyle": {
+      "value": "{中文/S9-CN-R}",
+      "cssClass": "gj-type-cn-s9"
+    },
+    "hint.height": {
+      "value": 18,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-hint-height",
+      "note": "与 中文/S9-CN-R 行高 18 一致。"
+    },
+    "hint.gap.vertical": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-hint-gap-vertical",
+      "note": "Input_Basic align=vertical：控件到 hint。节点 2996:2880，hint y=40。"
+    },
+    "hint.gap.horizontal": {
+      "value": "{Interval/space2}",
+      "resolved": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-hint-gap-horizontal",
+      "note": "Input_Basic align=horizontal：控件到 hint。节点 2996:3027，hint y=36。"
+    },
+    "cursor.width": {
+      "value": 1,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-cursor-width",
+      "note": "独立件内条 2911:4643。"
+    },
+    "cursor.height": {
+      "value": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-cursor-height",
+      "note": "typing 变体内光标 1×16。独立件 hug 高 20，见 cursor.standaloneHeight。"
+    },
+    "cursor.standaloneHeight": {
+      "value": 20,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-cursor-standalone-height",
+      "note": "input_item/cursor 2911:4644 外框 9×20。"
+    },
+    "cursor.paddingInline": {
+      "value": "{Interval/space2}",
+      "resolved": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-cursor-padding-inline",
+      "note": "独立件 px-[4px]，4+1+4=9。"
+    },
+    "cursor.radius": {
+      "value": 2,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-cursor-radius",
+      "note": "独立件内条 rounded-[2px]。原生 caret 无法画圆角，实现只绑颜色。"
+    },
+    "cursor.color": {
+      "value": "{Text/blue}",
+      "resolved": "#2B73FF",
+      "cssVariable": "--ds-component-input-cursor-color",
+      "note": "独立件 2911:4644 绑 Text/blue。与 Feedback/brand 同色 #2B73FF；typing 变体生成代码曾写 Feedback/brand。"
+    },
+    "basic.vertical.labelGap": {
+      "value": "{Interval/space4}",
+      "resolved": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-basic-vertical-label-gap",
+      "note": "Input_Basic 纵向标题到控件。与 Form_item 纵向 4px 不同，不覆盖 Form Token。"
+    },
+    "basic.horizontal.labelGap": {
+      "value": "{Interval/space4}",
+      "resolved": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-basic-horizontal-label-gap",
+      "note": "Input_Basic 横向标题列 80 到控件列 x=92。"
+    },
+    "basic.horizontal.labelWidth": {
+      "value": 80,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-basic-horizontal-label-width",
+      "note": "与独立件 input_item/label 宽 80 一致。"
+    },
+    "basic.infoIcon.size": {
+      "value": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-basic-info-icon-size",
+      "note": "informationicon 默认 hidden；资源 icf_system_info。"
+    },
+    "gap.small": {
+      "value": "{Interval/space2}",
+      "resolved": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-gap-small"
+    },
+    "gap.medium": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-gap-medium"
+    },
+    "gap.large": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-gap-large"
+    },
+    "focus.ringWidth": {
+      "value": 2,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-focus-ring-width",
+      "note": "2026-09-10 INP-004 已关闭：设计已在 Figma 为 Input_outlined、Input_filled 的 typing 态与 Input_Password 的 Filled+Visible 态统一新建 Effect Style「focused_outline」，抽样覆盖 3 档尺寸、outlined/filled 两种外观及文本域均已核实一致；Error 态改用红色边框，不叠加此效果。"
+    },
+    "focus.ringColor": {
+      "value": "{Background/BT_B10}",
+      "resolved": "#2B73FF1A",
+      "cssVariable": "--ds-component-input-focus-ring-color",
+      "note": "对应 Figma Effect Style「focused_outline」的颜色引用，见 effects.json。"
+    },
+    "focus.ring": {
+      "value": "{focused_outline}",
+      "cssVariable": "--ds-component-input-focus-ring",
+      "note": "2026-09-10 新增：Figma Effect Style「focused_outline」编译产物，见 references/styles/effects.json。.gj-input-wrap.outlined/.filled 的 :focus-within 与 .focused（2026-09-10 前为 .typing）均已改用此变量（原先是字面 box-shadow:0 0 0 2px var(--ds-background-bt-b10)，视觉值不变）。"
+    }
+  },
+  "stateMatrix": {
+    "outlined.default": {
+      "background": "Background/Container",
+      "text": "Text/Primary",
+      "placeholder": "Text/Tertiary",
+      "border": "Border/secondary"
+    },
+    "outlined.hover": {
+      "background": "Background/Container",
+      "text": "Text/Primary",
+      "placeholder": "Text/Tertiary",
+      "border": "Border/hover"
+    },
+    "outlined.focused": {
+      "background": "Background/Container",
+      "text": "Text/Primary",
+      "placeholder": "Text/Tertiary",
+      "border": "Border/focused"
+    },
+    "outlined.filled": {
+      "background": "Background/Container",
+      "text": "Text/Primary",
+      "placeholder": "Text/Tertiary",
+      "border": "Border/secondary"
+    },
+    "outlined.error": {
+      "background": "Background/Container",
+      "text": "Text/Primary",
+      "placeholder": "Text/Tertiary",
+      "border": "Border/error"
+    },
+    "outlined.disabled": {
+      "background": "Background/Background",
+      "text": "Text/Tertiary",
+      "placeholder": "Text/Tertiary",
+      "border": "Border/disabled"
+    },
+    "filled.default": {
+      "background": "Background/Background",
+      "text": "Text/Primary",
+      "placeholder": "Text/Tertiary",
+      "border": "Border/default"
+    },
+    "filled.hover": {
+      "background": "Background/Background",
+      "text": "Text/Primary",
+      "placeholder": "Text/Tertiary",
+      "border": "Border/default"
+    },
+    "filled.focused": {
+      "background": "Background/Container",
+      "text": "Text/Primary",
+      "placeholder": "Text/Tertiary",
+      "border": "Border/focused"
+    },
+    "filled.filled": {
+      "background": "Background/Background",
+      "text": "Text/Primary",
+      "placeholder": "Text/Tertiary",
+      "border": "Border/default"
+    },
+    "filled.error": {
+      "background": "Background/Container",
+      "text": "Text/Primary",
+      "placeholder": "Text/Tertiary",
+      "border": "Border/error"
+    },
+    "filled.disabled": {
+      "background": "Background/Background",
+      "text": "Text/disable",
+      "placeholder": "Text/disable",
+      "border": "Border/disabled"
+    }
+  },
+  "behavior": {
+    "focus": "2026-09-10 关闭 INP-004：Figma State=focused（2026-09-10 前为 typing）使用 1px Border/focused + Effect Style「focused_outline」(2px Background/BT_B10 外圈)。已核实 outlined/filled 的 Small/Medium/Large、单行与文本域，以及 Input_Password 的 Filled+Visible，均绑定同一 Effect Style；Error 态不叠加外圈。",
+    "hover": "2026-09-08 设计确认：保留现有 hover 状态矩阵（outlined.hover = Border/hover）。",
+    "error": "Show Border/error plus adjacent 中文/S9-CN-R Feedback/error&rise text.",
+    "disabled": "Native disabled; no edit, clear or password toggle.",
+    "icons": "Use currentColor and registered assets.",
+    "passwordFilled": "Password.Filled means hasValue, not appearance=filled.",
+    "passwordSize": "2026-09-10 INP-005：Password 与主输入框共用同一尺寸档，不另开 password.medium padding/gap/icon。Figma Input_Password 9 variants 已与 outlined Input field 同档。",
+    "hint": "input_item/hint = 中文/S9-CN-R + Text/Tertiary。Input 规范页用 gj-field + gj-form-help；表单布局仍走 Form Token。",
+    "cursor": "原生 caret-color 绑 Text/blue。独立件 1×20 + 左右 4；框内 focused（2026-09-10 前为 typing）光标按 1×16 记录。",
+    "inputBasic": "1.Input_Basic 是标签+控件+hint 组合，不是第四套输入外观。align=vertical|horizontal；BOOLEAN helperHint / informationicon。"
+  },
+  "openItems": {
+    "filledDisabledFigma": "契约已按设计确认使用 Background/Background；Figma Input_filled disabled 实测仍为 Background/Tertiary，需在源文件改绑。"
+  }
+}

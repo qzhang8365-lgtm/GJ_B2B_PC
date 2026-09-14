@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>GJ Design System · 多选框 Checkbox</title>
+  <link rel="stylesheet" href="../../assets/styles/gj-b2b-tokens.css">
+  <link rel="stylesheet" href="../../assets/styles/gj-b2b-components.css?v=general-3">
+  <link rel="stylesheet" href="../../assets/styles/component-docs.css?v=1">
+  <style>
+    .state-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+    .state{padding:16px;min-width:0;background:var(--ds-background-container);border-radius:var(--docs-item-radius)}
+    .state small{display:block;margin-bottom:14px;color:var(--ds-text-tertiary);font-size:12px}
+    .forced-hover .gj-checkbox{border-color:var(--ds-border-focused)}
+    .combo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+    .combo-card{min-width:0;padding:20px;background:var(--ds-background-container);border-radius:var(--docs-panel-radius)}
+    .combo-card .combo-title{margin:0 0 14px;font-size:14px;font-weight:600;line-height:22px}
+    .select-all-block{display:grid;gap:14px}
+    .children{display:flex;flex-wrap:wrap;gap:16px 24px;padding-left:24px}
+    .playground{display:grid;grid-template-columns:minmax(0,var(--docs-layout-demo-fr)) minmax(var(--docs-interaction-min-width),var(--docs-layout-interaction-fr));gap:var(--docs-layout-column-gap);min-width:0}
+    .lab{display:grid;min-width:0;min-height:var(--docs-interaction-stage-min-height);place-items:center;padding:28px;overflow:hidden;border-radius:var(--docs-panel-radius)}
+    .controls{min-width:0;padding:20px;border-radius:var(--docs-panel-radius)}
+    .control-title{margin:0 0 16px;font-size:16px;font-weight:600;line-height:24px}
+    .control-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 16px}
+    .field{display:grid;min-width:0;gap:6px}.field label{color:var(--ds-text-secondary);font-size:12px;line-height:20px}
+    .field input:not(.gj-checkbox){width:100%;height:36px;min-width:0;padding:0 10px;color:var(--ds-text-primary);background:var(--ds-background-container);border:1px solid var(--ds-border-secondary);border-radius:var(--docs-item-radius)}
+    .field input:focus{border-color:var(--ds-brand-gj-blue);outline:3px solid var(--ds-background-bt-b20)}
+    .check{display:flex;align-items:center;align-self:end;gap:8px;min-height:36px;color:var(--ds-text-secondary)}
+    .event{margin-top:14px;color:var(--ds-text-secondary);font-size:12px;line-height:20px}.event b{color:var(--ds-text-primary)}
+    @media(max-width:960px){.playground{grid-template-columns:1fr}}
+    @media(max-width:680px){.state-grid,.combo-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.control-fields{grid-template-columns:1fr}}
+    @media(max-width:430px){.state-grid{grid-template-columns:1fr}}
+  </style>
+  <script src="../../assets/scripts/font-runtime.js"></script>
+</head>
+<body>
+<main class="docs-shell">
+  <header class="docs-page-head">
+    <div class="docs-eyebrow">信息录入组件 · Data Entry</div>
+    <h1>多选框 Checkbox</h1>
+    <p>用于在一组相互独立的选项中选择零项、一项或多项；方框 16 × 16px，选中与半选统一使用品牌蓝填充。部分子项被选中时用 Indeterminate 表达集合关系，只能选择唯一结果时改用 Radio。</p>
+  </header>
+
+  <article class="docs-sheet">
+    <section class="docs-section">
+      <header class="docs-section-head"><div><h2>状态</h2><p>点击方框或文字均可切换状态；Disabled 不响应操作。</p></div></header>
+      <div class="docs-stage docs-surface-gray"><div class="state-grid">
+        <div class="state"><small>Default</small><label class="gj-checkbox-label"><input class="gj-checkbox" type="checkbox"><span>选择项</span></label></div>
+        <div class="state"><small>Hover</small><label class="gj-checkbox-label forced-hover"><input class="gj-checkbox" type="checkbox"><span>选择项</span></label></div>
+        <div class="state"><small>Checked</small><label class="gj-checkbox-label"><input class="gj-checkbox" type="checkbox" checked><span>选择项</span></label></div>
+        <div class="state"><small>Indeterminate</small><label class="gj-checkbox-label"><input class="gj-checkbox indeterminate" type="checkbox"><span>选择项</span></label></div>
+        <div class="state"><small>Disabled</small><label class="gj-checkbox-label"><input class="gj-checkbox" type="checkbox" disabled><span>选择项</span></label></div>
+        <div class="state"><small>Checked Disabled</small><label class="gj-checkbox-label"><input class="gj-checkbox" type="checkbox" checked disabled><span>选择项</span></label></div>
+        <div class="state"><small>Indeterminate Disabled</small><label class="gj-checkbox-label"><input class="gj-checkbox indeterminate" type="checkbox" disabled><span>选择项</span></label></div>
+      </div></div>
+    </section>
+
+    <section class="docs-section">
+      <header class="docs-section-head"><div><h2>组合与全选</h2><p>多个选项组合使用时保持不小于 16px 的间距；全选与子项按选中数量双向同步，部分选中显示半选。</p></div></header>
+      <div class="docs-stage docs-surface-gray"><div class="combo-grid">
+        <div class="combo-card"><h3 class="combo-title">多选组合</h3><div class="gj-checkbox-group"><label class="gj-checkbox-label"><input class="gj-checkbox" type="checkbox" checked><span>选项一</span></label><label class="gj-checkbox-label"><input class="gj-checkbox" type="checkbox"><span>选项二</span></label><label class="gj-checkbox-label"><input class="gj-checkbox" type="checkbox"><span>选项三</span></label><label class="gj-checkbox-label"><input class="gj-checkbox" type="checkbox"><span>选项四</span></label></div></div>
+        <div class="combo-card"><h3 class="combo-title">全选与半选</h3><div class="select-all-block"><label class="gj-checkbox-label"><input id="selectAllExample" class="gj-checkbox" type="checkbox"><span>全选</span></label><div class="children gj-checkbox-group" id="exampleChildren"><label class="gj-checkbox-label"><input class="gj-checkbox" type="checkbox"><span>选择项一</span></label><label class="gj-checkbox-label"><input class="gj-checkbox" type="checkbox" checked><span>选择项二</span></label><label class="gj-checkbox-label"><input class="gj-checkbox" type="checkbox"><span>选择项三</span></label></div></div></div>
+      </div></div>
+    </section>
+
+    <section class="docs-section">
+      <header class="docs-section-head"><div><h2>交互演示</h2><p>切换选项与全选，观察半选状态如何随子项选中数量变化。</p></div></header>
+      <div class="playground">
+        <div class="lab docs-surface-gray"><div class="select-all-block"><label class="gj-checkbox-label"><input id="all" class="gj-checkbox" type="checkbox"><span id="allLabel">全选</span></label><div class="children gj-checkbox-group" id="items"><label class="gj-checkbox-label"><input class="gj-checkbox" type="checkbox" value="股票"><span>股票</span></label><label class="gj-checkbox-label"><input class="gj-checkbox" type="checkbox" value="基金"><span>基金</span></label><label class="gj-checkbox-label"><input class="gj-checkbox" type="checkbox" value="债券"><span>债券</span></label></div><div class="event">当前选择：<b id="event">尚未选择</b></div></div></div>
+        <aside class="controls docs-surface-white"><h3 class="control-title">属性控制</h3><div class="control-fields">
+          <div class="field"><label for="groupLabel">全选文字</label><input id="groupLabel" type="text" value="全选"></div>
+          <label class="check"><input id="disabled" class="gj-checkbox" type="checkbox"><span>禁用整组</span></label>
+        </div><span id="code" hidden></span></aside>
+      </div>
+    </section>
+
+    <section class="docs-section">
+      <header class="docs-section-head"><div><h2>选用规则</h2><p>Checkbox 用于多项选择，半选只表达集合状态。</p></div></header>
+      <div class="docs-spec-table-wrap"><table class="docs-spec-table"><colgroup><col style="width:18%"><col style="width:42%"><col></colgroup><thead><tr><th>主题</th><th>推荐做法</th><th>边界与避免</th></tr></thead><tbody>
+        <tr><td>用途</td><td>用于一组相互独立的选项，允许选择零项、一项或多项。</td><td>只能选择唯一结果时使用 Radio，不用 Checkbox 模拟互斥。</td></tr>
+        <tr><td>点击区域</td><td>点击方框与点击标签文字产生相同结果，并提供清晰的键盘聚焦反馈。</td><td>不要只让 16px 方框可点击，缩小有效点击区域。</td></tr>
+        <tr><td>半选语义</td><td>Indeterminate 只表示部分子项已选，随子项选中数量与全选双向同步。</td><td>不作为与 Checked 并列的第三种业务值单独使用。</td></tr>
+        <tr><td>组合间距</td><td>多个 Checkbox 组合使用时，保持不小于 16px 的间距。</td><td>间距过密会挤压点击区域，降低选项识别度。</td></tr>
+      </tbody></table></div>
+    </section>
+  </article>
+</main>
+<script>
+  document.querySelectorAll('.indeterminate').forEach(el=>el.indeterminate=true);
+  const sync=(all,items)=>{const list=[...items.querySelectorAll('input')],count=list.filter(x=>x.checked).length;all.checked=count===list.length;all.indeterminate=count>0&&count<list.length};
+  const exampleAll=document.getElementById('selectAllExample'),exampleItems=document.getElementById('exampleChildren');sync(exampleAll,exampleItems);exampleAll.onchange=()=>{exampleItems.querySelectorAll('input').forEach(x=>x.checked=exampleAll.checked);sync(exampleAll,exampleItems)};exampleItems.onchange=()=>sync(exampleAll,exampleItems);
+  const all=document.getElementById('all'),items=document.getElementById('items'),eventEl=document.getElementById('event'),code=document.getElementById('code'),disabled=document.getElementById('disabled');
+  function renderCode(){code.textContent=`<CheckboxGroup\n  value={${JSON.stringify([...items.querySelectorAll('input:checked')].map(x=>x.value))}}\n  disabled={${disabled.checked}}\n  selectAll\n/>`}
+  function syncEvent(){const list=[...items.querySelectorAll('input')],checked=list.filter(x=>x.checked);eventEl.textContent=checked.length?checked.map(x=>x.value).join('、'):'尚未选择'}
+  function update(){sync(all,items);syncEvent();renderCode()}
+  all.onchange=()=>{items.querySelectorAll('input').forEach(x=>x.checked=all.checked);update()};items.onchange=update;disabled.onchange=()=>{all.disabled=disabled.checked;items.querySelectorAll('input').forEach(x=>x.disabled=disabled.checked);update()};document.getElementById('groupLabel').oninput=e=>document.getElementById('allLabel').textContent=e.target.value;update();
+</script>
+</body></html>

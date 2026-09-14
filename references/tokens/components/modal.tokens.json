@@ -1,0 +1,161 @@
+{
+  "$schema": "gj-design-skill/component-tokens/v1",
+  "component": "Modal",
+  "source": {
+    "figmaNode": "4759:19935",
+    "figmaReadDate": "2026-09-09",
+    "componentSchema": "references/components/modal/schema.json",
+    "componentMapping": "references/components/modal/mapping.json",
+    "confirmedRules": "references/components/modal/rules.md",
+    "implementation": "assets/styles/gj-b2b-components.css#.gj-modal"
+  },
+  "properties": {
+    "size": {
+      "default": "medium",
+      "values": [
+        "small",
+        "medium",
+        "large"
+      ]
+    },
+    "showClose": {
+      "default": true,
+      "values": [
+        true,
+        false
+      ]
+    }
+  },
+  "tokens": {
+    "small.width": {
+      "value": 400,
+      "unit": "px",
+      "cssVariable": "--ds-component-modal-small-width"
+    },
+    "medium.width": {
+      "value": 600,
+      "unit": "px",
+      "cssVariable": "--ds-component-modal-medium-width"
+    },
+    "large.width": {
+      "value": 800,
+      "unit": "px",
+      "cssVariable": "--ds-component-modal-large-width"
+    },
+    "radius": {
+      "value": "{Radius/Radius-LG}",
+      "resolved": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-modal-radius"
+    },
+    "background": {
+      "value": "{Background/Container}",
+      "cssVariable": "--ds-component-modal-background"
+    },
+    "shadow": {
+      "value": "{shadow-center}",
+      "cssVariable": "--ds-component-modal-shadow"
+    },
+    "header.height": {
+      "value": 64,
+      "unit": "px",
+      "cssVariable": "--ds-component-modal-header-height"
+    },
+    "header.paddingBlock": {
+      "value": "{Interval/space4}",
+      "resolved": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-modal-header-padding-block",
+      "note": "生成代码 py 12；variable_defs 未返回 Interval 绑定，按 space4 记录。"
+    },
+    "header.paddingInline": {
+      "value": "{Interval/space6}",
+      "resolved": 20,
+      "unit": "px",
+      "cssVariable": "--ds-component-modal-header-padding-inline"
+    },
+    "close.size": {
+      "value": 20,
+      "unit": "px",
+      "cssVariable": "--ds-component-modal-close-size",
+      "note": "关闭图标的可见尺寸（画板真值，MDL-005 已确认 20px 合法）。不代表可点击热区，热区见 close.hitSize。"
+    },
+    "footer.height": {
+      "value": 76,
+      "unit": "px",
+      "cssVariable": "--ds-component-modal-footer-height"
+    },
+    "footer.paddingBlockStart": {
+      "value": "{Interval/space6}",
+      "resolved": 20,
+      "unit": "px",
+      "cssVariable": "--ds-component-modal-footer-padding-block-start",
+      "note": "2026-09-09 修正：不再压缩到 16 去凑旧的 72 高度；顶部间距保持 20（距上方内容至少 20），Footer 总高改为 76。"
+    },
+    "footer.paddingBlockEnd": {
+      "value": "{Interval/space7}",
+      "resolved": 24,
+      "unit": "px",
+      "cssVariable": "--ds-component-modal-footer-padding-block-end"
+    },
+    "footer.paddingInline": {
+      "value": "{Interval/space6}",
+      "resolved": 20,
+      "unit": "px",
+      "cssVariable": "--ds-component-modal-footer-padding-inline",
+      "note": "2026-09-09 从 24 修正为 20，与 Header 水平内边距统一；底部内边距（paddingBlockEnd）仍是 24，不受影响。"
+    },
+    "footer.gap": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-modal-footer-gap",
+      "note": "生成代码 gap 8px；variable_defs 未返回 Interval 绑定。"
+    },
+    "feedback.paddingInline": {
+      "value": "{Interval/space6}",
+      "resolved": 20,
+      "unit": "px",
+      "cssVariable": "--ds-component-modal-feedback-padding-inline",
+      "note": "2026-09-09 从 24 修正为 20，与 Header/Footer 水平内边距统一。"
+    },
+    "feedback.icon": {
+      "value": 28,
+      "unit": "px",
+      "cssVariable": "--ds-component-modal-feedback-icon"
+    },
+    "feedback.gap": {
+      "value": "{Interval/space4}",
+      "resolved": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-modal-feedback-gap"
+    },
+    "feedback.textGap": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-modal-feedback-text-gap"
+    },
+    "mask": {
+      "value": "{Background/MK_45}",
+      "cssVariable": "--ds-component-modal-mask",
+      "note": "本画板未包含 Mask 图层。沿用现有 Modal 层 MK_45，不是 Mask 契约默认的 MK_60。"
+    },
+    "close.hitSize": {
+      "value": 32,
+      "unit": "px",
+      "cssVariable": "--ds-component-modal-close-hit-size",
+      "note": "2026-09-10 新增：代码侧无障碍热区，不是 Figma 真值（画板关闭控件本身就是 20×20，无独立更大热区）。与共享 gj-icon-button 的 32 命中区对齐；用负 margin 让热区在布局中仍只占 20×20 的空间，图标视觉位置不变。"
+    }
+  },
+  "behavior": {
+    "defaultSize": "Medium 600",
+    "focus": "Trap focus inside, restore trigger on close.",
+    "scroll": "Header and footer stay; content slot scrolls."
+  },
+  "openItems": {
+    "MDL-001": "Inventory lists 1/12/0; the board shows 3 Modal symbols plus 4 feedback symbols.",
+    "MDL-005": "Close is 20px; shared gj-icon-button is 32/16.",
+    "MDL-006": "Error feedback iconfont node name was not returned."
+  }
+}

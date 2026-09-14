@@ -1,0 +1,126 @@
+{
+  "$schema": "gj-design-skill/component-schema/v1",
+  "component": "Avatar",
+  "source": {
+    "rulesSection": "Avatar 头像",
+    "inventoryPage": "Avatar✅",
+    "status": "figma-audited",
+    "figmaAudit": "done-2026-09-09"
+  },
+  "purpose": "表示用户或实体身份，并提供稳定的图片失败兜底。",
+  "figma": {
+    "fileKey": "8b01I1e3TzH1IhYlr3tJzd",
+    "pageNodeId": "2982:622",
+    "componentSets": [
+      {
+        "nodeId": "2982:622",
+        "name": "Avatar",
+        "variants": 24,
+        "note": "Size(24/32/40/64) × Shape(circle/square) × Style(default/picture/Letter) = 4×2×3=24。MCP metadata 把该组件集呈现为画板内 symbol，未返回独立的 COMPONENT_SET 根节点（与 Search/Steps/Toast 审计中同类限制一致），schema 用画板 ID 2982:622 作集合锚点。"
+      }
+    ],
+    "visualStateCoverage": [
+      "default"
+    ],
+    "missingInteractiveVariants": []
+  },
+  "properties": {
+    "size": [
+      24,
+      32,
+      40,
+      64
+    ],
+    "shape": [
+      "circle",
+      "square"
+    ],
+    "style": [
+      "default",
+      "letter",
+      "picture"
+    ],
+    "badge": [
+      "none",
+      "dot",
+      "number"
+    ]
+  },
+  "defaults": {
+    "size": 40,
+    "shape": "circle",
+    "style": "default",
+    "badge": "none"
+  },
+  "sizes": {
+    "squareRadius": {
+      "24": 4,
+      "32": 6,
+      "40": 8,
+      "64": 12
+    },
+    "circleRadius": "size / 2（标准圆形，四档均已用 get_design_context 核实为 size/2，picture 圆形样本 size40 半径 20 已核实）",
+    "defaultIcon": {
+      "24": 16,
+      "32": 20,
+      "40": 28,
+      "64": 44
+    },
+    "iconScaleNote": "24/32 两档的 icon 尺寸严格等于「容器 - 2×内边距」（如 32: 6+20+6=32）；40/64 两档实测不满足同一公式（40 的内边距读数 8px 但 8+28+8=44≠40，64 的内边距读数 9px 但 9+44+9=62≠64），说明 icon 尺寸是按尺寸档独立设定的真实值，不是从统一 padding 公式推出来的，不应该用公式反推未核实的中间尺寸。"
+  },
+  "colorBindings": {
+    "default": {
+      "background": "Primitive/Neutral/N05（#d7dce3）",
+      "icon": "user_3_fill.svg（真实图标资源，非文字）"
+    },
+    "letter": {
+      "background": "Text/blue（#2b73ff，已用 get_variable_defs 核实）",
+      "text": "白色，与背景一起被 Figma 导出为单个扁平 vector/SVG（示例文案固定是「U」）",
+      "note": "AVT-001：Letter 变体在 Figma 里是把圆形/方形背景和首字母文字合并导出成一个矢量图形（get_metadata 显示子节点是 vector 而不是 text 节点），不是可编辑的文字层；无法从 Figma 直接读出字体/字号，也无法直接换成别的字母。实现必须自行用 CSS/DOM 画背景圆+文字，不能照搬这份 SVG。"
+    },
+    "picture": {
+      "border": "Border/default（#ebeef2，1px）",
+      "fit": "object-cover，不拉伸"
+    }
+  },
+  "states": [
+    "default"
+  ],
+  "stateSource": "24 个 variant 全部是 default 单一状态；Figma 未提供 hover/pressed/loading 等交互态设计。",
+  "badgeInFigma": "AVT-002：Avatar 组件集本身没有 badge 相关的 variant 轴（24 个 variant 只覆盖 size×shape×style）。2026-09-09 用户明确：此类无 Figma 依据的细节，优先按业界通用惯例设置默认值，不必每次都升级到设计确认。已复用 Badge 组件自身既有的 rules-derived 尺寸（Dot 直径 8px、Number 高/最小宽 20px，见 badge/schema.json）叠加到 Avatar 上：右上角、圆心对齐容器边角（CSS: translate(50%,-50%)）、2px 容器色描边分隔；24px 档因 Number 徽标 20px 高度会接近甚至超过头像本身尺寸，按通用惯例只保留 Dot（缩小到 6px），不支持 Number。这是应用行业惯例的默认值，不是 Figma 已核实事实；后续若拿到 Avatar+Badge 叠加的真实设计稿，以 Figma 为准覆盖。",
+  "constraints": [
+    "Use cover without stretching.",
+    "Do not place a full name inside the avatar.",
+    "Dot and number badges are mutually exclusive and do not obscure identity.",
+    "AVT-001：Letter 样式在 Figma 中是扁平化的矢量图形，不能直接提取文字/颜色的可编辑绑定，实现需要自行用 CSS/DOM 组合背景色与首字母文字。",
+    "AVT-002：Badge 叠加行为未在 Avatar 组件集中找到对应 Figma variant；2026-09-09 已按通用惯例设置默认值（右上角、圆心对齐边角、2px 容器色描边、24px 档仅 Dot），详见 badgeDefault 字段。非 Figma 已核实，后续若有 Avatar+Badge 叠加设计稿以其为准覆盖。"
+  ],
+  "dependencies": [
+    "Icon",
+    "Badge"
+  ],
+  "pendingExtraction": [],
+  "badgeDefault": {
+    "basis": "行业通用惯例（Ant Design / Material 等主流设计系统的头像角标叠加惯例）+ 复用本 Skill 已有 Badge 组件的 rules-derived 尺寸，非 Figma 已核实",
+    "position": "右上角，圆心对齐头像边角（CSS 等价写法：position absolute; top:0; right:0; transform: translate(50%,-50%)）",
+    "stroke": {
+      "width": 2,
+      "unit": "px",
+      "color": "{Background/Container}",
+      "resolved": "#ffffff",
+      "note": "与容器背景同色描边，制造与头像主体的视觉分隔，呼应 Avatar/Badge 两份 rules.md 里已有的「容器色描边」叙述。"
+    },
+    "dot": {
+      "size24": 6,
+      "sizeOther": 8,
+      "note": "size≥32 复用 Badge 组件自身的 8px；24px 档按同等收缩比例下调到 6px，避免角标比例失衡。"
+    },
+    "number": {
+      "minAvatarSize": 32,
+      "height": 20,
+      "minWidth": 20,
+      "note": "复用 Badge 组件自身的 20/20px；24px 头像不支持 Number（20px 高的徽标相对 24px 头像过大，按通用惯例仅保留 Dot）。"
+    },
+    "confirmedBy": "用户 2026-09-09：无 Figma 依据时优先按通用惯例设置默认值，不必逐项升级确认"
+  }
+}

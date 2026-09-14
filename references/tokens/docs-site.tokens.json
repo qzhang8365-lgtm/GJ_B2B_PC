@@ -1,0 +1,105 @@
+{
+  "$schema": "gj-design-skill/docs-site-tokens/v1",
+  "scope": "documentation-only",
+  "description": "规范网站外壳和组件规范页的布局 Token。不得用于生成业务产品页面。",
+  "tokens": {
+    "shell.navWidth": {
+      "value": 224,
+      "unit": "px",
+      "cssVariable": "--docs-shell-nav-width"
+    },
+    "shell.topbarHeight": {
+      "value": 58,
+      "unit": "px",
+      "cssVariable": "--docs-shell-topbar-height"
+    },
+    "shell.mobileBreakpoint": {
+      "value": 760,
+      "unit": "px",
+      "cssVariable": "--docs-shell-mobile-breakpoint",
+      "cssMediaQuery": false
+    },
+    "page.maxWidth": {
+      "value": 1480,
+      "unit": "px",
+      "cssVariable": "--docs-page-max-width"
+    },
+    "page.padding": {
+      "value": "{Interval/space8}",
+      "resolved": 32,
+      "unit": "px",
+      "cssVariable": "--docs-page-padding"
+    },
+    "page.paddingCompact": {
+      "value": "{Interval/space5}",
+      "resolved": 16,
+      "unit": "px",
+      "cssVariable": "--docs-page-padding-compact"
+    },
+    "section.padding": {
+      "value": "{Interval/space7}",
+      "resolved": 24,
+      "unit": "px",
+      "cssVariable": "--docs-section-padding"
+    },
+    "section.radius": {
+      "value": 12,
+      "unit": "px",
+      "cssVariable": "--docs-section-radius"
+    },
+    "panel.padding": {
+      "value": "{Interval/space6}",
+      "resolved": 20,
+      "unit": "px",
+      "cssVariable": "--docs-panel-padding"
+    },
+    "panel.radius": {
+      "value": 8,
+      "unit": "px",
+      "cssVariable": "--docs-panel-radius"
+    },
+    "item.radius": {
+      "value": 4,
+      "unit": "px",
+      "cssVariable": "--docs-item-radius"
+    },
+    "table.rowHeight": {
+      "value": "{Components/control-XL}",
+      "resolved": 48,
+      "unit": "px",
+      "cssVariable": "--docs-table-row-height"
+    },
+    "layout.columnGap": {
+      "value": "{Interval/space6}",
+      "resolved": 20,
+      "unit": "px",
+      "cssVariable": "--docs-layout-column-gap"
+    },
+    "layout.stackGap": {
+      "value": "{Interval/space5}",
+      "resolved": 16,
+      "unit": "px",
+      "cssVariable": "--docs-layout-stack-gap"
+    },
+    "layout.demoFraction": {
+      "value": 3,
+      "cssVariable": "--docs-layout-demo-fr",
+      "unit": "fr"
+    },
+    "layout.interactionFraction": {
+      "value": 2,
+      "cssVariable": "--docs-layout-interaction-fr",
+      "unit": "fr"
+    },
+    "interaction.minWidth": {
+      "value": 320,
+      "unit": "px",
+      "cssVariable": "--docs-interaction-min-width"
+    },
+    "interaction.stageMinHeight": {
+      "value": 220,
+      "unit": "px",
+      "cssVariable": "--docs-interaction-stage-min-height"
+    }
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "$schema": "gj-design-skill/component-mapping/v1",
+  "figmaComponent": "progress_dot / progress_serial（2026-09-10 前 progress_dot 名为 progress_point）",
+  "codeComponent": "GjSteps",
+  "sourceNodes": [
+    "4465:8293",
+    "4493:9559",
+    "4465:8298",
+    "4493:8534",
+    "4493:9007",
+    "4493:8732",
+    "4493:9059",
+    "4493:8772",
+    "4493:9205",
+    "4493:8731",
+    "4493:8729",
+    "4493:8804",
+    "4493:9354",
+    "4493:9032",
+    "4465:8330",
+    "4465:8332"
+  ],
+  "propertyMap": {
+    "step": "current（progress_dot / progress_serial 的 step1–4，2026-09-10 前 progress_dot 名为 progress_point）",
+    "state": "itemState",
+    "position": "start|middle|end",
+    "infovisible": "infoVisible",
+    "title": "title",
+    "info": "description",
+    "serial": "serial number"
+  },
+  "valueMap": {
+    "state.wait": "wait",
+    "state.process": "process（当前步）",
+    "state.progress": "indicator_serial 的 process",
+    "state.active": "indicator_dot 的 process/finished",
+    "state.finished": "finished；指示器复用 process 实心蓝",
+    "step.step1": "current=1",
+    "step.step2": "current=2",
+    "step.step3": "current=3",
+    "step.step4": "current=4",
+    "position.start": "首项，只有向后连接线",
+    "position.middle": "中间项，两侧连接线",
+    "position.end": "末项，只有向前连接线，无出向。Serial 只发布 wait / process；runtime 末项 finished 用 process 视觉。",
+    "position.end+process": "节点 4493:9032；入线 Border/focused，指示器 Text/blue。原 end+finished。"
+  },
+  "normalization": {
+    "oldSchema.title": "旧规则 18/26（S3）错误。Figma 是 中文/S4-CN-S。",
+    "oldSchema.description": "旧规则 14/22（S8）错误。Figma 是 中文/S9-CN-R。",
+    "oldSchema.indicatorTextGap": "旧规则 12px 错误。Figma 轨道到文字 gap 4px。",
+    "oldCss.finishedOutline": "共享 .gj-step-finished 曾用描边空心圆；Figma Serial finished 与 process 同为实心 Text/blue。",
+    "serial_cell.82": "4493:9059 此前画板名是 point_cell，与 4493:8732 同名但内容是 Serial 单元格（STP-002）；2026-09-10 起 Figma 已改名为 serial_cell，歧义消除。",
+    "serial.end.finished": "2026-09-08 源文件把 end+finished 改成 end+process；两态视觉相同，契约只保留 process。",
+    "page.fullWidth.edge": "2026-09-09 页面全宽用 48px 边距 + 指示器/文字居中，不用 Figma start/end 的 118px 单元格内边距，也不贴边。"
+  },
+  "tokenMap": {
+    "wait.indicator": "Background/Secondary",
+    "wait.text": "Text/Tertiary",
+    "wait.connector": "Border/secondary",
+    "process.indicator": "Text/blue",
+    "process.serialText": "Text/reversal",
+    "process.title": "Text/Primary",
+    "process.description": "Text/Primary",
+    "process.outgoingConnector": "Border/secondary",
+    "finished.indicator": "Text/blue（复用 process，不是描边）",
+    "finished.title": "Text/Primary",
+    "finished.outgoingConnector": "Border/focused",
+    "title.textStyle": "中文/S4-CN-S",
+    "description.textStyle": "中文/S9-CN-R",
+    "end.process.incoming": "Border/focused"
+  },
+  "runtimeMap": {
+    "root": ".gj-steps",
+    "dot": ".gj-steps-dot",
+    "item": ".gj-step",
+    "process": ".gj-step-process",
+    "finished": ".gj-step-finished",
+    "indicator": ".gj-step-indicator",
+    "description": ".gj-step-desc"
+  },
+  "interactionMap": {
+    "continuity": "当前步之前 Finished，之后 Wait；同一时刻一个 process。",
+    "click": "默认不可点。仅业务允许回看时 Finished 可点。",
+    "endVisual": "Last item has no outgoing line. Serial Figma publishes end+process only; last-step finished uses that visual."
+  },
+  "accessibility": {
+    "list": "步骤条用 list/listitem 或等价结构，aria-current=step 标当前步。",
+    "finishedControl": "若可点击，使用 button 并提供步骤名。"
+  }
+}

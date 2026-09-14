@@ -1,0 +1,84 @@
+{
+  "$schema": "gj-design-skill/component-mapping/v1",
+  "figmaComponent": "select_basic / select_multiselect / Selection-Item",
+  "codeComponent": "GjSelector",
+  "sourceNodes": [
+    "2638:2419",
+    "2889:3782",
+    "2889:3781",
+    "2889:3803",
+    "2889:3852",
+    "2889:3882",
+    "2889:3787",
+    "2889:3791",
+    "4208:19225",
+    "4208:19413",
+    "2889:4126",
+    "2889:4304",
+    "2889:4195",
+    "2889:3999",
+    "2889:3998",
+    "2889:4066",
+    "2889:4084",
+    "2889:4004",
+    "2889:4008"
+  ],
+  "propertyMap": {
+    "Size|size": "size（Middle/middle → medium）",
+    "State|state": "视觉态 Default|selected|focused|disable",
+    "Disabled|disabled": "disabled",
+    "focused": "与 state=focused 重复，忽略布尔轴",
+    "Tags": "母版仅 false，不映射",
+    "Closeicon": "chipRemovable"
+  },
+  "valueMap": {
+    "Size.small": "height 24 radius 4 padding 8 S8",
+    "Size.Middle": "height 32 radius 6 padding 8 S8",
+    "Size.Large": "height 40 radius 8 padding 12 S7",
+    "State.Default": "Container + Border/secondary + Placeholder Text/disable",
+    "State.selected": "Container + Border/secondary + Text/Primary",
+    "State.focused": "Container + Border/focused + Text/Primary",
+    "Disabled.true": "Background/Background + Border/secondary",
+    "state.defaut": "同 Default",
+    "state.disable": "同 Disabled.true",
+    "Closeicon.true": "icf_system_close-md Tertiary",
+    "Closeicon.false": "无关闭图标",
+    "chip.disabled": "opacity 50%，无关闭图标"
+  },
+  "normalization": {
+    "Middle|middle": "medium",
+    "defaut": "default",
+    "disable": "disabled",
+    "Closeicon": "closeIcon",
+    "focused=true on disable": "忽略；Disabled 优先"
+  },
+  "tokenMap": {
+    "size.small.height": "--ds-component-selector-size-small-height",
+    "size.medium.height": "--ds-component-selector-size-medium-height",
+    "size.large.height": "--ds-component-selector-size-large-height",
+    "trigger.gap": "--ds-component-selector-trigger-gap",
+    "chip.background": "--ds-component-selector-chip-background",
+    "chip.height.medium": "--ds-component-selector-chip-height-medium",
+    "disabled.background": "--ds-component-selector-disabled-background",
+    "disabled.border": "--ds-component-selector-disabled-border"
+  },
+  "runtimeMap": {
+    "root": ".gj-selector",
+    "trigger": ".gj-selector-trigger",
+    "placeholder": ".gj-selector-placeholder",
+    "chip": ".gj-selector-item",
+    "chipClose": ".gj-selector-item-close",
+    "arrow": ".gj-selector-arrow",
+    "error": ".gj-selector-trigger-error"
+  },
+  "composition": {
+    "popup": "Dropdown",
+    "cascade": "Cascader",
+    "tree": "Cascader-Menu-tree"
+  },
+  "accessibility": {
+    "trigger": "combobox + aria-expanded + aria-controls",
+    "popup": "listbox",
+    "keyboard": "Enter Space ArrowUp ArrowDown Home End Escape Tab"
+  }
+}

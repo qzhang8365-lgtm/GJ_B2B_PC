@@ -1,0 +1,18 @@
+{
+  "$schema": "gj-design-skill/component-mapping/v1",
+  "component": "Divider",
+  "tokens": {
+    "lineColor": "{Border/default}",
+    "lineResolved": "#EBEEF2",
+    "titleColor": "{Text/Tertiary}",
+    "titleResolved": "#8D96A3",
+    "titleStyle": "中文/S8-CN-R",
+    "titleFontSize": 14,
+    "titleLineHeight": 22,
+    "titleFontWeight": 400,
+    "titleGap": 16,
+    "titleSideLine": 24,
+    "verticalHeight": 20,
+    "thickness": 1
+  }
+}

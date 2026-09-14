@@ -1,0 +1,107 @@
+{
+  "$schema": "gj-design-skill/component-mapping/v1",
+  "figmaComponent": "Input_outlined / Input_filled / Input_Password",
+  "codeComponent": "GjInput",
+  "sourceNodes": [
+    "4744:3963",
+    "2926:1451",
+    "2989:648",
+    "2991:4218",
+    "2996:2903",
+    "3271:5228",
+    "3271:5231",
+    "3271:5236",
+    "2911:4644"
+  ],
+  "propertyMap": {
+    "Size": "size",
+    "State": "state（2026-09-10 起 Figma 真值已由 typing 改为 focused，与代码既有语义名一致）",
+    "text area": "type=textarea",
+    "Error": "error（2026-09-10 起 outlined/filled 已统一为 Error；此前 filled 侧为小写 error，已由 Figma 统一，历史记录见 INP-002）",
+    "Show Icon": "icon（2026-09-10 由 lefticon 改名；同时删除 right icon，仅保留左侧图标一个开关）",
+    "Show Length Limit": "showCount（2026-09-10 由 input length limit 改名）",
+    "Filled": "password.hasValue（不是 appearance=filled）",
+    "Visible": "passwordVisible",
+    "align": "Input_Basic 组合布局（vertical/horizontal）；表单场景仍用 Form layout",
+    "helperHint": "显示输入提示",
+    "informationicon": "标题旁 icf_system_info，默认 hidden"
+  },
+  "valueMap": {
+    "Size.Small-h24": "size=small",
+    "Size.Middle-h32": "size=medium",
+    "Size.Large-h40": "size=large",
+    "Size.small": "password.size=small",
+    "Size.medium": "password.size=medium",
+    "Size.large": "password.size=large",
+    "State.default": "state=default（placeholder）",
+    "State.focused": "state=focused（2026-09-10 前 Figma 值为 typing）",
+    "State.filled": "state=filled（已填写，带清除）",
+    "State.disabled": "disabled=true",
+    "Filled.true": "password 已填写",
+    "Filled.false": "password 空值",
+    "Visible.true": "明文 + icf_system_eye",
+    "Visible.false": "密文 + icf_system_eye-close",
+    "align.vertical": "标题在上，控件到 hint 8px，标题到控件 12px",
+    "align.horizontal": "标题列 80px 在左，控件到 hint 4px，标题到控件 12px",
+    "helperHint.true": "显示 input_item/hint",
+    "informationicon.true": "标题旁 16px icf_system_info"
+  },
+  "normalization": {
+    "oldSchema.password.filled": "曾误当成 appearance=filled。Figma 真值是 hasValue。",
+    "oldSchema.page": "旧审计页 2165:864；本轮用户画板 4744:3963。"
+  },
+  "tokenMap": {
+    "outlined.default.background": "Background/Container",
+    "outlined.default.border": "Border/secondary",
+    "outlined.default.placeholder": "Text/Tertiary",
+    "outlined.focused.border": "Border/focused",
+    "outlined.focused.text": "Text/Primary",
+    "outlined.focused.cursor": "Feedback/brand",
+    "outlined.filled.text": "Text/Primary",
+    "outlined.filled.clear": "close button（filled 态）",
+    "outlined.disabled.background": "Background/Background",
+    "outlined.disabled.border": "Border/disabled",
+    "outlined.disabled.text": "Text/Tertiary（不是 Text/disable）",
+    "filled.default.background": "Background/Background",
+    "filled.default.border": "Border/default（不是 transparent）",
+    "filled.focused.background": "Background/Container",
+    "filled.focused.border": "Border/focused",
+    "filled.error.border": "Border/error",
+    "filled.disabled.background": "Background/Background（2026-09-08 设计确认；Figma 实测曾为 Tertiary，源文件待改绑）",
+    "filled.disabled.text": "Text/disable",
+    "error.message": "Feedback/error&rise + 中文/S9-CN-R",
+    "label": "Text/Primary + 中文/S8-CN-R",
+    "hint": "Text/Tertiary + 中文/S9-CN-R（3271:5231）",
+    "cursor": "Text/blue 1px；独立件高 20，框内 focused（2026-09-10 前为 typing）高 16",
+    "count": "Text/Tertiary + 中文/S9-CN-R",
+    "focus.ring": "Effect Style「focused_outline」（DROP_SHADOW，Background/BT_B10，spread 2）。2026-09-10 起统一应用于 Input_outlined/Input_filled 的 focused 态（2026-09-10 前为 typing）与 Input_Password 的 Filled+Visible 态（INP-004 已关闭），不再是仅 Password 独有。",
+    "password.size": "跟随 size 档；medium = paddingInline 8 / gap 8 / icon 16。不另开 password.medium token（INP-005）。Figma Input_Password 已与 outlined Input field 同档。"
+  },
+  "assetMap": {
+    "clear": "assets/icons/iconfont/icf_system_close-circle-fill.svg",
+    "password.hidden": "assets/icons/iconfont/icf_system_eye-close.svg",
+    "password.visible": "assets/icons/iconfont/icf_system_eye.svg",
+    "colorRule": "图标跟随 currentColor / 周围文字色。"
+  },
+  "runtimeMap": {
+    "field": ".gj-field",
+    "wrapper": ".gj-input-wrap",
+    "icon": ".gj-input-icon",
+    "action": ".gj-input-action",
+    "count": ".gj-input-count",
+    "hint": ".gj-field > .gj-form-help"
+  },
+  "interactionMap": {
+    "focused": "Figma State=focused（2026-09-10 前为 typing） = 聚焦输入；边框 Border/focused + Effect Style「focused_outline」2px 外圈（INP-004 已关闭，outlined/filled/password 统一）。",
+    "hover": "2026-09-08 设计确认：保留现有状态矩阵，outlined.hover 使用 Border/hover。",
+    "error": "仅 focused+error 有 published variant（2026-09-10 前为 typing+error）；错误边框 + 下方说明。",
+    "disabled": "Native disabled；不可编辑、清除或切换密码可见性。",
+    "passwordToggle": "按钮，保留焦点与已输入内容。"
+  },
+  "accessibility": {
+    "label": "稳定可见 label 或 aria-labelledby，不能只靠 placeholder。",
+    "error": "aria-invalid 与 aria-describedby。",
+    "passwordToggle": "button + accessible name，切换后焦点不丢。",
+    "disabled": "native disabled。"
+  }
+}

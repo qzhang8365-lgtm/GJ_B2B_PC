@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>GJ Design System · 页签 Tabs</title>
+  <link rel="stylesheet" href="../../assets/styles/gj-b2b-tokens.css">
+  <link rel="stylesheet" href="../../assets/styles/gj-b2b-components.css?v=tab-left-4">
+  <link rel="stylesheet" href="../../assets/styles/component-docs.css?v=2">
+  <style>
+    :root{--font:var(--ds-font-family-ui)}
+    .showcase{display:grid;gap:24px}.sample{min-width:0}.sample-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:10px}.sample-head strong{font-size:14px;font-weight:600}.sample-head span{color:var(--ds-text-tertiary);font-size:12px}.sample-stage{min-height:88px;display:flex;align-items:center}.sample-stage.left{align-items:flex-start}.tabs-scroll{width:100%;max-width:100%;overflow:auto}
+    .background-showcase{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.background-item{min-width:0}.background-demo{min-height:64px;display:flex;align-items:center;overflow:auto}
+    .state-chip{display:inline-flex;min-width:72px;height:30px;align-items:center;justify-content:center;border-radius:var(--docs-item-radius);background:var(--ds-background-background);color:var(--ds-text-secondary)}.state-chip.active{background:var(--ds-text-blue);color:var(--ds-text-reversal);font-weight:600}.state-chip.hover{background:var(--ds-background-hover-2)}.state-chip.disabled{color:var(--ds-text-disable)}
+    .playground{display:grid;grid-template-columns:minmax(0,3fr) minmax(300px,2fr);gap:16px;align-items:stretch}.interaction{min-width:0;min-height:236px;padding:var(--docs-panel-padding);display:grid;place-items:center;overflow:auto;border-radius:var(--docs-panel-radius);background:var(--ds-background-container);border:1px solid var(--ds-border-default)}.interaction.gray{background:var(--ds-background-background);border:0}.controls{min-width:0;padding:var(--docs-panel-padding);border-radius:var(--docs-panel-radius)}.control-title{margin:0 0 16px;font-size:16px;line-height:24px}.control-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 16px}.field{display:grid;gap:7px}.field label{color:var(--ds-text-secondary);font-size:13px}.field select{width:100%;height:36px;min-width:0;padding:0 10px;border:1px solid var(--ds-border-secondary);border-radius:var(--docs-item-radius);background:var(--ds-background-container)}.check{min-height:36px;display:flex;align-items:center;gap:8px;color:var(--ds-text-secondary);font-size:13px}.event{margin-top:14px;color:var(--ds-text-tertiary);font-size:12px}.event strong{color:var(--ds-text-primary)}
+    @media(max-width:900px){.playground{grid-template-columns:1fr}.background-showcase{grid-template-columns:1fr}}@media(max-width:650px){.sample-head{align-items:flex-start;flex-direction:column;gap:2px}.control-grid{grid-template-columns:1fr}.interaction{min-height:190px;padding:16px}}
+  </style>
+  <script src="../../assets/scripts/font-runtime.js"></script>
+</head>
+<body>
+<main class="docs-shell">
+  <header class="docs-page-head">
+    <div class="docs-eyebrow">导航组件 · Navigation</div>
+    <h1>页签 Tabs</h1>
+    <p>用于组织同一层级的内容分类、状态筛选、视图切换与多任务工作区。组内当前项保持清晰且唯一。</p>
+  </header>
+  <article class="docs-sheet">
+    <section class="docs-section">
+      <header class="docs-section-head"><div><h2>基础类型</h2><p>根据内容关系选择 Highlight、Card、Pill、Button 或 Left；示例背景按组件自身表面选择，避免相近颜色融在一起。</p></div></header>
+      <div class="showcase" id="basicShowcase"></div>
+    </section>
+    <section class="docs-section">
+      <header class="docs-section-head"><div><h2>灰色背景与自定义强调</h2><p>灰色容器中优先保证选中项与承载面有清晰对比；允许按项目主题使用已定义的语义色。</p></div></header>
+      <div class="docs-stage docs-surface-gray"><div class="background-showcase" id="backgroundShowcase"></div></div>
+    </section>
+    <section class="docs-section">
+      <header class="docs-section-head"><div><h2>类型与适用场景</h2><p>不同外观服务于不同的信息结构，不以个人偏好混用。</p></div></header>
+      <div class="docs-spec-table-wrap"><table class="docs-spec-table"><colgroup><col style="width:18%"><col style="width:34%"><col></colgroup><thead><tr><th>类型</th><th>推荐场景</th><th>边界</th></tr></thead><tbody>
+        <tr><td>Highlight</td><td>常规内容分类、状态筛选、对象视图切换</td><td>可配单个图标或数量徽标，不同时堆叠过多附加信息</td></tr>
+        <tr><td>Card</td><td>工作区多任务与可关闭页面</td><td>关闭后默认选中相邻项；存在未保存内容时二次确认</td></tr>
+        <tr><td>Pill</td><td>紧凑的同层级选项、轻量筛选与局部视图</td><td>容器填充灰色时可使用 Inner Shadow 区分选中项</td></tr>
+        <tr><td>Button</td><td>分段按钮式的少量互斥选项</td><td>不用于触发即时操作，避免与 Button 操作组混淆</td></tr>
+        <tr><td>Left</td><td>容器内部的垂直分类</td><td>不替代页面级 Sidebar 导航</td></tr>
+      </tbody></table></div>
+    </section>
+    <section class="docs-section">
+      <header class="docs-section-head"><div><h2>状态</h2><p>同组仅保留一个 Active；Disabled 不可点击、不可聚焦。</p></div></header>
+      <div class="docs-spec-table-wrap"><table class="docs-spec-table"><colgroup><col style="width:18%"><col style="width:28%"><col></colgroup><thead><tr><th>状态</th><th>视觉表现</th><th>交互</th></tr></thead><tbody>
+        <tr><td>Default</td><td><span class="state-chip">Tab</span></td><td>未选中，可点击</td></tr>
+        <tr><td>Hover</td><td><span class="state-chip hover">Tab</span></td><td>仅在鼠标悬停时出现反馈</td></tr>
+        <tr><td>Active</td><td><span class="state-chip active">Tab</span></td><td>对应当前内容，组内互斥</td></tr>
+        <tr><td>Disabled</td><td><span class="state-chip disabled">Tab</span></td><td>不可点击、不可聚焦</td></tr>
+      </tbody></table></div>
+    </section>
+    <section class="docs-section">
+      <header class="docs-section-head"><div><h2>交互演示</h2><p>调整类型、尺寸、数量和附加元素，检查真实的互斥切换、关闭与键盘导航。</p></div></header>
+      <div class="playground">
+        <div class="interaction" id="interaction"></div>
+        <aside class="controls docs-surface-white"><h3 class="control-title">属性控制</h3><div class="control-grid">
+          <div class="field"><label for="type">Type</label><select id="type"><option value="highlight">Highlight</option><option value="card">Card</option><option value="pill">Pill</option><option value="button">Button</option><option value="left">Left</option></select></div>
+          <div class="field"><label for="size">Size</label><select id="size"><option value="small">Small</option><option value="medium" selected>Medium</option><option value="large">Large</option></select></div>
+          <div class="field"><label for="count">Count</label><select id="count"><option>2</option><option>3</option><option selected>4</option><option>5</option><option>6</option></select></div>
+          <div class="field"><label for="background">Background</label><select id="background"><option value="white">White</option><option value="gray">Background gray</option></select></div>
+          <label class="check"><input class="gj-checkbox" id="icon" type="checkbox"> Icon</label><label class="check"><input class="gj-checkbox" id="badgeToggle" type="checkbox"> Badge count</label><label class="check"><input class="gj-checkbox" id="closable" type="checkbox"> Close button</label><label class="check"><input class="gj-checkbox" id="disabled" type="checkbox"> Disabled item</label>
+        </div><div class="event">最近事件：<strong id="event">尚未操作</strong></div><span id="code" hidden></span></aside>
+      </div>
+    </section>
+    <section class="docs-section">
+      <header class="docs-section-head"><div><h2>选用规则</h2><p>页签数量、文字长度和溢出方式共同决定组件是否仍适合当前场景。</p></div></header>
+      <div class="docs-spec-table-wrap"><table class="docs-spec-table"><colgroup><col style="width:20%"><col style="width:40%"><col></colgroup><thead><tr><th>主题</th><th>推荐做法</th><th>边界与避免</th></tr></thead><tbody>
+        <tr><td>内容层级</td><td>同一组只切换平级内容，并保持单一选中项。</td><td>不要混合父子层级或不同任务权重。</td></tr>
+        <tr><td>数量</td><td>横向页签建议 2–6 项；超过 6 项优先改用 Sidebar。</td><td>不默认横向滚动，也不为塞入更多项目而压缩文字。</td></tr>
+        <tr><td>窄屏处理</td><td>优先换行，或将低频项目收入“更多…”并向下展开。</td><td>所有 Tabs 类型均不建议鼠标横向滚动。</td></tr>
+        <tr><td>文案</td><td>单项建议 2–6 个汉字；截断时通过 Tooltip 显示完整名称。</td><td>避免含义相近、长度差异过大的同组名称。</td></tr>
+        <tr><td>颜色</td><td>自定义选中色必须引用语义色，并与背景保持至少一级对比。</td><td>不要在相同灰色表面上叠加不可区分的灰色组件。</td></tr>
+      </tbody></table></div>
+    </section>
+  </article>
+</main>
+<script>
+  const labels=['基本信息','联系方式','资产信息','角色管理','员工管理','更多'];
+  const state={type:'highlight',size:'medium',count:4,active:0,background:'white',icon:false,badge:false,closable:false,disabled:false};
+  const icon='<span class="gj-tab-icon" style="--gj-icon:url(\'../../assets/icons/iconfont/icf_file_document-2-line.svg\')" aria-hidden="true"></span>';
+  function tabsHTML(o=state,interactive=false){const count=Math.min(Number(o.count),labels.length);const items=labels.slice(0,count).map((label,i)=>{const dis=o.disabled&&i===count-1;const selected=i===o.active&&!dis;return `<button class="gj-tab ${selected?'gj-tab-active':''}" type="button" role="tab" aria-selected="${selected}" ${interactive?`aria-controls="tabs-panel" tabindex="${selected?0:-1}"`:''} data-index="${i}" ${dis?'disabled aria-disabled="true"':''}>${o.icon?icon:''}<span>${label}</span>${o.badge?`<span class="gj-tab-badge">${[9,1,23,7,6,3][i]}</span>`:''}${o.closable&&o.type==='card'?'<span class="gj-tab-close" style="--gj-icon:url(\'../../assets/icons/iconfont/icf_system_close.svg\')" data-close="'+i+'" aria-label="关闭 '+label+'"></span>':''}</button>`}).join('');return `<div class="gj-tabs gj-tabs-${o.type} gj-tabs-${o.size} ${o.theme?'gj-tabs-'+o.theme:''}" role="tablist" aria-label="页签示例" ${o.type==='left'?'aria-orientation="vertical"':''} ${interactive?'data-interactive':''}>${items}</div>`}
+  function renderBasic(){const examples=[{type:'highlight',name:'Highlight Tab',note:'基础分类 / 可配图标',surface:'white',icon:true},{type:'card',name:'Card Tab',note:'普通 / 可关闭多任务',surface:'gray',closable:true},{type:'pill',name:'Pill Tab',note:'胶囊式局部切换',surface:'white'},{type:'button',name:'Button Tab',note:'分段按钮形态',surface:'white'},{type:'left',name:'Left Tab',note:'纵向容器分类',surface:'white'}];document.getElementById('basicShowcase').innerHTML=examples.map(x=>`<div class="sample"><div class="sample-head"><strong>${x.name}</strong><span>${x.note}</span></div><div class="docs-stage docs-surface-${x.surface} sample-stage ${x.type==='left'?'left':''}"><div class="tabs-scroll">${tabsHTML({type:x.type,size:'medium',count:x.type==='left'?4:5,active:0,icon:!!x.icon,badge:false,closable:!!x.closable,disabled:false})}</div></div></div>`).join('')}
+  function renderBackground(){const cases=[['Card · 品牌蓝强调','card','theme-blue'],['Pill · 品牌蓝强调','pill','theme-blue'],['Card · 白色中性强调','card','theme-neutral'],['Pill · 白色中性强调','pill','theme-neutral']];document.getElementById('backgroundShowcase').innerHTML=cases.map(([name,type,theme])=>`<div class="background-item"><span class="docs-stage-label">${name}</span><div class="background-demo">${tabsHTML({type,size:'medium',count:4,active:0,theme,icon:false,badge:false,closable:false,disabled:false})}</div></div>`).join('')}
+  function render(){state.active=Math.min(state.active,state.count-1);document.getElementById('interaction').className='interaction '+(state.background==='gray'?'gray':'');document.getElementById('interaction').innerHTML='<div class="tabs-scroll">'+tabsHTML(state,true)+'</div><div id="tabs-panel" role="tabpanel" hidden></div>';document.getElementById('code').textContent=`<Tabs type="${state.type}" size="${state.size}" count={${state.count}} activeIndex={${state.active}} />`;bindTabs()}
+  function bindTabs(){const root=document.querySelector('[data-interactive]');if(!root)return;const buttons=[...root.querySelectorAll('.gj-tab:not(:disabled)')];buttons.forEach((btn,index)=>{btn.onclick=e=>{const close=e.target.closest('[data-close]');if(close){document.getElementById('event').textContent=`关闭「${labels[Number(close.dataset.close)]}」`;return}state.active=Number(btn.dataset.index);document.getElementById('event').textContent=`切换到「${labels[state.active]}」`;render()};btn.onkeydown=e=>{let next=index;if(e.key==='Home')next=0;else if(e.key==='End')next=buttons.length-1;else if((state.type==='left'&&e.key==='ArrowDown')||(state.type!=='left'&&e.key==='ArrowRight'))next=(index+1)%buttons.length;else if((state.type==='left'&&e.key==='ArrowUp')||(state.type!=='left'&&e.key==='ArrowLeft'))next=(index-1+buttons.length)%buttons.length;else if(e.key==='Enter'||e.key===' '){e.preventDefault();btn.click();return}else return;e.preventDefault();buttons[next].focus()}})}
+  const controls={type:['type','value'],size:['size','value'],count:['count','value'],background:['background','value'],icon:['icon','checked'],badgeToggle:['badge','checked'],closable:['closable','checked'],disabled:['disabled','checked']};Object.entries(controls).forEach(([id,[key,prop]])=>document.getElementById(id).addEventListener('change',e=>{state[key]=key==='count'?Number(e.target[prop]):e.target[prop];if(key==='type'&&state.type!=='card')state.closable=false;if(key==='type'&&state.type==='left')state.size='medium';if(key==='icon'&&state.icon)state.badge=false;if(key==='badge'&&state.badge)state.icon=false;document.getElementById('closable').checked=state.closable;document.getElementById('size').value=state.size;document.getElementById('size').disabled=state.type==='left';document.getElementById('icon').checked=state.icon;document.getElementById('badgeToggle').checked=state.badge;document.getElementById('event').textContent=`更新 ${key}`;render()}));renderBasic();renderBackground();render();
+</script>
+</body></html>

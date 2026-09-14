@@ -1,0 +1,7 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Avatar">
+<rect x="0.5" y="0.5" width="31" height="31" rx="15.5" fill="#12B76A"/>
+<rect x="0.5" y="0.5" width="31" height="31" rx="15.5" stroke="white"/>
+<path id="U" d="M20 16.9114C20 19.9705 18.6381 21.5 15.9143 21.5C13.3048 21.5 12 20.024 12 17.0721V10.5H13.371V17.0092C13.371 19.1743 14.2622 20.2568 16.0446 20.2568C17.7675 20.2568 18.629 19.2092 18.629 17.114V10.5H20V16.9114Z" fill="white"/>
+</g>
+</svg>

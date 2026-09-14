@@ -1,0 +1,246 @@
+{
+  "$schema": "gj-design-skill/component/v1",
+  "component": "Button",
+  "source": {
+    "rulesSection": "Button 按钮",
+    "inventoryPage": "Button按钮✅",
+    "figmaFile": "8b01I1e3TzH1IhYlr3tJzd",
+    "pageNodeId": "3042:6843",
+    "status": "figma-audited",
+    "figmaAudit": "done-2026-08-13; re-verified-2026-09-09-BTN-001..BTN-005; re-verified-2026-09-10-BTN-001; re-verified-2026-09-10-BTN-004; written-2026-09-10-BTN-005"
+  },
+  "figma": {
+    "fileKey": "8b01I1e3TzH1IhYlr3tJzd",
+    "nodeId": "3042:6843",
+    "page": "Button按钮✅",
+    "description": "按钮用于触发操作、提交任务或确认选择。前端应实现 hover、pressed、focus-visible 和 disabled。",
+    "localDescription": "2026-09-09 只读核对：Figma 组件集已有 description。本地 documentation 与之同向。",
+    "variantCount": 192,
+    "readOnly": true
+  },
+  "documentation": {
+    "source": "local-2026-09-09",
+    "figmaDescriptionEmpty": false,
+    "usage": "触发操作、提交任务或进入下一流程。有容器高度、内边距和操作权重。轻量文字触发且不占容器高度时改用 Text Button。",
+    "hierarchy": "Primary 主操作（同一区块尽量只一个）；Secondary 次操作；Tertiary 弱操作；Ghost 最轻且无描边。并排避免相同权重。Danger/Success 不是 Level。",
+    "size": "Large 40 / Medium 32 / Small 24，按容器层级选择，不按业务名称。与输入框并排时高度必须一致。同组相同尺寸。组间距 Small 4 / Medium 8 / Large 12。",
+    "iconOnly": "正方形热区 40/32/24，图标 20/16/12。不显示文字，必须有可识别含义和 aria-label。语义不清时改用图标加文字。带级别操作用 gj-btn-icon-only；弹窗关闭/卡片工具用 gj-icon-button。Text Button 无 icon-only。"
+  },
+  "props": {
+    "label": {
+      "type": "string",
+      "default": "按钮",
+      "figmaProperty": "Label#2410:0"
+    },
+    "level": {
+      "type": "enum",
+      "default": "Primary",
+      "values": [
+        "Primary",
+        "Secondary",
+        "Tertiary",
+        "Ghost"
+      ]
+    },
+    "size": {
+      "type": "enum",
+      "default": "Medium",
+      "values": [
+        "Large",
+        "Medium",
+        "Small"
+      ]
+    },
+    "state": {
+      "type": "enum",
+      "default": "default",
+      "values": [
+        "default",
+        "hover",
+        "pressed",
+        "disabled"
+      ],
+      "codeNote": "hover and pressed are normally interaction states rather than public props"
+    },
+    "icon": {
+      "type": "enum",
+      "default": "none",
+      "values": [
+        "none",
+        "right_icon",
+        "left_icon",
+        "icon_only"
+      ]
+    },
+    "onClick": {
+      "type": "event",
+      "payload": "MouseEvent"
+    }
+  },
+  "sizes": {
+    "Large": {
+      "height": 40,
+      "paddingInline": 16,
+      "radius": 8,
+      "fontSize": 16,
+      "lineHeight": 24,
+      "textStyle": "中文/S7-CN-R"
+    },
+    "Medium": {
+      "height": 32,
+      "paddingInline": 12,
+      "radius": 6,
+      "fontSize": 14,
+      "lineHeight": 22,
+      "textStyle": "中文/S8-CN-R"
+    },
+    "Small": {
+      "height": 24,
+      "paddingInline": 8,
+      "radius": 4,
+      "fontSize": 12,
+      "lineHeight": 18,
+      "textStyle": "中文/S9-CN-R"
+    },
+    "iconOnly": {
+      "Large": {
+        "width": 40,
+        "height": 40,
+        "iconSize": 20,
+        "paddingBlock": 0
+      },
+      "Medium": {
+        "width": 32,
+        "height": 32,
+        "iconSize": 16,
+        "paddingBlock": 0
+      },
+      "Small": {
+        "width": 24,
+        "height": 24,
+        "iconSize": 12,
+        "paddingBlock": 0,
+        "paddingBlockToken": "Interval/space1"
+      }
+    }
+  },
+  "tokens": {
+    "primary.default.background": "Button/Primary/Bg-default",
+    "primary.hover.background": "Button/Primary/Bg-hover",
+    "primary.pressed.background": "Button/Primary/Bg-pressed",
+    "primary.disabled.background": "Button/Primary/Bg-disable",
+    "primary.text": "Text/reversal",
+    "secondary.border": "Border/focused",
+    "secondary.text": "Text/blue",
+    "secondary.disabled.text": "Button/Secondary/Disable",
+    "secondary.disabled.border": "Button/Secondary/Disable",
+    "tertiary.border": "Border/secondary",
+    "tertiary.text": "Text/Primary",
+    "neutral.hover.background": "Primitive/Neutral/N02",
+    "neutral.pressed.background": "Primitive/Neutral/N03",
+    "disabled.text": "Text/disable",
+    "ghost.default.background": "Background/Container",
+    "ghost.hover.background": "Background/Background",
+    "ghost.pressed.background": "Background/Secondary",
+    "ghost.disabled.background": "Background/Container",
+    "ghost.border": "none"
+  },
+  "behavior": {
+    "nativeElement": "button",
+    "disabled": "Use the native disabled attribute; do not fire onClick.",
+    "hover": "Pointer hover changes visual state.",
+    "pressed": "Pointer down or keyboard activation changes visual state.",
+    "pressedMotion": "Briefly scale to 0.98 while actively pressed; do not translate the button.",
+    "focus": "Native :focus-visible only; not a designed Button state. Figma has no Focus variant and no Prototype Reaction.",
+    "iconOnly": "Requires an accessible aria-label; visible text is omitted. Square hit area equals size height. padding-block is 0 (Interval/space1). Do not use for unclear actions."
+  },
+  "confirmedDecisions": [
+    "2026-09-09 BTN-003：Figma 组件集已有 description；本地补充用途、层级、尺寸和 icon-only 边界。",
+    "2026-09-09 BTN-001：不新增 5px Token。16 个 Small icon-only 上下内边距改为 0，并绑定 Interval/space1，与 Medium/Large 一致。实现 padding: 0。",
+    "2026-09-09 BTN-004：不增加 Focus variant，不做 Prototype Reaction。键盘焦点由代码 :focus-visible 承担，环宽 3px、颜色 Background/BT_B20，不改变布局尺寸。",
+    "2026-09-10 BTN-004：设计确认稿上不制作 focused，按钮暂不需要 focused 展示态；规范页不再冻结 is-focus。代码继续保留原生 :focus-visible。",
+    "2026-09-10 BTN-005：GJ_B2B 按 Fill / Stroke / Text Fill / Height / Radius / Gap 收窄 Scope，并回归绑定 Button 192 variants。Text 另含 SHAPE_FILL 以覆盖图标矢量。Primitive / Brand / Table / Feedback / Chart 仍为 ALL_SCOPES。",
+    "icon-only 热区为正方形 40/32/24，图标 20/16/12。带级别操作用 gj-btn-icon-only；弹窗关闭和卡片工具用 gj-icon-button。Text Button 没有 icon-only。",
+    "2026-09-10 BTN-006：gj-icon-button 的 Hover 态取消背景色叠加，改为仅改变图标颜色（Text/primary），热区保持透明；Pressed（Background/Hover_2 + 缩放）、Focus 环、Disabled 灰化均不变。Timeline 横向翻页箭头复用同一基座，同步受影响。"
+  ],
+  "constraints": [
+    "同一区块尽量只出现一个 Primary。",
+    "尺寸按容器层级选择，并排控件高度必须一致。",
+    "icon-only 必须提供无障碍名称；语义不清时禁止只用图标。",
+    "icon-only 上下内边距为 0，不得生成 5px 间距 Token。",
+    "Focus 不得写入 Figma State 轴；规范页不把 focused 当按钮展示态；代码只用原生 :focus-visible。",
+    "GJ_B2B 的 Background/Button/Border/Text/Components/Radius/Interval 已按 Fill/Stroke/Text Fill/Height/Radius/Gap 收窄 Scope；生成代码仍按 CSS 属性消费，不依赖 ALL_SCOPES。",
+    "gj-btn-icon-only 与 gj-icon-button 不得混用。",
+    "规范页与业务页必须复用 gj-btn，不得在页面 CSS 重画按钮色值。",
+    "gj-icon-button 的 Hover 只改变图标颜色，不叠加背景色；Pressed/Focus/Disabled 视觉不受影响（2026-09-10 起）。"
+  ],
+  "variableScopes": {
+    "figma": "narrowed-2026-09-10",
+    "decision": "2026-09-10 BTN-005：GJ_B2B 按角色收窄并回归绑定 Button。",
+    "applied": {
+      "color.fill": [
+        "FRAME_FILL",
+        "SHAPE_FILL"
+      ],
+      "color.text": [
+        "TEXT_FILL",
+        "SHAPE_FILL"
+      ],
+      "color.stroke": [
+        "STROKE_COLOR"
+      ],
+      "float.size": [
+        "WIDTH_HEIGHT"
+      ],
+      "float.radius": [
+        "CORNER_RADIUS"
+      ],
+      "float.gapPadding": [
+        "GAP"
+      ]
+    },
+    "groups": {
+      "Background": [
+        "FRAME_FILL",
+        "SHAPE_FILL"
+      ],
+      "Button": [
+        "FRAME_FILL",
+        "SHAPE_FILL"
+      ],
+      "Border": [
+        "STROKE_COLOR"
+      ],
+      "Text": [
+        "TEXT_FILL",
+        "SHAPE_FILL"
+      ],
+      "Components": [
+        "WIDTH_HEIGHT"
+      ],
+      "Radius": [
+        "CORNER_RADIUS"
+      ],
+      "Interval": [
+        "GAP"
+      ]
+    },
+    "unchangedAllScopes": [
+      "Primitive",
+      "Brand",
+      "Table",
+      "Feedback",
+      "Chart"
+    ]
+  },
+  "knownFigmaIssues": [],
+  "composition": {
+    "hierarchy": "When multiple buttons are used together, keep one Primary action and use Secondary or Tertiary for the remaining actions; avoid adjacent actions at the same visual level.",
+    "sameSizeWithinGroup": true,
+    "groupGap": {
+      "Small": 4,
+      "Medium": 8,
+      "Large": 12
+    }
+  }
+}

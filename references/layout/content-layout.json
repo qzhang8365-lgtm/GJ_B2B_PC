@@ -1,0 +1,69 @@
+{
+  "$schema": "gj-design-skill/content-layout/v1",
+  "source": {
+    "figmaNode": "3135:2722",
+    "title": "模块和内容布局",
+    "valueAuthority": "Detailed prose sections plus user confirmation",
+    "knownDisplayError": "The summary table reverses gap and padding for card levels 1-3."
+  },
+  "baseGrid": {
+    "unit": 4,
+    "unitName": "px",
+    "standardScale": [4, 8, 12, 16, 20, 24, 32, 40, 48],
+    "halfSteps": [2, 6, 10, 14, 18],
+    "halfStepPolicy": "Use only for optical calibration, compact controls, icon-text alignment, stroke compensation, or constrained component sizes.",
+    "rules": [
+      "Use multiples of 4 for page margins, card gaps, container padding and content spacing.",
+      "Avoid 4px as regular vertical spacing; reserve it for the smallest internal relationships.",
+      "Do not use odd values for page structure, card layout or primary content spacing.",
+      "Use 1px only for strokes and dividers, not layout spacing."
+    ]
+  },
+  "cardLevels": {
+    "L1": { "gap": 16, "padding": 20, "border": "none", "usage": "页面主要内容区、核心业务模块" },
+    "L2": { "gap": 12, "padding": 16, "usage": "一级卡片内的功能分区" },
+    "L3": { "gap": 8, "padding": 12, "usage": "信息分组、列表模块、小型内容区" },
+    "L4": { "gap": 8, "padding": 8, "usage": "局部信息块、轻量嵌套区域" }
+  },
+  "cardRules": [
+    "Determine card level from information hierarchy, not visual appearance or nesting count alone.",
+    "L1 background cards are borderless by default; use background contrast, spacing and radius to create hierarchy. Add a semantic border only when same-color separation, selection or interaction boundaries, or an explicit design source requires it.",
+    "Keep horizontal and vertical gaps equal within the same card group by default.",
+    "For strong vertical reading rhythm, vertical gap may be one scale step larger than horizontal gap, but remain consistent within the module.",
+    "For adjacent cards of different levels, derive spacing from their common parent or higher level; do not add margins from both cards.",
+    "Define title-to-content spacing independently; do not enlarge card padding to create it.",
+    "Lists, tables and images may locally bleed to an edge, while headings and primary text remain aligned to the content baseline.",
+    "Nested card padding should normally be smaller than outer-card padding.",
+    "Do not compress card padding below 8px."
+  ],
+  "componentSizing": {
+    "defaultPolicy": "same-size-per-visual-level-or-control-group",
+    "requirements": [
+      "Interactive components in the same visual level, action group, or form row use the same size tier and visible control height.",
+      "The parent composition selects the size once and propagates it to Button, Input, Selector, DatePicker and comparable controls.",
+      "Do not mix sizes to fill width, fit isolated text, or patch layout problems; wrap or revise layout first."
+    ],
+    "exceptions": [
+      "A component contract mandates a distinct embedded size, such as compact table-row actions or pagination controls.",
+      "An explicit design instance intentionally separates hierarchy and still preserves baseline, hit-area and visual alignment."
+    ]
+  },
+  "pageMargins": {
+    "compact": 12,
+    "regular": 16,
+    "relaxed": [20, 24],
+    "web1440Optional": [40, 80],
+    "rules": [
+      "Keep left and right margins equal within one page.",
+      "When a fixed sidebar, navbar or centered max-width container exists, measure card spacing from the content-container boundary.",
+      "Combine density margins with responsive viewport rules; responsive.json remains authoritative for browser-width transitions."
+    ]
+  },
+  "flexibility": [
+    "Adjust only to adjacent scale steps based on viewport, density, component type and business context.",
+    "Keep the same level, type and scenario consistent.",
+    "Dense back-office and dashboards may reduce one step; presentation and marketing pages may increase one step.",
+    "When space is insufficient, optimize layout and information structure before reducing padding.",
+    "Dialogs, drawers, overlays and table containers follow their component-specific rules first."
+  ]
+}

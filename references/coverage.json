@@ -1,0 +1,1981 @@
+{
+  "$schema": "gj-design-skill/component-coverage/v1",
+  "title": "GJ B2B PC Component Coverage",
+  "generatedBy": "../scripts/build-coverage.mjs",
+  "sourcePolicy": "Generated from the component inventory plus actual rules, contract, component-token, and preview files. Do not hand-edit component rows.",
+  "sources": {
+    "figmaInventory": "components/inventory.json",
+    "narrativeRulesIndex": "design-system-rules.md",
+    "componentRoot": "components/",
+    "componentTokenRoot": "tokens/components/",
+    "previewRoot": "../preview/"
+  },
+  "statusDefinitions": {
+    "complete": "The required artifact exists and its registered maturity is sufficient.",
+    "partial": "An artifact exists, but its Figma extraction or required supporting files are incomplete.",
+    "missing": "The artifact is required but not present.",
+    "not-required": "A recorded component decision explicitly excludes this artifact.",
+    "pageMarkedComplete": "Mirrors the ✅ character in the Figma page name only; it is not an engineering completion claim."
+  },
+  "completionRule": "A component is complete only when narrativeRules, structuredContract, componentToken, and previewPage are complete or explicitly not-required.",
+  "summary": {
+    "components": 42,
+    "registeredComponents": 42,
+    "unregisteredInventoryComponents": 0,
+    "overall": {
+      "complete": 41,
+      "partial": 1
+    },
+    "narrativeRules": {
+      "complete": 42
+    },
+    "structuredContract": {
+      "complete": 42
+    },
+    "componentToken": {
+      "complete": 41,
+      "not-required": 1
+    },
+    "previewPage": {
+      "complete": 40,
+      "missing": 1,
+      "not-required": 1
+    }
+  },
+  "components": [
+    {
+      "id": "button",
+      "component": "Button",
+      "group": "general",
+      "order": 1,
+      "figmaInventory": {
+        "status": "listed",
+        "page": "Button✅",
+        "pageMarkedComplete": true,
+        "componentSets": 2,
+        "variants": 228,
+        "standaloneComponents": 0,
+        "relation": "direct-page",
+        "registryStatus": "figma-audited"
+      },
+      "narrativeRules": {
+        "status": "complete",
+        "path": "components/button/rules.md"
+      },
+      "structuredContract": {
+        "status": "complete",
+        "maturity": "figma-audited",
+        "schema": {
+          "status": "present",
+          "path": "components/button/schema.json"
+        },
+        "mapping": {
+          "status": "present",
+          "path": "components/button/mapping.json"
+        },
+        "audit": {
+          "status": "present",
+          "path": "components/button/audit.md"
+        }
+      },
+      "componentToken": {
+        "status": "complete",
+        "path": "tokens/components/button.tokens.json"
+      },
+      "previewPage": {
+        "status": "complete",
+        "path": "../preview/button/index.html"
+      },
+      "overallStatus": "complete",
+      "needs": []
+    },
+    {
+      "id": "text-button",
+      "component": "TextButton",
+      "group": "general",
+      "order": 1.1,
+      "figmaInventory": {
+        "status": "listed",
+        "page": "Button✅",
+        "pageMarkedComplete": true,
+        "componentSets": 2,
+        "variants": 228,
+        "standaloneComponents": 0,
+        "relation": "plan-parent-page",
+        "registryStatus": "figma-audited"
+      },
+      "narrativeRules": {
+        "status": "complete",
+        "path": "components/text-button/rules.md"
+      },
+      "structuredContract": {
+        "status": "complete",
+        "maturity": "figma-audited",
+        "schema": {
+          "status": "present",
+          "path": "components/text-button/schema.json"
+        },
+        "mapping": {
+          "status": "present",
+          "path": "components/text-button/mapping.json"
+        },
+        "audit": {
+          "status": "present",
+          "path": "components/text-button/audit.md"
+        }
+      },
+      "componentToken": {
+        "status": "complete",
+        "path": "tokens/components/text-button.tokens.json"
+      },
+      "previewPage": {
+        "status": "missing",
+        "path": "../preview/text-button/index.html"
+      },
+      "overallStatus": "partial",
+      "needs": [
+        "previewPage"
+      ]
+    },
+    {
+      "id": "divider",
+      "component": "Divider",
+      "group": "general",
+      "order": 2,
+      "figmaInventory": {
+        "status": "listed",
+        "page": "Divider✅",
+        "pageMarkedComplete": true,
+        "componentSets": 1,
+        "variants": 15,
+        "standaloneComponents": 0,
+        "relation": "direct-page",
+        "registryStatus": "figma-audited"
+      },
+      "narrativeRules": {
+        "status": "complete",
+        "path": "components/divider/rules.md"
+      },
+      "structuredContract": {
+        "status": "complete",
+        "maturity": "figma-audited",
+        "schema": {
+          "status": "present",
+          "path": "components/divider/schema.json"
+        },
+        "mapping": {
+          "status": "present",
+          "path": "components/divider/mapping.json"
+        },
+        "audit": {
+          "status": "present",
+          "path": "components/divider/audit.md"
+        }
+      },
+      "componentToken": {
+        "status": "complete",
+        "path": "tokens/components/divider.tokens.json"
+      },
+      "previewPage": {
+        "status": "complete",
+        "path": "../preview/divider/index.html"
+      },
+      "overallStatus": "complete",
+      "needs": []
+    },
+    {
+      "id": "icon",
+      "component": "Icon",
+      "group": "general",
+      "order": 3,
+      "figmaInventory": {
+        "status": "listed",
+        "page": "Icon✅",
+        "pageMarkedComplete": true,
+        "componentSets": 1,
+        "variants": 3,
+        "standaloneComponents": 267,
+        "relation": "direct-page",
+        "registryStatus": "figma-audited"
+      },
+      "narrativeRules": {
+        "status": "complete",
+        "path": "components/icon/rules.md"
+      },
+      "structuredContract": {
+        "status": "complete",
+        "maturity": "figma-audited",
+        "schema": {
+          "status": "present",
+          "path": "components/icon/schema.json"
+        },
+        "mapping": {
+          "status": "present",
+          "path": "components/icon/mapping.json"
+        },
+        "audit": {
+          "status": "present",
+          "path": "components/icon/audit.md"
+        }
+      },
+      "componentToken": {
+        "status": "complete",
+        "path": "tokens/components/icon.tokens.json"
+      },
+      "previewPage": {
+        "status": "complete",
+        "path": "../preview/icons/index.html"
+      },
+      "overallStatus": "complete",
+      "needs": []
+    },
+    {
+      "id": "tag",
+      "component": "Tag",
+      "group": "general",
+      "order": 4,
+      "figmaInventory": {
+        "status": "listed",
+        "page": "Tag✅",
+        "pageMarkedComplete": true,
+        "componentSets": 5,
+        "variants": 110,
+        "standaloneComponents": 0,
+        "relation": "direct-page",
+        "registryStatus": "figma-audited"
+      },
+      "narrativeRules": {
+        "status": "complete",
+        "path": "components/tag/rules.md"
+      },
+      "structuredContract": {
+        "status": "complete",
+        "maturity": "figma-audited",
+        "schema": {
+          "status": "present",
+          "path": "components/tag/schema.json"
+        },
+        "mapping": {
+          "status": "present",
+          "path": "components/tag/mapping.json"
+        },
+        "audit": {
+          "status": "present",
+          "path": "components/tag/audit.md"
+        }
+      },
+      "componentToken": {
+        "status": "complete",
+        "path": "tokens/components/tag.tokens.json"
+      },
+      "previewPage": {
+        "status": "complete",
+        "path": "../preview/tag/index.html"
+      },
+      "overallStatus": "complete",
+      "needs": []
+    },
+    {
+      "id": "grid-nav",
+      "component": "GridNav",
+      "group": "navigation",
+      "order": 5,
+      "figmaInventory": {
+        "status": "listed",
+        "page": "GridNav✅",
+        "pageMarkedComplete": true,
+        "componentSets": 2,
+        "variants": 7,
+        "standaloneComponents": 0,
+        "relation": "direct-page",
+        "registryStatus": "figma-audited"
+      },
+      "narrativeRules": {
+        "status": "complete",
+        "path": "components/grid-nav/rules.md"
+      },
+      "structuredContract": {
+        "status": "complete",
+        "maturity": "figma-audited",
+        "schema": {
+          "status": "present",
+          "path": "components/grid-nav/schema.json"
+        },
+        "mapping": {
+          "status": "present",
+          "path": "components/grid-nav/mapping.json"
+        },
+        "audit": {
+          "status": "present",
+          "path": "components/grid-nav/audit.md"
+        }
+      },
+      "componentToken": {
+        "status": "complete",
+        "path": "tokens/components/grid-nav.tokens.json"
+      },
+      "previewPage": {
+        "status": "complete",
+        "path": "../preview/gridnav/index.html"
+      },
+      "overallStatus": "complete",
+      "needs": []
+    },
+    {
+      "id": "sidebar",
+      "component": "Sidebar",
+      "group": "navigation",
+      "order": 6,
+      "figmaInventory": {
+        "status": "listed",
+        "page": "SideBar✅",
+        "pageMarkedComplete": true,
+        "componentSets": 4,
+        "variants": 26,
+        "standaloneComponents": 0,
+        "relation": "direct-page",
+        "registryStatus": "figma-audited"
+      },
+      "narrativeRules": {
+        "status": "complete",
+        "path": "components/sidebar/rules.md"
+      },
+      "structuredContract": {
+        "status": "complete",
+        "maturity": "figma-audited",
+        "schema": {
+          "status": "present",
+          "path": "components/sidebar/schema.json"
+        },
+        "mapping": {
+          "status": "present",
+          "path": "components/sidebar/mapping.json"
+        },
+        "audit": {
+          "status": "present",
+          "path": "components/sidebar/audit.md"
+        }
+      },
+      "componentToken": {
+        "status": "complete",
+        "path": "tokens/components/sidebar.tokens.json"
+      },
+      "previewPage": {
+        "status": "complete",
+        "path": "../preview/sidebar/index.html"
+      },
+      "overallStatus": "complete",
+      "needs": []
+    },
+    {
+      "id": "navbar",
+      "component": "Navbar",
+      "group": "navigation",
+      "order": 7,
+      "figmaInventory": {
+        "status": "listed",
+        "page": "Navbar",
+        "pageMarkedComplete": false,
+        "componentSets": 3,
+        "variants": 12,
+        "standaloneComponents": 1,
+        "relation": "direct-page",
+        "registryStatus": "figma-audited"
+      },
+      "narrativeRules": {
+        "status": "complete",
+        "path": "components/navbar/rules.md"
+      },
+      "structuredContract": {
+        "status": "complete",
+        "maturity": "figma-audited",
+        "schema": {
+          "status": "present",
+          "path": "components/navbar/schema.json"
+        },
+        "mapping": {
+          "status": "present",
+          "path": "components/navbar/mapping.json"
+        },
+        "audit": {
+          "status": "present",
+          "path": "components/navbar/audit.md"
+        }
+      },
+      "componentToken": {
+        "status": "complete",
+        "path": "tokens/components/navbar.tokens.json"
+      },
+      "previewPage": {
+        "status": "complete",
+        "path": "../preview/navbar/index.html"
+      },
+      "overallStatus": "complete",
+      "needs": []
+    },
+    {
+      "id": "tabs",
+      "component": "Tabs",
+      "group": "navigation",
+      "order": 8,
+      "figmaInventory": {
+        "status": "listed",
+        "page": "Tabs✅",
+        "pageMarkedComplete": true,
+        "componentSets": 10,
+        "variants": 172,
+        "standaloneComponents": 0,
+        "relation": "direct-page",
+        "registryStatus": "figma-audited"
+      },
+      "narrativeRules": {
+        "status": "complete",
+        "path": "components/tabs/rules.md"
+      },
+      "structuredContract": {
+        "status": "complete",
+        "maturity": "figma-audited",
+        "schema": {
+          "status": "present",
+          "path": "components/tabs/schema.json"
+        },
+        "mapping": {
+          "status": "present",
+          "path": "components/tabs/mapping.json"
+        },
+        "audit": {
+          "status": "present",
+          "path": "components/tabs/audit.md"
+        }
+      },
+      "componentToken": {
+        "status": "complete",
+        "path": "tokens/components/tabs.tokens.json"
+      },
+      "previewPage": {
+        "status": "complete",
+        "path": "../preview/tabs/index.html"
+      },
+      "overallStatus": "complete",
+      "needs": []
+    },
+    {
+      "id": "breadcrumb",
+      "component": "Breadcrumb",
+      "group": "navigation",
+      "order": 9,
+      "figmaInventory": {
+        "status": "listed",
+        "page": "Breadcrumb✅",
+        "pageMarkedComplete": true,
+        "componentSets": 3,
+        "variants": 9,
+        "standaloneComponents": 0,
+        "relation": "direct-page",
+        "registryStatus": "figma-audited"
+      },
+      "narrativeRules": {
+        "status": "complete",
+        "path": "components/breadcrumb/rules.md"
+      },
+      "structuredContract": {
+        "status": "complete",
+        "maturity": "figma-audited",
+        "schema": {
+          "status": "present",
+          "path": "components/breadcrumb/schema.json"
+        },
+        "mapping": {
+          "status": "present",
+          "path": "components/breadcrumb/mapping.json"
+        },
+        "audit": {
+          "status": "present",
+          "path": "components/breadcrumb/audit.md"
+        }
+      },
+      "componentToken": {
+        "status": "complete",
+        "path": "tokens/components/breadcrumb.tokens.json"
+      },
+      "previewPage": {
+        "status": "complete",
+        "path": "../preview/breadcrumb/index.html"
+      },
+      "overallStatus": "complete",
+      "needs": []
+    },
+    {
+      "id": "carousel",
+      "component": "Carousel",
+      "group": "navigation",
+      "order": 10,
+      "figmaInventory": {
+        "status": "listed",
+        "page": "Carousel",
+        "pageMarkedComplete": false,
+        "componentSets": 3,
+        "variants": 9,
+        "standaloneComponents": 0,
+        "relation": "direct-page",
+        "registryStatus": "figma-audited"
+      },
+      "narrativeRules": {
+        "status": "complete",
+        "path": "components/carousel/rules.md"
+      },
+      "structuredContract": {
+        "status": "complete",
+        "maturity": "figma-audited",
+        "schema": {
+          "status": "present",
+          "path": "components/carousel/schema.json"
+        },
+        "mapping": {
+          "status": "present",
+          "path": "components/carousel/mapping.json"
+        },
+        "audit": {
+          "status": "present",
+          "path": "components/carousel/audit.md"
+        }
+      },
+      "componentToken": {
+        "status": "complete",
+        "path": "tokens/components/carousel.tokens.json"
+      },
+      "previewPage": {
+        "status": "complete",
+        "path": "../preview/carousel/index.html"
+      },
+      "overallStatus": "complete",
+      "needs": []
+    },
+    {
+      "id": "pagination",
+      "component": "Pagination",
+      "group": "navigation",
+      "order": 11,
+      "figmaInventory": {
+        "status": "listed",
+        "page": "Pagination",
+        "pageMarkedComplete": false,
+        "componentSets": 3,
+        "variants": 35,
+        "standaloneComponents": 1,
+        "relation": "direct-page",
+        "registryStatus": "figma-audited"
+      },
+      "narrativeRules": {
+        "status": "complete",
+        "path": "components/pagination/rules.md"
+      },
+      "structuredContract": {
+        "status": "complete",
+        "maturity": "figma-audited",
+        "schema": {
+          "status": "present",
+          "path": "components/pagination/schema.json"
+        },
+        "mapping": {
+          "status": "present",
+          "path": "components/pagination/mapping.json"
+        },
+        "audit": {
+          "status": "present",
+          "path": "components/pagination/audit.md"
+        }
+      },
+      "componentToken": {
+        "status": "complete",
+        "path": "tokens/components/pagination.tokens.json"
+      },
+      "previewPage": {
+        "status": "complete",
+        "path": "../preview/pagination/index.html"
+      },
+      "overallStatus": "complete",
+      "needs": []
+    },
+    {
+      "id": "input",
+      "component": "Input",
+      "group": "data-entry",
+      "order": 12,
+      "figmaInventory": {
+        "status": "listed",
+        "page": "Input",
+        "pageMarkedComplete": false,
+        "componentSets": 5,
+        "variants": 66,
+        "standaloneComponents": 4,
+        "relation": "direct-page",
+        "registryStatus": "figma-audited"
+      },
+      "narrativeRules": {
+        "status": "complete",
+        "path": "components/input/rules.md"
+      },
+      "structuredContract": {
+        "status": "complete",
+        "maturity": "figma-audited",
+        "schema": {
+          "status": "present",
+          "path": "components/input/schema.json"
+        },
+        "mapping": {
+          "status": "present",
+          "path": "components/input/mapping.json"
+        },
+        "audit": {
+          "status": "present",
+          "path": "components/input/audit.md"
+        }
+      },
+      "componentToken": {
+        "status": "complete",
+        "path": "tokens/components/input.tokens.json"
+      },
+      "previewPage": {
+        "status": "complete",
+        "path": "../preview/input/index.html"
+      },
+      "overallStatus": "complete",
+      "needs": []
+    },
+    {
+      "id": "form",
+      "component": "Form",
+      "group": "data-entry",
+      "order": 13,
+      "figmaInventory": {
+        "status": "listed",
+        "page": "Form",
+        "pageMarkedComplete": false,
+        "componentSets": 5,
+        "variants": 54,
+        "standaloneComponents": 0,
+        "relation": "direct-page",
+        "registryStatus": "local-contract"
+      },
+      "narrativeRules": {
+        "status": "complete",
+        "path": "components/form/rules.md"
+      },
+      "structuredContract": {
+        "status": "complete",
+        "maturity": "local-contract",
+        "schema": {
+          "status": "present",
+          "path": "components/form/schema.json"
+        },
+        "mapping": {
+          "status": "present",
+          "path": "components/form/mapping.json"
+        },
+        "audit": {
+          "status": "present",
+          "path": "components/form/audit.md"
+        }
+      },
+      "componentToken": {
+        "status": "complete",
+        "path": "tokens/components/form.tokens.json"
+      },
+      "previewPage": {
+        "status": "complete",
+        "path": "../preview/form/index.html"
+      },
+      "overallStatus": "complete",
+      "needs": []
+    },
+    {
+      "id": "selector",
+      "component": "Selector",
+      "group": "data-entry",
+      "order": 14,
+      "figmaInventory": {
+        "status": "listed",
+        "page": "select",
+        "pageMarkedComplete": false,
+        "componentSets": 3,
+        "variants": 36,
+        "standaloneComponents": 0,
+        "relation": "direct-page",
+        "registryStatus": "figma-audited"
+      },
+      "narrativeRules": {
+        "status": "complete",
+        "path": "components/selector/rules.md"
+      },
+      "structuredContract": {
+        "status": "complete",
+        "maturity": "figma-audited",
+        "schema": {
+          "status": "present",
+          "path": "components/selector/schema.json"
+        },
+        "mapping": {
+          "status": "present",
+          "path": "components/selector/mapping.json"
+        },
+        "audit": {
+          "status": "present",
+          "path": "components/selector/audit.md"
+        }
+      },
+      "componentToken": {
+        "status": "complete",
+        "path": "tokens/components/selector.tokens.json"
+      },
+      "previewPage": {
+        "status": "complete",
+        "path": "../preview/selector/index.html"
+      },
+      "overallStatus": "complete",
+      "needs": []
+    },
+    {
+      "id": "switch",
+      "component": "Switch",
+      "group": "data-entry",
+      "order": 15,
+      "figmaInventory": {
+        "status": "listed",
+        "page": "switch",
+        "pageMarkedComplete": false,
+        "componentSets": 1,
+        "variants": 8,
+        "standaloneComponents": 0,
+        "relation": "direct-page",
+        "registryStatus": "figma-audited"
+      },
+      "narrativeRules": {
+        "status": "complete",
+        "path": "components/switch/rules.md"
+      },
+      "structuredContract": {
+        "status": "complete",
+        "maturity": "figma-audited",
+        "schema": {
+          "status": "present",
+          "path": "components/switch/schema.json"
+        },
+        "mapping": {
+          "status": "present",
+          "path": "components/switch/mapping.json"
+        },
+        "audit": {
+          "status": "present",
+          "path": "components/switch/audit.md"
+        }
+      },
+      "componentToken": {
+        "status": "complete",
+        "path": "tokens/components/switch.tokens.json"
+      },
+      "previewPage": {
+        "status": "complete",
+        "path": "../preview/switch/index.html"
+      },
+      "overallStatus": "complete",
+      "needs": []
+    },
+    {
+      "id": "checkbox",
+      "component": "Checkbox",
+      "group": "data-entry",
+      "order": 16,
+      "figmaInventory": {
+        "status": "listed",
+        "page": "checkbox✅",
+        "pageMarkedComplete": true,
+        "componentSets": 3,
+        "variants": 20,
+        "standaloneComponents": 0,
+        "relation": "direct-page",
+        "registryStatus": "figma-audited"
+      },
+      "narrativeRules": {
+        "status": "complete",
+        "path": "components/checkbox/rules.md"
+      },
+      "structuredContract": {
+        "status": "complete",
+        "maturity": "figma-audited",
+        "schema": {
+          "status": "present",
+          "path": "components/checkbox/schema.json"
+        },
+        "mapping": {
+          "status": "present",
+          "path": "components/checkbox/mapping.json"
+        },
+        "audit": {
+          "status": "present",
+          "path": "components/checkbox/audit.md"
+        }
+      },
+      "componentToken": {
+        "status": "complete",
+        "path": "tokens/components/checkbox.tokens.json"
+      },
+      "previewPage": {
+        "status": "complete",
+        "path": "../preview/checkbox/index.html"
+      },
+      "overallStatus": "complete",
+      "needs": []
+    },
+    {
+      "id": "radio",
+      "component": "Radio",
+      "group": "data-entry",
+      "order": 17,
+      "figmaInventory": {
+        "status": "listed",
+        "page": "radiobutton✅",
+        "pageMarkedComplete": true,
+        "componentSets": 3,
+        "variants": 24,
+        "standaloneComponents": 0,
+        "relation": "direct-page",
+        "registryStatus": "figma-audited"
+      },
+      "narrativeRules": {
+        "status": "complete",
+        "path": "components/radio/rules.md"
+      },
+      "structuredContract": {
+        "status": "complete",
+        "maturity": "figma-audited",
+        "schema": {
+          "status": "present",
+          "path": "components/radio/schema.json"
+        },
+        "mapping": {
+          "status": "present",
+          "path": "components/radio/mapping.json"
+        },
+        "audit": {
+          "status": "present",
+          "path": "components/radio/audit.md"
+        }
+      },
+      "componentToken": {
+        "status": "complete",
+        "path": "tokens/components/radio.tokens.json"
+      },
+      "previewPage": {
+        "status": "complete",
+        "path": "../preview/radio/index.html"
+      },
+      "overallStatus": "complete",
+      "needs": []
+    },
+    {
+      "id": "date-picker",
+      "component": "DatePicker",
+      "group": "data-entry",
+      "order": 18,
+      "figmaInventory": {
+        "status": "listed",
+        "page": "DatePicker",
+        "pageMarkedComplete": false,
+        "componentSets": 6,
+        "variants": 108,
+        "standaloneComponents": 11,
+        "relation": "direct-page",
+        "registryStatus": "figma-audited"
+      },
+      "narrativeRules": {
+        "status": "complete",
+        "path": "components/date-picker/rules.md"
+      },
+      "structuredContract": {
+        "status": "complete",
+        "maturity": "figma-audited",
+        "schema": {
+          "status": "present",
+          "path": "components/date-picker/schema.json"
+        },
+        "mapping": {
+          "status": "present",
+          "path": "components/date-picker/mapping.json"
+        },
+        "audit": {
+          "status": "present",
+          "path": "components/date-picker/audit.md"
+        }
+      },
+      "componentToken": {
+        "status": "complete",
+        "path": "tokens/components/date-picker.tokens.json"
+      },
+      "previewPage": {
+        "status": "complete",
+        "path": "../preview/date-picker/index.html"
+      },
+      "overallStatus": "complete",
+      "needs": []
+    },
+    {
+      "id": "search",
+      "component": "Search",
+      "group": "data-entry",
+      "order": 19,
+      "figmaInventory": {
+        "status": "listed",
+        "page": "Searchbar✅",
+        "pageMarkedComplete": true,
+        "componentSets": 3,
+        "variants": 26,
+        "standaloneComponents": 1,
+        "relation": "direct-page",
+        "registryStatus": "figma-audited"
+      },
+      "narrativeRules": {
+        "status": "complete",
+        "path": "components/search/rules.md"
+      },
+      "structuredContract": {
+        "status": "complete",
+        "maturity": "figma-audited",
+        "schema": {
+          "status": "present",
+          "path": "components/search/schema.json"
+        },
+        "mapping": {
+          "status": "present",
+          "path": "components/search/mapping.json"
+        },
+        "audit": {
+          "status": "present",
+          "path": "components/search/audit.md"
+        }
+      },
+      "componentToken": {
+        "status": "complete",
+        "path": "tokens/components/search.tokens.json"
+      },
+      "previewPage": {
+        "status": "complete",
+        "path": "../preview/search/index.html"
+      },
+      "overallStatus": "complete",
+      "needs": []
+    },
+    {
+      "id": "time-picker",
+      "component": "TimePicker",
+      "group": "data-entry",
+      "order": 20,
+      "figmaInventory": {
+        "status": "listed",
+        "page": "TimePicker",
+        "pageMarkedComplete": false,
+        "componentSets": 6,
+        "variants": 53,
+        "standaloneComponents": 0,
+        "relation": "direct-page",
+        "registryStatus": "figma-audited"
+      },
+      "narrativeRules": {
+        "status": "complete",
+        "path": "components/time-picker/rules.md"
+      },
+      "structuredContract": {
+        "status": "complete",
+        "maturity": "figma-audited",
+        "schema": {
+          "status": "present",
+          "path": "components/time-picker/schema.json"
+        },
+        "mapping": {
+          "status": "present",
+          "path": "components/time-picker/mapping.json"
+        },
+        "audit": {
+          "status": "present",
+          "path": "components/time-picker/audit.md"
+        }
+      },
+      "componentToken": {
+        "status": "complete",
+        "path": "tokens/components/time-picker.tokens.json"
+      },
+      "previewPage": {
+        "status": "complete",
+        "path": "../preview/time-picker/index.html"
+      },
+      "overallStatus": "complete",
+      "needs": []
+    },
+    {
+      "id": "dropdown",
+      "component": "Dropdown",
+      "group": "data-entry",
+      "order": 21,
+      "figmaInventory": {
+        "status": "listed",
+        "page": "Dropdown✅",
+        "pageMarkedComplete": true,
+        "componentSets": 2,
+        "variants": 9,
+        "standaloneComponents": 2,
+        "relation": "direct-page",
+        "registryStatus": "local-contract"
+      },
+      "narrativeRules": {
+        "status": "complete",
+        "path": "components/dropdown/rules.md"
+      },
+      "structuredContract": {
+        "status": "complete",
+        "maturity": "local-contract",
+        "schema": {
+          "status": "present",
+          "path": "components/dropdown/schema.json"
+        },
+        "mapping": {
+          "status": "present",
+          "path": "components/dropdown/mapping.json"
+        },
+        "audit": {
+          "status": "present",
+          "path": "components/dropdown/audit.md"
+        }
+      },
+      "componentToken": {
+        "status": "complete",
+        "path": "tokens/components/dropdown.tokens.json"
+      },
+      "previewPage": {
+        "status": "complete",
+        "path": "../preview/dropdown/index.html"
+      },
+      "overallStatus": "complete",
+      "needs": []
+    },
+    {
+      "id": "cascader",
+      "component": "Cascader",
+      "group": "data-entry",
+      "order": 22,
+      "figmaInventory": {
+        "status": "listed",
+        "page": "cascader✅",
+        "pageMarkedComplete": true,
+        "componentSets": 2,
+        "variants": 21,
+        "standaloneComponents": 3,
+        "relation": "direct-page",
+        "registryStatus": "figma-audited"
+      },
+      "narrativeRules": {
+        "status": "complete",
+        "path": "components/cascader/rules.md"
+      },
+      "structuredContract": {
+        "status": "complete",
+        "maturity": "figma-audited",
+        "schema": {
+          "status": "present",
+          "path": "components/cascader/schema.json"
+        },
+        "mapping": {
+          "status": "present",
+          "path": "components/cascader/mapping.json"
+        },
+        "audit": {
+          "status": "present",
+          "path": "components/cascader/audit.md"
+        }
+      },
+      "componentToken": {
+        "status": "complete",
+        "path": "tokens/components/cascader.tokens.json"
+      },
+      "previewPage": {
+        "status": "complete",
+        "path": "../preview/cascader/index.html"
+      },
+      "overallStatus": "complete",
+      "needs": []
+    },
+    {
+      "id": "input-number",
+      "component": "InputNumber",
+      "group": "data-entry",
+      "order": 23,
+      "figmaInventory": {
+        "status": "listed",
+        "page": "Input-Number✅",
+        "pageMarkedComplete": true,
+        "componentSets": 2,
+        "variants": 52,
+        "standaloneComponents": 0,
+        "relation": "direct-page",
+        "registryStatus": "figma-audited"
+      },
+      "narrativeRules": {
+        "status": "complete",
+        "path": "components/input-number/rules.md"
+      },
+      "structuredContract": {
+        "status": "complete",
+        "maturity": "figma-audited",
+        "schema": {
+          "status": "present",
+          "path": "components/input-number/schema.json"
+        },
+        "mapping": {
+          "status": "present",
+          "path": "components/input-number/mapping.json"
+        },
+        "audit": {
+          "status": "present",
+          "path": "components/input-number/audit.md"
+        }
+      },
+      "componentToken": {
+        "status": "complete",
+        "path": "tokens/components/input-number.tokens.json"
+      },
+      "previewPage": {
+        "status": "complete",
+        "path": "../preview/input-number/index.html"
+      },
+      "overallStatus": "complete",
+      "needs": []
+    },
+    {
+      "id": "image",
+      "component": "Image",
+      "group": "data-entry",
+      "order": 24,
+      "figmaInventory": {
+        "status": "listed",
+        "page": "Image✅",
+        "pageMarkedComplete": true,
+        "componentSets": 2,
+        "variants": 7,
+        "standaloneComponents": 1,
+        "relation": "direct-page",
+        "registryStatus": "figma-audited"
+      },
+      "narrativeRules": {
+        "status": "complete",
+        "path": "components/image/rules.md"
+      },
+      "structuredContract": {
+        "status": "complete",
+        "maturity": "figma-audited",
+        "schema": {
+          "status": "present",
+          "path": "components/image/schema.json"
+        },
+        "mapping": {
+          "status": "present",
+          "path": "components/image/mapping.json"
+        },
+        "audit": {
+          "status": "present",
+          "path": "components/image/audit.md"
+        }
+      },
+      "componentToken": {
+        "status": "complete",
+        "path": "tokens/components/image.tokens.json"
+      },
+      "previewPage": {
+        "status": "complete",
+        "path": "../preview/image/index.html"
+      },
+      "overallStatus": "complete",
+      "needs": []
+    },
+    {
+      "id": "upload",
+      "component": "Upload",
+      "group": "data-entry",
+      "order": 25,
+      "figmaInventory": {
+        "status": "listed",
+        "page": "Upload✅",
+        "pageMarkedComplete": true,
+        "componentSets": 4,
+        "variants": 16,
+        "standaloneComponents": 0,
+        "relation": "direct-page",
+        "registryStatus": "figma-audited"
+      },
+      "narrativeRules": {
+        "status": "complete",
+        "path": "components/upload/rules.md"
+      },
+      "structuredContract": {
+        "status": "complete",
+        "maturity": "figma-audited",
+        "schema": {
+          "status": "present",
+          "path": "components/upload/schema.json"
+        },
+        "mapping": {
+          "status": "present",
+          "path": "components/upload/mapping.json"
+        },
+        "audit": {
+          "status": "present",
+          "path": "components/upload/audit.md"
+        }
+      },
+      "componentToken": {
+        "status": "complete",
+        "path": "tokens/components/upload.tokens.json"
+      },
+      "previewPage": {
+        "status": "complete",
+        "path": "../preview/upload/index.html"
+      },
+      "overallStatus": "complete",
+      "needs": []
+    },
+    {
+      "id": "table",
+      "component": "Table",
+      "group": "data-display",
+      "order": 26,
+      "figmaInventory": {
+        "status": "listed",
+        "page": "Table✅",
+        "pageMarkedComplete": true,
+        "componentSets": 3,
+        "variants": 57,
+        "standaloneComponents": 6,
+        "relation": "direct-page",
+        "registryStatus": "figma-audited"
+      },
+      "narrativeRules": {
+        "status": "complete",
+        "path": "components/table/rules.md"
+      },
+      "structuredContract": {
+        "status": "complete",
+        "maturity": "figma-audited",
+        "schema": {
+          "status": "present",
+          "path": "components/table/schema.json"
+        },
+        "mapping": {
+          "status": "present",
+          "path": "components/table/mapping.json"
+        },
+        "audit": {
+          "status": "present",
+          "path": "components/table/audit.md"
+        }
+      },
+      "componentToken": {
+        "status": "complete",
+        "path": "tokens/components/table.tokens.json"
+      },
+      "previewPage": {
+        "status": "complete",
+        "path": "../preview/table/index.html"
+      },
+      "overallStatus": "complete",
+      "needs": []
+    },
+    {
+      "id": "avatar",
+      "component": "Avatar",
+      "group": "data-display",
+      "order": 27,
+      "figmaInventory": {
+        "status": "listed",
+        "page": "Avatar✅",
+        "pageMarkedComplete": true,
+        "componentSets": 1,
+        "variants": 24,
+        "standaloneComponents": 0,
+        "relation": "direct-page",
+        "registryStatus": "figma-audited"
+      },
+      "narrativeRules": {
+        "status": "complete",
+        "path": "components/avatar/rules.md"
+      },
+      "structuredContract": {
+        "status": "complete",
+        "maturity": "figma-audited",
+        "schema": {
+          "status": "present",
+          "path": "components/avatar/schema.json"
+        },
+        "mapping": {
+          "status": "present",
+          "path": "components/avatar/mapping.json"
+        },
+        "audit": {
+          "status": "present",
+          "path": "components/avatar/audit.md"
+        }
+      },
+      "componentToken": {
+        "status": "complete",
+        "path": "tokens/components/avatar.tokens.json"
+      },
+      "previewPage": {
+        "status": "complete",
+        "path": "../preview/avatar/index.html"
+      },
+      "overallStatus": "complete",
+      "needs": []
+    },
+    {
+      "id": "badge",
+      "component": "Badge",
+      "group": "data-display",
+      "order": 28,
+      "figmaInventory": {
+        "status": "listed",
+        "page": "Badge✅",
+        "pageMarkedComplete": true,
+        "componentSets": 3,
+        "variants": 34,
+        "standaloneComponents": 0,
+        "relation": "direct-page",
+        "registryStatus": "figma-audited"
+      },
+      "narrativeRules": {
+        "status": "complete",
+        "path": "components/badge/rules.md"
+      },
+      "structuredContract": {
+        "status": "complete",
+        "maturity": "figma-audited",
+        "schema": {
+          "status": "present",
+          "path": "components/badge/schema.json"
+        },
+        "mapping": {
+          "status": "present",
+          "path": "components/badge/mapping.json"
+        },
+        "audit": {
+          "status": "present",
+          "path": "components/badge/audit.md"
+        }
+      },
+      "componentToken": {
+        "status": "complete",
+        "path": "tokens/components/badge.tokens.json"
+      },
+      "previewPage": {
+        "status": "complete",
+        "path": "../preview/badge/index.html"
+      },
+      "overallStatus": "complete",
+      "needs": []
+    },
+    {
+      "id": "chart",
+      "component": "Chart",
+      "group": "data-display",
+      "order": 29,
+      "figmaInventory": {
+        "status": "listed",
+        "page": "Chart✅",
+        "pageMarkedComplete": true,
+        "componentSets": 5,
+        "variants": 39,
+        "standaloneComponents": 16,
+        "relation": "direct-page",
+        "registryStatus": "local-contract"
+      },
+      "narrativeRules": {
+        "status": "complete",
+        "path": "components/chart/rules.md"
+      },
+      "structuredContract": {
+        "status": "complete",
+        "maturity": "local-contract",
+        "schema": {
+          "status": "present",
+          "path": "components/chart/schema.json"
+        },
+        "mapping": {
+          "status": "present",
+          "path": "components/chart/mapping.json"
+        },
+        "audit": {
+          "status": "present",
+          "path": "components/chart/audit.md"
+        }
+      },
+      "componentToken": {
+        "status": "complete",
+        "path": "tokens/components/chart.tokens.json"
+      },
+      "previewPage": {
+        "status": "complete",
+        "path": "../preview/chart/index.html"
+      },
+      "overallStatus": "complete",
+      "needs": []
+    },
+    {
+      "id": "metric",
+      "component": "Metric",
+      "group": "data-display",
+      "order": 30,
+      "figmaInventory": {
+        "status": "listed",
+        "page": "Metric✅",
+        "pageMarkedComplete": true,
+        "componentSets": 14,
+        "variants": 77,
+        "standaloneComponents": 0,
+        "relation": "direct-page",
+        "registryStatus": "figma-audited"
+      },
+      "narrativeRules": {
+        "status": "complete",
+        "path": "components/metric/rules.md"
+      },
+      "structuredContract": {
+        "status": "complete",
+        "maturity": "figma-audited",
+        "schema": {
+          "status": "present",
+          "path": "components/metric/schema.json"
+        },
+        "mapping": {
+          "status": "present",
+          "path": "components/metric/mapping.json"
+        },
+        "audit": {
+          "status": "present",
+          "path": "components/metric/audit.md"
+        }
+      },
+      "componentToken": {
+        "status": "complete",
+        "path": "tokens/components/metric.tokens.json"
+      },
+      "previewPage": {
+        "status": "complete",
+        "path": "../preview/metric/index.html"
+      },
+      "overallStatus": "complete",
+      "needs": []
+    },
+    {
+      "id": "empty",
+      "component": "Empty",
+      "group": "data-display",
+      "order": 31,
+      "figmaInventory": {
+        "status": "listed",
+        "page": "Empty✅",
+        "pageMarkedComplete": true,
+        "componentSets": 2,
+        "variants": 18,
+        "standaloneComponents": 1,
+        "relation": "direct-page",
+        "registryStatus": "figma-audited"
+      },
+      "narrativeRules": {
+        "status": "complete",
+        "path": "components/empty/rules.md"
+      },
+      "structuredContract": {
+        "status": "complete",
+        "maturity": "figma-audited",
+        "schema": {
+          "status": "present",
+          "path": "components/empty/schema.json"
+        },
+        "mapping": {
+          "status": "present",
+          "path": "components/empty/mapping.json"
+        },
+        "audit": {
+          "status": "present",
+          "path": "components/empty/audit.md"
+        }
+      },
+      "componentToken": {
+        "status": "complete",
+        "path": "tokens/components/empty.tokens.json"
+      },
+      "previewPage": {
+        "status": "complete",
+        "path": "../preview/empty/index.html"
+      },
+      "overallStatus": "complete",
+      "needs": []
+    },
+    {
+      "id": "timeline",
+      "component": "Timeline",
+      "group": "data-display",
+      "order": 32,
+      "figmaInventory": {
+        "status": "listed",
+        "page": "Timeline✅",
+        "pageMarkedComplete": true,
+        "componentSets": 6,
+        "variants": 32,
+        "standaloneComponents": 1,
+        "relation": "direct-page",
+        "registryStatus": "figma-audited"
+      },
+      "narrativeRules": {
+        "status": "complete",
+        "path": "components/timeline/rules.md"
+      },
+      "structuredContract": {
+        "status": "complete",
+        "maturity": "figma-audited",
+        "schema": {
+          "status": "present",
+          "path": "components/timeline/schema.json"
+        },
+        "mapping": {
+          "status": "present",
+          "path": "components/timeline/mapping.json"
+        },
+        "audit": {
+          "status": "present",
+          "path": "components/timeline/audit.md"
+        }
+      },
+      "componentToken": {
+        "status": "complete",
+        "path": "tokens/components/timeline.tokens.json"
+      },
+      "previewPage": {
+        "status": "complete",
+        "path": "../preview/timeline/index.html"
+      },
+      "overallStatus": "complete",
+      "needs": []
+    },
+    {
+      "id": "steps",
+      "component": "Steps",
+      "group": "data-display",
+      "order": 33,
+      "figmaInventory": {
+        "status": "listed",
+        "page": "Steps✅",
+        "pageMarkedComplete": true,
+        "componentSets": 8,
+        "variants": 42,
+        "standaloneComponents": 0,
+        "relation": "direct-page",
+        "registryStatus": "figma-audited"
+      },
+      "narrativeRules": {
+        "status": "complete",
+        "path": "components/steps/rules.md"
+      },
+      "structuredContract": {
+        "status": "complete",
+        "maturity": "figma-audited",
+        "schema": {
+          "status": "present",
+          "path": "components/steps/schema.json"
+        },
+        "mapping": {
+          "status": "present",
+          "path": "components/steps/mapping.json"
+        },
+        "audit": {
+          "status": "present",
+          "path": "components/steps/audit.md"
+        }
+      },
+      "componentToken": {
+        "status": "complete",
+        "path": "tokens/components/steps.tokens.json"
+      },
+      "previewPage": {
+        "status": "complete",
+        "path": "../preview/steps/index.html"
+      },
+      "overallStatus": "complete",
+      "needs": []
+    },
+    {
+      "id": "toast",
+      "component": "Toast",
+      "group": "feedback",
+      "order": 34,
+      "figmaInventory": {
+        "status": "listed",
+        "page": "Toast✅",
+        "pageMarkedComplete": true,
+        "componentSets": 3,
+        "variants": 12,
+        "standaloneComponents": 0,
+        "relation": "direct-page",
+        "registryStatus": "figma-audited"
+      },
+      "narrativeRules": {
+        "status": "complete",
+        "path": "components/toast/rules.md"
+      },
+      "structuredContract": {
+        "status": "complete",
+        "maturity": "figma-audited",
+        "schema": {
+          "status": "present",
+          "path": "components/toast/schema.json"
+        },
+        "mapping": {
+          "status": "present",
+          "path": "components/toast/mapping.json"
+        },
+        "audit": {
+          "status": "present",
+          "path": "components/toast/audit.md"
+        }
+      },
+      "componentToken": {
+        "status": "complete",
+        "path": "tokens/components/toast.tokens.json"
+      },
+      "previewPage": {
+        "status": "complete",
+        "path": "../preview/toast/index.html"
+      },
+      "overallStatus": "complete",
+      "needs": []
+    },
+    {
+      "id": "modal",
+      "component": "Modal",
+      "group": "feedback",
+      "order": 35,
+      "figmaInventory": {
+        "status": "listed",
+        "page": "Modal✅",
+        "pageMarkedComplete": true,
+        "componentSets": 1,
+        "variants": 12,
+        "standaloneComponents": 0,
+        "relation": "direct-page",
+        "registryStatus": "figma-audited"
+      },
+      "narrativeRules": {
+        "status": "complete",
+        "path": "components/modal/rules.md"
+      },
+      "structuredContract": {
+        "status": "complete",
+        "maturity": "figma-audited",
+        "schema": {
+          "status": "present",
+          "path": "components/modal/schema.json"
+        },
+        "mapping": {
+          "status": "present",
+          "path": "components/modal/mapping.json"
+        },
+        "audit": {
+          "status": "present",
+          "path": "components/modal/audit.md"
+        }
+      },
+      "componentToken": {
+        "status": "complete",
+        "path": "tokens/components/modal.tokens.json"
+      },
+      "previewPage": {
+        "status": "complete",
+        "path": "../preview/modal/index.html"
+      },
+      "overallStatus": "complete",
+      "needs": []
+    },
+    {
+      "id": "notification",
+      "component": "Notification",
+      "group": "feedback",
+      "order": 36,
+      "figmaInventory": {
+        "status": "listed",
+        "page": "Notification✅",
+        "pageMarkedComplete": true,
+        "componentSets": 1,
+        "variants": 4,
+        "standaloneComponents": 0,
+        "relation": "direct-page",
+        "registryStatus": "figma-audited"
+      },
+      "narrativeRules": {
+        "status": "complete",
+        "path": "components/notification/rules.md"
+      },
+      "structuredContract": {
+        "status": "complete",
+        "maturity": "figma-audited",
+        "schema": {
+          "status": "present",
+          "path": "components/notification/schema.json"
+        },
+        "mapping": {
+          "status": "present",
+          "path": "components/notification/mapping.json"
+        },
+        "audit": {
+          "status": "present",
+          "path": "components/notification/audit.md"
+        }
+      },
+      "componentToken": {
+        "status": "complete",
+        "path": "tokens/components/notification.tokens.json"
+      },
+      "previewPage": {
+        "status": "complete",
+        "path": "../preview/notification/index.html"
+      },
+      "overallStatus": "complete",
+      "needs": []
+    },
+    {
+      "id": "tooltip",
+      "component": "Tooltip",
+      "group": "feedback",
+      "order": 37,
+      "figmaInventory": {
+        "status": "listed",
+        "page": "Tooltip✅",
+        "pageMarkedComplete": true,
+        "componentSets": 2,
+        "variants": 16,
+        "standaloneComponents": 0,
+        "relation": "direct-page",
+        "registryStatus": "figma-audited"
+      },
+      "narrativeRules": {
+        "status": "complete",
+        "path": "components/tooltip/rules.md"
+      },
+      "structuredContract": {
+        "status": "complete",
+        "maturity": "figma-audited",
+        "schema": {
+          "status": "present",
+          "path": "components/tooltip/schema.json"
+        },
+        "mapping": {
+          "status": "present",
+          "path": "components/tooltip/mapping.json"
+        },
+        "audit": {
+          "status": "present",
+          "path": "components/tooltip/audit.md"
+        }
+      },
+      "componentToken": {
+        "status": "complete",
+        "path": "tokens/components/tooltip.tokens.json"
+      },
+      "previewPage": {
+        "status": "complete",
+        "path": "../preview/tooltip/index.html"
+      },
+      "overallStatus": "complete",
+      "needs": []
+    },
+    {
+      "id": "popover",
+      "component": "Popover",
+      "group": "feedback",
+      "order": 38,
+      "figmaInventory": {
+        "status": "listed",
+        "page": "Popover",
+        "pageMarkedComplete": false,
+        "componentSets": 1,
+        "variants": 2,
+        "standaloneComponents": 0,
+        "relation": "direct-page",
+        "registryStatus": "figma-audited"
+      },
+      "narrativeRules": {
+        "status": "complete",
+        "path": "components/popover/rules.md"
+      },
+      "structuredContract": {
+        "status": "complete",
+        "maturity": "figma-audited",
+        "schema": {
+          "status": "present",
+          "path": "components/popover/schema.json"
+        },
+        "mapping": {
+          "status": "present",
+          "path": "components/popover/mapping.json"
+        },
+        "audit": {
+          "status": "present",
+          "path": "components/popover/audit.md"
+        }
+      },
+      "componentToken": {
+        "status": "complete",
+        "path": "tokens/components/popover.tokens.json"
+      },
+      "previewPage": {
+        "status": "complete",
+        "path": "../preview/popover/index.html"
+      },
+      "overallStatus": "complete",
+      "needs": []
+    },
+    {
+      "id": "mask",
+      "component": "Mask",
+      "group": "feedback",
+      "order": 39,
+      "figmaInventory": {
+        "status": "listed",
+        "page": "Mask✅",
+        "pageMarkedComplete": true,
+        "componentSets": 0,
+        "variants": 0,
+        "standaloneComponents": 1,
+        "relation": "direct-page",
+        "registryStatus": "local-contract"
+      },
+      "narrativeRules": {
+        "status": "complete",
+        "path": "components/mask/rules.md"
+      },
+      "structuredContract": {
+        "status": "complete",
+        "maturity": "local-contract",
+        "schema": {
+          "status": "present",
+          "path": "components/mask/schema.json"
+        },
+        "mapping": {
+          "status": "not-required",
+          "path": null
+        },
+        "audit": {
+          "status": "not-required",
+          "path": null
+        }
+      },
+      "componentToken": {
+        "status": "not-required",
+        "path": null
+      },
+      "previewPage": {
+        "status": "not-required",
+        "path": null
+      },
+      "overallStatus": "complete",
+      "needs": []
+    },
+    {
+      "id": "skeleton",
+      "component": "Skeleton",
+      "group": "feedback",
+      "order": 40,
+      "figmaInventory": {
+        "status": "listed",
+        "page": "Skeleton✅",
+        "pageMarkedComplete": true,
+        "componentSets": 0,
+        "variants": 0,
+        "standaloneComponents": 4,
+        "relation": "direct-page",
+        "registryStatus": "local-contract"
+      },
+      "narrativeRules": {
+        "status": "complete",
+        "path": "components/skeleton/rules.md"
+      },
+      "structuredContract": {
+        "status": "complete",
+        "maturity": "local-contract",
+        "schema": {
+          "status": "present",
+          "path": "components/skeleton/schema.json"
+        },
+        "mapping": {
+          "status": "present",
+          "path": "components/skeleton/mapping.json"
+        },
+        "audit": {
+          "status": "present",
+          "path": "components/skeleton/audit.md"
+        }
+      },
+      "componentToken": {
+        "status": "complete",
+        "path": "tokens/components/skeleton.tokens.json"
+      },
+      "previewPage": {
+        "status": "complete",
+        "path": "../preview/skeleton/index.html"
+      },
+      "overallStatus": "complete",
+      "needs": []
+    },
+    {
+      "id": "drawer",
+      "component": "Drawer",
+      "group": "feedback",
+      "order": 41,
+      "figmaInventory": {
+        "status": "listed",
+        "page": "Drawer✅",
+        "pageMarkedComplete": true,
+        "componentSets": 1,
+        "variants": 3,
+        "standaloneComponents": 1,
+        "relation": "direct-page",
+        "registryStatus": "local-contract"
+      },
+      "narrativeRules": {
+        "status": "complete",
+        "path": "components/drawer/rules.md"
+      },
+      "structuredContract": {
+        "status": "complete",
+        "maturity": "local-contract",
+        "schema": {
+          "status": "present",
+          "path": "components/drawer/schema.json"
+        },
+        "mapping": {
+          "status": "present",
+          "path": "components/drawer/mapping.json"
+        },
+        "audit": {
+          "status": "present",
+          "path": "components/drawer/audit.md"
+        }
+      },
+      "componentToken": {
+        "status": "complete",
+        "path": "tokens/components/drawer.tokens.json"
+      },
+      "previewPage": {
+        "status": "complete",
+        "path": "../preview/drawer/index.html"
+      },
+      "overallStatus": "complete",
+      "needs": []
+    }
+  ]
+}

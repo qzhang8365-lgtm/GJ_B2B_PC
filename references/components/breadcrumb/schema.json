@@ -1,0 +1,101 @@
+{
+  "$schema": "gj-design-skill/component-schema/v1",
+  "component": "Breadcrumb",
+  "source": {
+    "rulesSection": "Breadcrumb 面包屑",
+    "inventoryPage": "Breadcrumb✅",
+    "figmaFile": "8b01I1e3TzH1IhYlr3tJzd",
+    "figmaPage": "2638:2638",
+    "status": "figma-audited",
+    "figmaAudit": "done-2026-09-09-BCR-001"
+  },
+  "purpose": "显示当前页面在层级中的位置，并允许返回历史上级。",
+  "implementation": {
+    "rootClass": "gj-breadcrumb",
+    "itemClass": "gj-breadcrumb-item",
+    "currentAttribute": "aria-current=page",
+    "separatorClass": "gj-breadcrumb-separator",
+    "iconClass": "gj-breadcrumb-icon"
+  },
+  "figma": {
+    "fileKey": "8b01I1e3TzH1IhYlr3tJzd",
+    "pageNodeId": "2638:2638",
+    "pageName": "面包屑Breadcrumb✅",
+    "documentationNodeId": "2981:4127",
+    "inventoryListed": {"sets": 2, "variants": 16, "standalone": 0},
+    "auditedThisPass": {
+      "sets": 3,
+      "variants": 9,
+      "standalone": 0,
+      "note": "2026-09-09 按母版口径更正。旧 16 把组合路径里的实例算进去了。"
+    },
+    "componentSets": [
+      {
+        "nodeId": "2718:976",
+        "name": "Breadcrumb_item/nav_item",
+        "variants": 4,
+        "note": "Current=true|false × icon=true|false。代表：历史无图标 2718:1015、历史有图标 2718:1002、当前无图标 2718:1013、当前有图标 2718:999。"
+      },
+      {
+        "nodeId": "2718:1017",
+        "name": "Breadcrumb1",
+        "variants": 4,
+        "note": "Count=2|3|4|4+。4+ 代表 2718:1018。"
+      },
+      {
+        "nodeId": "4176:18037",
+        "name": "CoBreadcrumb_item",
+        "variants": 1,
+        "note": "Property 1=Separator。代表 4176:17976，22×22，文案 / 。"
+      }
+    ]
+  },
+  "properties": {
+    "items": "BreadcrumbItem[]",
+    "Current": "boolean",
+    "icon": "boolean",
+    "Count": ["2", "3", "4", "4+"],
+    "collapse": "boolean"
+  },
+  "defaults": {
+    "Current": false,
+    "icon": false,
+    "collapse": false
+  },
+  "structure": ["history-items", "separators", "optional-ellipsis", "current-item"],
+  "dimensions": {
+    "height": 22,
+    "icon": 16,
+    "iconGap": 4,
+    "separatorPaddingInline": 8,
+    "separatorSize": 22
+  },
+  "typography": {
+    "item": {"textStyle": "中文/S8-CN-R", "size": 14, "lineHeight": 22, "weight": 400},
+    "separator": {"textStyle": "Body/regular", "size": 14, "lineHeight": 22, "weight": 400, "implementation": "UI font 14/22/400"}
+  },
+  "colorBindings": {
+    "history": "Text/Tertiary",
+    "historyHover": "Text/blue",
+    "current": "Text/Primary",
+    "separator": "Background/MK_30",
+    "icon": "currentColor"
+  },
+  "confirmedDecisions": [
+    "历史项 Text/Tertiary + 中文/S8-CN-R；当前项 Text/Primary + 中文/S8-CN-R。",
+    "图标 16px，图文间距 4px，颜色跟随所在项文字。",
+    "分隔符 / 、左右 8px、Background/MK_30。Figma 仍绑 Body/regular；实现用 UI 字体 14/22。",
+    "Figma 无 Hover 轴；历史项 Hover 用 Text/blue 并写入 Token。",
+    "Count 4+ 是折叠展示，不是层级上限。inventory 更正为 3 套 / 9 variants。"
+  ],
+  "constraints": [
+    "Current page is unique and not a link.",
+    "Do not treat Figma Count 4+ as a hard maximum.",
+    "Do not mix separator glyphs on one trail.",
+    "Do not ship Roboto from the separator Body/regular binding."
+  ],
+  "dependencies": ["Icon", "Dropdown", "Tooltip"],
+  "icons": ["icf_system_home.svg", "icf_system_grid.svg", "icf_system_list.svg", "icf_device_cellphone.svg"],
+  "knownFigmaIssues": [],
+  "pendingExtraction": []
+}

@@ -1,0 +1,51 @@
+{
+  "$schema": "gj-design-skill/radius-rules/v1",
+  "source": {
+    "figmaNode": "3135:2604",
+    "title": "PC端卡片模块层级圆角规则",
+    "figmaReadOnly": true,
+    "valueAuthority": "Figma Radius variable scale plus designer confirmation"
+  },
+  "cardHierarchy": {
+    "L1": { "radius": 12, "token": "{Radius/Radius-LG}", "usage": "页面级容器、核心内容区或视觉权重最高的大型卡片" },
+    "L2": { "radius": 8, "token": "{Radius/Radius-MD}", "usage": "一级卡片内部的功能分区、主要模块或常规业务卡片" },
+    "L3": { "radius": 6, "token": "{Radius/Radius-SM}", "usage": "信息分组、小型内容卡片、列表项或局部操作区域" },
+    "L4": { "radius": 4, "token": "{Radius/Radius-XS}", "usage": "尺寸较小、层级较深的容器或最小常规元素" }
+  },
+  "componentDefaults": {
+    "Button/L": { "radius": 8, "token": "{Radius/Radius-MD}" },
+    "Button/M": { "radius": 6, "token": "{Radius/Radius-SM}" },
+    "Button/S": { "radius": 4, "token": "{Radius/Radius-XS}" }
+  },
+  "precedence": [
+    "specific-design-instance",
+    "component-specific-rule",
+    "card-hierarchy-default",
+    "generic-radius-token-guidance"
+  ],
+  "hardRules": [
+    "Treat the concrete design instance as authoritative when its radius differs from the component-set default.",
+    "For example, implement an S-size component with 8px radius as 8px when the approved design instance shows 8px; do not force the default 4px.",
+    "Do not infer radius from component size name alone when an inspected design instance is available.",
+    "Use the approved 4px, 6px, 8px and 12px radius scale for regular UI and card hierarchy; 16px, 24px and 999px are available for specified large or pill-shaped cases.",
+    "For dialogs, banners and special components, adjust flexibly according to the approved design requirement.",
+    "Keep cards of the same level and function consistent within one page.",
+    "Nested-card radius should not exceed the outer-card radius and should normally decrease by at least one level.",
+    "Prefer existing radius values before introducing a new value."
+  ],
+  "flexibleCases": [
+    "Dialog",
+    "Modal",
+    "Drawer",
+    "Popover",
+    "Banner",
+    "brand-specific module",
+    "marketing module",
+    "emphasized special component"
+  ],
+  "flexibleRule": "Use the inspected design or component-specific specification for flexible cases; do not mechanically apply card hierarchy.",
+  "audit": {
+    "documentationConflict": "The designer confirmed that the Radius variable library is authoritative for defaults.",
+    "action": "Map the regular card hierarchy to 12px, 8px, 6px and 4px; use 16px, 24px or 999px only for their specified scenarios, and follow an approved design instance for exceptions."
+  }
+}

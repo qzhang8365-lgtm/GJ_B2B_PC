@@ -1,0 +1,53 @@
+{
+  "$schema": "gj-design-skill/component-mapping/v1",
+  "figmaComponent": "Radio button item / Radio button / Radiobutton Group",
+  "codeComponent": "GjRadio / GjRadioGroup",
+  "sourceNodes": [
+    "2982:3997",
+    "2982:4003",
+    "2982:4176"
+  ],
+  "propertyMap": {
+    "state": "visualState",
+    "animation": "visualState",
+    "disabled": "disabled",
+    "checked": "checked",
+    "count": "count",
+    "align": "direction"
+  },
+  "valueMap": {
+    "state.default|animation.false": "default",
+    "state.hover|animation.hover": ":hover",
+    "state.mouseon|animation.mouseon": ":focus-visible（本地状态名 focus，Figma 源属性值仍为 mouseon）",
+    "state.checked|checked.true": "checked=true",
+    "state.mousedown|animation.mousedown": "transient press-moment animation (:active); see RAD-003",
+    "disabled.true": "disabled=true",
+    "align.horizontal": "horizontal",
+    "align.vertical": "vertical（2026-09-10 起 Figma 直接产出该值，见 RAD-002）",
+    "align.verticle": "vertical（历史拼写兼容映射，Figma 侧已修正为 vertical，此项暂保留兼容旧实例/缓存）",
+    "count.2-6": "count=2-6"
+  },
+  "tokenMap": {
+    "default": "radio-pc-default.svg",
+    "hover": "radio-pc-hover.svg",
+    "focus.halo": "Background/BT_B15",
+    "checked": "radio-pc-pressed.svg",
+    "mousedown": "radio-pc-pressed.svg + radio-pc-press-ring.svg (transient press effect asset; see RAD-003)",
+    "disabled": "radio-pc-disabled.svg",
+    "checked-disabled": "radio-pc-mouseon-ring.svg + radio-pc-mouseon-dot.svg",
+    "typography.figma": "中文/S8-CN-R（2026-09-10 起，此前为 Body_14px_regular）",
+    "typography.currentEquivalent": "中文/S8-CN-R（RAD-001 已关闭，Figma 侧已直接改绑，此字段保留作为代码侧字体体系锚点）"
+  },
+  "interactionMap": {
+    "hover": ":hover",
+    "focus": ":focus-visible (2026-09-08 设计确认由 mouseon 重命名为 focus，保留独立 20px 光晕，不与 hover 合并；见 RAD-004)",
+    "mousedown": "transient :active press animation on pointer-down, not a persisted style; plays briefly on the option being pressed and settles into that option's resulting checked/unchecked appearance on release — 2026-09-08 设计确认, see RAD-003",
+    "disabled": "native disabled attribute"
+  },
+  "accessibility": {
+    "element": "input[type=radio]",
+    "group": "all mutually exclusive options share one name; use fieldset/legend for a titled group",
+    "selection": "exactly one checked value per group",
+    "keyboard": "Arrow keys move selection within the group; Space selects the focused option"
+  }
+}

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>GJ Design System · 走马灯 Carousel</title>
+  <link rel="stylesheet" href="../../assets/styles/gj-b2b-tokens.css?v=carousel-1">
+  <link rel="stylesheet" href="../../assets/styles/gj-b2b-components.css?v=carousel-1">
+  <link rel="stylesheet" href="../../assets/styles/component-docs.css?v=2">
+  <style>
+    .docs-section-head>span{padding-top:3px;color:var(--ds-text-tertiary);font-size:12px}.section-desc{margin:-8px 0 16px;color:var(--ds-text-secondary);font-size:14px;line-height:22px}.variant-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.variant{display:grid;gap:8px;min-width:0}.variant>span{color:var(--ds-text-secondary);font-size:12px}.variant .gj-carousel{height:160px;max-width:100%}.slide-sample{display:grid;place-items:center;height:100%;color:var(--ds-text-reversal);font-weight:600;background:linear-gradient(257deg,var(--ds-primitive-blue-b05),var(--ds-primitive-blue-b07))}.theme-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.indicator-stage{position:relative;display:grid;place-items:center;height:96px;border-radius:var(--docs-panel-radius)}.indicator-stage.dark-bg{background:var(--ds-primitive-neutral-n09)}.indicator-stage.light-bg{background:var(--ds-background-tertiary)}.indicator-stage .gj-carousel-indicator{position:relative;inset:auto;transform:none}.demo-grid{display:grid;grid-template-columns:minmax(0,3fr) minmax(280px,2fr);gap:16px;align-items:stretch}.demo-carousel{height:240px;max-width:100%;border-radius:var(--docs-panel-radius)}.demo-slide{display:grid;align-content:center;gap:6px;height:100%;padding:32px;color:var(--ds-text-reversal)}.demo-slide b{font-size:24px}.demo-slide span{opacity:.85}.slide-one{background:linear-gradient(135deg,var(--ds-primitive-blue-b06),var(--ds-primitive-blue-b04))}.slide-two{background:linear-gradient(135deg,var(--ds-primitive-purple-p06),var(--ds-primitive-purple-p04))}.slide-three{background:linear-gradient(135deg,var(--ds-primitive-green-g06),var(--ds-primitive-green-g04))}.controls{display:grid;align-content:start;gap:14px;padding:var(--docs-panel-padding);border:1px solid var(--ds-border-default);border-radius:var(--docs-panel-radius);background:var(--ds-background-container)}.control{display:grid;gap:6px}.control label{color:var(--ds-text-secondary);font-size:12px}.control select{height:36px;padding:0 10px;border:1px solid var(--ds-border-default);border-radius:var(--docs-item-radius);background:var(--ds-background-container);color:var(--ds-text-primary)}.checks{display:grid;gap:10px}.checks label{display:flex;align-items:center;gap:8px}.actions{display:flex;gap:8px;flex-wrap:wrap}.event{color:var(--ds-text-secondary);font-size:12px}.event b{color:var(--ds-text-primary)}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}@media(max-width:960px){.variant-grid,.demo-grid{grid-template-columns:1fr}.variant .gj-carousel{max-width:520px}}@media(max-width:680px){.theme-grid{grid-template-columns:1fr}}
+  </style>
+  <script src="../../assets/scripts/font-runtime.js"></script>
+</head>
+<body>
+<main class="docs-shell">
+  <header class="docs-page-head"><div class="docs-eyebrow">导航组件 · Navigation</div><h1>走马灯 Carousel</h1><p>在同一区域顺序展示同层级内容，提供明确的位置反馈和可控的切换行为。</p></header>
+  <article class="docs-sheet">
+      <section class="docs-section">
+        <header class="docs-section-head"><h2>指示器位置</h2><span>bottom_center / bottom_right / bottom_left</span></header>
+        <div class="variant-grid">
+          <div class="variant"><span>Bottom center · Default</span><div class="gj-carousel"><div class="gj-carousel-track"><div class="gj-carousel-slide"><div class="slide-sample">01</div></div></div><div class="gj-carousel-indicator is-center is-light"><button class="gj-carousel-dot" aria-current="true" aria-label="第1项"></button><button class="gj-carousel-dot" aria-label="第2项"></button><button class="gj-carousel-dot" aria-label="第3项"></button><button class="gj-carousel-dot" aria-label="第4项"></button></div></div></div>
+          <div class="variant"><span>Bottom right</span><div class="gj-carousel"><div class="gj-carousel-track"><div class="gj-carousel-slide"><div class="slide-sample">02</div></div></div><div class="gj-carousel-indicator is-right is-light"><button class="gj-carousel-dot" aria-current="true" aria-label="第1项"></button><button class="gj-carousel-dot" aria-label="第2项"></button><button class="gj-carousel-dot" aria-label="第3项"></button><button class="gj-carousel-dot" aria-label="第4项"></button></div></div></div>
+          <div class="variant"><span>Bottom left</span><div class="gj-carousel"><div class="gj-carousel-track"><div class="gj-carousel-slide"><div class="slide-sample">03</div></div></div><div class="gj-carousel-indicator is-left is-light"><button class="gj-carousel-dot" aria-current="true" aria-label="第1项"></button><button class="gj-carousel-dot" aria-label="第2项"></button><button class="gj-carousel-dot" aria-label="第3项"></button><button class="gj-carousel-dot" aria-label="第4项"></button></div></div></div>
+        </div>
+      </section>
+      <section class="docs-section">
+        <header class="docs-section-head"><h2>指示器主题</h2><span>Light / Dark</span></header>
+        <div class="theme-grid"><div class="indicator-stage dark-bg"><div class="gj-carousel-indicator is-light"><button class="gj-carousel-dot" aria-current="true" aria-label="当前项"></button><button class="gj-carousel-dot" aria-label="第2项"></button><button class="gj-carousel-dot" aria-label="第3项"></button><button class="gj-carousel-dot" aria-label="第4项"></button></div></div><div class="indicator-stage light-bg"><div class="gj-carousel-indicator is-dark"><button class="gj-carousel-dot" aria-current="true" aria-label="当前项"></button><button class="gj-carousel-dot" aria-label="第2项"></button><button class="gj-carousel-dot" aria-label="第3项"></button><button class="gj-carousel-dot" aria-label="第4项"></button></div></div></div>
+      </section>
+      <section class="docs-section">
+        <header class="docs-section-head"><h2>交互演示</h2><span>Indicator / Keyboard / Autoplay / Loop</span></header>
+        <p class="section-desc">点击指示器或使用左右方向键切换。自动播放默认关闭；开启后在悬停、焦点进入、页面隐藏或减少动态效果时暂停。</p>
+        <div class="demo-grid">
+          <div id="carousel" class="gj-carousel demo-carousel" role="region" aria-roledescription="carousel" aria-label="产品能力介绍" tabindex="0">
+            <div id="track" class="gj-carousel-track">
+              <section class="gj-carousel-slide is-active" role="group" aria-roledescription="slide" aria-label="第1项，共3项"><div class="demo-slide slide-one"><b>客户洞察</b><span>聚合客户数据，快速识别业务机会</span></div></section>
+              <section class="gj-carousel-slide" role="group" aria-roledescription="slide" aria-label="第2项，共3项" aria-hidden="true"><div class="demo-slide slide-two"><b>业务协同</b><span>统一任务入口，减少跨系统操作成本</span></div></section>
+              <section class="gj-carousel-slide" role="group" aria-roledescription="slide" aria-label="第3项，共3项" aria-hidden="true"><div class="demo-slide slide-three"><b>经营分析</b><span>用一致的指标口径跟踪业务进展</span></div></section>
+            </div>
+            <div id="indicator" class="gj-carousel-indicator is-center is-light" aria-label="选择轮播项"><button class="gj-carousel-dot" aria-label="转到第1项" aria-current="true"></button><button class="gj-carousel-dot" aria-label="转到第2项"></button><button class="gj-carousel-dot" aria-label="转到第3项"></button></div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="position">Indicator position</label><select id="position"><option value="center">Bottom center</option><option value="right">Bottom right</option><option value="left">Bottom left</option></select></div>
+            <div class="control"><label for="theme">Indicator theme</label><select id="theme"><option value="light">Light</option><option value="dark">Dark</option></select></div>
+            <div class="checks"><label><input id="autoplay" type="checkbox">自动播放（4秒）</label><label><input id="loop" type="checkbox" checked>首尾循环</label></div>
+            <div class="actions"><button id="previous" class="gj-btn gj-btn-secondary">上一项</button><button id="next" class="gj-btn gj-btn-secondary">下一项</button></div>
+            <div class="event">当前状态：<b id="event">第 1 项，共 3 项</b></div>
+          </div>
+        </div>
+        <div id="announcement" class="sr-only" aria-live="polite"></div>
+      </section>
+      <section class="docs-section"><header class="docs-section-head"><div><h2>尺寸与 Token</h2><p>组件宽度随容器变化，视觉尺寸与可点击热区分开定义。</p></div></header><div class="docs-spec-table-wrap"><table class="docs-spec-table"><thead><tr><th>结构</th><th>尺寸</th><th>Token / 规则</th></tr></thead><tbody><tr><td>Carousel 母版</td><td>385 × 160px</td><td>宽度随容器；默认高度 160px</td></tr><tr><td>底部内边距</td><td>12px</td><td>指示器左/右位置同时使用 12px</td></tr><tr><td>Active indicator</td><td>16 × 3px</td><td>Light: Text/reversal · Dark: Text/blue</td></tr><tr><td>Inactive indicator</td><td>8 × 3px</td><td>Light: WT_20 · Dark: MK_20</td></tr><tr><td>指示器间距</td><td>3px</td><td>视觉圆角 4px；交互命中区至少 24px</td></tr></tbody></table></div></section>
+      <section class="docs-section"><header class="docs-section-head"><div><h2>使用规则</h2><p>轮播内容必须可由用户控制，自动播放不能成为获取关键信息的前提。</p></div></header><div class="docs-spec-table-wrap"><table class="docs-spec-table"><colgroup><col style="width:24%"><col style="width:38%"><col></colgroup><thead><tr><th>主题</th><th>推荐做法</th><th>边界与避免</th></tr></thead><tbody><tr><td>播放方式</td><td>默认由用户控制；自动播放默认关闭。</td><td>重要内容不能依赖轮播自动曝光。</td></tr><tr><td>暂停条件</td><td>悬停、聚焦、页面隐藏或减少动态效果时暂停。</td><td>恢复条件不满足时不得继续播放。</td></tr><tr><td>指示器</td><td>3px 为视觉尺寸，点击目标至少 24px，并声明当前项。</td><td>不可只靠颜色表达选中状态。</td></tr><tr><td>内容数量</td><td>少于两项时直接展示唯一内容。</td><td>隐藏指示器、自动播放和切换控件。</td></tr></tbody></table></div></section>
+  </article>
+</main>
+<script>
+const root=document.getElementById('carousel'),track=document.getElementById('track'),slides=[...root.querySelectorAll('.gj-carousel-slide')],indicator=document.getElementById('indicator'),dots=[...indicator.querySelectorAll('.gj-carousel-dot')],position=document.getElementById('position'),theme=document.getElementById('theme'),autoplay=document.getElementById('autoplay'),loop=document.getElementById('loop'),previous=document.getElementById('previous'),next=document.getElementById('next'),eventEl=document.getElementById('event'),announcement=document.getElementById('announcement'),reduceMotion=matchMedia('(prefers-reduced-motion: reduce)');let active=0,timer=null,hoverPaused=false,focusPaused=false,pointerStart=null;
+function go(index,user=false){const last=slides.length-1;if(loop.checked)active=(index+slides.length)%slides.length;else active=Math.max(0,Math.min(index,last));track.style.setProperty('--gj-carousel-offset',`${active*-100}%`);slides.forEach((slide,i)=>{slide.classList.toggle('is-active',i===active);slide.setAttribute('aria-hidden',String(i!==active))});dots.forEach((dot,i)=>i===active?dot.setAttribute('aria-current','true'):dot.removeAttribute('aria-current'));previous.disabled=!loop.checked&&active===0;next.disabled=!loop.checked&&active===last;eventEl.textContent=`第 ${active+1} 项，共 ${slides.length} 项`;if(user)announcement.textContent=eventEl.textContent;restart()}
+function canPlay(){return autoplay.checked&&!reduceMotion.matches&&!hoverPaused&&!focusPaused&&!document.hidden&&slides.length>1}function restart(){clearInterval(timer);timer=canPlay()?setInterval(()=>go(active+1,false),4000):null}
+dots.forEach((dot,i)=>dot.onclick=()=>go(i,true));previous.onclick=()=>go(active-1,true);next.onclick=()=>go(active+1,true);position.onchange=()=>indicator.className=`gj-carousel-indicator is-${position.value} is-${theme.value}`;theme.onchange=position.onchange;autoplay.onchange=restart;loop.onchange=()=>go(active,false);root.onkeydown=e=>{if(e.target.matches('input,select,button'))return;if(e.key==='ArrowLeft'){e.preventDefault();go(active-1,true)}if(e.key==='ArrowRight'){e.preventDefault();go(active+1,true)}};root.addEventListener('mouseenter',()=>{hoverPaused=true;restart()});root.addEventListener('mouseleave',()=>{hoverPaused=false;restart()});root.addEventListener('focusin',()=>{focusPaused=true;restart()});root.addEventListener('focusout',e=>{if(!root.contains(e.relatedTarget)){focusPaused=false;restart()}});root.addEventListener('pointerdown',e=>{pointerStart={x:e.clientX,y:e.clientY}});root.addEventListener('pointerup',e=>{if(!pointerStart)return;const dx=e.clientX-pointerStart.x,dy=e.clientY-pointerStart.y;pointerStart=null;if(Math.abs(dx)>=40&&Math.abs(dx)>Math.abs(dy))go(active+(dx<0?1:-1),true)});document.addEventListener('visibilitychange',restart);reduceMotion.addEventListener('change',restart);go(0,false);
+</script>
+</body>
+</html>

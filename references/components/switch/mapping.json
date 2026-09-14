@@ -1,0 +1,38 @@
+{
+  "$schema": "gj-design-skill/component-mapping/v1",
+  "figmaComponent": "Switch",
+  "codeComponent": "GjSwitch",
+  "sourceNode": "3014:1927",
+  "propertyMap": {
+    "Size": "size",
+    "on": "checked",
+    "disable": "disabled"
+  },
+  "valueMap": {
+    "Size.medium": "medium",
+    "Size.small": "small",
+    "on.true": "checked=true",
+    "on.false": "checked=false",
+    "disable.true": "disabled=true",
+    "disable.false": "disabled=false"
+  },
+  "tokenMap": {
+    "on.track": "Brand/GJ_Blue",
+    "off.track": "Text/disable",
+    "thumb": "Background/Container（2026-09-10 设计确认为正式语义；Figma 节点历史绑定 Text/reversal，视觉值相同，建议 Figma 侧后续同步）",
+    "thumb.shadow": "shadow_small"
+  },
+  "interactionMap": {
+    "hover": "code-only; no Figma variant",
+    "pressed": ":active code supplement; no Figma variant",
+    "focused": ":focus-visible code supplement; no Figma variant",
+    "disabled": "native disabled attribute"
+  },
+  "verifiedGeometry": "SWI-001 closed on 2026-09-08: Figma on=true places the thumb at the right and on=false at the left for medium/small and enabled/disabled variants.",
+  "accessibility": {
+    "role": "switch",
+    "checked": "aria-checked follows checked",
+    "label": "accessible name is required",
+    "keyboard": "Space toggles when enabled"
+  }
+}

@@ -1,0 +1,158 @@
+{
+  "$schema": "gj-design-skill/component-tokens/v1",
+  "component": "Cascader",
+  "source": {
+    "figmaNode": "2638:2478",
+    "figmaNodes": [
+      "2896:313",
+      "2896:312",
+      "2896:308",
+      "2896:303",
+      "2896:304",
+      "2896:306",
+      "4208:20044",
+      "4208:20042",
+      "3271:6484",
+      "3001:1320",
+      "3271:6485",
+      "4208:20186"
+    ],
+    "figmaReadDate": "2026-09-10",
+    "componentSchema": "references/components/cascader/schema.json",
+    "componentMapping": "references/components/cascader/mapping.json",
+    "confirmedRules": "references/components/cascader/rules.md",
+    "implementation": "assets/styles/gj-b2b-components.css#.gj-cascader"
+  },
+  "properties": {
+    "mode": {
+      "default": "single",
+      "values": ["single", "multiple", "tree"]
+    },
+    "showCheckbox": {
+      "default": false,
+      "values": [false, true]
+    },
+    "hasChildren": {
+      "default": true,
+      "values": [false, true],
+      "note": "Item 默认 arrow=true。"
+    }
+  },
+  "tokens": {
+    "menu.columnWidth": {
+      "value": 198,
+      "unit": "px",
+      "cssVariable": "--ds-component-cascader-column-width",
+      "note": "列 Frame 198。Item 母版默认宽 185，列内实例 182。字面值，未绑 Interval。"
+    },
+    "menu.height": {
+      "value": 240,
+      "unit": "px",
+      "cssVariable": "--ds-component-cascader-menu-height",
+      "note": "单选列与树面板规范高度。超出出现滚动。"
+    },
+    "menu.padding": {
+      "value": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-cascader-menu-padding"
+    },
+    "menu.radius": {
+      "value": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-cascader-menu-radius",
+      "note": "字面 12，未读到 Radius 变量。"
+    },
+    "item.height": {
+      "value": 32,
+      "unit": "px",
+      "cssVariable": "--ds-component-cascader-item-height"
+    },
+    "item.padding": {
+      "value": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-cascader-item-padding"
+    },
+    "item.radius": {
+      "value": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-cascader-item-radius"
+    },
+    "item.gap": {
+      "value": 10,
+      "unit": "px",
+      "cssVariable": "--ds-component-cascader-item-gap",
+      "note": "级联 Item gap 10。树行为 4，见 tree.itemGap。"
+    },
+    "tree.panelWidth": {
+      "value": 185,
+      "unit": "px",
+      "cssVariable": "--ds-component-cascader-tree-width"
+    },
+    "tree.itemGap": {
+      "value": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-cascader-tree-item-gap"
+    },
+    "tree.indent.second": {
+      "value": 24,
+      "unit": "px",
+      "cssVariable": "--ds-component-cascader-tree-indent-second"
+    },
+    "tree.indent.third": {
+      "value": 44,
+      "unit": "px",
+      "cssVariable": "--ds-component-cascader-tree-indent-third"
+    },
+    "disabled.opacity": {
+      "value": 0.4,
+      "cssVariable": "--ds-component-cascader-disabled-opacity",
+      "note": "Figma 生成 opacity-40。文字仍绑 Text/Primary。"
+    },
+    "scrollbar.width": {
+      "value": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-cascader-scrollbar-width"
+    },
+    "background": {
+      "value": "{Background/Container}",
+      "resolved": "#FFFFFF",
+      "cssVariable": "--ds-component-cascader-background"
+    },
+    "border": {
+      "value": "{Border/default}",
+      "resolved": "#EBEEF2",
+      "cssVariable": "--ds-component-cascader-border"
+    },
+    "hover.background": {
+      "value": "{Background/Hover}",
+      "resolved": "#2B73FF0D",
+      "cssVariable": "--ds-component-cascader-hover-background"
+    },
+    "item.text": {
+      "value": "{Text/Primary}",
+      "resolved": "#101828",
+      "cssVariable": "--ds-component-cascader-item-text"
+    },
+    "active.text": {
+      "value": "{Text/blue}",
+      "resolved": "#2B73FF",
+      "cssVariable": "--ds-component-cascader-active-text"
+    },
+    "arrow": {
+      "value": "{Text/Tertiary}",
+      "resolved": "#8D96A3",
+      "cssVariable": "--ds-component-cascader-arrow"
+    },
+    "scrollbar": {
+      "value": "{Text/disable}",
+      "resolved": "#B8C0CC",
+      "cssVariable": "--ds-component-cascader-scrollbar"
+    }
+  },
+  "behavior": {
+    "expandTrigger": "click",
+    "progressive": "逐级展开，展开时初始仅显示第 1 级。",
+    "ancestorChange": "祖先节点变化时清空已选的后代路径。",
+    "keyboard": "Figma 无 reaction。级联与树键盘见 schema.interaction.keyboard。"
+  }
+}

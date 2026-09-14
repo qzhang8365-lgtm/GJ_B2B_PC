@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>Radio 待确认图标 · 视觉核对</title>
+<style>
+  body{ margin:0; padding:40px; background:#F5F7FA; color:#12161F; font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif; }
+  h1{ font-size:20px; margin:0 0 6px; }
+  .lede{ font-size:13px; color:#5C6472; max-width:680px; line-height:1.7; margin-bottom:32px; }
+  h2{ font-size:14px; margin:0 0 4px; }
+  .sub{ font-size:12px; color:#8A93A3; margin-bottom:16px; }
+  section{ background:#fff; border:1px solid #E2E7EE; border-radius:12px; padding:20px 24px; margin-bottom:20px; }
+  .row{ display:flex; flex-wrap:wrap; gap:20px; }
+  .cell{ display:flex; flex-direction:column; align-items:center; gap:8px; width:120px; }
+  .swatch{ width:88px; height:88px; border-radius:10px; background:#fff; border:1px solid #EDF0F5; display:flex; align-items:center; justify-content:center; position:relative; }
+  .swatch.card-bg{ background:#F5F7FA; }
+  .swatch .stack{ position:relative; width:64px; height:64px; }
+  .swatch .stack > div{ position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); }
+  .zoom4 svg{ transform:scale(4); }
+  .zoom3 svg{ transform:scale(3.2); }
+  .label{ font-size:11.5px; text-align:center; color:#12161F; font-weight:600; }
+  .file{ font-family:ui-monospace,Menlo,monospace; font-size:10px; color:#8A93A3; text-align:center; word-break:break-all; }
+  .tag{ display:inline-block; font-size:10px; font-weight:700; padding:2px 7px; border-radius:99px; margin-top:2px; }
+  .tag.dup{ background:#FBEAEA; color:#DC2626; }
+  .tag.match{ background:#FBF0DD; color:#B45309; }
+  .note{ font-size:12.5px; line-height:1.75; color:#5C6472; margin-top:14px; padding-top:14px; border-top:1px dashed #E2E7EE; }
+  .note b{ color:#12161F; }
+  code{ font-family:ui-monospace,Menlo,monospace; font-size:11.5px; background:#F5F7FA; padding:1px 5px; border-radius:4px; }
+</style>
+</head>
+<body>
+
+<h1>Radio 待确认图标 · 视觉核对</h1>
+<p class="lede">左边两组是 Radio 组件当前在 gj-b2b-components.css 里实际拼出来的效果（照抄它的 background-image 叠加规则）；右边是 3 个待确认文件单独放大后的样子，以及把它们按同样的叠图方式拼在一起会是什么样。都是矢量图放大显示，边缘发虚是缩放导致的，不是文件本身的问题。</p>
+
+<section>
+  <h2>Radio 当前真实状态（按 CSS 实际叠图方式还原）</h2>
+  <div class="sub">对照 assets/styles/gj-b2b-components.css 里 .gj-radio 的规则逐条还原</div>
+  <div class="row">
+    <div class="cell">
+      <div class="swatch card-bg"><svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><circle id="Ellipse 1" cx="8" cy="8" r="7.5" fill="white" stroke="#D7DCE3"/></svg></div>
+      <div class="label">Default</div>
+      <div class="file">radio-pc-default.svg</div>
+    </div>
+    <div class="cell">
+      <div class="swatch card-bg"><svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><circle id="Ellipse 2" cx="8" cy="8" r="7.5" fill="white" stroke="#2B73FF"/></svg></div>
+      <div class="label">Hover</div>
+      <div class="file">radio-pc-hover.svg</div>
+    </div>
+    <div class="cell">
+      <div class="swatch card-bg"><svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><circle id="Ellipse 5" cx="8" cy="8" r="7.5" fill="#F5F7FA" stroke="#D7DCE3"/></svg></div>
+      <div class="label">Disabled</div>
+      <div class="file">radio-pc-disabled.svg</div>
+    </div>
+    <div class="cell">
+      <div class="swatch card-bg"><svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="Group 1321316126"><circle id="Ellipse 3" cx="8" cy="8" r="7.5" fill="#2B73FF" stroke="#2B73FF"/><circle id="Ellipse 4" cx="8" cy="8" r="3" fill="white"/></g></svg></div>
+      <div class="label">Checked</div>
+      <div class="file">radio-pc-pressed.svg</div>
+    </div>
+    <div class="cell">
+      <div class="swatch card-bg">
+        <div class="stack">
+          <div style="width:16px;height:16px;"><svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><circle id="Ellipse 6" cx="8" cy="8" r="7.5" fill="#F5F7FA" stroke="#D7DCE3"/></svg></div>
+          <div style="width:6px;height:6px;"><svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="6" height="6" viewBox="0 0 6 6" fill="none" xmlns="http://www.w3.org/2000/svg"><circle id="Ellipse 7" cx="3" cy="3" r="3" fill="#B8C0CC"/></svg></div>
+        </div>
+      </div>
+      <div class="label">Checked + Disabled</div>
+      <div class="file">mouseon-ring + mouseon-dot</div>
+    </div>
+    <div class="cell">
+      <div class="swatch card-bg">
+        <div class="stack">
+          <div style="width:20px;height:20px;"><svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle id="Ellipse 8" cx="10" cy="10" r="10" fill="#2B73FF" fill-opacity="0.15"/></svg></div>
+          <div style="width:16px;height:16px;"><svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="Group 1321316126"><circle id="Ellipse 3" cx="8" cy="8" r="7.5" fill="#2B73FF" stroke="#2B73FF"/><circle id="Ellipse 4" cx="8" cy="8" r="3" fill="white"/></g></svg></div>
+        </div>
+      </div>
+      <div class="label">Active / Press</div>
+      <div class="file">press-ring + pressed</div>
+    </div>
+  </div>
+  <div class="note">这 6 个状态目前用了 <b>7 个</b>文件（default / hover / disabled / pressed / mouseon-dot / mouseon-ring / press-ring），和 component-internal.md 里记的"使用中"清单一致。</div>
+</section>
+
+<section>
+  <h2>3 个待确认文件单独放大</h2>
+  <div class="sub">当前 CSS 完全没有引用它们</div>
+  <div class="row">
+    <div class="cell">
+      <div class="swatch zoom4"><svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><circle id="Ellipse 3" cx="8" cy="8" r="7.5" fill="#2B73FF" stroke="#2B73FF"/></svg></div>
+      <div class="label">radio-pc-checked-ring</div>
+      <div class="file">16×16，纯蓝色实心圆<br>id="Ellipse 3"</div>
+      <span class="tag match">和 pressed 的外圈完全同构</span>
+    </div>
+    <div class="cell">
+      <div class="swatch zoom4"><svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="6" height="6" viewBox="0 0 6 6" fill="none" xmlns="http://www.w3.org/2000/svg"><circle id="Ellipse 4" cx="3" cy="3" r="3" fill="white"/></svg></div>
+      <div class="label">radio-pc-checked-dot</div>
+      <div class="file">6×6，白色实心圆<br>id="Ellipse 4"</div>
+      <span class="tag match">和 pressed 的内圈完全同构</span>
+    </div>
+    <div class="cell">
+      <div class="swatch zoom4"><svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="6" height="6" viewBox="0 0 6 6" fill="none" xmlns="http://www.w3.org/2000/svg"><circle id="Ellipse 4" cx="3" cy="3" r="3" fill="white"/></svg></div>
+      <div class="label">radio-pc-press-dot</div>
+      <div class="file">6×6，白色实心圆<br>id="Ellipse 4"</div>
+      <span class="tag dup">和 checked-dot 逐字节相同</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>把 checked-ring + checked-dot 按同样叠图方式拼在一起</h2>
+  <div class="sub">用 Checked+Disabled 那两层叠加的相同做法（大圆居中 + 小圆居中）</div>
+  <div class="row">
+    <div class="cell">
+      <div class="swatch card-bg">
+        <div class="stack">
+          <div style="width:16px;height:16px;"><svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><circle id="Ellipse 3" cx="8" cy="8" r="7.5" fill="#2B73FF" stroke="#2B73FF"/></svg></div>
+          <div style="width:6px;height:6px;"><svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="6" height="6" viewBox="0 0 6 6" fill="none" xmlns="http://www.w3.org/2000/svg"><circle id="Ellipse 4" cx="3" cy="3" r="3" fill="white"/></svg></div>
+        </div>
+      </div>
+      <div class="label">checked-ring + checked-dot 叠加后</div>
+      <div class="file">拼出来的样子</div>
+    </div>
+    <div class="cell">
+      <div class="swatch card-bg"><svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="Group 1321316126"><circle id="Ellipse 3" cx="8" cy="8" r="7.5" fill="#2B73FF" stroke="#2B73FF"/><circle id="Ellipse 4" cx="8" cy="8" r="3" fill="white"/></g></svg></div>
+      <div class="label">现在的 Checked（pressed.svg）</div>
+      <div class="file">当前实际使用的单文件</div>
+    </div>
+  </div>
+  <div class="note">
+    <b>看到的结果：</b>两边视觉上完全一样。而且不只是"看起来像"——<code>checked-ring.svg</code> 内部圆的 id 是 <code>Ellipse 3</code>、半径 7.5、颜色 #2B73FF，<code>checked-dot.svg</code> 内部圆的 id 是 <code>Ellipse 4</code>、半径 3、白色；<code>pressed.svg</code> 内部正好是同一个 <code>Ellipse 3</code> + 同一个 <code>Ellipse 4</code> 合并进一个 <code>&lt;g&gt;</code> 里，只是把内圆坐标从"独立 6×6 画布里的 (3,3)"换算成了"合并进 16×16 画布后的 (8,8)"。<br><br>
+    这三个文件不是"给 Checked 态准备但没接上"的新资产，更像是 <b>pressed.svg 合并之前的两层半成品</b>——先分别做出外圈和内圈，再合成一张图，旧的两层就留下来了。<code>press-dot.svg</code> 和 <code>checked-dot.svg</code> 逐字节相同（同一个 <code>Ellipse 4</code>），大概率是合成过程中的重复命名，不是两个不同状态。
+  </div>
+</section>
+
+<section>
+  <h2>结论建议</h2>
+  <div class="note" style="margin-top:0;padding-top:0;border-top:none;">
+    以上是看了实际内容和渲染结果后的判断，不是我在瞎猜——但最终这几个文件是不是可以删，还是你来定。倾向性结论：<b>checked-ring.svg、checked-dot.svg、press-dot.svg 这 3 个大概率也可以并入原来那 7 个"确认已被取代"的名单，一起删掉</b>，不需要再单独当"待设计确认"处理。如果你确认无异议，我会把 component-internal.md 里的分类从「7 个确认可删 + 3 个待确认」改成「10 个确认可删」。
+  </div>
+</section>
+
+</body>
+</html>

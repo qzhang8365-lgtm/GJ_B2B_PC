@@ -1,0 +1,109 @@
+{
+  "$schema": "gj-design-skill/component-schema/v1",
+  "component": "Tooltip",
+  "source": {
+    "rulesSection": null,
+    "inventoryPage": "Tooltip✅",
+    "status": "figma-audited",
+    "figmaAudit": "done-2026-09-08",
+    "preview": "../../../preview/tooltip/index.html"
+  },
+  "purpose": "解释图标、字段、缩写或被截断内容的轻量、只读提示；不承载操作，不用于必须被看到的信息或需要多段说明的帮助内容。",
+  "figma": {
+    "fileKey": "8b01I1e3TzH1IhYlr3tJzd",
+    "componentSets": {
+      "dark": {
+        "nodeId": "3582:1816",
+        "figmaName": "toolip",
+        "note": "抽取时（2026-09-08）该组件集含 8 个 position 变体；Skill 契约层已于同日精简为仅 top_center，Figma 源文件尚未同步（设计侧后续手动调整）。"
+      },
+      "light": {
+        "nodeId": "3630:3385",
+        "figmaName": "toolip_fill"
+      }
+    },
+    "documentationNodeId": "3623:2",
+    "note": "dark 与 light 目前是两个独立的 Figma 组件集，本 schema 把它们合并抽象为一个 style 属性，见 audit.md 的建议优化项。position 属性已在 Skill 契约层精简为仅 top_center（2026-09-08 设计侧确认），但 Figma 源文件抽取时仍含 8 个 position 变体，尚未同步简化，由设计侧后续手动调整。"
+  },
+  "properties": {
+    "position": [
+      "top_center"
+    ],
+    "style": [
+      "dark",
+      "light"
+    ],
+    "polygon": "boolean，是否显示指向触发元素的箭头"
+  },
+  "defaults": {
+    "position": "top_center",
+    "style": "dark",
+    "polygon": true
+  },
+  "states": [],
+  "structure": [
+    "arrow（可选）",
+    "content"
+  ],
+  "styleTokens": {
+    "dark": {
+      "background": "Background/MK_80",
+      "textColor": "Text/reversal",
+      "textColorToken": "Text/reversal",
+      "shadow": null,
+      "resolvedColor": "#000000cc"
+    },
+    "light": {
+      "background": "Background/Container",
+      "resolvedColor": "#ffffff",
+      "textColor": "Text/Primary",
+      "textColorResolved": "#101828",
+      "shadow": "shadow-center（Background/MK_10，blur 15，offset 0/0）"
+    }
+  },
+  "typography": {
+    "token": "中文/S8-CN-R",
+    "family": "PingFang SC",
+    "size": 14,
+    "lineHeight": 22,
+    "weight": 400
+  },
+  "dimensions": {
+    "padding": 16,
+    "radius": 8,
+    "maxContentTextWidth": 206,
+    "lightFixedWidth": 240,
+    "arrow": {
+      "width": 16,
+      "height": 10
+    },
+    "triggerGap": 8,
+    "viewportEdgeGap": 8,
+    "note": "radius 与 padding 为设计侧确认的固定值（硬编码），不绑定圆角/间距变量（2026-09-08）。"
+  },
+  "behavior": {
+    "triggerDelay": "鼠标 Hover 300–500ms 后出现；键盘 Focus 时立即出现",
+    "dismissDelay": "鼠标移出触发元素与 Tooltip 后 100–200ms 关闭；Esc、滚动页面、窗口变化或触发元素消失时立即关闭",
+    "singleton": "同一区域一次只展示一个 Tooltip",
+    "placementFallback": "固定使用 top_center，与触发元素保持 8px 间距，箭头指向触发元素视觉中心；不再支持其他方向或自动翻转避让（设计侧确认精简，2026-09-08）。"
+  },
+  "constraints": [
+    "不用于必须被用户看到的信息、错误与风险提醒、包含按钮或链接的交互内容、需要多段说明的帮助内容。",
+    "点击触发且需要持续停留的内容使用 Popover，不使用 Tooltip。",
+    "Do not infer placement, arrow, size, delay, states or tokens from Popover or Chart tooltip（图表内部数据提示是另一套机制，不与本组件共用规则）。"
+  ],
+  "dependencies": [],
+  "pendingExtraction": [],
+  "confirmedDecisions": {
+    "date": "2026-09-08",
+    "source": "设计侧直接确认，见 references/audit-tracker.md TLT-001~005（已关闭）",
+    "items": [
+      "圆角 8px 与内边距 16px 确认为固定值，不绑定变量。",
+      "dark/light 在 Skill 与规范页的契约层可合并为同一组件的 style 属性；Figma 源文件暂不合并两个组件集。",
+      "dark 风格文字颜色绑定 Text/reversal（不是硬编码白）；箭头颜色跟随所在风格背景色。",
+      "Figma 文档页 04 Content / 05 Accessibility / 06 Boundary & DoDont 三个章节内容已提供，已并入 rules.md。",
+      "dark 为通用默认场景使用；light 一般不使用。",
+      "position 属性从 8 个方向精简为仅 top_center；Figma 源文件（抽取时含 8 个变体）由设计侧后续手动同步调整，本次仅更新 Skill 契约层（schema.json/rules.md/mapping.json）与预览页。"
+    ]
+  }
+}

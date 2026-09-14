@@ -1,0 +1,205 @@
+{
+  "$schema": "gj-design-skill/component-schema/v1",
+  "component": "Search",
+  "source": {
+    "rulesSection": "Search 搜索框",
+    "inventoryPage": "Searchbar✅",
+    "figmaFile": "8b01I1e3TzH1IhYlr3tJzd",
+    "figmaPage": "2638:2417",
+    "figmaNode": "2982:4914",
+    "figmaNodes": [
+      "2982:4914",
+      "2982:4993",
+      "4208:19089",
+      "4208:19104"
+    ],
+    "status": "figma-audited",
+    "figmaAudit": "done-2026-09-09; re-verified-2026-09-10-SEA-002-and-SEA-003-closed"
+  },
+  "purpose": "输入查询词并通过确认按钮或即时联想发起搜索。",
+  "implementation": {
+    "fieldClass": "gj-search",
+    "sizeClasses": [
+      "gj-search-small",
+      "gj-search-large"
+    ],
+    "iconClass": "gj-search-icon",
+    "inputClass": "gj-search-input",
+    "clearClass": "gj-search-clear",
+    "groupClass": "gj-search-group",
+    "resultsClass": "gj-search-results",
+    "resultClass": "gj-search-result",
+    "highlightClass": "gj-search-highlight"
+  },
+  "figma": {
+    "fileKey": "8b01I1e3TzH1IhYlr3tJzd",
+    "pageNodeId": "2638:2417",
+    "pageName": "搜索框Searchbar✅",
+    "inventoryListed": {
+      "sets": 3,
+      "variants": 26,
+      "standalone": 1
+    },
+    "componentSets": [
+      {
+        "nodeId": "2982:4914",
+        "name": "Search-Box",
+        "variants": 12,
+        "note": "组件集根容器 ID 已由 2026-09-10 metadata 返回并确认。Size=Small|Medium|Large × state=default|focused|filled|disabled（2026-09-10 起，原 active 已改名为 focused）。BOOLEAN：searchIcon。代表 variant：Medium default 2982:4910。"
+      },
+      {
+        "nodeId": "2982:4993",
+        "name": "Search-component",
+        "variants": 12,
+        "note": "Search-Box + Primary Button。state=default|focused|filled|disabled × Size=Medium|Small|Large。2026-09-10 复核确认旧值 defalut/typing/disable 已全部修正。代表 variant：Medium default 2982:4992。"
+      },
+      {
+        "nodeId": "4208:19089",
+        "name": "Search_item/result",
+        "variants": 2,
+        "note": "state=result_highlight|hover。result_highlight 只高亮命中词，不表示选中行。"
+      }
+    ],
+    "standalone": [
+      {
+        "nodeId": "4208:19104",
+        "name": "Search_result_list",
+        "note": "独立组件；Figma 实例宽 197px 只用于画板展示，产品实现中列表宽度必须跟随所属搜索框。"
+      }
+    ]
+  },
+  "properties": {
+    "mode": [
+      "confirm",
+      "suggest"
+    ],
+    "size": [
+      "Small",
+      "Medium",
+      "Large"
+    ],
+    "state": [
+      "default",
+      "focused",
+      "filled",
+      "disabled"
+    ],
+    "searchIcon": [
+      true,
+      false
+    ],
+    "clearable": [
+      true,
+      false
+    ],
+    "value": "string",
+    "results": "SearchResult[]"
+  },
+  "defaults": {
+    "mode": "confirm",
+    "size": "Medium",
+    "state": "default",
+    "searchIcon": true,
+    "clearable": true,
+    "value": ""
+  },
+  "sizes": {
+    "referenceWidth": 233,
+    "Small": {
+      "height": 24,
+      "paddingInline": 6,
+      "paddingBlock": 4,
+      "gap": 6,
+      "activeGap": 8,
+      "radius": 4,
+      "icon": 12,
+      "clear": 12,
+      "textStyle": "中文/S9-CN-R"
+    },
+    "Medium": {
+      "height": 32,
+      "paddingInline": 8,
+      "paddingBlock": 4,
+      "gap": 6,
+      "radius": 6,
+      "icon": 16,
+      "clear": 12,
+      "textStyle": "中文/S8-CN-R"
+    },
+    "Large": {
+      "height": 40,
+      "paddingInline": 12,
+      "paddingBlock": 4,
+      "gap": 8,
+      "radius": 8,
+      "icon": 20,
+      "clear": 16,
+      "textStyle": "中文/S7-CN-R"
+    },
+    "group.gap": 8,
+    "resultItemHeight": 32,
+    "resultListPadding": 8,
+    "resultListRadius": 8
+  },
+  "states": [
+    "default",
+    "focused",
+    "filled",
+    "disabled",
+    "results-open",
+    "empty"
+  ],
+  "behavior": {
+    "keyboard": [
+      "ArrowUp",
+      "ArrowDown",
+      "Enter",
+      "Escape"
+    ],
+    "clear": "Clear input, close stale results and restore initial state.",
+    "button": "A paired Button must use the same size and the shared gj-btn primary style.",
+    "results": "List width follows the search box. Keyword matches use Text/blue. Keyboard selection may reuse result hover background because Figma has no selected-row variant."
+  },
+  "constraints": [
+    "Search is not automatically a multi-condition filter.",
+    "Do not redraw the search button; reuse Button.",
+    "Placeholder uses Text/disable, not Text/Tertiary.",
+    "Disabled border stays Border/secondary, not Border/disabled.",
+    "Small text is 中文/S9-CN-R; do not copy DatePicker Small 的 S8.",
+    "2026-09-10 起 Figma 的 Search-Box 与 Search-component 状态均统一为 default/focused/filled/disabled；旧拼写 defalut/typing/disable 只作为历史审计记录。",
+    "result_highlight is matched-text color, not a selected row."
+  ],
+  "dependencies": [
+    "Button",
+    "Empty",
+    "Icon"
+  ],
+  "icons": [
+    "icf_system_search.svg",
+    "icf_system_close-circle-fill.svg"
+  ],
+  "knownFigmaIssues": [
+    "SEA-004"
+  ],
+  "pendingExtraction": [],
+  "partialMeasurements": [
+    "Small filled 清除图标未逐档拆；Medium 清除 12px、Large filled 清除 16px 已核实",
+    "Search-Box 搜索图标颜色未用 get_variable_defs 绑定；disabled 的 variable_defs 曾返回 Text/Tertiary",
+    "Search-Box 无 hover published variant，未编造输入框 hover 边框",
+    "Medium focused（2026-09-10 前为 active）在 Figma 生成上下文中出现 5px 垂直内边距且缺少显式高度；实现按 32px 控件高度归一为 4px，避免状态切换引发布局跳动"
+  ],
+  "confirmedDecisions": [
+    {
+      "id": "SEA-003",
+      "date": "2026-09-10",
+      "decision": "metadata 已返回 Search 的集合根容器：Search-Box 2982:4914、Search-component 2982:4993、Search_item/result 4208:19089；Search_result_list 4208:19104 为独立组件。schema 与 Token 以 2982:4914 作为主 figmaNode，并完整保留全部 source node IDs；2638:2417 仅作为页面锚点。",
+      "source": "Figma Desktop get_metadata，页面节点 2638:2417"
+    },
+    {
+      "id": "SEA-002",
+      "date": "2026-09-10",
+      "decision": "SEA-002 已全部关闭。Search-Box 与 Search-component 的 state 均统一为 default/focused/filled/disabled；Search-component 原 defalut/typing/disable 已分别修正为 default/focused/disabled。现行 schema、mapping 与 Token 只使用规范值。",
+      "source": "用户告知 + Figma 只读复查（get_metadata/get_design_context，节点 2982:4914、2982:4993）"
+    }
+  ]
+}

@@ -1,0 +1,150 @@
+{
+  "$schema": "gj-design-skill/component-tokens/v1",
+  "component": "Checkbox",
+  "source": {
+    "componentSchema": "references/components/checkbox/schema.json",
+    "confirmedRules": "references/design-system-rules.md#checkbox-多选框",
+    "implementation": "assets/styles/gj-b2b-components.css#.gj-checkbox"
+  },
+  "properties": {
+    "checked": {
+      "default": false,
+      "values": [
+        false,
+        true
+      ]
+    },
+    "indeterminate": {
+      "default": false,
+      "values": [
+        false,
+        true
+      ]
+    },
+    "disabled": {
+      "default": false,
+      "values": [
+        false,
+        true
+      ]
+    },
+    "visualState": {
+      "default": "default",
+      "values": [
+        "default",
+        "hover",
+        "pressed",
+        "focused",
+        "checked",
+        "indeterminate",
+        "disabled",
+        "checked-disabled",
+        "indeterminate-disabled"
+      ],
+      "publicProp": false
+    }
+  },
+  "tokens": {
+    "control.size": {
+      "value": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-checkbox-control-size"
+    },
+    "control.radius": {
+      "value": "{Radius/Radius-XS}",
+      "resolved": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-checkbox-control-radius"
+    },
+    "label.gap": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-checkbox-label-gap"
+    },
+    "group.gap": {
+      "value": "{Interval/space6}",
+      "resolved": 20,
+      "unit": "px",
+      "cssVariable": "--ds-component-checkbox-group-gap",
+      "range": {
+        "min": "{Interval/space6}",
+        "max": "{Interval/space7}",
+        "resolvedMin": 20,
+        "resolvedMax": 24
+      },
+      "note": "CHK-003 已关闭（2026-09-08 设计确认）：Figma Group 间距允许在 20-24px 区间内浮动，非单一固定值；默认取区间下限 20px，可按信息密度在 20-24px 内选取，不再使用旧值 16px。"
+    },
+    "focus.ringWidth": {
+      "value": 3,
+      "unit": "px",
+      "cssVariable": "--ds-component-checkbox-focus-ring-width"
+    },
+    "focus.ringColor": {
+      "value": "{Background/BT_B15}",
+      "cssVariable": "--ds-component-checkbox-focus-ring-color"
+    }
+  },
+  "stateMatrix": {
+    "default": {
+      "background": "Background/Container",
+      "mark": "transparent",
+      "border": "Border/secondary",
+      "text": "Text/Primary"
+    },
+    "hover": {
+      "background": "Background/Container",
+      "mark": "transparent",
+      "border": "Border/focused",
+      "text": "Text/Primary"
+    },
+    "pressed": {
+      "background": "Background/Container",
+      "mark": "transparent",
+      "border": "Border/focused",
+      "text": "Text/Primary"
+    },
+    "focused": {
+      "background": "Background/Container",
+      "mark": "transparent",
+      "border": "Border/secondary",
+      "text": "Text/Primary"
+    },
+    "checked": {
+      "background": "Brand/GJ_Blue",
+      "mark": "Text/reversal",
+      "border": "Brand/GJ_Blue",
+      "text": "Text/Primary"
+    },
+    "indeterminate": {
+      "background": "Brand/GJ_Blue",
+      "mark": "Text/reversal",
+      "border": "Brand/GJ_Blue",
+      "text": "Text/Primary"
+    },
+    "disabled": {
+      "background": "Background/Background",
+      "mark": "transparent",
+      "border": "Border/secondary",
+      "text": "Text/disable"
+    },
+    "checked-disabled": {
+      "background": "Background/Background",
+      "mark": "Text/disable",
+      "border": "Border/secondary",
+      "text": "Text/disable"
+    },
+    "indeterminate-disabled": {
+      "background": "Background/Background",
+      "mark": "Text/disable",
+      "border": "Border/secondary",
+      "text": "Text/disable"
+    }
+  },
+  "behavior": {
+    "element": "input[type=checkbox]",
+    "indeterminate": "Parent summary only; not a third submitted value.",
+    "group": "Synchronize all/none/partial child selection.",
+    "disabled": "No pointer or keyboard toggle."
+  }
+}

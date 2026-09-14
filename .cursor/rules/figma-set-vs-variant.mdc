@@ -1,0 +1,28 @@
+---
+description: Figma 审计时必须区分组件集母版与子变体，禁止用可见 symbol 数去对 inventory 套数。
+alwaysApply: true
+---
+
+# Figma 母版 vs 子变体
+
+inventory 三列含义固定：
+
+- `sets` = 组件集母版（COMPONENT_SET）个数
+- `variants` = 母版下的子变体个数
+- `standalone` = 不属于任何组件集的独立组件
+
+## 怎么认
+
+用户给的节点若**子图层名是 `属性=值`**（如 `button=1`、`Status=Info`、`Size=Medium`），该节点就是**一套母版**，子图层是这套的变体。即使 MCP `get_metadata` 写成 `<frame>` + `<symbol>`，也不许改口说「没有 COMPONENT_SET」。
+
+- 1 个带 `button=1/2` 子节点的母版 → 记 **1 套 / 2 variants**
+- 禁止：把 2 个子变体当成 2 套，或因 MCP 标成 frame 另开「根 ID 未返回」
+- 禁止：用「画板上看见几个 symbol」去对 `sets`
+
+规范展示画板（里面是实例、图层名不是 variant 轴）不是母版。母版以组件集本身或用户指定的组件集节点为准。
+
+## 才允许开 inventory 不一致项
+
+仅当页上**母版个数**或某套的**子变体个数**与 inventory 不符。子变体可见、母版已在同一节点树上，不是缺口。
+
+反例：Popover `3630:3133` 下 `button=1/2` 是一套两态，不是 2 套；旧 inventory 2/4 才是误记（POP-001/002）。

@@ -1,0 +1,66 @@
+{
+  "$schema": "gj-design-skill/component-tokens/v1",
+  "component": "Upload",
+  "source": {
+    "figmaNode": "3099:2117",
+    "figmaNodes": ["3509:53", "3314:12323", "4297:16746", "3536:11370"],
+    "figmaReadDate": "2026-09-09",
+    "componentSchema": "references/components/upload/schema.json",
+    "componentMapping": "references/components/upload/mapping.json",
+    "confirmedRules": "references/components/upload/rules.md",
+    "implementation": "assets/styles/gj-b2b-components.css#.gj-upload-file-item,#.gj-upload-dropzone"
+  },
+  "properties": {
+    "itemState": {"default": "default", "values": ["default", "hover", "uploading", "success", "error"]},
+    "showFileSize": {"default": false, "values": [false, true]},
+    "progressState": {"default": "before", "values": ["before", "inprogress", "finished"]},
+    "dropzoneState": {"default": "default", "values": ["default", "dragging", "uploading", "error"]}
+  },
+  "tokens": {
+    "item.width": {"value": 360, "unit": "px", "cssVariable": "--ds-component-upload-item-width"},
+    "item.height": {"value": "{Components/control-L}", "resolved": 40, "unit": "px", "cssVariable": "--ds-component-upload-item-height"},
+    "item.padding": {"value": "{Interval/space3}", "resolved": 8, "unit": "px", "cssVariable": "--ds-component-upload-item-padding"},
+    "item.gap": {"value": "{Interval/space4}", "resolved": 12, "unit": "px", "cssVariable": "--ds-component-upload-item-gap"},
+    "item.radius": {"value": "{Radius/Radius-SM}", "resolved": 6, "unit": "px", "cssVariable": "--ds-component-upload-item-radius"},
+    "item.fileIcon": {"value": 20, "unit": "px", "cssVariable": "--ds-component-upload-item-file-icon"},
+    "item.actionIcon": {"value": 16, "unit": "px", "cssVariable": "--ds-component-upload-item-action-icon"},
+    "item.nameTextStyle": {"value": "{中文/S8-CN-R}", "cssClass": "gj-type-cn-s8"},
+    "item.metaTextStyle": {"value": "{中文/S9-CN-R}", "cssClass": "gj-type-cn-s9"},
+    "progress.height": {"value": 4, "unit": "px", "cssVariable": "--ds-component-upload-progress-height"},
+    "progress.radius": {"value": 2, "unit": "px", "cssVariable": "--ds-component-upload-progress-radius"},
+    "progress.authoredWidth": {"value": 207, "unit": "px", "cssVariable": "--ds-component-upload-progress-authored-width", "note": "Figma 母版证据；运行时不固定。"},
+    "progress.instanceWidth": {"value": 273, "unit": "px", "cssVariable": "--ds-component-upload-progress-instance-width", "note": "filesize=false 实例覆盖；运行时不固定。"},
+    "progress.inlineStart": {"value": 40, "unit": "px", "cssVariable": "--ds-component-upload-progress-inline-start"},
+    "form.helpGap": {"value": "{Interval/space2}", "resolved": 4, "unit": "px", "cssVariable": "--ds-component-upload-form-help-gap"},
+    "form.helpColor": {"value": "{Text/Tertiary}", "resolved": "#8d96a3", "cssVariable": "--ds-component-upload-form-help-color"},
+    "dropzone.authoredWidth": {"value": 520, "unit": "px", "cssVariable": "--ds-component-upload-dropzone-authored-width", "note": "Figma 母版证据；运行时 width:100%、max-width:520px。"},
+    "dropzone.height": {"value": 180, "unit": "px", "cssVariable": "--ds-component-upload-dropzone-height"},
+    "dropzone.radius": {"value": "{Radius/Radius-SM}", "resolved": 6, "unit": "px", "cssVariable": "--ds-component-upload-dropzone-radius"},
+    "dropzone.gap": {"value": "{Interval/space3}", "resolved": 8, "unit": "px", "cssVariable": "--ds-component-upload-dropzone-gap"},
+    "dropzone.icon": {"value": 32, "unit": "px", "cssVariable": "--ds-component-upload-dropzone-icon"},
+    "dropzone.uploadingIcon": {"value": 28, "unit": "px", "cssVariable": "--ds-component-upload-dropzone-uploading-icon"},
+    "dropzone.progressWidth": {"value": 240, "unit": "px", "cssVariable": "--ds-component-upload-dropzone-progress-width"},
+    "dropzone.progressHeight": {"value": 4, "unit": "px", "cssVariable": "--ds-component-upload-dropzone-progress-height"},
+    "dropzone.progressRadius": {"value": 2, "unit": "px", "cssVariable": "--ds-component-upload-dropzone-progress-radius"},
+    "dropzone.titleTextStyle": {"value": "{中文/S4-CN-S}", "cssClass": "gj-type-cn-s4"},
+    "dropzone.hintTextStyle": {"value": "{中文/S9-CN-R}", "cssClass": "gj-type-cn-s9"}
+  },
+  "stateMatrix": {
+    "default": {"background": "transparent", "text": "Text/Primary", "meta": "Text/Tertiary"},
+    "hover": {"background": "Background/Background", "text": "Text/Primary", "meta": "Text/Tertiary"},
+    "uploading": {"background": "transparent", "text": "Text/Primary", "meta": "Text/Tertiary", "progressTrack": "Background/Secondary", "progressFill": "Brand/GJ_Blue"},
+    "success": {"background": "transparent", "text": "Text/Primary", "meta": "Text/Tertiary"},
+    "error": {"background": "Background/BT_R5", "text": "Feedback/error&rise", "icon": "Feedback/error&rise", "retryAction": "Text/Tertiary", "retryActionHover": "Text/blue"},
+    "dropzoneDefault": {"background": "Background/Tertiary", "border": "Border/hover", "icon": "Text/Tertiary", "title": "Text/Primary", "hint": "Text/Secondary"},
+    "dropzoneDragging": {"background": "Background/BT_B5", "border": "Border/focused", "icon": "Text/blue", "title": "Text/Primary", "hint": "Text/Secondary"},
+    "dropzoneUploading": {"background": "Background/BT_B5", "border": "Border/focused", "icon": "Text/Tertiary", "hint": "Text/Secondary", "progressTrack": "Background/Hover_2", "progressFill": "Feedback/brand"},
+    "dropzoneError": {"background": "Background/BT_R5", "border": "Border/error", "icon": "Feedback/error&rise", "title": "Feedback/error&rise", "hint": "Text/Secondary"}
+  },
+  "behavior": {
+    "statePriority": ["error", "uploading", "hover", "success", "default"],
+    "progressWidth": "fluid remaining width; authoredWidth and instanceWidth are audit evidence only",
+    "successVisual": "reuse default Figma visual",
+    "fallbackDisabled": "Upload_Dropzone 未发布 Disabled variant，因此禁用时对整个 dropzone 使用 50% opacity 并阻止点击、键盘与拖放；按钮入口继续继承 Button 的原生 Disabled，禁止叠加第二层 opacity。"
+  },
+  "openItems": {}
+}

@@ -1,0 +1,68 @@
+{
+  "$schema": "gj-design-skill/icon-manifest/v1",
+  "kind": "motion",
+  "source": {
+    "catalog": "assets/icons/animation/motion-icons.js",
+    "readOnly": true
+  },
+  "count": 4,
+  "rules": {
+    "format": "lottie-json",
+    "fps": 60,
+    "assetRoot": "assets/icons/",
+    "usage": [
+      "动效图标引用 Lottie JSON，不得套进 gj-icon，也不得用 CSS 手绘代替。",
+      "系统启用 prefers-reduced-motion 时停止循环动画，可改用对应静态 General Icon。",
+      "加载类动效失败或超时后必须停止，并切到错误说明。"
+    ]
+  },
+  "icons": [
+    {
+      "name": "loading_line",
+      "category": "Loading",
+      "style": "line",
+      "format": "lottie-json",
+      "file": "animation/loading_line.json",
+      "keywords": [
+        "loading",
+        "line"
+      ]
+    },
+    {
+      "name": "loading_3_line",
+      "category": "Loading",
+      "style": "line",
+      "format": "lottie-json",
+      "file": "animation/loading_3_line.json",
+      "keywords": [
+        "loading",
+        "3",
+        "line"
+      ]
+    },
+    {
+      "name": "loading_4_line",
+      "category": "Loading",
+      "style": "line",
+      "format": "lottie-json",
+      "file": "animation/loading_4_line.json",
+      "keywords": [
+        "loading",
+        "4",
+        "line"
+      ]
+    },
+    {
+      "name": "more_2_line",
+      "category": "More",
+      "style": "line",
+      "format": "lottie-json",
+      "file": "animation/more_2_line.json",
+      "keywords": [
+        "more",
+        "2",
+        "line"
+      ]
+    }
+  ]
+}

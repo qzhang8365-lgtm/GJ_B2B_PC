@@ -1,0 +1,155 @@
+{
+  "$schema": "gj-design-skill/icon-manifest/v1",
+  "kind": "file",
+  "source": {
+    "catalog": "assets/icons/fileicon/png/file-icons.js",
+    "readOnly": true
+  },
+  "count": 10,
+  "rules": {
+    "assetRoot": "assets/icons/",
+    "usage": [
+      "只用于表示文件类型，不得当作 General Icon 或 Glass Icon。",
+      "size=small（24px-*）用于上传列表、附件行等紧凑场景；size=std 用于较大预览。",
+      "页面展示优先 png；需要可缩放源文件时用 file 指向的 SVG。"
+    ]
+  },
+  "icons": [
+    {
+      "name": "24px-excel",
+      "category": "File",
+      "style": "file",
+      "size": "small",
+      "file": "fileicon/24px-excel.svg",
+      "png": "fileicon/png/24px-excel.png",
+      "keywords": [
+        "24px",
+        "excel",
+        "file",
+        "small"
+      ]
+    },
+    {
+      "name": "24px-img",
+      "category": "File",
+      "style": "file",
+      "size": "small",
+      "file": "fileicon/24px-img.svg",
+      "png": "fileicon/png/24px-img.png",
+      "keywords": [
+        "24px",
+        "img",
+        "file",
+        "small"
+      ]
+    },
+    {
+      "name": "24px-pdf",
+      "category": "File",
+      "style": "file",
+      "size": "small",
+      "file": "fileicon/24px-pdf.svg",
+      "png": "fileicon/png/24px-pdf.png",
+      "keywords": [
+        "24px",
+        "pdf",
+        "file",
+        "small"
+      ]
+    },
+    {
+      "name": "24px-ppt",
+      "category": "File",
+      "style": "file",
+      "size": "small",
+      "file": "fileicon/24px-ppt.svg",
+      "png": "fileicon/png/24px-ppt.png",
+      "keywords": [
+        "24px",
+        "ppt",
+        "file",
+        "small"
+      ]
+    },
+    {
+      "name": "24px-text",
+      "category": "File",
+      "style": "file",
+      "size": "small",
+      "file": "fileicon/24px-text.svg",
+      "png": "fileicon/png/24px-text.png",
+      "keywords": [
+        "24px",
+        "text",
+        "file",
+        "small"
+      ]
+    },
+    {
+      "name": "24px-word",
+      "category": "File",
+      "style": "file",
+      "size": "small",
+      "file": "fileicon/24px-word.svg",
+      "png": "fileicon/png/24px-word.png",
+      "keywords": [
+        "24px",
+        "word",
+        "file",
+        "small"
+      ]
+    },
+    {
+      "name": "doc",
+      "category": "File",
+      "style": "file",
+      "size": "std",
+      "file": "fileicon/doc.svg",
+      "png": "fileicon/png/doc.png",
+      "keywords": [
+        "doc",
+        "file",
+        "std"
+      ]
+    },
+    {
+      "name": "pdf",
+      "category": "File",
+      "style": "file",
+      "size": "std",
+      "file": "fileicon/pdf.svg",
+      "png": "fileicon/png/pdf.png",
+      "keywords": [
+        "pdf",
+        "file",
+        "std"
+      ]
+    },
+    {
+      "name": "pptx",
+      "category": "File",
+      "style": "file",
+      "size": "std",
+      "file": "fileicon/pptx.svg",
+      "png": "fileicon/png/pptx.png",
+      "keywords": [
+        "pptx",
+        "file",
+        "std"
+      ]
+    },
+    {
+      "name": "xlsx",
+      "category": "File",
+      "style": "file",
+      "size": "std",
+      "file": "fileicon/xlsx.svg",
+      "png": "fileicon/png/xlsx.png",
+      "keywords": [
+        "xlsx",
+        "file",
+        "std"
+      ]
+    }
+  ]
+}

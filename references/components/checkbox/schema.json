@@ -1,0 +1,226 @@
+{
+  "$schema": "gj-design-skill/component-schema/v1",
+  "component": "Checkbox",
+  "source": {
+    "rulesSection": "Checkbox 多选框",
+    "inventoryPage": "checkbox✅",
+    "status": "figma-audited",
+    "figmaAudit": "updated-2026-09-10"
+  },
+  "purpose": "在独立选项中选择零项、一项或多项，并支持父子全选联动。",
+  "figma": {
+    "fileKey": "8b01I1e3TzH1IhYlr3tJzd",
+    "pageNodeId": "2401:9",
+    "componentSets": [
+      {
+        "nodeId": "2470:190",
+        "name": "checkbox item",
+        "variants": 7,
+        "variantNodeIds": [
+          "2470:191",
+          "2470:193",
+          "2470:195",
+          "2470:198",
+          "2470:200",
+          "2470:204",
+          "2470:207"
+        ]
+      },
+      {
+        "nodeId": "2472:198",
+        "name": "checkbox",
+        "variants": 7,
+        "variantNodeIds": [
+          "2472:199",
+          "2472:202",
+          "2472:205",
+          "2472:208",
+          "2472:211",
+          "2472:214",
+          "2472:217"
+        ]
+      },
+      {
+        "nodeId": "2472:256",
+        "name": "Checkbox Group",
+        "variants": 6,
+        "variantNodeIds": [
+          "2472:257",
+          "2472:259",
+          "2472:262",
+          "2472:266",
+          "2472:271",
+          "2472:277"
+        ]
+      }
+    ],
+    "rawProperties": {
+      "item": {
+        "Checked": [
+          false,
+          true
+        ],
+        "hover": [
+          "off",
+          "on"
+        ],
+        "Disabled": [
+          "off",
+          "on"
+        ],
+        "Indeterminate": [
+          "off",
+          "on"
+        ]
+      },
+      "label": {
+        "checked": [
+          false,
+          true
+        ],
+        "hover": [
+          false,
+          true
+        ],
+        "disable": [
+          false,
+          true
+        ],
+        "Indeterminate": [
+          "off",
+          "on"
+        ]
+      },
+      "group": {
+        "Property 1": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      }
+    },
+    "visualStateCoverage": [
+      "default",
+      "hover",
+      "checked",
+      "indeterminate",
+      "disabled",
+      "checked-disabled",
+      "indeterminate-disabled"
+    ],
+    "missingInteractiveVariants": [
+      "pressed",
+      "focused"
+    ],
+    "missingInteractiveVariantsNote": "2026-09-10 设计确认（CHK-005）：不需要为 Pressed / Focus 单独补 Figma variant，现有 Hover（指针交互反馈）与 Checked（选中状态反馈）已能满足需求；键盘可访问性的 focus-visible 环仍由代码承担，与是否补 Figma variant 无关。"
+  },
+  "properties": {
+    "checked": "boolean",
+    "indeterminate": "boolean",
+    "disabled": "boolean",
+    "label": "string",
+    "count": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ]
+  },
+  "defaults": {
+    "checked": false,
+    "indeterminate": false,
+    "disabled": false
+  },
+  "dimensions": {
+    "control": 16,
+    "radius": 4,
+    "labelGap": 8,
+    "labelLineBox": 22,
+    "groupItemHeight": 32,
+    "figmaGroupGap": 24,
+    "font": "14/22"
+  },
+  "stateBindings": {
+    "default": {
+      "background": "Background/Container",
+      "border": "Border/secondary",
+      "text": "Text/Primary"
+    },
+    "hover": {
+      "background": "Background/Container",
+      "border": "边框色/品牌 (legacy, #2B73FF)",
+      "text": "Text/Primary"
+    },
+    "checked": {
+      "fill": "Brand/GJ_Blue",
+      "mark": "Text/reversal",
+      "text": "Text/Primary"
+    },
+    "indeterminate": {
+      "fill": "Brand/GJ_Blue",
+      "mark": "Text/reversal",
+      "text": "Text/Primary"
+    },
+    "disabled": {
+      "background": "Background/Background",
+      "border": "Border/secondary",
+      "text": "文本色/disable 或 Text/disable"
+    },
+    "checked-disabled": {
+      "background": "Background/Background",
+      "border": "Border/secondary",
+      "mark": "Text/disable",
+      "text": "文本色/disable"
+    },
+    "indeterminate-disabled": {
+      "background": "Background/Background",
+      "border": "Border/secondary",
+      "mark": "Text/disable",
+      "text": "文本色/disable"
+    }
+  },
+  "typography": {
+    "figmaTextStyle": "Body_14px_regular",
+    "resolved": "Microsoft YaHei / 14 / 22 / 400",
+    "currentSystemEquivalent": "中文/S8-CN-R",
+    "status": "legacy-binding-pending-confirmation"
+  },
+  "behavior": {
+    "nativeElement": "input[type=checkbox]",
+    "toggleTarget": "control and complete label",
+    "groupSync": "All children checked => checked; some => indeterminate; none => default.",
+    "implementationSupplements": "Pressed 与 focus-visible 由代码补齐，不属于当前 Figma variant。"
+  },
+  "constraints": [
+    "Indeterminate is a parent summary, not a third business value.",
+    "Use Radio when only one result is allowed.",
+    "Disabled does not respond.",
+    "CHK-003 已关闭（2026-09-08 设计确认）：Figma 实测 Group 水平间距 24px，设计确认允许的实现区间为 20-24px；componentToken 默认取 20px，可在区间内按密度调整，不再使用旧值 16px。"
+  ],
+  "pendingExtraction": [],
+  "confirmedDecisions": [
+    {
+      "id": "CHK-002",
+      "date": "2026-09-10",
+      "decision": "Checked 与 Indeterminate 的控件填充正式统一使用 Brand/GJ_Blue；勾选和横线使用 Text/reversal。Figma 与 componentToken 已一致。",
+      "source": "用户设计确认 + Figma 节点 2470:195 / 2470:204 变量复核"
+    },
+    {
+      "id": "CHK-003",
+      "date": "2026-09-08",
+      "decision": "Group 间距允许在 20-24px 范围内设置，非固定单值；componentToken 默认值取 20px（Interval/space6），上限 24px（Interval/space7）。",
+      "source": "用户设计确认"
+    },
+    {
+      "id": "CHK-005",
+      "date": "2026-09-10",
+      "decision": "不新增 Pressed / Focus Figma variant。当前 Hover 与 Checked 两个已有状态已可满足交互需求；代码侧保留 :focus-visible 键盘焦点环（3px, Background/BT_B20系），不依赖 Figma variant。",
+      "source": "用户设计确认"
+    }
+  ]
+}

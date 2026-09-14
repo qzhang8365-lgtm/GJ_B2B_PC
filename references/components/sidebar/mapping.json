@@ -1,0 +1,103 @@
+{
+  "$schema": "gj-design-skill/component-mapping/v1",
+  "figmaComponent": "Sidebar_menu_* + sidebar_item",
+  "codeComponent": "GjSidebar",
+  "sourceNodes": [
+    "4148:18584",
+    "4148:18563",
+    "4148:18585",
+    "4148:18773",
+    "4148:18772",
+    "4148:18774",
+    "4148:19075",
+    "4148:19076",
+    "4148:19098",
+    "4156:958",
+    "4148:17361",
+    "2638:1003",
+    "3030:1065",
+    "3134:1789",
+    "3987:994",
+    "4769:3370"
+  ],
+  "propertyMap": {
+    "surface": "light | blue | background（三套母版，不是 item 轴）",
+    "state": "expanded=展开 200；collapsed=收起 56。代码 .gj-sidebar.is-collapsed",
+    "mode": "item mode（light|dark）。blue 容器强制 dark，其余 light",
+    "Level": "level（first|second|third）",
+    "collapse": "item collapsed",
+    "active": "is-active",
+    "selected": "is-selected",
+    "collapsebutton": "collapseButton"
+  },
+  "valueMap": {
+    "surface.light": "Background/Container + item light",
+    "surface.blue": "Primitive/DeepBlue/DB10 + item dark",
+    "surface.background": "Background/Background + item light",
+    "state.expanded": "栏宽 200，显示品牌图和 fold",
+    "state.collapsed": "栏宽 56，只显示 expand 和一级图标"
+  },
+  "normalization": {
+    "oldProperty1": "曾用 Property 1=Default/Variant2。2026-09-10 已改为 state=expanded/collapsed，不再兼容旧名。",
+    "oldRules.columnWidth": "组件母版栏宽 200/56，全量采用。标注表 3987:994 的 208/240/288 与收起 64/80 已否决（SNB-007），不写入 layout Token。",
+    "itemWidth": "原子母版 176；组合内拉满菜单内容宽 184。",
+    "componentSet": "页上 4 套：item 20 + 三套菜单各 2（state=expanded/collapsed）。旧 7/20 把 7 个顶层节点当成套，且没把菜单 2 态计入 variants。展示画板和实例不计套。"
+  },
+  "tokenMap": {
+    "column.width": "200 · 三套菜单母版 state=expanded，全量采用",
+    "column.collapsed": "56 · 三套菜单母版 state=collapsed，全量采用；不用 64/80",
+    "brand.height": 56,
+    "brand.paddingInline": "Interval/space5",
+    "brand.paddingBlock": "Interval/space4",
+    "logo": "110×24 插槽",
+    "fold": 24,
+    "menu.padding": "Interval/space3",
+    "menu.gap": "Interval/space2",
+    "subtree.paddingInlineStart": "Interval/space6",
+    "subtree.gap": "Interval/space2",
+    "rail": "1px; light=Background/MK_10; dark=Background/BT_DB20",
+    "third.indent": "Interval/space4",
+    "light.surface": "Background/Container",
+    "blue.surface": "Primitive/DeepBlue/DB10",
+    "background.surface": "Background/Background",
+    "fold.light": "Text/Secondary",
+    "fold.blue": "Text/reversal",
+    "item.selected.background": "Background/Hover",
+    "item.hover.background": "Background/Hover",
+    "item.disabled.opacity": 0.5,
+    "item.light.first.icon": "follow label: Text/Primary · Active/Selected Text/blue · dark Text/reversal",
+    "item.light.default.arrow": "Background/MK_20"
+  },
+  "assetMap": {
+    "fold": "assets/icons/iconfont/icf_Arrow_fold.svg",
+    "expand": "assets/icons/iconfont/icf_Arrow_expand.svg",
+    "first.icon.sample": "assets/icons/iconfont/icf_system_home.svg",
+    "arrow.down": "assets/icons/iconfont/icf_Arrow_down.svg",
+    "arrow.up": "assets/icons/iconfont/icf_Arrow_up.svg",
+    "logo.light": "assets/images/preview/sidebar-logo-light.png",
+    "logo.reversal": "assets/images/preview/sidebar-logo-reversal.png",
+    "second.dot": "4px border-radius:50% currentColor。"
+  },
+  "runtimeMap": {
+    "shell": ".gj-sidebar",
+    "blue": ".gj-sidebar-blue",
+    "background": ".gj-sidebar-background",
+    "collapsed": ".gj-sidebar.is-collapsed",
+    "brand": ".gj-sidebar-brand",
+    "logo": ".gj-sidebar-logo",
+    "fold": ".gj-sidebar-fold",
+    "menu": ".gj-sidebar-menu",
+    "group": ".gj-sidebar-group",
+    "subtree": ".gj-sidebar-subtree",
+    "rail": ".gj-sidebar-rail",
+    "third": ".gj-sidebar-third",
+    "item": ".gj-sidebar-item"
+  },
+  "interactionMap": {
+    "fold": "品牌区按钮切换整栏 state=expanded / collapsed",
+    "expand": "一级展开露出二级+饰条；二级展开露出三级。一级手风琴。",
+    "select": "当前页 Selected；祖先 Active，不加选中底",
+    "hover": "Figma 无 Hover 变体。代码：默认态叠加 Background/Hover，浅色深色相同。",
+    "disabled": "Figma 无 Disabled 变体。代码：opacity 50%。"
+  }
+}

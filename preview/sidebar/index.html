@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GJ Design System · 侧边栏导航 Sidebar</title>
+<link rel="stylesheet" href="../../assets/styles/gj-b2b-tokens.css?v=sidebar-9"><link rel="stylesheet" href="../../assets/styles/gj-b2b-components.css?v=sidebar-9"><link rel="stylesheet" href="../../assets/styles/component-docs.css?v=1">
+<style>
+:root{--font:var(--ds-font-family-ui)}*{box-sizing:border-box}html,body{margin:0;min-height:100%}body{color:var(--ds-text-primary);font:14px/1.55 var(--font)}button,input,select{font:inherit;color:inherit}.shell{max-width:var(--docs-page-max-width);margin:auto;padding:var(--docs-page-padding)}.intro{margin:0 4px 30px}.eyebrow{margin-bottom:10px;color:var(--ds-text-blue);font-size:13px;font-weight:600}.intro h1{margin:0 0 8px;font-size:32px;line-height:42px}.intro p{max-width:980px;margin:0;color:var(--ds-text-secondary);font-size:15px;line-height:1.75}.component{padding:24px;border-radius:20px;background:var(--ds-background-container);margin-bottom:24px}.component-heading{display:flex;align-items:center;gap:12px;padding-bottom:16px;border-bottom:1px solid var(--ds-border-default)}.component-heading h1{margin:0;font-size:28px;line-height:32px}.component-heading span{color:var(--ds-text-tertiary);font-size:14px}.component-description{margin:24px 0;color:var(--ds-text-secondary)}.grid{display:grid;grid-template-columns:minmax(0,3fr) minmax(320px,2fr);gap:16px;align-items:start}.column{display:grid;gap:16px;min-width:0}.panel{min-width:0;padding:20px;border:1px solid var(--ds-border-default);border-radius:12px;background:var(--ds-background-container)}.panel-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:16px}.panel-head h2{margin:0;font-size:16px;font-weight:600}.panel-head span{color:var(--ds-text-tertiary);font-size:12px}.board{display:grid;gap:16px;grid-template-columns:repeat(2,minmax(0,1fr))}.board-card.dark{background:#101828}.board-card.dark h3{color:var(--ds-text-reversal)}.stack{display:grid;gap:8px}.board-card.dark .row>span{color:rgba(255,255,255,.55)}.stage{min-height:280px;display:grid;place-items:center;padding:24px;border:1px dashed var(--ds-border-secondary);border-radius:12px;background:var(--ds-background-background)}.stage.dark{background:#101828;border-color:transparent}.stage.menu{min-height:640px;place-items:start center;align-content:start}.controls{margin-top:18px;padding-top:18px;border-top:1px solid var(--ds-border-default)}.controls h3{margin:0;font-size:16px}.control-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 16px;margin-top:14px}.control{display:grid;gap:7px}.control input,.control select{height:36px;min-width:0;padding:0 10px;border:1px solid var(--ds-border-secondary);border-radius:6px;background:var(--ds-background-container)}.event{margin-top:12px;color:var(--ds-text-tertiary);font-size:12px}.event b{color:var(--ds-text-primary)}.rules{display:grid;gap:10px}.rule{padding:14px 16px;border-radius:10px;background:var(--ds-background-background)}.rule b{display:block;margin-bottom:4px}.rule p{margin:0;color:var(--ds-text-secondary);font-size:13px}.note{margin:0;color:var(--ds-text-tertiary);font-size:12px;line-height:18px}.combo-board{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.combo-card{padding:16px;border-radius:10px;background:var(--ds-background-background)}.combo-card h3{margin:0 0 12px;font-size:14px}.combo-pair{display:flex;flex-direction:column;gap:12px;align-items:flex-start}.combo-col{display:grid;gap:8px;justify-items:start;width:100%}.combo-col>span{color:var(--ds-text-tertiary);font-size:12px}@media(max-width:1080px){.grid,.board,.control-grid{grid-template-columns:1fr}.combo-board{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:760px){.shell{padding:var(--docs-page-padding-compact)}.component{padding:18px}.combo-board{grid-template-columns:1fr}}
+/* Unified component-document flow. */
+.component{margin-bottom:24px;padding:var(--docs-section-padding);border-radius:var(--docs-section-radius)}
+.grid{display:flex;flex-direction:column;gap:0;min-width:0}
+.column{display:grid;gap:0;min-width:0}
+.column:first-child{order:1}
+.column:first-child>.panel{padding:32px 0;border:0;border-top:1px solid var(--ds-border-default);border-radius:0;background:transparent}
+.column:first-child>.panel:first-child{padding-top:0;border-top:0}
+.interaction-title{order:2;margin:32px 0 16px;padding-top:32px;border-top:1px solid var(--ds-border-default);font-size:18px;line-height:28px}
+.column:last-child{order:3;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.column:last-child:before{content:"交互演示";grid-column:1/-1;margin:32px 0 0;padding-top:32px;border-top:1px solid var(--ds-border-default);font-size:18px;font-weight:600;line-height:28px}
+.column:last-child>.panel{min-width:0;border-radius:var(--docs-panel-radius)}
+.combo-card{min-width:0;overflow:auto;border-radius:var(--docs-panel-radius)}
+.combo-pair{flex-direction:row;align-items:flex-start}
+.combo-col{width:auto;min-width:0}
+.board-card.dark,.stage.dark{background:var(--ds-primitive-deep-blue-db10)}
+.stage{min-width:0;max-width:100%;overflow:auto;border-radius:var(--docs-panel-radius)}
+.stage.docs-surface-white{background:var(--ds-background-container)}
+.stage.docs-surface-gray{background:var(--ds-background-background)}
+.control input,.control select{border-radius:var(--docs-item-radius)}
+.docs-spec-table{min-width:760px}
+@media(max-width:1080px){.column:last-child{grid-template-columns:1fr}}
+</style><script src="../../assets/scripts/font-runtime.js"></script>
+</head><body><main class="docs-shell">
+<header class="docs-page-head"><div class="docs-eyebrow">导航组件 · Navigation</div><h1>侧边栏导航 Sidebar</h1><p>承载产品的稳定主导航与层级路径，支持浅色、深蓝和全局背景三种表面，以及展开与收起两种栏状态。</p></header>
+
+<section class="component docs-sheet" id="menu"><header class="docs-section-head"><div><h2>组件结构与变体</h2><p>三套表面保持同一结构；整栏 state 与导航行的 collapse、active、selected 分别管理。</p></div></header>
+<div class="grid"><section class="column">
+<article class="panel"><div class="panel-head"><h2>三套表面</h2><span>同结构，只换颜色</span></div><div class="combo-board" id="comboBoard"></div></article>
+<article class="panel"><div class="panel-head"><h2>一级 / 二级展开</h2><span>实例 4156:958</span></div><div class="combo-board" id="expandBoard"></div></article>
+<article class="panel"><div class="panel-head"><h2>sidebar_item · 已发布变体</h2><span>light / dark 对照 · 20 个子变体</span></div><div class="board" id="variantBoard"></div></article>
+<article class="panel"><div class="panel-head"><h2>结构与规格</h2><span>本画板已核对</span></div><div class="ds-table-wrap"><table class="ds-table"><thead><tr><th>结构</th><th>规格</th><th>规则</th></tr></thead><tbody><tr><td>展开栏 / 收起栏</td><td>state=expanded 200 / collapsed 56；收起样本高 420，展开样本高 612</td><td>高度随条目变化。整栏 state 与行级 collapse 不是同一轴</td></tr><tr><td>品牌区</td><td>高 56；水平 16、垂直 12</td><td>展开：110×24 品牌槽 + fold 24；收起只居中 expand</td></tr><tr><td>一级展开子树</td><td>左 20；饰条 1px；与列表间距 4</td><td>浅色 MK_10，深色 BT_DB20；三级再左缩 12、高 36</td></tr><tr><td>Hover / Disabled</td><td>Figma 无变体</td><td>Hover = 默认态 + Background/Hover；Disabled = 50% 透明。浅色深色相同</td></tr><tr><td>blue</td><td>Primitive/DeepBlue/DB10</td><td>行用 item dark；折叠图标 reversal</td></tr></tbody></table></div></article>
+<article class="panel"><div class="panel-head"><h2>sidebar_item · 结构与规格</h2><span>只覆盖导航行</span></div><div class="ds-table-wrap"><table class="ds-table"><thead><tr><th>结构</th><th>规格</th><th>规则</th></tr></thead><tbody><tr><td>展开行</td><td>原子母版宽 176px；水平 12px；主行间距 8px</td><td>一级/二级高 40；三级高 36。组合内拉满</td></tr><tr><td>收起行</td><td>40 × 40px</td><td>仅一级；只留 16px 图标</td></tr><tr><td>圆角</td><td>一级默认 4；强调与二/三级 8</td><td>Active 不加选中底</td></tr><tr><td>选中底</td><td>Background/Hover</td><td>浅色强调 Text/blue；深色一级 reversal，二三级 DB04</td></tr><tr><td>一级 / 二级 / 三级</td><td>图标 16 / 点 4 / 仅文案</td><td>一级图标跟随文案；light 默认箭头才是 MK_20</td></tr></tbody></table></div></article>
+<article class="panel"><div class="panel-head"><h2>整栏选用规则</h2><span>Usage rules</span></div><div class="docs-spec-table-wrap"><table class="docs-spec-table"><thead><tr><th>主题</th><th>推荐做法</th><th>边界与避免</th></tr></thead><tbody><tr><td>栏宽</td><td>展开 200px，收起 56px，全量采用母版尺寸。</td><td>不按视口改用标注表中的 208 / 240 / 288 或 64 / 80。</td></tr><tr><td>三套表面</td><td>只切换容器表面与行 mode，结构保持一致。</td><td>不要为 blue 单独编写布局。</td></tr><tr><td>层级饰条</td><td>1px 饰条只出现在已展开的一级下方；浅色用 MK_10，深色用 BT_DB20。</td><td>不要与 Border/default 混用。</td></tr><tr><td>Hover</td><td>在默认外观上叠加 Background/Hover。</td><td>不另造 Hover 色，也不改变字重。</td></tr></tbody></table></div></article>
+<article class="panel"><div class="panel-head"><h2>导航行选用规则</h2><span>sidebar_item</span></div><div class="docs-spec-table-wrap"><table class="docs-spec-table"><thead><tr><th>主题</th><th>推荐做法</th><th>边界与避免</th></tr></thead><tbody><tr><td>Active / Selected</td><td>祖先 Active 只加粗并展开箭头；当前页 Selected 才显示选中底。</td><td>不得把展开路径全部标成当前页。</td></tr><tr><td>图标颜色</td><td>一级图标跟随文案；dark 模式使用 reversal。</td><td>MK_20 仅用于 light 默认箭头，不套用到主图标。</td></tr><tr><td>blue 容器</td><td>组合 dark 模式的 sidebar_item。</td><td>Background 是容器表面，不是 item 属性轴。</td></tr><tr><td>Disabled</td><td>仅在入口不可用且仍需展示信息架构时使用。</td><td>禁用项不得触发展开或选择。</td></tr></tbody></table></div></article>
+</section><aside class="column"><article class="panel"><div class="panel-head"><h2>交互属性</h2><span>展开树 × 表面 × 整栏收起</span></div><div class="stage menu" id="menuStage"><div id="menuPreview"></div></div><div class="controls"><h3>属性控制</h3><div class="control-grid"><label class="control">表面<select id="surface"><option value="light">light · Container</option><option value="blue">blue · DB10</option><option value="background">background</option></select></label><label class="control">栏状态<select id="column"><option value="expanded">expanded · 200</option><option value="collapsed">collapsed · 56</option></select></label><label class="control">禁用演示<select id="menuDisabled"><option value="false">无禁用</option><option value="true">最后一条一级禁用</option></select></label></div><p class="event">最近事件：<b id="menuEvent">尚未操作</b></p><p class="note">点击一级/二级展开分支。Hover 用 Background/Hover。折叠钮切换整栏时保留展开路径。</p></div></article>
+<article class="panel"><div class="panel-head"><h2>sidebar_item · 交互属性</h2><span>原子行 · 非整栏</span></div><div class="stage" id="stage"><div id="preview"></div></div><div class="controls"><h3>属性控制</h3><div class="control-grid"><label class="control">模式<select id="mode"><option value="light">light</option><option value="dark">dark</option></select></label><label class="control">层级<select id="level"><option value="first">first</option><option value="second">second</option><option value="third">third</option></select></label><label class="control">收起<select id="collapse"><option value="false">false</option><option value="true">true</option></select></label><label class="control">Active<select id="active"><option value="false">false</option><option value="true">true</option></select></label><label class="control">Selected<select id="selected"><option value="false">false</option><option value="true">true</option></select></label><label class="control">展开箭头<select id="collapsebutton"><option value="true">true</option><option value="false">false</option></select></label><label class="control">Disabled<select id="itemDisabled"><option value="false">false</option><option value="true">true · 50%</option></select></label></div><p class="event">最近事件：<b id="event">尚未操作</b></p><p class="note" id="comboNote"></p></div></article></aside></div></section>
+</main>
+<script>
+const iconUrl=name=>`../../assets/icons/iconfont/${name}`;
+const logoUrl=name=>`../../assets/images/preview/${name}`;
+const labels={first:'一级导航',second:'二级导航',third:'三级导航'};
+function branch(prefix){
+  return [
+    {id:prefix+'s1',label:'二级导航',children:[{id:prefix+'s1t1',label:'三级导航'}]},
+    {id:prefix+'s2',label:'二级导航',children:[
+      {id:prefix+'s2t1',label:'三级导航'},
+      {id:prefix+'s2t2',label:'三级导航'},
+      {id:prefix+'s2t3',label:'三级导航'}
+    ]}
+  ];
+}
+const sampleTree=[
+  {id:'f1',label:'一级导航',children:branch('f1')},
+  {id:'f2',label:'一级导航',children:branch('f2')},
+  {id:'f3',label:'一级导航',children:branch('f3')},
+  {id:'f4',label:'一级导航'},
+  {id:'f5',label:'一级导航'},
+  {id:'f6',label:'一级导航'},
+  {id:'f7',label:'一级导航'},
+  {id:'f8',label:'一级导航'}
+];
+function findNode(nodes,id){
+  for(const node of nodes){
+    if(node.id===id) return node;
+    const found=node.children&&findNode(node.children,id);
+    if(found) return found;
+  }
+  return null;
+}
+function ancestorIds(nodes,id,trail=[]){
+  for(const node of nodes){
+    const next=trail.concat(node.id);
+    if(node.id===id) return next;
+    const found=node.children&&ancestorIds(node.children,id,next);
+    if(found) return found;
+  }
+  return null;
+}
+function itemMarkup(opts){
+  const {mode='light',level='first',collapse=false,active=false,selected=false,collapsebutton=true,disabled=false,id=''}=opts;
+  const classes=['gj-sidebar-item'];
+  if(mode==='dark') classes.push('gj-sidebar-item-dark');
+  if(level==='second') classes.push('gj-sidebar-item-second');
+  if(level==='third') classes.push('gj-sidebar-item-third');
+  if(collapse) classes.push('gj-sidebar-item-collapsed');
+  if(active) classes.push('is-active');
+  if(selected) classes.push('is-selected');
+  if(disabled) classes.push('is-disabled');
+  const label=opts.label||labels[level];
+  let lead='';
+  if(level==='first') lead=`<span class="gj-sidebar-item-icon" style="--gj-icon:url('${iconUrl('icf_system_home.svg')}')"></span>`;
+  else if(level==='second') lead='<span class="gj-sidebar-item-dot"></span>';
+  const labelEl=collapse?'':`<span class="gj-sidebar-item-label">${label}</span>`;
+  const showArrow=collapsebutton && !collapse && level!=='third';
+  const arrow=active?'icf_Arrow_up.svg':'icf_Arrow_down.svg';
+  const arrowEl=showArrow?`<span class="gj-sidebar-item-arrow" style="--gj-icon:url('${iconUrl(arrow)}')"></span>`:'';
+  const aria=collapse?` aria-label="${label}"`:'';
+  const idAttr=id?` data-id="${id}"`:'';
+  const disabledAttr=disabled?' disabled':'';
+  return `<button type="button" class="${classes.join(' ')}"${idAttr}${disabledAttr}${aria}><span class="gj-sidebar-item-main">${lead}${labelEl}</span>${arrowEl}</button>`;
+}
+function subtreeMarkup(nodes,opts){
+  const {mode,expanded,selected,disabledId,level}=opts;
+  const seconds=nodes.filter(node=>level==='second');
+  const thirds=nodes.filter(node=>level==='third');
+  if(level==='third'){
+    return `<div class="gj-sidebar-third">${nodes.map(node=>itemMarkup({mode,level:'third',label:node.label,id:node.id,selected:selected===node.id,disabled:disabledId===node.id,collapsebutton:false})).join('')}</div>`;
+  }
+  const rows=nodes.map(node=>{
+    const open=expanded.has(node.id);
+    const isAncestor=(ancestorIds(sampleTree,selected)||[]).includes(node.id);
+    const row=itemMarkup({mode,level:'second',label:node.label,id:node.id,active:open||isAncestor,selected:selected===node.id,collapsebutton:!!node.children,disabled:disabledId===node.id});
+    const kids=open&&node.children?subtreeMarkup(node.children,{mode,expanded,selected,disabledId,level:'third'}):'';
+    return row+kids;
+  }).join('');
+  return `<div class="gj-sidebar-subtree"><span class="gj-sidebar-rail" aria-hidden="true"></span><div class="gj-sidebar-subtree-list">${rows}</div></div>`;
+}
+function menuItemsMarkup(opts){
+  const {mode,tree,expanded,selected,disabledId,collapsed}=opts;
+  return tree.map(node=>{
+    const hasKids=!!(node.children&&node.children.length);
+    const open=!collapsed && expanded.has(node.id);
+    const isAncestor=(ancestorIds(tree,selected)||[]).includes(node.id);
+    const row=itemMarkup({
+      mode,level:'first',label:node.label,id:node.id,
+      collapse:collapsed,active:!collapsed&&(open||isAncestor),selected:selected===node.id,
+      collapsebutton:hasKids,disabled:disabledId===node.id
+    });
+    if(!open||!hasKids) return row;
+    return `<div class="gj-sidebar-group">${row}${subtreeMarkup(node.children,{mode,expanded,selected,disabledId,level:'second'})}</div>`;
+  }).join('');
+}
+function sidebarMarkup(opts){
+  const {surface='light',collapsed=false,tree=sampleTree,expanded=new Set(),selected='',disabledId=''}=opts;
+  const classes=['gj-sidebar'];
+  if(surface==='blue') classes.push('gj-sidebar-blue');
+  if(surface==='background') classes.push('gj-sidebar-background');
+  if(collapsed) classes.push('is-collapsed');
+  const mode=surface==='blue'?'dark':'light';
+  const logo=surface==='blue'?'sidebar-logo-reversal.png':'sidebar-logo-light.png';
+  const fold=collapsed?'icf_Arrow_expand.svg':'icf_Arrow_fold.svg';
+  const foldLabel=collapsed?'展开侧栏':'收起侧栏';
+  return `<aside class="${classes.join(' ')}"><div class="gj-sidebar-brand"><div class="gj-sidebar-logo"><img src="${logoUrl(logo)}" alt="国金证券"></div><button type="button" class="gj-sidebar-fold" aria-label="${foldLabel}" aria-expanded="${String(!collapsed)}"><span style="--gj-icon:url('${iconUrl(fold)}')"></span></button></div><nav class="gj-sidebar-menu">${menuItemsMarkup({mode,tree,expanded,selected,disabledId,collapsed})}</nav></aside>`;
+}
+const surfaces=[
+  {id:'light',title:'light · Container'},
+  {id:'blue',title:'blue · DB10'},
+  {id:'background',title:'background'}
+];
+const sampleExpanded=new Set(['f2','f2s2']);
+const sampleSelected='f2s2t2';
+function renderComboBoard(){
+  document.getElementById('comboBoard').innerHTML=surfaces.map(surface=>`<div class="combo-card"><h3>${surface.title}</h3><div class="combo-pair"><div class="combo-col"><span>expanded 200</span>${sidebarMarkup({surface:surface.id,collapsed:false,expanded:new Set(),selected:''})}</div><div class="combo-col"><span>collapsed 56</span>${sidebarMarkup({surface:surface.id,collapsed:true,expanded:new Set(),selected:''})}</div></div></div>`).join('');
+  document.getElementById('expandBoard').innerHTML=surfaces.map(surface=>`<div class="combo-card"><h3>${surface.title}</h3><div class="combo-col"><span>一级 + 二级展开</span>${sidebarMarkup({surface:surface.id,collapsed:false,expanded:sampleExpanded,selected:sampleSelected})}</div></div>`).join('');
+}
+const menuState={surface:'light',collapsed:false,expanded:new Set(['f2','f2s2']),selected:'f2s2t2',disabledLast:false};
+const surfaceEl=document.getElementById('surface'),columnEl=document.getElementById('column'),menuDisabledEl=document.getElementById('menuDisabled'),menuPreview=document.getElementById('menuPreview'),menuEvent=document.getElementById('menuEvent');
+function currentDisabledId(){return menuState.disabledLast?'f8':'';}
+function renderMenu(){
+  menuPreview.innerHTML=sidebarMarkup({...menuState,disabledId:currentDisabledId()});
+  const menuStage=document.getElementById('menuStage');
+  menuStage.classList.toggle('docs-surface-white',menuState.surface==='background');
+  menuStage.classList.toggle('docs-surface-gray',menuState.surface!=='background');
+  const root=menuPreview.querySelector('.gj-sidebar');
+  root.querySelector('.gj-sidebar-fold').onclick=()=>{
+    menuState.collapsed=!menuState.collapsed;
+    columnEl.value=menuState.collapsed?'collapsed':'expanded';
+    menuEvent.textContent=menuState.collapsed?'收起整栏 · collapsed':'展开整栏 · expanded';
+    renderMenu();
+  };
+  root.querySelectorAll('.gj-sidebar-item').forEach(btn=>{
+    btn.onclick=()=>{
+      const id=btn.dataset.id;
+      const node=findNode(sampleTree,id);
+      if(!node||btn.disabled) return;
+      if(node.children&&node.children.length){
+        const isFirst=sampleTree.some(item=>item.id===id);
+        if(menuState.expanded.has(id)) menuState.expanded.delete(id);
+        else {
+          if(isFirst){
+            [...menuState.expanded].forEach(openId=>{if(sampleTree.some(item=>item.id===openId)) menuState.expanded.delete(openId);});
+          } else {
+            const parent=sampleTree.find(item=>item.children&&item.children.some(child=>child.id===id));
+            if(parent) parent.children.forEach(child=>{if(child.id!==id) menuState.expanded.delete(child.id);});
+          }
+          menuState.expanded.add(id);
+        }
+        menuEvent.textContent=menuState.expanded.has(id)?`展开 ${node.label}`:`收起 ${node.label}`;
+      } else {
+        menuState.selected=id;
+        menuEvent.textContent=`选中 ${node.label}`;
+      }
+      renderMenu();
+    };
+  });
+}
+surfaceEl.onchange=()=>{menuState.surface=surfaceEl.value;menuEvent.textContent=`切换表面 ${menuState.surface}`;renderMenu();};
+columnEl.onchange=()=>{menuState.collapsed=columnEl.value==='collapsed';menuEvent.textContent=menuState.collapsed?'收起整栏 · collapsed':'展开整栏 · expanded';renderMenu();};
+menuDisabledEl.onchange=()=>{menuState.disabledLast=menuDisabledEl.value==='true';menuEvent.textContent=menuState.disabledLast?'最后一条一级禁用 · 50%':'取消禁用';renderMenu();};
+const published=[
+  {mode:'light',level:'first',collapse:false,active:false,selected:false,title:'first 默认'},
+  {mode:'light',level:'first',collapse:false,active:true,selected:false,title:'first Active 未选'},
+  {mode:'light',level:'first',collapse:false,active:true,selected:true,title:'first Selected'},
+  {mode:'light',level:'first',collapse:true,active:false,selected:false,title:'first 收起'},
+  {mode:'light',level:'first',collapse:true,active:true,selected:true,title:'first 收起选中'},
+  {mode:'light',level:'second',collapse:false,active:false,selected:false,title:'second 默认'},
+  {mode:'light',level:'second',collapse:false,active:true,selected:false,title:'second Active 未选'},
+  {mode:'light',level:'second',collapse:false,active:true,selected:true,title:'second Selected'},
+  {mode:'light',level:'third',collapse:false,active:false,selected:false,title:'third 默认'},
+  {mode:'light',level:'third',collapse:false,active:true,selected:true,title:'third Selected'},
+  {mode:'dark',level:'first',collapse:false,active:false,selected:false,title:'first 默认'},
+  {mode:'dark',level:'first',collapse:false,active:true,selected:false,title:'first Active 未选'},
+  {mode:'dark',level:'first',collapse:false,active:true,selected:true,title:'first Selected'},
+  {mode:'dark',level:'first',collapse:true,active:false,selected:false,title:'first 收起'},
+  {mode:'dark',level:'first',collapse:true,active:true,selected:true,title:'first 收起选中'},
+  {mode:'dark',level:'second',collapse:false,active:false,selected:false,title:'second 默认'},
+  {mode:'dark',level:'second',collapse:false,active:true,selected:false,title:'second Active 未选'},
+  {mode:'dark',level:'second',collapse:false,active:true,selected:true,title:'second Selected'},
+  {mode:'dark',level:'third',collapse:false,active:false,selected:false,title:'third 默认'},
+  {mode:'dark',level:'third',collapse:false,active:true,selected:true,title:'third Selected'}
+];
+function renderBoard(){
+  const board=document.getElementById('variantBoard');
+  ['light','dark'].forEach(mode=>{
+    const card=document.createElement('div');
+    card.className='board-card'+(mode==='dark'?' dark':'');
+    card.innerHTML=`<h3>${mode}</h3><div class="stack"></div>`;
+    const stack=card.querySelector('.stack');
+    published.filter(item=>item.mode===mode).forEach(item=>{
+      const row=document.createElement('div');
+      row.className='row';
+      row.innerHTML=`<span>${item.title}</span>${itemMarkup(item)}`;
+      stack.append(row);
+    });
+    const hoverRow=document.createElement('div');
+    hoverRow.className='row';
+    hoverRow.innerHTML=`<span>Hover 规则 · 默认 + Background/Hover</span>${itemMarkup({mode,level:'first'})}`;
+    stack.append(hoverRow);
+    const disabledRow=document.createElement('div');
+    disabledRow.className='row';
+    disabledRow.innerHTML=`<span>Disabled 规则 · 50%</span>${itemMarkup({mode,level:'first',disabled:true})}`;
+    stack.append(disabledRow);
+    board.append(card);
+  });
+}
+const modeEl=document.getElementById('mode'),levelEl=document.getElementById('level'),collapseEl=document.getElementById('collapse'),activeEl=document.getElementById('active'),selectedEl=document.getElementById('selected'),collapsebuttonEl=document.getElementById('collapsebutton'),itemDisabledEl=document.getElementById('itemDisabled'),preview=document.getElementById('preview'),stage=document.getElementById('stage'),eventEl=document.getElementById('event'),comboNote=document.getElementById('comboNote');
+function current(){
+  const level=levelEl.value;
+  const collapse=level==='first' && collapseEl.value==='true';
+  const third=level==='third';
+  if(level!=='first') collapseEl.value='false';
+  if(third || collapse) collapsebuttonEl.value=third?'false':collapsebuttonEl.value;
+  return {
+    mode:modeEl.value,
+    level,
+    collapse,
+    active:activeEl.value==='true',
+    selected:selectedEl.value==='true',
+    collapsebutton:!third && !collapse && collapsebuttonEl.value==='true',
+    disabled:itemDisabledEl.value==='true'
+  };
+}
+function isPublished(opts){
+  return !opts.disabled && published.some(item=>item.mode===opts.mode && item.level===opts.level && item.collapse===opts.collapse && item.active===opts.active && item.selected===opts.selected);
+}
+function render(){
+  const opts=current();
+  collapseEl.disabled=opts.level!=='first';
+  collapsebuttonEl.disabled=opts.level==='third' || opts.collapse;
+  stage.classList.toggle('dark',opts.mode==='dark');
+  preview.innerHTML=itemMarkup(opts);
+  const btn=preview.querySelector('button');
+  if(!opts.disabled) btn.onclick=()=>{eventEl.textContent=`点击 ${labels[opts.level]}`;};
+  comboNote.textContent=opts.disabled?'Disabled 是代码规则，不在 20 个子变体中。透明度 50%。':(isPublished(opts)?'当前组合在画板 20 个子变体中。悬停时叠加 Background/Hover。':'当前组合不在已发布的 20 个子变体中，仅用于探测实现，不是画板真值。');
+}
+[modeEl,levelEl,collapseEl,activeEl,selectedEl,collapsebuttonEl,itemDisabledEl].forEach(el=>el.onchange=render);
+renderComboBoard();
+renderMenu();
+renderBoard();
+render();
+</script></body></html>

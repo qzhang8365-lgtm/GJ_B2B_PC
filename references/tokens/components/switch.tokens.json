@@ -1,0 +1,170 @@
+{
+  "$schema": "gj-design-skill/component-tokens/v1",
+  "component": "Switch",
+  "source": {
+    "componentSchema": "references/components/switch/schema.json",
+    "confirmedRules": "references/design-system-rules.md#switch-开关",
+    "implementation": "assets/styles/gj-b2b-components.css#.gj-switch"
+  },
+  "properties": {
+    "size": {
+      "default": "medium",
+      "values": [
+        "medium",
+        "small"
+      ]
+    },
+    "checked": {
+      "default": false,
+      "values": [
+        false,
+        true
+      ]
+    },
+    "disabled": {
+      "default": false,
+      "values": [
+        false,
+        true
+      ]
+    },
+    "visualState": {
+      "default": "off",
+      "values": [
+        "off",
+        "on",
+        "pressed-off",
+        "pressed-on",
+        "focused-off",
+        "focused-on",
+        "disabled-off",
+        "disabled-on"
+      ],
+      "publicProp": false
+    }
+  },
+  "tokens": {
+    "size.medium.width": {
+      "value": 44,
+      "unit": "px",
+      "cssVariable": "--ds-component-switch-size-medium-width"
+    },
+    "size.medium.height": {
+      "value": "{Components/control-S}",
+      "resolved": 24,
+      "unit": "px",
+      "cssVariable": "--ds-component-switch-size-medium-height"
+    },
+    "size.medium.thumb": {
+      "value": 20,
+      "unit": "px",
+      "cssVariable": "--ds-component-switch-size-medium-thumb"
+    },
+    "size.medium.thumbOffX": {
+      "value": 2,
+      "unit": "px",
+      "cssVariable": "--ds-component-switch-size-medium-thumb-off-x"
+    },
+    "size.medium.thumbOnX": {
+      "value": 22,
+      "unit": "px",
+      "cssVariable": "--ds-component-switch-size-medium-thumb-on-x"
+    },
+    "size.small.width": {
+      "value": 28,
+      "unit": "px",
+      "cssVariable": "--ds-component-switch-size-small-width"
+    },
+    "size.small.height": {
+      "value": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-switch-size-small-height"
+    },
+    "size.small.thumb": {
+      "value": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-switch-size-small-thumb"
+    },
+    "size.small.thumbOffX": {
+      "value": 2,
+      "unit": "px",
+      "cssVariable": "--ds-component-switch-size-small-thumb-off-x"
+    },
+    "size.small.thumbOnX": {
+      "value": 14,
+      "unit": "px",
+      "cssVariable": "--ds-component-switch-size-small-thumb-on-x"
+    },
+    "track.radius": {
+      "value": "{Radius/Radius-LG}",
+      "resolved": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-switch-track-radius"
+    },
+    "disabled.opacity": {
+      "value": 0.4,
+      "cssVariable": "--ds-component-switch-disabled-opacity"
+    },
+    "pressed.scale": {
+      "value": 0.98,
+      "cssVariable": "--ds-component-switch-pressed-scale"
+    },
+    "focus.ringWidth": {
+      "value": 3,
+      "unit": "px",
+      "cssVariable": "--ds-component-switch-focus-ring-width"
+    },
+    "focus.ringColor": {
+      "value": "{Background/BT_B15}",
+      "cssVariable": "--ds-component-switch-focus-ring-color"
+    }
+  },
+  "stateMatrix": {
+    "off": {
+      "track": "Text/disable",
+      "text": "Text/Primary",
+      "thumb": "Background/Container"
+    },
+    "on": {
+      "track": "Brand/GJ_Blue",
+      "text": "Text/Primary",
+      "thumb": "Background/Container"
+    },
+    "pressed-off": {
+      "track": "Text/disable",
+      "text": "Text/Primary",
+      "thumb": "Background/Container"
+    },
+    "pressed-on": {
+      "track": "Brand/GJ_Blue",
+      "text": "Text/Primary",
+      "thumb": "Background/Container"
+    },
+    "focused-off": {
+      "track": "Text/disable",
+      "text": "Text/Primary",
+      "thumb": "Background/Container"
+    },
+    "focused-on": {
+      "track": "Brand/GJ_Blue",
+      "text": "Text/Primary",
+      "thumb": "Background/Container"
+    },
+    "disabled-off": {
+      "track": "Text/disable",
+      "text": "Text/disable",
+      "thumb": "Background/Container"
+    },
+    "disabled-on": {
+      "track": "Brand/GJ_Blue",
+      "text": "Text/disable",
+      "thumb": "Background/Container"
+    }
+  },
+  "behavior": {
+    "change": "Applies immediately; restore previous state and explain failure.",
+    "disabled": "Apply disabled.opacity and block toggle.",
+    "direction": "Off thumb is left; On thumb is right.",
+    "risk": "High-risk or irreversible changes require confirmation or explicit action."
+  }
+}

@@ -1,0 +1,759 @@
+{
+  "$schema": "gj-design-skill/icon-manifest/v1",
+  "kind": "glass",
+  "source": {
+    "catalog": "assets/icons/glassicon/glass-icons.js",
+    "readOnly": true
+  },
+  "count": 59,
+  "rules": {
+    "canvas": 64,
+    "format": "svg-source-png-display",
+    "assetRoot": "assets/icons/",
+    "usage": [
+      "Glass / Effect 图标含渐变和毛玻璃，不得转成单色 Icon Font，也不得套进 gj-icon。",
+      "页面 <img> 必须引用 png 字段；SVG 的 foreignObject/backdrop-filter 在 img 中会丢失毛玻璃。",
+      "SVG 仅作源资产或下载，禁止业务侧覆盖内部颜色。"
+    ]
+  },
+  "icons": [
+    {
+      "name": "account",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/account.svg",
+      "png": "glassicon/png/account.png",
+      "keywords": [
+        "account",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "ai",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/ai.svg",
+      "png": "glassicon/png/ai.png",
+      "keywords": [
+        "ai",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "assetCustody",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/assetCustody.svg",
+      "png": "glassicon/png/assetCustody.png",
+      "keywords": [
+        "asset",
+        "custody",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "building",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/building.svg",
+      "png": "glassicon/png/building.png",
+      "keywords": [
+        "building",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "businessInteraction",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/businessInteraction.svg",
+      "png": "glassicon/png/businessInteraction.png",
+      "keywords": [
+        "business",
+        "interaction",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "businessProcessing",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/businessProcessing.svg",
+      "png": "glassicon/png/businessProcessing.png",
+      "keywords": [
+        "business",
+        "processing",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "character",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/character.svg",
+      "png": "glassicon/png/character.png",
+      "keywords": [
+        "character",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "clear",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/clear.svg",
+      "png": "glassicon/png/clear.png",
+      "keywords": [
+        "clear",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "cloakControl",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/cloakControl.svg",
+      "png": "glassicon/png/cloakControl.png",
+      "keywords": [
+        "cloak",
+        "control",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "collection",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/collection.svg",
+      "png": "glassicon/png/collection.png",
+      "keywords": [
+        "collection",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "comprehensiveIntegration",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/comprehensiveIntegration.svg",
+      "png": "glassicon/png/comprehensiveIntegration.png",
+      "keywords": [
+        "comprehensive",
+        "integration",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "config",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/config.svg",
+      "png": "glassicon/png/config.png",
+      "keywords": [
+        "config",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "custodyOutsourcing",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/custodyOutsourcing.svg",
+      "png": "glassicon/png/custodyOutsourcing.png",
+      "keywords": [
+        "custody",
+        "outsourcing",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "data",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/data.svg",
+      "png": "glassicon/png/data.png",
+      "keywords": [
+        "data",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "day",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/day.svg",
+      "png": "glassicon/png/day.png",
+      "keywords": [
+        "day",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "delete",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/delete.svg",
+      "png": "glassicon/png/delete.png",
+      "keywords": [
+        "delete",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "demand",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/demand.svg",
+      "png": "glassicon/png/demand.png",
+      "keywords": [
+        "demand",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "demandFeedback",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/demandFeedback.svg",
+      "png": "glassicon/png/demandFeedback.png",
+      "keywords": [
+        "demand",
+        "feedback",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "digitalIntelligence",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/digitalIntelligence.svg",
+      "png": "glassicon/png/digitalIntelligence.png",
+      "keywords": [
+        "digital",
+        "intelligence",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "digitalPlatform",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/digitalPlatform.svg",
+      "png": "glassicon/png/digitalPlatform.png",
+      "keywords": [
+        "digital",
+        "platform",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "enterpriseIR",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/enterpriseIR.svg",
+      "png": "glassicon/png/enterpriseIR.png",
+      "keywords": [
+        "enterprise",
+        "ir",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "fail",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/fail.svg",
+      "png": "glassicon/png/fail.png",
+      "keywords": [
+        "fail",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "fileaccess",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/fileaccess.svg",
+      "png": "glassicon/png/fileaccess.png",
+      "keywords": [
+        "fileaccess",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "functionInnovation",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/functionInnovation.svg",
+      "png": "glassicon/png/functionInnovation.png",
+      "keywords": [
+        "function",
+        "innovation",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "functionSettings",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/functionSettings.svg",
+      "png": "glassicon/png/functionSettings.png",
+      "keywords": [
+        "function",
+        "settings",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "fundResearch",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/fundResearch.svg",
+      "png": "glassicon/png/fundResearch.png",
+      "keywords": [
+        "fund",
+        "research",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "fundSettlement",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/fundSettlement.svg",
+      "png": "glassicon/png/fundSettlement.png",
+      "keywords": [
+        "fund",
+        "settlement",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "home",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/home.svg",
+      "png": "glassicon/png/home.png",
+      "keywords": [
+        "home",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "industry",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/industry.svg",
+      "png": "glassicon/png/industry.png",
+      "keywords": [
+        "industry",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "invest",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/invest.svg",
+      "png": "glassicon/png/invest.png",
+      "keywords": [
+        "invest",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "investmentManage",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/investmentManage.svg",
+      "png": "glassicon/png/investmentManage.png",
+      "keywords": [
+        "investment",
+        "manage",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "investmentSupervision",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/investmentSupervision.svg",
+      "png": "glassicon/png/investmentSupervision.png",
+      "keywords": [
+        "investment",
+        "supervision",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "location",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/location.svg",
+      "png": "glassicon/png/location.png",
+      "keywords": [
+        "location",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "lockIn",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/lockIn.svg",
+      "png": "glassicon/png/lockIn.png",
+      "keywords": [
+        "lock",
+        "in",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "menu",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/menu.svg",
+      "png": "glassicon/png/menu.png",
+      "keywords": [
+        "menu",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "message-1",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/message-1.svg",
+      "png": "glassicon/png/message-1.png",
+      "keywords": [
+        "message",
+        "1",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "message",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/message.svg",
+      "png": "glassicon/png/message.png",
+      "keywords": [
+        "message",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "multiTerminal",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/multiTerminal.svg",
+      "png": "glassicon/png/multiTerminal.png",
+      "keywords": [
+        "multi",
+        "terminal",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "noData",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/noData.svg",
+      "png": "glassicon/png/noData.png",
+      "keywords": [
+        "no",
+        "data",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "northData",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/northData.svg",
+      "png": "glassicon/png/northData.png",
+      "keywords": [
+        "north",
+        "data",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "operate",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/operate.svg",
+      "png": "glassicon/png/operate.png",
+      "keywords": [
+        "operate",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "permissionActivation",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/permissionActivation.svg",
+      "png": "glassicon/png/permissionActivation.png",
+      "keywords": [
+        "permission",
+        "activation",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "platformApplication",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/platformApplication.svg",
+      "png": "glassicon/png/platformApplication.png",
+      "keywords": [
+        "platform",
+        "application",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "processNodes",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/processNodes.svg",
+      "png": "glassicon/png/processNodes.png",
+      "keywords": [
+        "process",
+        "nodes",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "profile",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/profile.svg",
+      "png": "glassicon/png/profile.png",
+      "keywords": [
+        "profile",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "publish",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/publish.svg",
+      "png": "glassicon/png/publish.png",
+      "keywords": [
+        "publish",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "questionare",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/questionare.svg",
+      "png": "glassicon/png/questionare.png",
+      "keywords": [
+        "questionare",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "risk",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/risk.svg",
+      "png": "glassicon/png/risk.png",
+      "keywords": [
+        "risk",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "securityLending",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/securityLending.svg",
+      "png": "glassicon/png/securityLending.png",
+      "keywords": [
+        "security",
+        "lending",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "stockManagement",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/stockManagement.svg",
+      "png": "glassicon/png/stockManagement.png",
+      "keywords": [
+        "stock",
+        "management",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "study-blue",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/study-blue.svg",
+      "png": "glassicon/png/study-blue.png",
+      "keywords": [
+        "study",
+        "blue",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "study",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/study.svg",
+      "png": "glassicon/png/study.png",
+      "keywords": [
+        "study",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "success",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/success.svg",
+      "png": "glassicon/png/success.png",
+      "keywords": [
+        "success",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "trade",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/trade.svg",
+      "png": "glassicon/png/trade.png",
+      "keywords": [
+        "trade",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "transactionProgress",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/transactionProgress.svg",
+      "png": "glassicon/png/transactionProgress.png",
+      "keywords": [
+        "transaction",
+        "progress",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "transactions",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/transactions.svg",
+      "png": "glassicon/png/transactions.png",
+      "keywords": [
+        "transactions",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "valuationAccounting",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/valuationAccounting.svg",
+      "png": "glassicon/png/valuationAccounting.png",
+      "keywords": [
+        "valuation",
+        "accounting",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "valueEnhancement",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/valueEnhancement.svg",
+      "png": "glassicon/png/valueEnhancement.png",
+      "keywords": [
+        "value",
+        "enhancement",
+        "glass",
+        "effect"
+      ]
+    },
+    {
+      "name": "video",
+      "category": "Glass",
+      "style": "effect",
+      "file": "glassicon/video.svg",
+      "png": "glassicon/png/video.png",
+      "keywords": [
+        "video",
+        "glass",
+        "effect"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "$schema":"gj-design-skill/component-schema/v1",
+  "component":"Dropdown",
+  "status":"local-contract",
+  "source":{"figma_file_key":"8b01I1e3TzH1IhYlr3tJzd","page_node_id":"2401:12","read_only":true},
+  "description":"Popup menu panel for selecting one or multiple options.",
+  "component_sets":[
+    {"name":"dropdown_singleselect","node_id":"3271:6737"},
+    {"name":"dropdown_multiselect","node_id":"3271:6785"},
+    {"name":"dropdown menu","node_id":"2896:1464","properties":{"arrow":"boolean","direction":["top-left","top-center","top-right","bottom-left","bottom-center","bottom-right"]}},
+    {"name":"dropdown_item/scroll","node_id":"2896:353","properties":{"state":["default","hover"]}}
+  ],
+  "metrics":{"container_padding":8,"container_radius":8,"item_height":32,"item_radius":4,"default_width":198,"default_height":240},
+  "normalized_api":{"mode":"single|multiple","placement":"none|top-left|top-center|top-right|bottom-left|bottom-center|bottom-right","maxHeight":"number","closeOnSelect":"boolean","closeOnOutside":"boolean"},
+  "selection_behavior":{
+    "single":{"selectedOptionCardinality":"0..1","closeOnSelect":true,"indicator":"Exactly one check icon is visible when a value is selected."},
+    "multiple":{"selectedOptionCardinality":"0..n","closeOnSelect":false,"indicator":"Checkbox state is independent for every option."},
+    "focus":"Arrow-key focus is transient and must not change aria-selected, value, selected background semantics or check icons.",
+    "placeholder":"Placeholder belongs to the Selector trigger and must not be inserted into the Dropdown option collection.",
+    "dismiss":["outside pointer","Escape","Tab navigation"],
+    "reopen":"Focus the selected option; if none is selected, focus the first enabled option."
+  },
+  "state_priority":["disabled","selected","focused","hover","default"],
+  "viewport_behavior":{"width":"At least the trigger width; expand for content within viewport constraints.","collision":"Flip vertically before constraining height.","overflow":"Scroll the option region only; never let an ancestor clip the popup."},
+  "data_states":["loading","empty","error"],
+  "dynamic_options":"Synchronize selection by stable value. Remove missing single values and restore the trigger placeholder; remove only invalid values in multiple mode.",
+  "keyboard":{"navigate":["ArrowDown","ArrowUp","Home","End"],"activate":["Enter","Space"],"dismiss":["Escape","Tab"]},
+  "tokens":{"background":"Background/Container","hover":"Background/Hover","text":"Text/Primary","accent":"Text/blue","checkboxBorder":"Border/secondary","shadow":"shadow-down"},
+  "sourceAudit":{"status":"pending-figma-binding-audit","issue":"DRP-002","localInteractionContract":"complete"}
+}

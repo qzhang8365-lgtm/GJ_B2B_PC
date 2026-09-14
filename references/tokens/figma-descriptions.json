@@ -1,0 +1,17 @@
+{
+  "$schema": "gj-design-skill/figma-descriptions/v1",
+  "purpose": "Raw Figma descriptions retained for traceability. Primitive color descriptions in this file are not semantic rules and are not copied into the global palette.",
+  "colorDescriptions": {
+    "Text/Tertiary": "辅助信息、placeholder",
+    "Text/disable": "Disable禁用",
+    "Primitive/Blue/B01": "极浅背景",
+    "Primitive/Blue/B02": "hover背景",
+    "Primitive/Blue/B03": "选中背景",
+    "Primitive/Blue/B04": "辅助状态",
+    "Primitive/Blue/B05": "辅助状态",
+    "Primitive/Blue/B07": "Hover",
+    "Primitive/Blue/B08": "Pressed",
+    "Primitive/Blue/B09": "深色强调",
+    "Primitive/Blue/B10": "极深色"
+  }
+}

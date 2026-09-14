@@ -1,0 +1,100 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GJ Design System · 文字提示 Tooltip</title><link rel="stylesheet" href="../../assets/styles/gj-b2b-tokens.css"><link rel="stylesheet" href="../../assets/styles/gj-b2b-components.css?v=general-1"><link rel="stylesheet" href="../../assets/styles/data-table.css">
+<style>
+:root{--font:var(--ds-font-family-ui)}*{box-sizing:border-box}html,body{margin:0;min-height:100%}body{color:var(--ds-text-primary);font:14px/1.55 var(--font)}button,input,select{font:inherit;color:inherit}.shell{max-width:var(--docs-page-max-width);margin:auto;padding:var(--docs-page-padding)}.intro{margin:0 4px 30px}.eyebrow{margin-bottom:10px;color:var(--ds-text-blue);font-size:13px;font-weight:600}.intro h1{margin:0 0 8px;font-size:32px;line-height:42px}.intro p{max-width:980px;margin:0;color:var(--ds-text-secondary);font-size:15px;line-height:1.75}.component{padding:24px;border-radius:20px;background:var(--ds-background-container)}.component-heading{display:flex;align-items:center;gap:12px;padding-bottom:16px;border-bottom:1px solid var(--ds-border-default)}.component-heading h1{margin:0;font-size:28px;line-height:32px}.component-heading span{color:var(--ds-text-tertiary);font-size:14px}.component-description{margin:24px 0;color:var(--ds-text-secondary)}.grid{display:grid;grid-template-columns:minmax(0,3fr) minmax(360px,2fr);gap:16px;align-items:start}.column{display:grid;gap:16px;min-width:0}.panel{min-width:0;padding:20px;border:1px solid var(--ds-border-default);border-radius:12px;background:var(--ds-background-container)}.panel-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:16px}.panel-head h2{margin:0;font-size:16px;font-weight:600}.panel-head span{color:var(--ds-text-tertiary);font-size:12px}
+
+.tt-arrow{position:absolute;width:0;height:0;border-style:solid;border-color:transparent}
+.tt-arrow.side-bottom{bottom:-6px;border-width:6px 6px 0 6px;border-top-color:var(--tt-arrow-c)}
+.tt-arrow.side-top{top:-6px;border-width:0 6px 6px 6px;border-bottom-color:var(--tt-arrow-c)}
+.tt-arrow.side-right{right:-6px;border-width:6px 0 6px 6px;border-left-color:var(--tt-arrow-c)}
+.tt-arrow.side-left{left:-6px;border-width:6px 6px 6px 0;border-right-color:var(--tt-arrow-c)}
+.tt{position:relative;max-width:206px;padding:16px;border-radius:8px;font-size:14px;line-height:22px;text-align:left}
+.tt.dark{--tt-arrow-c:#000000CC;background:#000000CC;color:var(--ds-text-reversal)}
+.tt.light{--tt-arrow-c:var(--ds-background-container);background:var(--ds-background-container);color:var(--ds-text-primary);max-width:240px;box-shadow:var(--ds-effect-shadow-center)}
+
+.style-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.style-card{display:grid;justify-items:center;gap:14px;padding:28px 16px;border-radius:10px;background:var(--ds-background-background)}.style-card h3{margin:0;font-size:14px}.style-card p{margin:0;color:var(--ds-text-tertiary);font-size:12px;text-align:center}.style-card .trigger{height:32px;padding:0 14px;display:grid;place-items:center;border:1px solid var(--ds-border-secondary);border-radius:6px;background:var(--ds-background-container);font-size:13px}
+
+.rules{display:grid;gap:10px}.rule{padding:14px 16px;border-radius:10px;background:var(--ds-background-background)}.rule b{display:block;margin-bottom:4px}.rule p{margin:0;color:var(--ds-text-secondary);font-size:13px}
+.boundary-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:14px}.boundary-card{padding:14px;border-radius:10px;background:var(--ds-background-background)}.boundary-card b{display:block;margin-bottom:6px;font-size:13px}.boundary-card p{margin:0;color:var(--ds-text-secondary);font-size:12.5px;line-height:1.6}
+.dodont{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.dodont > div{padding:14px 16px;border-radius:10px}.dodont .do{background:var(--ds-feedback-success-bg,var(--ds-background-background))}.dodont .dont{background:var(--ds-feedback-error-bg,var(--ds-background-background))}.dodont b{display:block;margin-bottom:6px;font-size:13px}.dodont p{margin:0;color:var(--ds-text-secondary);font-size:12.5px;line-height:1.7}
+
+.stage{min-height:340px;display:grid;place-items:center;padding:24px;border:1px dashed var(--ds-border-secondary);border-radius:12px;background:var(--ds-background-background)}
+.controls{margin-top:18px;padding-top:18px;border-top:1px solid var(--ds-border-default)}.controls h3{margin:0;font-size:16px}.control-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 16px;margin-top:14px}.control{display:grid;gap:7px}.control input,.control select{height:36px;min-width:0;padding:0 10px;border:1px solid var(--ds-border-secondary);border-radius:6px;background:var(--ds-background-container)}.control.full{grid-column:1/-1}.event{margin-top:12px;color:var(--ds-text-tertiary);font-size:12px}.event b{color:var(--ds-text-primary)}
+.demo-trigger{height:36px;padding:0 16px;display:grid;place-items:center;border:1px solid var(--ds-border-secondary);border-radius:8px;background:var(--ds-background-container);font-size:13px;cursor:default}
+@media(max-width:1080px){.grid{grid-template-columns:1fr}}
+@media(max-width:760px){.shell{padding:var(--docs-page-padding-compact)}.component{padding:18px}.style-row,.control-grid,.boundary-row,.dodont{grid-template-columns:1fr}}
+</style>  <script src="../../assets/scripts/font-runtime.js"></script>
+</head><body><main class="shell">
+<header class="intro"><div class="eyebrow">操作反馈类型组件 · Feedback</div><h1>文字提示 Tooltip</h1><p>解释图标、字段、缩写或被截断内容的轻量、只读提示，不承载操作，不用于必须被看到的信息或需要多段说明的帮助内容。</p></header>
+<section class="component"><header class="component-heading"><h1>Tooltip</h1><span>Figma 已审计（figma-audited）· 5 项待确认已于 2026-09-08 由设计侧确认关闭</span></header><p class="component-description">来源：Figma 节点 <code>3582:1816</code>（dark，组件集 <code>toolip</code>）与 <code>3630:3385</code>（light，组件集 <code>toolip_fill</code>），文档页 <code>3623:2</code>。dark 与 light 在 Figma 源文件中保留为两个独立组件集，暂不合并；本页与 schema.json 在契约层用 <code>style</code> 属性把它们抽象为同一组件的两种取值。</p>
+<div class="grid"><section class="column">
+
+<article class="panel"><div class="panel-head"><h2>两种风格</h2><span>dark（默认，通用场景）/ light（一般不使用）</span></div><div class="style-row">
+<div class="style-card"><h3>Dark · 默认</h3><div class="trigger">悬浮触发元素</div><div class="tt dark">补充解释当前字段的含义、口径或使用限制<div class="tt-arrow side-bottom" style="left:50%"></div></div><p>通用默认场景使用</p></div>
+<div class="style-card"><h3>Light</h3><div class="trigger">悬浮触发元素</div><div class="tt light">补充解释当前字段的含义、口径或使用限制<div class="tt-arrow side-bottom" style="left:50%"></div></div><p>一般不使用（设计侧确认）</p></div>
+</div></article>
+
+<article class="panel"><div class="panel-head"><h2>位置（position）</h2><span>仅使用 top_center；箭头精确对齐触发元素中心</span></div><div class="style-row" style="grid-template-columns:1fr"><div class="style-card"><h3>top_center · 唯一取值</h3><div class="trigger">悬浮触发元素</div><div class="tt dark">top_center：与触发元素保持 8px 间距，箭头对齐触发元素视觉中心<div class="tt-arrow side-bottom" style="left:50%"></div></div></div></div></article>
+
+<article class="panel"><div class="panel-head"><h2>结构与规格</h2><span>固定表格样式</span></div><div class="ds-table-wrap"><table class="ds-table"><thead><tr><th>结构</th><th>规格</th><th>规则</th></tr></thead><tbody>
+<tr><td>容器（dark）</td><td>内边距 16px；圆角 8px；内容最大宽 206px</td><td>背景 <code>Background/MK_80</code>（<code>#000000CC</code>）；文字绑定 <code>Text/reversal</code>；无阴影。圆角与内边距为设计侧确认的固定值，不绑定变量。</td></tr>
+<tr><td>容器（light）</td><td>固定宽 240px；内边距 16px；圆角 8px</td><td>背景 <code>Background/Container</code>；文字 <code>Text/Primary</code>；使用 <code>shadow-center</code> 阴影（<code>Background/MK_10</code>，blur 15）。</td></tr>
+<tr><td>文字</td><td>14/22，PingFang SC Regular</td><td>绑定 <code>中文/S8-CN-R</code>（<code>.gj-type-cn-s8</code>）。</td></tr>
+<tr><td>箭头</td><td>16 × 10px 三角形</td><td>随 position 旋转指向触发元素；颜色跟随所在风格背景色（dark 用 MK_80，light 用 Container）。</td></tr>
+<tr><td>间距</td><td>与触发元素 8px；视口边缘至少 8px</td><td>空间不足时按 Top → Bottom → Right / Left 顺序翻转。</td></tr>
+</tbody></table></div></article>
+
+<article class="panel"><div class="panel-head"><h2>内容与文案</h2><span>Content</span></div><div class="rules">
+<div class="rule"><b>一次只解释一个概念</b><p>推荐 12–30 个中文字符，建议不超过 3 行，最多 4 行。超过时改用单独页面或帮助内容。</p></div>
+<div class="rule"><b>短语不强制句号，完整句使用正常标点</b><p>直接说明含义，不使用"提示："“这里是”等冗余前缀。</p></div>
+<div class="rule"><b>不放置交互与实时内容</b><p>不放置按钮、链接、输入项或实时变化的重要数据；不要重复界面上已经清楚呈现的标签。</p></div>
+</div></article>
+
+<article class="panel"><div class="panel-head"><h2>可访问性</h2><span>Accessibility</span></div><div class="rules">
+<div class="rule"><b>触发元素必须可键盘聚焦</b><p>使用 <code>aria-describedby</code> 关联 Tooltip，浮层使用 <code>role="tooltip"</code>。</p></div>
+<div class="rule"><b>不得只在 Tooltip 中放置必需信息</b><p>文字与背景对比度至少 4.5:1。</p></div>
+<div class="rule"><b>Tooltip 内不包含可聚焦控件</b><p>Hover 展示的内容需可悬停，且支持 Esc 关闭。</p></div>
+</div></article>
+
+<article class="panel"><div class="panel-head"><h2>组件边界与推荐 / 避免</h2><span>Boundary &amp; DoDont</span></div>
+<div class="boundary-row">
+<div class="boundary-card"><b>Tooltip</b><p>Hover / Focus 触发，解释当前元素，无操作。</p></div>
+<div class="boundary-card"><b>Popover</b><p>Click 触发，可承载较复杂信息和操作，持续停留。</p></div>
+<div class="boundary-card"><b>Toast</b><p>全局结果反馈，与当前元素无锚定关系，短时自动消失。</p></div>
+</div>
+<div class="dodont"><div class="do"><b>推荐</b><p>解释图标、补全截断文字、保持简短、自动避让。</p></div><div class="dont"><b>避免</b><p>隐藏必填标签、承载按钮、显示错误警告、页面加载后主动弹出、放置长段帮助内容。</p></div></div>
+</article>
+
+
+</section><aside class="column"><article class="panel"><div class="panel-head"><h2>交互属性</h2><span>Hover 触发元素查看</span></div><div class="stage"><div style="position:relative"><div id="trigger" class="demo-trigger">悬浮此处查看 Tooltip</div><div id="preview" class="tt dark" style="position:absolute;display:none"></div></div></div><div class="controls"><h3>属性控制</h3><div class="control-grid">
+<label class="control">风格 style<select id="styleSel"><option value="dark">dark（默认）</option><option value="light">light</option></select></label>
+<label class="control">箭头 polygon<select id="arrowSel"><option value="true">显示（默认）</option><option value="false">隐藏</option></select></label>
+<label class="control full">内容文字<input id="textInput" value="补充解释当前字段的含义、口径或使用限制"></label>
+</div><div class="event">最近事件：<b id="event">尚未触发</b></div></div></article></aside></div></section></main>
+<script>
+const trigger=document.getElementById('trigger'),preview=document.getElementById('preview'),styleSel=document.getElementById('styleSel'),arrowSel=document.getElementById('arrowSel'),textInput=document.getElementById('textInput'),eventEl=document.getElementById('event');
+const OFFSET=8,ARROW_MARGIN=12;
+function place(){
+  const tr=trigger.getBoundingClientRect(),host=trigger.parentElement.getBoundingClientRect();
+  preview.className='tt '+styleSel.value;
+  preview.textContent=textInput.value||'Tooltip 内容';
+  preview.style.display='block';
+  const tx=tr.left-host.left,ty=tr.top-host.top,tw=tr.width,th=tr.height;
+  const triggerCenterX=tx+tw/2;
+  const pw=preview.offsetWidth,ph=preview.offsetHeight;
+  // 仅支持 top_center：与触发元素保持 OFFSET 间距，水平居中对齐
+  const top=ty-ph-OFFSET,left=triggerCenterX-pw/2,side='bottom';
+  preview.style.left=left+'px';preview.style.top=top+'px';
+  preview.querySelectorAll('.tt-arrow').forEach(el=>el.remove());
+  if(arrowSel.value==='true'){
+    const arrow=document.createElement('div');
+    arrow.className='tt-arrow side-'+side;
+    const ax=Math.min(Math.max(triggerCenterX-left,ARROW_MARGIN),pw-ARROW_MARGIN);
+    arrow.style.left=ax+'px';
+    preview.appendChild(arrow);
+  }
+}
+trigger.addEventListener('mouseenter',()=>{place();eventEl.textContent='Hover 显示（top_center / '+styleSel.value+'）';});
+trigger.addEventListener('mouseleave',()=>{preview.style.display='none';eventEl.textContent='已关闭';});
+[styleSel,arrowSel,textInput].forEach(el=>el.addEventListener('input',()=>{if(preview.style.display!=='none'){place();}}));
+</script></body></html>

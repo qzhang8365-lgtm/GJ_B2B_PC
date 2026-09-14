@@ -1,0 +1,193 @@
+{
+  "$schema": "gj-design-skill/component-schema/v1",
+  "component": "Steps",
+  "source": {
+    "rulesSection": "Steps 步骤条",
+    "inventoryPage": "Steps✅",
+    "figmaFile": "8b01I1e3TzH1IhYlr3tJzd",
+    "figmaPage": "4465:8293",
+    "status": "figma-audited",
+    "figmaAudit": "done-2026-09-08"
+  },
+  "purpose": "显示具有明确先后顺序的多阶段任务进度。",
+  "implementation": {
+    "rootClass": "gj-steps",
+    "pointClass": "gj-steps-dot",
+    "itemClass": "gj-step",
+    "indicatorClass": "gj-step-indicator",
+    "titleClass": "gj-step b",
+    "descClass": "gj-step-desc",
+    "stateClasses": [
+      "gj-step-process",
+      "gj-step-finished"
+    ]
+  },
+  "figma": {
+    "fileKey": "8b01I1e3TzH1IhYlr3tJzd",
+    "pageNodeId": "4465:8293",
+    "pageName": "步骤条Steps",
+    "inventoryListed": {
+      "sets": 8,
+      "variants": 42,
+      "standalone": 0,
+      "note": "2026-09-10 设计确认：inventory.json 旧值 9/78 有误，正确数量为 8 套/42 variants（STP-001 已关闭）。"
+    },
+    "componentSets": [
+      {
+        "nodeId": "4493:9559",
+        "name": "progress_item/indicator_dot",
+        "variants": 2,
+        "note": "state=active|wait，20×20。finished 复用 active。wait 绑定 Background/Secondary。"
+      },
+      {
+        "nodeId": "4465:8298",
+        "name": "progress_item/indicator_serial",
+        "variants": 2,
+        "note": "state=wait|progress，32×32。finished 指示器复用 progress；2026-09-08 确认两态视觉相同，源文件只保留一态。"
+      },
+      {
+        "nodeId": "4493:8534",
+        "name": "progress_item/dot",
+        "variants": 8,
+        "note": "position × state；末项仍发布 wait / finished（没有 end+process）。与 Serial 末项命名不对称，视觉仍按 STP-003 归一为实心蓝、无出向。2026-09-10 起 Figma 已将 progress_item/point 改名为 progress_item/dot。"
+      },
+      {
+        "nodeId": "4493:9007",
+        "name": "progress_item/serial",
+        "variants": 8,
+        "note": "position × state；末项只发布 wait / process。2026-09-08 设计确认：end+finished 已改成 end+process（节点 4493:9032），两态视觉相同只保留 process。"
+      },
+      {
+        "nodeId": "4493:8732",
+        "name": "progress_item/dot_cell",
+        "variants": 7,
+        "note": "Dot 单元格，高 70（2026-09-10 前名为 point_cell）。BOOLEAN infovisible。代表：start process 4493:8731。"
+      },
+      {
+        "nodeId": "4493:9059",
+        "name": "progress_item/serial_cell",
+        "variants": 7,
+        "note": "2026-09-10 起已改名为 progress_item/serial_cell，消除与 4493:8732 的同名歧义（STP-002 已关闭）。内容是 Serial 单元格（32px 指示器），高 82。"
+      },
+      {
+        "nodeId": "4493:8772",
+        "name": "progress_dot",
+        "variants": 4,
+        "note": "四步 Dot 组合，step=step1–4，宽 1056 高 70（2026-09-10 前名为 progress_point）。"
+      },
+      {
+        "nodeId": "4493:9205",
+        "name": "progress_serial",
+        "variants": 4,
+        "note": "四步 Serial 组合，step=step1–4，宽 1056 高 82。"
+      }
+    ]
+  },
+  "properties": {
+    "style": [
+      "Dot",
+      "Serial"
+    ],
+    "current": "1-based index of the only Process item",
+    "count": [
+      3,
+      4,
+      5,
+      6
+    ],
+    "infoVisible": [
+      true,
+      false
+    ],
+    "interactiveFinished": "boolean"
+  },
+  "defaults": {
+    "style": "Dot",
+    "infoVisible": true,
+    "interactiveFinished": false
+  },
+  "itemStates": [
+    "wait",
+    "process",
+    "finished"
+  ],
+  "sizes": {
+    "itemWidth": 264,
+    "assemblyWidth.4": 1056,
+    "pageEdgeInset": 48,
+    "dot.indicator": 20,
+    "serial.indicator": 32,
+    "track.gap": 8,
+    "stack.gap": 4,
+    "titleToInfo.gap": 4,
+    "cell.height.dot": 70,
+    "cell.height.serial": 82,
+    "connector.thickness": 1
+  },
+  "typography": {
+    "title": "中文/S4-CN-S",
+    "description": "中文/S9-CN-R",
+    "serial": "中文/S4-CN-S"
+  },
+  "behavior": {
+    "continuity": "Items before the only Process item are Finished; following items are Wait.",
+    "navigation": "Finished items are clickable only when the business permits review or backward navigation.",
+    "connector": "Outgoing line of finished = Border/focused; outgoing line of process/wait = Border/secondary. End item has no outgoing line; end+process incoming = Border/focused."
+  },
+  "constraints": [
+    "Exactly one Process item at a time.",
+    "Prefer 3-6 steps.",
+    "Failure belongs in step content with recovery, not as Wait color.",
+    "Narrow layouts scroll rather than overlap items.",
+    "Title is 中文/S4-CN-S 16/24, not the old 18/26 rule.",
+    "Description is 中文/S9-CN-R 12/18, not 14/22.",
+    "Indicator-to-text gap is 4px, not 12px.",
+    "Serial finished keeps a solid Text/blue circle and the number; it is not an outline and not a check icon.",
+    "End position: Figma serial only publishes process (not finished). Runtime last-step finished uses that same visual.",
+    "Full-width page usage insets start/end by 48px (Interval/space10), not 0 and not the 264-cell 118px start/end padding.",
+    "Serial/Dot indicator, title and description share one horizontal center axis. Do not left-align start or right-align end."
+  ],
+  "dependencies": [
+    "Icon"
+  ],
+  "knownFigmaIssues": [],
+  "pendingExtraction": [],
+  "confirmedDecisions": [
+    {
+      "id": "STP-003",
+      "date": "2026-09-08",
+      "decision": "progress_item/serial 末项只保留 process。原 end+finished（4493:9032）已改名为 end+process。末项没有出向连接线，process 与 finished 视觉相同，实现里最后一步 finished 映射到同一视觉。",
+      "source": "用户设计确认 + get_design_context 4493:9032"
+    },
+    {
+      "id": "STP-004",
+      "date": "2026-09-08",
+      "decision": "indicator_serial 只发布 wait / progress。finished 指示器复用 progress 实心蓝圆与序号，不再单独出态。",
+      "source": "用户设计确认（process 与 finished 视觉相同，只保留一个）"
+    },
+    {
+      "id": "STP-005",
+      "date": "2026-09-09",
+      "decision": "页面全宽步骤条两侧各留 48px（40–60 的确认取值，Interval/space10）。指示器与标题、说明必须居中对齐；禁止首尾贴边或把 start/end 改成左/右对齐。组件规范页仍按 264 单元展示。这是页面组合规则，不是 Figma 264 单元格的 start 118px 内边距。",
+      "source": "用户确认（分步任务模式页）"
+    },
+    {
+      "id": "STP-002",
+      "date": "2026-09-10",
+      "decision": "Figma 已消除命名歧义：point 系列统一改名为 dot（progress_point→progress_dot，progress_item/point→progress_item/dot，progress_item/point_cell(4493:8732)→progress_item/dot_cell）；此前与 dot_cell 同名的 4493:9059（实际内容是 Serial 单元格）已正确改名为 progress_item/serial_cell，歧义消除。复查页面 4465:8293 全部相关节点已确认。代码契约同步：schema.json 的 properties.style/defaults.style/sizes 由 point 改为 dot；mapping.json 相应字段同步；assets/styles/gj-b2b-components.css 的 .gj-steps-point 类改名为 .gj-steps-dot，--ds-component-steps-point-indicator 变量改名为 --ds-component-steps-dot-indicator 并重新编译；preview/steps/index.html 的演示样式、脚本与文案同步改名。",
+      "source": "用户告知 + Figma 只读复查（get_metadata，节点 4465:8293）"
+    },
+    {
+      "id": "STP-001",
+      "date": "2026-09-10",
+      "decision": "确认 Steps 页面正确数量为 8 个组件集 / 42 个 variants，不是 inventory.json 记录的 9 套/78 variants。与用户提供画板 4465:8293 的只读复查（8 个画板、42 个 symbol）一致。references/components/inventory.json 中 Steps✅ 条目已更新为 8/42 并补充说明。",
+      "source": "用户设计确认"
+    }
+  ],
+  "partialMeasurements": [
+    "Dot（2026-09-10 前为 Point）active 指示器未单独 get_variable_defs 成功；与 Serial progress 同色，按 Text/blue 记录",
+    "连接线生成代码用 1.4px inset 画 0 高度 stroke；契约按 1px 实线实现",
+    "progress_item/dot（2026-09-10 前为 point）与 serial 的 start/end 在 track 层宽 142，单元格仍是 264",
+    "Dot 轨道末项 published 名仍是 finished，Serial 末项是 process；实现都按同一视觉"
+  ]
+}

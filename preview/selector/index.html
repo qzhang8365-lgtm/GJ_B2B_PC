@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>GJ Design System · 选择器 Selector</title>
+  <link rel="stylesheet" href="../../assets/styles/gj-b2b-tokens.css?v=selector-4">
+  <link rel="stylesheet" href="../../assets/styles/gj-b2b-components.css?v=selector-4">
+  <link rel="stylesheet" href="../../assets/styles/component-docs.css?v=2">
+  <style>
+    .structure-flow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:36px}.structure-card{position:relative;display:grid;min-height:112px;place-content:center;padding:16px;border-radius:8px;background:var(--ds-background-container);text-align:center}.structure-card:not(:last-child)::after{content:"+";position:absolute;left:calc(100% + 10px);top:50%;width:16px;color:var(--ds-text-blue);font-size:20px;font-weight:600;transform:translateY(-50%)}.structure-card b{font-size:15px}.structure-card span{margin-top:6px;color:var(--ds-text-tertiary);font-size:12px;line-height:20px}
+    .sample-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.sample-card{min-width:0;padding:20px;border-radius:8px;background:var(--ds-background-container)}.sample-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:16px}.sample-head b{font-size:15px}.sample-head span{color:var(--ds-text-tertiary);font-size:12px}.selector-width{width:198px;max-width:100%}.selector-width-wide{width:260px;max-width:100%}.static-focus{border-color:var(--ds-border-focused);box-shadow:0 0 0 var(--ds-component-selector-focus-ring-width,2px) var(--ds-component-selector-focus-ring-color,var(--ds-background-bt-b8))}.static-focus .gj-selector-arrow{transform:rotate(180deg)}.selector-value{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .size-list{display:flex;align-items:flex-end;gap:24px}.size-sample{display:grid;min-width:0;gap:10px}.size-sample small,.state-sample small{color:var(--ds-text-secondary);font-size:12px}.state-grid{display:grid;grid-template-columns:repeat(5,minmax(140px,1fr));gap:20px}.state-sample{display:grid;min-width:0;gap:10px}.state-grid-scroll{max-width:100%;overflow:auto;padding:2px 2px 12px}
+    .chip-line{display:flex;align-items:center;gap:4px;min-width:0;overflow:hidden}.chip-line .gj-selector-item{min-width:0}.chip-line .gj-selector-item>span{overflow:hidden;text-overflow:ellipsis}.overflow-count{flex:none;color:var(--ds-text-secondary);font-size:12px}.chip-disabled{opacity:var(--ds-component-selector-chip-disabled-opacity,.5)}
+    .playground{display:grid;grid-template-columns:minmax(0,3fr) minmax(280px,2fr);gap:16px}.interaction-stage{min-height:360px;padding:48px 24px;border-radius:8px;background:var(--ds-background-background)}.selector-live{width:240px;max-width:100%;margin:0 auto}.selector-live .gj-selector{width:100%}.selector-live-label{display:block;margin-bottom:8px;color:var(--ds-text-secondary)}.controls{padding:20px;border-radius:8px;background:var(--ds-background-container)}.controls h3{margin:0 0 16px;font-size:16px}.control-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 16px}.control{display:grid;gap:6px;min-width:0}.control label,.toggle{color:var(--ds-text-secondary)}.control select,.control input[type=text]{width:100%;height:36px;padding:0 10px;border:1px solid var(--ds-border-secondary);border-radius:6px;background:var(--ds-background-container);color:var(--ds-text-primary)}.toggle{min-height:36px;display:flex;align-items:center;gap:8px}.event{margin-top:14px;color:var(--ds-text-tertiary);font-size:12px}.event strong{color:var(--ds-text-primary)}
+    @media(max-width:980px){.playground{grid-template-columns:1fr}.state-grid{grid-template-columns:repeat(5,160px)}}@media(max-width:720px){.structure-flow{grid-template-columns:1fr;gap:36px}.structure-card:not(:last-child)::after{content:"↓";left:50%;top:calc(100% + 8px);transform:translateX(-50%)}.sample-grid{grid-template-columns:1fr}.size-list{display:grid}.control-grid{grid-template-columns:1fr}}
+  </style>
+  <script src="../../assets/scripts/font-runtime.js"></script>
+</head>
+<body>
+<main class="docs-shell">
+  <header class="docs-page-head"><div class="docs-eyebrow">信息录入组件 · Data Entry</div><h1>选择器 Selector</h1><p>用于从已知候选项中选择一个或多个结果。触发器负责当前值与展开入口，选项面板统一复用 Dropdown。</p></header>
+  <article class="docs-sheet">
+    <section class="docs-section">
+      <div class="docs-section-head"><div><h2>组成结构</h2><p>Selector 只承担输入触发与结果回显；候选项、选择指示和滚动边界由 Dropdown 管理。</p></div></div>
+      <div class="docs-stage docs-surface-gray"><div class="structure-flow"><div class="structure-card docs-structure-primary"><b>Selector</b><span>输入入口与选择结果</span></div><div class="structure-card"><b>Value / Placeholder</b><span>已选值或空值提示</span></div><div class="structure-card"><b>Arrow + Dropdown</b><span>展开入口与候选面板</span></div></div></div>
+    </section>
+    <section class="docs-section">
+      <div class="docs-section-head"><div><h2>选择模式</h2><p>平级唯一值使用单选；需要保留多个结果时使用多选及 Selection Item。存在父子关系的数据改用 Cascader。</p></div></div>
+      <div class="docs-stage docs-surface-gray"><div class="sample-grid">
+        <div class="sample-card"><div class="sample-head"><b>单选</b><span>唯一结果 · 选中后关闭</span></div><div class="selector-width"><button class="gj-selector-trigger" type="button"><span class="selector-value">资管产品</span><i class="gj-selector-arrow" style="--i:url('../../assets/icons/iconfont/icf_Arrow_down.svg')"></i></button></div></div>
+        <div class="sample-card"><div class="sample-head"><b>多选</b><span>连续选择 · 标签回显</span></div><div class="selector-width-wide"><div class="gj-selector-trigger"><span class="chip-line"><span class="gj-selector-item"><span>股票</span><button class="gj-selector-item-close" type="button" aria-label="删除股票"><i class="gj-selector-icon" style="--i:url('../../assets/icons/iconfont/icf_system_close-md.svg')"></i></button></span><span class="gj-selector-item"><span>债券</span><button class="gj-selector-item-close" type="button" aria-label="删除债券"><i class="gj-selector-icon" style="--i:url('../../assets/icons/iconfont/icf_system_close-md.svg')"></i></button></span></span><i class="gj-selector-arrow" style="--i:url('../../assets/icons/iconfont/icf_Arrow_down.svg')"></i></div></div></div>
+      </div></div>
+    </section>
+    <section class="docs-section">
+      <div class="docs-section-head"><div><h2>尺寸</h2><p>同一表单或同一操作层级中的输入类组件必须使用同一尺寸；默认采用 Medium。</p></div></div>
+      <div class="docs-stage docs-surface-gray"><div class="size-list">
+        <div class="size-sample"><small>Small · 24px</small><div class="selector-width"><button class="gj-selector-trigger gj-selector-trigger-small" type="button"><span class="gj-selector-placeholder">请选择</span><i class="gj-selector-arrow" style="--i:url('../../assets/icons/iconfont/icf_Arrow_down.svg')"></i></button></div></div>
+        <div class="size-sample"><small>Medium · 32px</small><div class="selector-width"><button class="gj-selector-trigger" type="button"><span class="gj-selector-placeholder">请选择</span><i class="gj-selector-arrow" style="--i:url('../../assets/icons/iconfont/icf_Arrow_down.svg')"></i></button></div></div>
+        <div class="size-sample"><small>Large · 40px</small><div class="selector-width"><button class="gj-selector-trigger gj-selector-trigger-large" type="button"><span class="gj-selector-placeholder">请选择</span><i class="gj-selector-arrow" style="--i:url('../../assets/icons/iconfont/icf_Arrow_down.svg')"></i></button></div></div>
+      </div></div>
+    </section>
+    <section class="docs-section">
+      <div class="docs-section-head"><div><h2>状态</h2><p>Selected 由当前值推导，Focus/Open 属于交互状态，Disabled 与 Error 为独立属性；禁用优先于聚焦。</p></div></div>
+      <div class="docs-stage docs-surface-gray"><div class="state-grid-scroll"><div class="state-grid">
+        <div class="state-sample"><small>默认</small><button class="gj-selector-trigger" type="button"><span class="gj-selector-placeholder">请选择</span><i class="gj-selector-arrow" style="--i:url('../../assets/icons/iconfont/icf_Arrow_down.svg')"></i></button></div>
+        <div class="state-sample"><small>已选</small><button class="gj-selector-trigger" type="button"><span>股票</span><i class="gj-selector-arrow" style="--i:url('../../assets/icons/iconfont/icf_Arrow_down.svg')"></i></button></div>
+        <div class="state-sample"><small>聚焦 / 展开</small><button class="gj-selector-trigger static-focus" type="button"><span>股票</span><i class="gj-selector-arrow" style="--i:url('../../assets/icons/iconfont/icf_Arrow_down.svg')"></i></button></div>
+        <div class="state-sample"><small>错误</small><button class="gj-selector-trigger gj-selector-trigger-error" type="button"><span class="gj-selector-placeholder">请选择</span><i class="gj-selector-arrow" style="--i:url('../../assets/icons/iconfont/icf_Arrow_down.svg')"></i></button></div>
+        <div class="state-sample"><small>禁用</small><button class="gj-selector-trigger" type="button" disabled><span>股票</span><i class="gj-selector-arrow" style="--i:url('../../assets/icons/iconfont/icf_Arrow_down.svg')"></i></button></div>
+      </div></div></div>
+    </section>
+    <section class="docs-section">
+      <div class="docs-section-head"><div><h2>多选结果与溢出</h2><p>标签按选择器尺寸联动；禁用标签不显示删除入口，结果过多时折叠为数量，不允许无限撑高字段。</p></div></div>
+      <div class="docs-stage docs-surface-gray"><div class="sample-grid">
+        <div class="sample-card"><div class="sample-head"><b>可删除结果</b><span>Selection Item</span></div><div class="selector-width-wide"><div class="gj-selector-trigger"><span class="chip-line"><span class="gj-selector-item"><span>股票</span><button class="gj-selector-item-close" type="button" aria-label="删除股票"><i class="gj-selector-icon" style="--i:url('../../assets/icons/iconfont/icf_system_close-md.svg')"></i></button></span><span class="gj-selector-item"><span>债券</span><button class="gj-selector-item-close" type="button" aria-label="删除债券"><i class="gj-selector-icon" style="--i:url('../../assets/icons/iconfont/icf_system_close-md.svg')"></i></button></span><span class="overflow-count">+2</span></span><i class="gj-selector-arrow" style="--i:url('../../assets/icons/iconfont/icf_Arrow_down.svg')"></i></div></div></div>
+        <div class="sample-card"><div class="sample-head"><b>禁用结果</b><span>不可删除</span></div><div class="selector-width-wide"><button class="gj-selector-trigger" type="button" disabled><span class="chip-line"><span class="gj-selector-item chip-disabled"><span>资管产品</span></span></span><i class="gj-selector-arrow" style="--i:url('../../assets/icons/iconfont/icf_Arrow_down.svg')"></i></button></div></div>
+      </div></div>
+    </section>
+    <section class="docs-section">
+      <div class="docs-section-head"><div><h2>交互演示</h2><p>该示例直接使用共享 Selector 基座，验证单选互斥、Placeholder 与候选项分离、键盘操作和 Dropdown 状态同步。</p></div></div>
+      <div class="docs-stage docs-surface-white"><div class="playground">
+        <div class="interaction-stage"><div class="selector-live"><label class="selector-live-label" for="liveSelector">产品类型</label><select class="gj-select" id="liveSelector"><option value="">请选择产品类型</option><option value="stock">股票</option><option value="bond">债券</option><option value="fund">基金</option><option value="derivative">衍生品</option><option value="asset">资管产品</option><option value="cash" disabled>现金管理（暂不可选）</option></select></div></div>
+        <div class="controls"><h3>属性控制</h3><div class="control-grid"><div class="control"><label for="sizeControl">尺寸</label><select id="sizeControl"><option value="small">Small · 24</option><option value="medium" selected>Medium · 32</option><option value="large">Large · 40</option></select></div><div class="control"><label for="statusControl">状态</label><select id="statusControl"><option value="default">默认</option><option value="error">错误</option></select></div><div class="control"><label for="placeholderControl">Placeholder</label><input id="placeholderControl" type="text" value="请选择产品类型"></div><label class="toggle"><input class="gj-checkbox" id="disabledControl" type="checkbox"> 禁用</label></div><div class="event">当前值：<strong id="eventValue">未选择</strong></div></div>
+      </div></div><span id="code" hidden></span>
+    </section>
+    <section class="docs-section">
+      <div class="docs-section-head"><div><h2>结构与选用规则</h2><p>优先使用既有 Selector 与 Dropdown 基座，并保持字段宽度、尺寸和数据状态可预测。</p></div></div>
+      <div class="docs-spec-table-wrap"><table class="docs-spec-table"><thead><tr><th>主题</th><th>推荐做法</th><th>边界与避免</th></tr></thead><tbody>
+        <tr><td>Placeholder</td><td>只作为空值提示显示在 Trigger 中，不进入候选数据。</td><td>将“请选择”做成可聚焦、可勾选的选项。</td></tr><tr><td>模式选择</td><td>平级唯一值用单选；多个结果用多选与 Selection Item。</td><td>少量选项仍套 Selector；此时优先 Radio 或按钮组。</td></tr><tr><td>层级数据</td><td>行政区划、组织路径等父子数据使用 Cascader。</td><td>在 Selector 内重复实现级联或树面板。</td></tr><tr><td>状态归属</td><td>Selected 由 value 推导；单选任一时刻最多一个选中项。</td><td>把 Hover、Focus 当成已选择，或保留多个单选勾选。</td></tr><tr><td>尺寸</td><td>默认 Medium；同一表单层级的 Input、Selector、DatePicker 高度一致。</td><td>相邻字段混用 Small、Medium、Large。</td></tr><tr><td>宽度</td><td>桌面端建议 160–240px，默认 198px，最窄 120px；按内容预留稳定宽度。</td><td>随行内剩余空间任意拉伸；窄屏时用靠左换行替代 Fill Width。</td></tr><tr><td>面板</td><td>Dropdown 不窄于触发器；长选项省略并用 Tooltip 补全，长列表允许滚动。</td><td>浮层溢出页面，或因文字换行造成选项高度失控。</td></tr><tr><td>键盘</td><td>方向键移动，Enter/Space 选择，Esc/Tab 关闭并保持合理焦点。</td><td>关闭后焦点丢失，或键盘移动直接改变未提交值。</td></tr>
+      </tbody></table></div>
+    </section>
+  </article>
+</main>
+<script src="../../assets/scripts/gj-selector.js"></script>
+<script>
+(() => {
+  const native = document.getElementById('liveSelector');
+  const wrapper = native.closest('.gj-selector');
+  const trigger = wrapper.querySelector('.gj-selector-trigger');
+  const size = document.getElementById('sizeControl');
+  const status = document.getElementById('statusControl');
+  const placeholder = document.getElementById('placeholderControl');
+  const disabled = document.getElementById('disabledControl');
+  const eventValue = document.getElementById('eventValue');
+  const syncControls = () => {
+    trigger.classList.toggle('gj-selector-trigger-small', size.value === 'small');
+    trigger.classList.toggle('gj-selector-trigger-large', size.value === 'large');
+    trigger.classList.toggle('gj-selector-trigger-error', status.value === 'error');
+    trigger.disabled = disabled.checked;
+    native.disabled = disabled.checked;
+    native.options[0].text = placeholder.value || '请选择产品类型';
+    native.dispatchEvent(new Event('change', {bubbles:true}));
+  };
+  size.addEventListener('change', syncControls);status.addEventListener('change', syncControls);placeholder.addEventListener('input', syncControls);disabled.addEventListener('change', syncControls);
+  native.addEventListener('change', () => { eventValue.textContent = native.value ? native.options[native.selectedIndex].text : '未选择'; });
+  syncControls();
+})();
+</script>
+</body>
+</html>

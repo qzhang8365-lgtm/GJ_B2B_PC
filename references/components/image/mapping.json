@@ -1,0 +1,90 @@
+{
+  "$schema": "gj-design-skill/component-mapping/v1",
+  "component": "Image",
+  "codeComponent": "GjImage",
+  "source": "2026-09-09 经用户提供的 Figma 链接（node-id=2638-2636）核实：Image_Thumbnail(3533:11349)、Image_Preview(3530:1791)、Img_mask(3530:1855) 三个真实节点，figma-audited。",
+  "sourceNodes": [
+    "2638:2636",
+    "3533:11349",
+    "3533:2",
+    "3533:6",
+    "3533:11335",
+    "3530:1469",
+    "3533:11342",
+    "3530:1791",
+    "3530:1790",
+    "3530:1789",
+    "3530:1855"
+  ],
+  "propertyMap": {
+    "Thumbnail.State": "thumbnail.state（Empty/Uploading/Uploaded/Uploaded-Hover/Error）",
+    "Preview.state": "preview.state（Default/Controls，Controls 为 hover/focus 派生态，不建议暴露为受控属性）"
+  },
+  "structureMap": {
+    "thumbnail": ".gj-image-thumb（104×104，圆角 6px；Empty/Uploading/Error 用 dashed 边框，Uploaded/Uploaded-Hover 用 solid 边框——2026-09-09 修正，见 audit.md）",
+    "thumbnailProgress": ".gj-image-thumb-progress（Uploading 态静态进度条，64×4px 圆角 2px；该态禁止图标，仅进度条+百分比。2026-09-10 Figma 确认关闭 IMG-001。与 thumbnailProgressLive 是两套独立实现，互不复用）",
+    "thumbnailProgressLive": ".gj-image-thumb-progress-live + .gj-image-thumb-progress-live-fill（右侧「交互属性」真实上传队列专用，绝对定位叠在缩略图底部，JS 动态设置 width 百分比；与 thumbnailProgress 视觉/用途不同，未合并成一套类）",
+    "thumbnailOverlay": ".gj-image-thumb-overlay + .gj-image-thumb-actions（Uploaded-Hover 悬停态，查看/删除操作，位置 left:23px top:67px，非居中）",
+    "preview": ".gj-image-preview（520×340 示例，Figma 圆角实测 9px，实现建议仍用 Radius/Radius-MD=8px 保持体系一致）",
+    "previewControls": ".gj-image-preview-actions（底部居中操作条，36px 高，MK_60 背景，MK_10 环绕阴影）",
+    "galleryMask": ".gj-image-scale-stage（静态全屏画廊插图）/ .gj-image-modal（真实交互 modal），遮罩 MK_45——2026-09-09 从 MK_60 订正；两者是各自独立的类，不是同一元素的两种状态",
+    "galleryControls": ".gj-image-scale-controls（插图侧）/ .gj-image-modal-nav（真实交互侧），上一张/下一张 + 位置指示，间距均为 40px",
+    "iconButton": ".gj-image-icon-btn 家族：基础态 20px（缩略图悬停操作、大图预览操作条共用），追加修饰类 .gj-image-icon-btn-scale（24px，画廊插图箭头）/ .gj-image-icon-btn-modal-nav（28px，真实 modal 导航，含 :disabled 态）/ .gj-image-icon-btn-modal-close（36px，真实 modal 关闭按钮，附带绝对定位）。与已有共享 .gj-icon-button 是不同的图标按钮实现（无 hover 态、多档尺寸、<img>+filter 反白而非 currentColor mask），2026-09-09 提炼共享基座时确认两者不应合并，保留独立命名空间。"
+  },
+  "tokenMap": {
+    "thumbnail.radius": "Radius/Radius-SM",
+    "thumbnail.empty.border": "Border/secondary（dashed）",
+    "thumbnail.empty.background": "Background/Background",
+    "thumbnail.uploading.border": "Border/focused（dashed）",
+    "thumbnail.uploading.background": "Background/BT_B5",
+    "thumbnail.uploaded.border": "Border/secondary（solid，2026-09-09 修正）",
+    "thumbnail.error.border": "Border/error（dashed）",
+    "thumbnail.error.background": "Background/BT_R5",
+    "thumbnail.error.text": "Feedback/error&rise",
+    "thumbnail.progress.track": "Background/Hover_2",
+    "thumbnail.progress.fill": "Brand/GJ_Blue",
+    "thumbnail.hoverOverlay": "rgba(0,0,0,.4)（无 MK_40 token，实现用 MK_45 顶替，非精确匹配）",
+    "preview.radius": "9px（Figma 原始值，未绑定 token；实现建议用 Radius/Radius-MD=8px）",
+    "preview.controlsBar.background": "Background/MK_60",
+    "preview.controlsBar.radius": "Radius/Radius-MD",
+    "preview.controlsBar.shadow": "0 0 15px Background/MK_10",
+    "gallery.mask": "Background/MK_45（2026-09-09 从 MK_60 订正）",
+    "gallery.indicatorText": "Text/reversal，12px"
+  },
+  "implementation": {
+    "runtime": {
+      "status": "shared-css-base",
+      "note": "2026-09-09 提炼 .gj-image-* 共享基座，closes IMG-003。2026-09-10 Figma 确认 Uploading 删除多余图标，closes IMG-001；共享 CSS `.gj-image-thumb.is-uploading .gj-image-thumb-icon{display:none}`。IMG-002 已关闭。"
+    },
+    "specPreview": {
+      "page": "preview/image/index.html",
+      "classes": [
+        ".gj-image-thumb",
+        ".gj-image-thumb-progress",
+        ".gj-image-thumb-progress-live",
+        ".gj-image-thumb-overlay",
+        ".gj-image-thumb-actions",
+        ".gj-image-icon-btn",
+        ".gj-image-icon-btn-scale",
+        ".gj-image-icon-btn-modal-nav",
+        ".gj-image-icon-btn-modal-close",
+        ".gj-image-preview",
+        ".gj-image-preview-actions",
+        ".gj-image-scale-stage",
+        ".gj-image-scale-controls",
+        ".gj-image-modal",
+        ".gj-image-modal-img",
+        ".gj-image-modal-nav"
+      ]
+    }
+  },
+  "composition": {
+    "uploadEntry": "选择/拖拽文件完全由 Upload 组件的 Upload_Dropzone 或共享 Button 触发承担，Image 不自建入口容器，见 rules.md。",
+    "uploadReuse": "缩略图的上传中/失败/重试语义复用 Upload 的校验、队列、进度、重试规则，不重复定义一套新的状态机。"
+  },
+  "accessibility": {
+    "thumbnail": "Uploaded-Hover 的查看/删除图标按钮需要可访问名称；Uploading 态进度条建议 role=progressbar 并同步 aria-valuenow。",
+    "preview": "查看/删除操作条在触摸设备上不能仅依赖 hover 触发，需要提供聚焦或点击可达的等效方式。",
+    "gallery": "上一张/下一张到达首尾时应禁用而非仅视觉变暗；位置指示（如 1/5）应对屏幕阅读器可读，不能只是纯装饰文字。"
+  }
+}

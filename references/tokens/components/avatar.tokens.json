@@ -1,0 +1,195 @@
+{
+  "$schema": "gj-design-skill/component-tokens/v1",
+  "component": "Avatar",
+  "source": {
+    "figmaNode": "2982:622",
+    "figmaReadDate": "2026-09-09",
+    "componentSchema": "references/components/avatar/schema.json",
+    "componentMapping": "references/components/avatar/mapping.json",
+    "confirmedRules": "references/components/avatar/rules.md"
+  },
+  "properties": {
+    "size": {
+      "default": 40,
+      "values": [
+        24,
+        32,
+        40,
+        64
+      ]
+    },
+    "shape": {
+      "default": "circle",
+      "values": [
+        "circle",
+        "square"
+      ]
+    },
+    "style": {
+      "default": "default",
+      "values": [
+        "default",
+        "letter",
+        "picture"
+      ]
+    },
+    "badge": {
+      "default": "none",
+      "values": [
+        "none",
+        "dot",
+        "number"
+      ]
+    }
+  },
+  "tokens": {
+    "size.24.container": {
+      "value": 24,
+      "unit": "px",
+      "cssVariable": "--ds-component-avatar-size-24-container"
+    },
+    "size.24.squareRadius": {
+      "value": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-avatar-size-24-square-radius"
+    },
+    "size.24.icon": {
+      "value": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-avatar-size-24-icon"
+    },
+    "size.32.container": {
+      "value": 32,
+      "unit": "px",
+      "cssVariable": "--ds-component-avatar-size-32-container"
+    },
+    "size.32.squareRadius": {
+      "value": 6,
+      "unit": "px",
+      "cssVariable": "--ds-component-avatar-size-32-square-radius"
+    },
+    "size.32.icon": {
+      "value": 20,
+      "unit": "px",
+      "cssVariable": "--ds-component-avatar-size-32-icon"
+    },
+    "size.40.container": {
+      "value": 40,
+      "unit": "px",
+      "cssVariable": "--ds-component-avatar-size-40-container"
+    },
+    "size.40.squareRadius": {
+      "value": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-avatar-size-40-square-radius"
+    },
+    "size.40.icon": {
+      "value": 28,
+      "unit": "px",
+      "cssVariable": "--ds-component-avatar-size-40-icon",
+      "note": "40/64 两档实测不满足「容器-2×内边距」公式，按独立实测值记录，见 schema.sizes.iconScaleNote。"
+    },
+    "size.64.container": {
+      "value": 64,
+      "unit": "px",
+      "cssVariable": "--ds-component-avatar-size-64-container"
+    },
+    "size.64.squareRadius": {
+      "value": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-avatar-size-64-square-radius"
+    },
+    "size.64.icon": {
+      "value": 44,
+      "unit": "px",
+      "cssVariable": "--ds-component-avatar-size-64-icon"
+    },
+    "shape.circleRadius": {
+      "value": "50%",
+      "cssVariable": "--ds-component-avatar-shape-circle-radius",
+      "note": "size/2，四档已核实一致。"
+    },
+    "style.default.background": {
+      "value": "{Primitive/Neutral/N05}",
+      "resolved": "#d7dce3",
+      "cssVariable": "--ds-component-avatar-style-default-background"
+    },
+    "style.default.icon": {
+      "value": "user_3_fill.svg",
+      "note": "真实图标资源，非文字兜底。",
+      "cssVariable": "--ds-component-avatar-style-default-icon"
+    },
+    "style.letter.background": {
+      "value": "{Text/blue}",
+      "resolved": "#2b73ff",
+      "cssVariable": "--ds-component-avatar-style-letter-background"
+    },
+    "style.letter.text": {
+      "value": "#ffffff",
+      "cssVariable": "--ds-component-avatar-style-letter-text",
+      "note": "AVT-001：Figma 里背景+首字母被合并导出成单个矢量（非独立文字层），前端须用真实文字节点在代码里动态渲染首字母，不能直接复用 Figma 导出资源。"
+    },
+    "style.picture.border": {
+      "value": "{Border/default}",
+      "resolved": "#ebeef2",
+      "cssVariable": "--ds-component-avatar-style-picture-border"
+    },
+    "style.picture.borderWidth": {
+      "value": 1,
+      "unit": "px",
+      "cssVariable": "--ds-component-avatar-style-picture-border-width"
+    },
+    "style.picture.objectFit": {
+      "value": "cover",
+      "cssVariable": "--ds-component-avatar-style-picture-object-fit"
+    },
+    "badge.position": {
+      "value": "translate(50%,-50%)",
+      "note": "右上角，圆心对齐容器边角；行业通用惯例，非 Figma 已核实。",
+      "cssVariable": "--ds-component-avatar-badge-position"
+    },
+    "badge.stroke.width": {
+      "value": 2,
+      "unit": "px",
+      "cssVariable": "--ds-component-avatar-badge-stroke-width"
+    },
+    "badge.stroke.color": {
+      "value": "{Background/Container}",
+      "resolved": "#ffffff",
+      "cssVariable": "--ds-component-avatar-badge-stroke-color"
+    },
+    "badge.dot.size24": {
+      "value": 6,
+      "unit": "px",
+      "cssVariable": "--ds-component-avatar-badge-dot-size-24",
+      "note": "复用 badge/schema.json 8px 并按 24px 头像收缩，通用惯例默认值。"
+    },
+    "badge.dot.sizeOther": {
+      "value": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-avatar-badge-dot-size-other",
+      "note": "复用 badge/schema.json 的 Dot 直径 8px。"
+    },
+    "badge.number.height": {
+      "value": 20,
+      "unit": "px",
+      "cssVariable": "--ds-component-avatar-badge-number-height",
+      "note": "复用 badge/schema.json 的 Number 高度 20px；仅 size≥32 可用。"
+    },
+    "badge.number.minWidth": {
+      "value": 20,
+      "unit": "px",
+      "cssVariable": "--ds-component-avatar-badge-number-min-width"
+    },
+    "badge.number.minAvatarSize": {
+      "value": 32,
+      "unit": "px",
+      "cssVariable": "--ds-component-avatar-badge-number-min-avatar-size",
+      "note": "24px 头像不支持 Number 徽标，仅支持 Dot。"
+    }
+  },
+  "openItems": {
+    "AVT-001": "Letter 兜底态的 Figma 资产是背景+首字母合并导出的单个矢量，不可直接复用为前端资产，需代码侧动态实现；tokenMap 里已明确标注这一限制，不作为已解决处理。",
+    "AVT-002": "badge（Dot/Number 角标）在 24-variant 组件集里没有对应的 variant 轴，缺乏 Figma 依据；2026-09-09 已按用户明确的通用惯例原则设置默认值（复用 badge/schema.json 尺寸 + 主流设计系统头像角标叠加惯例），非 Figma 已核实，后续若有 Avatar+Badge 叠加设计稿以其为准覆盖。"
+  }
+}

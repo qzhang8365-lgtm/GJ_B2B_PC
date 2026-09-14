@@ -1,0 +1,13 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<foreignObject x="-46.2221" y="-46.8439" width="162.661" height="151.471"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(28.54px);clip-path:url(#bgblur_0_3200_4871_clip_path);height:100%;width:100%"></div></foreignObject><rect data-figma-bg-blur-radius="57.0839" x="10.8618" y="10.24" width="48.4937" height="37.3029" rx="4" fill="url(#paint0_linear_3200_4871)"/>
+<foreignObject x="-23.0383" y="-11.2258" width="103.859" height="92.6684"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(13.59px);clip-path:url(#bgblur_1_3200_4871_clip_path);height:100%;width:100%"></div></foreignObject><rect data-figma-bg-blur-radius="27.1828" x="4.64453" y="16.457" width="48.4937" height="37.3029" rx="4" fill="#BDDEFF" fill-opacity="0.4" stroke="white" stroke-opacity="0.2"/>
+<path d="M39.2922 27.8357C40.0429 27.0869 41.2586 27.0885 42.0074 27.8393C42.7263 28.56 42.7536 29.7092 42.0904 30.4625L42.0039 30.5545L32.8794 39.6556C32.1749 40.3582 31.057 40.4024 30.3007 39.7765L30.2081 39.6948L25.5371 35.302L18.4954 42.3764C17.7773 43.0979 16.6282 43.1294 15.8725 42.4689L15.7801 42.3827C15.0586 41.6646 15.0272 40.5155 15.6876 39.7598L15.7738 39.6675L24.1321 31.2703C24.8359 30.5632 25.9571 30.5169 26.7154 31.1442L26.8083 31.2261L31.4839 35.6233L39.2922 27.8357Z" fill="white"/>
+<defs>
+<clipPath id="bgblur_0_3200_4871_clip_path" transform="translate(46.2221 46.8439)"><rect x="10.8618" y="10.24" width="48.4937" height="37.3029" rx="4"/>
+</clipPath><clipPath id="bgblur_1_3200_4871_clip_path" transform="translate(23.0383 11.2258)"><rect x="4.64453" y="16.457" width="48.4937" height="37.3029" rx="4"/>
+</clipPath><linearGradient id="paint0_linear_3200_4871" x1="57.3007" y1="18.4593" x2="14.4155" y2="23.7689" gradientUnits="userSpaceOnUse">
+<stop stop-color="#6D9FFF"/>
+<stop offset="1" stop-color="#1F63F0"/>
+</linearGradient>
+</defs>
+</svg>

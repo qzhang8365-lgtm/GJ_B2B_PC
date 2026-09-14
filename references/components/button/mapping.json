@@ -1,0 +1,38 @@
+{
+  "$schema": "gj-design-skill/component-mapping/v1",
+  "figmaComponent": "Button",
+  "codeComponent": "GjButton",
+  "propertyMap": {
+    "Label#2410:0": "children",
+    "Level": "level",
+    "Size": "size",
+    "Icon": "iconPlacement",
+    "State=disabled": "disabled=true",
+    "State=hover": ":hover",
+    "State=pressed": ":active"
+  },
+  "valueMap": {
+    "Size.Large(40px)": "large",
+    "Size.Medium(32px)": "medium",
+    "Size.Small（24px)": "small",
+    "Icon.none": "none",
+    "Icon.left_icon": "left",
+    "Icon.right_icon": "right",
+    "Icon.icon_only": "only"
+  },
+  "variableScopes": {
+    "Background/*": ["FRAME_FILL", "SHAPE_FILL"],
+    "Button/*": ["FRAME_FILL", "SHAPE_FILL"],
+    "Border/*": ["STROKE_COLOR"],
+    "Text/*": ["TEXT_FILL", "SHAPE_FILL"],
+    "Components/control-*": ["WIDTH_HEIGHT"],
+    "Radius/*": ["CORNER_RADIUS"],
+    "Interval/*": ["GAP"]
+  },
+  "accessibility": {
+    "element": "button",
+    "iconOnly": "aria-label is required; omit visible text; square hit area; padding-block 0 via Interval/space1; do not mix with gj-icon-button",
+    "disabled": "native disabled attribute",
+    "focus": "native :focus-visible only; not a Figma or spec showcase state; no Prototype Reaction"
+  }
+}

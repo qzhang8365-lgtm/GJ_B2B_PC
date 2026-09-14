@@ -1,0 +1,1258 @@
+{
+  "$schema": "gj-design-skill/icon-manifest/v1",
+  "source": "/Users/gjzq_imac/Desktop/国金B端设计系统/iconfont/system",
+  "count": 115,
+  "relationship": {
+    "role": "source-svg-audit",
+    "assetRoot": "../../assets/icons/general/",
+    "svgRoot": "../../assets/icons/general/system/",
+    "compiledCatalog": "../icons/manifest.json",
+    "compiledCategory": "System",
+    "compiledAssetRoot": "../../assets/icons/iconfont/",
+    "compiledMap": "../../assets/icons/iconfont/font/iconfont-map.js",
+    "rule": "This manifest and the System category in icons/manifest.json are two delivery forms of one icon lineage, not two independent icon libraries. Use this file for source SVG audit and the compiled catalog for page/component icon selection.",
+    "verification": {
+      "sourceCount": 115,
+      "compiledSystemCount": 113,
+      "byteIdenticalSvgCount": 113,
+      "sourceOnly": "无（两项分类迁移已确认，见下）",
+      "compiledSystemOnly": "无（两项分类迁移已确认，见下）",
+      "categoryReassignments": [
+        "system/icon-attachment.svg 编译归入 File/icf_file_attachment —— 2026-09-10 用户确认为最终分类（ICO-001 已关闭；旧源名 system/icon_attachment 仅保留为兼容别名）",
+        "system/link-line.svg（2026-09-10 因 ICO-002 补入本快照）编译归入 File/icf_file_link-line，不是 System —— 2026-09-10 用户确认改判（原 ICO-002 结论已按此修正）"
+      ],
+      "note": "sourceCount(115) 与 compiledSystemCount(113) 不相等是预期结果：115 个源文件里有 2 个（icon-attachment、link-line）编译归入了 File 分类而非 System，见 categoryReassignments；剩余 113 个源文件与编译 System 分类逐一字节一致。"
+    }
+  },
+  "icons": [
+    {
+      "name": "system/horn-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "system/horn-fill.svg",
+      "keywords": [
+        "horn",
+        "fill"
+      ]
+    },
+    {
+      "name": "system/horn",
+      "category": "System",
+      "style": "line",
+      "file": "system/horn.svg",
+      "keywords": [
+        "horn"
+      ]
+    },
+    {
+      "name": "system/icon-add-circle-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "system/icon-add-circle-fill.svg",
+      "keywords": [
+        "icon",
+        "add",
+        "circle",
+        "fill"
+      ]
+    },
+    {
+      "name": "system/icon-add-circle",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-add-circle.svg",
+      "keywords": [
+        "icon",
+        "add",
+        "circle"
+      ]
+    },
+    {
+      "name": "system/icon-add-classify-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "system/icon-add-classify-fill.svg",
+      "keywords": [
+        "icon",
+        "add",
+        "classify",
+        "fill"
+      ]
+    },
+    {
+      "name": "system/icon-add-classify",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-add-classify.svg",
+      "keywords": [
+        "icon",
+        "add",
+        "classify"
+      ]
+    },
+    {
+      "name": "system/icon-add",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-add.svg",
+      "keywords": [
+        "icon",
+        "add"
+      ]
+    },
+    {
+      "name": "system/icon-alert-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "system/icon-alert-fill.svg",
+      "keywords": [
+        "icon",
+        "alert",
+        "fill"
+      ]
+    },
+    {
+      "name": "system/icon-alert",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-alert.svg",
+      "keywords": [
+        "icon",
+        "alert"
+      ]
+    },
+    {
+      "name": "system/icon-bell-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "system/icon-bell-fill.svg",
+      "keywords": [
+        "icon",
+        "bell",
+        "fill"
+      ]
+    },
+    {
+      "name": "system/icon-bell",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-bell.svg",
+      "keywords": [
+        "icon",
+        "bell"
+      ]
+    },
+    {
+      "name": "system/icon-calendar-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "system/icon-calendar-fill.svg",
+      "keywords": [
+        "icon",
+        "calendar",
+        "fill"
+      ]
+    },
+    {
+      "name": "system/icon-calendar",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-calendar.svg",
+      "keywords": [
+        "icon",
+        "calendar"
+      ]
+    },
+    {
+      "name": "system/icon-check-circle-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "system/icon-check-circle-fill.svg",
+      "keywords": [
+        "icon",
+        "check",
+        "circle",
+        "fill"
+      ]
+    },
+    {
+      "name": "system/icon-check-circle",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-check-circle.svg",
+      "keywords": [
+        "icon",
+        "check",
+        "circle"
+      ]
+    },
+    {
+      "name": "system/icon-check",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-check.svg",
+      "keywords": [
+        "icon",
+        "check"
+      ]
+    },
+    {
+      "name": "system/icon-checkbox-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "system/icon-checkbox-fill.svg",
+      "keywords": [
+        "icon",
+        "checkbox",
+        "fill"
+      ]
+    },
+    {
+      "name": "system/icon-checkbox",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-checkbox.svg",
+      "keywords": [
+        "icon",
+        "checkbox"
+      ]
+    },
+    {
+      "name": "system/icon-choice-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "system/icon-choice-fill.svg",
+      "keywords": [
+        "icon",
+        "choice",
+        "fill"
+      ]
+    },
+    {
+      "name": "system/icon-choice",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-choice.svg",
+      "keywords": [
+        "icon",
+        "choice"
+      ]
+    },
+    {
+      "name": "system/icon-classify-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "system/icon-classify-fill.svg",
+      "keywords": [
+        "icon",
+        "classify",
+        "fill"
+      ]
+    },
+    {
+      "name": "system/icon-classify",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-classify.svg",
+      "keywords": [
+        "icon",
+        "classify"
+      ]
+    },
+    {
+      "name": "system/icon-close-circle-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "system/icon-close-circle-fill.svg",
+      "keywords": [
+        "icon",
+        "close",
+        "circle",
+        "fill"
+      ]
+    },
+    {
+      "name": "system/icon-close-circle",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-close-circle.svg",
+      "keywords": [
+        "icon",
+        "close",
+        "circle"
+      ]
+    },
+    {
+      "name": "system/icon-close-md",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-close-md.svg",
+      "keywords": [
+        "icon",
+        "close",
+        "md"
+      ]
+    },
+    {
+      "name": "system/icon-close-sm",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-close-sm.svg",
+      "keywords": [
+        "icon",
+        "close",
+        "sm"
+      ]
+    },
+    {
+      "name": "system/icon-close",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-close.svg",
+      "keywords": [
+        "icon",
+        "close"
+      ]
+    },
+    {
+      "name": "system/icon-code-regular",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-code-regular.svg",
+      "aliases": [
+        "system/icon-code_regular"
+      ],
+      "keywords": [
+        "icon",
+        "code",
+        "regular"
+      ]
+    },
+    {
+      "name": "system/icon-copy-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "system/icon-copy-fill.svg",
+      "keywords": [
+        "icon",
+        "copy",
+        "fill"
+      ]
+    },
+    {
+      "name": "system/icon-copy",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-copy.svg",
+      "keywords": [
+        "icon",
+        "copy"
+      ]
+    },
+    {
+      "name": "system/icon-delete-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "system/icon-delete-fill.svg",
+      "keywords": [
+        "icon",
+        "delete",
+        "fill"
+      ]
+    },
+    {
+      "name": "system/icon-delete",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-delete.svg",
+      "keywords": [
+        "icon",
+        "delete"
+      ]
+    },
+    {
+      "name": "system/icon-delete-back-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "system/icon-delete-back-fill.svg",
+      "aliases": [
+        "system/icon-delete_back-fill"
+      ],
+      "keywords": [
+        "icon",
+        "delete",
+        "back",
+        "fill"
+      ]
+    },
+    {
+      "name": "system/icon-delete-back",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-delete-back.svg",
+      "aliases": [
+        "system/icon-delete_back"
+      ],
+      "keywords": [
+        "icon",
+        "delete",
+        "back"
+      ]
+    },
+    {
+      "name": "system/icon-download1",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-download1.svg",
+      "keywords": [
+        "icon",
+        "download1"
+      ]
+    },
+    {
+      "name": "system/icon-edit-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "system/icon-edit-fill.svg",
+      "keywords": [
+        "icon",
+        "edit",
+        "fill"
+      ]
+    },
+    {
+      "name": "system/icon-edit",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-edit.svg",
+      "keywords": [
+        "icon",
+        "edit"
+      ]
+    },
+    {
+      "name": "system/icon-eye-close",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-eye-close.svg",
+      "keywords": [
+        "icon",
+        "eye",
+        "close"
+      ]
+    },
+    {
+      "name": "system/icon-eye",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-eye.svg",
+      "keywords": [
+        "icon",
+        "eye"
+      ]
+    },
+    {
+      "name": "system/icon-filter-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "system/icon-filter-fill.svg",
+      "keywords": [
+        "icon",
+        "filter",
+        "fill"
+      ]
+    },
+    {
+      "name": "system/icon-filter",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-filter.svg",
+      "keywords": [
+        "icon",
+        "filter"
+      ]
+    },
+    {
+      "name": "system/icon-grid-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "system/icon-grid-fill.svg",
+      "keywords": [
+        "icon",
+        "grid",
+        "fill"
+      ]
+    },
+    {
+      "name": "system/icon-grid",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-grid.svg",
+      "keywords": [
+        "icon",
+        "grid"
+      ]
+    },
+    {
+      "name": "system/icon-history",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-history.svg",
+      "keywords": [
+        "icon",
+        "history"
+      ]
+    },
+    {
+      "name": "system/icon-history1",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-history1.svg",
+      "keywords": [
+        "icon",
+        "history1"
+      ]
+    },
+    {
+      "name": "system/icon-home-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "system/icon-home-fill.svg",
+      "keywords": [
+        "icon",
+        "home",
+        "fill"
+      ]
+    },
+    {
+      "name": "system/icon-home",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-home.svg",
+      "keywords": [
+        "icon",
+        "home"
+      ]
+    },
+    {
+      "name": "system/icon-info-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "system/icon-info-fill.svg",
+      "keywords": [
+        "icon",
+        "info",
+        "fill"
+      ]
+    },
+    {
+      "name": "system/icon-info",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-info.svg",
+      "keywords": [
+        "icon",
+        "info"
+      ]
+    },
+    {
+      "name": "system/icon-list",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-list.svg",
+      "keywords": [
+        "icon",
+        "list"
+      ]
+    },
+    {
+      "name": "system/icon-list1",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-list1.svg",
+      "keywords": [
+        "icon",
+        "list1"
+      ]
+    },
+    {
+      "name": "system/icon-loading",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-loading.svg",
+      "keywords": [
+        "icon",
+        "loading"
+      ]
+    },
+    {
+      "name": "system/icon-loading1",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-loading1.svg",
+      "keywords": [
+        "icon",
+        "loading1"
+      ]
+    },
+    {
+      "name": "system/icon-loading2",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-loading2.svg",
+      "keywords": [
+        "icon",
+        "loading2"
+      ]
+    },
+    {
+      "name": "system/icon-lock-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "system/icon-lock-fill.svg",
+      "keywords": [
+        "icon",
+        "lock",
+        "fill"
+      ]
+    },
+    {
+      "name": "system/icon-lock",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-lock.svg",
+      "keywords": [
+        "icon",
+        "lock"
+      ]
+    },
+    {
+      "name": "system/icon-menu",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-menu.svg",
+      "keywords": [
+        "icon",
+        "menu"
+      ]
+    },
+    {
+      "name": "system/icon-minimize",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-minimize.svg",
+      "keywords": [
+        "icon",
+        "minimize"
+      ]
+    },
+    {
+      "name": "system/icon-minus-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "system/icon-minus-fill.svg",
+      "keywords": [
+        "icon",
+        "minus",
+        "fill"
+      ]
+    },
+    {
+      "name": "system/icon-minus",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-minus.svg",
+      "keywords": [
+        "icon",
+        "minus"
+      ]
+    },
+    {
+      "name": "system/icon-more",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-more.svg",
+      "keywords": [
+        "icon",
+        "more"
+      ]
+    },
+    {
+      "name": "system/icon-more1",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-more1.svg",
+      "keywords": [
+        "icon",
+        "more1"
+      ]
+    },
+    {
+      "name": "system/icon-notification1-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "system/icon-notification1-fill.svg",
+      "keywords": [
+        "icon",
+        "notification1",
+        "fill"
+      ]
+    },
+    {
+      "name": "system/icon-notification1",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-notification1.svg",
+      "keywords": [
+        "icon",
+        "notification1"
+      ]
+    },
+    {
+      "name": "system/icon-question-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "system/icon-question-fill.svg",
+      "keywords": [
+        "icon",
+        "question",
+        "fill"
+      ]
+    },
+    {
+      "name": "system/icon-question",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-question.svg",
+      "keywords": [
+        "icon",
+        "question"
+      ]
+    },
+    {
+      "name": "system/icon-question1",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-question1.svg",
+      "keywords": [
+        "icon",
+        "question1"
+      ]
+    },
+    {
+      "name": "system/icon-refresh",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-refresh.svg",
+      "keywords": [
+        "icon",
+        "refresh"
+      ]
+    },
+    {
+      "name": "system/icon-refresh1",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-refresh1.svg",
+      "keywords": [
+        "icon",
+        "refresh1"
+      ]
+    },
+    {
+      "name": "system/icon-refresh2",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-refresh2.svg",
+      "keywords": [
+        "icon",
+        "refresh2"
+      ]
+    },
+    {
+      "name": "system/icon-safe-alert-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "system/icon-safe-alert-fill.svg",
+      "keywords": [
+        "icon",
+        "safe",
+        "alert",
+        "fill"
+      ]
+    },
+    {
+      "name": "system/icon-safe-flash-line",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-safe-flash-line.svg",
+      "keywords": [
+        "icon",
+        "safe",
+        "flash",
+        "line"
+      ]
+    },
+    {
+      "name": "system/icon-safe-flash-lineh-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "system/icon-safe-flash-lineh-fill.svg",
+      "keywords": [
+        "icon",
+        "safe",
+        "flash",
+        "lineh",
+        "fill"
+      ]
+    },
+    {
+      "name": "system/icon-safety",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-safety.svg",
+      "keywords": [
+        "icon",
+        "safety"
+      ]
+    },
+    {
+      "name": "system/icon-safety1-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "system/icon-safety1-fill.svg",
+      "keywords": [
+        "icon",
+        "safety1",
+        "fill"
+      ]
+    },
+    {
+      "name": "system/icon-safety1",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-safety1.svg",
+      "keywords": [
+        "icon",
+        "safety1"
+      ]
+    },
+    {
+      "name": "system/icon-save-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "system/icon-save-fill.svg",
+      "keywords": [
+        "icon",
+        "save",
+        "fill"
+      ]
+    },
+    {
+      "name": "system/icon-save",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-save.svg",
+      "keywords": [
+        "icon",
+        "save"
+      ]
+    },
+    {
+      "name": "system/icon-scan-line",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-scan-line.svg",
+      "keywords": [
+        "icon",
+        "scan",
+        "line"
+      ]
+    },
+    {
+      "name": "system/icon-search-ai-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "system/icon-search-ai-fill.svg",
+      "keywords": [
+        "icon",
+        "search",
+        "ai",
+        "fill"
+      ]
+    },
+    {
+      "name": "system/icon-search-ai",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-search-ai.svg",
+      "keywords": [
+        "icon",
+        "search",
+        "ai"
+      ]
+    },
+    {
+      "name": "system/icon-search-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "system/icon-search-fill.svg",
+      "keywords": [
+        "icon",
+        "search",
+        "fill"
+      ]
+    },
+    {
+      "name": "system/icon-search",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-search.svg",
+      "keywords": [
+        "icon",
+        "search"
+      ]
+    },
+    {
+      "name": "system/icon-settings-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "system/icon-settings-fill.svg",
+      "keywords": [
+        "icon",
+        "settings",
+        "fill"
+      ]
+    },
+    {
+      "name": "system/icon-settings",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-settings.svg",
+      "keywords": [
+        "icon",
+        "settings"
+      ]
+    },
+    {
+      "name": "system/icon-settings1-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "system/icon-settings1-fill.svg",
+      "keywords": [
+        "icon",
+        "settings1",
+        "fill"
+      ]
+    },
+    {
+      "name": "system/icon-settings1",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-settings1.svg",
+      "keywords": [
+        "icon",
+        "settings1"
+      ]
+    },
+    {
+      "name": "system/icon-settings2-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "system/icon-settings2-fill.svg",
+      "keywords": [
+        "icon",
+        "settings2",
+        "fill"
+      ]
+    },
+    {
+      "name": "system/icon-settings2",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-settings2.svg",
+      "keywords": [
+        "icon",
+        "settings2"
+      ]
+    },
+    {
+      "name": "system/icon-share-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "system/icon-share-fill.svg",
+      "keywords": [
+        "icon",
+        "share",
+        "fill"
+      ]
+    },
+    {
+      "name": "system/icon-share",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-share.svg",
+      "keywords": [
+        "icon",
+        "share"
+      ]
+    },
+    {
+      "name": "system/icon-share1-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "system/icon-share1-fill.svg",
+      "keywords": [
+        "icon",
+        "share1",
+        "fill"
+      ]
+    },
+    {
+      "name": "system/icon-share1",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-share1.svg",
+      "keywords": [
+        "icon",
+        "share1"
+      ]
+    },
+    {
+      "name": "system/icon-star-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "system/icon-star-fill.svg",
+      "keywords": [
+        "icon",
+        "star",
+        "fill"
+      ]
+    },
+    {
+      "name": "system/icon-star",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-star.svg",
+      "keywords": [
+        "icon",
+        "star"
+      ]
+    },
+    {
+      "name": "system/icon-textarea",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-textarea.svg",
+      "keywords": [
+        "icon",
+        "textarea"
+      ]
+    },
+    {
+      "name": "system/icon-thumbdown-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "system/icon-thumbdown-fill.svg",
+      "keywords": [
+        "icon",
+        "thumbdown",
+        "fill"
+      ]
+    },
+    {
+      "name": "system/icon-thumbdown",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-thumbdown.svg",
+      "keywords": [
+        "icon",
+        "thumbdown"
+      ]
+    },
+    {
+      "name": "system/icon-thumbup-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "system/icon-thumbup-fill.svg",
+      "keywords": [
+        "icon",
+        "thumbup",
+        "fill"
+      ]
+    },
+    {
+      "name": "system/icon-thumbup",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-thumbup.svg",
+      "keywords": [
+        "icon",
+        "thumbup"
+      ]
+    },
+    {
+      "name": "system/icon-time-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "system/icon-time-fill.svg",
+      "keywords": [
+        "icon",
+        "time",
+        "fill"
+      ]
+    },
+    {
+      "name": "system/icon-time",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-time.svg",
+      "keywords": [
+        "icon",
+        "time"
+      ]
+    },
+    {
+      "name": "system/icon-unlock-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "system/icon-unlock-fill.svg",
+      "keywords": [
+        "icon",
+        "unlock",
+        "fill"
+      ]
+    },
+    {
+      "name": "system/icon-unlock",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-unlock.svg",
+      "keywords": [
+        "icon",
+        "unlock"
+      ]
+    },
+    {
+      "name": "system/icon-upload1",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-upload1.svg",
+      "keywords": [
+        "icon",
+        "upload1"
+      ]
+    },
+    {
+      "name": "system/icon-version-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "system/icon-version-fill.svg",
+      "keywords": [
+        "icon",
+        "version",
+        "fill"
+      ]
+    },
+    {
+      "name": "system/icon-version",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-version.svg",
+      "keywords": [
+        "icon",
+        "version"
+      ]
+    },
+    {
+      "name": "system/icon-warning-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "system/icon-warning-fill.svg",
+      "keywords": [
+        "icon",
+        "warning",
+        "fill"
+      ]
+    },
+    {
+      "name": "system/icon-warning",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-warning.svg",
+      "keywords": [
+        "icon",
+        "warning"
+      ]
+    },
+    {
+      "name": "system/icon-zoom-in-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "system/icon-zoom-in-fill.svg",
+      "keywords": [
+        "icon",
+        "zoom",
+        "in",
+        "fill"
+      ]
+    },
+    {
+      "name": "system/icon-zoom-in",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-zoom-in.svg",
+      "keywords": [
+        "icon",
+        "zoom",
+        "in"
+      ]
+    },
+    {
+      "name": "system/icon-zoom-out-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "system/icon-zoom-out-fill.svg",
+      "keywords": [
+        "icon",
+        "zoom",
+        "out",
+        "fill"
+      ]
+    },
+    {
+      "name": "system/icon-zoom-out",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-zoom-out.svg",
+      "keywords": [
+        "icon",
+        "zoom",
+        "out"
+      ]
+    },
+    {
+      "name": "system/icon-attachment",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-attachment.svg",
+      "aliases": [
+        "system/icon_attachment"
+      ],
+      "keywords": [
+        "icon",
+        "attachment"
+      ]
+    },
+    {
+      "name": "system/link-line",
+      "category": "System",
+      "style": "line",
+      "file": "system/link-line.svg",
+      "keywords": [
+        "link",
+        "line"
+      ]
+    }
+  ]
+}

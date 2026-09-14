@@ -1,0 +1,168 @@
+/* GJ B端设计系统 - GJB2B_general_fill iconfont CSS */
+/* Auto-generated from icomoon.json — 140 icons */
+
+@font-face {
+  font-family: "GJB2B_general_fill";
+  src: url("fill/GJB2B_general_fill.woff2") format("woff2"),
+    url("fill/GJB2B_general_fill.woff") format("woff"),
+    url("fill/GJB2B_general_fill.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+.gj-fill {
+  font-family: "GJB2B_general_fill" !important;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  speak: never;
+}
+
+.gj-fill-icf-system-checkbox-fill:before { content: "\F000"; }
+.gj-fill-icf-system-check-circle-fill:before { content: "\F001"; }
+.gj-fill-icf-system-calendar-fill:before { content: "\F002"; }
+.gj-fill-icf-system-bell-fill:before { content: "\F003"; }
+.gj-fill-icf-system-alert-fill:before { content: "\F004"; }
+.gj-fill-icf-system-add-classify-fill:before { content: "\F005"; }
+.gj-fill-icf-system-add-circle-fill:before { content: "\F006"; }
+.gj-fill-icf-media-stop-fill:before { content: "\F007"; }
+.gj-fill-icf-media-skip-previous-fill:before { content: "\F008"; }
+.gj-fill-icf-media-skip-forward-fill:before { content: "\F009"; }
+.gj-fill-icf-media-power-fill:before { content: "\F00A"; }
+.gj-fill-icf-media-play-triangle-fill:before { content: "\F00B"; }
+.gj-fill-icf-media-play-fill:before { content: "\F00C"; }
+.gj-fill-icf-media-pause-fill:before { content: "\F00D"; }
+.gj-fill-icf-media-mic-fill:before { content: "\F00E"; }
+.gj-fill-icf-map-train-2-fill:before { content: "\F00F"; }
+.gj-fill-icf-map-sitemap-filled:before { content: "\F010"; }
+.gj-fill-icf-map-route-fill:before { content: "\F011"; }
+.gj-fill-icf-map-location1-fill:before { content: "\F012"; }
+.gj-fill-icf-map-location-fill:before { content: "\F013"; }
+.gj-fill-icf-map-earth-fill:before { content: "\F014"; }
+.gj-fill-icf-map-department-filled:before { content: "\F015"; }
+.gj-fill-icf-map-airplane-fill:before { content: "\F016"; }
+.gj-fill-icf-file-upload2-fill:before { content: "\F017"; }
+.gj-fill-icf-file-task-fill:before { content: "\F018"; }
+.gj-fill-icf-file-storage-line-fill:before { content: "\F019"; }
+.gj-fill-icf-file-paper-line-fill:before { content: "\F01A"; }
+.gj-fill-icf-file-news-fill:before { content: "\F01B"; }
+.gj-fill-icf-file-new-folder-fill:before { content: "\F01C"; }
+.gj-fill-icf-file-inbox-fill:before { content: "\F01D"; }
+.gj-fill-icf-file-image-fill:before { content: "\F01E"; }
+.gj-fill-icf-file-folders-fill:before { content: "\F01F"; }
+.gj-fill-icf-file-folder-zip-fill:before { content: "\F020"; }
+.gj-fill-icf-file-folder-upload-fill:before { content: "\F021"; }
+.gj-fill-icf-file-folder-open-fill:before { content: "\F022"; }
+.gj-fill-icf-file-folder-locked-2-fill:before { content: "\F023"; }
+.gj-fill-icf-file-folder-download-fill:before { content: "\F024"; }
+.gj-fill-icf-file-folder-check-fill:before { content: "\F025"; }
+.gj-fill-icf-file-folder-2-fill:before { content: "\F026"; }
+.gj-fill-icf-file-file-zip-fill:before { content: "\F027"; }
+.gj-fill-icf-file-file-zip-fill-1:before { content: "\F028"; }
+.gj-fill-icf-file-file-upload-fill:before { content: "\F029"; }
+.gj-fill-icf-file-file-search-fill:before { content: "\F02A"; }
+.gj-fill-icf-file-file-locked-fill:before { content: "\F02B"; }
+.gj-fill-icf-file-file-fill:before { content: "\F02C"; }
+.gj-fill-icf-file-file-download-fill:before { content: "\F02D"; }
+.gj-fill-icf-file-file-code-fill:before { content: "\F02E"; }
+.gj-fill-icf-file-file-check-fill:before { content: "\F02F"; }
+.gj-fill-icf-file-download2-fill:before { content: "\F030"; }
+.gj-fill-icf-file-documents-fill:before { content: "\F031"; }
+.gj-fill-icf-file-document-2-fill:before { content: "\F032"; }
+.gj-fill-icf-file-clipboard-fill:before { content: "\F033"; }
+.gj-fill-icf-file-box1-fill:before { content: "\F034"; }
+.gj-fill-icf-file-box-fill:before { content: "\F035"; }
+.gj-fill-icf-file-bookmark-fill:before { content: "\F036"; }
+.gj-fill-icf-editor-edit1-fill:before { content: "\F037"; }
+.gj-fill-icf-editor-edit-4-regular-filled:before { content: "\F038"; }
+.gj-fill-icf-device-laptop-fill:before { content: "\F039"; }
+.gj-fill-icf-device-computer-fill:before { content: "\F03A"; }
+.gj-fill-icf-device-cellphone-fill:before { content: "\F03B"; }
+.gj-fill-icf-user-user-fill:before { content: "\F03C"; }
+.gj-fill-icf-device-book-fill:before { content: "\F03D"; }
+.gj-fill-icf-user-idcard-fill:before { content: "\F03E"; }
+.gj-fill-icf-device-alarm-fill:before { content: "\F03F"; }
+.gj-fill-icf-user-group-fill:before { content: "\F040"; }
+.gj-fill-icf-data-presentation1-fill:before { content: "\F041"; }
+.gj-fill-icf-user-contacts-fill:before { content: "\F042"; }
+.gj-fill-icf-data-presentation-fill:before { content: "\F043"; }
+.gj-fill-icf-system-zoom-out-fill:before { content: "\F044"; }
+.gj-fill-icf-data-chart6-fill:before { content: "\F045"; }
+.gj-fill-icf-system-zoom-in-fill:before { content: "\F046"; }
+.gj-fill-icf-data-chart5-fill:before { content: "\F047"; }
+.gj-fill-icf-system-warning-fill:before { content: "\F048"; }
+.gj-fill-icf-data-chart4-fill:before { content: "\F049"; }
+.gj-fill-icf-system-version-fill:before { content: "\F04A"; }
+.gj-fill-icf-data-chart2-fill:before { content: "\F04B"; }
+.gj-fill-icf-system-unlock-fill:before { content: "\F04C"; }
+.gj-fill-icf-data-chart1-fill:before { content: "\F04D"; }
+.gj-fill-icf-system-time-fill:before { content: "\F04E"; }
+.gj-fill-icf-data-chart-fill:before { content: "\F04F"; }
+.gj-fill-icf-system-thumbup-fill:before { content: "\F050"; }
+.gj-fill-icf-contact-phone-fill:before { content: "\F051"; }
+.gj-fill-icf-system-thumbdown-fill:before { content: "\F052"; }
+.gj-fill-icf-contact-message1-fill:before { content: "\F053"; }
+.gj-fill-icf-system-star-fill:before { content: "\F054"; }
+.gj-fill-icf-contact-message-fill:before { content: "\F055"; }
+.gj-fill-icf-system-share1-fill:before { content: "\F056"; }
+.gj-fill-icf-contact-mail-fill:before { content: "\F057"; }
+.gj-fill-icf-system-share-fill:before { content: "\F058"; }
+.gj-fill-icf-contact-mail-fill-1:before { content: "\F059"; }
+.gj-fill-icf-system-settings2-fill:before { content: "\F05A"; }
+.gj-fill-icf-contact-chat1-fill:before { content: "\F05B"; }
+.gj-fill-icf-system-settings1-fill:before { content: "\F05C"; }
+.gj-fill-icf-contact-chat-fill:before { content: "\F05D"; }
+.gj-fill-icf-system-settings-fill:before { content: "\F05E"; }
+.gj-fill-icf-business-wallet-fill:before { content: "\F05F"; }
+.gj-fill-icf-system-search-fill:before { content: "\F060"; }
+.gj-fill-icf-business-stock-fill:before { content: "\F061"; }
+.gj-fill-icf-system-search-ai-fill:before { content: "\F062"; }
+.gj-fill-icf-business-pig-money-fill:before { content: "\F063"; }
+.gj-fill-icf-system-save-fill:before { content: "\F064"; }
+.gj-fill-icf-business-moneybag-fill:before { content: "\F065"; }
+.gj-fill-icf-system-safety1-fill:before { content: "\F066"; }
+.gj-fill-icf-business-diamond-fill:before { content: "\F067"; }
+.gj-fill-icf-system-safe-flash-fill:before { content: "\F068"; }
+.gj-fill-icf-business-coin-fill:before { content: "\F069"; }
+.gj-fill-icf-system-safe-alert-fill:before { content: "\F06A"; }
+.gj-fill-icf-business-building-1-fill:before { content: "\F06B"; }
+.gj-fill-icf-system-question-fill:before { content: "\F06C"; }
+.gj-fill-icf-business-briefcase-fill:before { content: "\F06D"; }
+.gj-fill-icf-system-notification1-fill:before { content: "\F06E"; }
+.gj-fill-icf-Arrow-arrow-up-fill:before { content: "\F06F"; }
+.gj-fill-icf-system-minus-fill:before { content: "\F070"; }
+.gj-fill-icf-Arrow-arrow-down-fill:before { content: "\F071"; }
+.gj-fill-icf-system-lock-fill:before { content: "\F072"; }
+.gj-fill-icf-AI-robot-fill:before { content: "\F073"; }
+.gj-fill-icf-system-info-fill:before { content: "\F074"; }
+.gj-fill-icf-AI-pic-ai-fill:before { content: "\F075"; }
+.gj-fill-icf-system-horn-fill:before { content: "\F076"; }
+.gj-fill-icf-AI-pencil-ai-fill:before { content: "\F077"; }
+.gj-fill-icf-system-home-fill:before { content: "\F078"; }
+.gj-fill-icf-AI-pencil-2-ai-fill:before { content: "\F079"; }
+.gj-fill-icf-system-grid-fill:before { content: "\F07A"; }
+.gj-fill-icf-AI-mic-ai-fill:before { content: "\F07B"; }
+.gj-fill-icf-system-filter-fill:before { content: "\F07C"; }
+.gj-fill-icf-AI-head-ai-fill:before { content: "\F07D"; }
+.gj-fill-icf-system-edit-fill:before { content: "\F07E"; }
+.gj-fill-icf-AI-classify-2-ai-fill:before { content: "\F07F"; }
+.gj-fill-icf-system-delete-fill:before { content: "\F080"; }
+.gj-fill-icf-AI-chat-4-ai-fill:before { content: "\F081"; }
+.gj-fill-icf-system-delete-back-fill:before { content: "\F082"; }
+
+/* ICO-003 compatibility alias; new code must use the canonical hyphenated class. */
+.gj-fill-icf-system-delete_back-fill:before { content: "\F082"; }
+.gj-fill-icf-AI-chat-1-ai-fill:before { content: "\F083"; }
+.gj-fill-icf-system-copy-fill:before { content: "\F084"; }
+.gj-fill-icf-AI-cellphone-2-ai-fill:before { content: "\F085"; }
+.gj-fill-icf-system-close-circle-fill:before { content: "\F086"; }
+.gj-fill-icf-AI-bulb-ai-fill:before { content: "\F087"; }
+.gj-fill-icf-system-classify-fill:before { content: "\F088"; }
+.gj-fill-icf-AI-bulb-2-ai-fill:before { content: "\F089"; }
+.gj-fill-icf-system-choice-fill:before { content: "\F08A"; }
+.gj-fill-icf-AI-ai-fill:before { content: "\F08B"; }

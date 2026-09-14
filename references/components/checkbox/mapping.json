@@ -1,0 +1,50 @@
+{
+  "$schema": "gj-design-skill/component-mapping/v1",
+  "figmaComponent": "checkbox item / checkbox / Checkbox Group",
+  "codeComponent": "GjCheckbox / GjCheckboxGroup",
+  "sourceNodes": ["2470:190", "2472:198", "2472:256"],
+  "propertyMap": {
+    "Checked|checked": "checked",
+    "Indeterminate": "indeterminate",
+    "Disabled|disable": "disabled",
+    "hover": ":hover",
+    "Property 1": "count"
+  },
+  "valueMap": {
+    "Checked.True|checked.true": "checked=true",
+    "Checked.false|checked.false": "checked=false",
+    "Indeterminate.on": "indeterminate=true",
+    "Indeterminate.off": "indeterminate=false",
+    "Disabled.on|disable.true": "disabled=true",
+    "Disabled.off|disable.false": "disabled=false",
+    "Property 1.1-6": "count=1-6"
+  },
+  "tokenMap": {
+    "default.background": "Background/Container",
+    "default.border": "Border/secondary",
+    "hover.border.figma": "边框色/品牌",
+    "hover.border.localNormalized": "Border/focused",
+    "checked.fill": "Brand/GJ_Blue",
+    "indeterminate.fill": "Brand/GJ_Blue",
+    "mark": "Text/reversal",
+    "disabled.background": "Background/Background",
+    "disabled.border": "Border/secondary",
+    "disabled.text.figma": "文本色/disable 或 Text/disable",
+    "disabled.text.localNormalized": "Text/disable",
+    "typography.figma": "Body_14px_regular",
+    "typography.currentEquivalent": "中文/S8-CN-R"
+  },
+  "interactionMap": {
+    "hover": ":hover",
+    "pressed": "code-only; no Figma variant",
+    "focused": ":focus-visible code supplement; no Figma variant",
+    "disabled": "native disabled attribute",
+    "indeterminate": "set HTMLInputElement.indeterminate; submitted value remains boolean checked"
+  },
+  "accessibility": {
+    "element": "input[type=checkbox]",
+    "label": "control and complete label share the click target",
+    "indeterminate": "expose mixed state to assistive technology",
+    "group": "use fieldset/legend when the group needs a visible question"
+  }
+}

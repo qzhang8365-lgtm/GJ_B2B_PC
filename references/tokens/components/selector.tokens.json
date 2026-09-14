@@ -1,0 +1,244 @@
+{
+  "$schema": "gj-design-skill/component-tokens/v1",
+  "component": "Selector",
+  "source": {
+    "figmaNode": "2638:2419",
+    "figmaNodes": [
+      "2889:3782",
+      "2889:3781",
+      "2889:3803",
+      "2889:3852",
+      "2889:3882",
+      "4208:19225",
+      "4208:19413",
+      "2889:4126",
+      "2889:3999",
+      "2889:3998",
+      "2889:4084"
+    ],
+    "figmaReadDate": "2026-09-10",
+    "componentSchema": "references/components/selector/schema.json",
+    "componentMapping": "references/components/selector/mapping.json",
+    "confirmedRules": "references/components/selector/rules.md",
+    "implementation": "assets/styles/gj-b2b-components.css#.gj-selector"
+  },
+  "properties": {
+    "mode": {
+      "default": "single",
+      "values": [
+        "single",
+        "multiple",
+        "cascade",
+        "tree"
+      ]
+    },
+    "size": {
+      "default": "medium",
+      "values": [
+        "small",
+        "medium",
+        "large"
+      ]
+    },
+    "visualState": {
+      "default": "default",
+      "values": [
+        "default",
+        "hover",
+        "focused",
+        "selected",
+        "error",
+        "disabled"
+      ],
+      "publicProp": false
+    },
+    "searchable": {
+      "default": false,
+      "values": [
+        false,
+        true
+      ]
+    },
+    "clearable": {
+      "default": false,
+      "values": [
+        false,
+        true
+      ]
+    }
+  },
+  "tokens": {
+    "size.small.height": {
+      "value": 24,
+      "unit": "px",
+      "cssVariable": "--ds-component-selector-size-small-height",
+      "note": "字面 24，与 control-S 同值，未读到 Dimension 绑定。"
+    },
+    "size.small.radius": {
+      "value": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-selector-size-small-radius",
+      "note": "字面 4，与 Radius-XS 同值。"
+    },
+    "size.medium.height": {
+      "value": 32,
+      "unit": "px",
+      "cssVariable": "--ds-component-selector-size-medium-height"
+    },
+    "size.medium.radius": {
+      "value": 6,
+      "unit": "px",
+      "cssVariable": "--ds-component-selector-size-medium-radius"
+    },
+    "size.large.height": {
+      "value": 40,
+      "unit": "px",
+      "cssVariable": "--ds-component-selector-size-large-height"
+    },
+    "size.large.radius": {
+      "value": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-selector-size-large-radius"
+    },
+    "padding.small": {
+      "value": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-selector-padding-small"
+    },
+    "padding.medium": {
+      "value": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-selector-padding-medium"
+    },
+    "padding.large": {
+      "value": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-selector-padding-large"
+    },
+    "trigger.gap": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-selector-trigger-gap",
+      "note": "2026-09-14 用户确认改为间距阶梯值 8px（原稿上 itemSpacing 10、旧 CSS 6，两者都不在 4px 阶梯上；8px 与站内其它图标/内容间距惯例一致，如 tooltip-trigger-gap、toolbar/actions 等）。"
+    },
+    "icon.size": {
+      "value": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-selector-icon-size"
+    },
+    "focus.ringWidth": {
+      "value": 2,
+      "unit": "px",
+      "cssVariable": "--ds-component-selector-focus-ring-width",
+      "note": "Figma focused 只有 Border/focused。2px BT_B8 为本地补充。"
+    },
+    "focus.ringColor": {
+      "value": "{Background/BT_B8}",
+      "cssVariable": "--ds-component-selector-focus-ring-color"
+    },
+    "chip.height.small": {
+      "value": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-selector-chip-height-small"
+    },
+    "chip.height.medium": {
+      "value": 24,
+      "unit": "px",
+      "cssVariable": "--ds-component-selector-chip-height-medium"
+    },
+    "chip.height.large": {
+      "value": 32,
+      "unit": "px",
+      "cssVariable": "--ds-component-selector-chip-height-large"
+    },
+    "chip.radius.small": {
+      "value": "{Radius/Radius-XS}",
+      "resolved": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-selector-chip-radius-small",
+      "note": "Small 芯片节点绑 Radius/Radius-XS。middle 同值未绑。"
+    },
+    "chip.radius.large": {
+      "value": 6,
+      "unit": "px",
+      "cssVariable": "--ds-component-selector-chip-radius-large"
+    },
+    "chip.gap": {
+      "value": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-selector-chip-gap"
+    },
+    "chip.background": {
+      "value": "{Background/Secondary}",
+      "resolved": "#EBEEF2",
+      "cssVariable": "--ds-component-selector-chip-background"
+    },
+    "chip.disabled.opacity": {
+      "value": 0.5,
+      "cssVariable": "--ds-component-selector-chip-disabled-opacity"
+    },
+    "disabled.background": {
+      "value": "{Background/Background}",
+      "resolved": "#F5F7FA",
+      "note": "与 stateMatrix.disabled.background 同值；CSS 由 stateMatrix 生成 --ds-component-selector-disabled-background。"
+    },
+    "disabled.border": {
+      "value": "{Border/secondary}",
+      "resolved": "#D7DCE3",
+      "note": "稿上禁用描边是 Border/secondary，不是 Border/disabled。CSS 由 stateMatrix 生成 --ds-component-selector-disabled-border。"
+    }
+  },
+  "stateMatrix": {
+    "default": {
+      "background": "Background/Container",
+      "text": "Text/Primary",
+      "placeholder": "Text/disable",
+      "border": "Border/secondary"
+    },
+    "hover": {
+      "background": "Background/Container",
+      "text": "Text/Primary",
+      "placeholder": "Text/disable",
+      "border": "Border/hover"
+    },
+    "focused": {
+      "background": "Background/Container",
+      "text": "Text/Primary",
+      "placeholder": "Text/disable",
+      "border": "Border/focused"
+    },
+    "selected": {
+      "background": "Background/Container",
+      "text": "Text/Primary",
+      "placeholder": "Text/disable",
+      "border": "Border/secondary"
+    },
+    "error": {
+      "background": "Background/Container",
+      "text": "Text/Primary",
+      "placeholder": "Text/disable",
+      "border": "Border/error"
+    },
+    "disabled": {
+      "background": "Background/Background",
+      "text": "Text/Primary",
+      "placeholder": "Text/disable",
+      "border": "Border/secondary"
+    }
+  },
+  "behavior": {
+    "popup": "Compose Dropdown tokens; do not create a Selector-specific option state matrix.",
+    "single": "Exactly one selected option; close after select.",
+    "placeholder": "Trigger-only and excluded from options.",
+    "focus": "Focus is not selection.",
+    "stateOwnership": "status=default|error; disabled is independent; focused/open are derived; selected is derived from value.",
+    "disabledBorder": "Border/secondary, not Border/disabled.",
+    "width": "Use a stable 160..240px desktop width by default; 120px minimum when constrained; fill only in explicit form/compact layouts.",
+    "dataStates": [
+      "loading",
+      "empty",
+      "error"
+    ]
+  }
+}

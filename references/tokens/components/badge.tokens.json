@@ -1,0 +1,200 @@
+{
+  "$schema": "gj-design-skill/component-tokens/v1",
+  "component": "Badge",
+  "source": {
+    "figmaNode": "2963:11876",
+    "figmaNodes": ["2963:11895", "2963:11894", "2963:11912", "2963:11911", "2963:11915", "3372:4381", "2963:11917", "2963:11978", "2963:11977"],
+    "figmaReadDate": "2026-09-10",
+    "componentSchema": "references/components/badge/schema.json",
+    "componentMapping": "references/components/badge/mapping.json",
+    "confirmedRules": "references/components/badge/rules.md",
+    "implementation": "assets/styles/gj-b2b-components.css#.gj-badge"
+  },
+  "properties": {
+    "type": {
+      "default": "Dot",
+      "values": ["Dot", "Number", "Status"],
+      "figmaSets": {
+        "Dot": "Badge_dot",
+        "Number": "Badge_count",
+        "Status": "Badge_status"
+      }
+    },
+    "size": {
+      "default": "M",
+      "values": ["M", "S", "XS"],
+      "appliesTo": "Number",
+      "figmaDefault": "M"
+    },
+    "singleDigit": {
+      "default": false,
+      "values": [true, false],
+      "figmaName": "Singledigit"
+    },
+    "colorPreset": {
+      "default": "red",
+      "values": ["red", "blue", "gray", "lightblue"],
+      "appliesTo": "Number"
+    },
+    "dotColor": {
+      "default": "red",
+      "values": ["red", "blue", "orange", "green", "gray"],
+      "appliesTo": "Dot"
+    },
+    "status": {
+      "default": "Error",
+      "values": ["Default", "processing", "Error", "Success", "Warning"],
+      "figmaDefault": "Error"
+    }
+  },
+  "tokens": {
+    "dot.size": {
+      "value": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-badge-dot-size"
+    },
+    "dot.red": {
+      "value": "{Feedback/error&rise}",
+      "cssVariable": "--ds-component-badge-dot-background"
+    },
+    "dot.blue": {
+      "value": "{Feedback/brand}"
+    },
+    "dot.orange": {
+      "value": "{Feedback/warning}"
+    },
+    "dot.green": {
+      "value": "{Feedback/success&decline}"
+    },
+    "dot.gray": {
+      "value": "{Feedback/plain}"
+    },
+    "count.m.height": {
+      "value": 24,
+      "unit": "px",
+      "cssVariable": "--ds-component-badge-count-m-height"
+    },
+    "count.s.height": {
+      "value": 20,
+      "unit": "px",
+      "cssVariable": "--ds-component-badge-count-s-height"
+    },
+    "count.xs.height": {
+      "value": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-badge-count-xs-height"
+    },
+    "count.m.paddingInline": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-badge-count-m-padding-inline",
+      "note": "Singledigit=true 时水平 padding 0，正方形 hug。"
+    },
+    "count.s.paddingInline": {
+      "value": "{Interval/space2}",
+      "resolved": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-badge-count-s-padding-inline"
+    },
+    "count.xs.paddingInline": {
+      "value": "{Interval/space2}",
+      "resolved": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-badge-count-xs-padding-inline"
+    },
+    "count.m.radius": {
+      "value": "{Radius/Radius-LG}",
+      "resolved": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-badge-count-m-radius",
+      "note": "Figma 字面 12，未绑 Radius；与 Radius-LG 同值。"
+    },
+    "count.s.radius": {
+      "value": 10,
+      "unit": "px",
+      "cssVariable": "--ds-component-badge-count-s-radius",
+      "note": "S 高 20 的半圆；无 Radius 档。"
+    },
+    "count.xs.radius": {
+      "value": "{Radius/Radius-LG}",
+      "resolved": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-badge-count-xs-radius",
+      "note": "多数字 XS 为 12；单数字 XS 为 10。"
+    },
+    "count.m.font": {
+      "value": "{中文/S8-CN-R}",
+      "cssClass": "gj-type-cn-s8"
+    },
+    "count.s.font": {
+      "value": "{中文/S9-CN-R}",
+      "cssClass": "gj-type-cn-s9"
+    },
+    "count.xs.font": {
+      "value": "{中文/S10-CN-R}",
+      "cssClass": "gj-type-cn-s10"
+    },
+    "color.red.background": {
+      "value": "{Feedback/error&rise}",
+      "cssVariable": "--ds-component-badge-color-red-background"
+    },
+    "color.red.text": {
+      "value": "{Text/reversal}",
+      "cssVariable": "--ds-component-badge-color-red-text"
+    },
+    "color.blue.background": {
+      "value": "{Feedback/brand}",
+      "cssVariable": "--ds-component-badge-color-blue-background"
+    },
+    "color.blue.text": {
+      "value": "{Text/reversal}",
+      "cssVariable": "--ds-component-badge-color-blue-text"
+    },
+    "color.gray.background": {
+      "value": "{Background/Background}",
+      "cssVariable": "--ds-component-badge-color-gray-background"
+    },
+    "color.gray.text": {
+      "value": "{Text/Secondary}",
+      "cssVariable": "--ds-component-badge-color-gray-text"
+    },
+    "color.lightblue.background": {
+      "value": "{Background/BG_blue}",
+      "cssVariable": "--ds-component-badge-color-lightblue-background"
+    },
+    "color.lightblue.text": {
+      "value": "{Text/blue}",
+      "cssVariable": "--ds-component-badge-color-lightblue-text"
+    },
+    "status.gap": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-badge-status-gap"
+    },
+    "status.text": {
+      "value": "{Text/Primary}"
+    },
+    "status.textStyle": {
+      "value": "{中文/S8-CN-R}",
+      "cssClass": "gj-type-cn-s8"
+    },
+    "status.Error": {
+      "value": "{Feedback/error&rise}"
+    },
+    "status.Success": {
+      "value": "{Feedback/success&decline}"
+    },
+    "status.processing": {
+      "value": "{Feedback/brand}"
+    },
+    "status.Warning": {
+      "value": "{Feedback/warning}"
+    },
+    "status.Default": {
+      "value": "{Feedback/plain}"
+    }
+  },
+  "openItems": {}
+}

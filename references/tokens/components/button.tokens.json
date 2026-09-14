@@ -1,0 +1,363 @@
+{
+  "$schema": "gj-design-skill/component-tokens/v1",
+  "component": "Button",
+  "source": {
+    "figmaNode": "3042:6843",
+    "componentSchema": "references/components/button/schema.json",
+    "componentMapping": "references/components/button/mapping.json",
+    "confirmedRules": "skill/gj-b2b-design-system/SKILL.md#button-与-text-button"
+  },
+  "properties": {
+    "level": {
+      "default": "Primary",
+      "values": [
+        "Primary",
+        "Secondary",
+        "Tertiary",
+        "Ghost"
+      ]
+    },
+    "size": {
+      "default": "Medium",
+      "values": [
+        "Large",
+        "Medium",
+        "Small"
+      ]
+    },
+    "visualState": {
+      "default": "default",
+      "values": [
+        "default",
+        "hover",
+        "pressed",
+        "disabled"
+      ],
+      "publicProp": false
+    },
+    "runtimeState": {
+      "default": "idle",
+      "values": [
+        "idle",
+        "loading",
+        "completed"
+      ],
+      "notes": {
+        "completed": "Optional short-lived feedback; enable only when success is not immediately represented by navigation, closing or content replacement."
+      }
+    },
+    "iconPlacement": {
+      "default": "none",
+      "values": [
+        "none",
+        "left",
+        "right",
+        "only"
+      ]
+    },
+    "intent": {
+      "default": "normal",
+      "values": [
+        "normal",
+        "danger",
+        "success"
+      ],
+      "constraint": "danger and success are allowed only as high-emphasis filled buttons"
+    },
+    "fullWidth": {
+      "default": false,
+      "values": [
+        false,
+        true
+      ],
+      "constraint": "Use only for a single clear primary action in login, form-submit or narrow-card contexts."
+    }
+  },
+  "tokens": {
+    "size.large.height": {
+      "value": "{Components/control-L}",
+      "resolved": 40,
+      "unit": "px",
+      "cssVariable": "--ds-component-button-size-large-height"
+    },
+    "size.large.paddingInline": {
+      "value": "{Interval/space5}",
+      "resolved": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-button-size-large-padding-inline"
+    },
+    "size.large.radius": {
+      "value": "{Radius/Radius-MD}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-button-size-large-radius"
+    },
+    "size.large.iconSize": {
+      "value": 20,
+      "unit": "px",
+      "cssVariable": "--ds-component-button-size-large-icon"
+    },
+    "size.large.textStyle": {
+      "value": "{中文/S7-CN-R}",
+      "cssClass": "gj-type-cn-s7"
+    },
+    "size.medium.height": {
+      "value": "{Components/control-M}",
+      "resolved": 32,
+      "unit": "px",
+      "cssVariable": "--ds-component-button-size-medium-height"
+    },
+    "size.medium.paddingInline": {
+      "value": "{Interval/space4}",
+      "resolved": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-button-size-medium-padding-inline"
+    },
+    "size.medium.radius": {
+      "value": "{Radius/Radius-SM}",
+      "resolved": 6,
+      "unit": "px",
+      "cssVariable": "--ds-component-button-size-medium-radius"
+    },
+    "size.medium.iconSize": {
+      "value": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-button-size-medium-icon"
+    },
+    "size.medium.textStyle": {
+      "value": "{中文/S8-CN-R}",
+      "cssClass": "gj-type-cn-s8"
+    },
+    "size.small.height": {
+      "value": "{Components/control-S}",
+      "resolved": 24,
+      "unit": "px",
+      "cssVariable": "--ds-component-button-size-small-height"
+    },
+    "size.small.paddingInline": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-button-size-small-padding-inline"
+    },
+    "size.small.radius": {
+      "value": "{Radius/Radius-XS}",
+      "resolved": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-button-size-small-radius"
+    },
+    "size.small.iconSize": {
+      "value": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-button-size-small-icon"
+    },
+    "size.small.textStyle": {
+      "value": "{中文/S9-CN-R}",
+      "cssClass": "gj-type-cn-s9"
+    },
+    "size.iconOnly.paddingBlock": {
+      "value": "{Interval/space1}",
+      "resolved": 0,
+      "unit": "px",
+      "note": "2026-09-09 BTN-001：Small/Medium/Large icon-only 上下内边距均为 0，不新增 5px Token。"
+    },
+    "iconGap": {
+      "value": "{Interval/space2}",
+      "resolved": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-button-icon-gap",
+      "note": "2026-09-14 用户确认：Button 图标与文字间距统一为 4px（等同 Small 变体原有硬编码值，并与 --ds-component-text-button-icon-gap 保持一致），替换掉 .gj-btn 原来的硬编码 gap:6px 和 .gj-btn-small 的硬编码 gap:4px。Large/Medium/Small 三档统一引用本 Token。"
+    },
+    "groupGap.large": {
+      "value": "{Interval/space4}",
+      "resolved": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-button-group-gap-large"
+    },
+    "groupGap.medium": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-button-group-gap-medium"
+    },
+    "groupGap.small": {
+      "value": "{Interval/space2}",
+      "resolved": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-button-group-gap-small"
+    },
+    "motion.pressedScale": {
+      "value": 0.98,
+      "cssVariable": "--ds-component-button-pressed-scale"
+    },
+    "focus.ringColor": {
+      "value": "{Background/BT_B20}",
+      "resolved": "#2B73FF33",
+      "cssVariable": "--ds-component-button-focus-ring-color"
+    },
+    "focus.ringWidth": {
+      "value": 3,
+      "unit": "px",
+      "cssVariable": "--ds-component-button-focus-ring-width"
+    }
+  },
+  "stateMatrix": {
+    "Primary": {
+      "default": {
+        "background": "Button/Primary/Bg-default",
+        "text": "Text/reversal",
+        "border": "transparent"
+      },
+      "hover": {
+        "background": "Button/Primary/Bg-hover",
+        "text": "Text/reversal",
+        "border": "transparent"
+      },
+      "pressed": {
+        "background": "Button/Primary/Bg-pressed",
+        "text": "Text/reversal",
+        "border": "transparent"
+      },
+      "disabled": {
+        "background": "Button/Primary/Bg-disable",
+        "text": "Text/reversal",
+        "border": "transparent"
+      }
+    },
+    "Secondary": {
+      "default": {
+        "background": "Background/Container",
+        "text": "Text/blue",
+        "border": "Border/focused"
+      },
+      "hover": {
+        "background": "Background/Hover",
+        "text": "Text/blue",
+        "border": "Border/focused"
+      },
+      "pressed": {
+        "background": "Button/Primary/Bg-default",
+        "text": "Text/reversal",
+        "border": "Border/focused"
+      },
+      "disabled": {
+        "background": "Background/Container",
+        "text": "Button/Secondary/Disable",
+        "border": "Button/Secondary/Disable"
+      }
+    },
+    "Tertiary": {
+      "default": {
+        "background": "Background/Container",
+        "text": "Text/Primary",
+        "border": "Border/secondary"
+      },
+      "hover": {
+        "background": "Background/Tertiary",
+        "text": "Text/Primary",
+        "border": "Border/hover"
+      },
+      "pressed": {
+        "background": "Background/Background",
+        "text": "Text/Primary",
+        "border": "Border/hover"
+      },
+      "disabled": {
+        "background": "Background/Container",
+        "text": "Text/disable",
+        "border": "Border/disabled"
+      }
+    },
+    "Ghost": {
+      "default": {
+        "background": "Background/Container",
+        "text": "Text/Primary",
+        "border": "transparent"
+      },
+      "hover": {
+        "background": "Background/Background",
+        "text": "Text/Primary",
+        "border": "transparent"
+      },
+      "pressed": {
+        "background": "Background/Secondary",
+        "text": "Text/Primary",
+        "border": "transparent"
+      },
+      "disabled": {
+        "background": "Background/Container",
+        "text": "Text/disable",
+        "border": "transparent"
+      }
+    }
+  },
+  "intentMatrix": {
+    "danger": {
+      "allowedLevel": "Primary",
+      "states": {
+        "default": "Button/Red/Bg-default",
+        "hover": "Button/Red/Bg-hover",
+        "pressed": "Button/Red/Bg-pressed",
+        "disabled": "Button/Red/Bg-disable"
+      },
+      "text": "Text/reversal"
+    },
+    "success": {
+      "allowedLevel": "Primary",
+      "states": {
+        "default": "Button/Green/Bg-default",
+        "hover": "Button/Green/Bg-hover",
+        "pressed": "Button/Green/Bg-pressed",
+        "disabled": "Button/Green/Bg-disable"
+      },
+      "text": "Text/reversal"
+    }
+  },
+  "behavior": {
+    "element": "button",
+    "disabled": "Use native disabled and never fire the action.",
+    "loading": {
+      "blocksRepeatedAction": true,
+      "preserveWidth": true,
+      "icon": "system/icon-loading",
+      "iconColor": "currentColor",
+      "label": "Use an operation-specific progressive label such as 保存中 or 正在提交."
+    },
+    "completed": {
+      "optional": true,
+      "shortLived": true,
+      "icon": "system/icon-check",
+      "iconColor": "currentColor"
+    },
+    "failure": "Return to an actionable state; communicate the error with Toast, field error or page message rather than a persistent Button error state.",
+    "focus": "Provide a visible :focus-visible ring without changing layout size. Not a Figma State and not a spec showcase state. No Prototype Reaction.",
+    "pressedMotion": "Scale to 0.98 while actively pressed; never translate vertically.",
+    "iconOnly": "Require an accessible name. Use only when the operation meaning is clear. Square hit area 40/32/24. padding-block 0 via Interval/space1. Do not mix with gj-icon-button. Text Button has no icon-only."
+  },
+  "content": {
+    "singleLine": true,
+    "recommendedChineseCharacters": "2–6",
+    "maximumChineseCharacters": 8,
+    "overflowRule": "Shorten the action label; do not wrap to two lines."
+  },
+  "composition": {
+    "onePrimaryPerRegion": true,
+    "sameSizeWithinGroup": true,
+    "preferredPairs": [
+      "Primary + Secondary",
+      "Primary + Tertiary"
+    ],
+    "avoid": [
+      "adjacent actions with the same visual weight",
+      "mixing button heights with an adjacent primary control"
+    ],
+    "dialogOrder": "Secondary on the left, the single Primary on the right."
+  },
+  "variableScopes": {
+    "figma": "narrowed-2026-09-10",
+    "decision": "2026-09-10 BTN-005：GJ_B2B scoped by Fill/Stroke/Text Fill/Height/Radius/Gap and rebound on Button 192 variants. Text also has SHAPE_FILL for icon vectors. Primitive/Brand/Table/Feedback/Chart stay ALL_SCOPES."
+  },
+  "openItems": {
+    "iconTextGap": "The existing extraction confirms that spacing is variable-bound but does not preserve its per-size values. Do not create a global Button icon-gap token until the Figma component is read again."
+  }
+}

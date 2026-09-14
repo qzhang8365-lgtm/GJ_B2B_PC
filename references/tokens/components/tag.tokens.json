@@ -1,0 +1,394 @@
+{
+  "$schema": "gj-design-skill/component-tokens/v1",
+  "component": "Tag",
+  "source": {
+    "figmaNode": "2950:1080",
+    "componentSchema": "references/components/tag/schema.json",
+    "componentMapping": "references/components/tag/mapping.json",
+    "confirmedRules": "references/components/tag/rules.md"
+  },
+  "properties": {
+    "style": {
+      "default": "Light",
+      "values": [
+        "Filled",
+        "Light",
+        "Line"
+      ]
+    },
+    "size": {
+      "default": "Regular",
+      "values": [
+        "Regular",
+        "Small"
+      ]
+    },
+    "color": {
+      "default": "Blue",
+      "values": [
+        "Blue",
+        "Neutral",
+        "Red",
+        "Green",
+        "Orange",
+        "Yellow",
+        "Cyan",
+        "Sky",
+        "DeepBlue",
+        "Purple",
+        "Pink"
+      ]
+    },
+    "shape": {
+      "default": "Default",
+      "values": [
+        "Default",
+        "Pill"
+      ]
+    },
+    "icon": {
+      "default": "None",
+      "values": [
+        "None",
+        "Icon"
+      ],
+      "constraint": "Small 不支持 Icon（Figma 未提供该组合的 variant）。"
+    },
+    "interaction": {
+      "default": "display",
+      "values": [
+        "display",
+        "removable",
+        "add",
+        "selectable"
+      ]
+    }
+  },
+  "tokens": {
+    "size.regular.height": {
+      "value": 22,
+      "unit": "px",
+      "cssVariable": "--ds-component-tag-size-regular-height"
+    },
+    "size.regular.paddingInline": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-tag-size-regular-padding-inline"
+    },
+    "size.regular.radius": {
+      "value": "{Radius/Radius-XS}",
+      "resolved": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-tag-size-regular-radius"
+    },
+    "size.regular.radiusPill": {
+      "value": 999,
+      "unit": "px",
+      "cssVariable": "--ds-component-tag-size-regular-radius-pill",
+      "note": "2026-09-08 设计确认：为与其它组件的 Pill/Capsule 写法保持统一，实现固定使用 999px；Figma 源文件对 Regular(22px) 实测绑定的字面值是 12px，二者在该高度下视觉等价，999px 是本 Skill 的统一实现决定，不代表 Figma 数值改变（见 TAG-005）。"
+    },
+    "size.regular.iconSize": {
+      "value": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-tag-size-regular-icon"
+    },
+    "size.regular.gap": {
+      "value": "{Interval/space2}",
+      "resolved": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-tag-size-regular-gap"
+    },
+    "size.regular.textStyle": {
+      "value": "{中文/S6-CN-S}",
+      "cssClass": "gj-type-cn-s6"
+    },
+    "size.small.height": {
+      "value": 18,
+      "unit": "px",
+      "cssVariable": "--ds-component-tag-size-small-height"
+    },
+    "size.small.paddingInline": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-tag-size-small-padding-inline"
+    },
+    "size.small.radius": {
+      "value": "{Radius/Radius-XS}",
+      "resolved": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-tag-size-small-radius"
+    },
+    "size.small.radiusPill": {
+      "value": 999,
+      "unit": "px",
+      "cssVariable": "--ds-component-tag-size-small-radius-pill",
+      "note": "同 size.regular.radiusPill：Figma 对 Small(18px) 实测字面值也是 12px，实现统一改用 999px。"
+    },
+    "size.small.textStyle": {
+      "value": "{中文/S10-CN-R}",
+      "cssClass": "gj-type-cn-s10"
+    },
+    "closeIcon.size": {
+      "value": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-tag-close-icon-size"
+    },
+    "groupGap.regular": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-tag-group-gap-regular"
+    },
+    "groupGap.small": {
+      "value": "{Interval/space2}",
+      "resolved": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-tag-group-gap-small"
+    },
+    "removable.background": {
+      "value": "{Background/Secondary}",
+      "cssVariable": "--ds-component-tag-removable-background"
+    },
+    "removable.text": {
+      "value": "{Text/Secondary}",
+      "cssVariable": "--ds-component-tag-removable-text"
+    },
+    "add.background": {
+      "value": "{Background/Container}",
+      "cssVariable": "--ds-component-tag-add-background"
+    },
+    "add.text": {
+      "value": "{Text/Secondary}",
+      "cssVariable": "--ds-component-tag-add-text"
+    },
+    "cornerTag.medium.height": {
+      "value": 22,
+      "unit": "px",
+      "cssVariable": "--ds-component-tag-corner-medium-height"
+    },
+    "cornerTag.medium.minWidth": {
+      "value": 40,
+      "unit": "px",
+      "cssVariable": "--ds-component-tag-corner-medium-min-width"
+    },
+    "cornerTag.medium.radius": {
+      "value": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-tag-corner-medium-radius",
+      "note": "非对称圆角：贴合卡片角落的一角与其对角各 8px，其余两角为直角（top_left: rounded-tl-8 + rounded-br-8；top_right: rounded-tr-8 + rounded-bl-8）。"
+    },
+    "cornerTag.small.height": {
+      "value": 18,
+      "unit": "px",
+      "cssVariable": "--ds-component-tag-corner-small-height"
+    },
+    "cornerTag.small.minWidth": {
+      "value": 36,
+      "unit": "px",
+      "cssVariable": "--ds-component-tag-corner-small-min-width"
+    },
+    "cornerTag.small.radius": {
+      "value": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-tag-corner-small-radius",
+      "note": "非对称圆角，规则同 medium，圆角值随尺寸缩小到 4px。"
+    },
+    "cornerTag.paddingInline": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-tag-corner-padding-inline"
+    },
+    "cornerTag.iconSize": {
+      "value": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-tag-corner-icon-size"
+    },
+    "cornerTag.gap": {
+      "value": "{Interval/space2}",
+      "resolved": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-tag-corner-gap"
+    },
+    "cornerTag.medium.textStyle": {
+      "value": "{中文/S6-CN-S}",
+      "cssClass": "gj-type-cn-s6"
+    },
+    "cornerTag.small.textStyle": {
+      "value": "{中文/S10-CN-R}",
+      "cssClass": "gj-type-cn-s10"
+    }
+  },
+  "stateMatrixNote": "键名为 style+Color 拼接（如 filledBlue = Style=Filled, Color=Blue），因 Figma 132 个 variant 只有 default 单一状态、没有 hover/pressed/selected 设计（TAG-004，2026-09-08 设计确认不需要交互态，selected 改由外部逻辑切换 style/color 属性表达，不新增状态矩阵）。Blue/Neutral 两色系已逐 style 用 get_design_context 直接核实；其余 9 色系按 Blue 验证过的角色分配类推（Primitive 色阶后缀集合已用 get_variable_defs 核对一致）。filledNeutral 背景 2026-09-08 随 Figma 由 N06 改为 N07（TAG-003，已用 get_variable_defs 独立复核 N07=#8d96a3，非仅采信用户说法）：白字对比度由 1.83:1 提升到 2.99:1，已过 3:1 的非文本/大字号门槛，但仍未达常规 12px 文本 WCAG AA 要求的 4.5:1，已如实登记，未继续代为改色。cornerXxx 系列是 Tag_corner（节点 3217:9158，24 variants）的取色，2026-09-08 已补齐真审计：只有一种深色底白字视觉（无 filled/light/line 区分），6 色绑定语义色而非 Primitive；圆角随位置呈非对称贴角造型，见 tokens 里的 cornerTag.*.radius。",
+  "stateMatrix": {
+    "filledBlue": {
+      "background": "Primitive/Blue/B06",
+      "text": "Primitive/Neutral/N01"
+    },
+    "lightBlue": {
+      "background": "Primitive/Blue/B02",
+      "text": "Primitive/Blue/B07"
+    },
+    "lineBlue": {
+      "background": "Primitive/Blue/B01",
+      "border": "Primitive/Blue/B04",
+      "text": "Primitive/Blue/B07"
+    },
+    "filledRed": {
+      "background": "Primitive/Red/R06",
+      "text": "Primitive/Neutral/N01"
+    },
+    "lightRed": {
+      "background": "Primitive/Red/R02",
+      "text": "Primitive/Red/R07"
+    },
+    "lineRed": {
+      "background": "Primitive/Red/R01",
+      "border": "Primitive/Red/R04",
+      "text": "Primitive/Red/R07"
+    },
+    "filledGreen": {
+      "background": "Primitive/Green/G06",
+      "text": "Primitive/Neutral/N01"
+    },
+    "lightGreen": {
+      "background": "Primitive/Green/G02",
+      "text": "Primitive/Green/G07"
+    },
+    "lineGreen": {
+      "background": "Primitive/Green/G01",
+      "border": "Primitive/Green/G04",
+      "text": "Primitive/Green/G07"
+    },
+    "filledOrange": {
+      "background": "Primitive/Orange/O06",
+      "text": "Primitive/Neutral/N01"
+    },
+    "lightOrange": {
+      "background": "Primitive/Orange/O02",
+      "text": "Primitive/Orange/O07"
+    },
+    "lineOrange": {
+      "background": "Primitive/Orange/O01",
+      "border": "Primitive/Orange/O04",
+      "text": "Primitive/Orange/O07"
+    },
+    "filledYellow": {
+      "background": "Primitive/Yellow/Y06",
+      "text": "Primitive/Neutral/N01"
+    },
+    "lightYellow": {
+      "background": "Primitive/Yellow/Y02",
+      "text": "Primitive/Yellow/Y07"
+    },
+    "lineYellow": {
+      "background": "Primitive/Yellow/Y01",
+      "border": "Primitive/Yellow/Y04",
+      "text": "Primitive/Yellow/Y07"
+    },
+    "filledCyan": {
+      "background": "Primitive/Cyan/C06",
+      "text": "Primitive/Neutral/N01"
+    },
+    "lightCyan": {
+      "background": "Primitive/Cyan/C02",
+      "text": "Primitive/Cyan/C07"
+    },
+    "lineCyan": {
+      "background": "Primitive/Cyan/C01",
+      "border": "Primitive/Cyan/C04",
+      "text": "Primitive/Cyan/C07"
+    },
+    "filledSky": {
+      "background": "Primitive/Sky/S06",
+      "text": "Primitive/Neutral/N01"
+    },
+    "lightSky": {
+      "background": "Primitive/Sky/S02",
+      "text": "Primitive/Sky/S07"
+    },
+    "lineSky": {
+      "background": "Primitive/Sky/S01",
+      "border": "Primitive/Sky/S04",
+      "text": "Primitive/Sky/S07"
+    },
+    "filledDeepBlue": {
+      "background": "Primitive/DeepBlue/DB06",
+      "text": "Primitive/Neutral/N01"
+    },
+    "lightDeepBlue": {
+      "background": "Primitive/DeepBlue/DB02",
+      "text": "Primitive/DeepBlue/DB07"
+    },
+    "lineDeepBlue": {
+      "background": "Primitive/DeepBlue/DB01",
+      "border": "Primitive/DeepBlue/DB04",
+      "text": "Primitive/DeepBlue/DB07"
+    },
+    "filledPurple": {
+      "background": "Primitive/Purple/P06",
+      "text": "Primitive/Neutral/N01"
+    },
+    "lightPurple": {
+      "background": "Primitive/Purple/P02",
+      "text": "Primitive/Purple/P07"
+    },
+    "linePurple": {
+      "background": "Primitive/Purple/P01",
+      "border": "Primitive/Purple/P04",
+      "text": "Primitive/Purple/P07"
+    },
+    "filledPink": {
+      "background": "Primitive/Pink/PK06",
+      "text": "Primitive/Neutral/N01"
+    },
+    "lightPink": {
+      "background": "Primitive/Pink/PK02",
+      "text": "Primitive/Pink/PK07"
+    },
+    "linePink": {
+      "background": "Primitive/Pink/PK01",
+      "border": "Primitive/Pink/PK04",
+      "text": "Primitive/Pink/PK07"
+    },
+    "filledNeutral": {
+      "background": "Primitive/Neutral/N07",
+      "text": "Primitive/Neutral/N01"
+    },
+    "lightNeutral": {
+      "background": "Primitive/Neutral/N04",
+      "text": "Primitive/Neutral/N09"
+    },
+    "lineNeutral": {
+      "background": "Primitive/Neutral/N02",
+      "border": "Primitive/Neutral/N06",
+      "text": "Primitive/Neutral/N09"
+    },
+    "cornerBlack": {
+      "background": "Background/MK_45",
+      "text": "Primitive/Neutral/N01"
+    },
+    "cornerRed": {
+      "background": "Border/error",
+      "text": "Primitive/Neutral/N01"
+    },
+    "cornerBlue": {
+      "background": "Feedback/brand",
+      "text": "Primitive/Neutral/N01"
+    },
+    "cornerGreen": {
+      "background": "Feedback/success&decline",
+      "text": "Primitive/Neutral/N01"
+    },
+    "cornerGrey": {
+      "background": "Feedback/plain",
+      "text": "Primitive/Neutral/N01"
+    },
+    "cornerOrange": {
+      "background": "Feedback/warning",
+      "text": "Primitive/Neutral/N01"
+    }
+  }
+}

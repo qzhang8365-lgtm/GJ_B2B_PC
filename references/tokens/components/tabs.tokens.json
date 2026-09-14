@@ -1,0 +1,549 @@
+{
+  "$schema": "gj-design-skill/component-tokens/v1",
+  "component": "Tabs",
+  "source": {
+    "figmaNode": "2723:2808 / 2787:1924 / 3025:1365 / 3169:8454 / 2859:1645",
+    "figmaReadDate": "2026-09-10",
+    "componentSchema": "references/components/tabs/schema.json",
+    "componentMapping": "references/components/tabs/mapping.json"
+  },
+  "properties": {
+    "type": {
+      "default": "highlight",
+      "values": [
+        "highlight",
+        "card",
+        "pill",
+        "button",
+        "left"
+      ]
+    },
+    "size": {
+      "default": "medium",
+      "values": [
+        "small",
+        "medium",
+        "large"
+      ]
+    },
+    "selected": {
+      "default": false,
+      "values": [
+        false,
+        true
+      ]
+    },
+    "closable": {
+      "default": false,
+      "values": [
+        false,
+        true
+      ]
+    }
+  },
+  "tokens": {
+    "highlight.height.small": {
+      "value": 32,
+      "unit": "px",
+      "cssVariable": "--ds-component-tabs-highlight-height-small"
+    },
+    "highlight.height.medium": {
+      "value": 36,
+      "unit": "px",
+      "cssVariable": "--ds-component-tabs-highlight-height-medium"
+    },
+    "highlight.height.large": {
+      "value": 40,
+      "unit": "px",
+      "cssVariable": "--ds-component-tabs-highlight-height-large"
+    },
+    "card.height.small": {
+      "value": 28,
+      "unit": "px",
+      "cssVariable": "--ds-component-tabs-card-height-small"
+    },
+    "card.height.medium": {
+      "value": 32,
+      "unit": "px",
+      "cssVariable": "--ds-component-tabs-card-height-medium"
+    },
+    "card.height.large": {
+      "value": 40,
+      "unit": "px",
+      "cssVariable": "--ds-component-tabs-card-height-large"
+    },
+    "pill.height.small": {
+      "value": 24,
+      "unit": "px",
+      "cssVariable": "--ds-component-tabs-pill-height-small"
+    },
+    "pill.height.medium": {
+      "value": 32,
+      "unit": "px",
+      "cssVariable": "--ds-component-tabs-pill-height-medium"
+    },
+    "pill.height.large": {
+      "value": 36,
+      "unit": "px",
+      "cssVariable": "--ds-component-tabs-pill-height-large"
+    },
+    "button.height.small": {
+      "value": 24,
+      "unit": "px",
+      "cssVariable": "--ds-component-tabs-button-height-small"
+    },
+    "button.height.medium": {
+      "value": 32,
+      "unit": "px",
+      "cssVariable": "--ds-component-tabs-button-height-medium"
+    },
+    "button.height.large": {
+      "value": 36,
+      "unit": "px",
+      "cssVariable": "--ds-component-tabs-button-height-large"
+    },
+    "left.height.small": {
+      "value": 36,
+      "unit": "px",
+      "cssVariable": "--ds-component-tabs-left-height-small"
+    },
+    "left.height.medium": {
+      "value": 40,
+      "unit": "px",
+      "cssVariable": "--ds-component-tabs-left-height-medium"
+    },
+    "left.height.large": {
+      "value": 46,
+      "unit": "px",
+      "cssVariable": "--ds-component-tabs-left-height-large"
+    },
+    "highlight.item-gap": {
+      "value": 24,
+      "unit": "px",
+      "cssVariable": "--ds-component-tabs-highlight-item-gap"
+    },
+    "highlight.indicator-height": {
+      "value": 2,
+      "unit": "px",
+      "cssVariable": "--ds-component-tabs-highlight-indicator-height"
+    },
+    "highlight.indicator-radius": {
+      "value": 2,
+      "unit": "px",
+      "cssVariable": "--ds-component-tabs-highlight-indicator-radius"
+    },
+    "highlight.icon-size": {
+      "value": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-tabs-highlight-icon-size"
+    },
+    "highlight.content-gap": {
+      "value": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-tabs-highlight-content-gap"
+    },
+    "highlight.badge-height": {
+      "value": 20,
+      "unit": "px",
+      "cssVariable": "--ds-component-tabs-highlight-badge-height"
+    },
+    "highlight.badge-padding-inline": {
+      "value": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-tabs-highlight-badge-padding-inline"
+    },
+    "highlight.badge-radius": {
+      "value": "{Radius/Radius-full}",
+      "cssVariable": "--ds-component-tabs-highlight-badge-radius"
+    },
+    "card.item-gap": {
+      "value": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-tabs-card-item-gap"
+    },
+    "card.padding-inline-small": {
+      "value": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-tabs-card-padding-inline-small"
+    },
+    "card.padding-inline-medium": {
+      "value": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-tabs-card-padding-inline-medium"
+    },
+    "card.padding-inline-large": {
+      "value": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-tabs-card-padding-inline-large"
+    },
+    "card.content-gap": {
+      "value": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-tabs-card-content-gap"
+    },
+    "card.close-icon-size": {
+      "value": 14,
+      "unit": "px",
+      "cssVariable": "--ds-component-tabs-card-close-icon-size"
+    },
+    "card.radius-small": {
+      "value": "{Radius/Radius-SM}",
+      "cssVariable": "--ds-component-tabs-card-radius-small"
+    },
+    "card.radius-medium": {
+      "value": "{Radius/Radius-SM}",
+      "cssVariable": "--ds-component-tabs-card-radius-medium"
+    },
+    "card.radius-large": {
+      "value": "{Radius/Radius-MD}",
+      "cssVariable": "--ds-component-tabs-card-radius-large"
+    },
+    "pill.container-padding-small": {
+      "value": 2,
+      "unit": "px",
+      "cssVariable": "--ds-component-tabs-pill-container-padding-small"
+    },
+    "pill.container-padding-medium": {
+      "value": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-tabs-pill-container-padding-medium"
+    },
+    "pill.container-padding-large": {
+      "value": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-tabs-pill-container-padding-large"
+    },
+    "pill.padding-inline": {
+      "value": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-tabs-pill-padding-inline"
+    },
+    "pill.radius-small": {
+      "value": 20,
+      "unit": "px",
+      "cssVariable": "--ds-component-tabs-pill-radius-small"
+    },
+    "pill.radius-medium": {
+      "value": 30,
+      "unit": "px",
+      "cssVariable": "--ds-component-tabs-pill-radius-medium"
+    },
+    "pill.radius-large": {
+      "value": 24,
+      "unit": "px",
+      "cssVariable": "--ds-component-tabs-pill-radius-large"
+    },
+    "pill.container-radius-small": {
+      "value": 20,
+      "unit": "px",
+      "cssVariable": "--ds-component-tabs-pill-container-radius-small"
+    },
+    "pill.container-radius-medium": {
+      "value": 20,
+      "unit": "px",
+      "cssVariable": "--ds-component-tabs-pill-container-radius-medium"
+    },
+    "pill.container-radius-large": {
+      "value": 22,
+      "unit": "px",
+      "cssVariable": "--ds-component-tabs-pill-container-radius-large"
+    },
+    "button.container-padding-small": {
+      "value": 2,
+      "unit": "px",
+      "cssVariable": "--ds-component-tabs-button-container-padding-small"
+    },
+    "button.container-padding-medium": {
+      "value": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-tabs-button-container-padding-medium"
+    },
+    "button.container-padding-large": {
+      "value": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-tabs-button-container-padding-large"
+    },
+    "button.padding-inline": {
+      "value": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-tabs-button-padding-inline"
+    },
+    "button.radius-small": {
+      "value": "{Radius/Radius-XS}",
+      "cssVariable": "--ds-component-tabs-button-radius-small"
+    },
+    "button.radius-medium": {
+      "value": "{Radius/Radius-SM}",
+      "cssVariable": "--ds-component-tabs-button-radius-medium"
+    },
+    "button.radius-large": {
+      "value": "{Radius/Radius-MD}",
+      "cssVariable": "--ds-component-tabs-button-radius-large"
+    },
+    "button.container-radius-small": {
+      "value": "{Radius/Radius-SM}",
+      "cssVariable": "--ds-component-tabs-button-container-radius-small"
+    },
+    "button.container-radius-medium": {
+      "value": 10,
+      "unit": "px",
+      "cssVariable": "--ds-component-tabs-button-container-radius-medium"
+    },
+    "button.container-radius-large": {
+      "value": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-tabs-button-container-radius-large"
+    },
+    "left.group-width": {
+      "value": 96,
+      "unit": "px",
+      "cssVariable": "--ds-component-tabs-left-group-width"
+    },
+    "left.padding-inline": {
+      "value": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-tabs-left-padding-inline"
+    },
+    "left.indicator-width": {
+      "value": 2,
+      "unit": "px",
+      "cssVariable": "--ds-component-tabs-left-indicator-width"
+    },
+    "container.background": {
+      "value": "{Background/Background}",
+      "cssVariable": "--ds-component-tabs-container-background"
+    },
+    "container.active-background": {
+      "value": "{Background/Container}",
+      "cssVariable": "--ds-component-tabs-container-active-background"
+    },
+    "container.shadow": {
+      "value": "{Innershadow_small}",
+      "cssVariable": "--ds-component-tabs-container-shadow"
+    },
+    "item.active-shadow": {
+      "value": "{shadow_small}",
+      "cssVariable": "--ds-component-tabs-item-active-shadow"
+    },
+    "highlight.default-text": {
+      "value": "{Text/Secondary}",
+      "cssVariable": "--ds-component-tabs-highlight-default-text"
+    },
+    "highlight.hover-text": {
+      "value": "{Text/blue}",
+      "cssVariable": "--ds-component-tabs-highlight-hover-text"
+    },
+    "highlight.active-text": {
+      "value": "{Text/blue}",
+      "cssVariable": "--ds-component-tabs-highlight-active-text"
+    },
+    "highlight.indicator-color": {
+      "value": "{Text/blue}",
+      "cssVariable": "--ds-component-tabs-highlight-indicator-color"
+    },
+    "highlight.disabled-text": {
+      "value": "{Text/disable}",
+      "cssVariable": "--ds-component-tabs-highlight-disabled-text"
+    },
+    "highlight.badge-default-text": {
+      "value": "{Text/Secondary}",
+      "cssVariable": "--ds-component-tabs-highlight-badge-default-text"
+    },
+    "highlight.badge-default-background": {
+      "value": "{Background/Secondary}",
+      "cssVariable": "--ds-component-tabs-highlight-badge-default-background"
+    },
+    "highlight.badge-active-text": {
+      "value": "{Feedback/brand}",
+      "cssVariable": "--ds-component-tabs-highlight-badge-active-text"
+    },
+    "highlight.badge-active-background": {
+      "value": "{Background/BG_blue}",
+      "cssVariable": "--ds-component-tabs-highlight-badge-active-background"
+    },
+    "card.default-text": {
+      "value": "{Text/Secondary}",
+      "cssVariable": "--ds-component-tabs-card-default-text"
+    },
+    "card.default-background": {
+      "value": "{Background/Background}",
+      "cssVariable": "--ds-component-tabs-card-default-background"
+    },
+    "card.hover-text": {
+      "value": "{Text/blue}",
+      "cssVariable": "--ds-component-tabs-card-hover-text"
+    },
+    "card.active-text": {
+      "value": "{Text/reversal}",
+      "cssVariable": "--ds-component-tabs-card-active-text"
+    },
+    "card.active-background": {
+      "value": "{Button/Primary/Bg-default}",
+      "cssVariable": "--ds-component-tabs-card-active-background"
+    },
+    "pill.default-text": {
+      "value": "{Text/Secondary}",
+      "cssVariable": "--ds-component-tabs-pill-default-text"
+    },
+    "pill.hover-text": {
+      "value": "{Text/Secondary}",
+      "cssVariable": "--ds-component-tabs-pill-hover-text"
+    },
+    "pill.hover-background": {
+      "value": "{Background/Background}",
+      "cssVariable": "--ds-component-tabs-pill-hover-background"
+    },
+    "pill.active-text": {
+      "value": "{Text/Primary}",
+      "cssVariable": "--ds-component-tabs-pill-active-text"
+    },
+    "pill.disabled-text": {
+      "value": "{Text/disable}",
+      "cssVariable": "--ds-component-tabs-pill-disabled-text"
+    },
+    "button.default-text": {
+      "value": "{Text/Secondary}",
+      "cssVariable": "--ds-component-tabs-button-default-text"
+    },
+    "button.hover-text": {
+      "value": "{Text/Primary}",
+      "cssVariable": "--ds-component-tabs-button-hover-text"
+    },
+    "button.hover-background": {
+      "value": "{Background/Background}",
+      "cssVariable": "--ds-component-tabs-button-hover-background"
+    },
+    "button.active-text": {
+      "value": "{Text/Primary}",
+      "cssVariable": "--ds-component-tabs-button-active-text"
+    },
+    "button.disabled-text": {
+      "value": "{Text/disable}",
+      "cssVariable": "--ds-component-tabs-button-disabled-text"
+    },
+    "left.default-text": {
+      "value": "{Text/Secondary}",
+      "cssVariable": "--ds-component-tabs-left-default-text"
+    },
+    "left.hover-text": {
+      "value": "{Text/blue}",
+      "cssVariable": "--ds-component-tabs-left-hover-text"
+    },
+    "left.active-text": {
+      "value": "{Text/blue}",
+      "cssVariable": "--ds-component-tabs-left-active-text"
+    },
+    "left.disabled-text": {
+      "value": "{Text/disable}",
+      "cssVariable": "--ds-component-tabs-left-disabled-text"
+    },
+    "left.background": {
+      "value": "{Background/Container}",
+      "cssVariable": "--ds-component-tabs-left-background"
+    },
+    "left.border": {
+      "value": "{Border/default}",
+      "cssVariable": "--ds-component-tabs-left-border"
+    },
+    "focus-ring-width": {
+      "value": 2,
+      "unit": "px",
+      "cssVariable": "--ds-component-tabs-focus-ring-width"
+    },
+    "focus-ring-color": {
+      "value": "{Background/BT_B20}",
+      "cssVariable": "--ds-component-tabs-focus-ring-color"
+    }
+  },
+  "typography": {
+    "highlight": {
+      "small": {
+        "default": "中文/S9-CN-R",
+        "active": "中文/S6-CN-S"
+      },
+      "medium": {
+        "default": "中文/S8-CN-R",
+        "active": "中文/S5-CN-S"
+      },
+      "large": {
+        "default": "中文/S7-CN-R",
+        "active": "中文/S4-CN-S"
+      }
+    },
+    "card": {
+      "small": {
+        "default": "中文/S8-CN-R",
+        "active": "中文/S5-CN-S"
+      },
+      "medium": {
+        "default": "中文/S8-CN-R",
+        "active": "中文/S5-CN-S"
+      },
+      "large": {
+        "default": "中文/S7-CN-R",
+        "active": "中文/S4-CN-S"
+      }
+    },
+    "pill": {
+      "small": {
+        "default": "中文/S8-CN-R",
+        "active": "中文/S5-CN-S"
+      },
+      "medium": {
+        "default": "中文/S8-CN-R",
+        "active": "中文/S5-CN-S"
+      },
+      "large": {
+        "default": "中文/S7-CN-R",
+        "active": "中文/S4-CN-S"
+      }
+    },
+    "button": {
+      "small": {
+        "default": "中文/S8-CN-R",
+        "active": "中文/S5-CN-S"
+      },
+      "medium": {
+        "default": "中文/S8-CN-R",
+        "active": "中文/S5-CN-S"
+      },
+      "large": {
+        "default": "中文/S7-CN-R",
+        "active": "中文/S4-CN-S"
+      }
+    },
+    "leftItem": {
+      "small": {
+        "default": "中文/S8-CN-R",
+        "active": "中文/S4-CN-S"
+      },
+      "medium": {
+        "default": "中文/S8-CN-R",
+        "active": "中文/S4-CN-S"
+      },
+      "large": {
+        "default": "中文/S7-CN-R",
+        "active": "中文/S4-CN-S"
+      }
+    },
+    "badge": "中文/S9-CN-R",
+    "leftGroupActive": {
+      "value": "Text/blue + font-weight 600 (font-size/line-height unchanged from default)",
+      "note": "2026-09-11 TAB-006: .gj-tabs-left Active 只变颜色+字重，字号/行高与 Default 一致。组合本地宽度由 Figma 原始 80px 修正为 96px，以在保留 16px 左右内边距时完整容纳常规四字标签；更长文字单行省略。"
+    }
+  },
+  "pendingExtraction": [],
+  "behavior": {
+    "recommendedTypes": "Highlight Tab / Card Tab / Pill Tab（Figma 说明节点推荐）；Button 与 Left 为已存在的正式组件集。",
+    "cardClosable": "Card 类型支持可关闭的多任务页签。",
+    "compositionConsistency": "Button Small 独立 item 与组合实例统一为 24px；Left 组合为 Medium，代码基座宽 96px。2026-09-11 起：.gj-tabs-left Active 只变 Text/blue + 600，字号/行高保持对应尺寸 Default；常规四字标签完整显示，超长标签省略（TAB-006）。",
+    "keyboard": [
+      "ArrowLeft",
+      "ArrowRight",
+      "Home",
+      "End",
+      "Enter",
+      "Space"
+    ]
+  }
+}

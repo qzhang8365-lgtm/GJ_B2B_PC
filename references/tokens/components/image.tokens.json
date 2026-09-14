@@ -1,0 +1,313 @@
+{
+  "$schema": "gj-design-skill/component-tokens/v1",
+  "component": "Image",
+  "source": {
+    "figmaNode": "2638:2636",
+    "figmaNodes": ["3533:11349", "3533:2", "3533:6", "3533:11335", "3530:1469", "3533:11342", "3530:1791", "3530:1790", "3530:1789", "3530:1855"],
+    "figmaReadDate": "2026-09-10",
+    "componentSchema": "references/components/image/schema.json",
+    "componentMapping": "references/components/image/mapping.json",
+    "confirmedRules": "references/components/image/rules.md",
+    "implementation": "assets/styles/gj-b2b-components.css#.gj-image-thumb",
+    "note": "2026-09-09 节点审计；2026-09-10 接入 build-tokens，描边绑定 Border/secondary|focused|error，Empty/Uploading/Error dash [4,4]。"
+  },
+  "properties": {
+    "mode": {
+      "default": "image",
+      "values": [
+        "thumbnail",
+        "image",
+        "gallery-preview"
+      ]
+    },
+    "fit": {
+      "default": "cover",
+      "values": [
+        "cover",
+        "contain"
+      ]
+    }
+  },
+  "tokens": {
+    "thumbnail.size": {
+      "value": 104,
+      "unit": "px",
+      "cssVariable": "--ds-component-image-thumb-size"
+    },
+    "thumbnail.radius": {
+      "value": "{Radius/Radius-SM}",
+      "resolved": 6,
+      "unit": "px",
+      "cssVariable": "--ds-component-image-thumb-radius"
+    },
+    "thumbnail.empty.border": {
+      "value": "{Border/secondary}",
+      "note": "dashed 1px",
+      "cssVariable": "--ds-component-image-thumb-border-color"
+    },
+    "thumbnail.empty.background": {
+      "value": "{Background/Background}",
+      "cssVariable": "--ds-component-image-thumb-bg"
+    },
+    "thumbnail.uploading.border": {
+      "value": "{Border/focused}",
+      "note": "dashed 1px",
+      "cssVariable": "--ds-component-image-thumb-uploading-border"
+    },
+    "thumbnail.uploading.background": {
+      "value": "{Background/BT_B5}",
+      "cssVariable": "--ds-component-image-thumb-uploading-bg"
+    },
+    "thumbnail.uploaded.border": {
+      "value": "{Border/secondary}",
+      "note": "solid 1px，与 Empty 同色；.is-uploaded 只切换 border-style。"
+    },
+    "thumbnail.error.border": {
+      "value": "{Border/error}",
+      "note": "dashed 1px",
+      "cssVariable": "--ds-component-image-thumb-error-border"
+    },
+    "thumbnail.error.background": {
+      "value": "{Background/BT_R5}",
+      "cssVariable": "--ds-component-image-thumb-error-bg"
+    },
+    "thumbnail.error.text": {
+      "value": "{Feedback/error&rise}",
+      "cssVariable": "--ds-component-image-thumb-error-text"
+    },
+    "thumbnail.iconSize": {
+      "value": 24,
+      "unit": "px",
+      "cssVariable": "--ds-component-image-thumb-icon-size"
+    },
+    "thumbnail.gap": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px"
+    },
+    "thumbnail.progress.width": {
+      "value": 64,
+      "unit": "px",
+      "cssVariable": "--ds-component-image-thumb-progress-width"
+    },
+    "thumbnail.progress.height": {
+      "value": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-image-thumb-progress-height"
+    },
+    "thumbnail.progress.radius": {
+      "value": 2,
+      "unit": "px",
+      "cssVariable": "--ds-component-image-thumb-progress-radius"
+    },
+    "thumbnail.progress.track": {
+      "value": "{Background/Hover_2}",
+      "cssVariable": "--ds-component-image-thumb-progress-track"
+    },
+    "thumbnail.progress.fill": {
+      "value": "{Brand/GJ_Blue}",
+      "cssVariable": "--ds-component-image-thumb-progress-fill"
+    },
+    "thumbnail.hoverOverlay": {
+      "value": "rgba(0,0,0,.4)",
+      "resolved": "{Background/MK_45}（近似值，系统无 MK_40）",
+      "cssVariable": "--ds-component-image-thumb-overlay-bg"
+    },
+    "thumbnail.hoverActions.radius": {
+      "value": "{Radius/Radius-SM}",
+      "cssVariable": "--ds-component-image-thumb-actions-radius"
+    },
+    "thumbnail.hoverActions.gap": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-image-thumb-actions-gap"
+    },
+    "thumbnail.hoverActions.padding": {
+      "value": "6px 8px",
+      "cssVariable": "--ds-component-image-thumb-actions-padding"
+    },
+    "thumbnail.hoverActions.background": {
+      "value": "transparent",
+      "cssVariable": "--ds-component-image-thumb-actions-bg",
+      "note": "操作条 Frame 无填充；遮罩在 image fill 的 40% 黑叠层。"
+    },
+    "thumbnail.uploaded.background": {
+      "value": "transparent",
+      "cssVariable": "--ds-component-image-thumb-bg-solid"
+    },
+    "preview.width": {
+      "value": 520,
+      "unit": "px",
+      "cssVariable": null,
+      "cssVariableNote": "无专属 CSS 变量：.gj-image-preview 用 width:100%+aspect-ratio:52/34 实现自适应容器，不是固定 520px 宽度"
+    },
+    "preview.height": {
+      "value": 340,
+      "unit": "px",
+      "cssVariable": null,
+      "cssVariableNote": "无专属 CSS 变量：由 aspect-ratio:52/34 派生，max-height:340px 是硬编码上限，未变量化"
+    },
+    "preview.radius": {
+      "value": 9,
+      "unit": "px",
+      "note": "Figma 实测原始值，未绑定 token；实现建议用 {Radius/Radius-MD}=8px 保持体系一致，1px 差异不视为需修正的错误",
+      "cssVariable": "--ds-component-image-preview-radius"
+    },
+    "preview.controlsBar.height": {
+      "value": 36,
+      "unit": "px",
+      "cssVariable": "--ds-component-image-preview-actions-height"
+    },
+    "preview.controlsBar.gap": {
+      "value": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-image-preview-actions-gap"
+    },
+    "preview.controlsBar.paddingInline": {
+      "value": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-image-preview-actions-padding-inline"
+    },
+    "preview.controlsBar.radius": {
+      "value": "{Radius/Radius-MD}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-image-preview-actions-radius"
+    },
+    "preview.controlsBar.background": {
+      "value": "{Background/MK_60}",
+      "cssVariable": "--ds-component-image-preview-actions-bg"
+    },
+    "preview.controlsBar.shadow": {
+      "value": "{Background/MK_10}",
+      "note": "阴影颜色；偏移 0 0 15px 写在 CSS。",
+      "cssVariable": "--ds-component-image-preview-actions-shadow-color"
+    },
+    "gallery.mask": {
+      "value": "{Background/MK_45}",
+      "note": "Img_mask 实例遮罩实测 MK_45。",
+      "cssVariable": "--ds-component-image-scale-stage-bg"
+    },
+    "gallery.mask.modal": {
+      "value": "{Background/MK_45}",
+      "cssVariable": "--ds-component-image-modal-bg"
+    },
+    "gallery.stageRadius": {
+      "value": 0,
+      "unit": "px",
+      "cssVariable": "--ds-component-image-scale-stage-radius"
+    },
+    "gallery.image.radius": {
+      "value": 9,
+      "unit": "px",
+      "cssVariable": "--ds-component-image-scale-image-radius",
+      "note": "与 Preview 同为未绑定 9px。"
+    },
+    "gallery.paddingInline": {
+      "value": 141,
+      "unit": "px",
+      "cssVariable": null,
+      "cssVariableNote": "无专属 CSS 变量：.gj-image-scale-stage 保留原始 clamp(20px,12vw,141px) 响应式写法，未拆成变量"
+    },
+    "gallery.paddingBlock": {
+      "value": 36,
+      "unit": "px",
+      "cssVariable": "--ds-component-image-scale-stage-padding-block"
+    },
+    "gallery.gap": {
+      "value": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-image-scale-stage-gap"
+    },
+    "gallery.image.aspectRatio": {
+      "value": "586/383",
+      "cssVariable": null,
+      "cssVariableNote": "无专属 CSS 变量：.gj-image-scale-stage>img 的 aspect-ratio:586/383 是硬编码字面量，未变量化"
+    },
+    "gallery.controls.gap": {
+      "value": 40,
+      "unit": "px",
+      "cssVariable": "--ds-component-image-scale-controls-gap"
+    },
+    "gallery.indicatorText": {
+      "value": "{Text/reversal}",
+      "cssVariable": "--ds-component-image-scale-controls-color"
+    },
+    "gallery.indicatorFontSize": {
+      "value": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-image-scale-controls-font-size"
+    },
+    "iconButton.size": {
+      "value": 20,
+      "unit": "px",
+      "note": "缩略图悬停操作 / 大图预览操作条共用的默认图标按钮尺寸",
+      "cssVariable": "--ds-component-image-icon-btn-size"
+    },
+    "iconButton.iconSize": {
+      "value": 16,
+      "unit": "px",
+      "note": "默认图标按钮内 <img> 尺寸，用 filter:brightness(0) invert(1) 让任意色源图标变为反白色，与共享 .gj-icon-button 的 currentColor mask 技法不同——Image 的图标按钮场景多、尺寸差异大，未复用 .gj-icon-button，独立命名为 .gj-image-icon-btn 家族",
+      "cssVariable": "--ds-component-image-icon-btn-icon-size"
+    },
+    "iconButton.scaleSize": {
+      "value": 24,
+      "unit": "px",
+      "note": "全景预览插图（.gj-image-scale-controls）内箭头按钮尺寸",
+      "cssVariable": "--ds-component-image-icon-btn-scale-size"
+    },
+    "iconButton.modalNavSize": {
+      "value": 28,
+      "unit": "px",
+      "note": "真实 modal 上一张/下一张按钮尺寸",
+      "cssVariable": "--ds-component-image-icon-btn-modal-nav-size"
+    },
+    "iconButton.modalCloseSize": {
+      "value": 36,
+      "unit": "px",
+      "note": "真实 modal 关闭按钮尺寸，同时承担右上角绝对定位",
+      "cssVariable": "--ds-component-image-icon-btn-modal-close-size"
+    },
+    "iconButton.disabledOpacity": {
+      "value": 0.35,
+      "cssVariable": "--ds-component-image-icon-btn-disabled-opacity"
+    },
+    "modal.padding": {
+      "value": 36,
+      "unit": "px",
+      "cssVariable": "--ds-component-image-modal-padding"
+    },
+    "modal.image.radius": {
+      "value": "{Radius/Radius-MD}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-image-modal-image-radius"
+    },
+    "modal.close.insetRight": {
+      "value": 28,
+      "unit": "px",
+      "cssVariable": "--ds-component-image-modal-close-inset-right"
+    },
+    "modal.close.insetTop": {
+      "value": 24,
+      "unit": "px",
+      "cssVariable": "--ds-component-image-modal-close-inset-top"
+    },
+    "modal.nav.gap": {
+      "value": 40,
+      "unit": "px",
+      "cssVariable": "--ds-component-image-modal-nav-gap"
+    },
+    "modal.nav.color": {
+      "value": "{Text/reversal}",
+      "cssVariable": "--ds-component-image-modal-nav-color"
+    },
+    "modal.nav.marginTop": {
+      "value": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-image-modal-nav-margin-top"
+    }
+  },
+  "openItems": {}
+}

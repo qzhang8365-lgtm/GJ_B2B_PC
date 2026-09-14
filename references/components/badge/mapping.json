@@ -1,0 +1,55 @@
+{
+  "$schema": "gj-design-skill/component-mapping/v1",
+  "component": "Badge",
+  "codeComponent": "GjBadge",
+  "source": "2026-09-10 Figma 页 2963:11876：Badge_dot 5、Badge_count 24、Badge_status 5。",
+  "propertyMap": {
+    "type": { "values": ["Dot", "Number", "Status"], "default": "Dot" },
+    "size": { "values": ["M", "S", "XS"], "default": "M", "appliesTo": "Number；Dot 恒 8px" },
+    "value": "number|string", "max": "number（封顶值，业务设置，无全局默认）",
+    "singleDigit": { "type": "boolean", "note": "预览页实测：单数字/单字符时徽标为正方形（aspect-ratio:1），多数字时为胶囊形（水平内边距）" },
+    "status": { "values": ["Error", "processing", "Warning", "Success", "Default"], "appliesTo": "Badge_status 圆点+文案" },
+    "colorPreset": { "values": ["red", "blue", "gray", "lightblue"], "appliesTo": "Number 徽标的强调色变体，与上面的语义 status 是两套独立枚举，见 constraints" }
+  },
+  "structureMap": {
+    "anchorDot": ".gj-badge-dot（依附图标/头像，8×8px，绝对定位于容器右上角 left:calc(100% - 5px);top:-3px；宿主元素需 position:relative）",
+    "anchorCount": ".gj-badge-count（依附图标/头像，20px 高，绝对定位 left:calc(100% - 8px);top:-8px）",
+    "compactCount": ".gj-badge-count.is-compact（99+/999+ 等长数字场景，高度降为 16px；2026-09-09 提炼共享基座时把原来的祖先选择器 .compact .badge-count 改成了直接加在元素自身上的修饰符类，视觉行为不变）",
+    "textDot": ".gj-badge-text-anchor .gj-badge-dot（依附文字，定位微调为 left:calc(100% - 2px);top:-1px）",
+    "textCount": ".gj-badge-text-with-count .gj-badge-soft-count（依附文字的数量徽标，非贴边悬浮样式，独立行内展示，高 20px、水平内边距 8px、胶囊圆角、灰底）",
+    "statusDot": ".gj-badge-status-dot（状态列表用法：纯色圆点 + 文案并排，不贴边悬浮，颜色通过 --gj-badge-status-color 自定义属性传入语义色；2026-09-09 提炼共享基座时把变量名从预览页原来的 --dot 改成组件专属命名，避免和其它组件的同名局部变量混淆）",
+    "sizeVariant": ".gj-badge.gj-badge-m|.gj-badge-s|.gj-badge-xs（数字徽标 M/S/XS 三档尺寸，配合 .gj-badge-red|.gj-badge-blue|.gj-badge-gray|.gj-badge-lightblue 颜色修饰符与 .gj-badge-single 单数字修饰符组合使用）"
+  },
+  "tokenMap": {
+    "dot.size": "8px，无描边",
+    "count.m.height": "24px", "count.s.height": "20px", "count.xs.height": "16px",
+    "count.m.paddingInline": "8px（多数字）；单数字 padding 0", "count.s.paddingInline": "4px", "count.xs.paddingInline": "4px",
+    "count.m.font": "中文/S8-CN-R", "count.s.font": "中文/S9-CN-R", "count.xs.font": "中文/S10-CN-R",
+    "count.m.radius": "12px", "count.s.radius": "10px", "count.xs.radius": "12px（单数字 XS 为 10）",
+    "color.red": "Feedback/error&rise + Text/reversal",
+    "color.blue": "Feedback/brand + Text/reversal",
+    "color.gray": "Background/Background + Text/Secondary",
+    "color.lightblue": "Background/BG_blue + Text/blue",
+    "statusDot": "复用 Badge_dot 五色；文案 Text/Primary + 中文/S8-CN-R，间距 8px"
+  },
+  "implementation": {
+    "runtime": {
+      "status": "shared-css-base",
+      "note": "2026-09-09：已把 preview/badge/index.html 内联的徽标样式提炼进 assets/styles/gj-b2b-components.css 的 .gj-badge* 共享类（.gj-badge-dot/.gj-badge-count/.gj-badge-text-anchor/.gj-badge-text-with-count/.gj-badge-soft-count/.gj-badge-status-dot/.gj-badge(+m/s/xs/red/blue/gray/lightblue/single)），对应结构与颜色 token 同步写进 assets/styles/gj-b2b-tokens.css（--ds-component-badge-* 前缀）。预览页本身已改为直接引用这些共享类，不再有本地重复定义。原来 preview-page-reference 状态关闭，BDG-001 视为已解决。"
+    },
+    "specPreview": {
+      "page": "preview/badge/index.html",
+      "classes": [".gj-badge-dot", ".gj-badge-count", ".gj-badge-count.is-compact", ".gj-badge-text-anchor", ".gj-badge-text-with-count", ".gj-badge-soft-count", ".gj-badge-status-dot", ".gj-badge", ".gj-badge-m", ".gj-badge-s", ".gj-badge-xs", ".gj-badge-single", ".gj-badge-red", ".gj-badge-blue", ".gj-badge-gray", ".gj-badge-lightblue"],
+      "sharedBase": "assets/styles/gj-b2b-components.css（.gj-badge* 规则块，2026-09-09 新增）+ assets/styles/gj-b2b-tokens.css（--ds-component-badge-* 变量，2026-09-09 新增）"
+    }
+  },
+  "composition": {
+    "conflict": "同一依附对象不得同时显示 Dot 和 Number；两套互斥。",
+    "maxOverflow": "value 超过 max 时显示「max+」，封顶值由业务设定，页面内保持稳定，不在不同场景切换。",
+    "colorVsStatus": "colorPreset（red/blue/gray/lightblue）用于数字徽标的强调色变体，status（error/brand/warning/success/plain）用于独立状态圆点场景，两者是预览页里并存的两套语义枚举，不要合并成一套属性；具体业务如何选用由使用方决定，本文件不替业务做默认值假设。"
+  },
+  "accessibility": {
+    "dot": "纯装饰性圆点建议 aria-hidden，语义信息（如“有新通知”）应由宿主元素的可访问名称承载，不能只靠视觉圆点传达。",
+    "count": "数字徽标应可被朗读为“未读 N 条”一类完整语义，不能只朗读裸数字；封顶态（99+）朗读为“超过 99 条”一类完整语义更合适。"
+  }
+}

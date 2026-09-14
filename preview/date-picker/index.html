@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>GJ Design System · 日期选择器 DatePicker</title>
+  <link rel="stylesheet" href="../../assets/styles/gj-b2b-tokens.css?v=dtp-003">
+  <link rel="stylesheet" href="../../assets/styles/gj-b2b-components.css?v=dtp-003">
+  <link rel="stylesheet" href="../../assets/styles/component-docs.css?v=2">
+  <style>
+    *{box-sizing:border-box}body{margin:0;background:transparent;color:var(--ds-text-primary);font:14px/1.6 var(--ds-font-family-ui)}button,input,select{font:inherit;color:inherit}
+    .trigger-stack{display:grid;gap:12px}.trigger-group{display:grid;gap:14px;padding:20px;border-radius:8px;background:var(--ds-background-container)}.type-grid,.size-grid,.state-trigger-grid{display:grid;grid-template-columns:repeat(auto-fit,260px);gap:16px 24px;justify-content:start}.trigger-item{display:grid;gap:8px;justify-items:start;min-width:0}.trigger-item small{color:var(--ds-text-tertiary)}.trigger-item .gj-date-trigger{max-width:100%}
+    .window-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.window-item{display:grid;gap:12px;min-width:0;padding:16px;border-radius:8px;background:var(--ds-background-container);align-content:start}.window-item-wide{grid-column:1/-1}.window-item>header{display:flex;align-items:center;justify-content:space-between;gap:12px}.window-item>header span{color:var(--ds-text-tertiary);font-size:12px}.window-canvas{min-width:0;overflow-x:auto}.window-canvas>.gj-calendar,.window-canvas>[data-type]{margin-inline:auto;width:max-content}
+    .playground{display:grid;grid-template-columns:minmax(0,3fr) minmax(300px,2fr);gap:16px}.lab{min-height:360px;padding:24px;border-radius:8px;overflow:auto}.controls{padding:20px;border-radius:8px}.controls h3{margin:0 0 16px;font-size:16px}.interactive-row{display:flex;flex-wrap:wrap;align-items:flex-start;gap:20px}.interactive-controls{display:grid;gap:14px;min-width:260px}.control-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.control{display:grid;gap:6px}.control select{width:100%;height:36px;padding:0 10px;border:1px solid var(--ds-border-secondary);border-radius:6px;background:var(--ds-background-container)}.event{color:var(--ds-text-tertiary);font-size:12px}.event strong{color:var(--ds-text-primary)}
+    @media(max-width:1080px){.window-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.window-item-wide{grid-column:1/-1}}@media(max-width:960px){.playground{grid-template-columns:1fr}}@media(max-width:800px){.control-grid,.window-grid{grid-template-columns:1fr}.window-item-wide{grid-column:auto}}@media(max-width:480px){.type-grid,.size-grid,.state-trigger-grid{grid-template-columns:minmax(0,1fr)}.trigger-item .gj-date-trigger{width:100%}}
+  </style>
+  <script src="../../assets/scripts/font-runtime.js"></script>
+</head>
+<body>
+<main class="docs-shell">
+  <header class="docs-page-head"><div class="docs-eyebrow">数据录入组件 · Data Entry</div><h1>日期选择器 DatePicker</h1><p>用于选择单个日期、日期范围、月份或年份。通过输入触发器打开完整选择面板，让用户查看上下文并确认日期结果。</p></header>
+  <article class="docs-sheet">
+    <section class="docs-section">
+      <div class="docs-section-head"><div><h2>触发器</h2><p>单日期与日期范围共用同一套尺寸与状态；展开与 Focus 同视觉，没有独立的 Open 轴，Clear 只出现在面板 footer。</p></div></div>
+      <div class="docs-stage docs-surface-gray"><div class="trigger-stack">
+        <div class="trigger-group"><span class="docs-stage-label">类型</span><div class="type-grid">
+          <div class="trigger-item"><small>单日期</small><button class="gj-date-trigger gj-date-trigger-has-value" type="button"><span>2026-11-18</span><span class="gj-date-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_system_calendar.svg')" aria-hidden="true"></span></button></div>
+          <div class="trigger-item"><small>日期范围</small><button class="gj-date-trigger gj-date-trigger-range gj-date-trigger-has-value" type="button"><span class="gj-date-part">2026-10-10</span><span class="gj-date-separator">→</span><span class="gj-date-part">2026-11-18</span><span class="gj-date-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_system_calendar.svg')" aria-hidden="true"></span></button></div>
+        </div></div>
+        <div class="trigger-group"><span class="docs-stage-label">尺寸</span><div class="size-grid">
+          <div class="trigger-item"><small>Large · 40px</small><button class="gj-date-trigger gj-date-trigger-large gj-date-trigger-has-value" type="button"><span>2026-11-18</span><span class="gj-date-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_system_calendar.svg')" aria-hidden="true"></span></button></div>
+          <div class="trigger-item"><small>Medium · 32px</small><button class="gj-date-trigger gj-date-trigger-has-value" type="button"><span>2026-11-18</span><span class="gj-date-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_system_calendar.svg')" aria-hidden="true"></span></button></div>
+          <div class="trigger-item"><small>Small · 24px</small><button class="gj-date-trigger gj-date-trigger-small gj-date-trigger-has-value" type="button"><span>2026-11-18</span><span class="gj-date-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_system_calendar.svg')" aria-hidden="true"></span></button></div>
+        </div></div>
+        <div class="trigger-group"><span class="docs-stage-label">状态</span><div class="state-trigger-grid">
+          <div class="trigger-item"><small>Default</small><button class="gj-date-trigger" type="button"><span>Select Date</span><span class="gj-date-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_system_calendar.svg')" aria-hidden="true"></span></button></div>
+          <div class="trigger-item"><small>Hover</small><button class="gj-date-trigger is-hover" type="button"><span>Hover</span><span class="gj-date-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_system_calendar.svg')" aria-hidden="true"></span></button></div>
+          <div class="trigger-item"><small>Focus / Open</small><button class="gj-date-trigger is-focus" type="button"><span>Focus / Open</span><span class="gj-date-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_system_calendar.svg')" aria-hidden="true"></span></button></div>
+          <div class="trigger-item"><small>Error</small><button class="gj-date-trigger is-error" type="button"><span>Error</span><span class="gj-date-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_system_calendar.svg')" aria-hidden="true"></span></button></div>
+          <div class="trigger-item"><small>Filled</small><button class="gj-date-trigger gj-date-trigger-has-value" type="button"><span>2026-11-18</span><span class="gj-date-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_system_calendar.svg')" aria-hidden="true"></span></button></div>
+          <div class="trigger-item"><small>Disabled</small><button class="gj-date-trigger gj-date-trigger-disabled" type="button" disabled><span>Select Date</span><span class="gj-date-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_system_calendar.svg')" aria-hidden="true"></span></button></div>
+        </div></div>
+      </div></div>
+    </section>
+    <section class="docs-section">
+      <div class="docs-section-head"><div><h2>完整窗口与代表性变体</h2><p>不单独展示原子 Item，统一以完整选择窗口呈现真实使用场景。</p></div></div>
+      <div class="docs-stage docs-surface-gray"><div class="window-grid">
+        <div class="window-item"><header><strong>单日期</strong><span>280 × 318px</span></header><div class="window-canvas" id="showSingle"></div></div>
+        <div class="window-item"><header><strong>月份选择</strong><span>280 × 318px</span></header><div class="window-canvas" id="showMonth"></div></div>
+        <div class="window-item"><header><strong>年份选择</strong><span>280 × 318px</span></header><div class="window-canvas" id="showYear"></div></div>
+        <div class="window-item window-item-wide"><header><strong>日期范围 · 双月</strong><span>560 × 318px</span></header><div class="window-canvas" id="showRange"></div></div>
+      </div></div>
+    </section>
+    <section class="docs-section">
+      <div class="docs-section-head"><div><h2>组成结构与尺寸</h2><p>完整窗口内部各部分的结构尺寸与交互职责。</p></div></div>
+      <div class="docs-spec-table-wrap"><table class="docs-spec-table"><thead><tr><th>组成部分</th><th>结构尺寸</th><th>用途与状态</th><th>交互说明</th></tr></thead><tbody>
+        <tr><td>输入触发器</td><td>260px 宽；24/32/40px 高</td><td>Default / Hover / Focus / Error / Filled 及 filled-*；禁用只叠 default/filled</td><td>点击打开面板（展开同 Focus）；禁用不可打开；Clear 在面板 footer</td></tr>
+        <tr><td>面板与顶部导航</td><td>单面板 280×318px；Header 48px；图标 20px</td><td>显示当前年月；支持上一月、下一月、上一年、下一年</td><td>点击标题切换月份或年份面板</td></tr>
+        <tr><td>星期表头</td><td>7列，每列 32px</td><td>固定呈现 Mon–Sun，与日期列对齐</td><td>只读，不响应选择</td></tr>
+        <tr><td>日期单元格</td><td>32×32px，Radius 6px</td><td>Default、Hover、Selected、Today、Disabled、Notification</td><td>单日期直接选中；范围模式依次确定起点和终点</td></tr>
+        <tr><td>范围状态</td><td>Range Start / In Range / Range End</td><td>起止项使用品牌蓝，中间日期使用浅蓝连续背景</td><td>第二次选择早于起点时自动交换起止日期</td></tr>
+        <tr><td>月份/年份项</td><td>80×32px，3列布局</td><td>Default、Selected、Disabled</td><td>选择后更新输入值，可继续进入下一级日期选择</td></tr>
+        <tr><td>底部操作区</td><td>高 56px；按钮高 32px</td><td>Clear 清空选择，OK 确认当前结果</td><td>复杂范围可确认后关闭；单日期也可选择后直接关闭</td></tr>
+      </tbody></table></div>
+    </section>
+    <section class="docs-section">
+      <div class="docs-section-head"><div><h2>交互演示</h2><p>切换单日期、范围、月份、年份四种模式，检查触发器联动与面板收展。</p></div></div>
+      <div class="docs-stage docs-surface-gray"><div class="playground">
+        <div class="lab docs-surface-gray"><div style="width:100%"><div class="gj-tabs gj-tabs-button" style="margin-bottom:16px"><button class="gj-tab gj-tab-active" data-mode="date">单日期</button><button class="gj-tab" data-mode="range">日期范围</button><button class="gj-tab" data-mode="month">月份</button><button class="gj-tab" data-mode="year">年份</button></div><div class="interactive-row">
+          <div class="interactive-controls"><button id="interactiveTrigger" class="gj-date-trigger gj-date-trigger-has-value" type="button"><span id="triggerText">2022-01-14</span><span class="gj-date-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_system_calendar.svg')" aria-hidden="true"></span></button><div class="event">当前结果：<strong id="eventText">2022-01-14</strong></div></div>
+          <div id="interactivePanel"></div>
+        </div></div></div>
+        <aside class="controls docs-surface-white"><h3>属性控制</h3><div class="control-grid">
+          <div class="control"><label for="triggerSize">Size</label><select id="triggerSize"><option value="medium">Medium</option><option value="large">Large</option><option value="small">Small</option></select></div>
+          <div class="control"><label for="panelVisible">面板显示</label><select id="panelVisible"><option value="show">展开</option><option value="hide">收起</option></select></div>
+        </div></aside>
+      </div></div><span id="code" hidden></span>
+    </section>
+    <section class="docs-section">
+      <div class="docs-section-head"><div><h2>选用规则</h2><p>日期选择的模式、限制与格式应帮助用户快速确认结果，不增加额外猜测成本。</p></div></div>
+      <div class="docs-spec-table-wrap"><table class="docs-spec-table"><thead><tr><th>主题</th><th>推荐做法</th><th>边界与避免</th></tr></thead><tbody>
+        <tr><td>模式选择</td><td>明确某一天用单日期；定义周期用范围；统计周期只需年月时用月份或年份模式。</td><td>不要用范围模式表达只需要单一时间点的场景。</td></tr>
+        <tr><td>不可选日期</td><td>禁用过去日期、节假日或超出业务范围的日期时，在上下文中说明限制条件。</td><td>不要只置灰不说明原因，让用户猜测规则。</td></tr>
+        <tr><td>范围选择</td><td>先选开始日期再选结束日期，选中区间连续可见。</td><td>不要只标记两个端点、不呈现中间区间。</td></tr>
+        <tr><td>格式与提醒</td><td>输入值、表格和详情中的日期格式保持一致；Notification 标记只表达该日期存在日程或提醒。</td><td>避免同一流程混用 YYYY-MM-DD 与本地化格式；不要用 Notification 改变日期本身的可选择状态。</td></tr>
+        <tr><td>快捷操作</td><td>Today、Clear 等操作用于提升效率。</td><td>不要用快捷操作预填可能引发业务后果的日期范围。</td></tr>
+      </tbody></table></div>
+    </section>
+  </article>
+</main>
+<script>
+const iconBase='../../assets/icons/iconfont/';const icon={dl:iconBase+'icf_Arrow_tarrows-left-regular.svg',l:iconBase+'icf_Arrow_left.svg',r:iconBase+'icf_Arrow_right.svg',dr:iconBase+'icf_Arrow_arrows-right-regular.svg'};const monthNames=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];let mode='date',cursor=new Date(2022,0,1),single='2022-01-14',rangeStart='2022-01-28',rangeEnd='2022-02-02',selectedMonth=1,monthYear=2024,selectedYear=2015,decadeStart=2014;
+const pad=n=>String(n).padStart(2,'0'),key=(y,m,d)=>`${y}-${pad(m+1)}-${pad(d)}`,serial=s=>new Date(s+'T00:00:00').getTime();
+function header(y,m,titleClick='',customLabel=''){return `<div class="gj-calendar-header"><button class="gj-calendar-nav" data-nav="-12"><span class="gj-date-panel-icon" style="--gj-icon:url('${icon.dl}')" aria-hidden="true"></span></button><button class="gj-calendar-nav" data-nav="-1"><span class="gj-date-panel-icon" style="--gj-icon:url('${icon.l}')" aria-hidden="true"></span></button><button class="gj-calendar-title" ${titleClick}>${customLabel||(m==null?y+'-'+(y+10):monthNames[m]+'  '+y)}</button><button class="gj-calendar-nav" data-nav="1"><span class="gj-date-panel-icon" style="--gj-icon:url('${icon.r}')" aria-hidden="true"></span></button><button class="gj-calendar-nav" data-nav="12"><span class="gj-date-panel-icon" style="--gj-icon:url('${icon.dr}')" aria-hidden="true"></span></button></div>`}
+function monthDays(y,m,selectionMode,staticView=false){const first=(new Date(y,m,1).getDay()+6)%7,count=new Date(y,m+1,0).getDate(),prev=new Date(y,m,0).getDate(),total=first+count<=35?35:42;let cells='';for(let i=0;i<total;i++){let d,m2=m,y2=y,other=false;if(i<first){d=prev-first+i+1;m2=m-1;other=true}else if(i>=first+count){d=i-first-count+1;m2=m+1;other=true}else d=i-first+1;if(m2<0){m2=11;y2--}if(m2>11){m2=0;y2++}const k=key(y2,m2,d),today=k==='2022-01-24',disabled=staticView&&(d===30||d===31)&&other,notice=k==='2022-01-06';let cls=['gj-calendar-day',other?'gj-calendar-day-other':'',today?'gj-calendar-day-today':'',notice?'gj-calendar-day-notice':''];if(selectionMode==='date'&&k===single)cls.push('gj-calendar-day-selected');if(selectionMode==='range'){if(k===rangeStart)cls.push('gj-calendar-day-start');else if(k===rangeEnd)cls.push('gj-calendar-day-end');else if(rangeStart&&rangeEnd&&serial(k)>serial(rangeStart)&&serial(k)<serial(rangeEnd))cls.push('gj-calendar-day-range')}cells+=`<button class="${cls.join(' ')}" data-date="${k}" ${disabled?'disabled':''}>${d}</button>`}return `<div class="gj-calendar-weekdays">${['Mon','Tue','Wen','Thu','Fri','Sat','Sun'].map(x=>`<span>${x}</span>`).join('')}</div><div class="gj-calendar-days">${cells}</div>`}
+function footer(){return `<footer class="gj-calendar-footer"><button class="gj-btn" data-action="clear">Clear</button><button class="gj-btn gj-btn-primary" data-action="ok">OK</button></footer>`}
+function dateCalendar(selectionMode='date',y=2022,m=0,staticView=false){return `<div class="gj-calendar" data-type="${selectionMode}">${header(y,m,'data-title="month"')}${monthDays(y,m,selectionMode,staticView)}${footer()}</div>`}
+function rangeCalendar(staticView=false){const base=staticView?new Date(2022,0,1):new Date(cursor),next=new Date(base.getFullYear(),base.getMonth()+1,1),y1=base.getFullYear(),m1=base.getMonth(),y2=next.getFullYear(),m2=next.getMonth();return `<div data-type="range"><div class="gj-calendar-group"><div class="gj-calendar">${header(y1,m1)}${monthDays(y1,m1,'range',staticView)}</div><div class="gj-calendar">${header(y2,m2)}${monthDays(y2,m2,'range',staticView)}</div></div>${footer()}</div>`}
+function pickerGrid(type,staticView=false){const year=type==='year'?(staticView?2014:decadeStart):(staticView?2024:monthYear),values=type==='month'?monthNames:Array.from({length:12},(_,i)=>year+i),selected=type==='month'?selectedMonth:selectedYear,label=type==='month'?String(year):`${year}-${year+10}`;return `<div class="gj-calendar" data-type="${type}">${header(year,null,'',label)}<div class="gj-calendar-grid">${values.map((v,i)=>`<button class="gj-calendar-cell ${(type==='month'?i:v)===selected?'gj-calendar-cell-selected':''}" data-${type}="${type==='month'?i:v}" ${(type==='year'&&i===11)?'disabled':''}>${v}</button>`).join('')}</div></div>`}
+document.getElementById('showSingle').innerHTML=dateCalendar('date',2022,0,true);document.getElementById('showRange').innerHTML=rangeCalendar(true);document.getElementById('showMonth').innerHTML=pickerGrid('month',true);document.getElementById('showYear').innerHTML=pickerGrid('year',true);
+function updateResult(){let value=mode==='date'?single:mode==='range'?`${rangeStart||'Start Date'} → ${rangeEnd||'End Date'}`:mode==='month'?`${monthYear}-${pad(selectedMonth+1)}`:String(selectedYear);document.getElementById('triggerText').textContent=value;document.getElementById('eventText').textContent=value;document.getElementById('code').textContent=`<DatePicker\n  mode="${mode}"\n  size="${document.getElementById('triggerSize').value}"\n  value="${value}"\n/>`}
+function renderInteractive(){const panel=document.getElementById('interactivePanel');if(document.getElementById('panelVisible').value==='hide'){panel.innerHTML='';updateResult();return}panel.innerHTML=mode==='date'?dateCalendar('date',cursor.getFullYear(),cursor.getMonth()):mode==='range'?rangeCalendar():pickerGrid(mode);bindPanel(panel);updateResult()}
+function bindPanel(panel){panel.querySelectorAll('[data-date]').forEach(b=>b.onclick=()=>{if(mode==='date')single=b.dataset.date;else if(mode==='range'){if(!rangeStart||rangeEnd){rangeStart=b.dataset.date;rangeEnd=''}else{rangeEnd=b.dataset.date;if(serial(rangeEnd)<serial(rangeStart))[rangeStart,rangeEnd]=[rangeEnd,rangeStart]}}renderInteractive()});panel.querySelectorAll('[data-month]').forEach(b=>b.onclick=()=>{selectedMonth=+b.dataset.month;renderInteractive()});panel.querySelectorAll('[data-year]').forEach(b=>b.onclick=()=>{selectedYear=+b.dataset.year;renderInteractive()});panel.querySelectorAll('[data-nav]').forEach(b=>b.onclick=()=>{const d=+b.dataset.nav;if(mode==='month')monthYear+=Math.abs(d)===12?Math.sign(d)*10:d;else if(mode==='year')decadeStart+=Math.abs(d)===12?Math.sign(d)*100:d*10;else cursor.setMonth(cursor.getMonth()+d);renderInteractive()});panel.querySelectorAll('[data-action="clear"]').forEach(b=>b.onclick=()=>{if(mode==='date')single='';else{rangeStart='';rangeEnd=''}renderInteractive()});panel.querySelectorAll('[data-action="ok"]').forEach(b=>b.onclick=()=>{document.getElementById('panelVisible').value='hide';renderInteractive()})}
+document.querySelectorAll('.gj-tab').forEach(b=>b.onclick=()=>{mode=b.dataset.mode;document.querySelectorAll('.gj-tab').forEach(x=>x.classList.toggle('gj-tab-active',x===b));document.getElementById('panelVisible').value='show';renderInteractive()});document.getElementById('panelVisible').onchange=renderInteractive;document.getElementById('triggerSize').onchange=e=>{const t=document.getElementById('interactiveTrigger');t.classList.toggle('gj-date-trigger-large',e.target.value==='large');t.classList.toggle('gj-date-trigger-small',e.target.value==='small');updateResult()};document.getElementById('interactiveTrigger').onclick=()=>{document.getElementById('panelVisible').value=document.getElementById('panelVisible').value==='show'?'hide':'show';renderInteractive()};renderInteractive();
+</script>
+</body></html>

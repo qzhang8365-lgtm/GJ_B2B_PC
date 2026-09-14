@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GJ Design System · Button</title>
+  <link rel="stylesheet" href="../../assets/styles/gj-b2b-tokens.css">
+  <link rel="stylesheet" href="../../assets/styles/gj-b2b-components.css?v=5">
+  <link rel="stylesheet" href="../../assets/styles/component-docs.css?v=1">
+  <style>
+    .showcase-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+    .showcase-group{min-width:0;padding:20px;background:var(--ds-background-background);border-radius:var(--docs-panel-radius)}
+    .showcase-group.wide{grid-column:1/-1}
+    .button-row{display:flex;align-items:center;gap:16px;min-width:0;max-width:100%;flex-wrap:wrap}
+    .button-row.small-gap{gap:var(--ds-component-button-group-gap-small)}
+    .button-row.medium-gap{gap:var(--ds-component-button-group-gap-medium)}
+    .button-row.large-gap{gap:var(--ds-component-button-group-gap-large)}
+    .size-groups{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+    .size-group{min-width:0;padding:16px;background:var(--ds-background-container);border-radius:var(--docs-item-radius)}
+    .size-group .button-row{gap:12px}
+    .matrix-grid{display:grid;grid-template-columns:96px repeat(4,minmax(104px,1fr));gap:12px;align-items:center;min-width:680px}
+    .matrix-grid .head{color:var(--ds-text-secondary);font-size:12px;line-height:20px}
+    .matrix-grid .row-label{font-size:14px;font-weight:500;line-height:22px}
+    .runtime-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:20px;padding-top:20px;border-top:1px solid var(--ds-border-default)}
+    .combination-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+    .combination-example{min-width:0;padding:20px;background:var(--ds-background-background);border-radius:var(--docs-panel-radius)}
+    .playground{display:grid;grid-template-columns:minmax(0,var(--docs-layout-demo-fr)) minmax(var(--docs-interaction-min-width),var(--docs-layout-interaction-fr));gap:var(--docs-layout-column-gap);min-width:0}
+    .lab{position:relative;display:grid;min-width:0;min-height:var(--docs-interaction-stage-min-height);place-items:center;padding:32px;overflow:hidden;background:var(--ds-background-background);border:1px dashed var(--ds-border-secondary);border-radius:var(--docs-panel-radius)}
+    .event{position:absolute;bottom:12px;left:16px;color:var(--ds-text-secondary);font-size:12px;line-height:20px}.event strong{color:var(--ds-text-primary)}
+    .controls{min-width:0;padding:20px;border-radius:var(--docs-panel-radius)}
+    .control-title{margin:0 0 16px;font-size:16px;font-weight:600;line-height:24px}
+    .control-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 16px}
+    .field{display:grid;min-width:0;gap:6px}.field.full{grid-column:1/-1}.field label{color:var(--ds-text-secondary);font-size:12px;line-height:20px}
+    .field select,.field input:not(.gj-checkbox){width:100%;height:36px;padding:0 10px;color:var(--ds-text-primary);background:var(--ds-background-container);border:1px solid var(--ds-border-secondary);border-radius:var(--docs-item-radius)}
+    .field input:focus,.field select:focus{border-color:var(--ds-brand-gj-blue);outline:3px solid var(--ds-background-bt-b20)}
+    .state-scroll{max-width:100%;overflow:auto}.check{display:flex;align-items:center;align-self:end;gap:8px;min-height:36px;color:var(--ds-text-secondary);font-size:14px}
+    @media(max-width:960px){.playground{grid-template-columns:1fr}.size-groups{grid-template-columns:1fr}.combination-grid{grid-template-columns:1fr}}
+    @media(max-width:720px){.showcase-grid{grid-template-columns:1fr}.showcase-group.wide{grid-column:auto}.control-fields{grid-template-columns:1fr}.field.full{grid-column:auto}}
+  </style>
+  <script src="../../assets/scripts/font-runtime.js"></script>
+</head>
+<body>
+<main class="docs-shell">
+  <header class="docs-page-head">
+    <div class="docs-eyebrow">通用组件 · Components</div>
+    <h1>按钮 Button</h1>
+    <p>用于触发即时操作、提交任务或推进流程。层级表达操作权重，尺寸取决于所在容器；轻量文字触发应使用 Text Button。</p>
+  </header>
+
+  <article class="docs-sheet">
+    <section class="docs-section">
+      <header class="docs-section-head"><div><h2>操作层级</h2><p>同一操作区域保留一个最明确的主操作，其余按钮依次降低视觉权重。</p></div></header>
+      <div class="showcase-grid">
+        <div class="showcase-group"><span class="docs-stage-label">Primary / Secondary / Tertiary</span><div class="button-row medium-gap"><button class="gj-btn gj-btn-primary">主要操作</button><button class="gj-btn gj-btn-secondary">次要操作</button><button class="gj-btn gj-btn-tertiary">弱操作</button></div></div>
+        <div class="showcase-group"><span class="docs-stage-label">Text Button / Ghost</span><div class="button-row medium-gap"><button class="gj-text-btn"><span>查看详情</span><span class="gj-text-btn-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_Arrow_right.svg')" aria-hidden="true"></span></button><button class="gj-btn gj-btn-ghost">最轻操作</button></div></div>
+      </div>
+    </section>
+
+    <section class="docs-section">
+      <header class="docs-section-head"><div><h2>尺寸与图标</h2><p>默认使用 Medium；同一操作组保持相同尺寸。图标尺寸随按钮档位同步变化。</p></div></header>
+      <div class="docs-stage">
+        <div class="size-groups">
+          <div class="size-group"><span class="docs-stage-label">Small · 24px</span><div class="button-row"><button class="gj-btn gj-btn-primary gj-btn-small">按钮</button><button class="gj-btn gj-btn-primary gj-btn-small gj-btn-icon-only" aria-label="搜索"><span class="gj-btn-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_system_search.svg')" aria-hidden="true"></span></button></div></div>
+          <div class="size-group"><span class="docs-stage-label">Medium · 32px</span><div class="button-row"><button class="gj-btn gj-btn-primary">按钮</button><button class="gj-btn gj-btn-primary gj-btn-icon-only" aria-label="搜索"><span class="gj-btn-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_system_search.svg')" aria-hidden="true"></span></button></div></div>
+          <div class="size-group"><span class="docs-stage-label">Large · 40px</span><div class="button-row"><button class="gj-btn gj-btn-primary gj-btn-large">按钮</button><button class="gj-btn gj-btn-primary gj-btn-large gj-btn-icon-only" aria-label="搜索"><span class="gj-btn-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_system_search.svg')" aria-hidden="true"></span></button></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="docs-section">
+      <header class="docs-section-head"><div><h2>状态</h2><p>组件状态包含 default、hover、pressed、disabled；Loading 与短暂 Completed 为运行时状态。</p></div></header>
+      <div class="docs-stage docs-stage-scroll"><div class="matrix-grid" id="matrix"></div><div class="runtime-row" id="runtimeStates"></div></div>
+    </section>
+
+    <section class="docs-section">
+      <header class="docs-section-head"><div><h2>组合使用</h2><p>并排按钮先区分操作权重，再按统一尺寸设置组内间距。</p></div></header>
+      <div class="combination-grid">
+        <div class="combination-example"><span class="docs-stage-label">操作权重</span><div class="button-row medium-gap"><button class="gj-btn gj-btn-primary">确定</button><button class="gj-btn gj-btn-secondary">取消</button><button class="gj-btn gj-btn-tertiary">稍后处理</button></div></div>
+        <div class="combination-example"><span class="docs-stage-label">图标按钮边界</span><div class="button-row medium-gap"><button class="gj-btn gj-btn-primary gj-btn-icon-only" aria-label="搜索"><span class="gj-btn-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_system_search.svg')" aria-hidden="true"></span></button><button class="gj-btn gj-btn-tertiary gj-btn-icon-only" aria-label="筛选"><span class="gj-btn-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_system_filter.svg')" aria-hidden="true"></span></button><button class="gj-icon-button" type="button" aria-label="关闭"><span style="--gj-icon:url('../../assets/icons/iconfont/icf_system_close.svg')"></span></button></div></div>
+      </div>
+      <div class="docs-spec-table-wrap" style="margin-top:16px"><table class="docs-spec-table"><colgroup><col style="width:22%"><col style="width:22%"><col></colgroup><thead><tr><th>按钮尺寸</th><th>组内间距</th><th>适用说明</th></tr></thead><tbody><tr><td>Small · 24px</td><td>4px</td><td>紧凑工具区、筛选项</td></tr><tr><td>Medium · 32px</td><td>8px</td><td>默认表单与常规操作区</td></tr><tr><td>Large · 40px</td><td>12px</td><td>重点流程、宽松容器</td></tr></tbody></table></div>
+    </section>
+
+    <section class="docs-section">
+      <header class="docs-section-head"><div><h2>交互演示</h2><p>调整层级、尺寸、图标与视觉状态，检查按钮在真实交互下的反馈。</p></div></header>
+      <div class="playground">
+        <div class="lab"><button id="demo"></button><div class="event">最近事件：<strong id="event">尚未操作</strong></div></div>
+        <aside class="controls docs-surface-white"><h3 class="control-title">属性控制</h3><div class="control-fields">
+          <div class="field"><label for="label">Label</label><input id="label" value="按钮" /></div>
+          <div class="field"><label for="level">Level</label><select id="level"><option>Primary</option><option>Secondary</option><option>Tertiary</option><option value="TextButton">文字按钮</option><option>Ghost</option></select></div>
+          <div class="field"><label for="size">Size</label><select id="size"><option>Large</option><option selected>Medium</option><option>Small</option></select></div>
+          <div class="field"><label for="icon">Icon</label><select id="icon"><option value="none">none</option><option value="left">left_icon</option><option value="right">right_icon</option><option value="only">icon_only</option></select></div>
+          <div class="field full"><label>强制视觉状态</label><div class="state-scroll"><div class="gj-tabs gj-tabs-button" id="states"><button class="gj-tab gj-tab-active" type="button" data-state="auto">自动</button><button class="gj-tab" type="button" data-state="hover">Hover</button><button class="gj-tab" type="button" data-state="pressed">Pressed</button><button class="gj-tab" type="button" data-state="disabled">Disabled</button><button class="gj-tab" type="button" data-state="loading">Loading</button><button class="gj-tab" type="button" data-state="completed">Completed</button></div></div></div>
+          <label class="check"><input class="gj-checkbox" type="checkbox" id="disabled" /> 使用原生 disabled</label>
+        </div><span id="props" hidden></span></aside>
+      </div>
+    </section>
+
+    <section class="docs-section">
+      <header class="docs-section-head"><div><h2>选用规则</h2><p>优先按操作权重和容器层级判断，不按业务名称机械选择。</p></div></header>
+      <div class="docs-spec-table-wrap"><table class="docs-spec-table"><colgroup><col style="width:18%"><col style="width:42%"><col></colgroup><thead><tr><th>主题</th><th>推荐做法</th><th>边界与避免</th></tr></thead><tbody>
+        <tr><td>用途</td><td>触发即时操作、提交任务或进入下一流程。</td><td>不要用 Button 表达导航路径、选项或静态状态。</td></tr>
+        <tr><td>层级</td><td>主操作用 Primary；次操作用 Secondary；弱操作用 Tertiary、Text Button 或 Ghost。</td><td>同一区块尽量只保留一个 Primary，并排时避免同权重。</td></tr>
+        <tr><td>尺寸</td><td>按容器层级选 Large 40 / Medium 32 / Small 24；与输入框并排时高度一致。</td><td>同一操作组不得混用尺寸，不按业务场景名称决定尺寸。</td></tr>
+        <tr><td>Icon-only</td><td>仅用于含义明确的图标，并提供可访问名称；工具栏操作使用 <code>gj-btn-icon-only</code>。</td><td>语义不清时改用图标加文字；Text Button 不提供 icon-only。</td></tr>
+        <tr><td>反馈状态</td><td>Loading 使用动态 icon 与场景化文字；短暂 Completed 可按流程需要启用。</td><td>Completed 是可选反馈，不应成为所有按钮的固定流程。</td></tr>
+        <tr><td>文案</td><td>使用清晰的动词或“动词＋对象”，让操作结果可预期。</td><td>避免过长、含糊或同时表达多个动作。</td></tr>
+      </tbody></table></div>
+    </section>
+  </article>
+</main>
+<script>
+  const $=id=>document.getElementById(id), controls=['label','level','size','icon','disabled']; let forced='auto',clicks=0;
+  const searchIcon='<span class="gj-btn-icon" style="--gj-icon:url(\'../../assets/icons/iconfont/icf_system_search.svg\')" aria-hidden="true"></span>';
+  const loadingIcon='<span class="gj-btn-icon" style="--gj-icon:url(\'../../assets/icons/iconfont/icf_system_loading1.svg\')" aria-hidden="true"></span>';
+  const checkIcon='<span class="gj-btn-icon" style="--gj-icon:url(\'../../assets/icons/iconfont/icf_system_check.svg\')" aria-hidden="true"></span>';
+  const textArrow='<span class="gj-text-btn-icon" style="--gj-icon:url(\'../../assets/icons/iconfont/icf_Arrow_right.svg\')" aria-hidden="true"></span>';
+  function content(icon,label,state,level){if(level==='TextButton'){return icon==='left'?textArrow+'<span>'+label+'</span>':icon==='right'?'<span>'+label+'</span>'+textArrow:'<span>'+label+'</span>'}if(state==='loading')return loadingIcon+'<span>保存中</span>';if(state==='completed')return checkIcon+'<span>已保存</span>';if(icon==='only')return searchIcon;if(icon==='left')return searchIcon+'<span>'+label+'</span>';if(icon==='right')return '<span>'+label+'</span>'+searchIcon;return '<span>'+label+'</span>'}
+  function cls(level,size,state,icon){if(level==='TextButton'){const out=['gj-text-btn'];if(size.toLowerCase()!=='medium')out.push('gj-text-btn-'+size.toLowerCase());if(state!=='auto')out.push('is-'+state);return out.join(' ')}const out=['gj-btn','gj-btn-'+level.toLowerCase()];if(size.toLowerCase()!=='medium')out.push('gj-btn-'+size.toLowerCase());if(icon==='only'&&state!=='loading'&&state!=='completed')out.push('gj-btn-icon-only');if(state==='loading')out.push('gj-btn-loading');else if(state==='completed')out.push('gj-btn-completed');else if(state!=='auto')out.push('is-'+state);return out.join(' ')}
+  function syncLevelAvailability(){const isText=$('level').value==='TextButton';['loading','completed'].forEach(s=>{$('states').querySelector('[data-state="'+s+'"]').disabled=isText});if(isText&&(forced==='loading'||forced==='completed')){forced='auto';[...$('states').querySelectorAll('.gj-tab')].forEach(x=>x.classList.toggle('gj-tab-active',x.dataset.state==='auto'))}$('icon').querySelector('option[value="only"]').disabled=isText;if(isText&&$('icon').value==='only'){$('icon').value='none'}}
+  function render(){syncLevelAvailability();const level=$('level').value,size=$('size').value,icon=$('icon').value,label=$('label').value||'按钮',nativeDisabled=$('disabled').checked;const b=$('demo');b.className=cls(level,size,forced,icon);b.innerHTML=content(icon,label,forced,level);b.disabled=nativeDisabled||forced==='disabled';b.setAttribute('aria-busy',forced==='loading'?'true':'false');b.setAttribute('aria-label',icon==='only'&&forced!=='loading'&&forced!=='completed'?label:'');const tag=level==='TextButton'?'TextButton':'Button';$('props').textContent=level==='TextButton'?`<TextButton\n  size="${size.toLowerCase()}"\n  iconPlacement="${icon}"\n  state="${forced}"${b.disabled?'\n  disabled':''}\n>${label}</TextButton>`:`<Button\n  level="${level.toLowerCase()}"\n  size="${size.toLowerCase()}"\n  iconPlacement="${icon}"\n  state="${forced}"${b.disabled?'\n  disabled':''}${forced==='loading'?'\n  loading':''}\n>${forced==='loading'?'保存中':forced==='completed'?'已保存':label}</Button>`}
+  controls.forEach(id=>$(id).addEventListener(id==='label'?'input':'change',render));$('states').addEventListener('click',e=>{const t=e.target.closest('[data-state]');if(!t||t.disabled)return;forced=t.dataset.state;[...$('states').querySelectorAll('.gj-tab')].forEach(x=>x.classList.toggle('gj-tab-active',x===t));render()});
+  $('demo').addEventListener('click',()=>{$('event').textContent='click × '+(++clicks)});$('demo').addEventListener('focus',()=>{$('event').textContent='focus'});$('demo').addEventListener('pointerdown',()=>{$('event').textContent='pointerdown'});
+  function renderMatrix(){const levels=['Primary','Secondary','Tertiary','TextButton','Ghost'],rowLabel={Primary:'Primary',Secondary:'Secondary',Tertiary:'Tertiary',TextButton:'文字按钮',Ghost:'Ghost'},states=['default','hover','pressed','disabled'],box=$('matrix');box.innerHTML='<span></span>'+states.map(s=>'<span class="head">'+s+'</span>').join('');levels.forEach(l=>{box.insertAdjacentHTML('beforeend','<span class="row-label">'+rowLabel[l]+'</span>');states.forEach(s=>{const st=s==='default'?'auto':s;const label=l==='TextButton'?'<span>查看更多</span>'+textArrow:'按钮';box.insertAdjacentHTML('beforeend','<button class="'+cls(l,'Medium',st,'none')+'" '+(s==='disabled'?'disabled':'')+'>'+label+'</button>')})});$('runtimeStates').innerHTML='<button class="gj-btn gj-btn-primary gj-btn-loading" type="button" aria-busy="true">'+loadingIcon+'<span>保存中</span></button><button class="gj-btn gj-btn-primary gj-btn-completed" type="button">'+checkIcon+'<span>已保存</span></button>'} renderMatrix();render();
+</script>
+</body>
+</html>

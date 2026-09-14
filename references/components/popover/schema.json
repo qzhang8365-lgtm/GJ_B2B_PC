@@ -1,0 +1,114 @@
+{
+  "$schema": "gj-design-skill/component-schema/v1",
+  "component": "Popover",
+  "source": {
+    "rulesSection": "Popover 居中弹出框",
+    "inventoryPage": "Popover",
+    "figmaFile": "8b01I1e3TzH1IhYlr3tJzd",
+    "figmaPage": "3630:3133",
+    "status": "figma-audited",
+    "figmaAudit": "done-2026-09-09"
+  },
+  "purpose": "显示无指向箭头的居中短结果或简单确认。",
+  "implementation": {
+    "rootClass": "gj-popover",
+    "brandClass": "gj-popover-brand",
+    "iconClass": "gj-popover-icon",
+    "copyClass": "gj-popover-copy",
+    "titleClass": "gj-popover-title",
+    "descriptionClass": "gj-popover-desc",
+    "actionClass": "gj-popover-actions"
+  },
+  "figma": {
+    "fileKey": "8b01I1e3TzH1IhYlr3tJzd",
+    "pageNodeId": "3630:3133",
+    "pageName": "popover_basic",
+    "inventoryListed": {
+      "sets": 1,
+      "variants": 2,
+      "standalone": 0
+    },
+    "componentSets": [
+      {
+        "nodeId": "3630:3133",
+        "name": "popover_basic",
+        "variants": 2,
+        "note": "2026-09-09 用户确认：这就是组件集母版。页面上只有这一套。MCP 曾把该节点标成 frame；内部 button=1 3630:3132、button=2 3630:3131 是子变体，不是第二套。"
+      }
+    ],
+    "boardSymbols": [
+      {
+        "nodeId": "3630:3132",
+        "name": "button=1"
+      },
+      {
+        "nodeId": "3630:3131",
+        "name": "button=2"
+      }
+    ],
+    "componentDescription": "无箭头、内容居中的基础弹出框。用于短文本结果反馈和简单确认；button=1 为单主按钮，button=2 为取消＋主操作。内容结构固定，不承载复杂表单。"
+  },
+  "properties": {
+    "button": ["1", "2"],
+    "title": "string",
+    "description": "string",
+    "icon": "graphic-slot"
+  },
+  "defaults": {
+    "button": "1"
+  },
+  "sizes": {
+    "width": 360,
+    "height": 282,
+    "radius": 16,
+    "paddingBlockStart": 40,
+    "paddingInline": 24,
+    "paddingBlockEnd": 24,
+    "stackGap": 20,
+    "textGap": 16,
+    "copyPaddingInline": 20,
+    "icon": 48,
+    "actionGap": 12,
+    "contentAlign": "center"
+  },
+  "typography": {
+    "title": "中文/S2-CN-S",
+    "description": "中文/S8-CN-R"
+  },
+  "structure": ["status-graphic", "title", "description", "action-area"],
+  "behavior": {
+    "pointer": "No arrow. This is not an anchored bubble.",
+    "content": "Short result or simple confirm only. Do not place forms, lists, cascades or multi-step tasks inside."
+  },
+  "constraints": [
+    "This is not an anchored bubble and has no pointer.",
+    "Content (icon, title, description) is centered.",
+    "Do not place forms, lists, cascades or multi-step tasks inside.",
+    "button=1: one Primary Large button fills the action row.",
+    "button=2: equal-width Tertiary Large Cancel + Primary Large Confirm, gap 12.",
+    "Confirm actions use shared Button Large. Do not restyle height or padding.",
+    "Graphic is a 48px fill-icon slot, not a Status variant axis."
+  ],
+  "dependencies": ["Button", "Icon"],
+  "knownFigmaIssues": [],
+  "pendingExtraction": [],
+  "confirmedDecisions": [
+    {
+      "id": "POP-001",
+      "date": "2026-09-09",
+      "decision": "页面上只有一套 popover_basic，两个 button 变体。旧 inventory 2 套 / 4 variants 是误记；已改为 1 / 2。画板上看到的两个是子变体，不是第二套母版。",
+      "source": "用户设计确认"
+    },
+    {
+      "id": "POP-002",
+      "date": "2026-09-09",
+      "decision": "用户提供的节点 3630:3133 就是 popover_basic 组件集母版。MCP 把它标成 frame 不影响：schema 以该 ID 为集合锚点；3630:3132 / 3630:3131 是子变体。",
+      "source": "用户设计确认"
+    }
+  ],
+  "partialMeasurements": [
+    "列 gap 20、文案 gap 16、文案水平 20、内边距 40·24·24 生成代码未绑 Interval；按等价 space6 / space5 / space6 / space9·space7 记录。",
+    "圆角生成 16，未返回 Radius 绑定；按 Radius-XL。dimensions.json 里 Radius-LG 的 usage 仍写 Popover，以画板实例 16 为准。",
+    "本画板未给出视口锚点或遮罩；规范页在演示框内展示，不把 Popover 写成 position:fixed。"
+  ]
+}

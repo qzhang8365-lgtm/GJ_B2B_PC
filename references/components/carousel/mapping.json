@@ -1,0 +1,90 @@
+{
+  "$schema": "gj-design-skill/component-mapping/v1",
+  "figmaComponent": "Carousel / pageIndicator / .dot",
+  "codeComponent": "GjCarousel",
+  "sourceNodes": [
+    "2638:1007",
+    "4775:19663",
+    "3022:103",
+    "4775:19678",
+    "4775:19706",
+    "3016:4641",
+    "3016:4642",
+    "4775:19620",
+    "3016:4652",
+    "3016:4653",
+    "3016:4656",
+    "4775:19588",
+    "4775:19591",
+    "4806:20805",
+    "4806:20817",
+    "4806:20804",
+    "4806:20819",
+    "4806:20803"
+  ],
+  "propertyMap": {
+    "Carousel.position": "indicatorPosition",
+    "pageIndicator.Direction.Horizontal": "indicatorTheme=light",
+    "pageIndicator.Direction.Direction3": "indicatorTheme=dark",
+    ".dot.ture": "active",
+    ".dot.style": "indicatorTheme",
+    "Carousel_item_arrows.direction": "arrowDirection (left|right)",
+    "Carousel_item_arrows.state": "arrowState: default=idle(50% opacity), active=hover/focus(100% opacity)"
+  },
+  "valueMap": {
+    "position.bottom_center": "bottom_center",
+    "position.bottom_right": "bottom_right",
+    "position.bottom_left": "bottom_left",
+    "Direction.Horizontal": "light",
+    "Direction.Direction3": "dark",
+    "ture.true": "active=true",
+    "ture.false": "active=false",
+    "arrow.direction.left": "left",
+    "arrow.direction.right": "right",
+    "arrow.state.default": "idle, opacity 0.5",
+    "arrow.state.active": "hover/focus, opacity 1"
+  },
+  "tokenMap": {
+    "root.authoredSize": "385×160px",
+    "root.padding": "12px",
+    "indicator.gap": "3px",
+    "dot.height": "3px",
+    "dot.activeWidth": "16px",
+    "dot.inactiveWidth": "8px",
+    "dot.radius": "4px",
+    "light.active": "Text/reversal",
+    "light.inactive": "Background/WT_20",
+    "dark.active": "Text/blue",
+    "dark.inactive": "Background/MK_20",
+    "arrow.size": "32×32 (Components/Control-m)",
+    "arrow.radius": "16px",
+    "arrow.padding": "4px",
+    "arrow.iconSize": "24×24",
+    "arrow.background": "Background/WT_30"
+  },
+  "runtimeMap": {
+    "root": ".gj-carousel",
+    "track": ".gj-carousel-track",
+    "slide": ".gj-carousel-slide + .is-active",
+    "indicator": ".gj-carousel-indicator + .is-left|.is-center|.is-right + .is-light|.is-dark",
+    "dotButton": ".gj-carousel-dot",
+    "dotVisual": ".gj-carousel-dot::before",
+    "paused": ".is-paused（行为状态，不改变 Figma 视觉）",
+    "arrowLeft": ".gj-carousel-arrow.is-left（默认渲染，:hover/:focus-visible 加 .is-active）",
+    "arrowRight": ".gj-carousel-arrow.is-right（默认渲染，:hover/:focus-visible 加 .is-active）"
+  },
+  "interactionMap": {
+    "indicatorClick": "设置对应 activeIndex，并重置自动播放计时。",
+    "keyboard": "ArrowLeft/ArrowRight 切换；不劫持输入控件内部的方向键。",
+    "autoplay": "默认 false；hover/focus/visibility/reduced-motion 任一暂停条件成立时停止。",
+    "swipe": "水平位移超过阈值且大于纵向位移才切换。",
+    "arrowClick": "点击左右箭头切换到上一/下一项，并重置自动播放计时。箭头默认展示（2026-09-10 产品确认），空闲态 class 对应 state=default（50% 透明），hover/focus 态切换为 state=active（100% 不透明）。"
+  },
+  "accessibility": {
+    "root": "role=region，aria-roledescription=carousel，必须有 aria-label 或关联标题。",
+    "slide": "role=group，aria-roledescription=slide，aria-label=第 x 项，共 n 项；非当前项 aria-hidden=true 且不可聚焦。",
+    "indicator": "按钮 aria-label=转到第 x 项，当前项 aria-current=true；24×24 命中区包含 3px 视觉条。",
+    "announcement": "用户主动切换时使用 aria-live=polite；自动切换不播报。",
+    "arrow": "按钮 aria-label=上一项/下一项；到达边界且 loop=false 时可禁用或隐藏（Figma 未提供 disabled 视觉，禁用态沿用通用按钮禁用规则，不借用 Carousel 的 default/active 两态表达）。"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "$schema": "gj-design-skill/component-tokens/v1",
+  "component": "Empty",
+  "source": {
+    "figmaNode": "3143:5678",
+    "figmaReadDate": "2026-09-09",
+    "componentSchema": "references/components/empty/schema.json",
+    "componentMapping": "references/components/empty/mapping.json",
+    "confirmedRules": "references/components/empty/rules.md"
+  },
+  "properties": {
+    "type": {"default": "TextOnly", "values": ["TextOnly", "Empty", "NotFound", "Disconnected", "NoPermission", "Error", "NoChart"]},
+    "action": {"default": "None", "values": ["None", "Button"]},
+    "showDescription": {"default": true, "values": [true, false]}
+  },
+  "tokens": {
+    "content.width": {"value": 240, "unit": "px", "cssVariable": "--ds-component-empty-content-width"},
+    "text.gap": {"value": "{Interval/space2}", "resolved": 4, "unit": "px", "cssVariable": "--ds-component-empty-text-gap", "note": "Value is equivalent to space2; get_design_context returned a direct 4px class."},
+    "illustrationText.gap": {"value": "{Interval/space4}", "resolved": 12, "unit": "px", "cssVariable": "--ds-component-empty-illustration-text-gap", "note": "Value is equivalent to space4; binding was not reported."},
+    "contentAction.gap": {"value": "{Interval/space5}", "resolved": 16, "unit": "px", "cssVariable": "--ds-component-empty-content-action-gap", "note": "Value is equivalent to space5; binding was not reported."},
+    "title.textStyle": {"value": "{中文/S5-CN-S}", "cssClass": "gj-type-cn-s5"},
+    "title.color": {"value": "{Text/Primary}", "resolved": "#101828", "cssVariable": "--ds-component-empty-title-color"},
+    "description.textStyle": {"value": "{中文/S9-CN-R}", "cssClass": "gj-type-cn-s9"},
+    "description.color": {"value": "{Text/Secondary}", "resolved": "#475467", "cssVariable": "--ds-component-empty-description-color"},
+    "illustration.width": {"value": 100, "unit": "px", "cssVariable": "--ds-component-empty-illustration-width"},
+    "illustration.height.standard": {"value": 89, "unit": "px", "cssVariable": "--ds-component-empty-illustration-height-standard"},
+    "illustration.height.tall": {"value": 91, "unit": "px", "cssVariable": "--ds-component-empty-illustration-height-tall"},
+    "action.height": {"value": "{Components/control-M}", "resolved": 32, "unit": "px", "cssVariable": "--ds-component-empty-action-height", "note": "Composition reference only; action styling comes from Button/Primary/Medium."},
+    "height.textOnly": {"value": 44, "unit": "px", "cssVariable": "--ds-component-empty-height-text-only"},
+    "height.textOnlyWithAction": {"value": 92, "unit": "px", "cssVariable": "--ds-component-empty-height-text-only-with-action"},
+    "height.standard": {"value": 145, "unit": "px", "cssVariable": "--ds-component-empty-height-standard"},
+    "height.standardWithAction": {"value": 193, "unit": "px", "cssVariable": "--ds-component-empty-height-standard-with-action"},
+    "height.tall": {"value": 147, "unit": "px", "cssVariable": "--ds-component-empty-height-tall"},
+    "height.tallWithAction": {"value": 195, "unit": "px", "cssVariable": "--ds-component-empty-height-tall-with-action"}
+  },
+  "composition": {
+    "standardIllustrationTypes": ["Empty", "NoPermission", "Error", "NoChart"],
+    "tallIllustrationTypes": ["NotFound", "Disconnected"],
+    "actionComponent": "Button/Primary/Medium",
+    "illustrationComponent": "Empty_item/img"
+  },
+  "openItems": {}
+}

@@ -1,0 +1,45 @@
+{
+  "$schema": "gj-design-skill/component-schema/v1",
+  "component": "Timeline",
+  "source": {
+    "rulesSection": "Timeline 时间轴",
+    "inventoryPage": "Timeline✅",
+    "figmaFile": "8b01I1e3TzH1IhYlr3tJzd",
+    "pageNodeId": "3655:7446",
+    "status": "figma-audited",
+    "figmaAudit": "done-2026-09-10"
+  },
+  "purpose": "呈现事件历史或有限阶段记录。",
+  "figma": {
+    "componentSets": 6,
+    "standaloneSymbols": 1,
+    "componentSetNodes": [
+      {"nodeId": "3655:7458", "name": "Timeline_item/Head", "variants": 16, "defaultVariant": "3655:7459"},
+      {"nodeId": "3659:7525", "name": "Timeline_item/title", "variants": 4, "defaultVariant": "3659:7524"},
+      {"nodeId": "3659:7621", "name": "Timeline_item/horizontal_cell", "variants": 6, "defaultVariant": "3659:7612"},
+      {"nodeId": "3659:7810", "name": "Timeline_vertical", "variants": 2, "defaultVariant": "3659:7809"},
+      {"nodeId": "3666:3005", "name": "Timeline_item/vertical_Head", "variants": 2, "defaultVariant": "3666:3004"},
+      {"nodeId": "3666:3018", "name": "Timeline_item/horizontal_cell", "variants": 2, "defaultVariant": "3666:3017"}
+    ],
+    "standaloneNodes": [{"nodeId": "3666:3072", "name": "Timeline_horizontal", "width": 676, "height": 112}]
+  },
+  "properties": {"direction": ["Vertical", "Horizontal"], "nodeStyle": ["Dot", "Checkmark"], "items": "TimelineItem[]", "order": ["ascending", "descending"]},
+  "defaults": {"direction": "Vertical", "nodeStyle": "Dot", "order": "ascending"},
+  "itemStates": ["Finished", "Waiting"],
+  "dimensions": {"nodeContainer": 20, "dot": 10, "checkmark": 16, "title": "中文/S5-CN-S", "verticalDescription": "中文/S9-CN-R", "horizontalDescription": "中文/S8-CN-R", "horizontalItem": [155, 112]},
+  "behavior": {"order": "Use real-time ascending order by default; descending must be explicit and consistent.", "interaction": "Items are noninteractive unless detail navigation is explicitly enabled."},
+  "constraints": [
+    "Finished nodes are continuous; Waiting cannot appear between Finished nodes.",
+    "Checkmark means completed only.",
+    "Use Vertical for many nodes or detailed content.",
+    "Use Empty when no events exist.",
+    "Waiting 只改节点色，不改标题/说明颜色。",
+    "纵向连接线绑定 Border/hover，不是 Border/secondary。"
+  ],
+  "dependencies": ["Empty", "Icon"],
+  "confirmedDecisions": [
+    "2026-09-10：页 3655:7446 实收 6 套 / 32 variants / 1 standalone，与 inventory 一致。",
+    "标题 Text Style 为 中文/S5-CN-S；纵向说明 S9 + Text/Secondary；横向 cell 说明 S8 + Text/Tertiary。",
+    "纵向圆点 finished 绑 Brand/GJ_Blue；勾选绑 Feedback/brand。"
+  ]
+}

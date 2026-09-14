@@ -1,0 +1,225 @@
+{
+  "$schema": "gj-design-skill/component-schema/v1",
+  "component": "Radio",
+  "source": {
+    "rulesSection": "Radio 单选框",
+    "inventoryPage": "radiobutton✅",
+    "status": "figma-audited",
+    "figmaAudit": "done-2026-09-08; re-verified-2026-09-10-RAD-002"
+  },
+  "purpose": "从同一维度的一组互斥选项中选择唯一结果。",
+  "figma": {
+    "fileKey": "8b01I1e3TzH1IhYlr3tJzd",
+    "pageNodeId": "2982:4462",
+    "componentSets": [
+      {
+        "nodeId": "2982:3997",
+        "name": "Radio button item",
+        "variants": 7,
+        "variantNodeIds": [
+          "2982:3994",
+          "2982:3996",
+          "2982:3995",
+          "2982:3992",
+          "2982:3993",
+          "2982:3991",
+          "2982:3990"
+        ]
+      },
+      {
+        "nodeId": "2982:4003",
+        "name": "Radio button",
+        "variants": 7,
+        "variantNodeIds": [
+          "2982:4002",
+          "2982:4008",
+          "2982:4040",
+          "2982:4012",
+          "2982:4046",
+          "2982:4016",
+          "2982:4021"
+        ]
+      },
+      {
+        "nodeId": "2982:4176",
+        "name": "Radiobutton Group",
+        "variants": 10,
+        "variantNodeIds": [
+          "2982:4175",
+          "2982:4177",
+          "2982:4191",
+          "2982:4210",
+          "2982:4233",
+          "2982:4260",
+          "2982:4263",
+          "2982:4267",
+          "2982:4272",
+          "2982:4278"
+        ]
+      }
+    ],
+    "rawProperties": {
+      "item": {
+        "state": [
+          "default",
+          "hover",
+          "mouseon",
+          "checked",
+          "mousedown"
+        ],
+        "disabled": [
+          false,
+          true
+        ]
+      },
+      "label": {
+        "disabled": [
+          false,
+          true
+        ],
+        "checked": [
+          false,
+          true
+        ],
+        "animation": [
+          false,
+          "hover",
+          "mouseon",
+          "mousedown"
+        ]
+      },
+      "group": {
+        "count": [
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "align": [
+          "horizontal",
+          "vertical"
+        ]
+      }
+    },
+    "visualStateCoverage": [
+      "default",
+      "hover",
+      "mouseon",
+      "checked",
+      "mousedown",
+      "disabled",
+      "checked-disabled"
+    ]
+  },
+  "properties": {
+    "checked": "boolean",
+    "disabled": "boolean",
+    "name": "string",
+    "value": "string",
+    "label": "string",
+    "count": [
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "align": [
+      "horizontal",
+      "vertical"
+    ]
+  },
+  "defaults": {
+    "checked": false,
+    "disabled": false,
+    "align": "horizontal"
+  },
+  "dimensions": {
+    "control": 16,
+    "focusHalo": 20,
+    "labelGap": 8,
+    "groupGap": 12,
+    "font": "14/22"
+  },
+  "stateBindings": {
+    "default": {
+      "background": "Background/Container",
+      "border": "Border/secondary",
+      "text": "Text/Primary"
+    },
+    "hover": {
+      "background": "Background/Container",
+      "border": "Border/focused",
+      "text": "Text/Primary"
+    },
+    "focus": {
+      "halo": "Background/BT_B15",
+      "background": "Background/Container",
+      "border": "Border/focused",
+      "text": "Text/Primary"
+    },
+    "checked": {
+      "control": "Border/focused",
+      "dot": "Text/reversal",
+      "text": "Text/Primary"
+    },
+    "mousedown": {
+      "halo": "Background/BT_B15",
+      "control": "Border/focused",
+      "dot": "Text/reversal",
+      "text": "Text/Primary"
+    },
+    "disabled": {
+      "background": "Background/Background",
+      "border": "Border/secondary",
+      "text": "Text/disable"
+    },
+    "checked-disabled": {
+      "background": "Background/Background",
+      "border": "Border/secondary",
+      "dot": "Text/disable",
+      "text": "Text/disable"
+    }
+  },
+  "typography": {
+    "figmaTextStyle": "中文/S8-CN-R",
+    "resolved": "PingFang SC / 14 / 22 / 400",
+    "currentSystemEquivalent": "中文/S8-CN-R",
+    "status": "confirmed-2026-09-10",
+    "note": "2026-09-10 之前绑定旧样式 Body_14px_regular（解析为 Microsoft YaHei），设计已在 Figma 改绑为当前字体体系的 中文/S8-CN-R（PingFang SC）。RAD-001 已关闭。"
+  },
+  "behavior": {
+    "nativeElement": "input[type=radio]",
+    "selection": "Selecting one option clears the previous checked option in the same named group.",
+    "stateMapping": "Figma raw property value \"mouseon\" is the keyboard focus-visible halo; the Skill's local state key is renamed to \"focus\" (2026-09-08 设计确认，见 RAD-004) to avoid being read as a pointer/mouse state — code binds it to :focus-visible, kept as a visually distinct 20px halo from :hover so keyboard users retain an independent, high-visibility focus indicator. Figma mousedown is a transient press-moment animation (see RAD-003), not a persisted style, and settles into the pressed option's resulting checked/unchecked appearance on release."
+  },
+  "constraints": [
+    "Exactly one option may be checked per group.",
+    "Preselect only a safe or explicitly recommended value.",
+    "Use Selector when options are numerous or space is insufficient.",
+    "2026-09-10：Figma 已将 5 个纵向 Group variant 的属性值由 verticle 修正为 vertical（节点 2982:4176，见 RAD-002）；mapping.json 暂保留 verticle→vertical 的兼容归一化，以兼容历史缓存/未刷新的实例。",
+    "RAD-004 已部分关闭（2026-09-08 设计确认）：保留独立的键盘焦点光晕，本地状态名由 mouseon 重命名为 focus；Figma 源属性值本身仍为 mouseon，不作为需要 Figma 侧修改的问题。"
+  ],
+  "pendingExtraction": [],
+  "confirmedDecisions": [
+    {
+      "id": "RAD-004",
+      "date": "2026-09-08",
+      "decision": "保留 mouseon 对应的键盘焦点 20px 光晕（不与 hover 合并），本地状态名重命名为 focus 以准确表达语义；Figma 源属性值 mouseon 保持不变。",
+      "source": "用户设计确认"
+    },
+    {
+      "id": "RAD-002",
+      "date": "2026-09-10",
+      "decision": "Figma 侧已将 Radiobutton Group 的 5 个纵向 variant 的 align 属性值从 verticle 修正为 vertical（节点 2982:4176：2982:4260/4263/4267/4272/4278，均复查为 align=vertical）。mapping.json 中 align.verticle→vertical 的兼容归一化暂保留，作为历史兼容层。",
+      "source": "用户确认源文件已更新 + get_metadata 复查节点 2982:4176（10 个 variant 图层名均为 align=horizontal|vertical，无 verticle）"
+    },
+    {
+      "id": "RAD-001",
+      "date": "2026-09-10",
+      "decision": "Radio label 文字样式已由设计在 Figma 改绑为 中文/S8-CN-R（此前为旧样式 Body_14px_regular）。复查节点 2982:4003 下 checked=false/disabled=false（2982:4002）与 disabled=true（2982:4016）两个样本，均确认绑定 中文/S8-CN-R（PingFang SC, 14/22/400）。",
+      "source": "Figma 只读复查（get_design_context，节点 2982:4002, 2982:4016）"
+    }
+  ]
+}

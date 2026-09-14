@@ -1,0 +1,1 @@
+window.FILE_ICONS=[["24px-excel", "24px-excel.png", "small"], ["24px-img", "24px-img.png", "small"], ["24px-pdf", "24px-pdf.png", "small"], ["24px-ppt", "24px-ppt.png", "small"], ["24px-text", "24px-text.png", "small"], ["24px-word", "24px-word.png", "small"], ["doc", "doc.png", "std"], ["pdf", "pdf.png", "std"], ["pptx", "pptx.png", "std"], ["xlsx", "xlsx.png", "std"]];

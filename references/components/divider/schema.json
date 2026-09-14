@@ -1,0 +1,40 @@
+{
+  "$schema": "gj-design-skill/component-schema/v1",
+  "component": "Divider",
+  "source": {
+    "rulesSection": "Divider 分割线",
+    "figmaFile": "8b01I1e3TzH1IhYlr3tJzd",
+    "pageNodeId": "2378:1289",
+    "status": "figma-audited",
+    "figmaAudit": "done-2026-08-13",
+    "note": "2026-09-09 统一格式补充 source 字段；inventoryPage 顶层页面名称本轮未重新核实（get_metadata 仅返回 Cover 一个顶层页面，未能独立确认 Divider 的页面名），沿用既有真实 sourceNodes（2378:1289 / 2394:888）与既有 rules.md/audit.md 内容，不影响既有审计结论。"
+  },
+  "sourceNodes": [
+    "2378:1289",
+    "2394:888"
+  ],
+  "properties": {
+    "type": [
+      "horizontal",
+      "vertical"
+    ],
+    "dashed": [
+      false,
+      true
+    ],
+    "title": [
+      false,
+      true
+    ],
+    "position": [
+      "left",
+      "center",
+      "right"
+    ]
+  },
+  "constraints": [
+    "position only applies to horizontal dividers with title enabled",
+    "vertical dividers do not support title",
+    "horizontal and vertical line thickness is 1px"
+  ]
+}

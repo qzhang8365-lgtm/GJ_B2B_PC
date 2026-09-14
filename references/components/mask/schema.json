@@ -1,0 +1,31 @@
+{
+  "$schema": "gj-design-skill/component-schema/v1",
+  "component": "Mask",
+  "source": {
+    "rulesSection": null,
+    "inventoryPage": "Mask✅",
+    "status": "local-contract",
+    "figmaAudit": "not-planned"
+  },
+  "purpose": "作为 Modal、Drawer、图片预览等浮层组件背后的遮罩层，压暗并阻断下层内容的操作。",
+  "decision": "2026-09-08 确认：Mask 不再走 Figma 组件提取流程，不生成 mapping.json/audit.md 或可交互预览页；采用通用原生遮罩实现，直接复用设计系统已有的蒙层 Token。",
+  "implementation": {
+    "approach": "铺满宿主区域的纯色半透明覆盖层：跨页面浮层用 position: fixed，局部容器浮层用 position: absolute；不单独定义尺寸、圆角或独立动效。",
+    "defaultToken": "Background/MK_60",
+    "tokenOptions": {
+      "Background/MK_45": "浅色蒙层",
+      "Background/MK_60": "默认蒙层（黑色 60%，#00000099）",
+      "Background/MK_80": "深色蒙层"
+    },
+    "existingUsage": "Image 组件的全屏画廊预览蒙层引用 Background/MK_45（2026-09-09 经 Figma 节点 3530:1855/Img_mask 核实为 MK_45，此前误记为 MK_60，已订正），见 components/image/schema.json 的 tokens.previewMask。"
+  },
+  "properties": {},
+  "defaults": {},
+  "states": [],
+  "constraints": [
+    "不单独定义 Mask 的点击关闭、层级堆叠或动效；这些行为由使用 Mask 的宿主组件（Modal、Drawer 等）在各自 rules.md 中定义。",
+    "不新增或硬编码颜色值；颜色一律引用 Background/MK_45、MK_60 或 MK_80。",
+    "如后续设计稿明确要求 Mask 具备独立于宿主组件之外的交互（例如全局 loading 遮罩、可点击穿透的蒙层），需重新走 Figma 提取流程，当前不做假设。"
+  ],
+  "pendingExtraction": []
+}

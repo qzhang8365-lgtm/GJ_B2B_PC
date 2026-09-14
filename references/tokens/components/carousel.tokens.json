@@ -1,0 +1,43 @@
+{
+  "$schema": "gj-design-skill/component-tokens/v1",
+  "component": "Carousel",
+  "source": {
+    "figmaNode": "2638:1007",
+    "figmaNodes": ["4775:19663", "3016:4641", "3016:4652"],
+    "figmaReadDate": "2026-09-09",
+    "componentSchema": "references/components/carousel/schema.json",
+    "componentMapping": "references/components/carousel/mapping.json",
+    "confirmedRules": "references/components/carousel/rules.md",
+    "implementation": "assets/styles/gj-b2b-components.css#.gj-carousel"
+  },
+  "properties": {
+    "indicatorPosition": {"default": "bottom_center", "values": ["bottom_center", "bottom_right", "bottom_left"]},
+    "indicatorTheme": {"default": "light", "values": ["light", "dark"]},
+    "dotActive": {"default": true, "values": [false, true]}
+  },
+  "tokens": {
+    "root.authoredWidth": {"value": 385, "unit": "px", "cssVariable": "--ds-component-carousel-authored-width"},
+    "root.height": {"value": 160, "unit": "px", "cssVariable": "--ds-component-carousel-height"},
+    "root.padding": {"value": 12, "unit": "px", "cssVariable": "--ds-component-carousel-padding"},
+    "indicator.gap": {"value": 3, "unit": "px", "cssVariable": "--ds-component-carousel-indicator-gap"},
+    "indicator.hitSize": {"value": 24, "unit": "px", "cssVariable": "--ds-component-carousel-indicator-hit-size", "note": "行业无障碍补充；Figma 仅绘制 3px 视觉条。"},
+    "dot.height": {"value": 3, "unit": "px", "cssVariable": "--ds-component-carousel-dot-height"},
+    "dot.activeWidth": {"value": 16, "unit": "px", "cssVariable": "--ds-component-carousel-dot-active-width"},
+    "dot.inactiveWidth": {"value": 8, "unit": "px", "cssVariable": "--ds-component-carousel-dot-inactive-width"},
+    "dot.radius": {"value": 4, "unit": "px", "cssVariable": "--ds-component-carousel-dot-radius"},
+    "motion.duration": {"value": 240, "unit": "ms", "cssVariable": "--ds-component-carousel-motion-duration", "note": "行业交互补充；Figma 未定义 motion。"}
+  },
+  "stateMatrix": {
+    "lightActive": {"background": "Text/reversal"},
+    "lightInactive": {"background": "Background/WT_20"},
+    "darkActive": {"background": "Text/blue"},
+    "darkInactive": {"background": "Background/MK_20"}
+  },
+  "behavior": {
+    "autoplayDefault": false,
+    "minimumIntervalMs": 3000,
+    "pauseConditions": ["hover", "focus-within", "document-hidden", "prefers-reduced-motion"],
+    "reducedMotion": "duration=0 and autoplay=false"
+  },
+  "openItems": {}
+}

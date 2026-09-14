@@ -1,0 +1,76 @@
+{
+  "$schema": "gj-design-skill/component-mapping/v1",
+  "figmaComponent": "Tag / Tagclose",
+  "codeComponent": "GjTag",
+  "sourceNodes": [
+    "2950:1080",
+    "2969:4514"
+  ],
+  "propertyMap": {
+    "Style": "style",
+    "Size": "size",
+    "Color": "color",
+    "shape": "shape",
+    "iconvisible": "icon",
+    "Property 1": "interaction（Tagclose 专用：Default=removable，add=add）"
+  },
+  "valueMap": {
+    "style.filled": "style=Filled",
+    "style.light": "style=Light",
+    "style.line": "style=Line",
+    "shape.default": "shape=Default（圆角 4px）",
+    "shape.pill": "shape=Pill（圆角固定 12px，非 999px，见 TAG-005）",
+    "Property 1.Default": "interaction=removable（末尾关闭图标 icf_system_close-md）",
+    "Property 1.add": "interaction=add（前置加号图标 icf_system_add）"
+  },
+  "tokenMap": {
+    "filled.background": "Primitive/<Color>/06（Neutral 例外用 N06，见 TAG-003）",
+    "filled.text": "Primitive/Neutral/N01",
+    "light.background": "Primitive/<Color>/02（Neutral 例外用 N04）",
+    "light.text": "Primitive/<Color>/07（Neutral 例外用 N09）",
+    "line.background": "Primitive/<Color>/01（Neutral 例外用 N02）",
+    "line.border": "Primitive/<Color>/04（Neutral 例外用 N06）",
+    "line.text": "Primitive/<Color>/07（Neutral 例外用 N09）",
+    "removable.background": "Background/Secondary",
+    "removable.text": "Text/Secondary",
+    "add.background": "Background/Container",
+    "add.text": "Text/Secondary",
+    "typography.regular.figma": "中文/S6-CN-S（12/18/600）",
+    "typography.small.figma": "中文/S10-CN-R（10/14/400）",
+    "note": "TAG-001 已作为既定设计决策关闭：Tag 直接绑定 Primitive/* 是有意为之，不再视为待修复。Blue/Neutral 两个色系已用 get_design_context 逐 style 直接核实（共 6+ 次调用），其余 9 个色系（Red/Green/Orange/Yellow/Cyan/Sky/DeepBlue/Purple/Pink）因其 Primitive 色阶后缀集合（01/02/04/06/07）与 Blue 完全一致（已用 get_variable_defs 核对），按 Blue 已验证的角色分配类推。",
+    "filled.neutral.background": "Primitive/Neutral/N07（2026-09-08 由 N06 改，见 TAG-003；已独立核实）"
+  },
+  "interactionMap": {
+    "display": "非交互；无 hover/pressed",
+    "removable": "Tagclose Default 变体；关闭图标需要合理热区与 hover 反馈（代码侧补充，Figma 未提供 hover 状态）",
+    "add": "Tagclose add 变体；触发后进入输入态（代码侧补充，Figma 未提供输入态设计）",
+    "selectable": "2026-09-08 设计确认：不需要独立的 hover/pressed/selected 交互态；选中态由外部逻辑切换 style/color 属性表达（如未选中用 Line、选中用 Filled），见 TAG-004"
+  },
+  "accessibility": {
+    "element": "span/button（display 用 span，removable/add/selectable 用 button 或带 role 的可交互元素）",
+    "removable": "关闭图标需要独立可聚焦、可通过键盘触发（Enter/Space），并配合 aria-label 说明删除对象",
+    "selectable": "选中态需要 aria-pressed 或 aria-selected，具体依单选/多选语义决定",
+    "contrast": "TAG-003：Filled + Neutral 的白字/#b8c0cc 背景组合对比度 1.83:1，未达 WCAG AA；不建议在需要可读性保证的场景使用该组合，或等设计确认替代方案"
+  },
+  "cornerTag": {
+    "figmaComponent": "Tag_corner",
+    "sourceNode": "3217:9158",
+    "codeComponent": "GjTagCorner",
+    "propertyMap": {
+      "position": "position",
+      "size": "size",
+      "color": "color",
+      "icon": "icon"
+    },
+    "tokenMap": {
+      "black.background": "Background/MK_45",
+      "red.background": "Border/error",
+      "blue.background": "Feedback/brand",
+      "green.background": "Feedback/success&decline",
+      "grey.background": "Feedback/plain",
+      "orange.background": "Feedback/warning",
+      "text": "Primitive/Neutral/N01"
+    },
+    "note": "black/blue/green 已用 get_design_context 逐 variant 核实；red/grey/orange 按 get_variable_defs 汇总类推，未逐一复核。圆角为非对称贴角造型（见 schema.json cornerTag.shape），不是四角统一圆角。"
+  }
+}

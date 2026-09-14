@@ -1,0 +1,790 @@
+{
+  "source": {
+    "type": "figma",
+    "fileKey": "8b01I1e3TzH1IhYlr3tJzd",
+    "readOnly": true,
+    "figmaIsSourceOfTruth": true
+  },
+  "auditTracker": "../audit-tracker.md",
+  "coverageDashboard": "../coverage.json",
+  "scope": {
+    "pagesScanned": 55,
+    "pagesWithComponents": 43,
+    "componentSets": 152,
+    "variants": 1690,
+    "standaloneComponents": 326,
+    "standaloneIcons": 267,
+    "nonIconStandaloneComponents": 63
+  },
+  "interpretationRules": [
+    "页面名称中的 ✅ 仅记录 Figma 当前标记，不自动等同于已通过代码化验收。",
+    "名为“组件”的历史页面暂列为 legacy，不与新版页面组件合并。",
+    "组件结构、属性、默认值和例外规则必须继续从实际节点读取，不能仅凭页面名称推断。",
+    "所有提取仅写入本地 Skill 资产，不修改 Figma。"
+  ],
+  "schemaRegistry": {
+    "statusMeaning": {
+      "rules-derived": "schema 已根据 design-system-rules.md 建立，可通过组件查询门禁；Figma 节点、完整 variant 和变量绑定仍待逐组件审计。",
+      "inventory-only": "inventory 已确认组件存在，但 design-system-rules.md 没有足够的独立规则；schema 只负责阻止误推断，实施前必须读取 Figma。",
+      "local-contract": "已从现有扁平契约迁移为 schema + mapping + audit；包含已确认的 Figma 节点或本地实现契约，但 audit 中标注的全量复查仍需继续。",
+      "figma-audited": "已完成 extraction-plan.md 规定的 Figma 属性、variant、Token 和视觉属性审计。"
+    },
+    "lookupRule": "按 aliases 归一化组件名后读取 path；rules-derived 不得被解释为已完成 Figma 抽取，pendingExtraction 字段必须保留。",
+    "executionOrder": [
+      {
+        "order": 1,
+        "group": "general",
+        "component": "Button",
+        "aliases": [
+          "button"
+        ],
+        "path": "button/schema.json",
+        "status": "figma-audited"
+      },
+      {
+        "order": 1.1,
+        "planParent": "Button",
+        "group": "general",
+        "component": "TextButton",
+        "aliases": [
+          "textbutton",
+          "text-button",
+          "text button"
+        ],
+        "path": "text-button/schema.json",
+        "status": "figma-audited"
+      },
+      {
+        "order": 2,
+        "group": "general",
+        "component": "Divider",
+        "aliases": [
+          "divider"
+        ],
+        "path": "divider/schema.json",
+        "status": "figma-audited"
+      },
+      {
+        "order": 3,
+        "group": "general",
+        "component": "Icon",
+        "aliases": [
+          "icon"
+        ],
+        "path": "icon/schema.json",
+        "status": "figma-audited"
+      },
+      {
+        "order": 4,
+        "group": "general",
+        "component": "Tag",
+        "aliases": [
+          "tag"
+        ],
+        "path": "tag/schema.json",
+        "status": "figma-audited"
+      },
+      {
+        "order": 5,
+        "group": "navigation",
+        "component": "GridNav",
+        "aliases": [
+          "gridnav",
+          "grid-nav"
+        ],
+        "path": "grid-nav/schema.json",
+        "status": "figma-audited"
+      },
+      {
+        "order": 6,
+        "group": "navigation",
+        "component": "Sidebar",
+        "aliases": [
+          "sidebar",
+          "side-bar"
+        ],
+        "path": "sidebar/schema.json",
+        "status": "figma-audited"
+      },
+      {
+        "order": 7,
+        "group": "navigation",
+        "component": "Navbar",
+        "aliases": [
+          "navbar",
+          "nav-bar"
+        ],
+        "path": "navbar/schema.json",
+        "status": "figma-audited"
+      },
+      {
+        "order": 8,
+        "group": "navigation",
+        "component": "Tabs",
+        "aliases": [
+          "tabs",
+          "tab"
+        ],
+        "path": "tabs/schema.json",
+        "status": "figma-audited"
+      },
+      {
+        "order": 9,
+        "group": "navigation",
+        "component": "Breadcrumb",
+        "aliases": [
+          "breadcrumb"
+        ],
+        "path": "breadcrumb/schema.json",
+        "status": "figma-audited"
+      },
+      {
+        "order": 10,
+        "group": "navigation",
+        "component": "Carousel",
+        "aliases": [
+          "carousel",
+          "走马灯"
+        ],
+        "path": "carousel/schema.json",
+        "status": "figma-audited"
+      },
+      {
+        "order": 11,
+        "group": "navigation",
+        "component": "Pagination",
+        "aliases": [
+          "pagination",
+          "pager"
+        ],
+        "path": "pagination/schema.json",
+        "status": "figma-audited"
+      },
+      {
+        "order": 12,
+        "group": "data-entry",
+        "component": "Input",
+        "aliases": [
+          "input"
+        ],
+        "path": "input/schema.json",
+        "status": "figma-audited"
+      },
+      {
+        "order": 13,
+        "group": "data-entry",
+        "component": "Form",
+        "aliases": [
+          "form",
+          "formitem",
+          "form-item"
+        ],
+        "path": "form/schema.json",
+        "status": "local-contract"
+      },
+      {
+        "order": 14,
+        "group": "data-entry",
+        "component": "Selector",
+        "aliases": [
+          "selector",
+          "select"
+        ],
+        "path": "selector/schema.json",
+        "status": "figma-audited"
+      },
+      {
+        "order": 15,
+        "group": "data-entry",
+        "component": "Switch",
+        "aliases": [
+          "switch"
+        ],
+        "path": "switch/schema.json",
+        "status": "figma-audited"
+      },
+      {
+        "order": 16,
+        "group": "data-entry",
+        "component": "Checkbox",
+        "aliases": [
+          "checkbox"
+        ],
+        "path": "checkbox/schema.json",
+        "status": "figma-audited"
+      },
+      {
+        "order": 17,
+        "group": "data-entry",
+        "component": "Radio",
+        "aliases": [
+          "radio",
+          "radiobutton",
+          "radio-button"
+        ],
+        "path": "radio/schema.json",
+        "status": "figma-audited"
+      },
+      {
+        "order": 18,
+        "group": "data-entry",
+        "component": "DatePicker",
+        "aliases": [
+          "datepicker",
+          "date-picker"
+        ],
+        "path": "date-picker/schema.json",
+        "status": "figma-audited"
+      },
+      {
+        "order": 19,
+        "group": "data-entry",
+        "component": "Search",
+        "aliases": [
+          "search",
+          "searchbar",
+          "search-bar"
+        ],
+        "path": "search/schema.json",
+        "status": "figma-audited"
+      },
+      {
+        "order": 20,
+        "group": "data-entry",
+        "component": "TimePicker",
+        "aliases": [
+          "timepicker",
+          "time-picker"
+        ],
+        "path": "time-picker/schema.json",
+        "status": "figma-audited"
+      },
+      {
+        "order": 21,
+        "group": "data-entry",
+        "component": "Dropdown",
+        "aliases": [
+          "dropdown",
+          "drop-down"
+        ],
+        "path": "dropdown/schema.json",
+        "status": "local-contract"
+      },
+      {
+        "order": 22,
+        "group": "data-entry",
+        "component": "Cascader",
+        "aliases": [
+          "cascader",
+          "cascade"
+        ],
+        "path": "cascader/schema.json",
+        "status": "figma-audited"
+      },
+      {
+        "order": 23,
+        "group": "data-entry",
+        "component": "InputNumber",
+        "aliases": [
+          "inputnumber",
+          "input-number",
+          "input number"
+        ],
+        "path": "input-number/schema.json",
+        "status": "figma-audited"
+      },
+      {
+        "order": 24,
+        "group": "data-entry",
+        "component": "Image",
+        "aliases": [
+          "image"
+        ],
+        "path": "image/schema.json",
+        "status": "figma-audited"
+      },
+      {
+        "order": 25,
+        "group": "data-entry",
+        "component": "Upload",
+        "aliases": [
+          "upload"
+        ],
+        "path": "upload/schema.json",
+        "status": "figma-audited"
+      },
+      {
+        "order": 26,
+        "group": "data-display",
+        "component": "Table",
+        "aliases": [
+          "table",
+          "data-table"
+        ],
+        "path": "table/schema.json",
+        "status": "figma-audited"
+      },
+      {
+        "order": 27,
+        "group": "data-display",
+        "component": "Avatar",
+        "aliases": [
+          "avatar"
+        ],
+        "path": "avatar/schema.json",
+        "status": "figma-audited"
+      },
+      {
+        "order": 28,
+        "group": "data-display",
+        "component": "Badge",
+        "aliases": [
+          "badge"
+        ],
+        "path": "badge/schema.json",
+        "status": "figma-audited"
+      },
+      {
+        "order": 29,
+        "group": "data-display",
+        "component": "Chart",
+        "aliases": [
+          "chart"
+        ],
+        "path": "chart/schema.json",
+        "status": "local-contract"
+      },
+      {
+        "order": 30,
+        "group": "data-display",
+        "component": "Metric",
+        "aliases": [
+          "metric"
+        ],
+        "path": "metric/schema.json",
+        "status": "figma-audited"
+      },
+      {
+        "order": 31,
+        "group": "data-display",
+        "component": "Empty",
+        "aliases": [
+          "empty"
+        ],
+        "path": "empty/schema.json",
+        "status": "figma-audited"
+      },
+      {
+        "order": 32,
+        "group": "data-display",
+        "component": "Timeline",
+        "aliases": [
+          "timeline"
+        ],
+        "path": "timeline/schema.json",
+        "status": "figma-audited"
+      },
+      {
+        "order": 33,
+        "group": "data-display",
+        "component": "Steps",
+        "aliases": [
+          "steps"
+        ],
+        "path": "steps/schema.json",
+        "status": "figma-audited"
+      },
+      {
+        "order": 34,
+        "group": "feedback",
+        "component": "Toast",
+        "aliases": [
+          "toast"
+        ],
+        "path": "toast/schema.json",
+        "status": "figma-audited"
+      },
+      {
+        "order": 35,
+        "group": "feedback",
+        "component": "Modal",
+        "aliases": [
+          "modal",
+          "dialog"
+        ],
+        "path": "modal/schema.json",
+        "status": "figma-audited"
+      },
+      {
+        "order": 36,
+        "group": "feedback",
+        "component": "Notification",
+        "aliases": [
+          "notification"
+        ],
+        "path": "notification/schema.json",
+        "status": "figma-audited"
+      },
+      {
+        "order": 37,
+        "group": "feedback",
+        "component": "Tooltip",
+        "aliases": [
+          "tooltip"
+        ],
+        "path": "tooltip/schema.json",
+        "status": "figma-audited"
+      },
+      {
+        "order": 38,
+        "group": "feedback",
+        "component": "Popover",
+        "aliases": [
+          "popover"
+        ],
+        "path": "popover/schema.json",
+        "status": "figma-audited"
+      },
+      {
+        "order": 39,
+        "group": "feedback",
+        "component": "Mask",
+        "aliases": [
+          "mask"
+        ],
+        "path": "mask/schema.json",
+        "status": "local-contract"
+      },
+      {
+        "order": 40,
+        "group": "feedback",
+        "component": "Skeleton",
+        "aliases": [
+          "skeleton"
+        ],
+        "path": "skeleton/schema.json",
+        "status": "local-contract"
+      },
+      {
+        "order": 41,
+        "group": "feedback",
+        "component": "Drawer",
+        "aliases": [
+          "drawer"
+        ],
+        "path": "drawer/schema.json",
+        "status": "local-contract"
+      }
+    ]
+  },
+  "groups": [
+    {
+      "name": "foundation",
+      "pages": [
+        {
+          "page": "Layout",
+          "sets": 2,
+          "variants": 11,
+          "standalone": 0
+        }
+      ]
+    },
+    {
+      "name": "general",
+      "pages": [
+        {
+          "page": "Button✅",
+          "sets": 2,
+          "variants": 228,
+          "standalone": 0
+        },
+        {
+          "page": "Divider✅",
+          "sets": 1,
+          "variants": 15,
+          "standalone": 0
+        },
+        {
+          "page": "Icon✅",
+          "sets": 1,
+          "variants": 3,
+          "standalone": 267
+        },
+        {
+          "page": "Tag✅",
+          "sets": 5,
+          "variants": 110,
+          "standalone": 0
+        }
+      ]
+    },
+    {
+      "name": "navigation",
+      "pages": [
+        {
+          "page": "GridNav✅",
+          "sets": 2,
+          "variants": 7,
+          "standalone": 0
+        },
+        {
+          "page": "SideBar✅",
+          "sets": 4,
+          "variants": 26,
+          "standalone": 0
+        },
+        {
+          "page": "Navbar",
+          "sets": 3,
+          "variants": 12,
+          "standalone": 1
+        },
+        {
+          "page": "Tabs✅",
+          "sets": 10,
+          "variants": 172,
+          "standalone": 0
+        },
+        {
+          "page": "Breadcrumb✅",
+          "sets": 3,
+          "variants": 9,
+          "standalone": 0
+        },
+        {
+          "page": "Carousel",
+          "sets": 3,
+          "variants": 9,
+          "standalone": 0
+        },
+        {
+          "page": "Pagination",
+          "sets": 3,
+          "variants": 35,
+          "standalone": 1
+        }
+      ]
+    },
+    {
+      "name": "data-entry",
+      "pages": [
+        {
+          "page": "Input",
+          "sets": 5,
+          "variants": 66,
+          "standalone": 4
+        },
+        {
+          "page": "Form",
+          "sets": 5,
+          "variants": 54,
+          "standalone": 0
+        },
+        {
+          "page": "select",
+          "sets": 3,
+          "variants": 36,
+          "standalone": 0
+        },
+        {
+          "page": "switch",
+          "sets": 1,
+          "variants": 8,
+          "standalone": 0
+        },
+        {
+          "page": "checkbox✅",
+          "sets": 3,
+          "variants": 20,
+          "standalone": 0
+        },
+        {
+          "page": "radiobutton✅",
+          "sets": 3,
+          "variants": 24,
+          "standalone": 0
+        },
+        {
+          "page": "DatePicker",
+          "sets": 6,
+          "variants": 108,
+          "standalone": 11
+        },
+        {
+          "page": "Searchbar✅",
+          "sets": 3,
+          "variants": 26,
+          "standalone": 1
+        },
+        {
+          "page": "TimePicker",
+          "sets": 6,
+          "variants": 53,
+          "standalone": 0
+        },
+        {
+          "page": "Dropdown✅",
+          "sets": 2,
+          "variants": 9,
+          "standalone": 2
+        },
+        {
+          "page": "cascader✅",
+          "sets": 2,
+          "variants": 21,
+          "standalone": 3
+        },
+        {
+          "page": "Input-Number✅",
+          "sets": 2,
+          "variants": 52,
+          "standalone": 0
+        },
+        {
+          "page": "Image✅",
+          "sets": 2,
+          "variants": 7,
+          "standalone": 1
+        },
+        {
+          "page": "Upload✅",
+          "sets": 4,
+          "variants": 16,
+          "standalone": 0
+        }
+      ]
+    },
+    {
+      "name": "data-display",
+      "pages": [
+        {
+          "page": "Table✅",
+          "sets": 3,
+          "variants": 57,
+          "standalone": 6,
+          "note": "2026-09-10 按母组件口径只读复查节点 2943:3259：3 个组件集母版分别为 Table/title（15 variants）、Table/content（36 variants）、Table/Collapse（6 variants），另有 6 个独立母组件；说明画板及其中实例不计入 inventory。旧值 45 variants / 5 standalone 已更正（TBL-002 已关闭）。"
+        },
+        {
+          "page": "Avatar✅",
+          "sets": 1,
+          "variants": 24,
+          "standalone": 0
+        },
+        {
+          "page": "Badge✅",
+          "sets": 3,
+          "variants": 34,
+          "standalone": 0
+        },
+        {
+          "page": "Chart✅",
+          "sets": 5,
+          "variants": 39,
+          "standalone": 16
+        },
+        {
+          "page": "Metric✅",
+          "sets": 14,
+          "variants": 77,
+          "standalone": 0
+        },
+        {
+          "page": "Empty✅",
+          "sets": 2,
+          "variants": 18,
+          "standalone": 1
+        },
+        {
+          "page": "Timeline✅",
+          "sets": 6,
+          "variants": 32,
+          "standalone": 1
+        },
+        {
+          "page": "Steps✅",
+          "sets": 8,
+          "variants": 42,
+          "standalone": 0,
+          "note": "2026-09-10 设计确认：旧值 9 套/78 variants 有误，正确数量为 8 套/42 variants（STP-001 已关闭），与用户提供画板 4465:8293 的只读复查一致。"
+        }
+      ]
+    },
+    {
+      "name": "feedback",
+      "pages": [
+        {
+          "page": "Toast✅",
+          "sets": 3,
+          "variants": 12,
+          "standalone": 0,
+          "note": "2026-09-10 复查确认：旧值 3 套/13 variants 有误，正确数量为 3 套/12 symbol（Float 5 + Transparent 5 + Black 2），与用户提供画板 2638:3208 的只读复查一致（TST-001 已关闭）。"
+        },
+        {
+          "page": "Modal✅",
+          "sets": 1,
+          "variants": 12,
+          "standalone": 0
+        },
+        {
+          "page": "Notification✅",
+          "sets": 1,
+          "variants": 4,
+          "standalone": 0
+        },
+        {
+          "page": "Tooltip✅",
+          "sets": 2,
+          "variants": 16,
+          "standalone": 0
+        },
+        {
+          "page": "Popover",
+          "sets": 1,
+          "variants": 2,
+          "standalone": 0
+        },
+        {
+          "page": "Mask✅",
+          "sets": 0,
+          "variants": 0,
+          "standalone": 1
+        },
+        {
+          "page": "Skeleton✅",
+          "sets": 0,
+          "variants": 0,
+          "standalone": 4
+        },
+        {
+          "page": "Drawer✅",
+          "sets": 1,
+          "variants": 3,
+          "standalone": 1
+        }
+      ]
+    },
+    {
+      "name": "business",
+      "pages": [
+        {
+          "page": "Video",
+          "sets": 0,
+          "variants": 0,
+          "standalone": 0
+        }
+      ]
+    },
+    {
+      "name": "legacy",
+      "pages": [
+        {
+          "page": "组件",
+          "sets": 16,
+          "variants": 155,
+          "standalone": 7
+        }
+      ],
+      "defaultAction": "exclude-until-confirmed"
+    }
+  ]
+}

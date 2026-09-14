@@ -1,0 +1,47 @@
+{
+  "$schema": "gj-design-skill/component-mapping/v1",
+  "component": "Skeleton",
+  "codeComponent": "GjSkeleton",
+  "source": "rules.md + 已验收预览页 preview/skeleton/index.html；本轮按通用骨架屏惯例补齐，未做 Figma 节点核实（local-contract，见 audit.md）。",
+  "propertyMap": {
+    "type": { "values": ["text", "list", "card", "table"], "default": "text" },
+    "animated": { "type": "boolean", "default": true }
+  },
+  "structureMap": {
+    "text-line": ".gj-skeleton.gj-skeleton-line（高 12px、圆角 4px；见 tokenMap.text.radius 的修正说明）",
+    "avatar": ".gj-skeleton.gj-skeleton-avatar（40×40px，圆角 999px，与真实头像形状一致）",
+    "thumb-image": ".gj-skeleton-thumb（88×64px，圆角 8px，随最终图片圆角；本次提炼共享基座后暂无预览页实例引用，作为可用类保留，命名与 thumbnail 场景一致）",
+    "card-cover": ".gj-skeleton.gj-skeleton-card-cover（高 112px，圆角 8px）",
+    "table-row": ".table-row .gj-skeleton-line（高继承基础文字行 12px，页面局部覆盖为 10px；保留真实列宽/表头/行高，页面局部覆盖 margin-top:0 与 align-self:center）"
+  },
+  "tokenMap": {
+    "text.height": "12px",
+    "text.radius": "4px（Radius/Radius-XS）。2026-09-09 修正：schema.json 曾记为 6px（Radius/Radius-SM），但 6px 圆角在 12px 高的短条上等于半个高度，视觉上会变成两端全圆的胶囊/大圆角条；用户明确文字类占位必须是小圆角矩形而不是大圆角条，边角不能太圆。预览页 CSS 顶部已有 `.line{border-radius:4px!important}` 的覆盖，实测值与修正后的 4px 一致，说明这个修正此前已经在预览页里生效，只是没同步回 schema.json/rules.md，这次一并补上。",
+    "avatar.radius": "999px（Radius/Radius-full），圆形本身允许「全圆」，不受文字类圆角约束影响",
+    "image.radius": "8px（Radius/Radius-MD），随最终内容圆角",
+    "shimmer.base": "{Background/Secondary}（#ebeef2）",
+    "shimmer.highlight": "{Background/Tertiary}（#fafbfc）",
+    "shimmer.duration": "1.4s ease-in-out infinite",
+    "shimmer.direction": "translateX(-100%) → translateX(100%)，从左向右扫过"
+  },
+  "implementation": {
+    "runtime": {
+      "status": "shared-css-base",
+      "note": "2026-09-09：已把 preview/skeleton/index.html 内联的骨架形状样式提炼进 assets/styles/gj-b2b-components.css 的 .gj-skeleton* 共享类（.gj-skeleton 基础闪烁形状 + .gj-skeleton-line/-avatar/-thumb/-card-cover 形状修饰符 + .gj-skeleton-w100/-w86/-w72/-w54 宽度修饰符），对应尺寸/圆角/动效数值同步写进 assets/styles/gj-b2b-tokens.css 的 --ds-component-skeleton-* 变量。预览页顶部原有的 `.line{border-radius:4px!important}` 覆盖（用于修正一个早年 6px 圆角的遗留问题）已删除——正确的 4px 圆角现在直接写在共享类里，不再需要 !important 覆盖；`.table-row .line{margin-top:0;align-self:center}` 页面局部覆盖保留，改名为 `.table-row .gj-skeleton-line`。`.reduced`/`.paused` 状态修饰符按项目 is- 前缀惯例改名为 `.is-reduced`/`.is-paused`（`.is-paused` 由交互面板的动效开关实际驱动；`.is-reduced` 在预览页里未被使用，随共享基座一起保留供业务代码需要手动强制关闭动效时使用，不依赖 prefers-reduced-motion）。原 preview-page-reference 状态关闭，SKE-001 视为已解决。"
+    },
+    "specPreview": {
+      "page": "preview/skeleton/index.html",
+      "classes": [".gj-skeleton", ".gj-skeleton-line", ".gj-skeleton-avatar", ".gj-skeleton-thumb", ".gj-skeleton-card-cover", ".gj-skeleton-w100", ".gj-skeleton-w86", ".gj-skeleton-w72", ".gj-skeleton-w54", ".is-reduced", ".is-paused"],
+      "sharedBase": "assets/styles/gj-b2b-components.css（.gj-skeleton* 规则块，2026-09-09 新增）+ assets/styles/gj-b2b-tokens.css（--ds-component-skeleton-* 变量，2026-09-09 新增）"
+    }
+  },
+  "composition": {
+    "loadingConflict": "同一区域不得同时出现 Skeleton、旋转 Loading 和「加载中」文字。",
+    "timeout": "超时或失败必须停止动效并切换为错误说明 + 重试，不无限展示骨架。",
+    "reducedMotion": "系统 prefers-reduced-motion 时关闭流光动画，仅保留静态占位结构（预览页已用媒体查询实现）。"
+  },
+  "accessibility": {
+    "role": "占位区域建议 aria-busy=\"true\"，加载完成后移除；不朗读占位形状本身。",
+    "motion": "遵循系统级 reduced motion 偏好，不提供独立的动效开关覆盖系统设置。"
+  }
+}

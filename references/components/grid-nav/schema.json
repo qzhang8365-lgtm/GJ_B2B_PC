@@ -1,0 +1,139 @@
+{
+  "$schema": "gj-design-skill/component-schema/v1",
+  "component": "GridNav",
+  "source": {
+    "rulesSection": "GridNav 宫格导航",
+    "inventoryPage": "GridNav✅",
+    "figmaFile": "8b01I1e3TzH1IhYlr3tJzd",
+    "figmaPage": "2638:1000",
+    "status": "figma-audited",
+    "figmaAudit": "done-2026-09-09"
+  },
+  "purpose": "聚合平级快捷功能入口，不代替产品主导航。",
+  "implementation": {
+    "rootClass": "gj-gridnav",
+    "cols4Class": "gj-gridnav-cols-4",
+    "cols5Class": "gj-gridnav-cols-5",
+    "itemClass": "gj-gridnav-item",
+    "iconWrapClass": "gj-gridnav-icon-wrap",
+    "iconClass": "gj-gridnav-icon",
+    "labelClass": "gj-gridnav-label",
+    "note": "共享基座在 assets/styles/gj-b2b-components.css。Figma 带 badge 的母版仅设计师示意；代码组合 Badge 及其位置规则。"
+  },
+  "figma": {
+    "fileKey": "8b01I1e3TzH1IhYlr3tJzd",
+    "pageNodeId": "2638:1000",
+    "pageName": "宫格导航GridNav✅",
+    "inventoryListed": {
+      "sets": 2,
+      "variants": 7,
+      "standalone": 0
+    },
+    "auditedThisPass": {
+      "sets": 2,
+      "variants": 7,
+      "standalone": 0,
+      "note": "左侧说明画板 2938:2212 与松散实例 4142:16648 不是母版。MCP 把母版标成 frame，仍按 COMPONENT_SET 计。"
+    },
+    "componentSets": [
+      {
+        "nodeId": "2938:3783",
+        "name": "GridNav-item",
+        "variants": 3,
+        "note": "badge × number_badge。代表：无徽标 2938:3782、badge=true 2942:539、双 true 3372:4331。带 badge 的变体是设计师示意，代码不实现该图层，改为组合 Badge。"
+      },
+      {
+        "nodeId": "2942:532",
+        "name": "GridNav",
+        "variants": 4,
+        "note": "grid=4*1|5*1|4*2|5*2。代表：4*1 2942:531、5*1 2943:2411、4*2 2942:603、5*2 2943:2443。"
+      }
+    ],
+    "boardSymbols": [
+      {"nodeId": "2938:2212", "name": "规范说明画板 GridNav", "role": "documentation"},
+      {"nodeId": "2976:765", "name": "说明画板内 5*2 实例，宽 372，列距被挤成 8", "role": "documentation-instance"},
+      {"nodeId": "4142:16648", "name": "母版旁 4*2 实例 308×148", "role": "loose-instance"}
+    ]
+  },
+  "properties": {
+    "grid": ["4*1", "5*1", "4*2", "5*2"],
+    "items": "GridNavItem[]",
+    "item.icon": "required icon asset",
+    "item.text": "required string",
+    "item.badge": ["none", "dot", "number"],
+    "item.badgeValue": "number",
+    "item.disabled": "boolean"
+  },
+  "defaults": {
+    "grid": "4*1",
+    "item.badge": "none",
+    "item.disabled": false
+  },
+  "normalizedProperties": {
+    "item": {
+      "badge": [false, true],
+      "number_badge": [false, true],
+      "publishedCombinations": [
+        "badge=false, number_badge=false",
+        "badge=true, number_badge=false",
+        "badge=true, number_badge=true"
+      ]
+    },
+    "grid": ["4*1", "5*1", "4*2", "5*2"]
+  },
+  "structure": ["item-click-target", "icon-slot", "optional-composed-badge", "title"],
+  "dimensions": {
+    "itemContentWidth": 68,
+    "itemHeight": 70,
+    "itemPaddingBlock": 4,
+    "icon": 36,
+    "iconRadius": 8,
+    "iconTitleGap": 8,
+    "columnGap": 12,
+    "rowGap": 8,
+    "gridWidth": {"4": 308, "5": 388},
+    "gridHeight": {"1": 70, "2": 148},
+    "maxItems": 10
+  },
+  "typography": {
+    "title": {
+      "textStyle": "中文/S9-CN-R",
+      "font": "PingFang SC",
+      "size": 12,
+      "lineHeight": 18,
+      "weight": 400,
+      "color": "Text/Secondary"
+    }
+  },
+  "colorBindings": {
+    "iconSlot": "Background/Secondary",
+    "title": "Text/Secondary",
+    "itemHover": "Background/Hover"
+  },
+  "states": ["default"],
+  "confirmedDecisions": [
+    "Figma 带 badge 的 GridNav-item 仅设计师使用；代码组合 Badge 组件及图标右上角位置规则。",
+    "旧 背景色/* 已改绑 Background/Secondary。",
+    "Figma 不发布 Hover/Pressed/Focus/Disabled 轴；代码 Hover 使用 Background/Hover 并写入 Token。",
+    "Figma 属性名已改为 number_badge。",
+    "Radius/Radius-MD 已绑定；间距继续使用 Interval/space2|3|4。"
+  ],
+  "constraints": [
+    "Item count cannot exceed grid capacity.",
+    "Dot and number badges are mutually exclusive.",
+    "The whole item is the click target.",
+    "Do not shrink the 68px item to force extra columns.",
+    "Do not crop the last column; switch grid or outer layout instead.",
+    "Overflow requires stable grouping or another navigation pattern.",
+    "Do not copy badge geometry from the designer-only Figma badge variants.",
+    "Do not copy column gap 8 from documentation instance 2976:765.",
+    "Do not publish extra Figma state variants; use Background/Hover in code."
+  ],
+  "dependencies": ["Icon", "Badge", "Tooltip"],
+  "knownFigmaIssues": [],
+  "pendingExtraction": [],
+  "partialMeasurements": [
+    "Placeholder 子树仍可见 Background/Container；可见槽填充按用户确认的 Background/Secondary",
+    "Figma 不发布状态轴；Hover 为代码补充并已写入 Token"
+  ]
+}

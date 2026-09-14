@@ -1,0 +1,106 @@
+{
+  "$schema": "gj-design-skill/component-tokens/v1",
+  "component": "Radio",
+  "source": {
+    "componentSchema": "references/components/radio/schema.json",
+    "confirmedRules": "references/design-system-rules.md#radio-单选框",
+    "implementation": "assets/styles/gj-b2b-components.css#.gj-radio"
+  },
+  "properties": {
+    "checked": {
+      "default": false,
+      "values": [
+        false,
+        true
+      ]
+    },
+    "disabled": {
+      "default": false,
+      "values": [
+        false,
+        true
+      ]
+    },
+    "visualState": {
+      "default": "default",
+      "values": [
+        "default",
+        "hover",
+        "pressed",
+        "focused",
+        "checked",
+        "disabled",
+        "checked-disabled"
+      ],
+      "publicProp": false
+    }
+  },
+  "tokens": {
+    "control.size": {
+      "value": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-radio-control-size"
+    },
+    "label.gap": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-radio-label-gap"
+    },
+    "group.gap": {
+      "value": "{Interval/space4}",
+      "resolved": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-radio-group-gap"
+    },
+    "pressed.scale": {
+      "value": 0.96,
+      "cssVariable": "--ds-component-radio-pressed-scale"
+    },
+    "focus.ringWidth": {
+      "value": 3,
+      "unit": "px",
+      "cssVariable": "--ds-component-radio-focus-ring-width"
+    },
+    "focus.ringColor": {
+      "value": "{Background/BT_B15}",
+      "cssVariable": "--ds-component-radio-focus-ring-color"
+    }
+  },
+  "stateMatrix": {
+    "default": {
+      "asset": "url('../icons/radio-pc-default.svg')",
+      "text": "Text/Primary"
+    },
+    "hover": {
+      "asset": "url('../icons/radio-pc-hover.svg')",
+      "text": "Text/Primary"
+    },
+    "pressed": {
+      "asset": "url('../icons/radio-pc-pressed.svg'),url('../icons/radio-pc-press-ring.svg')",
+      "text": "Text/Primary"
+    },
+    "focused": {
+      "asset": "url('../icons/radio-pc-default.svg')",
+      "text": "Text/Primary"
+    },
+    "checked": {
+      "asset": "url('../icons/radio-pc-pressed.svg')",
+      "text": "Text/Primary"
+    },
+    "disabled": {
+      "asset": "url('../icons/radio-pc-disabled.svg')",
+      "text": "Text/disable"
+    },
+    "checked-disabled": {
+      "asset": "url('../icons/radio-pc-mouseon-dot.svg'),url('../icons/radio-pc-mouseon-ring.svg')",
+      "text": "Text/disable"
+    }
+  },
+  "behavior": {
+    "element": "input[type=radio]",
+    "selection": "Exactly one checked value per named group.",
+    "disabled": "No pointer or keyboard selection.",
+    "assets": "State visuals are approved SVG assets; do not reconstruct them from guessed colors."
+  }
+}

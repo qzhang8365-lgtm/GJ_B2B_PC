@@ -1,0 +1,71 @@
+{
+  "$schema": "gj-design-skill/component-schema/v1",
+  "component": "Icon",
+  "status": "local-contract",
+  "source": {
+    "rulesSection": "Icon 图标",
+    "inventoryPage": "Icon✅",
+    "status": "local-contract",
+    "figmaAudit": "deferred-2026-09-09",
+    "figma_file_key": "8b01I1e3TzH1IhYlr3tJzd",
+    "read_only": true,
+    "preview": "../../../preview/icons/index.html",
+    "note": "2026-09-09 用户确认：规范页与 Figma 呈现结构已被她本人多次核对一致；图标库规模过大（1 组件集/3 variants + 267 standalone），本轮不再逐项做 Figma 真值复核，走 local-contract（与 Chart 处理方式一致）。2026-09-10 ICO-004：数字后缀图标暂不补语义名与别名。"
+  },
+  "purpose": "表达操作、对象或状态的图形资源；图标类型决定交付方式。",
+  "preview": "../../../preview/icons/index.html",
+  "properties": {
+    "type": [
+      "general",
+      "effect",
+      "file",
+      "motion"
+    ],
+    "size": [
+      12,
+      16,
+      20,
+      24,
+      28,
+      32,
+      36
+    ],
+    "style": [
+      "line",
+      "fill"
+    ]
+  },
+  "defaults": {
+    "type": "general",
+    "size": 24,
+    "style": "line",
+    "color": "currentColor"
+  },
+  "structure": [
+    "asset",
+    "optional-interaction-hit-area"
+  ],
+  "resources": {
+    "index": "../../icons/index.json",
+    "general": "../../icons/manifest.json",
+    "systemSourceAudit": "../../icons/system-manifest.json",
+    "effect": "../../icons/glass-manifest.json",
+    "file": "../../icons/file-manifest.json",
+    "motion": "../../icons/motion-manifest.json"
+  },
+  "behavior": {
+    "interactive": "Icon itself is not interactive; an action requires a semantic control, accessible name and state feedback.",
+    "color": "General icons inherit currentColor; preserve Effect icon colors."
+  },
+  "constraints": [
+    "Do not use emoji, Unicode stand-ins, CSS drawings or unregistered names.",
+    "Use iconfont System entries for page selection; system-manifest is source-audit data, not a second library.",
+    "Use hyphens inside the icon-name segment; resolve a registered underscore alias to its canonical name before rendering, and never show the alias as a duplicate resource.",
+    "Do not rename the 20 numeric-suffix System icons or invent semantic aliases (ICO-004, 2026-09-10: 暂不补充)."
+  ],
+  "confirmedDecisions": [
+    "2026-09-10 ICO-003：4 个旧源名统一为 icon-code-regular、icon-delete-back、icon-delete-back-fill、icon-attachment；旧下划线名只作兼容别名，清单展示与新调用必须使用规范名。",
+    "2026-09-10 ICO-004：20 个无语义数字后缀图标暂不补充可区分英文语义名和兼容别名；继续使用现有调用名。"
+  ],
+  "pendingExtraction": []
+}

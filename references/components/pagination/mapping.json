@@ -1,0 +1,81 @@
+{
+  "$schema": "gj-design-skill/component-mapping/v1",
+  "figmaComponent": "Pagination_item/number / Pagination_item/arrow / Pagination / jump_to",
+  "codeComponent": "GjPagination",
+  "sourceNodes": [
+    "2402:14",
+    "2889:3460",
+    "2889:3459",
+    "2889:3458",
+    "2889:3457",
+    "2889:3472",
+    "2889:3461",
+    "2889:3465",
+    "2889:3580",
+    "2889:3575",
+    "2889:3579",
+    "2889:3573",
+    "2889:3577",
+    "2889:3574",
+    "2889:3617",
+    "2889:3755",
+    "2889:3754",
+    "2889:3753",
+    "2889:3752",
+    "4176:18061"
+  ],
+  "propertyMap": {
+    "Size": "size（数字 Default|mini；箭头 Default|small → mini）",
+    "state": "数字项 state",
+    "State": "箭头项 state",
+    "direction": "previous|next（Figma Next 大写）",
+    "double": "fastNavigation",
+    "type": "type（type4 → full）"
+  },
+  "valueMap": {
+    "Size.Default": "size=default 32",
+    "Size.mini": "size=mini 24",
+    "Size.small": "箭头 mini 24",
+    "state.default": "数字默认 Primary",
+    "state.hover": "数字蓝字、无底",
+    "state.selected": "Background/Selected + Text/blue + S5",
+    "state.disabled": "数字 Text/disable",
+    "State.Default": "箭头 Tertiary",
+    "State.hover": "箭头 Hover_2 + Tertiary",
+    "State.disabled": "箭头 Tertiary + opacity 40%",
+    "type.default": "Default 组合",
+    "type.mini": "Mini 组合",
+    "type.type4": "Full"
+  },
+  "normalization": {
+    "direction.Next": "next",
+    "type.type4": "full",
+    "Size.small": "mini",
+    "jump.Go to": "产品文案可用「跳至」，Figma 源文案是 Go to"
+  },
+  "tokenMap": {
+    "number.default.text": "--ds-component-pagination-number-default-text",
+    "number.hover.text": "--ds-component-pagination-number-hover-text",
+    "number.selected.background": "--ds-component-pagination-number-selected-background",
+    "number.selected.text": "--ds-component-pagination-number-selected-text",
+    "number.disabled.text": "--ds-component-pagination-number-disabled-text",
+    "arrow.default.text": "--ds-component-pagination-arrow-default-text",
+    "arrow.hover.background": "--ds-component-pagination-arrow-hover-background",
+    "item.gap": "--ds-component-pagination-item-gap",
+    "full.gap": "--ds-component-pagination-full-gap"
+  },
+  "runtimeMap": {
+    "root": ".gj-pagination",
+    "item": ".gj-page-btn",
+    "selected": ".gj-page-btn-selected",
+    "arrow": ".gj-page-btn-arrow",
+    "group": ".gj-pagination-group",
+    "jump": ".gj-pagination-jump"
+  },
+  "accessibility": {
+    "root": "nav[aria-label=pagination]",
+    "page": "aria-current=page",
+    "previousNext": "accessible action names",
+    "ellipsis": "aria-hidden=true"
+  }
+}

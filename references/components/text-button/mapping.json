@@ -1,0 +1,23 @@
+{
+  "$schema": "gj-design-skill/component-mapping/v1",
+  "figmaComponent": "Text_Button",
+  "codeComponent": "GjTextButton",
+  "propertyMap": {
+    "Label#1158:1": "children",
+    "ButtonIcon#1158:0": "icon",
+    "size": "size",
+    "icon=None": "iconPlacement=none",
+    "icon=Left_Icon": "iconPlacement=left",
+    "icon=Right_Icon": "iconPlacement=right",
+    "state=hover": ":hover",
+    "state=pressed": ":active",
+    "state=disabled": "disabled=true"
+  },
+  "implementationConstraints": {
+    "padding": "0",
+    "background": "transparent",
+    "border": "0",
+    "lineHeight": "Controls the visual component height",
+    "iconGap": "4px"
+  }
+}

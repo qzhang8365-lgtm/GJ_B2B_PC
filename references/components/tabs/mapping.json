@@ -1,0 +1,73 @@
+{
+  "$schema": "gj-design-skill/component-mapping/v1",
+  "component": "Tabs",
+  "auditedAt": "2026-09-10",
+  "figmaToContract": {
+    "Highlight-item": "type=highlight",
+    "Card_item": "type=card",
+    "Pill_item": "type=pill",
+    "Button_item": "type=button",
+    "left-item": "type=left",
+    "Small|small": "size=small",
+    "Medium|medium|middle": "size=medium",
+    "Large": "size=large",
+    "active=true|status=active|state=active": "selected=true",
+    "hover=true|status=hover|state=hover|hoverd=true": "interactionState=hover",
+    "disabled=true|status=disabled|state=disabled": "disabled=true",
+    "close button|closebutton": "closable",
+    "Tabs_Pill.count=Default": "count=2"
+  },
+  "implementation": {
+    "root": "gj-tabs",
+    "item": "gj-tab",
+    "active": "gj-tab-active",
+    "types": {
+      "highlight": "gj-tabs-highlight",
+      "card": "gj-tabs-card",
+      "pill": "gj-tabs-pill",
+      "button": "gj-tabs-button",
+      "left": "gj-tabs-left"
+    },
+    "sizes": {
+      "small": "gj-tabs-small",
+      "medium": "(default)",
+      "large": "gj-tabs-large"
+    },
+    "affordances": {
+      "icon": "gj-tab-icon",
+      "badge": "gj-tab-badge",
+      "close": "gj-tab-close"
+    },
+    "cardTopLayout": "gj-tabs-card-top"
+  },
+  "compositionConstraints": {
+    "left.group": {
+      "size": "medium-only",
+      "width": 96,
+      "itemHeight": 40
+    },
+    "left.activeTextStyle": "same size and line-height as Default; Text/blue + 600"
+  },
+  "stateMap": {
+    "selected": "aria-selected=true; one enabled item only",
+    "disabled": "disabled plus aria-disabled=true where needed",
+    "focus": "roving tabindex and :focus-visible; separate from selected",
+    "hover": "CSS pointer state; never persisted on multiple items"
+  },
+  "accessibility": {
+    "root": "role=tablist with accessible label",
+    "item": "role=tab, aria-selected, aria-controls, roving tabindex",
+    "panel": "role=tabpanel with aria-labelledby",
+    "orientation": "aria-orientation=vertical for Left; horizontal otherwise",
+    "keyboard": [
+      "ArrowLeft/ArrowRight for horizontal",
+      "ArrowUp/ArrowDown for Left",
+      "Home",
+      "End",
+      "Enter",
+      "Space"
+    ],
+    "close": "Card close control has an accessible name and must not accidentally activate the tab"
+  },
+  "tab001": "2026-09-10 关闭：Figma 侧命名已统一（hoverd→hover，middle/Middle→Medium，closebutton→close button）；映射表仍保留 hoverd/middle/closebutton 作为历史兼容 key，避免旧缓存数据回归。"
+}

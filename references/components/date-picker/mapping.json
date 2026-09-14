@@ -1,0 +1,55 @@
+{
+  "$schema": "gj-design-skill/component-mapping/v1",
+  "figmaComponent": "Date-Picker / Calendar", "codeComponent": "GjDatePicker",
+  "sourceNodes": ["2401:13", "3042:4720", "3055:1071", "3055:1513", "3276:9678", "3276:9792", "3495:2378"],
+  "propertyMap": {
+    "Size": "size", "Status": "visualState (default/filled/hover/focus/error/filled-*)", "status.filled": "hasValue", "Range": "mode=range", "Disable": "disabled", "Today": "today", "Notification": "notification",
+    "`Range_Start`": "rangePosition=start", "`In_Range`": "rangePosition=inRange", "`Range_end`": "rangePosition=end", "taskremind": "taskReminder", "color": "reminderTone"
+  },
+  "normalization": {
+    "Size.medium": "size=medium", "Size.Large": "size=large", "Size.small": "size=small", "status.filled": "hasValue=true", "state.disable": "disabled=true",
+    "color.grey": "Grey", "nestedBadgeDot.gray": "Grey", "Input-Seperator": "Input-Separator"
+  },
+  "variantMap": {
+    "trigger": "60 variants = 3 Size × 8 Status × 2 Range × Disable=false, plus Disable=true × 2 Status (default/filled) × 3 Size × 2 Range",
+    "dateItem": "28 authored variants; not a full Cartesian product", "monthItem": "Default / Hover / Selected / Disabled（Hover 于 2026-09-10 由设计补充，节点 4812:21021，复用 .gj-calendar-cell 的 --ds-background-hover）",
+    "compactCalendar": "taskReminder false / true", "largeCalendarCell": "9 authored state/taskReminder/today combinations"
+  },
+  "tokenMap": {
+    "trigger.background.default": "Background/Container", "trigger.background.disabled": "Background/Background",
+    "trigger.border.default": "Border/secondary", "trigger.border.hover": "Border/hover", "trigger.border.focus": "Border/focused", "trigger.border.error": "Border/error",
+    "trigger.text.placeholder": "Text/disable", "trigger.text.filled": "Text/Primary", "trigger.icon": "Text/Tertiary",
+    "date.default": "Text/Primary",
+    "date.hover.background": "Background/Hover", "date.today": "Text/blue", "date.selected.background": "Brand/GJ_Blue",
+    "month.hover.background": "Background/Hover", "month.hover.text": "Text/Primary",
+    "date.selected.text": "Text/reversal", "date.disabled": "Text/disable", "range.background": "Background/Selected",
+    "panel.background": "Background/Container", "panel.divider": "Border/default", "reminder.blue": "Feedback/brand",
+    "reminder.red": "Feedback/error&rise", "reminder.green": "Feedback/success&decline", "reminder.orange": "Feedback/warning", "reminder.grey": "Feedback/plain"
+  },
+  "assetMap": {
+    "calendar": "assets/icons/general/system/icon-calendar.svg or its compiled System iconfont glyph",
+    "previousYear": "assets/icons/iconfont/icf_Arrow_tarrows-left-regular.svg", "previousMonth": "assets/icons/general/arrow-left.svg",
+    "nextMonth": "assets/icons/general/arrow-right.svg", "nextYear": "assets/icons/iconfont/icf_Arrow_arrows-right-regular.svg",
+    "colorRule": "All icon color follows the surrounding text/control via currentColor."
+  },
+  "runtimeMap": {
+    "trigger": ".gj-date-trigger", "calendar": ".gj-calendar", "calendarGroup": ".gj-calendar-group", "dateCell": ".gj-calendar-day",
+    "monthYearGrid": ".gj-calendar-grid + .gj-calendar-cell", "actions": ".gj-calendar-footer containing Medium .gj-btn components",
+    "initializer": "assets/scripts/gj-date-picker.js on [data-gj-date-picker]"
+  },
+  "interactionMap": {
+    "default": "Trigger opens the popup and moves focus into the calendar.",
+    "hover": ".gj-date-trigger:hover / .is-hover → Border/hover",
+    "focusOpen": ".gj-date-trigger:focus-visible, [aria-expanded=true], .is-focus → Border/focused 1.5px + 4px #2B73FF40 shadow. Open is not a Figma Status.",
+    "error": ".gj-date-trigger.gj-form-error / .is-error → Border/error, no shadow",
+    "clear": "Not a trigger Status; panel footer Clear only.",
+    "disabled": "Disabled has highest precedence and suppresses hover/press/select feedback; do not implement Figma's disabled+hover background.",
+    "range": "First selection starts the range; second completes it; reverse endpoints when needed.",
+    "keyboard": "Arrow keys move the active day; Enter/Space selects; Escape closes and restores trigger focus."
+  },
+  "accessibility": {
+    "trigger": "Expose accessible name, value, expanded state and popup relation.",
+    "grid": "Use grid/gridcell semantics or an equivalent documented pattern with one roving tab stop.",
+    "selected": "Expose aria-selected; do not rely on color alone.", "disabled": "Expose aria-disabled or native disabled."
+  }
+}

@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>GJ Design System · Divider</title>
+  <link rel="stylesheet" href="../../assets/styles/gj-b2b-tokens.css">
+  <link rel="stylesheet" href="../../assets/styles/gj-b2b-components.css?v=general-3">
+  <link rel="stylesheet" href="../../assets/styles/component-docs.css?v=1">
+  <style>
+    .example-stack{width:100%;min-width:0;display:grid;gap:24px}
+    .divider-card-demo{min-width:0;padding:18px 20px;display:grid;gap:12px;background:var(--ds-background-container);border:1px solid var(--ds-border-default);border-radius:var(--docs-panel-radius)}
+    .divider-card-demo .card-title{display:flex;align-items:center;gap:8px;font-size:16px;font-weight:600;line-height:24px}
+    .divider-card-demo .card-title img{width:18px;height:18px;object-fit:contain;flex:none}
+    .divider-card-demo .gj-divider{margin:0;font-size:0;line-height:0}
+    .divider-card-demo .card-body{display:flex;align-items:center;justify-content:space-between;gap:16px;min-width:0;font-size:14px;line-height:22px}
+    .divider-card-demo .body-title{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .divider-card-demo .time{flex:none;color:var(--ds-text-tertiary);font-size:12px;line-height:18px;white-space:nowrap}
+    .divider-card-demo p{margin:0;color:var(--ds-text-secondary);font-size:14px;line-height:22px}
+    .vertical-demo{display:flex;align-items:center;justify-content:flex-start;gap:16px;min-height:64px;color:var(--ds-text-blue)}
+    .title-dividers{display:grid;gap:24px}
+    .inset-list{width:100%;min-width:0;display:grid}
+    .inset-row{display:flex;align-items:center;gap:16px;min-height:48px;color:var(--ds-text-primary)}
+    .inset-avatar{width:32px;height:32px;flex:none;border-radius:50%;background:var(--ds-background-selected)}
+    .inset-copy{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .inset-copy-block{min-width:0;padding:12px 0}
+    .inset-copy-block p{margin:0 0 12px;color:var(--ds-text-secondary);line-height:22px}
+    .inset-copy-block p:last-child{margin:12px 0 0}
+    .playground{display:grid;grid-template-columns:minmax(0,var(--docs-layout-demo-fr)) minmax(var(--docs-interaction-min-width),var(--docs-layout-interaction-fr));gap:var(--docs-layout-column-gap);min-width:0}
+    .lab{display:grid;min-width:0;min-height:var(--docs-interaction-stage-min-height);place-items:center;padding:28px;overflow:hidden;border-radius:var(--docs-panel-radius)}
+    .lab>*{max-width:100%}
+    .controls{min-width:0;padding:20px;border-radius:var(--docs-panel-radius)}
+    .control-title{margin:0 0 16px;font-size:16px;font-weight:600;line-height:24px}
+    .control-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 16px}
+    .field{display:grid;min-width:0;gap:6px}.field label{color:var(--ds-text-secondary);font-size:12px;line-height:20px}
+    .field select,.field input:not(.gj-checkbox){width:100%;height:36px;min-width:0;padding:0 10px;color:var(--ds-text-primary);background:var(--ds-background-container);border:1px solid var(--ds-border-secondary);border-radius:var(--docs-item-radius)}
+    .field input:focus,.field select:focus{border-color:var(--ds-brand-gj-blue);outline:3px solid var(--ds-background-bt-b20)}
+    .check{display:flex;align-items:center;gap:8px;min-height:36px;color:var(--ds-text-secondary)}
+    @media(max-width:960px){.playground{grid-template-columns:1fr}}
+    @media(max-width:620px){.control-fields{grid-template-columns:1fr}}
+  </style>
+  <script src="../../assets/scripts/font-runtime.js"></script>
+</head>
+<body>
+<main class="docs-shell">
+  <header class="docs-page-head">
+    <div class="docs-eyebrow">通用组件 · Components</div>
+    <h1>分割线 Divider</h1>
+    <p>用于分隔同一容器内的内容组、列表区段或并列信息。优先使用留白建立层级，信息复杂时再使用线性分割。</p>
+  </header>
+
+  <article class="docs-sheet">
+    <section class="docs-section">
+      <header class="docs-section-head"><div><h2>方向与线型</h2><p>水平分割组织上下内容；垂直分割用于行内操作。虚线是实线之后的弱辅助层级。</p></div></header>
+      <div class="docs-stage docs-surface-white">
+        <div class="example-stack">
+          <div class="divider-card-demo">
+            <div class="card-title"><img src="../../assets/icons/iconfont/icf_file_news.svg" alt="">投研资讯</div>
+            <i class="gj-divider gj-divider-plain"></i>
+            <div class="card-body"><span class="body-title">兆易创新净利润暴增 522.8%，能否突破估值高位？</span><span class="time">07/31 10:15</span></div>
+          </div>
+          <div class="divider-card-demo">
+            <div class="card-title">报告摘要</div>
+            <i class="gj-divider gj-divider-plain gj-divider-dashed"></i>
+            <p>公司发布 2026 年中报，上半年实现营收 40.12 亿元，同比增长 18.34%。</p>
+          </div>
+          <div class="vertical-demo"><span>查看</span><i class="gj-divider gj-divider-vertical"></i><span>编辑</span><i class="gj-divider gj-divider-vertical"></i><span>停用</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="docs-section">
+      <header class="docs-section-head"><div><h2>带标题分割</h2><p>仅水平分割支持标题；标题可左、中、右对齐，与线条保持组件规定的间距。</p></div></header>
+      <div class="docs-stage docs-surface-white"><div class="title-dividers"><div class="gj-divider gj-divider-start"><span>基础信息</span></div><div class="gj-divider"><span>交易信息</span></div><div class="gj-divider gj-divider-end"><span>更多信息</span></div></div></div>
+    </section>
+
+    <section class="docs-section">
+      <header class="docs-section-head"><div><h2>缩进方式</h2><p>根据列表前置元素和正文边界选择通栏、左侧缩进或内容缩进。</p></div></header>
+      <div class="docs-stage docs-surface-white">
+        <div class="example-stack">
+          <div class="inset-list"><div class="inset-row"><span class="inset-avatar" aria-hidden="true"></span><span class="inset-copy">李然 · 客户经理</span></div><i class="gj-divider gj-divider-inset-left"></i><div class="inset-row"><span class="inset-avatar" aria-hidden="true"></span><span class="inset-copy">张明 · 合规审核</span></div></div>
+          <div class="inset-copy-block"><p>本段正文与分割线共用内容边界。</p><i class="gj-divider gj-divider-inset-content"></i><p>下一组说明仍对齐正文，而不是卡片外沿。</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="docs-section">
+      <header class="docs-section-head"><div><h2>交互演示</h2><p>组合方向、线型、标题位置与缩进方式，检查分割线在不同容器内的实际表现。</p></div></header>
+      <div class="playground">
+        <div class="lab docs-surface-white" id="lab"></div>
+        <aside class="controls docs-surface-white"><h3 class="control-title">属性控制</h3><div class="control-fields">
+          <div class="field"><label for="type">Type</label><select id="type"><option value="horizontal">Horizontal</option><option value="vertical">Vertical</option></select></div>
+          <div class="field"><label for="lineStyle">Line style</label><select id="lineStyle"><option value="solid">Solid</option><option value="dashed">Dashed</option></select></div>
+          <label class="check"><input class="gj-checkbox" type="checkbox" id="title" checked> 显示标题</label>
+          <div class="field"><label for="position">Title position</label><select id="position"><option value="left">Left</option><option value="center" selected>Center</option><option value="right">Right</option></select></div>
+          <div class="field"><label for="label">Title</label><input id="label" value="分组标题"></div>
+          <div class="field"><label for="inset">Inset</label><select id="inset"><option value="full">Full</option><option value="left">Left</option><option value="content">Content</option></select></div>
+        </div><span id="props" hidden></span></aside>
+      </div>
+    </section>
+
+    <section class="docs-section">
+      <header class="docs-section-head"><div><h2>选用规则</h2><p>分割线用于补充结构，不代替标题、卡片边界或合理留白。</p></div></header>
+      <div class="docs-spec-table-wrap"><table class="docs-spec-table"><colgroup><col style="width:19%"><col style="width:41%"><col></colgroup><thead><tr><th>主题</th><th>推荐做法</th><th>边界与避免</th></tr></thead><tbody>
+        <tr><td>使用优先级</td><td>先通过留白和标题层级组织内容，复杂信息再使用线性分割。</td><td>不能替代模块标题，也不要为每个小区块都加线。</td></tr>
+        <tr><td>实线与虚线</td><td>常规内容使用实线；已使用实线后，下级仍需分隔时可使用虚线。</td><td>虚线只表达弱辅助层级，不与实线同权重。</td></tr>
+        <tr><td>垂直分割</td><td>用于并列文字或行内操作之间，并与文字垂直居中。</td><td>不用于大区块之间，也不可点击。</td></tr>
+        <tr><td>带标题分割</td><td>只在分组语义明确且需要在线上标记分组时使用。</td><td>避免将装饰性文字放在线条中。</td></tr>
+        <tr><td>缩进</td><td>头像或封面列表用 left；正文区块用 content；通栏内容用 full。</td><td>不要用临时 margin 模拟组件已有的 inset。</td></tr>
+      </tbody></table></div>
+    </section>
+  </article>
+</main>
+<script>
+const $=id=>document.getElementById(id),ids=['type','lineStyle','title','position','label','inset'];
+function dividerHTML({type,dashed,title,position,label,inset}){
+  if(type==='vertical')return '<i class="gj-divider gj-divider-vertical'+(dashed?' gj-divider-dashed':'')+'"></i>';
+  const cls=['gj-divider',dashed?'gj-divider-dashed':'',title?'':'gj-divider-plain',title&&position==='left'?'gj-divider-start':'',title&&position==='right'?'gj-divider-end':'',inset==='left'?'gj-divider-inset-left':'',inset==='content'?'gj-divider-inset-content':''].filter(Boolean).join(' ');
+  return `<div class="${cls}">${title?`<span>${label}</span>`:''}</div>`;
+}
+function render(){
+  const type=$('type').value,dashed=$('lineStyle').value==='dashed',title=type==='horizontal'&&$('title').checked,position=$('position').value,label=$('label').value||'分组标题',inset=$('inset').value;
+  $('title').disabled=type==='vertical';$('position').disabled=!title;$('label').disabled=!title;$('inset').disabled=type==='vertical';
+  $('lab').innerHTML=type==='vertical'?`<div class="vertical-demo"><span>操作一</span>${dividerHTML({type,dashed})}<span>操作二</span></div>`:dividerHTML({type,dashed,title,position,label,inset});
+  $('props').textContent=`<Divider\n  type="${type}"\n  dashed={${dashed}}\n  title={${title}}${title?`\n  position="${position}"\n  label="${label}"`:''}\n  inset="${inset}"\n/>`;
+}
+ids.forEach(id=>$(id).addEventListener(id==='label'?'input':'change',render));
+render();
+</script>
+</body>
+</html>

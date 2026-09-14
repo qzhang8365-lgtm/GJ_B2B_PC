@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GJ Design System · 时间选择器 TimePicker</title>
+<link rel="stylesheet" href="../../assets/styles/gj-b2b-tokens.css?v=time-3">
+<link rel="stylesheet" href="../../assets/styles/gj-b2b-components.css?v=time-3">
+<link rel="stylesheet" href="../../assets/styles/data-table.css">
+<style>
+:root{--font:var(--ds-font-family-ui);--mono:ui-monospace,Menlo,Consolas,monospace}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
+body{color:var(--ds-text-primary);font:14px/1.55 var(--font)}
+button,select{font:inherit;color:inherit}
+.shell{max-width:var(--docs-page-max-width);margin:auto;padding:var(--docs-page-padding)}
+.intro{margin:0 4px 30px}
+.eyebrow{margin-bottom:10px;color:var(--ds-text-blue);font-size:13px;font-weight:600}
+.intro h1{margin:0 0 8px;font-size:32px;line-height:42px}
+.intro p{max-width:980px;margin:0;color:var(--ds-text-secondary);font-size:15px;line-height:1.75}
+.component{padding:24px;border-radius:20px;background:var(--ds-background-container)}
+.component-heading{display:flex;align-items:center;gap:12px;padding-bottom:16px;border-bottom:1px solid var(--ds-border-default)}
+.component-heading h1{margin:0;font-size:28px;line-height:32px}
+.component-heading span{color:var(--ds-text-tertiary);font-size:14px}
+.component-description{margin:24px 0;color:var(--ds-text-disable)}
+.grid{display:grid;grid-template-columns:minmax(0,3fr) minmax(320px,2fr);gap:16px;align-items:start}
+.column{display:grid;gap:16px;min-width:0}
+.panel{min-width:0;padding:20px;border:1px solid var(--ds-border-default);border-radius:12px;background:var(--ds-background-container)}
+.panel-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:16px}
+.panel-head h2,.controls h3{margin:0;font-size:16px;font-weight:600}
+.panel-head span{color:var(--ds-text-tertiary);font-size:12px}
+.section-desc{margin:-6px 0 16px;color:var(--ds-text-secondary);font-size:13px}
+.trigger-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.trigger-card{display:grid;gap:14px;min-width:0;padding:16px;border-radius:10px;background:var(--ds-background-background)}
+.trigger-card .gj-time-trigger{width:100%;min-width:0}
+.time-size-table{min-width:620px}
+.group-showcase{display:grid;gap:12px}
+.group-row{display:grid;grid-template-columns:80px 1fr 1fr;align-items:center;gap:16px;padding:16px;border-radius:10px;background:var(--ds-background-background)}
+.group-label{color:var(--ds-text-secondary)}
+.panel-preview{padding:var(--ds-space-6);border-radius:var(--ds-radius-md);background:var(--ds-background-background)}
+.time-system-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--ds-space-5)}
+.time-system-card{display:grid;grid-template-rows:auto 1fr;min-width:0;overflow:hidden;border-radius:var(--ds-radius-md);background:var(--ds-background-container)}
+.time-system-head{display:flex;align-items:flex-start;justify-content:space-between;gap:var(--ds-space-4);padding:var(--ds-space-5);border-bottom:1px solid var(--ds-border-default)}
+.time-system-title{display:grid;gap:var(--ds-space-2)}
+.time-system-title b{font-size:14px;font-weight:600;line-height:22px}
+.time-system-title span{color:var(--ds-text-secondary);font-size:12px;line-height:18px}
+.time-system-badge{flex:none;padding:var(--ds-space-2) var(--ds-space-3);border-radius:var(--ds-radius-full);background:var(--ds-background-bt-b10);color:var(--ds-text-blue);font-size:12px;line-height:18px}
+.time-system-stage{display:grid;min-height:306px;padding:var(--ds-space-7);place-items:center}
+.time-system-12h-panel{width:max-content;max-width:100%}
+.time-system-period-column{flex:none}
+.anatomy{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.anatomy div{padding:16px;border-radius:10px;background:var(--ds-background-background)}
+.anatomy b{display:block;margin-bottom:5px}
+.anatomy span{color:var(--ds-text-secondary);font-size:13px}
+.rules{display:grid;gap:12px}
+.rule{padding:14px 16px;border-radius:10px;background:var(--ds-background-background)}
+.rule b{display:block;margin-bottom:4px}
+.rule p{margin:0;color:var(--ds-text-secondary);font-size:13px}
+.stage{display:grid;gap:14px;min-height:350px;padding:28px;border:1px dashed var(--ds-border-secondary);border-radius:12px;background:var(--ds-background-container);align-content:start;justify-content:center}
+.picker-wrap{position:relative;width:260px;max-width:100%}
+.stage-panel{margin-top:8px}
+.event{margin-top:14px;color:var(--ds-text-tertiary);font-size:12px}
+.event b{color:var(--ds-text-primary)}
+.controls{margin-top:18px;padding-top:18px;border-top:1px solid var(--ds-border-default)}
+.control-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 16px;margin-top:14px}
+.control{display:grid;gap:7px}
+.control select{height:36px;padding:0 10px;border:1px solid var(--ds-border-secondary);border-radius:6px;background:var(--ds-background-container)}
+@media(max-width:1000px){.grid{grid-template-columns:1fr}}
+@media(max-width:720px){
+  .shell{padding:var(--docs-page-padding-compact)}
+  .component{padding:18px}
+  .trigger-grid,.anatomy,.control-grid,.group-row,.time-system-grid{grid-template-columns:1fr}
+  .group-showcase{min-width:0}
+  .panel{overflow:auto}
+  .time-system-stage{min-height:0;padding:var(--ds-space-5)}
+}
+</style>
+<link rel="stylesheet" href="../../assets/styles/component-docs.css?v=3">
+<script src="../../assets/scripts/font-runtime.js"></script>
+</head>
+<body class="docs-legacy">
+<main class="shell">
+<header class="intro">
+  <div class="eyebrow">信息录入组件 · Data Entry</div>
+  <h1>时间选择器 TimePicker</h1>
+  <p>用于从标准化时间列表中选择单个时间或时间范围，适合预约、排期、交易时段与定时任务等需要精确时间输入的场景。</p>
+</header>
+<section class="component">
+<header class="component-heading"><h1>TimePicker</h1><span>时间选择与时间范围</span></header>
+<p class="component-description">支持单时间与时间范围选择。面板按时、分分列组织；使用 12 小时制时补充 AM/PM 选择，并保持触发器、面板与最终时间值同步。</p>
+<div class="grid">
+<section class="column">
+<article class="panel">
+  <div class="panel-head"><h2>基础用法</h2><span>Single / Range</span></div>
+  <div class="trigger-grid">
+    <div class="trigger-card">
+      <b>单时间</b>
+      <button type="button" class="gj-time-trigger"><span>Select Time</span><span class="gj-time-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_system_time.svg')" aria-hidden="true"></span></button>
+      <button type="button" class="gj-time-trigger gj-time-trigger-has-value"><span>10:03:56</span><span class="gj-time-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_system_time.svg')" aria-hidden="true"></span></button>
+    </div>
+    <div class="trigger-card">
+      <b>时间范围</b>
+      <button type="button" class="gj-time-trigger gj-time-trigger-range"><span class="gj-time-part">Start Time</span><span class="gj-time-separator" style="--gj-icon:url('../../assets/icons/iconfont/icf_Arrow_enter-right-regular.svg')" aria-hidden="true"></span><span class="gj-time-part">End Time</span><span class="gj-time-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_system_time.svg')" aria-hidden="true"></span></button>
+      <button type="button" class="gj-time-trigger gj-time-trigger-range gj-time-trigger-has-value"><span class="gj-time-part">10:03:56</span><span class="gj-time-separator" style="--gj-icon:url('../../assets/icons/iconfont/icf_Arrow_enter-right-regular.svg')" aria-hidden="true"></span><span class="gj-time-part">10:10:50</span><span class="gj-time-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_system_time.svg')" aria-hidden="true"></span></button>
+    </div>
+    <div class="trigger-card">
+      <b>禁用</b>
+      <button type="button" class="gj-time-trigger gj-time-trigger-disabled" disabled><span>Select Time</span><span class="gj-time-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_system_time.svg')" aria-hidden="true"></span></button>
+      <button type="button" class="gj-time-trigger gj-time-trigger-has-value gj-time-trigger-disabled" disabled><span>10:03:56</span><span class="gj-time-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_system_time.svg')" aria-hidden="true"></span></button>
+    </div>
+  </div>
+</article>
+<article class="panel">
+  <div class="panel-head"><h2>尺寸与结构</h2><span>Size metrics</span></div>
+  <div class="ds-table-wrap">
+    <table class="ds-table time-size-table" aria-label="时间选择器尺寸与结构">
+      <thead><tr><th>尺寸</th><th>宽 × 高</th><th>内边距</th><th>圆角</th><th>文字 / 图标</th></tr></thead>
+      <tbody>
+        <tr><td>Large</td><td>260 × 40px</td><td>12px</td><td>8px</td><td>16px / 20px</td></tr>
+        <tr><td>Medium</td><td>260 × 32px</td><td>12px</td><td>6px</td><td>14px / 16px</td></tr>
+        <tr><td>Small</td><td>260 × 24px</td><td>8px</td><td>4px</td><td>14px / 16px</td></tr>
+      </tbody>
+    </table>
+  </div>
+</article>
+<article class="panel">
+  <div class="panel-head"><h2>分段时间组</h2><span>Time-Picker-group</span></div>
+  <p class="section-desc">小时、分钟与 AM/PM 分别使用独立下拉项；内部间距 4px，AM/PM 与时间组间距 8px。AM/PM 选择走 Time-Picker-dropdown。禁用整组透明度 50%，不再叠一层段透明度。</p>
+  <div class="group-showcase">
+    <div class="group-row">
+      <b>Medium</b>
+      <div>
+        <span class="group-label">Default</span>
+        <div class="gj-time-group">
+          <div class="gj-time-pair"><button type="button" class="gj-time-segment">00<span class="gj-time-segment-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_Arrow_down.svg')" aria-hidden="true"></span></button><span class="gj-time-colon">:</span><button type="button" class="gj-time-segment">00<span class="gj-time-segment-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_Arrow_down.svg')" aria-hidden="true"></span></button></div>
+          <button type="button" class="gj-time-segment gj-time-segment-period">PM<span class="gj-time-segment-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_Arrow_down.svg')" aria-hidden="true"></span></button>
+        </div>
+      </div>
+      <div>
+        <span class="group-label">Filled · 可交互</span>
+        <div class="gj-time-group group-demo">
+          <div class="gj-time-pair"><button type="button" class="gj-time-segment gj-time-segment-filled" data-part="hour"><span>10</span><span class="gj-time-segment-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_Arrow_down.svg')" aria-hidden="true"></span></button><span class="gj-time-colon">:</span><button type="button" class="gj-time-segment gj-time-segment-filled" data-part="minute"><span>30</span><span class="gj-time-segment-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_Arrow_down.svg')" aria-hidden="true"></span></button></div>
+          <button type="button" class="gj-time-segment gj-time-segment-period gj-time-segment-filled" data-part="period"><span>PM</span><span class="gj-time-segment-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_Arrow_down.svg')" aria-hidden="true"></span></button>
+        </div>
+      </div>
+    </div>
+    <div class="group-row">
+      <b>Small</b>
+      <div>
+        <span class="group-label">Default</span>
+        <div class="gj-time-group gj-time-group-small">
+          <div class="gj-time-pair"><button type="button" class="gj-time-segment">00<span class="gj-time-segment-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_Arrow_down.svg')" aria-hidden="true"></span></button><span class="gj-time-colon">:</span><button type="button" class="gj-time-segment">00<span class="gj-time-segment-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_Arrow_down.svg')" aria-hidden="true"></span></button></div>
+          <button type="button" class="gj-time-segment gj-time-segment-period">PM<span class="gj-time-segment-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_Arrow_down.svg')" aria-hidden="true"></span></button>
+        </div>
+      </div>
+      <div>
+        <span class="group-label">Filled</span>
+        <div class="gj-time-group gj-time-group-small">
+          <div class="gj-time-pair"><button type="button" class="gj-time-segment gj-time-segment-filled">10<span class="gj-time-segment-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_Arrow_down.svg')" aria-hidden="true"></span></button><span class="gj-time-colon">:</span><button type="button" class="gj-time-segment gj-time-segment-filled">30<span class="gj-time-segment-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_Arrow_down.svg')" aria-hidden="true"></span></button></div>
+          <button type="button" class="gj-time-segment gj-time-segment-period gj-time-segment-filled">PM<span class="gj-time-segment-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_Arrow_down.svg')" aria-hidden="true"></span></button>
+        </div>
+      </div>
+    </div>
+    <div class="group-row">
+      <b>Large</b>
+      <div>
+        <span class="group-label">Default</span>
+        <div class="gj-time-group gj-time-group-large">
+          <div class="gj-time-pair"><button type="button" class="gj-time-segment">00<span class="gj-time-segment-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_Arrow_down.svg')" aria-hidden="true"></span></button><span class="gj-time-colon">:</span><button type="button" class="gj-time-segment">00<span class="gj-time-segment-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_Arrow_down.svg')" aria-hidden="true"></span></button></div>
+          <button type="button" class="gj-time-segment gj-time-segment-period">PM<span class="gj-time-segment-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_Arrow_down.svg')" aria-hidden="true"></span></button>
+        </div>
+      </div>
+      <div>
+        <span class="group-label">Filled</span>
+        <div class="gj-time-group gj-time-group-large">
+          <div class="gj-time-pair"><button type="button" class="gj-time-segment gj-time-segment-filled">10<span class="gj-time-segment-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_Arrow_down.svg')" aria-hidden="true"></span></button><span class="gj-time-colon">:</span><button type="button" class="gj-time-segment gj-time-segment-filled">30<span class="gj-time-segment-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_Arrow_down.svg')" aria-hidden="true"></span></button></div>
+          <button type="button" class="gj-time-segment gj-time-segment-period gj-time-segment-filled">PM<span class="gj-time-segment-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_Arrow_down.svg')" aria-hidden="true"></span></button>
+        </div>
+      </div>
+    </div>
+    <div class="group-row">
+      <b>Disabled</b>
+      <div>
+        <span class="group-label">Default</span>
+        <div class="gj-time-group gj-time-group-disabled">
+          <div class="gj-time-pair"><button type="button" class="gj-time-segment" disabled>00<span class="gj-time-segment-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_Arrow_down.svg')" aria-hidden="true"></span></button><span class="gj-time-colon">:</span><button type="button" class="gj-time-segment" disabled>00<span class="gj-time-segment-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_Arrow_down.svg')" aria-hidden="true"></span></button></div>
+          <button type="button" class="gj-time-segment gj-time-segment-period" disabled>PM<span class="gj-time-segment-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_Arrow_down.svg')" aria-hidden="true"></span></button>
+        </div>
+      </div>
+      <div>
+        <span class="group-label">Filled</span>
+        <div class="gj-time-group gj-time-group-disabled">
+          <div class="gj-time-pair"><button type="button" class="gj-time-segment gj-time-segment-filled" disabled>10<span class="gj-time-segment-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_Arrow_down.svg')" aria-hidden="true"></span></button><span class="gj-time-colon">:</span><button type="button" class="gj-time-segment gj-time-segment-filled" disabled>30<span class="gj-time-segment-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_Arrow_down.svg')" aria-hidden="true"></span></button></div>
+          <button type="button" class="gj-time-segment gj-time-segment-period gj-time-segment-filled" disabled>PM<span class="gj-time-segment-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_Arrow_down.svg')" aria-hidden="true"></span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+<article class="panel">
+  <div class="panel-head"><h2>选择面板</h2><span>Time / AM-PM</span></div>
+  <p class="section-desc">时、分与时段列宽均为 64px，选项高度 28px；24 小时制使用时、分两列，12 小时制增加 AM/PM 列。完整提交型面板保留清空/确认，选中项只改变文字颜色；不可选项使用 50% 透明度。</p>
+  <div class="panel-preview time-system-grid">
+    <section class="time-system-card" aria-labelledby="time-system-24-title">
+      <header class="time-system-head">
+        <div class="time-system-title"><b id="time-system-24-title">24 小时制</b><span>00–23 · HH:mm</span></div>
+        <span class="time-system-badge">默认推荐</span>
+      </header>
+      <div class="time-system-stage">
+        <div class="gj-time-panel">
+          <div class="gj-time-panel-body" id="staticPanel"></div>
+          <div class="gj-time-panel-actions"><button type="button" class="gj-btn gj-btn-secondary">清空</button><button type="button" class="gj-btn gj-btn-primary">确定</button></div>
+        </div>
+      </div>
+    </section>
+    <section class="time-system-card" aria-labelledby="time-system-12-title">
+      <header class="time-system-head">
+        <div class="time-system-title"><b id="time-system-12-title">12 小时制</b><span>01–12 · hh:mm A</span></div>
+        <span class="time-system-badge">需明确 AM / PM</span>
+      </header>
+      <div class="time-system-stage">
+        <div class="gj-time-panel time-system-12h-panel">
+          <div class="gj-time-panel-body" id="staticPanel12"></div>
+          <div class="gj-time-panel-actions"><button type="button" class="gj-btn gj-btn-secondary">清空</button><button type="button" class="gj-btn gj-btn-primary">确定</button></div>
+        </div>
+      </div>
+    </section>
+  </div>
+</article>
+<article class="panel">
+  <div class="panel-head"><h2>组件结构</h2><span>Anatomy</span></div>
+  <div class="anatomy">
+    <div><b>触发器</b><span>显示占位文本或已选时间，右侧使用时间图标。</span></div>
+    <div><b>时间列</b><span>默认使用时、分两列；每列独立滚动并只保留一个选中项。不可选项透明度 50%。</span></div>
+    <div><b>操作区</b><span>清空 / 确定使用 Medium Button；简单选择也可在选中后立即提交。</span></div>
+  </div>
+</article>
+<article class="panel">
+  <div class="panel-head"><h2>组件规范与说明</h2><span>Usage rules</span></div>
+  <div class="ds-table-wrap"><table class="ds-table" aria-label="时间选择器使用规则"><thead><tr><th>主题</th><th>推荐做法</th><th>边界与避免</th></tr></thead><tbody>
+    <tr><td>时间格式</td><td>24 小时制使用 HH:mm 或 HH:mm:ss；12 小时制同时显示 AM/PM。</td><td>在同一流程混用 12 与 24 小时制。</td></tr>
+    <tr><td>步长与精度</td><td>按业务精度设置分钟步长，常规预约建议 5 或 15 分钟。</td><td>没有真实秒级需求却增加秒列。</td></tr>
+    <tr><td>不可选时段</td><td>禁用过期、非营业或非交易时段，并在附近说明条件。</td><td>只降低透明度而不解释限制原因。</td></tr>
+    <tr><td>时间范围</td><td>结束时间不得早于开始时间；跨日时明确显示日期或“次日”。</td><td>仅凭时间数字让用户推断是否跨日。</td></tr>
+    <tr><td>键盘与输入</td><td>方向键移动、Enter 确认、Esc 关闭；自由输入时实时校验并同步面板。</td><td>打开后焦点丢失，或合法输入与面板值不同步。</td></tr>
+  </tbody></table></div>
+</article>
+</section>
+<aside class="column">
+<article class="panel">
+  <div class="panel-head"><h2>交互演示</h2><span>单时间选择</span></div>
+  <div class="stage">
+    <div class="picker-wrap">
+      <button type="button" id="trigger" class="gj-time-trigger gj-time-trigger-has-value" aria-haspopup="dialog" aria-expanded="false" aria-controls="stagePanel"><span id="triggerText">10:03</span><span class="gj-time-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_system_time.svg')" aria-hidden="true"></span></button>
+      <div class="gj-time-panel gj-time-panel-match-trigger stage-panel" id="stagePanel" hidden>
+        <div class="gj-time-panel-body" id="interactivePanel"></div>
+        <div class="gj-time-panel-actions">
+          <button type="button" class="gj-btn gj-btn-secondary" id="clear">清空</button>
+          <button type="button" class="gj-btn gj-btn-primary" id="confirm">确定</button>
+        </div>
+      </div>
+    </div>
+    <div class="event">当前选择：<b id="current">10:03</b></div>
+  </div>
+  <div class="controls">
+    <h3>属性控制</h3>
+    <div class="control-grid">
+      <div class="control"><label for="state">状态</label><select id="state"><option value="default">默认</option><option value="disabled">禁用</option></select></div>
+      <div class="control"><label for="size">Size</label><select id="size"><option value="medium">Medium</option><option value="large">Large</option><option value="small">Small</option></select></div>
+      <div class="control"><label for="step">分钟步长（规则补充）</label><select id="step"><option value="1">1 分钟</option><option value="5">5 分钟</option><option value="15">15 分钟</option></select></div>
+    </div>
+    <div class="event">最近事件：<b id="event">尚未操作</b></div>
+  </div>
+</article>
+</aside>
+</div>
+</section>
+</main>
+<script>
+const staticPanel=document.getElementById("staticPanel");
+const staticPanel12=document.getElementById("staticPanel12");
+const interactive=document.getElementById("interactivePanel");
+const stagePanel=document.getElementById("stagePanel");
+const trigger=document.getElementById("trigger");
+const triggerText=document.getElementById("triggerText");
+const current=document.getElementById("current");
+const eventEl=document.getElementById("event");
+let selected=[10,3];
+let open=false;
+const pad=n=>String(n).padStart(2,"0");
+const value=()=>`${pad(selected[0])}:${pad(selected[1])}`;
+function column(max,currentValue,step,index,disabledValues){
+  const blocked=disabledValues||[];
+  let html='<div class="gj-time-column">';
+  for(let n=0;n<=max;n+=step){
+    const on=n===currentValue;
+    const off=blocked.includes(n);
+    html+=`<button type="button" class="gj-time-item${on?" gj-time-item-selected":""}${off?" gj-time-item-disabled":""}" ${on?'aria-selected="true"':""} ${off?"disabled":""} data-col="${index}" data-value="${n}">${pad(n)}</button>`;
+  }
+  return html+"</div>";
+}
+function hour12Column(currentValue){
+  let html='<div class="gj-time-column">';
+  for(let n=1;n<=12;n+=1){
+    const on=n===currentValue;
+    html+=`<button type="button" class="gj-time-item${on?" gj-time-item-selected":""}" ${on?'aria-selected="true"':""}>${pad(n)}</button>`;
+  }
+  return html+"</div>";
+}
+function periodColumn(currentValue){
+  return `<div class="gj-time-column time-system-period-column"><button type="button" class="gj-time-item${currentValue==="AM"?" gj-time-item-selected":""}" ${currentValue==="AM"?'aria-selected="true"':""}>AM</button><button type="button" class="gj-time-item${currentValue==="PM"?" gj-time-item-selected":""}" ${currentValue==="PM"?'aria-selected="true"':""}>PM</button></div>`;
+}
+function bindColumnClicks(root,onPick){
+  root.querySelectorAll(".gj-time-item").forEach(button=>{
+    button.onclick=()=>{
+      if(button.disabled)return;
+      onPick(+button.dataset.col,+button.dataset.value);
+    };
+  });
+}
+function buildStatic(){
+  staticPanel.innerHTML=column(23,3,1,0,[0,1,2])+column(59,3,1,1);
+  staticPanel12.innerHTML=hour12Column(10)+column(59,3,1,1)+periodColumn("AM");
+}
+function closePanel(){
+  open=false;
+  stagePanel.hidden=true;
+  trigger.setAttribute("aria-expanded","false");
+}
+function renderPanel(){
+  if(!open)return;
+  const step=+document.getElementById("step").value;
+  interactive.innerHTML=column(23,selected[0],1,0)+column(59,selected[1],step,1);
+  bindColumnClicks(interactive,(col,next)=>{
+    selected[col]=next;
+    eventEl.textContent="选择时间项";
+    render();
+    renderPanel();
+  });
+}
+function openPanel(){
+  if(trigger.disabled)return;
+  open=true;
+  stagePanel.hidden=false;
+  trigger.setAttribute("aria-expanded","true");
+  renderPanel();
+  eventEl.textContent="展开时间列表";
+}
+function render(){
+  const size=document.getElementById("size").value;
+  const disabled=document.getElementById("state").value==="disabled";
+  const sizeClass=size==="medium"?"":" gj-time-trigger-"+size;
+  trigger.disabled=disabled;
+  trigger.className="gj-time-trigger gj-time-trigger-has-value"+sizeClass+(disabled?" gj-time-trigger-disabled":"");
+  triggerText.textContent=disabled?"Select Time":value();
+  current.textContent=disabled?"禁用":value();
+  if(disabled)closePanel();
+  else if(open)renderPanel();
+}
+document.querySelectorAll(".group-demo [data-part]").forEach(button=>{
+  button.addEventListener("click",()=>{
+    const part=button.dataset.part;
+    const label=button.querySelector("span");
+    if(part==="period")label.textContent=label.textContent==="PM"?"AM":"PM";
+    else{
+      const max=part==="hour"?12:59;
+      label.textContent=pad((Number(label.textContent)+1)%(max+1));
+    }
+  });
+});
+trigger.onclick=()=>open?closePanel():openPanel();
+document.getElementById("clear").onclick=()=>{selected=[0,0];eventEl.textContent="清空时间";render();};
+document.getElementById("confirm").onclick=()=>{current.textContent=value();eventEl.textContent="确认时间";closePanel();};
+["state","size","step"].forEach(id=>document.getElementById(id).onchange=()=>{closePanel();render();});
+buildStatic();
+render();
+</script>
+</body>
+</html>

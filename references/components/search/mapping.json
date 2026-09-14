@@ -1,0 +1,109 @@
+{
+  "$schema": "gj-design-skill/component-mapping/v1",
+  "figmaComponent": "Search-Box / Search-component / Search_result_list",
+  "codeComponent": "GjSearch",
+  "sourceNodes": [
+    "2638:2417",
+    "2982:4914",
+    "2982:4910",
+    "2982:4903",
+    "2982:4906",
+    "2982:4909",
+    "2982:4912",
+    "2982:4911",
+    "2982:4913",
+    "2982:4993",
+    "2982:4992",
+    "2982:4991",
+    "2982:4989",
+    "4208:19089",
+    "4208:19088",
+    "4208:19090",
+    "4208:19104"
+  ],
+  "propertyMap": {
+    "Size": "size",
+    "state": "state（Search-Box 与 Search-component 均为 default|focused|filled|disabled）",
+    "searchIcon": "searchIcon"
+  },
+  "valueMap": {
+    "Size.Small": "size=small",
+    "Size.Medium": "size=medium",
+    "Size.Large": "size=large",
+    "state.default": "state=default（placeholder）",
+    "state.focused": "state=focused（2026-09-10 前 Search-Box 值为 active）",
+    "Search-component.state.focused": "Search-component 与内嵌 Search-Box 均为 state=focused",
+    "state.filled": "state=filled（已填写，带清除，无 focus ring）",
+    "state.disabled": "disabled=true；Search-component 内嵌 Search-Box disabled + Button Primary disabled",
+    "state.result_highlight": "命中词 Text/blue，不是选中行",
+    "state.hover": "结果行 Background/Hover"
+  },
+  "normalization": {
+    "legacyFigma.state.defalut": "default（仅用于读取旧历史导出，不属于现行 Figma 属性）",
+    "legacyFigma.state.disable": "disabled（仅用于读取旧历史导出，不属于现行 Figma 属性）",
+    "legacyFigma.state.active|typing": "focused（仅用于读取旧历史导出，不属于现行 Figma 属性）"
+  },
+  "tokenMap": {
+    "box.referenceWidth": "233px；允许由容器覆盖，不作为 min-width",
+    "box.default.background": "Background/Container",
+    "box.default.border": "Border/secondary",
+    "box.default.placeholder": "Text/disable",
+    "box.focused.border": "Border/focused",
+    "box.focused.text": "Text/Primary",
+    "box.focused.ring": "Background/BT_B10，2px spread",
+    "box.focused.cursor": "Text/blue；复用 input_item/cursor 2911:4644",
+    "box.filled.text": "Text/Primary",
+    "box.filled.border": "Border/secondary",
+    "box.disabled.background": "Background/Background",
+    "box.disabled.border": "Border/secondary（不是 Border/disabled）",
+    "box.disabled.text": "Text/disable",
+    "group.gap": "Interval/space3 · 8px",
+    "box.small.focusedGap": "8px；仅 Small focused（2026-09-10 前为 active/typing），其他 Small 状态为 6px",
+    "button": "复用 Button Primary；禁用为 Button/Primary/Bg-disable",
+    "result.item.height": "32",
+    "result.item.radius": "Radius/Radius-XS",
+    "result.highlight": "Text/Primary + 命中 Text/blue",
+    "result.hover.background": "Background/Hover",
+    "list.background": "Background/Container",
+    "list.padding": "Interval/space3 · 8px",
+    "list.radius": "Radius/Radius-MD",
+    "list.shadow": "shadow-down"
+  },
+  "assetMap": {
+    "search": "assets/icons/iconfont/icf_system_search.svg",
+    "clear": "assets/icons/iconfont/icf_system_close-circle-fill.svg",
+    "colorRule": "使用已登记 iconfont 资源，不手写 SVG。"
+  },
+  "runtimeMap": {
+    "box": ".gj-search",
+    "small": ".gj-search-small",
+    "large": ".gj-search-large",
+    "icon": ".gj-search-icon",
+    "input": ".gj-search-input",
+    "clear": ".gj-search-clear",
+    "group": ".gj-search-group",
+    "results": ".gj-search-results",
+    "result": ".gj-search-result",
+    "resultActive": ".gj-search-result-active",
+    "highlight": ".gj-search-highlight"
+  },
+  "interactionMap": {
+    "focused": "Figma Search-Box state=focused（2026-09-10 前为 active） = 聚焦输入；Border/focused + 2px BT_B10 ring；有清除。",
+    "filled": "已填写未聚焦：无 ring，有清除。",
+    "disabled": "Native disabled；无清除。边框保持 secondary。组合态按钮走 Button 禁用。",
+    "clear": "清空输入、关闭过期结果、恢复初始搜索状态。",
+    "keyboard": "↑↓ 切换结果、Enter 选择、Esc 关闭。键盘选中行复用 result.hover 背景。",
+    "hover": "Search-Box 无 hover variant。结果项 hover 使用 Background/Hover。"
+  },
+  "layoutNormalization": {
+    "boxWidth": "Figma Search-Box 实例宽 233px；共享基座以此为默认参考宽度，并允许业务容器覆盖。",
+    "resultListWidth": "Figma Search_result_list 实例宽 197px 是画板展示值；运行时必须与所属搜索框同宽。",
+    "mediumFocusedPadding": "Figma focused（2026-09-10 前为 active）生成上下文出现 py=5 且缺少显式高度；代码统一保持 32px 高、py=4，防止状态切换跳动。"
+  },
+  "accessibility": {
+    "label": "稳定可见 label 或 aria-labelledby，不能只靠 placeholder。",
+    "clear": "button + accessible name（清空）。",
+    "results": "结果列表与输入框建立 aria-controls / aria-activedescendant。",
+    "disabled": "native disabled。"
+  }
+}

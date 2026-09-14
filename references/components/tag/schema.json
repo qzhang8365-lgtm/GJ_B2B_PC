@@ -1,0 +1,209 @@
+{
+  "$schema": "gj-design-skill/component-schema/v1",
+  "component": "Tag",
+  "source": {
+    "rulesSection": "Tag 标签",
+    "inventoryPage": "标签Tag✅",
+    "status": "figma-audited",
+    "figmaAudit": "done-2026-09-08"
+  },
+  "purpose": "标识、分类或突出信息属性与状态。",
+  "figma": {
+    "fileKey": "8b01I1e3TzH1IhYlr3tJzd",
+    "pageNodeId": "2946:6454",
+    "componentSets": [
+      {
+        "nodeId": "2950:1080",
+        "name": "Tag",
+        "variants": 132,
+        "note": "Style(filled/light/line) × Size(Regular/Small) × Color(11) × shape(default/pill)，共 3×2×11×2=132 个 variant。"
+      },
+      {
+        "nodeId": "2969:4514",
+        "name": "Tagclose",
+        "variants": 2,
+        "note": "Property 1 = Default(可删除，末尾关闭图标) / add(新增入口，前置加号图标)；仅 Regular 尺寸。"
+      },
+      {
+        "nodeId": "3217:9158",
+        "name": "Tag_corner",
+        "variants": 24,
+        "note": "position(top_left/top_right) × size(medium/small) × color(black/red/blue/green[原文拼写 grreen]/grey/orange) = 2×2×6=24。2026-09-08 已补齐真审计，见 cornerTag 字段。"
+      }
+    ],
+    "relatedNotInScope": [
+      {
+        "nodeId": "2998:210",
+        "name": "Tag_group",
+        "note": "标签组间距示例集合（count=2-8 的 light/lined 样式），用于验证组内换行与间距，不是独立组件。"
+      },
+      {
+        "nodeId": "2998:961",
+        "name": "Tagclose_group",
+        "note": "可删除标签组间距示例（count=2-5），同上，非独立组件。"
+      }
+    ],
+    "visualStateCoverage": [
+      "default"
+    ],
+    "missingInteractiveVariants": [],
+    "colorTokenLayer": "primitive",
+    "colorTokenLayerNote": "TAG-001 已作为既定设计决策关闭（见 confirmedDecisions）：Tag 132 个 variant 直接绑定 Primitive/* 色阶是有意为之，不再视为待修复问题。",
+    "neutralFilledBackground": {
+      "current": "Primitive/Neutral/N07 (#8d96a3)",
+      "previous": "Primitive/Neutral/N06 (#b8c0cc)",
+      "changedOn": "2026-09-08",
+      "verification": "已用 get_variable_defs 独立复核 Figma 节点 2950:960，确认真实绑定已是 N07，非仅采信用户口述。",
+      "contrast": "白字对比度由 1.83:1 提升到 2.99:1，已过 3:1 的非文本/大字号门槛，仍未达 12px 常规文本 WCAG AA 要求的 4.5:1。"
+    }
+  },
+  "properties": {
+    "size": [
+      "Regular",
+      "Small"
+    ],
+    "style": [
+      "Filled",
+      "Light",
+      "Line"
+    ],
+    "color": [
+      "Blue",
+      "Neutral",
+      "Red",
+      "Green",
+      "Orange",
+      "Yellow",
+      "Cyan",
+      "Sky",
+      "DeepBlue",
+      "Purple",
+      "Pink"
+    ],
+    "shape": [
+      "Default",
+      "Pill"
+    ],
+    "icon": [
+      "None",
+      "Icon"
+    ],
+    "interaction": [
+      "display",
+      "removable",
+      "add",
+      "selectable"
+    ]
+  },
+  "defaults": {
+    "size": "Regular",
+    "shape": "Default",
+    "interaction": "display"
+  },
+  "sizes": {
+    "Regular": {
+      "height": 22,
+      "minWidth": 40,
+      "paddingInline": 8,
+      "radius": 4,
+      "radiusPill": 12,
+      "font": "12/18/600",
+      "icon": 12,
+      "gap": 4
+    },
+    "Small": {
+      "height": 18,
+      "minWidth": 36,
+      "paddingInline": 8,
+      "radius": 4,
+      "radiusPill": 12,
+      "font": "10/14/400",
+      "icon": null
+    }
+  },
+  "states": [
+    "default",
+    "selected"
+  ],
+  "stateSource": "2026-09-08 设计确认：Tag 不需要 hover/pressed 交互态；selected 不是独立的视觉状态，而是由外部逻辑切换 style/color 属性（例如未选中用 Line、选中用 Filled）来表达，Figma 132 个 variant 本身也确实只覆盖 default 单一状态（TAG-004 已关闭）。",
+  "constraints": [
+    "Small does not support an icon.",
+    "One tag cannot show both leading and remove icons.",
+    "Display tags are not clickable and Tag has no disabled state.",
+    "Text remains one line.",
+    "TAG-002：边角标签（Tag_corner）是独立组件，不复用本组件的 11 色色阶；不得把边角标签当作本组件的 shape 变体来生成。",
+    "TAG-003 待设计确认：Filled + Neutral 组合（白字 #ffffff / 背景 #b8c0cc）实测对比度 1.83:1，不满足 WCAG AA 12px 文本 4.5:1 的要求，小字号正文场景需谨慎使用或等设计给出替代色。",
+    "TAG-002 已关闭：Tag_corner 已完成真审计（见 cornerTag 字段），与主 Tag 组件并列展示，不作为本组件的 shape 变体。",
+    "TAG-003 已关闭：Filled+Neutral 背景 2026-09-08 随 Figma 由 N06 改为 N07（已独立核实），对比度提升到 2.99:1，仍短于 12px 常规文本 4.5:1 的完整 AA 标准，如需完全达标需设计侧进一步调整。",
+    "TAG-004 已关闭：Tag 不需要 hover/pressed 交互态；selectable 场景通过切换 style/color 属性表达选中，不新增设计状态。",
+    "TAG-005 已关闭：Pill 圆角统一按 999px 实现（设计确认，为与其它组件写法一致）；Figma 对当前两种尺寸的字面绑定值是 12px，视觉等价，非数值冲突。"
+  ],
+  "dependencies": [
+    "Icon"
+  ],
+  "pendingExtraction": [],
+  "confirmedDecisions": [
+    {
+      "id": "TAG-001",
+      "date": "2026-09-08",
+      "decision": "Tag 132 个 variant 保持直接绑定 Primitive/* 色阶，不新增语义层。设计侧说明：要覆盖 Filled/Light/Line 三种风格需要至少 4 套新语义色（深底、浅底、浅底文字、边框）× 11 色，token 数量过多，收益不足以抵消维护成本，因此维持现状为既定决策，非待修复问题。",
+      "source": "用户设计确认"
+    }
+  ],
+  "cornerTag": {
+    "purpose": "贴合卡片或媒体容器一角的角标标签，用于强调置顶/精选/热门等场景，与主 Tag 组件是完全独立的设计（TAG-002）。",
+    "figmaNode": "3217:9158",
+    "properties": {
+      "position": [
+        "top_left",
+        "top_right"
+      ],
+      "size": [
+        "medium",
+        "small"
+      ],
+      "color": [
+        "black",
+        "red",
+        "blue",
+        "green",
+        "grey",
+        "orange"
+      ],
+      "icon": [
+        false,
+        true
+      ]
+    },
+    "dimensions": {
+      "medium": {
+        "height": 22,
+        "minWidth": 40,
+        "paddingInline": 8,
+        "font": "12/18/600",
+        "icon": 12,
+        "gap": 4,
+        "cornerRadius": 8
+      },
+      "small": {
+        "height": 18,
+        "minWidth": 36,
+        "paddingInline": 8,
+        "font": "10/14/400",
+        "icon": null,
+        "cornerRadius": 4
+      }
+    },
+    "shape": "非对称贴角圆角：position=top_left 时左上角与右下角各为 cornerRadius，其余两角为直角；position=top_right 时右上角与左下角各为 cornerRadius，其余两角为直角。不是四角统一圆角。",
+    "colorBindings": {
+      "black": "Background/MK_45（#00000073，黑色半透明蒙层）",
+      "red": "Border/error（#f93838）",
+      "blue": "Feedback/brand（#2b73ff）",
+      "green": "Feedback/success&decline（#12b76a，Figma 属性值原文拼写为 grreen）",
+      "grey": "Feedback/plain（#667085）",
+      "orange": "Feedback/warning（#f77c09）"
+    },
+    "text": "Primitive/Neutral/N01（白字），字体同主 Tag 对应尺寸",
+    "figmaVerification": "black/blue/green 三色已用 get_design_context 逐 variant 直接核实（medium+small 各至少一次）；red/grey/orange 按 get_variable_defs 汇总的语义色列表类推，未逐一用 get_design_context 复核。"
+  }
+}

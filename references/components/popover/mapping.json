@@ -1,0 +1,64 @@
+{
+  "$schema": "gj-design-skill/component-mapping/v1",
+  "figmaComponent": "popover_basic",
+  "codeComponent": "GjPopover",
+  "sourceNodes": [
+    "3630:3133",
+    "3630:3132",
+    "3630:3131"
+  ],
+  "propertyMap": {
+    "button": "button（1|2）"
+  },
+  "valueMap": {
+    "button.1": "button=1，单主按钮铺满",
+    "button.2": "button=2，等宽取消 + 确认"
+  },
+  "normalization": {
+    "oldRules.status": "旧 schema 把 status 写成语义轴。画板没有 Status 属性；图标是 48px 插槽内容。",
+    "oldRules.actions0": "旧 schema 允许 0 个操作。本画板只有 button=1 / button=2。",
+    "oldRules.buttonHeight": "操作区按钮是共享 Button Large（高 40、水平 16、圆角 8），不要再按组件私有规格覆盖。",
+    "radius": "画板圆角 16，按 Radius-XL；不要用 Radius-LG 12。",
+    "componentSet": "3630:3133 就是 popover_basic 组件集母版。button=1 / button=2 是子变体。页面上没有第二套。"
+  },
+  "tokenMap": {
+    "surface": "Background/Container",
+    "radius": "Radius/Radius-XL",
+    "paddingBlockStart": "Interval/space9",
+    "paddingInline": "Interval/space7",
+    "paddingBlockEnd": "Interval/space7",
+    "stackGap": "Interval/space6",
+    "textGap": "Interval/space5",
+    "copyPaddingInline": "Interval/space6",
+    "title.textStyle": "中文/S2-CN-S",
+    "title.color": "Text/Primary",
+    "description.textStyle": "中文/S8-CN-R",
+    "description.color": "Text/Secondary",
+    "icon": "Components/control-XL",
+    "success.icon": "Feedback/success&decline",
+    "brand.icon": "Feedback/brand",
+    "action.gap": "Interval/space4",
+    "confirm": "Button Primary Large",
+    "cancel": "Button Tertiary Large",
+    "shadow": "shadow-center"
+  },
+  "assetMap": {
+    "button1": "assets/icons/iconfont/icf_system_check-circle-fill.svg",
+    "button2": "assets/icons/iconfont/icf_system_safety1-fill.svg",
+    "colorRule": "使用已登记 iconfont 资源，不手写 SVG。button=1 节点 4518:23900 为 check-circle-fill。button=2 节点 4518:23906 为 safety1-fill。图形是插槽，不是 Status 变体轴。"
+  },
+  "runtimeMap": {
+    "root": ".gj-popover",
+    "brand": ".gj-popover-brand",
+    "icon": ".gj-popover-icon",
+    "copy": ".gj-popover-copy",
+    "title": ".gj-popover-title",
+    "description": ".gj-popover-desc",
+    "actions": ".gj-popover-actions"
+  },
+  "interactionMap": {
+    "confirm": "主按钮始终显示；用于完成短结果或提交简单确认",
+    "cancel": "仅 button=2 显示；与主按钮等宽",
+    "overlay": "本画板未规定视口锚点或遮罩；规范页在演示框内展示"
+  }
+}

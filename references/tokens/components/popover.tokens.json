@@ -1,0 +1,120 @@
+{
+  "$schema": "gj-design-skill/component-tokens/v1",
+  "component": "Popover",
+  "source": {
+    "figmaNode": "3630:3133",
+    "figmaReadDate": "2026-09-09",
+    "componentSchema": "references/components/popover/schema.json",
+    "componentMapping": "references/components/popover/mapping.json",
+    "confirmedRules": "references/components/popover/rules.md",
+    "implementation": "assets/styles/gj-b2b-components.css#.gj-popover"
+  },
+  "properties": {
+    "button": {
+      "default": "1",
+      "values": ["1", "2"]
+    }
+  },
+  "tokens": {
+    "width": {
+      "value": 360,
+      "unit": "px",
+      "cssVariable": "--ds-component-popover-width"
+    },
+    "radius": {
+      "value": "{Radius/Radius-XL}",
+      "resolved": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-popover-radius",
+      "note": "生成代码 rounded 16，未返回 Radius 绑定。画板实例是 16，不要用 Radius-LG 12。"
+    },
+    "paddingBlockStart": {
+      "value": "{Interval/space9}",
+      "resolved": 40,
+      "unit": "px",
+      "cssVariable": "--ds-component-popover-padding-block-start"
+    },
+    "paddingInline": {
+      "value": "{Interval/space7}",
+      "resolved": 24,
+      "unit": "px",
+      "cssVariable": "--ds-component-popover-padding-inline"
+    },
+    "paddingBlockEnd": {
+      "value": "{Interval/space7}",
+      "resolved": 24,
+      "unit": "px",
+      "cssVariable": "--ds-component-popover-padding-block-end"
+    },
+    "stackGap": {
+      "value": "{Interval/space6}",
+      "resolved": 20,
+      "unit": "px",
+      "cssVariable": "--ds-component-popover-stack-gap",
+      "note": "生成代码 gap 20px，variable_defs 未返回 Interval 绑定；等价 space6。"
+    },
+    "textGap": {
+      "value": "{Interval/space5}",
+      "resolved": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-popover-text-gap",
+      "note": "生成代码 gap 16px，未返回 Interval 绑定；等价 space5。"
+    },
+    "copyPaddingInline": {
+      "value": "{Interval/space6}",
+      "resolved": 20,
+      "unit": "px",
+      "cssVariable": "--ds-component-popover-copy-padding-inline"
+    },
+    "icon": {
+      "value": "{Components/control-XL}",
+      "resolved": 48,
+      "unit": "px",
+      "cssVariable": "--ds-component-popover-icon"
+    },
+    "background": {
+      "value": "{Background/Container}",
+      "cssVariable": "--ds-component-popover-background"
+    },
+    "shadow": {
+      "value": "{shadow-center}",
+      "cssVariable": "--ds-component-popover-shadow"
+    },
+    "title.color": {
+      "value": "{Text/Primary}",
+      "cssVariable": "--ds-component-popover-title-color"
+    },
+    "description.color": {
+      "value": "{Text/Secondary}",
+      "cssVariable": "--ds-component-popover-description-color"
+    },
+    "success.icon": {
+      "value": "{Feedback/success&decline}",
+      "cssVariable": "--ds-component-popover-success-icon",
+      "note": "button=1 画板样本图标色；图形是插槽，不是 Status 轴。"
+    },
+    "brand.icon": {
+      "value": "{Feedback/brand}",
+      "cssVariable": "--ds-component-popover-brand-icon",
+      "note": "button=2 画板样本图标色。"
+    },
+    "action.gap": {
+      "value": "{Interval/space4}",
+      "resolved": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-popover-action-gap"
+    },
+    "action.height": {
+      "value": "{Components/control-L}",
+      "resolved": 40,
+      "unit": "px",
+      "cssVariable": "--ds-component-popover-action-height",
+      "note": "确认/取消使用共享 Button Large；高度来自 control-L，Popover 不要再覆盖。"
+    }
+  },
+  "behavior": {
+    "button": "1 fills the action row with Primary Large. 2 uses equal-width Tertiary Large cancel plus Primary Large confirm.",
+    "placement": "This board does not specify a viewport anchor or mask. Spec-page samples stay in the demo stage."
+  },
+  "openItems": {}
+}

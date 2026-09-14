@@ -1,0 +1,78 @@
+{
+  "$schema": "gj-design-skill/component-schema/v1",
+  "component": "Drawer",
+  "status": "local-contract",
+  "source": {
+    "rulesSection": "Drawer 抽屉",
+    "inventoryPage": "Drawer✅",
+    "status": "local-contract",
+    "figmaAudit": "deferred-2026-09-09",
+    "figma_file_key": "8b01I1e3TzH1IhYlr3tJzd",
+    "read_only": true,
+    "preview": "../../../preview/drawer/index.html",
+    "note": "2026-09-09 用户确认：预览页实现得比较标准，可直接进行契约补充；本轮不逐项做 Figma 节点核实，走 local-contract（与 Chart、Icon 处理方式一致）。"
+  },
+  "purpose": "从右侧打开关联详情、筛选或支线表单，同时保留当前页面上下文。",
+  "preview": "../../../preview/drawer/index.html",
+  "properties": {
+    "size": [
+      "Small",
+      "Medium",
+      "Large"
+    ],
+    "footer": "boolean",
+    "closable": "boolean",
+    "maskClosable": "boolean",
+    "dirty": "boolean"
+  },
+  "defaults": {
+    "size": "Medium",
+    "footer": true,
+    "closable": true,
+    "maskClosable": false,
+    "dirty": false
+  },
+  "sizes": {
+    "Small": {
+      "width": 400
+    },
+    "Medium": {
+      "width": 600
+    },
+    "Large": {
+      "width": 800
+    },
+    "headerHeight": 64,
+    "contentPadding": 20,
+    "footerPadding": 20,
+    "buttonHeight": 40,
+    "buttonGap": 8
+  },
+  "structure": [
+    "mask",
+    "drawer",
+    "header",
+    "close",
+    "scrollable-content",
+    "optional-footer"
+  ],
+  "behavior": {
+    "motion": "240-300ms ease-out from right; reverse on exit; preview page measured 260ms cubic-bezier(.2,0,0,1).",
+    "focus": "Move focus inside, trap it, and return it to the trigger.",
+    "dirtyClose": "Close, Cancel, Escape and mask actions require confirmation when unsaved."
+  },
+  "constraints": [
+    "Do not open Drawer inside Drawer.",
+    "Keep header/footer fixed and scroll content only.",
+    "Footer has at most one Primary action.",
+    "Long independent flows navigate to a page instead.",
+    "DRW-001：assets/styles/gj-b2b-components.css 暂无共享 .gj-drawer* 组件基座，仅预览页有内联参考实现，见 audit.md。"
+  ],
+  "dependencies": [
+    "Button",
+    "Icon",
+    "Mask",
+    "Modal"
+  ],
+  "pendingExtraction": []
+}

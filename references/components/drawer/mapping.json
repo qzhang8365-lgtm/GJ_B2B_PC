@@ -1,0 +1,63 @@
+{
+  "$schema": "gj-design-skill/component-mapping/v1",
+  "component": "Drawer",
+  "codeComponent": "GjDrawer",
+  "source": "rules.md + 已验收预览页 preview/drawer/index.html；本轮未做 Figma 节点 ID 核实（local-contract，见 audit.md）。",
+  "propertyMap": {
+    "size": { "values": { "Small": 400, "Medium": 600, "Large": 800 }, "default": "Medium" },
+    "footer": { "type": "boolean", "default": true, "note": "只读详情可关闭；表单类必须保留。" },
+    "closable": { "type": "boolean", "default": true },
+    "maskClosable": { "type": "boolean", "default": false, "note": "存在未保存变更时，即便 maskClosable=true 也必须先走二次确认（dirtyClose）。" },
+    "dirty": { "type": "boolean", "default": false, "note": "为 true 时 Close/Cancel/Esc/蒙层关闭均需二次确认。" }
+  },
+  "structureMap": {
+    "mask": ".gj-drawer-scrim（对应 rules.md「蒙层」，颜色见 tokenMap.mask.background；关闭态用 .is-closed 修饰符，不再依赖祖先容器的 .closed 类)",
+    "drawer": ".gj-drawer（默认即为右侧覆盖面板：position:absolute + 滑入滑出动效；纯文档展示、需要在文档流内静态呈现的场景需要页面局部覆盖 position/transform，见 preview/drawer/index.html 的 .anatomy-drawer 覆盖规则）",
+    "header": ".gj-drawer-header",
+    "title": ".gj-drawer-title",
+    "close": ".gj-drawer-close（24px，图标 icf_system_close-md，默认 Text/Tertiary，hover Text/Primary）",
+    "content": ".gj-drawer-content（独立滚动区）",
+    "footer": ".gj-drawer-footer（最多一个 Primary 按钮）"
+  },
+  "tokenMap": {
+    "size.small.width": "400px",
+    "size.medium.width": "600px",
+    "size.large.width": "800px",
+    "header.height": "64px",
+    "header.titleTextStyle": "16/24、600 字重",
+    "header.border": "Border/Default",
+    "content.padding": "20px",
+    "footer.padding": "20px",
+    "footer.buttonHeight": "40px",
+    "footer.buttonGap": "8px",
+    "close.size": "24px",
+    "close.icon": "icf_system_close-md",
+    "close.color.default": "Text/Tertiary",
+    "close.color.hover": "Text/Primary",
+    "mask.background": "Background/MK_45（预览页 .scrim 实测绑定）",
+    "drawer.shadow": "0 -8px 24px Background/MK_20（预览页 .demo-drawer 实测绑定，方向为向左投影）",
+    "motion.duration": "240–300ms（预览页实测过渡为 260ms，落在该区间内）",
+    "motion.easing": "ease-out 类；预览页用 cubic-bezier(.2,0,0,1) 近似"
+  },
+  "implementation": {
+    "runtime": {
+      "status": "shared-css-base",
+      "note": "2026-09-09：已把 preview/drawer/index.html 内联的抽屉/蒙层样式提炼进 assets/styles/gj-b2b-components.css 的 .gj-drawer* 共享类（.gj-drawer/.gj-drawer-header/.gj-drawer-title/.gj-drawer-close/.gj-drawer-content/.gj-drawer-footer/.gj-drawer-scrim），对齐 Modal 已有的 .gj-modal-* 共享基座模式。对应结构/颜色数值同步写进 assets/styles/gj-b2b-tokens.css 的 --ds-component-drawer-* 变量。共享基座默认即代表真实的右侧覆盖面板形态（position:absolute + 滑入滑出动效）；预览页里用于静态展示组件结构的「组件结构」示意图（.anatomy-drawer）改为页面局部覆盖 position/top/right/transform，取消覆盖态定位，只保留边框与投影两个文档专属样式差异。原来依赖祖先容器 .demo-stage.closed 的写法已改为直接在 .gj-drawer/.gj-drawer-scrim 元素自身切换 .is-closed 修饰符。原 preview-page-only 状态关闭，DRW-001 视为已解决。"
+    },
+    "specPreview": {
+      "page": "preview/drawer/index.html",
+      "classes": [".gj-drawer", ".gj-drawer.is-closed", ".gj-drawer-header", ".gj-drawer-title", ".gj-drawer-close", ".gj-drawer-content", ".gj-drawer-footer", ".gj-drawer-scrim", ".gj-drawer-scrim.is-closed"],
+      "sharedBase": "assets/styles/gj-b2b-components.css（.gj-drawer* 规则块，2026-09-09 新增）+ assets/styles/gj-b2b-tokens.css（--ds-component-drawer-* 变量，2026-09-09 新增）"
+    }
+  },
+  "composition": {
+    "nesting": "禁止 Drawer 内再打开 Drawer；二次确认使用轻量 Modal。",
+    "button": "Footer 按钮复用 Button 组件规则，最多一个 Primary。",
+    "icon": "Close 复用 Icon 组件的 24px 档、Text/Tertiary 默认色。"
+  },
+  "accessibility": {
+    "role": "dialog，aria-modal=true，aria-labelledby 指向标题（预览页 demo 已这样实现）。",
+    "focus": "打开后焦点移入并限制在 Drawer 内部（focus trap），关闭后焦点返回触发元素。",
+    "escape": "支持 Esc 关闭；未保存变更时需二次确认，不能直接关闭。"
+  }
+}

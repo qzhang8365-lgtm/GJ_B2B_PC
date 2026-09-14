@@ -1,0 +1,29 @@
+{
+  "$schema": "gj-design-skill/component-mapping/v1",
+  "figmaComponent": "Tooltip（合并自 toolip 与 toolip_fill 两个组件集）",
+  "codeComponent": "GjTooltip",
+  "propertyMap": {
+    "position": "position",
+    "polygon": "showArrow",
+    "toolip (node 3582:1816)": "style=dark",
+    "toolip_fill (node 3630:3385)": "style=light"
+  },
+  "valueMap": {
+    "position.top_center": "top"
+  },
+  "tokenMap": {
+    "dark.background": "Background/MK_80",
+    "light.background": "Background/Container",
+    "light.textColor": "Text/Primary",
+    "light.shadow": "shadow-center",
+    "radius": "确认为设计固定值 8px（硬编码），不绑定 Radius/Radius-MD（2026-09-08 设计侧确认）",
+    "typography": "中文/S8-CN-R",
+    "dark.textColor": "Text/reversal（2026-09-08 设计侧确认，此前为硬编码白色）",
+    "arrowColor": "跟随所在风格背景色（2026-09-08 设计侧确认）"
+  },
+  "accessibility": {
+    "role": "tooltip",
+    "trigger": "aria-describedby 指向 Tooltip 内容元素",
+    "focus": "键盘 Focus 触发元素时立即显示，不依赖 Hover"
+  }
+}

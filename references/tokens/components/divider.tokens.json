@@ -1,0 +1,76 @@
+{
+  "$schema": "gj-design-skill/component-tokens/v1",
+  "component": "Divider",
+  "source": {
+    "componentSchema": "references/components/divider/schema.json",
+    "componentMapping": "references/components/divider/mapping.json"
+  },
+  "properties": {
+    "type": {
+      "default": "horizontal",
+      "values": [
+        "horizontal",
+        "vertical"
+      ]
+    },
+    "dashed": {
+      "default": false,
+      "values": [
+        false,
+        true
+      ]
+    },
+    "title": {
+      "default": false,
+      "values": [
+        false,
+        true
+      ]
+    },
+    "position": {
+      "default": "left",
+      "values": [
+        "left",
+        "center",
+        "right"
+      ],
+      "constraint": "仅在 type=horizontal 且 title=true 时生效；垂直分割线不支持 title。"
+    }
+  },
+  "tokens": {
+    "line.color": {
+      "value": "{Border/default}",
+      "resolved": "#EBEEF2",
+      "cssVariable": "--ds-component-divider-line-color"
+    },
+    "line.thickness": {
+      "value": 1,
+      "unit": "px",
+      "cssVariable": "--ds-component-divider-thickness"
+    },
+    "vertical.height": {
+      "value": 20,
+      "unit": "px",
+      "cssVariable": "--ds-component-divider-vertical-height"
+    },
+    "title.color": {
+      "value": "{Text/Tertiary}",
+      "resolved": "#8D96A3",
+      "cssVariable": "--ds-component-divider-title-color"
+    },
+    "title.textStyle": {
+      "value": "{中文/S8-CN-R}",
+      "cssClass": "gj-type-cn-s8"
+    },
+    "title.gap": {
+      "value": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-divider-title-gap"
+    },
+    "title.sideLine": {
+      "value": 24,
+      "unit": "px",
+      "cssVariable": "--ds-component-divider-title-side-line"
+    }
+  }
+}

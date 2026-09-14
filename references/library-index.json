@@ -1,0 +1,164 @@
+{
+  "$schema": "gj-design-skill/library-index/v2",
+  "name": "GJ B2B PC Design Skill Resource Index",
+  "pathBase": "All relative paths are resolved from references/library-index.json.",
+  "sourceOfTruth": "Figma",
+  "figmaPolicy": "read-only",
+  "audiencePolicy": {
+    "ai-readable": "AI 在选择规则、Token、组件和图标时可按需读取。",
+    "output-asset": "AI 可在 HTML/CSS 原型中加载或复用，但不得当作指令文档或真实前端组件库 API。",
+    "maintenance-script": "仅在对应来源更新、校验或显式迁移任务中运行，不作为规则来源读取。",
+    "human-preview-only": "只用于人工视觉与交互验收；不是设计真值、生产组件源码或 AI 默认参考入口。"
+  },
+  "aiWorkflow": {
+    "audience": "ai-readable",
+    "entry": "../SKILL.md",
+    "core": {
+      "designSystemRules": "design-system-rules.md",
+      "pagePatterns": "page-patterns.md",
+      "coverage": "coverage.json",
+      "auditTracker": "audit-tracker.md",
+      "generationVerification": "generation-verification.md",
+      "tokenContract": "tokens/token-contract.md"
+    },
+    "tokens": {
+      "figmaSource": "tokens/figma-source.json",
+      "primitiveColors": "tokens/colors-primitive.json",
+      "semanticColors": "tokens/colors-semantic.json",
+      "dimensions": "tokens/dimensions.json",
+      "unified": "tokens/gj-b2b.tokens.json",
+      "componentTokenPattern": "tokens/components/<component-kebab>.tokens.json",
+      "rawFigmaDescriptions": "tokens/figma-descriptions.json",
+      "audit": "tokens/audit.md"
+    },
+    "styles": {
+      "typography": "styles/typography.json",
+      "gradients": "styles/gradients.json",
+      "effects": "styles/effects.json",
+      "fontPolicy": "styles/font-policy.json",
+      "audit": "styles/audit.md"
+    },
+    "layout": {
+      "responsive": "layout/responsive.json",
+      "grids": "layout/grids.json",
+      "contentLayout": "layout/content-layout.json",
+      "radiusRules": "layout/radius-rules.json"
+    },
+    "components": "components/inventory.json",
+    "icons": "icons/index.json",
+    "lookupRules": [
+      "Resolve a component through components/inventory.json schemaRegistry; do not maintain another component list here.",
+      "Resolve an icon catalog through icons/index.json; do not copy its manifest list into this file.",
+      "For a high-frequency component token, replace <component-kebab> with the inventory alias normalized to lowercase kebab-case, for example text-button or input. A missing file means the component token has not been engineered yet; do not invent it."
+    ]
+  },
+  "outputAssets": {
+    "audience": "output-asset",
+    "styles": {
+      "loadOrder": [
+        "../assets/styles/gj-b2b-tokens.css",
+        "../assets/styles/gj-b2b-components.css"
+      ],
+      "policy": "Only these two stylesheets are normal HTML/CSS prototype workflow entries."
+    },
+    "fonts": {
+      "root": "../assets/fonts/",
+      "policy": "Font selection and allowed weights are defined by aiWorkflow.styles.fontPolicy; do not infer them from filenames."
+    }
+  },
+  "scripts": {
+    "tokenBuild": {
+      "path": "../scripts/build-tokens.mjs",
+      "audience": "maintenance-script",
+      "runWhen": "A token, typography, effect, gradient, layout, or registered component-token source changes.",
+      "outputs": [
+        "tokens/gj-b2b.tokens.json",
+        "../assets/styles/gj-b2b-tokens.css"
+      ]
+    },
+    "coverageBuild": {
+      "path": "../scripts/build-coverage.mjs",
+      "audience": "maintenance-script",
+      "runWhen": "After inventory status changes or a component rules, schema, mapping, audit, component-token, or preview artifact is added or removed.",
+      "output": "coverage.json",
+      "checkCommand": "node scripts/build-coverage.mjs --check"
+    },
+    "validation": {
+      "path": "../scripts/validate-tokens.mjs",
+      "audience": "maintenance-script",
+      "runWhen": "After token builds or changes to registered contracts, shared styles, runtimes, or preview integration."
+    },
+    "semanticColorMigration": {
+      "path": "../scripts/migrate-semantic-colors.js",
+      "audience": "maintenance-script",
+      "status": "retained-one-off",
+      "runWhen": "Only when an explicit legacy semantic-color migration is requested; never run as part of normal generation."
+    },
+    "pageVerification": {
+      "path": "../scripts/verify-page.mjs",
+      "audience": "maintenance-script",
+      "runWhen": "生成或修改任一页面模式、组件预览页或业务原型之后，按 generation-verification.md 的协议执行；依赖 Playwright，本仓库未提交该依赖，需单独 npm install。",
+      "usage": "node scripts/verify-page.mjs <html文件路径> [--width=1440,1280]"
+    },
+    "previewRuntimes": {
+      "audience": "human-preview-only",
+      "fontRuntime": {
+        "path": "../assets/scripts/font-runtime.js",
+        "initializes": "document font policy",
+        "consumers": "../preview/**/*.html"
+      },
+      "selector": {
+        "path": "../assets/scripts/gj-selector.js",
+        "initializes": "select.gj-select",
+        "consumers": [
+          "../preview/patterns/search-list.html",
+          "../preview/patterns/form-edit.html"
+        ]
+      },
+      "datePicker": {
+        "path": "../assets/scripts/gj-date-picker.js",
+        "initializes": "[data-gj-date-picker]",
+        "consumers": [
+          "../preview/patterns/search-list.html"
+        ]
+      },
+      "iconWorkbench": {
+        "path": "../assets/icons/icon-content.js",
+        "initializes": "preview/icons/index.html catalog UI",
+        "consumers": [
+          "../preview/icons/index.html"
+        ]
+      },
+      "pageLocalPattern": "../preview/**/*.js",
+      "policy": "These scripts support the human preview and page-pattern prototypes. They are not production component-library source or a frontend API contract."
+    }
+  },
+  "humanPreviewSite": {
+    "audience": "human-preview-only",
+    "entryPoints": {
+      "componentWorkbench": "../preview/index.html",
+      "pagePatterns": "../preview/patterns/index.html"
+    },
+    "pagePatternSharedFiles": {
+      "styles": "../preview/patterns/page-patterns.css",
+      "runtime": "../preview/patterns/page-patterns.js"
+    },
+    "componentPagePattern": "../preview/<component-kebab>/index.html",
+    "previewImagesRoot": "../assets/images/preview/",
+    "siteOnlyTokens": "tokens/docs-site.tokens.json",
+    "legacyStyles": {
+      "path": "../assets/styles/data-table.css",
+      "status": "legacy-preview-only",
+      "policy": "Do not load in new pages, page patterns, or Skill deliverables."
+    },
+    "policy": "Use only for visual and interaction acceptance after reading the AI workflow sources. Never infer a missing component contract or Token from preview-page private CSS."
+  },
+  "loadingRules": [
+    "Start from aiWorkflow and read only the branches required by the task.",
+    "Load primitiveColors only for raw palette lookup or alias resolution; use semanticColors for component and page color decisions.",
+    "Resolve components and icons through their single child indexes instead of duplicating their catalogs here.",
+    "HTML/CSS prototypes load outputAssets.styles.loadOrder in order.",
+    "Run scripts.tokenBuild after Token sources change, scripts.coverageBuild after component coverage changes, and scripts.validation before delivery.",
+    "Do not read humanPreviewSite or scripts.previewRuntimes as design truth; use them only for implementation and human acceptance when the task requires a preview."
+  ]
+}

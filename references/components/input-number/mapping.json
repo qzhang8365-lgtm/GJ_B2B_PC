@@ -1,0 +1,63 @@
+{
+  "$schema": "gj-design-skill/component-mapping/v1",
+  "component": "InputNumber",
+  "codeComponent": "GjInputNumber",
+  "source": "2026-09-10 Figma 页 2638:2479：Input-Number 3482:1480（48）+ swiper 4293:15642（4）。代码默认 Medium；Figma 母版默认 size=small / state=filled。",
+  "propertyMap": {
+    "mode": { "values": ["basic", "stepper", "unit", "right-step", "slider", "range-slider"], "default": "basic" },
+    "size": { "values": ["Small", "Medium", "Large"], "default": "Medium", "appliesTo": "basic/stepper/unit/right-step；slider/range-slider 尺寸独立，见 structureMap" },
+    "value": "number（rangeValue 为 [number, number]，仅 range-slider）",
+    "min / max / step": "必填；越界、空值、非法格式需可见反馈",
+    "unit": "string，仅 mode=unit 展示，固定位置不可编辑",
+    "disabled": "boolean", "showTooltip": "boolean，仅 slider/range-slider 精确确认场景",
+    "active": "boolean（聚焦态，预览页用 .active 修饰符呈现，非原生 :focus 伪类驱动，需手动管理）"
+  },
+  "structureMap": {
+    "basic": ".gj-number-input（纯输入框，无左右操作区）",
+    "stepper": ".gj-number-input.gj-number-input-stepper（左右 .gj-number-input-step-btn，宽度等于当前档位高度，Small/Medium 图标 14、Large 16）",
+    "unit": ".gj-number-input.gj-number-input-unit（右侧 .gj-number-input-unit-label 宽度等于当前档位高度）",
+    "right-step": ".gj-number-input.gj-number-input-right-step（右侧 .gj-number-input-right-controls 24px 宽，上下两个步进按钮堆叠，图标 12×12px，中间 1px Border/default 分隔线）",
+    "slider": ".gj-slider（独立于 .gj-number-input 之外的轨道+滑块结构，宽 200px，轨道 4px 高圆角胶囊，原生 input[type=range] 叠加透明层承载交互，::-webkit-slider-thumb/::-moz-range-thumb 定制 16px 圆形滑块）",
+    "rangeSlider": ".gj-slider.is-range（双滑块，通过 --start/--end 两个自定义属性驱动轨道渐变分段，双 Tooltip 用 --tip/--tip-end 独立定位）",
+    "tooltip": ".gj-slider-tooltip（精确值气泡，浮在滑块上方，圆角 8px、深色背景、下方三角指示，仅 showTooltip=true 时渲染）"
+  },
+  "tokenMap": {
+    "size.small": "100×24px，圆角 4px（Radius/Radius-XS），内边距 8px",
+    "size.medium": "112×32px，圆角 6px（Radius/Radius-SM），内边距 12px",
+    "size.large": "133×40px，圆角 8px（Radius/Radius-MD），内边距 12px，字号升至 16px（唯一随尺寸变化字号的档位）",
+    "field.border.default": "Border/secondary", "field.background": "Background/Container",
+    "field.border.active": "Border/focused（仅 1px，无外发光）",
+    "field.background.disabled": "Background/Background", "field.text.disabled": "Text/disable",
+    "field.text": "Text/Primary", "field.placeholder": "Text/disable",
+    "stepper.button": "背景 Background/Background，宽高等于档位高度",
+    "unit.label": "背景 Background/Background，宽高等于档位高度",
+    "rightStep.controlsWidth": "Small/Medium 24、Large 28", "rightStep.divider": "1px Border/default",
+    "slider.width": "200px 母版示例宽", "slider.trackHeight": "4px", "slider.trackRadius": "11px",
+    "slider.track.inactive": "Background/Secondary", "slider.track.active": "Brand/GJ_Blue",
+    "slider.thumb": "16px，Button/Primary/Bg-pressed + Background/MK_10 投影",
+    "tooltip.background": "Background/MK_80", "tooltip.text": "Background/Container", "tooltip.radius": "8px", "tooltip.paddingInline": "16px"
+  },
+  "implementation": {
+    "runtime": {
+      "status": "shared-css-base",
+      "note": "2026-09-09：已把 preview/input-number/index.html 内联的字段/步进/单位/滑块样式提炼进 assets/styles/gj-b2b-components.css 的 .gj-number-input*/.gj-slider* 共享类，对应结构与颜色数值同步写进 assets/styles/gj-b2b-tokens.css 的 --ds-component-input-number-* 变量（含 --h/--radius/--px 三个尺寸自定义属性驱动 Small/Medium/Large 三档，做法不变，只是数值来源改为共享 token）。预览页已改为直接引用共享类，本地重复定义已删除；.active/.disabled/.with-tooltip/.range-tooltips 按项目 is- 前缀惯例改名为 .is-active/.is-disabled/.is-with-tooltip/.is-range（视觉行为不变）。原 preview-page-reference 状态关闭，INN-002 视为已解决。"
+    },
+    "specPreview": {
+      "page": "preview/input-number/index.html",
+      "classes": [".gj-number-input", ".gj-number-input-small", ".gj-number-input-large", ".gj-number-input.is-active", ".gj-number-input.is-disabled", ".gj-number-input-stepper", ".gj-number-input-step-btn", ".gj-number-input-unit", ".gj-number-input-unit-label", ".gj-number-input-right-step", ".gj-number-input-right-controls", ".gj-slider", ".gj-slider.is-with-tooltip", ".gj-slider.is-range", ".gj-slider-track", ".gj-slider-tooltip"],
+      "sharedBase": "assets/styles/gj-b2b-components.css（.gj-number-input*/.gj-slider* 规则块，2026-09-09 新增）+ assets/styles/gj-b2b-tokens.css（--ds-component-input-number-* 变量，2026-09-09 新增）"
+    }
+  },
+  "composition": {
+    "boundary": "到达 min 时禁用减操作（stepper 左键/right-step 下键），到达 max 时禁用加操作，不允许继续触发。",
+    "rangeCross": "range-slider 两端不得交叉，实现须钳制 start<=end。",
+    "unitImmutable": "unit 展示的固定单位不可编辑，不占用输入区宽度，用户不能删除或修改它。",
+    "precision": "千分位分隔符和小数精度规则须由业务明确传入，组件不臆造默认格式（design-system-rules.md 原文未给出具体规则）。"
+  },
+  "accessibility": {
+    "field": "输入框需要程序化标签（label 或 aria-label），min/max/step 应同步为原生 input 的对应属性或 aria-valuemin/valuemax，供辅助技术读出边界。",
+    "stepper": "加减按钮需要区分“增加/减少”的可访问名称，禁用时不能只视觉变灰，需同步 aria-disabled 或原生 disabled。",
+    "slider": "role=slider 或原生 input[type=range]，aria-valuenow/valuemin/valuemax 需与显示值同步；range-slider 的两个滑块需要各自独立的可访问名称区分“起始值/结束值”。",
+    "tooltip": "精确值气泡是辅助确认，不应替代滑块本身的可访问值播报。"
+  }
+}

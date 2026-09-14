@@ -1,0 +1,243 @@
+{
+  "$schema": "gj-design-skill/component-tokens/v1",
+  "component": "Sidebar",
+  "source": {
+    "figmaNode": "4148:18584",
+    "figmaReadDate": "2026-09-10",
+    "componentSchema": "references/components/sidebar/schema.json",
+    "componentMapping": "references/components/sidebar/mapping.json",
+    "confirmedRules": "references/components/sidebar/rules.md",
+    "implementation": "assets/styles/gj-b2b-components.css#.gj-sidebar"
+  },
+  "properties": {
+    "surface": {
+      "default": "light",
+      "values": ["light", "blue", "background"]
+    },
+    "state": {
+      "default": "expanded",
+      "values": ["expanded", "collapsed"]
+    }
+  },
+  "tokens": {
+    "column.width": {
+      "value": 200,
+      "unit": "px",
+      "cssVariable": "--ds-component-sidebar-column-width",
+      "note": "三套菜单母版 state=expanded。全量采用，不随视口变成 208/240/288。标注表 3987:994 的 layout.sider 不是 Token。"
+    },
+    "column.collapsed": {
+      "value": 56,
+      "unit": "px",
+      "cssVariable": "--ds-component-sidebar-column-collapsed",
+      "note": "三套菜单母版 state=collapsed。全量采用。禁止用标注表 3987:994 的 64/80。"
+    },
+    "brand.height": {
+      "value": 56,
+      "unit": "px",
+      "cssVariable": "--ds-component-sidebar-brand-height"
+    },
+    "brand.paddingInline": {
+      "value": "{Interval/space5}",
+      "resolved": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-sidebar-brand-padding-inline"
+    },
+    "brand.paddingBlock": {
+      "value": "{Interval/space4}",
+      "resolved": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-sidebar-brand-padding-block"
+    },
+    "logo.width": {
+      "value": 110,
+      "unit": "px",
+      "cssVariable": "--ds-component-sidebar-logo-width"
+    },
+    "logo.height": {
+      "value": 24,
+      "unit": "px",
+      "cssVariable": "--ds-component-sidebar-logo-height"
+    },
+    "fold": {
+      "value": 24,
+      "unit": "px",
+      "cssVariable": "--ds-component-sidebar-fold",
+      "note": "实例 23.88，按 24。"
+    },
+    "menu.padding": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-sidebar-menu-padding"
+    },
+    "menu.gap": {
+      "value": "{Interval/space2}",
+      "resolved": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-sidebar-menu-gap"
+    },
+    "light.surface": {
+      "value": "{Background/Container}",
+      "cssVariable": "--ds-component-sidebar-light-surface"
+    },
+    "blue.surface": {
+      "value": "{Primitive/DeepBlue/DB10}",
+      "cssVariable": "--ds-component-sidebar-blue-surface"
+    },
+    "background.surface": {
+      "value": "{Background/Background}",
+      "cssVariable": "--ds-component-sidebar-background-surface"
+    },
+    "fold.light": {
+      "value": "{Text/Secondary}",
+      "cssVariable": "--ds-component-sidebar-fold-light"
+    },
+    "fold.blue": {
+      "value": "{Text/reversal}",
+      "cssVariable": "--ds-component-sidebar-fold-blue"
+    },
+    "subtree.paddingInlineStart": {
+      "value": "{Interval/space6}",
+      "resolved": 20,
+      "unit": "px",
+      "cssVariable": "--ds-component-sidebar-subtree-padding-inline-start",
+      "note": "可见展开样本 4156:958（light）、4769:3370（blue）。pl-20。"
+    },
+    "subtree.gap": {
+      "value": "{Interval/space2}",
+      "resolved": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-sidebar-subtree-gap"
+    },
+    "rail.width": {
+      "value": 1,
+      "unit": "px",
+      "cssVariable": "--ds-component-sidebar-rail-width"
+    },
+    "rail.light": {
+      "value": "{Background/MK_10}",
+      "cssVariable": "--ds-component-sidebar-rail-light",
+      "note": "浅色表面（light / background）一级展开饰条。"
+    },
+    "rail.dark": {
+      "value": "{Background/BT_DB20}",
+      "cssVariable": "--ds-component-sidebar-rail-dark",
+      "note": "深色表面（blue）一级展开饰条。4769:3370 Divider Line 已绑定此变量。不要再用 Border/default。"
+    },
+    "third.indent": {
+      "value": "{Interval/space4}",
+      "resolved": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-sidebar-third-indent"
+    },
+    "item.hoverBackground": {
+      "value": "{Background/Hover}",
+      "cssVariable": "--ds-component-sidebar-item-hover-background",
+      "note": "Figma 无 Hover 变体。默认态叠加此色，浅色深色相同。"
+    },
+    "item.disabledOpacity": {
+      "value": 0.5,
+      "cssVariable": "--ds-component-sidebar-item-disabled-opacity",
+      "note": "Figma 无 Disabled 变体。整项透明度 50%。"
+    },
+    "item.width": {
+      "value": 176,
+      "unit": "px",
+      "cssVariable": "--ds-component-sidebar-item-width",
+      "note": "原子母版默认宽。组合内 .gj-sidebar .gj-sidebar-item 拉满。"
+    },
+    "item.collapsed": {
+      "value": 40,
+      "unit": "px",
+      "cssVariable": "--ds-component-sidebar-item-collapsed"
+    },
+    "item.height": {
+      "value": 40,
+      "unit": "px",
+      "cssVariable": "--ds-component-sidebar-item-height"
+    },
+    "item.thirdHeight": {
+      "value": 36,
+      "unit": "px",
+      "cssVariable": "--ds-component-sidebar-item-third-height"
+    },
+    "item.paddingInline": {
+      "value": "{Interval/space4}",
+      "resolved": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-sidebar-item-padding-inline"
+    },
+    "item.gap": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-sidebar-item-gap"
+    },
+    "item.icon": {
+      "value": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-sidebar-item-icon"
+    },
+    "item.dot": {
+      "value": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-sidebar-item-dot"
+    },
+    "item.radiusDefault": {
+      "value": "{Radius/Radius-XS}",
+      "resolved": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-sidebar-item-radius-default"
+    },
+    "item.radiusEmphasis": {
+      "value": "{Radius/Radius-MD}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-sidebar-item-radius-emphasis"
+    },
+    "item.selectedBackground": {
+      "value": "{Background/Hover}",
+      "cssVariable": "--ds-component-sidebar-item-selected-background"
+    },
+    "item.lightFirstDefault": {
+      "value": "{Text/Primary}",
+      "cssVariable": "--ds-component-sidebar-item-light-first-default"
+    },
+    "item.lightFirstIcon": {
+      "value": "{Text/Primary}",
+      "cssVariable": "--ds-component-sidebar-item-light-first-icon",
+      "note": "一级图标跟随文案。默认 Text/Primary；Active/Selected Text/blue；dark Text/reversal。实现用 currentColor。"
+    },
+    "item.lightDefaultArrow": {
+      "value": "{Background/MK_20}",
+      "cssVariable": "--ds-component-sidebar-item-light-arrow",
+      "note": "仅 light 默认态箭头。强调态和 dark 跟随文案。"
+    },
+    "item.lightEmphasis": {
+      "value": "{Text/blue}",
+      "cssVariable": "--ds-component-sidebar-item-light-emphasis"
+    },
+    "item.lightNestedDefault": {
+      "value": "{Text/Secondary}",
+      "cssVariable": "--ds-component-sidebar-item-light-nested-default"
+    },
+    "item.darkFirst": {
+      "value": "{Text/reversal}",
+      "cssVariable": "--ds-component-sidebar-item-dark-first"
+    },
+    "item.darkNested": {
+      "value": "{Primitive/DeepBlue/DB04}",
+      "cssVariable": "--ds-component-sidebar-item-dark-nested"
+    }
+  },
+  "behavior": {
+    "surface": "Three component sets, one layout. blue uses item dark.",
+    "collapse": "Always state=collapsed 56px from the menu masters. Do not scale by viewport. Hide logo, center expand, collapsed items 40×40. Hide expanded subtrees.",
+    "hover": "Default look + Background/Hover. Same token for light and dark.",
+    "disabled": "Opacity 50%.",
+    "firstIcon": "Follows label color. Light default arrow is Background/MK_20 only.",
+    "rail": "Light MK_10; dark BT_DB20. Do not share Border/default."
+  },
+  "openItems": {}
+}

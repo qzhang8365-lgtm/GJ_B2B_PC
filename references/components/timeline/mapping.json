@@ -1,0 +1,56 @@
+{
+  "$schema": "gj-design-skill/component-mapping/v1",
+  "component": "Timeline",
+  "codeComponent": "GjTimeline",
+  "source": "2026-09-10 Figma 页 3655:7446：6 套 / 32 variants / 独立件 Timeline_horizontal 3666:3072。",
+  "propertyMap": {
+    "direction": { "values": ["Vertical", "Horizontal"], "default": "Vertical" },
+    "nodeStyle": { "values": ["Dot", "Checkmark"], "default": "Dot" },
+    "order": { "values": ["ascending", "descending"], "default": "ascending" },
+    "items": "TimelineItem[]（每项含 title、description、state）",
+    "itemState": { "values": ["finished", "wait"], "note": "纵向用 .is-wait / .is-finished；等待只改节点色，不改标题与说明色" }
+  },
+  "structureMap": {
+    "verticalItem": ".gj-timeline-v-item（grid-template-columns:20px 1fr，column-gap 6px，min-height 56px）",
+    "verticalConnector": ".gj-timeline-v-head 的 :before/:after（Border/hover 虚线）",
+    "verticalDot": ".gj-timeline-v-dot（10×10，finished Brand/GJ_Blue，wait Text/disable）",
+    "verticalCheckmark": ".gj-timeline-v-check（16×16，finished Feedback/brand，wait Text/disable）",
+    "verticalCopy": ".gj-timeline-v-copy（标题 中文/S5-CN-S + Text/Primary，说明 中文/S9-CN-R + Text/Secondary；wait 不改文字色）",
+    "horizontalShell": ".gj-timeline-h-shell（grid-template-columns:32px minmax(0,1fr) 32px，宽 684px，随容器 max-width:100% 收缩）",
+    "horizontalArrow": ".gj-timeline-arrow（组合 .gj-icon-button 基座，左右翻页按钮，32×32px，本会话早前已修正为组件库真实箭头图标 icf_Arrow_left/right.svg，与轴线垂直居中对称）",
+    "horizontalItem": ".gj-timeline-h-item（flex:0 0 155px，标题 14/22/600，说明 14/22 但颜色 Text/tertiary；finished/wait 态用 .is-finished/.is-wait 修饰符）",
+    "horizontalTrack": ".gj-timeline-h-track（连接线 2px 高 Border/secondary，节点 8×8px 圆形 Text/disable；finished 态连接线和节点均切换为 Text/blue）"
+  },
+  "tokenMap": {
+    "vertical.connector": "1px dashed Border/hover",
+    "vertical.dot.size": "10px", "vertical.dot.finished": "Brand/GJ_Blue", "vertical.dot.wait": "Text/disable",
+    "vertical.checkmark.size": "16px", "vertical.checkmark.finished": "Feedback/brand", "vertical.checkmark.wait": "Text/disable",
+    "vertical.title": "中文/S5-CN-S + Text/Primary", "vertical.description": "中文/S9-CN-R + Text/Secondary",
+    "horizontal.shell.width": "676px（独立件 Timeline_horizontal）",
+    "horizontal.item.width": "155px", "horizontal.item.title": "中文/S5-CN-S + Text/Primary",
+    "horizontal.item.description": "中文/S8-CN-R + Text/Tertiary",
+    "horizontal.track.line": "2px Text/disable（waiting）→ Text/blue（finished）",
+    "horizontal.track.dot": "8px，Text/disable → Text/blue"
+  },
+  "implementation": {
+    "runtime": {
+      "status": "shared-css-base",
+      "note": "2026-09-09：已把 preview/timeline/index.html 内联的时间轴样式提炼进 assets/styles/gj-b2b-components.css 的 .gj-timeline* 共享类（.gj-timeline-v/.gj-timeline-v-item/.gj-timeline-v-head/.gj-timeline-v-dot/.gj-timeline-v-check/.gj-timeline-v-copy/.gj-timeline-h-shell/.gj-timeline-arrow/.gj-timeline-h-viewport/.gj-timeline-h/.gj-timeline-h-item/.gj-timeline-h-track），对应结构与颜色数值同步写进 assets/styles/gj-b2b-tokens.css 的 --ds-component-timeline-* 变量。预览页已改为直接引用共享类，本地重复定义已删除；.wait/.finished 状态修饰符按项目 is- 前缀惯例改名为 .is-wait/.is-finished（视觉行为不变）。原 preview-page-reference 状态关闭，TML-001 视为已解决。"
+    },
+    "specPreview": {
+      "page": "preview/timeline/index.html",
+      "classes": [".gj-timeline-v", ".gj-timeline-v-item", ".gj-timeline-v-item.is-wait", ".gj-timeline-v-head", ".gj-timeline-v-dot", ".gj-timeline-v-check", ".gj-timeline-v-copy", ".gj-timeline-h-shell", ".gj-timeline-arrow", ".gj-timeline-h-viewport", ".gj-timeline-h", ".gj-timeline-h-item", ".gj-timeline-h-item.is-finished", ".gj-timeline-h-track"],
+      "sharedBase": "assets/styles/gj-b2b-components.css（.gj-timeline* 规则块，2026-09-09 新增）+ assets/styles/gj-b2b-tokens.css（--ds-component-timeline-* 变量，2026-09-09 新增）"
+    }
+  },
+  "composition": {
+    "orderConsistency": "同一时间轴内不得纵向正序、横向倒序混用；order 一旦选定对整条时间轴生效。",
+    "finishedContinuity": "finished 节点必须连续，wait 不得夹在已完成节点之间——这是 schema.json 已有约束，本文件不重复但要求实现层校验。",
+    "emptyState": "无事件时使用 Empty 组件，不在时间轴内部自造空态视觉。"
+  },
+  "accessibility": {
+    "node": "Checkmark 节点的可访问名称应包含“已完成”语义，不能只依赖图标形状传达状态；wait 节点同理需要可访问的“待处理/进行中”语义。",
+    "interaction": "默认不可点击；仅在业务显式启用详情跳转时，标题或整项才应有可聚焦、可键盘激活的语义（如 role=link 或真实链接），不要在不可交互态残留可聚焦属性。",
+    "horizontalArrow": "左右翻页按钮需要有区分“上一页/下一页”的可访问名称，到达首尾时应禁用而不是仅视觉变暗。"
+  }
+}

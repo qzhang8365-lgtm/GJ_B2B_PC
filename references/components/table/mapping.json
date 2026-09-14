@@ -1,0 +1,10 @@
+{
+  "$schema":"gj-design-skill/component-mapping/v1",
+  "component":"Table",
+  "contractToImplementation":{"wrapper":"gj-table-wrap","table":"gj-table","size.small":"gj-table-small","size.medium":"gj-table","size.large":"gj-table-large","selectedRow":"is-selected","fixedAction":"gj-table-action","sort":"gj-table-sort","headIcon":"gj-table-head-icon","expand":"gj-table-expand","iconActions":"gj-table-icon-actions"},
+  "tokenMap":{"outerBorder":"Table/border","divider":"Table/divider","headerBackground":"Table/head_bg","bodyBackground":"Table/table_bg1"},
+  "composition":{"selection":"Checkbox","inlineEdit":"Input","textAction":"Small TextButton","status":"Tag","empty":"Empty"},
+  "stateMap":{"hover":"pointer feedback only","selected":"checkbox/external selection only","expanded":"aria-expanded; independent from selected","disabled":"suppresses row actions"},
+  "dataStateMap":{"loading":"Skeleton or row loading while retaining headers","empty":"one full-span state region","error":"full-span state with retry"},
+  "accessibility":{"table":"native table semantics","sort":"aria-sort=none|ascending|descending","selection":"named checkboxes with header select-all and indeterminate","expand":"aria-expanded and aria-controls"}
+}

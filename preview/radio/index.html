@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>GJ Design System · 单选框 Radio</title>
+  <link rel="stylesheet" href="../../assets/styles/gj-b2b-tokens.css">
+  <link rel="stylesheet" href="../../assets/styles/gj-b2b-components.css?v=general-3">
+  <link rel="stylesheet" href="../../assets/styles/component-docs.css?v=1">
+  <link rel="preload" href="../../assets/icons/radio-pc-default.svg" as="image">
+  <link rel="preload" href="../../assets/icons/radio-pc-hover.svg" as="image">
+  <link rel="preload" href="../../assets/icons/radio-pc-pressed.svg" as="image">
+  <link rel="preload" href="../../assets/icons/radio-pc-press-ring.svg" as="image">
+  <style>
+    .state-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+    .state{padding:16px;min-width:0;background:var(--ds-background-container);border-radius:var(--docs-item-radius)}
+    .state small{display:block;margin-bottom:14px;color:var(--ds-text-tertiary);font-size:12px}
+    .forced-hover .gj-radio{background-image:url('../../assets/icons/radio-pc-hover.svg')}
+    .forced-mousedown .gj-radio{background-image:url('../../assets/icons/radio-pc-pressed.svg'),url('../../assets/icons/radio-pc-press-ring.svg');background-position:center,center;background-size:16px 16px,20px 20px;transform:scale(.96)}
+    .arrangement-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+    .arrangement{min-width:0;padding:20px;background:var(--ds-background-container);border-radius:var(--docs-panel-radius)}
+    .arrangement .arrangement-title{margin:0 0 14px;font-size:14px;font-weight:600;line-height:22px}
+    .playground{display:grid;grid-template-columns:minmax(0,var(--docs-layout-demo-fr)) minmax(var(--docs-interaction-min-width),var(--docs-layout-interaction-fr));gap:var(--docs-layout-column-gap);min-width:0}
+    .lab{display:grid;min-width:0;min-height:var(--docs-interaction-stage-min-height);place-items:center;padding:28px;overflow:hidden;border-radius:var(--docs-panel-radius)}
+    .demo-list{display:grid;gap:12px}
+    .controls{min-width:0;padding:20px;border-radius:var(--docs-panel-radius)}
+    .control-title{margin:0 0 16px;font-size:16px;font-weight:600;line-height:24px}
+    .control-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 16px}
+    .field{display:grid;min-width:0;gap:6px}.field label{color:var(--ds-text-secondary);font-size:12px;line-height:20px}
+    .field input:not(.gj-checkbox){width:100%;height:36px;min-width:0;padding:0 10px;color:var(--ds-text-primary);background:var(--ds-background-container);border:1px solid var(--ds-border-secondary);border-radius:var(--docs-item-radius)}
+    .field input:focus{border-color:var(--ds-brand-gj-blue);outline:3px solid var(--ds-background-bt-b20)}
+    .check{display:flex;align-items:center;align-self:end;gap:8px;min-height:36px;color:var(--ds-text-secondary)}
+    .event{margin-top:14px;color:var(--ds-text-secondary);font-size:12px;line-height:20px}.event b{color:var(--ds-text-primary)}
+    @media(max-width:960px){.playground{grid-template-columns:1fr}}
+    @media(max-width:680px){.state-grid,.arrangement-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.control-fields{grid-template-columns:1fr}}
+    @media(max-width:430px){.state-grid{grid-template-columns:1fr}}
+  </style>
+  <script src="../../assets/scripts/font-runtime.js"></script>
+</head>
+<body>
+<main class="docs-shell">
+  <header class="docs-page-head">
+    <div class="docs-eyebrow">信息录入组件 · Data Entry</div>
+    <h1>单选框 Radio</h1>
+    <p>用于从同一维度的一组互斥选项中选择唯一结果。圆形控件 16 × 16px，控件与标签间距 8px；适合需要同时浏览、比较全部选项的场景，选项过多时改用 Selector。</p>
+  </header>
+
+  <article class="docs-sheet">
+    <section class="docs-section">
+      <header class="docs-section-head"><div><h2>状态</h2><p>点击圆形控件或完整标签均可选择；选择新项后自动取消原选项。</p></div></header>
+      <div class="docs-stage docs-surface-gray"><div class="state-grid">
+        <div class="state"><small>Default</small><label class="gj-radio-label"><input class="gj-radio" type="radio" name="state-default"><span>单选项</span></label></div>
+        <div class="state"><small>Hover</small><label class="gj-radio-label forced-hover"><input class="gj-radio" type="radio" name="state-hover"><span>单选项</span></label></div>
+        <div class="state"><small>Mouse down</small><label class="gj-radio-label forced-mousedown"><input class="gj-radio" type="radio" name="state-mousedown"><span>单选项</span></label></div>
+        <div class="state"><small>Checked</small><label class="gj-radio-label"><input class="gj-radio" type="radio" name="state-checked" checked><span>单选项</span></label></div>
+        <div class="state"><small>Disabled</small><label class="gj-radio-label"><input class="gj-radio" type="radio" name="state-disabled" disabled><span>单选项</span></label></div>
+        <div class="state"><small>Checked Disabled</small><label class="gj-radio-label"><input class="gj-radio" type="radio" name="state-checked-disabled" checked disabled><span>单选项</span></label></div>
+      </div></div>
+    </section>
+
+    <section class="docs-section">
+      <header class="docs-section-head"><div><h2>排列方式</h2><p>同组选项默认全部可见，方便比较；横向或纵向组间距均为 12px。</p></div></header>
+      <div class="docs-stage docs-surface-gray"><div class="arrangement-grid">
+        <div class="arrangement"><h3 class="arrangement-title">横向排列</h3><div class="gj-radio-group"><label class="gj-radio-label"><input class="gj-radio" type="radio" name="horizontal" checked><span>选项一</span></label><label class="gj-radio-label"><input class="gj-radio" type="radio" name="horizontal"><span>选项二</span></label><label class="gj-radio-label"><input class="gj-radio" type="radio" name="horizontal"><span>选项三</span></label></div></div>
+        <div class="arrangement"><h3 class="arrangement-title">纵向排列</h3><div class="gj-radio-group gj-radio-group-vertical"><label class="gj-radio-label"><input class="gj-radio" type="radio" name="vertical" checked><span>选项一</span></label><label class="gj-radio-label"><input class="gj-radio" type="radio" name="vertical"><span>选项二</span></label><label class="gj-radio-label"><input class="gj-radio" type="radio" name="vertical"><span>选项三</span></label></div></div>
+      </div></div>
+    </section>
+
+    <section class="docs-section">
+      <header class="docs-section-head"><div><h2>交互演示</h2><p>切换选项，观察同组互斥、禁用项与文案联动的效果。</p></div></header>
+      <div class="playground">
+        <div class="lab docs-surface-gray"><div class="demo-list" id="demoGroup"><label class="gj-radio-label"><input class="gj-radio" type="radio" name="demo" value="股票" checked><span>股票</span></label><label class="gj-radio-label"><input class="gj-radio" type="radio" name="demo" value="基金"><span>基金</span></label><label class="gj-radio-label"><input class="gj-radio" type="radio" name="demo" value="债券"><span>债券</span></label></div></div>
+        <aside class="controls docs-surface-white"><h3 class="control-title">属性控制</h3><div class="control-fields">
+          <div class="field"><label for="labelInput">第三项文字</label><input id="labelInput" type="text" value="债券"></div>
+          <label class="check"><input id="disabledControl" class="gj-checkbox" type="checkbox"><span>禁用第三项</span></label>
+        </div><div class="event">当前选择：<b id="event">股票</b></div><span id="code" hidden></span></aside>
+      </div>
+    </section>
+
+    <section class="docs-section">
+      <header class="docs-section-head"><div><h2>选用规则</h2><p>Radio 用于互斥单选，谨慎设置默认值。</p></div></header>
+      <div class="docs-spec-table-wrap"><table class="docs-spec-table"><colgroup><col style="width:18%"><col style="width:42%"><col></colgroup><thead><tr><th>主题</th><th>推荐做法</th><th>边界与避免</th></tr></thead><tbody>
+        <tr><td>用途</td><td>用于同一维度的互斥选项，同组只能存在一个 Checked。</td><td>允许选择多个结果时使用 Checkbox，不用 Radio 模拟多选。</td></tr>
+        <tr><td>选项维度</td><td>标签采用并列且可比较的表达。</td><td>不要把动作、状态和对象混在同一组中。</td></tr>
+        <tr><td>默认值</td><td>仅在存在安全、常用或明确推荐值时预选。</td><td>不要替用户完成高风险决定。</td></tr>
+        <tr><td>禁用项</td><td>保留上下文但不可交互，必要时说明解除限制的条件。</td><td>不要隐藏禁用项或让其无提示地消失。</td></tr>
+      </tbody></table></div>
+    </section>
+  </article>
+</main>
+<script>
+  const group=document.getElementById('demoGroup'),eventEl=document.getElementById('event'),code=document.getElementById('code'),third=group.querySelectorAll('label')[2],thirdInput=third.querySelector('input');
+  function update(){const selected=group.querySelector('input:checked');eventEl.textContent=selected?selected.value:'尚未选择';code.textContent=`<RadioGroup value="${selected?selected.value:''}">\n  <Radio value="股票">股票</Radio>\n  <Radio value="基金">基金</Radio>\n  <Radio value="${thirdInput.value}" disabled={${thirdInput.disabled}}>\n    ${thirdInput.value}\n  </Radio>\n</RadioGroup>`}
+  group.onchange=update;document.getElementById('labelInput').oninput=e=>{thirdInput.value=e.target.value;third.querySelector('span').textContent=e.target.value;update()};document.getElementById('disabledControl').onchange=e=>{thirdInput.disabled=e.currentTarget.checked;update()};update();
+</script>
+</body></html>

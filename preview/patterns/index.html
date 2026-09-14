@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>国金 PC 端 B 端设计系统 · 页面模式</title>
+  <link rel="stylesheet" href="../../assets/styles/gj-b2b-tokens.css"><link rel="stylesheet" href="../../assets/styles/gj-b2b-components.css?v=general-1">
+  <style>
+    *{box-sizing:border-box}html,body{height:100%;margin:0}body{overflow:hidden;background:var(--ds-background-background);color:var(--ds-text-primary);font:14px/22px var(--ds-font-family-ui)}button{font:inherit;color:inherit}.pattern-app{display:grid;grid-template-columns:216px minmax(0,1fr);grid-template-rows:60px minmax(0,1fr);grid-template-areas:"header header" "nav content";height:100%}.pattern-header{grid-area:header;display:flex;align-items:center;padding:0 20px;border-bottom:1px solid var(--ds-border-default);background:var(--ds-background-container)}.pattern-header h1{margin:0;font-size:18px;line-height:26px}.pattern-header span{margin-left:12px;color:var(--ds-text-tertiary);font-size:12px}.pattern-nav{grid-area:nav;padding:16px 12px;border-right:1px solid var(--ds-border-default);background:var(--ds-background-container)}.pattern-nav-title{margin:0 8px 10px;color:var(--ds-text-tertiary);font-size:12px;font-weight:400}.pattern-link{display:flex;width:100%;height:40px;align-items:center;padding:0 12px;border:0;border-radius:8px;background:transparent;color:var(--ds-text-secondary);text-align:left;cursor:pointer}.pattern-link:hover{background:var(--ds-background-hover);color:var(--ds-text-primary)}.pattern-link[aria-current="page"]{background:var(--ds-background-bt-b8);color:var(--ds-text-blue);font-weight:600}.pattern-content{grid-area:content;min-width:0;min-height:0}.pattern-frame{display:block;width:100%;height:100%;border:0;background:var(--ds-background-background)}
+    @media(max-width:760px){.pattern-app{grid-template-columns:1fr;grid-template-rows:auto auto minmax(0,1fr);grid-template-areas:"header" "nav" "content"}.pattern-header{height:60px}.pattern-header span{display:none}.pattern-nav{display:flex;gap:4px;padding:8px;overflow:auto;border-right:0;border-bottom:1px solid var(--ds-border-default)}.pattern-nav-title{display:none}.pattern-link{width:auto;flex:none;padding:0 12px}.pattern-content{min-height:0}}
+  </style>
+  <script src="../../assets/scripts/font-runtime.js"></script>
+</head>
+<body>
+  <main class="pattern-app">
+    <header class="pattern-header"><h1>页面模式</h1><span>PC 端 B 端页面组合参考</span></header>
+    <nav class="pattern-nav" aria-label="页面模式导航">
+      <p class="pattern-nav-title">五种基础模式</p>
+      <button class="pattern-link" data-page="search-list.html" aria-current="page">查询列表</button>
+      <button class="pattern-link" data-page="form-edit.html">新建/编辑表单</button>
+      <button class="pattern-link" data-page="object-detail.html">对象详情</button>
+      <button class="pattern-link" data-page="dashboard.html">概览/工作台</button>
+      <button class="pattern-link" data-page="step-task.html">分步任务</button>
+    </nav>
+    <section class="pattern-content"><iframe class="pattern-frame" id="patternFrame" src="search-list.html" title="查询列表页面模式"></iframe></section>
+  </main>
+  <script>
+    const frame=document.getElementById('patternFrame');
+    const links=[...document.querySelectorAll('.pattern-link')];
+    const titles={'search-list.html':'查询列表','form-edit.html':'新建/编辑表单','object-detail.html':'对象详情','dashboard.html':'概览/工作台','step-task.html':'分步任务'};
+    function openPattern(page,push=true){const target=titles[page]?page:'search-list.html';frame.src=target;frame.title=titles[target]+'页面模式';links.forEach(link=>link.setAttribute('aria-current',link.dataset.page===target?'page':'false'));if(push)location.hash=target.replace('.html','')}
+    links.forEach(link=>link.addEventListener('click',()=>openPattern(link.dataset.page)));
+    window.addEventListener('hashchange',()=>openPattern((location.hash.slice(1)||'search-list')+'.html',false));
+    openPattern((location.hash.slice(1)||'search-list')+'.html',false);
+  </script>
+</body>
+</html>

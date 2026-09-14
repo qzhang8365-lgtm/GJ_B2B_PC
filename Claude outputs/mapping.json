@@ -1,0 +1,43 @@
+{
+  "$schema": "gj-design-skill/component-mapping/v1",
+  "component": "InputNumber",
+  "codeComponent": "GjInputNumber",
+  "source": "references/design-system-rules.md#input-number-数字输入；本轮无 Figma 链接，未做节点级核实（rules-derived，见 schema.json 的 source 字段）。",
+  "propertyMap": {
+    "mode": "mode",
+    "size": "size",
+    "min / max / step": "min / max / step（必填；开发期缺失应报错，不允许静默省略某一项）",
+    "value": "value（mode=rangeSlider 时为 [number, number]，其余为 number）",
+    "unit": "unit（仅 mode=unit 时展示，固定位置，用户不可编辑）",
+    "disabled": "disabled + disabledReason"
+  },
+  "structureMap": {
+    "basic": "复用 Input 的 .gj-input-wrap 数字态：单行输入框，不带左右操作区",
+    "stepper": ".gj-input-wrap 左右各追加一个加/减按钮；边界值时对应按钮禁用",
+    "unit": ".gj-input-wrap 右侧追加固定单位/币种文本节点，不可编辑、不占输入宽度",
+    "rightStep": ".gj-input-wrap 右侧叠加上下两个步进箭头（同一侧上下结构，区别于 stepper 的左右分列）",
+    "slider": "轨道 + 单滑块 + 精确值 Tooltip（Hover/拖动时显示）",
+    "rangeSlider": "轨道 + 双滑块 + 区间 Tooltip，两滑块之间不可交叉"
+  },
+  "tokenMap": {
+    "size.*": "字段宽/高/圆角，见 input-number.tokens.json 的 size.small/medium/large 系列；圆角复用 Radius/Radius-XS|SM|MD",
+    "field.background": "{Background/Container}",
+    "field.border.default": "{Border/secondary}",
+    "field.border.focused": "{Border/focused}",
+    "field.border.error": "{Border/error}",
+    "field.border.disabled": "{Border/disabled}",
+    "field.text": "{Text/Primary}",
+    "field.text.disabled": "{Text/disable}",
+    "field.text.error": "{Feedback/error&rise}",
+    "note": "以上字段/边框/文字颜色直接复用 references/components/input.json 中已核实的真实 Input token 绑定，依据是 design-system-rules.md 第 1072 行「账号、证件号等数字字符串仍使用普通 Input」——说明 InputNumber 的基础态视觉应与 Input 一致，这是有原文依据的复用，不是新编的色值。"
+  },
+  "implementation": {
+    "runtime": {
+      "status": "no-shared-base",
+      "note": "assets/styles/gj-b2b-components.css 目前只有 .gj-input-wrap（Input 共享基座），没有 stepper 按钮 / unit 后缀 / slider 轨道与滑块的共享类；项目里也没有 preview/input-number/index.html 规范页可参照实测值。本文件的结构描述基于 design-system-rules.md 文字，不是读某个已存在实现文件得出，六种模式的具体像素间距留待后续设计稿或实现补齐。"
+    }
+  },
+  "openItems": {
+    "INN-001": "无共享 stepper / unit-suffix / slider 组件基座，也无 preview/input-number 规范页可核实实测尺寸间距。六种模式目前只是契约层的结构描述，按钮尺寸、滑块直径、轨道高度等未在 design-system-rules.md 给出，本轮未编造具体数字，留给后续设计稿或前端实现补齐后回填。"
+  }
+}

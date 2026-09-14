@@ -1,0 +1,159 @@
+{
+  "$schema": "gj-design-skill/component-schema/v1",
+  "component": "Upload",
+  "source": {
+    "rulesSection": "Upload 文件上传",
+    "inventoryPage": "Upload✅",
+    "figmaFile": "8b01I1e3TzH1IhYlr3tJzd",
+    "figmaPage": "3099:2117",
+    "status": "figma-audited",
+    "figmaAudit": "done-2026-09-09；Upload_Dropzone 追加核实-2026-09-09（用户在 Figma 中把该组件从 Image 页面移入 Upload 页面后，经 get_design_context/get_variable_defs 逐状态核实，节点未新建，仅重新归属）"
+  },
+  "purpose": "选择并上传一个或多个本地文件，逐项显示校验、进度、成功与可恢复失败结果。",
+  "figma": {
+    "componentSets": 4,
+    "variants": 16,
+    "standaloneComponents": 0,
+    "componentSetNodes": [
+      {
+        "nodeId": "3509:53",
+        "name": "Upload/File_list_Item",
+        "variants": 8,
+        "axes": {"State": ["Default", "Hover", "Uploading", "Error", "State5", "State6"], "filesize": [false, true]},
+        "normalization": "State6=Default+filesize；State5=Hover+filesize。发布组合实际为四种语义状态 × filesize。"
+      },
+      {
+        "nodeId": "3314:12323",
+        "name": "Upload_Form",
+        "variants": 1,
+        "axes": {"Property 1": ["Default"]},
+        "normalization": "实现为 Form label/help + shared Button 的组合，不复制负定位。"
+      },
+      {
+        "nodeId": "4297:16746",
+        "name": "upload_item/progress_bar",
+        "variants": 3,
+        "axes": {"state": ["before", "inprogress", "finished"]}
+      },
+      {
+        "nodeId": "3536:11370",
+        "name": "Upload_Dropzone",
+        "variants": 4,
+        "axes": {"State": ["Default", "Dragging", "Uploading", "Error"]},
+        "normalization": "归入 Upload 的大面积点击/拖拽入口；与按钮入口共用同一 file input、校验、队列与上传状态机。"
+      }
+    ],
+    "documentationFrame": "3495:3772",
+    "inventoryCorrection": "旧清单先后漏计 progress_bar 与 Upload_Dropzone；2026-09-09 最新 metadata 为 4 套/16 variants/0 standalone。"
+  },
+  "properties": {
+    "trigger": {"default": "button", "values": ["button", "dropzone"], "source": "dropzone 为 2026-09-09 新增触发方式，见下方 dropzone 字段；两种触发方式共用同一套选择/校验/队列/进度/重试/安全规则，不是两套交互模型"},
+    "triggerSize": {"default": "Medium", "values": ["Small", "Medium", "Large"], "source": "shared Button，仅适用于 trigger=button"},
+    "disabled": "boolean",
+    "multiple": "boolean",
+    "accept": "string[]",
+    "maxSizeBytes": "number|null",
+    "maxCount": "number|null",
+    "duplicatePolicy": {"default": "ask", "values": ["skip", "replace", "rename", "ask"]},
+    "showFileSize": {"default": false, "values": [false, true]},
+    "showRemove": {"default": true, "values": [false, true]},
+    "helpText": "string|null",
+    "fileItems": "UploadFile[]"
+  },
+  "item": {
+    "semanticStates": ["waiting", "uploading", "success", "error", "cancelled"],
+    "figmaStateMap": {
+      "waiting": "Default before request",
+      "uploading": "Uploading",
+      "success": "Default/State6 after completion",
+      "error": "Error",
+      "cancelled": "remove from active queue or retain as local status; no Figma visual variant"
+    },
+    "dimensions": {
+      "width": 360,
+      "height": 40,
+      "padding": 8,
+      "gap": 12,
+      "radius": 6,
+      "fileIcon": 20,
+      "actionIcon": 16,
+      "nameTextStyle": "中文/S8-CN-R",
+      "metaTextStyle": "中文/S9-CN-R"
+    },
+    "content": ["fileIcon", "fileNameOrStatus", "optionalProgressOrFileSize", "removeOrRetryAction"]
+  },
+  "progress": {
+    "height": 4,
+    "radius": 2,
+    "authoredWidth": 207,
+    "instanceOverrideWidth": 273,
+    "implementation": "宽度跟随文件行剩余空间；207/273 仅记录 Figma 母版和实例值。",
+    "value": "number 0..100",
+    "states": ["before", "inprogress", "finished"]
+  },
+  "stateStyles": {
+    "default": {"background": "transparent", "text": "Text/Primary"},
+    "hover": {"background": "Background/Background", "text": "Text/Primary"},
+    "uploading": {"background": "transparent", "text": "Text/Primary", "progressTrack": "Background/Secondary", "progressFill": "Brand/GJ_Blue"},
+    "error": {"background": "Background/BT_R5", "text": "Feedback/error&rise", "icon": "Feedback/error&rise", "retryAction": "Text/Tertiary", "retryActionHover": "Text/blue"},
+    "success": {"background": "transparent", "text": "Text/Primary"}
+  },
+  "composition": {
+    "trigger": "共享 Primary Button + 左侧 icf_file_upload；尺寸和所有交互态继承 Button。",
+    "form": "共享 Form label、required、tooltip 和 help，使用正常文档流。",
+    "fileType": "按扩展名/MIME 使用已打包 fileicon，视觉尺寸 20px。",
+    "actions": "图标按钮提供明确可访问名称；Error 用重试，完成/等待用移除。失败状态图标用 Feedback/error&rise，重试操作默认用 Text/Tertiary、Hover 用 Text/blue。"
+  },
+  "behavior": {
+    "validation": "客户端校验用于即时反馈，服务端必须重复大小、类型、内容与权限校验；accept 不是安全边界。",
+    "queue": "每项使用独立稳定 id，保留顺序和状态；部分成功只重试失败项。",
+    "progress": "限制在 0..100 且完成前单调；无总量时显示不定进度。",
+    "retry": "只重试当前失败项并防重复提交。",
+    "cancel": "仅在传输层真实支持时提供取消/暂停/继续。",
+    "remove": "上传中移除应先取消请求；完成后移除同步更新绑定值。",
+    "error": "多文件错误项保留可识别文件名，并给出具体可恢复原因。",
+    "security": "服务端校验 MIME/签名/大小/权限，清理文件名、隔离存储并执行产品恶意文件扫描策略。",
+    "accessibility": "共享 Button 触发有标签的原生 file input；进度带 value/min/max；状态 polite 播报；重试/删除名称包含文件名。"
+  },
+  "constraints": [
+    "Upload_Dropzone（节点 3536:11370）已于 2026-09-09 经 get_design_context/get_variable_defs 核实，可作为第二种触发方式使用；仍需遵守：不得为 dropzone 另建一套选择/校验/队列/重试/安全逻辑，必须复用本文件已有的 behavior 规则。",
+    "禁止另写 upload-button CSS；必须组合共享 Button，图标颜色跟随按钮文字 currentColor。",
+    "需要随状态变色的单色图标必须使用共享 mask 基元 + currentColor，不得使用无法继承语义色的外链 img。",
+    "文件类型图标按 Figma 显示为 20px，不因文件名含 24px 而显示 24px。",
+    "State5/State6 不进入公开 API。",
+    "示例文字 Recommended File Size less than 50M 不是全局限制；说明由业务配置生成并明确 MB/MiB。",
+    "禁止复制 Upload_Form 的负定位标签；使用共享 Form，避免错位和溢出。",
+    "暂停/继续仅在后端真实支持时展示。"
+  ],
+  "dropzone": {
+    "nodeId": "3536:11370",
+    "componentName": "Upload_Dropzone",
+    "figmaDescription": "用于大面积点击或拖拽上传图片，包含默认、拖拽、上传中及失败重试状态；默认圆角绑定 Radius/SM（6px）。Figma 组件说明原文写的是「图片」，是从 Image 组件移入 Upload 时留下的措辞残留；示例文案是 DOC/TXT 等通用文件，本契约按通用文件上传对待，不局限于图片，见下方 note。",
+    "states": ["Default", "Dragging", "Uploading", "Error"],
+    "dimensions": {"masterWidth": 520, "height": 180, "radius": 6, "radiusToken": "{Radius/Radius-SM}", "gap": 8, "iconDefault": 32, "iconDragging": 32, "iconUploading": 28, "iconError": 32, "progressTrackWidth": 240, "progressHeight": 4, "progressRadius": 2, "widthNote": "520px 只是 Figma 母版示例宽度；运行时应随容器宽度自适应，不是固定值"},
+    "stateStyles": {
+      "default": {"border": "dashed 1px Border/hover #b8c0cc", "background": "Background/Tertiary #fafbfc", "title": "Text/Primary #101828", "hint": "Text/Secondary #475467"},
+      "dragging": {"border": "dashed 1px Border/focused #2b73ff", "background": "Background/BT_B5 rgba(43,115,255,.05)", "title": "Text/Primary", "hint": "Text/Secondary"},
+      "uploading": {"border": "同 dragging（Border/focused + Background/BT_B5）", "progressTrack": "Background/Hover_2 rgba(0,0,0,.03)", "progressFill": "Feedback/brand #2b73ff"},
+      "error": {"border": "dashed 1px Border/error #f93838", "background": "Background/BT_R5 rgba(249,56,56,.05)", "title": "Feedback/error&rise #f93838", "hint": "Text/Secondary"}
+    },
+    "textDefaults": {
+      "title.default": "点击或拖拽文件到此处上传",
+      "hint.default": "支持DOC、TXT，单个文件不超过 10MB",
+      "title.dragging": "释放开始上传",
+      "hint.dragging": "松开鼠标上传文件",
+      "progressLabel.example": "文件上传中 68%",
+      "title.error": "文件上传失败",
+      "hint.error": "请检查文件格式或网络后重试",
+      "note": "以上均为 Figma 示例文案，不是全局文案；hint 需按真实 accept/maxSize/maxCount 生成，规则同按钮触发模式的 50M 示例文案"
+    },
+    "props": ["state", "title", "hint", "showHint", "progressLabel", "uploadIcon", "className"],
+    "openItems": {},
+    "note": "组件本身只是可视容器（一个 div 加文案、图标、进度条），不含原生 file input 绑定或真实拖拽事件；接入时复用 Upload 已有的选择、校验、队列、进度、重试、安全规则（见 behavior 字段），不是另一套交互模型。Uploading 态显示的是这个 dropzone 自身的整体/当前进度迷你条（240×4，圆角 2），与下方 file-item 内每行文件各自的进度条（母版 207px、实例 273px，运行时按剩余空间自适应，见 UPL-010）是两处独立但同语义（0–100 单调、无法获知总量时用不定进度）的进度展示，不要合并成同一份 DOM。"
+  },
+  "dependencies": ["Button", "Form", "Icon", "FileIcon"],
+  "icons": ["icf_file_upload.svg", "icf_file_image.svg", "icf_system_alert.svg", "icf_system_close-md.svg", "icf_system_refresh.svg", "icf_system_close-circle-fill.svg"],
+  "industryRuleSupplements": ["服务端验证与存储安全", "稳定队列标识", "不定进度", "重试/取消幂等", "状态播报", "失败文件身份保留"],
+  "knownFigmaIssues": ["UPL-001", "UPL-002", "UPL-003", "UPL-004", "UPL-005", "UPL-006", "UPL-007", "UPL-008", "UPL-009", "UPL-010", "UPL-011", "UPL-012"],
+  "pendingExtraction": []
+}

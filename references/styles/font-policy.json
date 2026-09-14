@@ -1,0 +1,114 @@
+{
+  "$schema": "gj-design-skill/font-policy/v1",
+  "rules": {
+    "ui": {
+      "required": true,
+      "source": "Use fonts installed on the user's operating system. Figma font names are visual references, not downloadable web-font requirements.",
+      "defaultPair": "pingfang-sf",
+      "pairingRequired": true,
+      "pairs": {
+        "pingfang-sf": {
+          "chinese": [
+            "PingFang SC"
+          ],
+          "latin": [
+            "SF Pro Text",
+            "SF Pro Display"
+          ],
+          "platform": "macos",
+          "fontStack": [
+            "SF Pro Text",
+            "SF Pro Display",
+            "PingFang SC",
+            "sans-serif"
+          ]
+        },
+        "yahei-arial": {
+          "chinese": [
+            "Microsoft YaHei UI",
+            "Microsoft YaHei"
+          ],
+          "latin": [
+            "Arial"
+          ],
+          "platform": "windows",
+          "fontStack": [
+            "Arial",
+            "Microsoft YaHei UI",
+            "Microsoft YaHei",
+            "sans-serif"
+          ]
+        },
+        "source-sans": {
+          "chinese": [
+            "Source Han Sans SC",
+            "Noto Sans CJK SC"
+          ],
+          "latin": [
+            "Source Sans 3",
+            "Source Sans Pro"
+          ],
+          "platform": "cross-platform-fallback",
+          "fontStack": [
+            "Source Sans 3",
+            "Source Sans Pro",
+            "Source Han Sans SC",
+            "Noto Sans CJK SC",
+            "sans-serif"
+          ]
+        }
+      },
+      "fallbackOrder": [
+        "pingfang-sf",
+        "yahei-arial",
+        "source-sans"
+      ],
+      "rules": [
+        "Do not mix arbitrary Chinese and Latin families.",
+        "Select one complete pair for a page or product surface and keep it consistent.",
+        "Do not download or bundle UI font files solely to reproduce the Figma editor font."
+      ]
+    },
+    "numeric": {
+      "preferredFamily": "GJType",
+      "fontStack": [
+        "GJType",
+        "DIN Alternate",
+        "DIN Condensed",
+        "Arial Narrow",
+        "system-ui",
+        "sans-serif"
+      ],
+      "fontFaceRequired": true,
+      "tabularNumerals": true,
+      "allowedComponents": [
+        "Metric",
+        "Chart/Gauge",
+        "Chart/Progress",
+        "Chart/ProgressRing"
+      ],
+      "forbiddenExamples": [
+        "table cells",
+        "bar-chart labels",
+        "line-chart labels",
+        "pie-chart labels",
+        "calendar dates",
+        "time picker values",
+        "pagination",
+        "badges",
+        "ordinary text"
+      ],
+      "defaultOutsideAllowedComponents": "Use the active UI font pair, even when the content is numeric."
+    }
+  },
+  "assetContract": {
+    "family": "GJType",
+    "bundled": true,
+    "weights": {
+      "regular": 400,
+      "medium": 500,
+      "bold": 700
+    },
+    "status": "bundled in assets/fonts; DIN series is fallback only"
+  }
+}

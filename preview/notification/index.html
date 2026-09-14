@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GJ Design System · 通知 Notification</title>
+<link rel="stylesheet" href="../../assets/styles/gj-b2b-tokens.css?v=notification-2"><link rel="stylesheet" href="../../assets/styles/gj-b2b-components.css?v=notification-3"><link rel="stylesheet" href="../../assets/styles/data-table.css">
+<style>
+:root{--font:var(--ds-font-family-ui)}*{box-sizing:border-box}html,body{margin:0;min-height:100%}body{color:var(--ds-text-primary);font:14px/1.55 var(--font)}button,input,select{font:inherit;color:inherit}.shell{max-width:var(--docs-page-max-width);margin:auto;padding:var(--docs-page-padding)}.intro{margin:0 4px 30px}.eyebrow{margin-bottom:10px;color:var(--ds-text-blue);font-size:13px;font-weight:600}.intro h1{margin:0 0 8px;font-size:32px;line-height:42px}.intro p{max-width:980px;margin:0;color:var(--ds-text-secondary);font-size:15px;line-height:1.75}.component{padding:24px;border-radius:20px;background:var(--ds-background-container)}.component-heading{display:flex;align-items:center;gap:12px;padding-bottom:16px;border-bottom:1px solid var(--ds-border-default)}.component-heading h1{margin:0;font-size:28px;line-height:32px}.component-heading span{color:var(--ds-text-tertiary);font-size:14px}.component-description{margin:24px 0;color:var(--ds-text-secondary)}.grid{display:grid;grid-template-columns:minmax(0,3fr) minmax(340px,2fr);gap:16px;align-items:start}.column{display:grid;gap:16px;min-width:0}.panel{min-width:0;padding:20px;border:1px solid var(--ds-border-default);border-radius:12px;background:var(--ds-background-container)}.panel-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:16px}.panel-head h2{margin:0;font-size:16px;font-weight:600}.panel-head span{color:var(--ds-text-tertiary);font-size:12px}.status-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.stage{min-height:360px;display:grid;place-items:start start;padding:32px 20px;border:1px dashed var(--ds-border-secondary);border-radius:12px;background:var(--ds-background-background)}.controls{margin-top:18px;padding-top:18px;border-top:1px solid var(--ds-border-default)}.controls h3{margin:0;font-size:16px}.control-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 16px;margin-top:14px}.control{display:grid;gap:7px}.control input,.control select{height:36px;min-width:0;padding:0 10px;border:1px solid var(--ds-border-secondary);border-radius:6px;background:var(--ds-background-container)}.check{display:flex;align-items:center;gap:8px;height:36px}.event{margin-top:12px;color:var(--ds-text-tertiary);font-size:12px}.event b{color:var(--ds-text-primary)}.rules{display:grid;gap:10px}.rule{padding:14px 16px;border-radius:10px;background:var(--ds-background-background)}.rule b{display:block;margin-bottom:4px}.rule p{margin:0;color:var(--ds-text-secondary);font-size:13px}.boundary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.boundary-item{padding:16px;border-radius:10px;background:var(--ds-background-background)}.boundary-item b{display:block;margin-bottom:6px}.boundary-item p{margin:0;color:var(--ds-text-secondary);font-size:13px}@media(max-width:1050px){.grid{grid-template-columns:1fr}}@media(max-width:760px){.shell{padding:var(--docs-page-padding-compact)}.component{padding:18px}.status-grid,.boundary,.control-grid{grid-template-columns:1fr}}
+</style>  <script src="../../assets/scripts/font-runtime.js"></script>
+</head><body><main class="shell">
+<header class="intro"><div class="eyebrow">操作反馈类型组件 · Feedback</div><h1>通知 Notification</h1><p>用于在不中断当前任务的情况下持续呈现较完整的信息。Notification 由标题、说明、状态图标、关闭入口及可选的单一确认操作组成。</p></header>
+<section class="component"><header class="component-heading"><h1>Notification</h1><span>全局非阻断通知</span></header><p class="component-description">适用于需要比 Toast 停留更久、信息层级更完整，但不要求用户立即决策的场景。关闭入口固定显示；确认按钮只能显示或隐藏，不提供 Loading、双按钮、尺寸和交互状态变体。内容左对齐撑满卡片。</p>
+<div class="grid"><section class="column">
+<article class="panel"><div class="panel-head"><h2>语义类型</h2><span>Info / Warning / Error / Success</span></div><div class="status-grid" id="statusGrid"></div></article>
+<article class="panel"><div class="panel-head"><h2>结构与规格</h2><span>固定表格样式</span></div><div class="ds-table-wrap"><table class="ds-table"><thead><tr><th>结构</th><th>规格</th><th>样式与约束</th></tr></thead><tbody><tr><td>容器</td><td>宽 384px；内边距 20px；列间距 12px；主行 16px</td><td>圆角 12px；白色容器；shadow-down</td></tr><tr><td>语义图标</td><td>32 × 32px</td><td>Info 绑 Text/blue；Error 用 close-circle-fill；其余绑 Feedback 对应状态色</td></tr><tr><td>标题与说明</td><td>标题 16/24·600；说明 14/22·400</td><td>标题 Text/Primary；说明 Text/Secondary；左对齐</td></tr><tr><td>关闭与操作</td><td>关闭 16px；确认按钮 Button Medium</td><td>关闭固定显示；确认操作最多一个，可隐藏，右对齐；不覆盖 Button 默认</td></tr></tbody></table></div></article>
+<article class="panel"><div class="panel-head"><h2>反馈组件边界</h2><span>选择正确的反馈层级</span></div><div class="boundary"><div class="boundary-item"><b>Toast</b><p>短消息、无操作、自动消失。用于即时反馈操作结果。</p></div><div class="boundary-item"><b>Notification</b><p>标题＋说明，可选一个确认操作；非阻断，但停留时间更长。</p></div><div class="boundary-item"><b>Modal</b><p>需要用户决策或承载表单、级联选择等复杂内容时使用。</p></div></div></article>
+<article class="panel"><div class="panel-head"><h2>选用规则</h2><span>Usage rules</span></div><div class="rules"><div class="rule"><b>内容完整但保持单一主题</b><p>标题说明事件，正文补充影响或下一步；避免堆叠多个无关通知。</p></div><div class="rule"><b>确认操作最多一个</b><p>仅在需要用户轻量确认或进入详情时显示；不得加入取消按钮或双按钮组合。</p></div><div class="rule"><b>非阻断且不自动升级</b><p>Notification 不遮挡页面、不锁定焦点；一旦需要明确决策，应改用 Modal。</p></div><div class="rule"><b>停留与堆叠</b><p>默认持续显示至用户关闭或业务状态失效；同类重复内容应更新原通知，避免无限堆叠。</p></div></div></article>
+</section><aside class="column"><article class="panel"><div class="panel-head"><h2>交互属性</h2><span>固定宽度 · 非阻断</span></div><div class="stage"><div id="preview"></div></div><div class="controls"><h3>属性控制</h3><div class="control-grid"><label class="control">语义状态<select id="status"><option value="info">Info 信息</option><option value="warning">Warning 警告</option><option value="error">Error 错误</option><option value="success">Success 成功</option></select></label><label class="control">标题<input id="titleInput" value="任务处理通知"></label><label class="control">说明<input id="descriptionInput" value="任务已进入处理队列，完成后将更新结果。"></label><label class="check"><input class="gj-checkbox" id="showDescription" type="checkbox" checked>显示说明</label><label class="check"><input class="gj-checkbox" id="showIcon" type="checkbox" checked>显示状态图标</label><label class="check"><input class="gj-checkbox" id="showAction" type="checkbox" checked>显示确认按钮</label></div><div class="event">最近事件：<b id="event">尚未操作</b></div></div></article></aside></div></section></main>
+<script>
+const iconUrl=name=>`../../assets/icons/iconfont/icf_system_${name}.svg`;
+const meta={
+  info:{label:'信息',icon:'warning-fill',title:'任务处理通知',tone:''},
+  warning:{label:'警告',icon:'alert-fill',title:'请关注当前任务',tone:' gj-notification-warning'},
+  error:{label:'错误',icon:'close-circle-fill',title:'任务处理失败',tone:' gj-notification-error'},
+  success:{label:'成功',icon:'check-circle-fill',title:'任务处理完成',tone:' gj-notification-success'}
+};
+function notificationMarkup(status,opts={}){
+  const item=meta[status];
+  const icon=opts.icon===false?'':`<span class="gj-notification-icon" style="--gj-icon:url('${iconUrl(item.icon)}')" aria-hidden="true"></span>`;
+  const desc=opts.description===false?'':'<p class="gj-notification-desc"></p>';
+  const action=opts.action===false?'':'<div class="gj-notification-action"><button class="gj-btn gj-btn-primary" type="button">确认</button></div>';
+  return `<section class="gj-notification${item.tone}"><div class="gj-notification-main">${icon}<div class="gj-notification-copy"><strong class="gj-notification-title"></strong>${desc}</div><button class="gj-notification-close" type="button" aria-label="关闭通知"><span style="--gj-icon:url('${iconUrl('close')}')"></span></button></div>${action}</section>`;
+}
+const statusGrid=document.getElementById('statusGrid');
+Object.entries(meta).forEach(([status,item])=>{
+  const wrap=document.createElement('div');
+  wrap.className='status-demo';
+  wrap.innerHTML=`<h3>${item.label} ${status[0].toUpperCase()+status.slice(1)}</h3>${notificationMarkup(status)}`;
+  wrap.querySelector('.gj-notification-title').textContent=item.title;
+  wrap.querySelector('.gj-notification-desc').textContent='这里是通知的补充说明，用于说明影响或下一步。';
+  wrap.querySelector('.gj-notification-close').onclick=()=>{};
+  statusGrid.append(wrap);
+});
+const preview=document.getElementById('preview'),statusEl=document.getElementById('status'),titleEl=document.getElementById('titleInput'),descriptionEl=document.getElementById('descriptionInput'),showDescription=document.getElementById('showDescription'),showIcon=document.getElementById('showIcon'),showAction=document.getElementById('showAction'),eventEl=document.getElementById('event');
+function render(){
+  const status=statusEl.value;
+  preview.innerHTML=notificationMarkup(status,{icon:showIcon.checked,description:showDescription.checked,action:showAction.checked});
+  preview.querySelector('.gj-notification-title').textContent=titleEl.value||meta[status].title;
+  preview.querySelector('.gj-notification-desc')?.replaceChildren(document.createTextNode(descriptionEl.value));
+  preview.querySelector('.gj-notification-close').onclick=()=>{preview.innerHTML='';eventEl.textContent='已关闭通知'};
+  preview.querySelector('.gj-btn')?.addEventListener('click',()=>eventEl.textContent='已执行确认操作');
+}
+statusEl.onchange=()=>{titleEl.value=meta[statusEl.value].title;render()};
+[titleEl,descriptionEl].forEach(el=>el.oninput=render);
+[showDescription,showIcon,showAction].forEach(el=>el.onchange=render);
+render();
+</script></body></html>

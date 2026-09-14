@@ -1,0 +1,185 @@
+{
+  "$schema": "gj-design-skill/component-schema/v1",
+  "component": "Pagination",
+  "source": {
+    "rulesSection": "Pagination 分页",
+    "inventoryPage": "Pagination",
+    "figmaFile": "8b01I1e3TzH1IhYlr3tJzd",
+    "figmaPage": "2402:14",
+    "status": "figma-audited",
+    "figmaAudit": "done-2026-09-09-PAG-002"
+  },
+  "purpose": "将大量连续数据拆分为多个页面，表达当前页、可达页和边界状态。",
+  "implementation": {
+    "rootClass": "gj-pagination",
+    "itemClass": "gj-page-btn",
+    "selectedClass": "gj-page-btn-selected",
+    "arrowClass": "gj-page-btn-arrow",
+    "miniClass": "gj-pagination-mini",
+    "fullClass": "gj-pagination-full",
+    "groupClass": "gj-pagination-group",
+    "jumpClass": "gj-pagination-jump"
+  },
+  "figma": {
+    "fileKey": "8b01I1e3TzH1IhYlr3tJzd",
+    "pageNodeId": "2402:14",
+    "pageName": "分页组件Pagination",
+    "inventoryListed": {
+      "sets": 3,
+      "variants": 35,
+      "standalone": 0
+    },
+    "auditedThisPass": {
+      "sets": 3,
+      "variants": 35,
+      "standalone": 1,
+      "note": "2026-09-09 按母版口径。jump_to 是独立件，旧 inventory standalone 0 漏记。"
+    },
+    "componentSets": [
+      {
+        "nodeId": "2889:3460",
+        "name": "Pagination_item/number",
+        "variants": 8,
+        "note": "Size=Default|mini × state=default|hover|selected|disabled。代表：Default default 2889:3459、hover 2889:3458、selected 2889:3457、disabled 2889:3472；mini default 2889:3461、selected 2889:3465。"
+      },
+      {
+        "nodeId": "2889:3580",
+        "name": "Pagination_item/arrow",
+        "variants": 24,
+        "note": "Size=Default|small × direction=previous|Next × State=Default|hover|disabled × double=false|true。代表：Default previous Default 2889:3575、hover 2889:3579、disabled 2889:3573、double 2889:3577、Next 2889:3574、small 2889:3617。"
+      },
+      {
+        "nodeId": "2889:3755",
+        "name": "Pagination",
+        "variants": 3,
+        "note": "type=default 2889:3754、mini 2889:3753、type4 2889:3752。type4 即 Full。"
+      }
+    ],
+    "standalone": [
+      {
+        "nodeId": "4176:18061",
+        "name": "Pagination_item/arrow/Pagination_item/jump_to",
+        "note": "跳转：Go to + 48×26 输入框。"
+      }
+    ],
+    "usageDocNodeId": "4806:20549",
+    "usageDocNote": "独立的使用说明画板（非组件节点），2026-09-10 只读读取并入 rules.md 的'使用场景与选型'小节。"
+  },
+  "properties": {
+    "type": [
+      "default",
+      "mini",
+      "full"
+    ],
+    "size": [
+      "default",
+      "mini"
+    ],
+    "state": [
+      "default",
+      "hover",
+      "selected",
+      "disabled"
+    ],
+    "direction": [
+      "previous",
+      "next"
+    ],
+    "double": [
+      false,
+      true
+    ],
+    "showJump": [
+      false,
+      true
+    ]
+  },
+  "defaults": {
+    "type": "default",
+    "size": "default",
+    "double": false,
+    "showJump": false
+  },
+  "sizes": {
+    "default": {
+      "item": 32,
+      "icon": 20,
+      "arrowPadding": 6,
+      "radius": 6
+    },
+    "mini": {
+      "item": 24,
+      "icon": 16,
+      "radius": 6
+    },
+    "jump": {
+      "width": 48,
+      "height": 26,
+      "radius": 4,
+      "gap": 8
+    }
+  },
+  "typography": {
+    "item": {
+      "textStyle": "中文/S8-CN-R",
+      "size": 14,
+      "lineHeight": 22,
+      "weight": 400
+    },
+    "selected": {
+      "textStyle": "中文/S5-CN-S",
+      "size": 14,
+      "lineHeight": 22,
+      "weight": 600
+    },
+    "total": {
+      "textStyle": "中文/S8-CN-R"
+    },
+    "jumpLabel": {
+      "textStyle": "中文/S8-CN-R"
+    }
+  },
+  "colorBindings": {
+    "number.default": "Text/Primary",
+    "number.hover": "Text/blue",
+    "number.selected": "Text/blue + Background/Selected",
+    "number.disabled": "Text/disable",
+    "arrow.default": "Text/Tertiary",
+    "arrow.hover": "Text/Tertiary + Background/Hover_2",
+    "arrow.disabled": "Text/Tertiary + opacity 40%",
+    "ellipsis": "Text/disable",
+    "total": "Text/Primary",
+    "jump.label": "Text/Primary",
+    "jump.input.background": "Background/Container",
+    "jump.input.border": "Border/default"
+  },
+  "confirmedDecisions": [
+    "数字 Hover 只有 Text/blue，无 Hover_2 底；箭头 Hover 才用 Background/Hover_2，图标保持 Tertiary。",
+    "箭头禁用是 Tertiary + 40% 透明，不是 Text/disable。数字禁用才是 Text/disable。",
+    "Figma type=type4 映射为 Full。组合默认不含双箭头。",
+    "jump_to 是独立件。inventory 更正为 3 套 / 35 variants / 1 standalone。",
+    "项间距 4、Full 外间距 8、圆角 6 为字面值，未读到 Interval/Radius 绑定。"
+  ],
+  "constraints": [
+    "同一分页器内当前页必须唯一。",
+    "省略项不可点击。",
+    "首页禁用上一页和快退，末页禁用下一页和快进。",
+    "数字与箭头的 Hover/禁用不得混用同一套颜色。",
+    "规范页与业务页必须复用 gj-pagination，不得在页面 CSS 重画页码项。"
+  ],
+  "dependencies": [
+    "Icon",
+    "Input"
+  ],
+  "icons": [
+    "icf_Arrow_left.svg",
+    "icf_Arrow_right.svg",
+    "icf_Arrow_left-sm.svg",
+    "icf_Arrow_right-sm.svg",
+    "icf_Arrow_tarrows-left-regular.svg",
+    "icf_Arrow_arrows-right-regular.svg",
+    "icf_system_more.svg"
+  ],
+  "knownFigmaIssues": [],
+  "pendingExtraction": []
+}

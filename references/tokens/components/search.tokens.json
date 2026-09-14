@@ -1,0 +1,272 @@
+{
+  "$schema": "gj-design-skill/component-tokens/v1",
+  "component": "Search",
+  "source": {
+    "figmaNode": "2982:4914",
+    "figmaNodes": [
+      "2982:4914",
+      "2982:4993",
+      "4208:19089",
+      "4208:19104"
+    ],
+    "figmaReadDate": "2026-09-09",
+    "componentSchema": "references/components/search/schema.json",
+    "componentMapping": "references/components/search/mapping.json",
+    "confirmedRules": "references/components/search/rules.md",
+    "implementation": "assets/styles/gj-b2b-components.css#.gj-search"
+  },
+  "properties": {
+    "mode": {
+      "default": "confirm",
+      "values": [
+        "confirm",
+        "suggest"
+      ]
+    },
+    "size": {
+      "default": "medium",
+      "values": [
+        "small",
+        "medium",
+        "large"
+      ]
+    },
+    "visualState": {
+      "default": "default",
+      "values": [
+        "default",
+        "focused",
+        "filled",
+        "disabled"
+      ],
+      "publicProp": false
+    }
+  },
+  "tokens": {
+    "referenceWidth": {
+      "value": 233,
+      "unit": "px",
+      "cssVariable": "--ds-component-search-reference-width",
+      "note": "Search-Box 画板默认宽度；允许业务容器覆盖，不作为最小宽度。"
+    },
+    "size.small.height": {
+      "value": "{Components/control-S}",
+      "resolved": 24,
+      "unit": "px",
+      "cssVariable": "--ds-component-search-size-small-height"
+    },
+    "size.small.paddingInline": {
+      "value": 6,
+      "unit": "px",
+      "cssVariable": "--ds-component-search-size-small-padding-inline",
+      "note": "Figma 实测 6px；Interval 无 6px 档，不伪造 space 别名。"
+    },
+    "size.small.gap": {
+      "value": 6,
+      "unit": "px",
+      "cssVariable": "--ds-component-search-size-small-gap"
+    },
+    "size.small.focusedGap": {
+      "value": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-search-size-small-focused-gap",
+      "note": "Figma Small focused 实测为 8px（2026-09-10 前 Figma 值为 active/typing）；其他 Small 状态为 6px。"
+    },
+    "size.small.radius": {
+      "value": "{Radius/Radius-XS}",
+      "resolved": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-search-size-small-radius"
+    },
+    "size.small.iconSize": {
+      "value": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-search-size-small-icon"
+    },
+    "size.small.textStyle": {
+      "value": "{中文/S9-CN-R}",
+      "cssClass": "gj-type-cn-s9"
+    },
+    "size.medium.height": {
+      "value": "{Components/control-M}",
+      "resolved": 32,
+      "unit": "px",
+      "cssVariable": "--ds-component-search-size-medium-height"
+    },
+    "size.medium.paddingInline": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-search-size-medium-padding-inline"
+    },
+    "size.medium.gap": {
+      "value": 6,
+      "unit": "px",
+      "cssVariable": "--ds-component-search-size-medium-gap",
+      "note": "Figma 实测 6px；Interval 无 6px 档。"
+    },
+    "size.medium.radius": {
+      "value": "{Radius/Radius-SM}",
+      "resolved": 6,
+      "unit": "px",
+      "cssVariable": "--ds-component-search-size-medium-radius"
+    },
+    "size.medium.iconSize": {
+      "value": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-search-size-medium-icon"
+    },
+    "size.medium.textStyle": {
+      "value": "{中文/S8-CN-R}",
+      "cssClass": "gj-type-cn-s8"
+    },
+    "size.large.height": {
+      "value": "{Components/control-L}",
+      "resolved": 40,
+      "unit": "px",
+      "cssVariable": "--ds-component-search-size-large-height"
+    },
+    "size.large.paddingInline": {
+      "value": "{Interval/space4}",
+      "resolved": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-search-size-large-padding-inline"
+    },
+    "size.large.gap": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-search-size-large-gap"
+    },
+    "size.large.radius": {
+      "value": "{Radius/Radius-MD}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-search-size-large-radius"
+    },
+    "size.large.iconSize": {
+      "value": 20,
+      "unit": "px",
+      "cssVariable": "--ds-component-search-size-large-icon"
+    },
+    "size.large.textStyle": {
+      "value": "{中文/S7-CN-R}",
+      "cssClass": "gj-type-cn-s7"
+    },
+    "size.paddingBlock": {
+      "value": "{Interval/space2}",
+      "resolved": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-search-size-padding-block"
+    },
+    "clear.medium": {
+      "value": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-search-clear-medium"
+    },
+    "clear.large": {
+      "value": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-search-clear-large"
+    },
+    "group.gap": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-search-group-gap"
+    },
+    "focus.ringWidth": {
+      "value": 2,
+      "unit": "px",
+      "cssVariable": "--ds-component-search-focus-ring-width",
+      "note": "Search-Box state=focused（2026-09-10 前为 active）已核实，与 Input INP-004 不同。"
+    },
+    "focus.ringColor": {
+      "value": "{Background/BT_B10}",
+      "resolved": "#2B73FF1A",
+      "cssVariable": "--ds-component-search-focus-ring-color"
+    },
+    "result.item.height": {
+      "value": "{Components/control-M}",
+      "resolved": 32,
+      "unit": "px",
+      "cssVariable": "--ds-component-search-result-item-height"
+    },
+    "result.item.paddingInline": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-search-result-item-padding-inline"
+    },
+    "result.item.radius": {
+      "value": "{Radius/Radius-XS}",
+      "resolved": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-search-result-item-radius"
+    },
+    "list.padding": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-search-list-padding"
+    },
+    "list.radius": {
+      "value": "{Radius/Radius-MD}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-search-list-radius"
+    },
+    "list.shadow": {
+      "value": "{shadow-down}",
+      "cssVariable": "--ds-component-search-list-shadow"
+    }
+  },
+  "stateMatrix": {
+    "default": {
+      "background": "Background/Container",
+      "text": "Text/Primary",
+      "placeholder": "Text/disable",
+      "border": "Border/secondary"
+    },
+    "focused": {
+      "background": "Background/Container",
+      "text": "Text/Primary",
+      "placeholder": "Text/disable",
+      "border": "Border/focused",
+      "ring": "Background/BT_B10",
+      "cursor": "Text/blue"
+    },
+    "filled": {
+      "background": "Background/Container",
+      "text": "Text/Primary",
+      "placeholder": "Text/disable",
+      "border": "Border/secondary"
+    },
+    "disabled": {
+      "background": "Background/Background",
+      "text": "Text/disable",
+      "placeholder": "Text/disable",
+      "border": "Border/secondary"
+    },
+    "result.hover": {
+      "background": "Background/Hover",
+      "text": "Text/Primary",
+      "highlight": "Text/blue"
+    },
+    "result.highlight": {
+      "background": "transparent",
+      "text": "Text/Primary",
+      "highlight": "Text/blue"
+    }
+  },
+  "behavior": {
+    "focus": "Search-Box state=focused（2026-09-10 前为 active）uses Border/focused plus 2px BT_B10 ring.",
+    "filled": "Has value, clear visible, no ring.",
+    "disabled": "Native disabled. Border stays Border/secondary. Combo mode disables the paired Button.",
+    "results": "List width follows the box. Keyword matches use Text/blue. Keyboard active row reuses result.hover because Figma has no selected-row variant.",
+    "button": "Reuse gj-btn primary at the same size. Do not redraw the search button."
+  },
+  "openItems": {
+    "SEA-004": "Medium focused（2026-09-10 前为 active）context reports 5px vertical padding without an explicit height; implementation normalizes it to the 32px control tier."
+  }
+}

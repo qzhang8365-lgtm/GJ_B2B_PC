@@ -1,0 +1,68 @@
+/*
+ * NOT a SKILL.md workflow load target.
+ * Grade: legacy preview table shell (.ds-table). Current tables use .gj-table
+ * in gj-b2b-components.css. Do not load as a Table option. See README.md.
+ *
+ * GJ B端设计系统 · 标准数据表格
+ * 基准来源：圆角 / 卡片层级圆角。
+ * 固定结构：14px 容器圆角、46px 表头、66px 内容行、14px 横向内边距。
+ */
+.ds-table-wrap {
+  width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  border: 1px solid var(--ds-border-secondary);
+  border-radius: 14px;
+  background: var(--ds-background-container);
+}
+
+.ds-table {
+  width: 100%;
+  border: 0;
+  border-collapse: separate;
+  border-spacing: 0;
+  table-layout: fixed;
+  color: var(--ds-text-primary);
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.ds-table th,
+.ds-table td {
+  box-sizing: border-box;
+  padding: 0 14px;
+  text-align: left;
+  vertical-align: middle;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.ds-table thead th {
+  height: 46px;
+  border: 0;
+  background: var(--ds-background-background);
+  color: var(--ds-text-secondary);
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 600;
+}
+
+.ds-table tbody td {
+  height: 66px;
+  border: 0;
+  border-top: 1px solid var(--ds-border-default);
+}
+
+.ds-table code {
+  color: var(--ds-text-secondary);
+  font: 12px/19px ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  overflow-wrap: anywhere;
+}
+
+.ds-table tbody tr.is-reference td {
+  color: var(--ds-feedback-error-rise);
+}
+
+.ds-table tbody tr.is-reference code {
+  color: inherit;
+}

@@ -1,0 +1,153 @@
+{
+  "$schema": "gj-design-skill/component-tokens/v1",
+  "component": "Table",
+  "source": {
+    "componentSchema": "references/components/table/schema.json",
+    "componentMapping": "references/components/table/mapping.json",
+    "confirmedRules": "references/design-system-rules.md#table-表格",
+    "implementation": "assets/styles/gj-b2b-components.css#.gj-table"
+  },
+  "properties": {
+    "size": {
+      "default": "medium",
+      "values": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "atomic": true
+    },
+    "rowState": {
+      "default": "default",
+      "values": [
+        "default",
+        "hover",
+        "selected",
+        "disabled"
+      ]
+    },
+    "fixedAction": {
+      "default": false,
+      "values": [
+        false,
+        true
+      ]
+    }
+  },
+  "tokens": {
+    "size.small.rowHeight": {
+      "value": 40,
+      "unit": "px",
+      "cssVariable": "--ds-component-table-size-small-row-height"
+    },
+    "size.medium.rowHeight": {
+      "value": "{Components/control-XL}",
+      "resolved": 48,
+      "unit": "px",
+      "cssVariable": "--ds-component-table-size-medium-row-height"
+    },
+    "size.large.rowHeight": {
+      "value": 52,
+      "unit": "px",
+      "cssVariable": "--ds-component-table-size-large-row-height"
+    },
+    "cell.paddingInline": {
+      "value": "{Interval/space5}",
+      "resolved": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-table-cell-padding-inline"
+    },
+    "container.radius": {
+      "value": "{Radius/Radius-SM}",
+      "resolved": 6,
+      "unit": "px",
+      "cssVariable": "--ds-component-table-container-radius"
+    },
+    "sortIcon.size": {
+      "value": 20,
+      "unit": "px",
+      "cssVariable": "--ds-component-table-sort-icon-size"
+    },
+    "headIcon.size": {
+      "value": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-table-head-icon-size"
+    },
+    "actionIcon.size": {
+      "value": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-table-action-icon-size"
+    },
+    "actionIcon.hitArea": {
+      "value": 24,
+      "unit": "px",
+      "cssVariable": "--ds-component-table-action-hit-area"
+    },
+    "actionIcon.gap": {
+      "value": "{Interval/space4}",
+      "resolved": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-table-action-icon-gap"
+    },
+    "textAction.gap": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-table-text-action-gap"
+    }
+  },
+  "stateMatrix": {
+    "header.default": {
+      "background": "Table/head_bg",
+      "text": "Text/Secondary",
+      "border": "Table/divider"
+    },
+    "row.default": {
+      "background": "Table/table_bg1",
+      "text": "Text/Primary",
+      "border": "Table/divider"
+    },
+    "row.hover": {
+      "background": "Background/Hover",
+      "text": "Text/Primary",
+      "border": "Table/divider"
+    },
+    "row.selected": {
+      "background": "Background/Selected",
+      "text": "Text/Primary",
+      "border": "Table/divider"
+    },
+    "row.disabled": {
+      "background": "Table/table_bg1",
+      "text": "Text/disable",
+      "border": "Table/divider"
+    },
+    "action.default": {
+      "background": "transparent",
+      "text": "Text/Tertiary",
+      "border": "transparent"
+    },
+    "action.hover": {
+      "background": "transparent",
+      "text": "Text/blue",
+      "border": "transparent"
+    },
+    "action.disabled": {
+      "background": "transparent",
+      "text": "Text/disable",
+      "border": "transparent"
+    }
+  },
+  "behavior": {
+    "size": "Header, body and fixed columns share one size.",
+    "overflow": "Allow horizontal scroll and keep action column visible.",
+    "selection": "Checkbox state drives selected rows and parent indeterminate state.",
+    "statePriority": ["disabled", "selected", "expanded", "hover", "default"],
+    "sort": "Single-column none/ascending/descending by default; expose aria-sort and clear the previous sorted column.",
+    "dataStates": ["loading", "empty", "error"],
+    "icons": {
+      "sort": "icf_Arrow_caret.svg",
+      "filter": "icf_system_filter.svg"
+    }
+  }
+}

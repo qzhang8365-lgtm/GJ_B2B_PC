@@ -1,0 +1,169 @@
+{
+  "$schema": "gj-design-skill/component-tokens/v1",
+  "component": "Timeline",
+  "source": {
+    "figmaNode": "3655:7446",
+    "figmaNodes": ["3655:7458", "3655:7459", "3659:7525", "3659:7524", "3659:7526", "3659:7621", "3659:7612", "3659:7810", "3659:7809", "3666:3005", "3666:3004", "3666:3018", "3666:3017", "3666:3072"],
+    "figmaReadDate": "2026-09-10",
+    "componentSchema": "references/components/timeline/schema.json",
+    "componentMapping": "references/components/timeline/mapping.json",
+    "confirmedRules": "references/components/timeline/rules.md",
+    "implementation": "assets/styles/gj-b2b-components.css#.gj-timeline-v"
+  },
+  "properties": {
+    "direction": {
+      "default": "Vertical",
+      "values": ["Vertical", "Horizontal"]
+    },
+    "nodeStyle": {
+      "default": "Dot",
+      "values": ["Dot", "Checkmark"],
+      "figmaValues": ["Circle", "Icon"],
+      "figmaDefault": "Icon"
+    },
+    "itemState": {
+      "default": "default",
+      "values": ["default", "waiting"],
+      "figmaHead": ["default", "waiting"],
+      "figmaHorizontal": ["finished", "waiting"]
+    }
+  },
+  "tokens": {
+    "vertical.width": {
+      "value": 200,
+      "unit": "px",
+      "cssVariable": "--ds-component-timeline-v-width",
+      "note": "Timeline_vertical 母版宽。"
+    },
+    "vertical.itemMinHeight": {
+      "value": 56,
+      "unit": "px",
+      "cssVariable": "--ds-component-timeline-v-item-min-height"
+    },
+    "vertical.headWidth": {
+      "value": 20,
+      "unit": "px",
+      "cssVariable": "--ds-component-timeline-v-item-node-column"
+    },
+    "vertical.columnGap": {
+      "value": 6,
+      "unit": "px",
+      "cssVariable": "--ds-component-timeline-v-item-column-gap",
+      "note": "horizontal_cell 主轴 gap 6；Interval 无 6px 档。"
+    },
+    "vertical.copyGap": {
+      "value": "{Interval/space2}",
+      "resolved": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-timeline-v-copy-gap"
+    },
+    "vertical.connector": {
+      "value": "{Border/hover}",
+      "cssVariable": "--ds-component-timeline-v-connector-color",
+      "note": "虚线 [3,3]，线宽约 1.4。"
+    },
+    "vertical.dot.size": {
+      "value": 10,
+      "unit": "px",
+      "cssVariable": "--ds-component-timeline-v-dot-size"
+    },
+    "vertical.dot.finished": {
+      "value": "{Brand/GJ_Blue}",
+      "cssVariable": "--ds-component-timeline-v-dot-color"
+    },
+    "vertical.dot.wait": {
+      "value": "{Text/disable}",
+      "cssVariable": "--ds-component-timeline-v-dot-wait-color"
+    },
+    "vertical.checkmark.size": {
+      "value": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-timeline-v-check-size"
+    },
+    "vertical.checkmark.finished": {
+      "value": "{Feedback/brand}",
+      "cssVariable": "--ds-component-timeline-v-check-color"
+    },
+    "vertical.checkmark.wait": {
+      "value": "{Text/disable}",
+      "cssVariable": "--ds-component-timeline-v-check-wait-color"
+    },
+    "vertical.title": {
+      "value": "{中文/S5-CN-S}",
+      "cssClass": "gj-type-cn-s5"
+    },
+    "vertical.title.color": {
+      "value": "{Text/Primary}",
+      "cssVariable": "--ds-component-timeline-v-title-color"
+    },
+    "vertical.description": {
+      "value": "{中文/S9-CN-R}",
+      "cssClass": "gj-type-cn-s9"
+    },
+    "vertical.description.color": {
+      "value": "{Text/Secondary}",
+      "cssVariable": "--ds-component-timeline-v-desc-color"
+    },
+    "horizontal.shellWidth": {
+      "value": 676,
+      "unit": "px",
+      "cssVariable": "--ds-component-timeline-h-shell-width",
+      "note": "独立件 Timeline_horizontal 676；max-width:100%。"
+    },
+    "horizontal.itemWidth": {
+      "value": 155,
+      "unit": "px",
+      "cssVariable": "--ds-component-timeline-h-item-width"
+    },
+    "horizontal.itemGap": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-timeline-h-item-gap"
+    },
+    "horizontal.title": {
+      "value": "{中文/S5-CN-S}",
+      "cssClass": "gj-type-cn-s5"
+    },
+    "horizontal.title.color": {
+      "value": "{Text/Primary}",
+      "cssVariable": "--ds-component-timeline-h-item-title-color"
+    },
+    "horizontal.description": {
+      "value": "{中文/S8-CN-R}",
+      "cssClass": "gj-type-cn-s8",
+      "note": "横向 cell 说明 14/22 S8 + Text/Tertiary；与纵向 S9 12/18 不同，Figma 两套密度。"
+    },
+    "horizontal.description.color": {
+      "value": "{Text/Tertiary}",
+      "cssVariable": "--ds-component-timeline-h-item-desc-color"
+    },
+    "horizontal.track.height": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-timeline-h-track-height"
+    },
+    "horizontal.track.lineHeight": {
+      "value": 2,
+      "unit": "px"
+    },
+    "horizontal.track.line.waiting": {
+      "value": "{Text/disable}",
+      "cssVariable": "--ds-component-timeline-h-track-line-color"
+    },
+    "horizontal.track.line.finished": {
+      "value": "{Text/blue}",
+      "cssVariable": "--ds-component-timeline-h-track-finished-color"
+    },
+    "horizontal.track.dot.size": {
+      "value": 8,
+      "unit": "px"
+    },
+    "horizontal.track.dot.waiting": {
+      "value": "{Text/disable}",
+      "cssVariable": "--ds-component-timeline-h-track-dot-color"
+    }
+  },
+  "openItems": {}
+}

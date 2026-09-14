@@ -1,0 +1,87 @@
+{
+  "$schema": "gj-design-skill/component-mapping/v1",
+  "component": "Avatar",
+  "source": {
+    "figmaNode": "2982:622",
+    "figmaReadDate": "2026-09-09",
+    "componentSchema": "references/components/avatar/schema.json",
+    "confirmedRules": "references/components/avatar/rules.md"
+  },
+  "propertyMap": {
+    "size": {
+      "figma": "Size",
+      "values": {
+        "24": 24,
+        "32": 32,
+        "40": 40,
+        "64": 64
+      },
+      "default": 40
+    },
+    "shape": {
+      "figma": "Shape",
+      "values": {
+        "circle": "circle",
+        "square": "square"
+      },
+      "default": "circle"
+    },
+    "style": {
+      "figma": "Style",
+      "values": {
+        "default": "default",
+        "letter": "Letter",
+        "picture": "picture"
+      },
+      "default": "default"
+    },
+    "badge": {
+      "figma": null,
+      "note": "AVT-002：Figma 组件集里没有 badge 属性轴，未经 Figma 验证。2026-09-09 已按通用惯例（复用 Badge 组件自身 rules-derived 尺寸 + 主流设计系统的头像角标叠加惯例）设置默认值，见 schema.json 的 badgeDefault 字段与本文件 tokenMap.badge.*；非 Figma 已核实。"
+    }
+  },
+  "valueMap": {
+    "shape.square.radius": {
+      "24": 4,
+      "32": 6,
+      "40": 8,
+      "64": 12,
+      "verified": true
+    },
+    "shape.circle.radius": {
+      "formula": "size / 2",
+      "verified": true
+    },
+    "style.default.iconSize": {
+      "24": 16,
+      "32": 20,
+      "40": 28,
+      "64": 44,
+      "verified": true,
+      "note": "24/32 满足 icon = container - 2×padding；40/64 不满足同一公式，已在 schema.sizes.iconScaleNote 如实记录，未强行统一。"
+    }
+  },
+  "tokenMap": {
+    "style.default.background": "{Primitive/Neutral/N05}",
+    "style.default.icon": "user_3_fill.svg（真实图标资源）",
+    "style.letter.background": "{Text/blue}",
+    "style.letter.text": "#ffffff（随背景一起被 Figma 导出为单个矢量，非独立文字层，见 AVT-001）",
+    "style.picture.border": "{Border/default}",
+    "style.picture.borderWidth": "1px",
+    "style.picture.fit": "object-cover",
+    "badge.position": "右上角，圆心对齐边角：translate(50%,-50%)",
+    "badge.stroke": "2px solid {Background/Container}（#ffffff）",
+    "badge.dot.size": "24px 头像=6px；32/40/64px 头像=8px（复用 Badge 组件的 8px）",
+    "badge.number.sizeAndAvailability": "高20/最小宽20px（复用 Badge 组件），仅 size≥32 可用；24px 头像不支持 Number"
+  },
+  "interactionMap": {
+    "states": [
+      "default"
+    ],
+    "note": "Figma 24 个 variant 全部是 default 单一状态，未提供 hover/pressed/loading 等交互态设计，未来若代码侧需要交互反馈须另行与设计确认，不能凭空实现。"
+  },
+  "accessibility": {
+    "altTextRequired": true,
+    "note": "图片头像必须提供有意义的 alt 文本；Letter 兜底态在代码里应使用真实文字节点渲染首字母（见 AVT-001），以保证可选中复制、可被屏幕阅读器识别，不能直接内嵌 Figma 导出的 SVG 矢量。"
+  }
+}

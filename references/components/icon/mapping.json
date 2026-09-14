@@ -1,0 +1,43 @@
+{
+  "$schema": "gj-design-skill/component-mapping/v1",
+  "component": "Icon",
+  "codeComponent": "gj-icon",
+  "source": "rules.md + 已验收资源清单/预览页 preview/icons/index.html；本轮未做逐 variant 的 Figma 节点核实（见 audit.md 的 local-contract 说明）。",
+  "resourceMap": {
+    "general": { "manifest": "../../icons/manifest.json", "delivery": "Icon Font / 已上传 SVG，走 CSS mask + currentColor" },
+    "effect": { "manifest": "../../icons/glass-manifest.json", "delivery": "独立 SVG；页面 <img> 必须使用配套 PNG，不进 gj-icon mask 管线" },
+    "file": { "manifest": "../../icons/file-manifest.json", "delivery": "仅表示文件类型，走 gj-icon 管线" },
+    "motion": { "manifest": "../../icons/motion-manifest.json", "delivery": "Lottie JSON，独立渲染，不进 gj-icon mask 管线" },
+    "index": "../../icons/index.json（先查类型再打开对应清单）"
+  },
+  "propertyMap": {
+    "type": { "values": ["general", "effect", "file", "motion"], "default": "general" },
+    "size": { "values": [12, 16, 20, 24, 28, 32, 36], "default": 24 },
+    "style": { "values": ["line", "fill"], "default": "line", "note": "同一图标的 line/fill 版本共用基础名，fill 版追加 -fill 后缀。" },
+    "numericSuffixNames": { "decision": "2026-09-10 ICO-004 暂不补充", "keepPublishedNames": true, "addAliases": false, "examples": ["icf_system_loading1", "icf_system_loading2", "icf_system_settings1", "icf_system_settings2", "icf_system_history1"] }
+  },
+  "tokenMap": {
+    "size.*": "见 icon.tokens.json 的 size.12/16/20/24/28/32/36",
+    "color": "currentColor（跟随相邻文字色/语义色），Effect Icon 保留自身渐变不继承",
+    "radius": "2px（图标内部转角原则）",
+    "strokeWidth": "2px（标准描边）",
+    "canvas": "24×24px 默认画布"
+  },
+  "implementation": {
+    "runtime": {
+      "root": "gj-icon",
+      "sizeClasses": ["gj-icon-12", "gj-icon-16", "gj-icon-20", "gj-icon-24", "gj-icon-28", "gj-icon-32", "gj-icon-36"],
+      "cssVariable": "--gj-icon（mask 资源地址，逐实例设置）",
+      "note": "assets/styles/gj-b2b-components.css 已有 .gj-icon 基座与七档尺寸类；General/File Icon 复用该基座，Effect/Motion Icon 保持独立文件，不套进 gj-icon mask。"
+    },
+    "specPreview": {
+      "page": "preview/icons/index.html",
+      "note": "资源检索与预览页，不是第二套设计真值；命名、分类以 icons/manifest.json 等清单为准。"
+    }
+  },
+  "accessibility": {
+    "standalone": "图标本身不自带交互；作为操作入口时必须搭配语义控件、可访问名称（aria-label 或视觉隐藏文本）与状态反馈。",
+    "decorative": "纯装饰性图标应 aria-hidden，不重复朗读相邻文字已表达的含义。",
+    "hitArea": "点击热区随图标实际尺寸和所在组件调整，不用固定值覆盖所有场景；由容器提供或透明扩展，不强制可见按钮背景。"
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "$schema": "gj-design-skill/component-tokens/v1",
+  "component": "Form",
+  "source": {
+    "figmaNode": "3041:3366 / 3097:1674 / 3036:981 / 3037:982",
+    "componentSchema": "references/components/form/schema.json",
+    "componentMapping": "references/components/form/mapping.json"
+  },
+  "properties": {
+    "layout": {
+      "default": "vertical",
+      "values": [
+        "vertical",
+        "horizontal"
+      ]
+    },
+    "status": {
+      "default": "normal",
+      "values": [
+        "normal",
+        "error"
+      ]
+    },
+    "required": {
+      "default": false,
+      "values": [
+        false,
+        true
+      ]
+    },
+    "helpText": {
+      "default": false,
+      "values": [
+        false,
+        true
+      ]
+    },
+    "tooltip": {
+      "default": false,
+      "values": [
+        false,
+        true
+      ]
+    }
+  },
+  "tokens": {
+    "label.text": {
+      "value": "{Text/Primary}",
+      "resolved": "#101828",
+      "cssVariable": "--ds-component-form-label-text"
+    },
+    "help.text": {
+      "value": "{Text/Tertiary}",
+      "resolved": "#8D96A3",
+      "cssVariable": "--ds-component-form-help-text"
+    },
+    "required.mark": {
+      "value": "{Feedback/error&rise}",
+      "resolved": "#F93838",
+      "cssVariable": "--ds-component-form-required-mark"
+    },
+    "error.text": {
+      "value": "{Feedback/error&rise}",
+      "resolved": "#F93838",
+      "cssVariable": "--ds-component-form-error-text"
+    },
+    "gap.vertical.min": {
+      "value": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-form-gap-vertical-min",
+      "note": "表单项与表单项之间，不是 Label 到控件。"
+    },
+    "gap.horizontal.min": {
+      "value": 40,
+      "unit": "px",
+      "cssVariable": "--ds-component-form-gap-horizontal-min"
+    },
+    "label.gap": {
+      "value": "{Interval/space2}",
+      "resolved": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-form-label-gap",
+      "note": "Label 内部 * / 文案 / Tooltip / 冒号 间距。Figma 3097:1670、3097:1661。"
+    },
+    "label.toControl.vertical": {
+      "value": "{Interval/space2}",
+      "resolved": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-form-label-to-control-vertical",
+      "note": "纵向 Label 到输入框。Figma Form_item/Input_vertical gap 4px（3097:1656）。"
+    },
+    "label.toControl.horizontal": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-form-label-to-control-horizontal",
+      "note": "横向 Label 到输入框。Figma 3041:3355 right 8px。"
+    }
+  },
+  "behavior": {
+    "control": "复用 Input 组件的尺寸、边框与状态 Token，不在 Form 内重复定义控件视觉；见 references/tokens/components/input.tokens.json。",
+    "sizePairing": "同一表单区域内控件与 Addon 必须使用同一尺寸档位。",
+    "suffixExclusive": "Input-Addon 后缀 type=label（如 .com）与 type=setting（设置图标）是互斥变体，同一输入框只出现其中一个。",
+    "horizontalLabel": "nowrap, hug content, 8px gap to the control (Figma right:8px). Control column fills remaining width (flex 1, min-width 0). Do not set width:0 on the control column or the item collapses to the label.",
+    "errorFeedback": "错误状态需同时提供错误边框与紧邻字段的文字说明，不能只依赖颜色。"
+  }
+}

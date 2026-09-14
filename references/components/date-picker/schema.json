@@ -1,0 +1,349 @@
+{
+  "$schema": "gj-design-skill/component-schema/v1",
+  "component": "DatePicker",
+  "source": {
+    "figmaFile": "8b01I1e3TzH1IhYlr3tJzd",
+    "figmaPage": "2401:13",
+    "inventoryPage": "DatePicker",
+    "status": "figma-audited",
+    "figmaAudit": "2026-09-08; re-verified-2026-09-10-DTP-002; re-verified-2026-09-10-DTP-011"
+  },
+  "purpose": "选择单日期、日期范围、月份或年份；Calendar 也可作为独立日历展示。",
+  "properties": {
+    "mode": {
+      "default": "date",
+      "values": [
+        "date",
+        "range",
+        "month",
+        "year"
+      ]
+    },
+    "size": {
+      "default": "medium",
+      "values": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "figmaValues": [
+        "Small",
+        "Medium",
+        "Large"
+      ]
+    },
+    "value": "date|string|range",
+    "disabled": "boolean",
+    "clearable": "boolean",
+    "taskReminder": "boolean"
+  },
+  "figmaInventory": {
+    "componentSets": 6,
+    "variants": 108,
+    "standaloneComponents": 11,
+    "componentSetNodes": {
+      "trigger": {
+        "id": "3042:4720",
+        "name": "Date-Picker",
+        "variants": 60
+      },
+      "dateItem": {
+        "id": "3055:1071",
+        "name": "Datepicker_item/Date_item",
+        "variants": 28
+      },
+      "monthItem": {
+        "id": "3055:1513",
+        "name": "Datepicker_item/Month_item",
+        "variants": 4
+      },
+      "reminder": {
+        "id": "3276:9678",
+        "name": "Calendar_item/reminder",
+        "variants": 5
+      },
+      "compactCalendar": {
+        "id": "3276:9792",
+        "name": "Calendar_Date",
+        "variants": 2
+      },
+      "largeCalendarCell": {
+        "id": "3495:2378",
+        "name": "Calendar_item/content",
+        "variants": 9
+      }
+    },
+    "standaloneNodes": {
+      "pickerSeparator": "3042:4592",
+      "inputSplit": "3042:4596",
+      "inputSlash": "3042:4597",
+      "doubleRange": "3056:4517",
+      "singleRange": "3056:4516",
+      "monthPanel": "3056:4518",
+      "yearPanel": "3056:4519",
+      "largeHead": "3495:2353",
+      "largeGrid": "3495:2913",
+      "largeHeader": "3495:3066",
+      "largeCalendar": "3495:3218"
+    }
+  },
+  "normalizedProperties": {
+    "trigger": {
+      "size": [
+        "Small",
+        "Medium",
+        "Large"
+      ],
+      "status": [
+        "default",
+        "filled",
+        "hover",
+        "focus",
+        "error",
+        "filled-hover",
+        "filled-focus",
+        "filled-error"
+      ],
+      "range": [
+        false,
+        true
+      ],
+      "disabled": [
+        false,
+        true
+      ],
+      "disabledStatus": [
+        "default",
+        "filled"
+      ],
+      "note": "Disable=true 只与 default/filled 组合。无 Open/Clear 轴。"
+    },
+    "dateItem": {
+      "status": [
+        "Default",
+        "Hover",
+        "Selected"
+      ],
+      "today": [
+        false,
+        true
+      ],
+      "disabled": [
+        false,
+        true
+      ],
+      "notification": [
+        false,
+        true
+      ],
+      "rangePosition": [
+        "None",
+        "Start",
+        "InRange",
+        "End"
+      ]
+    },
+    "monthItem": {
+      "status": [
+        "Default",
+        "Hover",
+        "Selected",
+        "Disabled"
+      ]
+    },
+    "reminder": {
+      "tone": [
+        "Blue",
+        "Red",
+        "Green",
+        "Orange",
+        "Grey"
+      ]
+    },
+    "compactCalendar": {
+      "taskReminder": [
+        false,
+        true
+      ]
+    },
+    "largeCalendarCell": {
+      "status": [
+        "Default",
+        "Hover",
+        "Disabled"
+      ],
+      "taskReminder": [
+        false,
+        true
+      ],
+      "today": [
+        false,
+        true
+      ]
+    }
+  },
+  "sizes": {
+    "trigger": {
+      "width": 260,
+      "height": {
+        "Small": 24,
+        "Medium": 32,
+        "Large": 40
+      },
+      "paddingInline": 12,
+      "paddingBlock": 4,
+      "radius": {
+        "Small": 4,
+        "Medium": 6,
+        "Large": 8
+      },
+      "icon": 16,
+      "separatorBox": {
+        "width": 32,
+        "height": 24,
+        "icon": 16
+      },
+      "rangeSegmentWidth": {
+        "Small": 88,
+        "Medium": 88,
+        "Large": 92
+      }
+    },
+    "dateItem": {
+      "width": 32,
+      "height": 32,
+      "radius": 6,
+      "notificationDot": 4
+    },
+    "monthItem": {
+      "width": 80,
+      "height": 32,
+      "paddingInline": 16,
+      "radius": 6
+    },
+    "compactPanel": {
+      "width": 280,
+      "headerHeight": 48,
+      "dateOnlyHeight": 274,
+      "dateWithReminderHeight": 354,
+      "singleRangeHeight": 322,
+      "doubleRangeWidth": 560,
+      "monthYearHeight": 318,
+      "radius": 12
+    },
+    "compactGrid": {
+      "width": 256,
+      "cell": 32,
+      "columnGap": 5.2,
+      "rowGap": 4
+    },
+    "monthYearGrid": {
+      "columns": 3,
+      "columnGap": 8,
+      "rowGap": 34
+    },
+    "rangeActions": {
+      "height": 48,
+      "paddingTop": 4,
+      "paddingInline": 12,
+      "paddingBottom": 12,
+      "gap": 12,
+      "buttonHeight": 32,
+      "borderTop": false
+    },
+    "largeCalendar": {
+      "width": 880,
+      "height": 728,
+      "contentWidth": 840,
+      "gridHeight": 640,
+      "cellWidth": 120,
+      "cellHeight": 120,
+      "cellPadding": 12,
+      "dayBadge": 28
+    }
+  },
+  "typography": {
+    "trigger": {
+      "Large": "中文/S7-CN-R",
+      "Medium": "中文/S8-CN-R",
+      "Small": "中文/S8-CN-R"
+    },
+    "weekday": "中文/S9-CN-R",
+    "dateMonthYear": "Current UI font stack (var(--ds-font-family-ui)); 2026-09-10 DTP-004 closed, migrated off legacy Body/regular Roboto",
+    "reminder": "中文/S8-CN-R",
+    "largeDay": "PingFang SC Semibold 16/26 (direct Figma value; no verified active style binding)"
+  },
+  "states": [
+    "default",
+    "hover",
+    "selected",
+    "today",
+    "disabled",
+    "notification",
+    "range-start",
+    "in-range",
+    "range-end"
+  ],
+  "structure": [
+    "date-trigger",
+    "calendar-or-calendar-group",
+    "optional-reminder-or-action-footer"
+  ],
+  "behavior": {
+    "range": "Choose start then end; if the second date is earlier, swap endpoints.",
+    "close": "Single date may close immediately; complex range may require Clear/OK.",
+    "height": "Calendar height follows content and must not clip a six-week month.",
+    "disabledPrecedence": "Disabled suppresses hover, press and selection feedback even though Figma currently contains disabled+hover variants.",
+    "keyboard": "Use one roving active date. Left/Right moves one day, Up/Down seven days, Home/End to week edges, PageUp/PageDown by month, Shift+PageUp/PageDown by year, Enter/Space selects, Escape closes and returns focus to the trigger.",
+    "statePriority": {
+      "trigger": [
+        "disabled",
+        "error",
+        "open-focused",
+        "hover",
+        "filled-default"
+      ],
+      "dateCell": [
+        "disabled",
+        "selected-range-edge",
+        "in-range",
+        "today-notification",
+        "focused-hover",
+        "default"
+      ]
+    },
+    "valueContract": "Declare display format, submitted value and time zone separately; validate both range endpoints, order and min/max boundaries."
+  },
+  "composition": {
+    "calendar": "Use the shared Calendar component; do not recreate date cells or navigation with page CSS.",
+    "actions": "Use Medium Button components in the range action area.",
+    "icons": "Use System icon assets and currentColor; do not copy icons as standalone page SVG markup.",
+    "rangeBridge": "The range fill must bridge the audited 5.2px horizontal grid gap."
+  },
+  "constraints": [
+    "Do not use native input[type=date] as a visual replacement.",
+    "Small and Medium triggers both use 中文/S8-CN-R; Small is not 12/18.",
+    "Do not copy the Figma disabled+hover visual into runtime behavior.",
+    "Trigger Status hover/focus/error/filled-* 以 Figma Date-Picker 60 variants 为准；Open 与 Focus 同视觉（aria-expanded）；Clear 只在面板操作区，不是触发器态。"
+  ],
+  "confirmedDecisions": [
+    "2026-09-10 DTP-002：设计已补触发器 variant。Status=default/filled/hover/focus/error/filled-hover/filled-focus/filled-error；Disable 只叠 default/filled。无 Open、无 Clear 轴。Open 走 focus；Clear 走面板 footer。",
+    "2026-09-10 DTP-011：设计已在 Figma 补充 Month_item 的 Hover variant（节点 4812:21021）。只读复核：背景 Background/Hover（rgba(43,115,255,.05)），80×32，圆角 Radius/Radius-SM(6)，文字 中文/S8-CN-R + Text/Primary，与 Default（无背景，同尺寸/圆角/文字）的差异只是背景色。前端月/年格已复用共享 .gj-calendar-cell 类（:hover 绑定 --ds-background-hover），与新变体的视觉完全一致，无需改代码。"
+  ],
+  "dependencies": [
+    "Button",
+    "Icon",
+    "Popover"
+  ],
+  "knownFigmaIssues": [
+    "DTP-001",
+    "DTP-003",
+    "DTP-004",
+    "DTP-005",
+    "DTP-006",
+    "DTP-008",
+    "DTP-009",
+    "DTP-010"
+  ],
+  "pendingExtraction": []
+}

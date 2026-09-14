@@ -1,0 +1,223 @@
+{
+  "$schema": "gj-design-skill/component-schema/v1",
+  "component": "Image",
+  "source": {
+    "rulesSection": "Image 图片",
+    "inventoryPage": "Image✅",
+    "figmaFile": "8b01I1e3TzH1IhYlr3tJzd",
+    "pageNodeId": "2638:2636",
+    "status": "figma-audited",
+    "figmaAudit": "done-2026-09-09"
+  },
+  "purpose": "图片上传、缩略图展示与预览、大图查看与全屏画廊浏览。",
+  "figma": {
+    "componentSets": 2,
+    "standaloneSymbols": 1,
+    "componentSetNodes": [
+      {
+        "nodeId": "3533:11349",
+        "name": "Image_Thumbnail",
+        "variants": 5,
+        "axes": {
+          "State": [
+            "Empty",
+            "Uploading",
+            "Uploaded",
+            "Uploaded-Hover",
+            "Error"
+          ]
+        },
+        "dimensions": {
+          "size": 104,
+          "radius": 6,
+          "radiusToken": "{Radius/Radius-SM}"
+        }
+      },
+      {
+        "nodeId": "3530:1791",
+        "name": "Image_Preview",
+        "variants": 2,
+        "axes": {
+          "state": [
+            "Default",
+            "Controls"
+          ]
+        },
+        "dimensions": {
+          "width": 520,
+          "height": 340,
+          "radius": 9,
+          "radiusNote": "Figma 原始值 9px，未绑定任何 Radius token（不是 8/12 等整数系列值），推测是拖拽圆角手柄时的作图误差，未强行改成 8px，如实记录"
+        }
+      }
+    ],
+    "standaloneNodes": [
+      {
+        "nodeId": "3530:1855",
+        "name": "Img_mask",
+        "note": "全屏画廊预览的遮罩 + 图片 + 上一张/下一张/位置指示控件组合，不是独立发布的 variant 组件集，是单一示例节点",
+        "dimensions": {
+          "width": 868,
+          "height": 488,
+          "paddingInline": 141,
+          "paddingBlock": 36,
+          "gap": 16
+        }
+      }
+    ],
+    "documentationFrame": "3532:5"
+  },
+  "properties": {
+    "mode": [
+      "thumbnail",
+      "image",
+      "gallery-preview"
+    ],
+    "fit": [
+      "cover",
+      "contain"
+    ],
+    "uploadState": [
+      "waiting",
+      "uploading",
+      "success",
+      "error"
+    ],
+    "multiple": "boolean"
+  },
+  "defaults": {
+    "mode": "image",
+    "fit": "cover",
+    "multiple": false
+  },
+  "thumbnail": {
+    "nodeId": "3533:11349",
+    "size": 104,
+    "radius": 6,
+    "radiusToken": "{Radius/Radius-SM}",
+    "states": {
+      "empty": {
+        "border": "dashed 1px {Border/secondary}",
+        "background": "{Background/Background}",
+        "icon": "24px icf_file_upload",
+        "text": "上传图片，12px {Text/secondary}"
+      },
+      "uploading": {
+        "border": "dashed 1px {Border/focused}",
+        "background": "{Background/BT_B5}",
+        "icon": false,
+        "progress": "轨道 64px×4px 圆角2px，背景 {Background/Hover_2}，填充 {Brand/GJ_Blue}",
+        "text": "百分比文案，12px {Text/secondary}",
+        "iconNote": "不显示图标，只有进度条+百分比。2026-09-10 Figma 确认删除预览多余图标（IMG-001）。"
+      },
+      "uploaded": {
+        "border": "solid 1px {Border/secondary}（不是 dashed，与 Empty/Uploading/Error 三态不同）",
+        "overflow": "clip",
+        "content": "填充图片"
+      },
+      "uploadedHover": {
+        "overlay": "rgba(0,0,0,0.4) 全覆盖（Figma 原始值是字面 0.4，本设计系统 MK_* 阶梯没有 MK_40，最接近的是 MK_45，见 constraints 说明）",
+        "actions": {
+          "position": "left:23px top:67px（相对 104px 缩略图，不是居中）",
+          "padding": "8px 6px",
+          "gap": 8,
+          "radius": "{Radius/Radius-SM}",
+          "icons": [
+            "view 16px",
+            "delete 16px"
+          ],
+          "backgroundNote": "Figma 节点未附带任何背景色/填充属性，无法确认是否有背景，本轮未臆断，见 openItems IMG-002"
+        }
+      },
+      "error": {
+        "border": "dashed 1px {Border/error}",
+        "background": "{Background/BT_R5}",
+        "icon": "24px error triangle",
+        "text": "上传失败，12px {Feedback/error&rise}"
+      }
+    }
+  },
+  "preview": {
+    "nodeId": "3530:1791",
+    "width": 520,
+    "height": 340,
+    "radius": 9,
+    "controls": {
+      "trigger": "hover/focus 时从 Default 切到 Controls",
+      "position": "底部居中，容器内边距 20px 推底",
+      "bar": {
+        "height": 36,
+        "gap": 12,
+        "paddingInline": 12,
+        "radius": "{Radius/Radius-MD}",
+        "background": "{Background/MK_60}",
+        "shadow": "0 0 15px {Background/MK_10}（居中环绕阴影，非方向性投影）"
+      },
+      "icons": [
+        "view 16px",
+        "delete 16px"
+      ]
+    }
+  },
+  "galleryPreview": {
+    "nodeId": "3530:1855",
+    "componentName": "Img_mask",
+    "mask": "{Background/MK_45}（此前 tokens.previewMask 误记为 MK_60，2026-09-09 已按本节点订正）",
+    "image": {
+      "aspectRatio": "586/383",
+      "radius": 9,
+      "radiusNote": "同 Image_Preview 的 9px 非token化圆角"
+    },
+    "controls": {
+      "layout": "上一张箭头 · 位置指示（如 1/5） · 下一张箭头，横向排列，gap 40px",
+      "arrowSize": "约 24×24（icf_Arrow_left/right）",
+      "indicatorText": "12px {Text/reversal}"
+    },
+    "layoutNote": "Figma 母版容器固定 868×488，是设计稿里的示例画布尺寸，不是强制的实际浮层视口尺寸；真实使用时应作为全屏或响应式浮层，不锁定这个像素值"
+  },
+  "states": [
+    "default",
+    "hover",
+    "focus",
+    "uploading",
+    "success",
+    "error",
+    "preview-open"
+  ],
+  "tokens": {
+    "previewMask": "{Background/MK_45}"
+  },
+  "behavior": {
+    "upload": "Reuse Upload validation and per-file recovery.",
+    "entry": "Selecting/dragging files is entirely delegated to Upload_Dropzone (Upload component, node 3536:11370, figma-audited 2026-09-09) or the shared Button trigger; Image owns no dropzone container of its own. Image starts from the moment files are accepted, rendering each as a thumbnail with its own upload state.",
+    "preview": "Show position/total, previous, next and close without permanently covering content.",
+    "orientation": "Respect image ratio and EXIF orientation."
+  },
+  "constraints": [
+    "Never stretch images.",
+    "Validate MIME and actual content, not extension alone.",
+    "Cropping, compression and reorder require explicit business rules.",
+    "缩略图 Uploading 态只显示进度条与百分比，禁止文件/上传图标（2026-09-10 Figma 确认，关闭 IMG-001）。",
+    "缩略图 Uploaded/Uploaded-Hover 两态必须是 solid 边框，Empty/Uploading/Error 三态才是 dashed 边框——不要对全部状态统一用同一种边框样式（2026-09-09 修正的真实实现 bug，见 audit.md）。",
+    "Uploaded-Hover 的黑色遮罩理论值是字面 rgba(0,0,0,.4)，本系统 MK_* 阶梯没有 MK_40，实现时使用最接近的 MK_45，不视为精确匹配。",
+    "Image_Preview / 全屏画廊图片的圆角 Figma 实测为 9px，未绑定 Radius token；除非设计侧明确要求，实现建议仍使用系统 Radius/Radius-MD（8px）以保持和其他组件圆角体系一致，1px 差异记为已知偏差而非需要「修正」的错误。"
+  ],
+  "dependencies": [
+    "Upload",
+    "Upload_Dropzone",
+    "Icon",
+    "Progress"
+  ],
+  "icons": [
+    "icf_file_upload.svg",
+    "icf_system_alert-fill.svg（错误图标，未做像素级比对，见 openItems）",
+    "icf_system_eye.svg",
+    "icf_system_delete.svg",
+    "icf_Arrow_left.svg",
+    "icf_Arrow_right.svg"
+  ],
+  "confirmedDecisions": [
+    "2026-09-10 Figma 确认：Thumbnail Uploading 不画图标，只保留进度条+百分比；已从预览与 `.gj-image-thumb.is-uploading` 删除多余 icf_file_image。"
+  ],
+  "knownFigmaIssues": []
+}

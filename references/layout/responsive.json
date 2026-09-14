@@ -1,0 +1,43 @@
+{
+  "$schema": "gj-design-skill/responsive-layout/v1",
+  "source": {
+    "figmaNode": "2655:1406",
+    "title": "屏幕宽度适配规范",
+    "designBaseline": 1440,
+    "minimumSupportedViewport": 1280
+  },
+  "authority": {
+    "figma": "design baseline, validation widths, page gutters and adaptation intent",
+    "derived": "media-query boundaries and CSS implementation"
+  },
+  "validationViewports": [
+    { "width": 1280, "label": "小屏笔记本", "gutter": 16, "expectation": "收紧页面边距，筛选项换行，表格横向滚动" },
+    { "width": 1366, "label": "普通笔记本", "gutter": 24, "expectation": "保持核心布局，减少非核心列" },
+    { "width": 1440, "label": "标准 PC", "gutter": 24, "expectation": "默认设计稿" },
+    { "width": 1536, "label": "高分屏笔记本或 1920 屏幕 125% 缩放视口", "gutter": 24, "expectation": "保持核心布局，内容自然延展" },
+    { "width": 1920, "label": "外接显示器", "gutter": 32, "expectation": "增加页面边距，展示更多内容" },
+    { "width": 2560, "label": "2K 或超宽屏", "gutter": 40, "expectation": "限制内容最大宽度，避免无限拉伸" }
+  ],
+  "breakpoints": {
+    "breakpoint.pc.sm": { "value": 1280, "role": "minimum-support-floor", "mediaQuery": false },
+    "breakpoint.pc.md": { "value": 1360, "role": "compact-to-medium", "mediaQuery": true },
+    "breakpoint.pc.lg": { "value": 1440, "role": "default-full-layout", "mediaQuery": true },
+    "breakpoint.pc.xl": { "value": 1920, "role": "large-layout", "mediaQuery": true },
+    "breakpoint.pc.xxl": { "value": 2560, "role": "max-width-layout", "mediaQuery": true }
+  },
+  "ranges": [
+    { "name": "pc.sm", "min": 1280, "max": 1359, "gutter": 16 },
+    { "name": "pc.md", "min": 1360, "max": 1439, "gutter": 24 },
+    { "name": "pc.lg", "min": 1440, "max": 1919, "gutter": 24 },
+    { "name": "pc.xl", "min": 1920, "max": 2559, "gutter": 32 },
+    { "name": "pc.xxl", "min": 2560, "max": null, "gutter": 40, "contentMaxWidth": 1920 }
+  ],
+  "rules": [
+    "1440px is the default design baseline, not a fixed page width.",
+    "1536px is a validation viewport and does not create a separate media query.",
+    "Use flexible layout before adding viewport breakpoints.",
+    "At narrow widths preserve core information; allow filters to wrap and data tables to scroll horizontally.",
+    "At wide widths add useful information or columns before stretching components.",
+    "At 2560px and above center content and limit its maximum width to 1920px."
+  ]
+}

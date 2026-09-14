@@ -1,0 +1,57 @@
+{
+  "$schema": "gj-design-skill/component-schema/v1",
+  "component": "Skeleton",
+  "status": "local-contract",
+  "source": {
+    "rulesSection": "Skeleton 骨架屏",
+    "inventoryPage": "Skeleton✅",
+    "status": "local-contract",
+    "figmaAudit": "deferred-2026-09-09",
+    "figma_file_key": "8b01I1e3TzH1IhYlr3tJzd",
+    "read_only": true,
+    "preview": "../../../preview/skeleton/index.html",
+    "note": "2026-09-09 用户确认：按通用骨架屏惯例补充即可，不逐项做 Figma 节点核实，走 local-contract（与 Chart、Icon、Drawer 处理方式一致）。"
+  },
+  "purpose": "在最终结构可预期的首次加载期间保持布局稳定。",
+  "preview": "../../../preview/skeleton/index.html",
+  "properties": {
+    "type": [
+      "text",
+      "list",
+      "card",
+      "table"
+    ],
+    "animated": "boolean"
+  },
+  "defaults": {
+    "type": "text",
+    "animated": true
+  },
+  "dimensions": {
+    "textLineHeight": 12,
+    "textRadius": 4,
+    "textRadiusNote": "2026-09-09 修正：曾记为 6px，等于 12px 行高的一半会呈现胶囊/大圆角条；用户明确文字类占位必须是小圆角矩形，边角不能太圆。改为 4px（对应 Radius/Radius-XS），与预览页 `.line{border-radius:4px!important}` 的实际生效值一致。",
+    "avatar": "match final avatar（圆形，圆角 999px）；共享基座默认值 40px（与 Avatar 组件 defaults.size=40 对齐），业务页应按真实头像尺寸覆盖同名 CSS 变量（SKE-002 已关闭）。",
+    "image": "match final aspect ratio（圆角随最终内容，预览页实测 8px）；.gj-skeleton-card-cover 默认高度 160px、.gj-skeleton-thumb 默认 64×64px 作为共享基座兜底值，业务页应按真实内容尺寸覆盖（SKE-002 已关闭）。",
+    "table": "match final columns, header and row height"
+  },
+  "states": [
+    "loading-static",
+    "loading-animated",
+    "timeout-to-error"
+  ],
+  "behavior": {
+    "reducedMotion": "Disable shimmer and preserve the static structure.",
+    "failure": "Stop animation and replace with error explanation and retry."
+  },
+  "constraints": [
+    "Use only when final structure is predictable.",
+    "Do not represent Empty or Error.",
+    "Do not combine Skeleton, spinner and loading text in the same region.",
+    "Match final quantity, hierarchy, ratio and spacing to prevent layout shift.",
+    "文字类占位必须使用小圆角矩形（4px，Radius/Radius-XS），不得使用等于或接近行高一半的大圆角/胶囊造型；头像等本身应为圆形的元素不受此约束。",
+    "SKE-001：assets/styles/gj-b2b-components.css 暂无共享 .gj-skeleton* 组件基座，仅预览页有内联参考实现，见 audit.md。",
+    "SKE-002：avatar.size、thumb.width/height、cardCover.height 此前从未定义 CSS 变量默认值，导致 .gj-skeleton-avatar/.gj-skeleton-thumb/.gj-skeleton-card-cover 在未被业务页覆盖时渲染为 0 尺寸；已补齐默认值（40px / 64×64px / 160px），见 audit.md。"
+  ],
+  "pendingExtraction": []
+}

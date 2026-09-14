@@ -1,0 +1,264 @@
+{
+  "$schema": "gj-design-skill/component-schema/v1",
+  "component": "Sidebar",
+  "source": {
+    "rulesSection": "Sidebar 侧边栏导航",
+    "inventoryPage": "SideBar✅",
+    "figmaFile": "8b01I1e3TzH1IhYlr3tJzd",
+    "figmaPage": "2638:1003",
+    "status": "figma-audited",
+    "figmaAudit": "done-2026-09-10-SNB-001"
+  },
+  "purpose": "侧栏导航：原子行 sidebar_item + 三套同结构组合容器（light / blue / background）。",
+  "implementation": {
+    "rootClass": "gj-sidebar",
+    "blueClass": "gj-sidebar-blue",
+    "backgroundClass": "gj-sidebar-background",
+    "collapsedClass": "is-collapsed",
+    "brandClass": "gj-sidebar-brand",
+    "logoClass": "gj-sidebar-logo",
+    "foldClass": "gj-sidebar-fold",
+    "menuClass": "gj-sidebar-menu",
+    "itemRootClass": "gj-sidebar-item",
+    "itemDarkClass": "gj-sidebar-item-dark",
+    "itemSecondClass": "gj-sidebar-item-second",
+    "itemThirdClass": "gj-sidebar-item-third",
+    "itemCollapsedClass": "gj-sidebar-item-collapsed",
+    "disabledClass": "is-disabled",
+    "groupClass": "gj-sidebar-group",
+    "subtreeClass": "gj-sidebar-subtree",
+    "railClass": "gj-sidebar-rail",
+    "thirdGroupClass": "gj-sidebar-third",
+    "activeClass": "is-active",
+    "selectedClass": "is-selected"
+  },
+  "figma": {
+    "fileKey": "8b01I1e3TzH1IhYlr3tJzd",
+    "pageNodeId": "2638:1003",
+    "pageName": "侧边导航栏SideBar✅",
+    "inventoryListed": {
+      "sets": 7,
+      "variants": 20,
+      "standalone": 0
+    },
+    "auditedThisPass": {
+      "sets": 4,
+      "variants": 26,
+      "standalone": 0,
+      "note": "2026-09-10 按母版口径。页上 7 个顶层节点 = 4 套 COMPONENT_SET + 展示 FRAME + 标注 FRAME + 1 个实例。旧 7/20 把 7 个顶层都当成套，且只记了 item 的 20 态。三套菜单 state=expanded/collapsed 必须计入 variants（2+2+2=6）。"
+    },
+    "componentSets": [
+      {
+        "nodeId": "4148:17361",
+        "name": "sidebar_item",
+        "variants": 20,
+        "note": "导航行原子。子图层是 mode/Level/collapse/active/selected 轴。"
+      },
+      {
+        "nodeId": "4148:18584",
+        "name": "Sidebar_menu_light",
+        "variants": 2,
+        "defaultVariant": { "nodeId": "4148:18563", "name": "state=expanded" },
+        "note": "组合母版。state=expanded 展开 200×420；state=collapsed 收起 56×420。"
+      },
+      {
+        "nodeId": "4148:18773",
+        "name": "Sidebar_menu_blue",
+        "variants": 2,
+        "defaultVariant": { "nodeId": "4148:18772", "name": "state=expanded" },
+        "note": "与 light 同结构。表面 Primitive/DeepBlue/DB10；行用 item dark。"
+      },
+      {
+        "nodeId": "4148:19075",
+        "name": "Sidebar_menu_background",
+        "variants": 2,
+        "defaultVariant": { "nodeId": "4148:19076", "name": "state=expanded" },
+        "note": "与 light 同结构。表面 Background/Background；行用 item light。"
+      }
+    ],
+    "boardSymbols": [
+      {"nodeId": "4148:18563", "name": "Sidebar_menu_light / state=expanded"},
+      {"nodeId": "4148:18585", "name": "Sidebar_menu_light / state=collapsed"},
+      {"nodeId": "4148:18772", "name": "Sidebar_menu_blue / state=expanded"},
+      {"nodeId": "4148:18774", "name": "Sidebar_menu_blue / state=collapsed"},
+      {"nodeId": "4148:19076", "name": "Sidebar_menu_background / state=expanded"},
+      {"nodeId": "4148:19098", "name": "Sidebar_menu_background / state=collapsed"},
+      {"nodeId": "4156:958", "name": "Sidebar_menu_light instance · first+second expanded"},
+      {"nodeId": "4769:3370", "name": "Sidebar_menu_blue instance · first+second expanded"}
+    ],
+    "pageDocuments": [
+      {
+        "nodeId": "3030:1065",
+        "name": "Sidebar_menu",
+        "type": "FRAME",
+        "role": "showcase",
+        "note": "规范展示画板。内部是三套菜单和 sidebar_item 的实例，图层名不是 variant 轴。"
+      },
+      {
+        "nodeId": "3134:1789",
+        "name": "Frame 1312324747",
+        "type": "FRAME",
+        "role": "annotation",
+        "note": "旧壳标注 + 表 3987:994 layout.sider。不是母版。2026-09-10 确认不采用该表栏宽。"
+      },
+      {
+        "nodeId": "4769:3370",
+        "name": "Sidebar_menu_blue",
+        "type": "INSTANCE",
+        "role": "blue-expanded-tree",
+        "note": "主组件 4148:18772 state=expanded。200×612。饰条 Line 绑定 Background/BT_DB20。"
+      }
+    ]
+  },
+  "properties": {
+    "surface": ["light", "blue", "background"],
+    "state": ["expanded", "collapsed"],
+    "mode": ["light", "dark"],
+    "Level": ["first", "second", "third"],
+    "collapse": "boolean",
+    "active": "boolean",
+    "selected": "boolean",
+    "collapsebutton": "boolean",
+    "icon": "graphic-slot"
+  },
+  "defaults": {
+    "surface": "light",
+    "state": "expanded",
+    "mode": "light",
+    "Level": "first",
+    "collapse": false,
+    "active": false,
+    "selected": false,
+    "collapsebutton": true
+  },
+  "sizes": {
+    "columnWidth": 200,
+    "columnCollapsed": 56,
+    "columnSampleHeight": 420,
+    "brandHeight": 56,
+    "brandPaddingInline": 16,
+    "brandPaddingBlock": 12,
+    "logo": {"width": 110, "height": 24},
+    "fold": 24,
+    "menuPadding": 8,
+    "menuGap": 4,
+    "subtreePaddingInlineStart": 20,
+    "subtreeGap": 4,
+    "rail": 1,
+    "thirdIndent": 12,
+    "expandedWidth": 176,
+    "collapsed": 40,
+    "firstHeight": 40,
+    "secondHeight": 40,
+    "thirdHeight": 36,
+    "paddingInline": 12,
+    "thirdPaddingInlineStart": 12,
+    "gap": 8,
+    "icon": 16,
+    "dot": 4,
+    "radiusDefault": 4,
+    "radiusEmphasis": 8
+  },
+  "typography": {
+    "firstSecondDefault": "中文/S8-CN-R",
+    "firstSecondEmphasis": "中文/S5-CN-S",
+    "thirdDefault": "中文/S9-CN-R",
+    "thirdSelected": "中文/S6-CN-S"
+  },
+  "structure": {
+    "shell": ["brand", "menu"],
+    "brand": ["logo-slot-110x24", "fold-or-expand-24"],
+    "menu": ["sidebar_item-list", "optional-expanded-subtree"],
+    "subtree": ["1px-rail", "second-list", "optional-third-list"],
+    "first": ["optional-16px-icon", "label", "optional-collapse-arrow"],
+    "second": ["4px-dot", "label", "optional-collapse-arrow"],
+    "third": ["label"],
+    "collapsedItem": ["16px-icon"]
+  },
+  "behavior": {
+    "surface": "Three separate component sets, same geometry. light=Container + item light; blue=DB10 + item dark; background=Background + item light.",
+    "columnCollapse": "state=collapsed. Width 56. Hide logo. Brand shows centered icf_Arrow_expand. Items use collapsed 40×40.",
+    "active": "Branch is expanded or this row is an ancestor of the current page. Bold + arrow up. No selected fill.",
+    "selected": "Current page. Bold + Background/Hover fill.",
+    "hover": "Not in the Figma item set. Code: keep the default look and add Background/Hover. Same for light and dark.",
+    "disabled": "Not in the Figma item set. Code: opacity 50%.",
+    "branchExpand": "Visible samples 4156:958 (light) and 4769:3370 (blue). Rail is 1px. Light surfaces use Background/MK_10; blue uses Background/BT_DB20. Second expand shows third list indented 12. Accordion at first level. Hide subtree when the column is collapsed.",
+    "itemCollapse": "Only first-level rows have collapse=true. Hide label and arrow.",
+    "firstIcon": "Lead icon follows the label. Light default / collapsed = Text/Primary. Light Active/Selected = Text/blue. Dark = Text/reversal. MK_20 is the light default arrow only."
+  },
+  "constraints": [
+    "Three menu sets share one structure. Do not fork layout per color.",
+    "Column width is 200 expanded / 56 collapsed on this board. Do not treat item master 176 as column width.",
+    "Inside the column, items fill the padded menu (200 − 16 = 184). 176 is the item master default.",
+    "Collapsed visual width of the component masters is 56. Annotation table 64/80 is discarded (SNB-007).",
+    "Blue container uses item dark. Light and background use item light.",
+    "Expanded first+second samples are instances 4156:958 (light) and 4769:3370 (blue). Default variant hides the same subtree; do not treat the hidden layer as missing.",
+    "Subtree rail does not share one color: light/background = Background/MK_10; blue = Background/BT_DB20. Do not reuse Border/default on dark.",
+    "Hover and Disabled are code rules, not Figma item variants: Hover = Background/Hover on the default look; Disabled = 50% opacity. Light and dark use the same tokens.",
+    "First-level lead icon follows the label color (Text/Primary, Text/blue, Text/reversal). Background/MK_20 is the light default arrow only, not the home icon.",
+    "Fold icon is icf_Arrow_fold (expanded) / icf_Arrow_expand (collapsed), about 24px.",
+    "Page inventory is 4 sets / 26 variants / 0 standalone. Showcase frame, annotation frame, and instance 4769:3370 are not sets.",
+    "Component column geometry is always 200 expanded / 56 collapsed from the three menu masters. Do not apply layout.sider 208/240/288 or collapsed 64/80 from node 3987:994."
+  ],
+  "dependencies": ["Icon"],
+  "knownFigmaIssues": [],
+  "pendingExtraction": [],
+  "confirmedDecisions": [
+    {
+      "id": "SNB-001",
+      "date": "2026-09-10",
+      "decision": "页 2638:1003 实收 4 套 / 26 variants / 0 standalone。三套菜单各 2 态计入 variants。其余 3 个顶层节点是展示画板 3030:1065、标注框 3134:1789、蓝底展开实例 4769:3370，不是母版。",
+      "source": "只读核对页上全部 COMPONENT_SET；用户要求确认菜单 2 态是否计入 variants"
+    },
+    {
+      "id": "SNB-004",
+      "date": "2026-09-10",
+      "decision": "三套菜单展开/收起轴已在 Figma 改为 state=expanded | collapsed。默认 expanded。节点 ID 未变。整栏 state 与行级 collapse 不是同一轴。旧 Property 1=Default/Variant2 不再兼容。",
+      "source": "用户手动改 Figma 后确认关闭"
+    },
+    {
+      "id": "SNB-003",
+      "date": "2026-09-09",
+      "decision": "容器表面三套：light=Background/Container，blue=Primitive/DeepBlue/DB10，background=Background/Background。结构相同。item 仍只有 light/dark。",
+      "source": "用户指定三张组合画板"
+    },
+    {
+      "id": "SNB-002",
+      "date": "2026-09-09",
+      "decision": "sidebar_item 未发布 Hover/Disabled。Hover：默认态叠加 Background/Hover，浅色与深色相同。Disabled：整项透明度 50%。",
+      "source": "用户口头确认"
+    },
+    {
+      "id": "SNB-004-tree",
+      "date": "2026-09-09",
+      "decision": "一级/二级同时展开以实例 4156:958（light）和 4769:3370（blue）为准。饰条 1px、子树 pl-20、gap-4；三级再左缩 12。饰条颜色见 SNB-006。",
+      "source": "用户指定 4156:958"
+    },
+    {
+      "id": "SNB-005",
+      "date": "2026-09-09",
+      "decision": "一级图标跟随文案色，不是 Background/MK_20。MK_20 只用于 light 默认态展开箭头。4148:17154=Text/Primary，4148:17156=MK_20；Active/Selected 图标与箭头均为 Text/blue；dark 图标与箭头均为 Text/reversal。",
+      "source": "用户纠正一级图标颜色；Figma sidebar_item 只读核对"
+    },
+    {
+      "id": "SNB-006",
+      "date": "2026-09-09",
+      "decision": "一级展开饰条按表面分色：浅色 Background/MK_10，深色 Background/BT_DB20。两种背景不用同一色。Figma 浅色样本 4156:958 仍是 Border/default，实现以用户纠正为准。",
+      "source": "用户纠正深色饰条过亮"
+    },
+    {
+      "id": "SNB-007",
+      "date": "2026-09-10",
+      "decision": "栏宽全量使用三套菜单母版：展开 200、收起 56。不随视口变成 208/240/288 或收起 64/80。标注表 3987:994 的 layout.sider.* 不是 Token，不写入 layout Token 或页面壳。",
+      "source": "用户确认；对照节点 3987:994"
+    }
+  ],
+  "partialMeasurements": [
+    "栏宽 200 / 收起 56、品牌 56、菜单 padding 8 / gap 4 生成代码未绑 Interval；按 space5·space4 / space3 / space2 记录。折叠图标实例 23.88，按 24。",
+    "展开行在组合里被拉满内容宽 184，不是原子母版 176。",
+    "品牌槽 110×24。MCP 导出画布 2783×618，Figma 用 overflow 裁进槽内；预览把整图缩放到槽尺寸，不是手写字标。",
+    "Default 变体内 Frame 1635095768 hidden=true。可见展开样本是实例 4156:958（light）与 4769:3370（blue），高 612。",
+    "样本 Default 高 420 = 品牌 56 + 菜单 364，随条目数变化，不是固定栏高。",
+    "标注表 3987:994 原文：1280/1366/1440→200/64；1536→208/64；1920→240/80；2560+→288/80。2026-09-10 确认不采用，column tokens 仍是 200/56。"
+  ]
+}

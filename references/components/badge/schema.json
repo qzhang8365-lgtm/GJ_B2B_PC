@@ -1,0 +1,68 @@
+{
+  "$schema": "gj-design-skill/component-schema/v1",
+  "component": "Badge",
+  "source": {
+    "rulesSection": "Badge 徽标",
+    "inventoryPage": "Badge✅",
+    "figmaFile": "8b01I1e3TzH1IhYlr3tJzd",
+    "pageNodeId": "2963:11876",
+    "status": "figma-audited",
+    "figmaAudit": "done-2026-09-10"
+  },
+  "purpose": "依附对象提示新状态或数量。",
+  "figma": {
+    "componentSets": 3,
+    "standaloneSymbols": 0,
+    "componentSetNodes": [
+      {
+        "nodeId": "2963:11895",
+        "name": "Badge_dot",
+        "variants": 5,
+        "defaultVariant": "2963:11894",
+        "axes": {"color": ["red", "blue", "orange", "green", "gray"]}
+      },
+      {
+        "nodeId": "2963:11912",
+        "name": "Badge_count",
+        "variants": 24,
+        "defaultVariant": "2963:11911",
+        "axes": {
+          "Size": ["M", "S", "XS"],
+          "Color": ["red", "blue", "gray", "lightblue"],
+          "Singledigit": ["false", "true"]
+        }
+      },
+      {
+        "nodeId": "2963:11978",
+        "name": "Badge_status",
+        "variants": 5,
+        "defaultVariant": "2963:11977",
+        "axes": {"state": ["Default", "processing", "Error", "Success", "Warning"]}
+      }
+    ]
+  },
+  "properties": {
+    "type": ["Dot", "Number", "Status"],
+    "value": "number|string",
+    "max": "number",
+    "status": "semantic-color"
+  },
+  "defaults": {"type": "Dot", "value": 0, "size": "M"},
+  "sizes": {
+    "Dot": {"diameter": 8},
+    "Number": {"M": {"height": 24, "paddingInline": 8, "font": "中文/S8-CN-R", "radius": 12}, "S": {"height": 20, "paddingInline": 4, "font": "中文/S9-CN-R", "radius": 10}, "XS": {"height": 16, "paddingInline": 4, "font": "中文/S10-CN-R", "radius": 12}}
+  },
+  "behavior": {"zero": "Hide when value is zero.", "overflow": "Render max+ when value exceeds max."},
+  "constraints": [
+    "Dot expresses presence only; use Number when count matters.",
+    "One target cannot show Dot and Number simultaneously.",
+    "Badge remains anchored to the target top-right and does not replace status text.",
+    "Figma 母版无 1px 反色描边；实现不要从预览反推白边。",
+    "Badge_status 是圆点+文案，不是灰底胶囊。预览 .gj-badge-soft-count 不是母版。"
+  ],
+  "confirmedDecisions": [
+    "2026-09-10：页 2963:11876 实收 3 套 / 34 variants，与 inventory 一致。",
+    "Dot 五色含 orange/green；Count 四色无 orange/green。",
+    "lightblue 背景绑定 Background/BG_blue。"
+  ]
+}

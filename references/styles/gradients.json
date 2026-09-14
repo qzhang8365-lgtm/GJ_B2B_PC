@@ -1,0 +1,331 @@
+{
+  "$schema": "gj-design-skill/gradient-styles/v1",
+  "source": "Figma local Paint Styles",
+  "policy": "Gradient stop colors may be used directly and do not need Primitive aliases.",
+  "styles": {
+    "蓝色渐变背景": {
+      "stops": [
+        {
+          "position": 0,
+          "color": "#E5F0FF"
+        },
+        {
+          "position": 1,
+          "color": "#FFFFFF"
+        }
+      ],
+      "figmaTransform": [
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          -1,
+          0,
+          1
+        ]
+      ],
+      "cssAngle": 180,
+      "css": "linear-gradient(180deg, var(--ds-primitive-blue-b02) 0%, var(--ds-primitive-neutral-n01) 100%)",
+      "usage": ""
+    },
+    "橙色渐变背景": {
+      "stops": [
+        {
+          "position": 0,
+          "color": "#FFF7ED"
+        },
+        {
+          "position": 1,
+          "color": "#FFFFFF"
+        }
+      ],
+      "figmaTransform": [
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          -1,
+          0,
+          1
+        ]
+      ],
+      "cssAngle": 180,
+      "css": "linear-gradient(180deg, var(--ds-primitive-orange-o01) 0%, var(--ds-primitive-neutral-n01) 100%)",
+      "usage": ""
+    },
+    "white_gradient_up": {
+      "stops": [
+        {
+          "position": 0,
+          "color": "#FFFFFF"
+        },
+        {
+          "position": 1,
+          "color": "#FFFFFF00"
+        }
+      ],
+      "figmaTransform": [
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          -1,
+          0,
+          1
+        ]
+      ],
+      "cssAngle": 180,
+      "css": "linear-gradient(180deg, var(--ds-primitive-neutral-n01) 0%, #FFFFFF00 100%)",
+      "usage": ""
+    },
+    "white_gradient_bottom": {
+      "stops": [
+        {
+          "position": 0,
+          "color": "#FFFFFF00"
+        },
+        {
+          "position": 1,
+          "color": "#FFFFFF"
+        }
+      ],
+      "figmaTransform": [
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          -1,
+          0,
+          1
+        ]
+      ],
+      "cssAngle": 180,
+      "css": "linear-gradient(180deg, #FFFFFF00 0%, var(--ds-primitive-neutral-n01) 100%)",
+      "usage": ""
+    },
+    "科技蓝渐变": {
+      "stops": [
+        {
+          "position": 0,
+          "color": "#2B73FF"
+        },
+        {
+          "position": 1,
+          "color": "#38BDF8"
+        }
+      ],
+      "figmaTransform": [
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          -1,
+          0,
+          1
+        ]
+      ],
+      "cssAngle": 180,
+      "css": "linear-gradient(180deg, var(--ds-primitive-blue-b06) 0%, var(--ds-primitive-sky-s05) 100%)",
+      "usage": ""
+    },
+    "极客蓝渐变": {
+      "stops": [
+        {
+          "position": 0,
+          "color": "#6D9FFF"
+        },
+        {
+          "position": 1,
+          "color": "#1F63F0"
+        }
+      ],
+      "figmaTransform": [
+        [
+          -1.1137079000473022,
+          0.1060674712061882,
+          1.043146014213562
+        ],
+        [
+          -0.10606745630502701,
+          -1.1137076616287231,
+          0.8469662666320801
+        ]
+      ],
+      "cssAngle": 264.56,
+      "css": "linear-gradient(264.56deg, var(--ds-primitive-blue-b05) 0%, var(--ds-primitive-blue-b07) 100%)",
+      "usage": ""
+    },
+    "国金红渐变": {
+      "stops": [
+        {
+          "position": 0,
+          "color": "#F93838"
+        },
+        {
+          "position": 1,
+          "color": "#FF7067"
+        }
+      ],
+      "figmaTransform": [
+        [
+          0.9997028112411499,
+          -0.005943531636148691,
+          0.003863293444737792
+        ],
+        [
+          0.0059435321018099785,
+          0.11887072771787643,
+          0.42273402214050293
+        ]
+      ],
+      "cssAngle": 87.14,
+      "css": "linear-gradient(87.14deg, var(--ds-primitive-red-r06) 0%, #FF7067 100%)",
+      "usage": ""
+    },
+    "国金紫渐变": {
+      "stops": [
+        {
+          "position": 0,
+          "color": "#8B52FF"
+        },
+        {
+          "position": 1,
+          "color": "#A071FF"
+        }
+      ],
+      "figmaTransform": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ]
+      ],
+      "cssAngle": 90,
+      "css": "linear-gradient(90deg, var(--ds-brand-gj-violet) 0%, #A071FF 100%)",
+      "usage": ""
+    },
+    "活力橙渐变": {
+      "stops": [
+        {
+          "position": 0,
+          "color": "#FF7D00"
+        },
+        {
+          "position": 1,
+          "color": "#FF9B3B"
+        }
+      ],
+      "figmaTransform": [
+        [
+          0.9997028112411499,
+          -0.005943531636148691,
+          0.003863293444737792
+        ],
+        [
+          0.0059435321018099785,
+          0.11887072771787643,
+          0.42273402214050293
+        ]
+      ],
+      "cssAngle": 87.14,
+      "css": "linear-gradient(87.14deg, #FF7D00 0%, #FF9B3B 100%)",
+      "usage": ""
+    },
+    "灰蓝渐变": {
+      "stops": [
+        {
+          "position": 0,
+          "color": "#2F4FB8"
+        },
+        {
+          "position": 1,
+          "color": "#6388F2"
+        }
+      ],
+      "figmaTransform": [
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          -1,
+          0,
+          1
+        ]
+      ],
+      "cssAngle": 180,
+      "css": "linear-gradient(180deg, var(--ds-primitive-deepblue-db07) 0%, var(--ds-primitive-deepblue-db05) 100%)",
+      "usage": ""
+    },
+    "深蓝渐变": {
+      "stops": [
+        {
+          "position": 0,
+          "color": "#21367A"
+        },
+        {
+          "position": 1,
+          "color": "#4167D8"
+        }
+      ],
+      "figmaTransform": [
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          -1,
+          0,
+          0.5
+        ]
+      ],
+      "cssAngle": 180,
+      "css": "linear-gradient(180deg, var(--ds-primitive-deepblue-db09) 0%, var(--ds-primitive-deepblue-db06) 100%)",
+      "usage": ""
+    },
+    "灰色渐变背景": {
+      "stops": [
+        {
+          "position": 0,
+          "color": "#F5F7FA"
+        },
+        {
+          "position": 1,
+          "color": "#FFFFFF"
+        }
+      ],
+      "figmaTransform": [
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          -1,
+          0,
+          1
+        ]
+      ],
+      "cssAngle": 180,
+      "css": "linear-gradient(180deg, var(--ds-primitive-neutral-n03) 0%, var(--ds-primitive-neutral-n01) 100%)",
+      "usage": "数据指标卡片，无线框的分隔效果"
+    }
+  }
+}

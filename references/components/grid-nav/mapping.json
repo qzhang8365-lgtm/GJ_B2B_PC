@@ -1,0 +1,78 @@
+{
+  "$schema": "gj-design-skill/component-mapping/v1",
+  "figmaComponent": "GridNav / GridNav-item",
+  "codeComponent": "GjGridNav",
+  "sourceNodes": [
+    "2638:1000",
+    "2938:3783",
+    "2938:3782",
+    "2942:539",
+    "3372:4331",
+    "2942:532",
+    "2942:531",
+    "2943:2411",
+    "2942:603",
+    "2943:2443",
+    "2938:2212",
+    "2976:765",
+    "4142:16648"
+  ],
+  "propertyMap": {
+    "grid": "grid",
+    "badge": "item.badge（Figma 布尔；true 且 number_badge=false → dot）",
+    "number_badge": "item.numberBadge（Figma 布尔；与 badge 同时为 true → number）"
+  },
+  "valueMap": {
+    "grid.4*1": "grid=4*1，4 列 1 行，308×70",
+    "grid.5*1": "grid=5*1，5 列 1 行，388×70",
+    "grid.4*2": "grid=4*2，4 列 2 行，308×148",
+    "grid.5*2": "grid=5*2，5 列 2 行，388×148",
+    "badge.false + number_badge.false": "item.badge=none",
+    "badge.true + number_badge.false": "item.badge=dot（设计师示意；代码组合 Badge Dot）",
+    "badge.true + number_badge.true": "item.badge=number（设计师示意；代码组合 Badge Number）"
+  },
+  "normalization": {
+    "number badge": "number_badge（2026-09-09 Figma 已更名）",
+    "number_badge": "numberBadge",
+    "badge.false + number_badge.true": "Figma 未发布；实现视为 none，不得叠圆点",
+    "背景色/CB1": "Background/Secondary（2026-09-09 用户确认改绑）",
+    "背景色/CB3": "Background/Secondary（2026-09-09 用户确认改绑）",
+    "docsInstance.2976:765": "说明画板 5*2 实例宽 372、列距被挤成 8；实现用母版列距 12"
+  },
+  "variantMap": {
+    "item": "3 variants；缺 badge=false × number_badge=true；带 badge 变体仅设计师使用",
+    "grid": "4 variants = 4/5 列 × 1/2 行"
+  },
+  "tokenMap": {
+    "item.width": "--ds-component-grid-nav-item-width",
+    "item.height": "--ds-component-grid-nav-item-height",
+    "item.paddingBlock": "--ds-component-grid-nav-item-padding-block",
+    "icon.size": "--ds-component-grid-nav-icon-size",
+    "icon.radius": "--ds-component-grid-nav-icon-radius",
+    "icon.background": "--ds-component-grid-nav-icon-background",
+    "item.hover.background": "--ds-component-grid-nav-item-hover-background",
+    "iconTitle.gap": "--ds-component-grid-nav-icon-title-gap",
+    "column.gap": "--ds-component-grid-nav-column-gap",
+    "row.gap": "--ds-component-grid-nav-row-gap",
+    "label.color": "--ds-component-grid-nav-label-color",
+    "label.textStyle": "中文/S9-CN-R → .gj-type-cn-s9"
+  },
+  "runtimeMap": {
+    "root": ".gj-gridnav",
+    "cols4": ".gj-gridnav-cols-4",
+    "cols5": ".gj-gridnav-cols-5",
+    "item": ".gj-gridnav-item",
+    "iconWrap": ".gj-gridnav-icon-wrap",
+    "icon": ".gj-gridnav-icon",
+    "label": ".gj-gridnav-label",
+    "disabled": ".gj-gridnav-item:disabled 或 [aria-disabled=true]；非 Figma 轴，opacity 50%",
+    "badge": "设计师侧可读 Figma badge 变体；代码组合 Badge，锚在图标槽右上角，不复制徽标尺寸"
+  },
+  "notes": [
+    "整项是点击目标。",
+    "Figma 带 badge 的 GridNav-item 只给设计师看；代码用 Badge 组件 + 图标右上角位置规则组合。",
+    "图标槽是可替换实例 Placeholder/placeholder；业务用 Glass/Effect Icon 替换，失败时用缺省资源，不手绘 SVG。",
+    "标题超出 68px 单行省略；Hover/聚焦完整名称走 Tooltip。",
+    "容器不够时改列数或外层布局，不裁切末列、不把 68px 项宽改窄充列。"
+  ]
+}

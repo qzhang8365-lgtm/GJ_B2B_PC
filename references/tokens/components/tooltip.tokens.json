@@ -1,0 +1,104 @@
+{
+  "$schema": "gj-design-skill/component-tokens/v1",
+  "component": "Tooltip",
+  "source": {
+    "figmaNode": "3582:1816 (dark) / 3630:3385 (light)",
+    "componentSchema": "references/components/tooltip/schema.json",
+    "componentMapping": "references/components/tooltip/mapping.json"
+  },
+  "properties": {
+    "position": {
+      "default": "top_center",
+      "values": [
+        "top_center"
+      ]
+    },
+    "style": {
+      "default": "dark",
+      "values": [
+        "dark",
+        "light"
+      ]
+    },
+    "polygon": {
+      "default": true,
+      "values": [
+        false,
+        true
+      ]
+    }
+  },
+  "tokens": {
+    "dark.background": {
+      "value": "{Background/MK_80}",
+      "resolved": "#000000CC",
+      "cssVariable": "--ds-component-tooltip-dark-background"
+    },
+    "dark.text": {
+      "value": "{Text/reversal}",
+      "resolved": "#FFFFFF",
+      "cssVariable": "--ds-component-tooltip-dark-text"
+    },
+    "light.background": {
+      "value": "{Background/Container}",
+      "resolved": "#FFFFFF",
+      "cssVariable": "--ds-component-tooltip-light-background"
+    },
+    "light.text": {
+      "value": "{Text/Primary}",
+      "resolved": "#101828",
+      "cssVariable": "--ds-component-tooltip-light-text"
+    },
+    "light.shadow": {
+      "value": "{shadow-center}",
+      "cssVariable": "--ds-component-tooltip-light-shadow",
+      "resolved": "Background/MK_10, blur 15, offset 0/0"
+    },
+    "radius": {
+      "value": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-tooltip-radius",
+      "note": "设计侧确认为固定值，不绑定 Radius/Radius-MD（2026-09-08）"
+    },
+    "padding": {
+      "value": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-tooltip-padding",
+      "note": "设计侧确认为固定值（2026-09-08）"
+    },
+    "maxContentTextWidth": {
+      "value": 206,
+      "unit": "px",
+      "cssVariable": "--ds-component-tooltip-max-content-width"
+    },
+    "light.fixedWidth": {
+      "value": 240,
+      "unit": "px",
+      "cssVariable": "--ds-component-tooltip-light-fixed-width"
+    },
+    "arrow.width": {
+      "value": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-tooltip-arrow-width"
+    },
+    "arrow.height": {
+      "value": 10,
+      "unit": "px",
+      "cssVariable": "--ds-component-tooltip-arrow-height"
+    },
+    "triggerGap": {
+      "value": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-tooltip-trigger-gap"
+    },
+    "textStyle": {
+      "value": "{中文/S8-CN-R}",
+      "cssClass": "gj-type-cn-s8"
+    }
+  },
+  "behavior": {
+    "trigger": "鼠标 Hover 300–500ms 后出现；键盘 Focus 时立即出现",
+    "dismiss": "鼠标移出触发元素与 Tooltip 后 100–200ms 关闭；Esc、滚动、窗口变化或触发元素消失时立即关闭",
+    "arrowColor": "跟随所在风格背景色（不单独定义颜色 Token）"
+  }
+}

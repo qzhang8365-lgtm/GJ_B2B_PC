@@ -1,0 +1,8 @@
+{
+  "$schema":"gj-design-skill/component-mapping/v1",
+  "component":"Form",
+  "figmaToContract":{"Input_horizontal":"layout=horizontal","Input_vertical":"layout=vertical","status":"status","help_text":"helpText","toolip":"tooltip","required":"required","preffix-label":"prefix-label","preffix-select":"prefix-select"},
+  "implementation":{"item":"gj-form-item","vertical":"gj-form-item-vertical","horizontal":"gj-form-item-horizontal","label":"gj-form-label","colon":"gj-form-colon","content":"gj-form-content","help":"gj-form-help","error":"gj-form-error","grid":"gj-form-grid","actions":"gj-form-actions","addonRow":"gj-form-addon-row","addon":"gj-input-addon","horizontalLabelColumn":"label flex 0 0 auto，控件列 flex 1 占满剩余宽度，column-gap 8px"},
+  "composition":{"control":"Input or another registered form control","actions":"Button","tooltip":"Tooltip","suffix":"Input-Addon type=label XOR type=setting"},
+  "accessibility":{"label":"label[for] or aria-labelledby","required":"required and aria-required","error":"aria-invalid and aria-describedby"}
+}

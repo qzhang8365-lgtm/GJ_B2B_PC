@@ -1,0 +1,432 @@
+{
+  "$schema": "gj-design-skill/component-schema/v1",
+  "component": "Tabs",
+  "status": "figma-audited",
+  "auditedAt": "2026-09-10",
+  "source": {
+    "figma_file_key": "8b01I1e3TzH1IhYlr3tJzd",
+    "page_node_id": "2638:1005",
+    "documentation_node_id": "3029:811",
+    "read_only": true,
+    "inventory": {
+      "componentSets": 10,
+      "variants": 172,
+      "standaloneComponents": 0
+    },
+    "inventoryCorrection": "旧清单记录 178；2026-09-10 对 10 个组件集逐节点计数后实收 172。",
+    "tab001Resolved": "2026-09-10 复查确认：Figma 全部 10 个组件集已统一 Size/State 属性命名大小写，hoverd 拼写错误已改为 hover，2.Tabs_Card 的 middle/Middle 已改为 Medium，closebutton 已改为 close button（含空格，与 item 层一致）。TAB-001 已关闭。"
+  },
+  "publicContract": {
+    "type": {
+      "default": "highlight",
+      "values": [
+        "highlight",
+        "card",
+        "pill",
+        "button",
+        "left"
+      ]
+    },
+    "size": {
+      "default": "medium",
+      "values": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "groupSupport": {
+        "highlight": [
+          "small",
+          "medium",
+          "large"
+        ],
+        "card": [
+          "small",
+          "medium",
+          "large"
+        ],
+        "pill": [
+          "small",
+          "medium",
+          "large"
+        ],
+        "button": [
+          "small",
+          "medium",
+          "large"
+        ],
+        "left": [
+          "medium"
+        ]
+      }
+    },
+    "count": {
+      "horizontal": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "left": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    "activeIndex": {
+      "default": 0,
+      "cardinality": "exactly one enabled item when content is present"
+    },
+    "icon": {
+      "default": false,
+      "supportedBy": [
+        "highlight"
+      ]
+    },
+    "badge": {
+      "default": false,
+      "supportedBy": [
+        "highlight"
+      ]
+    },
+    "closable": {
+      "default": false,
+      "supportedBy": [
+        "card"
+      ]
+    },
+    "disabled": {
+      "default": false,
+      "scope": "item"
+    }
+  },
+  "component_sets": [
+    {
+      "name": "Tabs_item/Highlight-item",
+      "node_id": "2723:2808",
+      "variantCount": 36,
+      "figmaDefaults": {
+        "Size": "Medium",
+        "active": true,
+        "hover": false,
+        "icon": false,
+        "badge": false,
+        "disabled": false
+      },
+      "properties": {
+        "Size": [
+          "Small",
+          "Medium",
+          "Large"
+        ],
+        "active": [
+          true,
+          false
+        ],
+        "hover": [
+          true,
+          false
+        ],
+        "icon": [
+          true,
+          false
+        ],
+        "badge": [
+          true,
+          false
+        ],
+        "disabled": [
+          true,
+          false
+        ]
+      },
+      "validCombinations": "每种尺寸包含 plain/icon/badge；active、default、hover、disabled 四态。当前母版不含 icon=true 与 badge=true 同时出现的 variant。",
+      "note": "2026-09-10 Figma 侧已统一：hoverd 拼写错误已改为 hover（TAB-001 已关闭）。"
+    },
+    {
+      "name": "1.Tabs-Highlight",
+      "node_id": "2759:1582",
+      "variantCount": 15,
+      "figmaDefaults": {
+        "count": "2",
+        "left": "Default",
+        "Size": "Medium"
+      },
+      "properties": {
+        "count": [
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "left": [
+          "Default"
+        ],
+        "Size": [
+          "Small",
+          "Medium",
+          "Large"
+        ]
+      },
+      "note": "2026-09-10 Figma 侧已统一：Size 由 middle 改为 Medium，大小写与其余组件集一致（TAB-001 已关闭）。"
+    },
+    {
+      "name": "Tabs_item/Card_item",
+      "node_id": "2787:1924",
+      "variantCount": 18,
+      "figmaDefaults": {
+        "close button": false,
+        "Size": "Medium",
+        "State": "default"
+      },
+      "properties": {
+        "close button": [
+          false,
+          true
+        ],
+        "Size": [
+          "Small",
+          "Medium",
+          "Large"
+        ],
+        "State": [
+          "default",
+          "hover",
+          "active"
+        ]
+      }
+    },
+    {
+      "name": "2.Tabs_Card",
+      "node_id": "2836:1495",
+      "variantCount": 30,
+      "figmaDefaults": {
+        "close button": false,
+        "count": "2",
+        "Size": "Medium"
+      },
+      "properties": {
+        "close button": [
+          false,
+          true
+        ],
+        "count": [
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "Size": [
+          "Small",
+          "Medium",
+          "Large"
+        ]
+      },
+      "note": "2026-09-10 Figma 侧已统一：Size 由 middle/Middle 改为 Medium，closebutton 改为 close button，与 item 层一致（TAB-001 已关闭）。"
+    },
+    {
+      "name": "Tabs_item/Pill_item",
+      "node_id": "3025:1365",
+      "variantCount": 12,
+      "figmaDefaults": {
+        "Size": "Medium",
+        "State": "default"
+      },
+      "properties": {
+        "Size": [
+          "Small",
+          "Medium",
+          "Large"
+        ],
+        "State": [
+          "default",
+          "hover",
+          "active",
+          "disabled"
+        ]
+      }
+    },
+    {
+      "name": "Tabs_Pill",
+      "node_id": "3025:1392",
+      "variantCount": 15,
+      "figmaDefaults": {
+        "count": "Default",
+        "size": "Medium"
+      },
+      "properties": {
+        "count": [
+          "Default",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "size": [
+          "Small",
+          "Medium",
+          "Large"
+        ]
+      },
+      "normalization": {
+        "count=Default": 2
+      }
+    },
+    {
+      "name": "Tabs_item/Button_item",
+      "node_id": "3169:8454",
+      "variantCount": 12,
+      "figmaDefaults": {
+        "Size": "Medium",
+        "State": "default"
+      },
+      "properties": {
+        "Size": [
+          "Small",
+          "Medium",
+          "Large"
+        ],
+        "State": [
+          "default",
+          "hover",
+          "active",
+          "disabled"
+        ]
+      }
+    },
+    {
+      "name": "Tabs_Button",
+      "node_id": "3169:8535",
+      "variantCount": 15,
+      "figmaDefaults": {
+        "count": "2",
+        "size": "Medium"
+      },
+      "properties": {
+        "count": [
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "size": [
+          "Small",
+          "Medium",
+          "Large"
+        ]
+      },
+      "verifiedConsistency": "2026-09-10 复核：Small 组合实例与独立 Button_item/Small 均为 24px；独立 item 已绑定 Components/control-s。"
+    },
+    {
+      "name": "Tabs_item/left-item",
+      "node_id": "2859:1645",
+      "variantCount": 12,
+      "figmaDefaults": {
+        "Size": "Medium",
+        "State": "default"
+      },
+      "properties": {
+        "Size": [
+          "Small",
+          "Medium",
+          "Large"
+        ],
+        "State": [
+          "default",
+          "hover",
+          "active",
+          "disabled"
+        ]
+      }
+    },
+    {
+      "name": "3.Tabs-left",
+      "node_id": "2864:1707",
+      "variantCount": 7,
+      "figmaDefaults": {
+        "count": "2"
+      },
+      "properties": {
+        "count": [
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8"
+        ]
+      },
+      "compositionConstraint": "组合仅提供 Medium；代码基座宽 96px、item 高 40px。Figma 原始 80px 因无法在 16px 左右内边距下完整容纳常规四字标签而不作为生成宽度。",
+      "verifiedConsistency": "2026-09-11 设计确认：Active 字号和行高与对应尺寸 Default 一致，仅改为 Text/blue 与 600 字重；常规四字标签完整显示，超长标签单行省略。"
+    }
+  ],
+  "stateModel": {
+    "default": "未选中且可交互",
+    "hover": "仅指针悬停项呈现；组内互斥",
+    "active": "当前内容；组内互斥",
+    "disabled": "不可点击且不进入 active；Card 母版当前不提供 disabled variant",
+    "focus": "代码侧补充可见焦点环，不替代 active"
+  },
+  "composition": {
+    "roles": {
+      "root": "tablist",
+      "item": "tab",
+      "panel": "tabpanel"
+    },
+    "selection": "single",
+    "keyboard": [
+      "ArrowLeft",
+      "ArrowRight",
+      "ArrowUp",
+      "ArrowDown",
+      "Home",
+      "End",
+      "Enter",
+      "Space"
+    ],
+    "overflow": "PC 默认不横向滚动；空间不足时换行或使用“更多…”下拉，Card 多任务可按产品规则处理溢出。"
+  },
+  "dependencies": {
+    "Badge/Count": {
+      "node_id": "2723:2842",
+      "role": "Highlight badge；不计入 Tabs 的 10 个组件集/172 variants"
+    },
+    "Icon": {
+      "rule": "使用已上传 icon 库；Highlight icon 16px，Card close icon 14px"
+    }
+  },
+  "documentation": {
+    "recommended_types": [
+      "Highlight Tab",
+      "Card Tab",
+      "Pill Tab"
+    ],
+    "available_types": [
+      "Highlight Tab",
+      "Card Tab",
+      "Pill Tab",
+      "Button Tab",
+      "Left Tab"
+    ],
+    "scenarios": [
+      "内容分类",
+      "状态筛选",
+      "对象视图切换",
+      "工作区多任务"
+    ],
+    "notes": [
+      "Highlight 支持图标或数量徽标",
+      "Card 支持可关闭多任务页签",
+      "灰色背景上可使用自定义语义色配置"
+    ]
+  }
+}

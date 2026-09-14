@@ -1,0 +1,200 @@
+{
+  "$schema": "gj-design-skill/component-schema/v1",
+  "component": "Modal",
+  "source": {
+    "rulesSection": "Modal 弹窗",
+    "inventoryPage": "Modal✅",
+    "figmaFile": "8b01I1e3TzH1IhYlr3tJzd",
+    "figmaPage": "4759:19935",
+    "status": "figma-audited",
+    "figmaAudit": "done-2026-09-09"
+  },
+  "purpose": "让用户集中完成或确认一个阻断任务。",
+  "implementation": {
+    "layerClass": "gj-modal-layer",
+    "rootClass": "gj-modal",
+    "sizeClasses": [
+      "gj-modal-sm",
+      "gj-modal-lg"
+    ],
+    "headerClass": "gj-modal-header",
+    "titleClass": "gj-modal-title",
+    "closeClass": "gj-modal-close",
+    "contentClass": "gj-modal-content",
+    "bodyClass": "gj-modal-body",
+    "footerClass": "gj-modal-footer",
+    "feedbackClass": "gj-modal-feedback"
+  },
+  "figma": {
+    "fileKey": "8b01I1e3TzH1IhYlr3tJzd",
+    "pageNodeId": "4759:19935",
+    "pageName": "Modal",
+    "inventoryListed": {
+      "sets": 1,
+      "variants": 12,
+      "standalone": 0
+    },
+    "componentSets": [
+      {
+        "nodeId": "3553:11705",
+        "name": "Modal",
+        "variants": 3,
+        "note": "画板内可见 Type=Standard × Size=Small-400|Medium-600|Large-800。MCP 未返回 COMPONENT_SET 根节点；生成代码 type 仅 Standard，另有 BOOLEAN showClose。代表：Medium 3552:2、Small 3553:11541、Large 3553:11623。"
+      },
+      {
+        "nodeId": "4515:22054",
+        "name": "modal_item/feedback-content",
+        "variants": 4,
+        "note": "内容插槽子件，不是 Modal Type。state=Default|alert|success|error。代表：Default 4515:22051。"
+      }
+    ],
+    "componentDescription": "Figma 组件说明仍写 Standard / Confirm / Destructive / Result 与 400/520/720。画板发布值是 Standard × 400/600/800。以画板为准。"
+  },
+  "properties": {
+    "size": [
+      "Small",
+      "Medium",
+      "Large"
+    ],
+    "showClose": "boolean",
+    "maskClosable": "boolean",
+    "escapeClosable": "boolean",
+    "danger": "boolean",
+    "dirty": "boolean",
+    "feedback": [
+      "None",
+      "Default",
+      "Alert",
+      "Success",
+      "Error"
+    ]
+  },
+  "defaults": {
+    "size": "Medium",
+    "showClose": true,
+    "maskClosable": false,
+    "escapeClosable": true,
+    "danger": false,
+    "dirty": false,
+    "feedback": "None"
+  },
+  "sizes": {
+    "Small": {
+      "width": 400
+    },
+    "Medium": {
+      "width": 600
+    },
+    "Large": {
+      "width": 800
+    },
+    "radius": 12,
+    "header": {
+      "height": 64,
+      "padding": [
+        12,
+        20
+      ],
+      "close": 20
+    },
+    "footer": {
+      "height": 76,
+      "padding": [
+        20,
+        20,
+        24
+      ],
+      "gap": 8,
+      "buttonHeight": 32
+    },
+    "feedback": {
+      "paddingInline": 20,
+      "icon": 28,
+      "rowGap": 12,
+      "textGap": 8
+    },
+    "contentAlign": "start"
+  },
+  "typography": {
+    "title": "中文/S4-CN-S",
+    "feedbackTitle": "中文/S5-CN-S",
+    "feedbackDescription": "中文/S9-CN-R"
+  },
+  "structure": [
+    "mask",
+    "dialog",
+    "header",
+    "close",
+    "content-slot",
+    "footer-action-group"
+  ],
+  "behavior": {
+    "focus": "Move focus inside, trap it, then return focus to the trigger on close.",
+    "scroll": "Keep header/footer fixed and scroll the content slot.",
+    "dirtyClose": "Close, Cancel, Escape and mask actions require confirmation when content is unsaved.",
+    "mask": "This board does not include Mask. Layer uses Background/MK_45 (浅色蒙层). Clicking the mask should not close a dirty editor."
+  },
+  "constraints": [
+    "One Modal handles one task.",
+    "Do not open another Modal inside it.",
+    "Use the smallest size that fits: Small 400, Medium 600, Large 800. Ignore the stale 520/720 in the Figma description.",
+    "Published Type is Standard only. Confirm / Destructive / Result are content recipes, not extra Type variants on this board.",
+    "Footer has secondary/cancel on the left of the group and one Primary on the right.",
+    "Content is a slot with no built-in padding. Feedback copy uses modal_item/feedback-content (px 24).",
+    "Content slot, forms and feedback copy are start/left aligned and fill the slot. Do not center the inner block. Header title stays start; footer actions stay end. Horizontal form labels inside Modal are start-aligned.",
+    "Close icon is 20x20 in Figma (the artboard control has no separate hit-area padding); confirmed against the shared 12/16/20/24/28/32/36 icon size ladder (MDL-005 closed 2026-09-10): 20 is a valid rung, so this is an intentional deviation from gj-icon-button 32/16 icon sizing, not an inconsistency to fix. 2026-09-10 follow-up: the implementation adds a code-only 32px click/hover hit area around the unchanged 20px icon (--ds-component-modal-close-hit-size), purely for touch/accessibility target size — this is not a Figma variant and does not change the visible icon.",
+    "Footer height 76px = paddingBlockStart 20 + button 32 + paddingBlockEnd 24（用户 2026-09-09 确认的计算依据：按钮组右下角、页边距24、距上方内容至少20），不再用「压缩顶部内边距到16以凑72」的旧实现。",
+    "Header / Footer / Feedback 的水平内边距统一为 20px（用户 2026-09-09 确认）；Footer 的底部内边距仍保持 24px 不变，只统一左右内边距。",
+    "gj-modal-close 的 Hover 只改变图标颜色，不叠加背景色；与共享 gj-icon-button、Notification 关闭统一 Hover 语言（2026-09-11 起）。"
+  ],
+  "dependencies": [
+    "Button",
+    "Icon",
+    "Mask"
+  ],
+  "knownFigmaIssues": [
+    "MDL-001",
+    "MDL-006"
+  ],
+  "pendingExtraction": [],
+  "confirmedDecisions": [
+    {
+      "id": "MDL-007",
+      "date": "2026-09-09",
+      "decision": "Modal 内容区（表单、确认提示、业务插槽）左对齐并撑满插槽，不居中。画板 Medium 表单样本是悬挂右对齐标签 + 控件栏 left 120 / items-end / justify-center；实现不复制该居中观感。页脚按钮仍右对齐。",
+      "source": "用户设计确认"
+    },
+    {
+      "id": "MDL-002/003",
+      "date": "2026-09-09",
+      "decision": "宽度采用画板发布值 400/600/800，Figma 组件说明里的 520/720 与 Confirm/Destructive/Result 四类 Type 判定为未同步的旧描述文案，不作为设计真值。与 Drawer 的三档宽度保持一致。",
+      "source": "用户设计确认"
+    },
+    {
+      "id": "MDL-004",
+      "date": "2026-09-09",
+      "decision": "Footer 高度改为 76px（20 顶部间距 + 32 按钮 + 24 底部页边距），不再压缩顶部内边距到 16 去凑 Figma 标注的 72。计算依据：按钮组需位于卡片右下角、页边距 24、距上方内容至少 20。",
+      "source": "用户设计确认"
+    },
+    {
+      "id": "MDL-008",
+      "date": "2026-09-09",
+      "decision": "Header（水平20）与 Footer/Feedback（原水平24）内边距不一致；用户复核后确认统一成 20px（不是提到 24），Footer 底部内边距 24 不受影响，只统一左右内边距。",
+      "source": "用户设计确认"
+    },
+    {
+      "id": "MDL-005",
+      "date": "2026-09-10",
+      "decision": "关闭控件保持 Figma 真值 20x20（关闭按钮 icon 为 20px），不套用共享 gj-icon-button 的 32/16 配方。Icon 组件的 size 阶梯为 12/16/20/24/28/32/36，20 是合法值，不是需要修正的临时数字；Modal 关闭按钮沿用画板 20px。",
+      "source": "用户设计确认 + Figma 只读复核（3552:2 的 Close action/Close icon 均为 20x20，与画板记录一致）"
+    },
+    "2026-09-11 MDL-009：gj-modal-close 的 Hover 取消背景色叠加（Background/Hover），改为仅改变图标颜色（Text/primary），与 gj-icon-button（BTN-006）、Notification 关闭（NTF-005）统一 Hover 语言；Pressed（Background/Hover_2）与 Focus 环不变；20×20 视觉尺寸与 32px 无障碍热区均不受影响。"
+  ],
+  "partialMeasurements": [
+    "COMPONENT_SET 根 ID 未返回，schema 用画板 frame 3553:11705 作集合锚点",
+    "内容插槽本身无内边距；表单样本 Medium 内容 top 16、标签悬挂在槽外。MDL-007 不以该悬挂居中布局作为实现。",
+    "Error 反馈图标在独立 get_design_context 未返回 iconfont 节点名，按 close-circle-fill 与 Toast error 同形记录",
+    "本画板没有 Mask 图层；遮罩色按现有实现 Background/MK_45，不是 Mask 默认 MK_60",
+    "Footer 高度与内边距已按用户 2026-09-09 的显式计算修正为 76px / 20·20·24，不再是 Figma 生成代码的字面值，见 confirmedDecisions MDL-004。"
+  ]
+}

@@ -1,0 +1,175 @@
+{
+  "$schema": "gj-design-skill/component-schema/v1",
+  "component": "Selector",
+  "source": {
+    "rulesSection": "Selector 选择器",
+    "inventoryPage": "select",
+    "figmaFile": "8b01I1e3TzH1IhYlr3tJzd",
+    "figmaPage": "2638:2419",
+    "status": "figma-audited",
+    "figmaAudit": "done-2026-09-10-SEL-002"
+  },
+  "purpose": "从已知候选项中选择一个或多个结果。触发器负责当前值与展开入口；选项面板复用 Dropdown。",
+  "implementation": {
+    "rootClass": "gj-selector",
+    "triggerClass": "gj-selector-trigger",
+    "placeholderClass": "gj-selector-placeholder",
+    "itemClass": "gj-selector-item",
+    "itemCloseClass": "gj-selector-item-close",
+    "arrowClass": "gj-selector-arrow",
+    "errorClass": "gj-selector-trigger-error"
+  },
+  "figma": {
+    "fileKey": "8b01I1e3TzH1IhYlr3tJzd",
+    "pageNodeId": "2638:2419",
+    "pageName": "选择器select",
+    "inventoryListed": { "sets": 2, "variants": 42, "standalone": 0 },
+    "auditedThisPass": {
+      "sets": 3,
+      "variants": 36,
+      "standalone": 0,
+      "note": "2026-09-10 按母版口径。旧 2/42 把两套触发器的笛卡尔积（18+24）当成 variant 数，且漏记 Selection-Item。实收 select_basic 15 + select_multiselect 12 + Selection-Item 9。"
+    },
+    "componentSets": [
+      {
+        "nodeId": "2889:3782",
+        "name": "select_basic",
+        "variants": 15,
+        "defaultVariant": { "nodeId": "2889:3781", "name": "Size=Middle, State=Default, Disabled=false, Tags=false" },
+        "axes": {
+          "Size": ["small", "Middle", "Large"],
+          "State": ["Default", "selected", "focused"],
+          "Disabled": ["false", "true"],
+          "Tags": ["false"]
+        },
+        "note": "笛卡尔 18，实收 15。缺 focused+Disabled=true 三档。Tags 只有 false。展示宽 198。"
+      },
+      {
+        "nodeId": "4208:19225",
+        "name": "select_multiselect",
+        "variants": 12,
+        "defaultVariant": { "nodeId": "4208:19413", "name": "size=Middle, state=defaut, focused=false" },
+        "axes": {
+          "size": ["small", "Middle", "Large"],
+          "state": ["defaut", "selected", "focused", "disable"],
+          "focused": ["false", "true"]
+        },
+        "note": "笛卡尔 24，实收 12。focused 布尔只出现在 disable=true 的三个 variant 上，与 state=focused 重复。defaut 为拼写错误。"
+      },
+      {
+        "nodeId": "2889:3999",
+        "name": "Selection-Item",
+        "variants": 9,
+        "defaultVariant": { "nodeId": "2889:3998", "name": "Size=middle, Closeicon=true, disabled=false" },
+        "axes": {
+          "Size": ["Small", "middle", "Large"],
+          "Closeicon": ["true", "false"],
+          "disabled": ["false", "true"]
+        },
+        "note": "笛卡尔 12，实收 9。缺 Closeicon=true × disabled=true 三档。禁用标签不画关闭图标。"
+      }
+    ],
+    "standalone": []
+  },
+  "properties": {
+    "mode": ["single", "multiple", "cascade", "tree"],
+    "size": ["small", "medium", "large"],
+    "status": ["default", "error"],
+    "disabled": [false, true],
+    "searchable": [false, true],
+    "clearable": [false, true]
+  },
+  "defaults": {
+    "mode": "single",
+    "size": "medium",
+    "status": "default",
+    "disabled": false,
+    "searchable": false,
+    "clearable": false
+  },
+  "sizes": {
+    "small": { "height": 24, "radius": 4, "paddingInline": 8, "font": "14/22" },
+    "medium": { "height": 32, "radius": 6, "paddingInline": 8, "font": "14/22" },
+    "large": { "height": 40, "radius": 8, "paddingInline": 12, "font": "16/24" },
+    "trigger": { "width": 198, "gap": 10, "icon": 16 },
+    "chip": {
+      "small": { "height": 16, "radius": 4, "close": 12 },
+      "medium": { "height": 24, "radius": 4, "close": 12 },
+      "large": { "height": 32, "radius": 6, "close": 16 },
+      "gap": 4,
+      "disabledOpacity": 0.5
+    }
+  },
+  "typography": {
+    "trigger.small": { "textStyle": "中文/S8-CN-R", "size": 14, "lineHeight": 22 },
+    "trigger.medium": { "textStyle": "中文/S8-CN-R", "size": 14, "lineHeight": 22 },
+    "trigger.large": { "textStyle": "中文/S7-CN-R", "size": 16, "lineHeight": 24 },
+    "chip.small": { "textStyle": "中文/S9-CN-R", "size": 12, "lineHeight": 18 },
+    "chip.medium": { "textStyle": "中文/S9-CN-R", "size": 12, "lineHeight": 18 },
+    "chip.large": { "textStyle": "中文/S7-CN-R", "size": 16, "lineHeight": 24 }
+  },
+  "colorBindings": {
+    "trigger.default.background": "Background/Container",
+    "trigger.default.border": "Border/secondary",
+    "trigger.default.placeholder": "Text/disable",
+    "trigger.selected.text": "Text/Primary",
+    "trigger.focused.border": "Border/focused",
+    "trigger.disabled.background": "Background/Background",
+    "trigger.disabled.border": "Border/secondary",
+    "trigger.disabled.placeholder": "Text/disable",
+    "trigger.disabled.selectedText": "Text/Primary",
+    "arrow": "Text/Tertiary",
+    "chip.background": "Background/Secondary",
+    "chip.text": "Text/Primary",
+    "chip.close": "Text/Tertiary"
+  },
+  "confirmedDecisions": [
+    "页上 3 套母版 / 36 variants / 0 standalone。旧 inventory 2/42 是两套触发器的笛卡尔积，漏记 Selection-Item。",
+    "select_basic 默认 Size=Middle, State=Default, Disabled=false。select_multiselect 默认 size=Middle, state=defaut。Selection-Item 默认 middle + Closeicon=true。",
+    "本地 API 继续归一：Middle/middle→medium，defaut→default，disable→disabled，Closeicon→closeIcon。Figma 拼写不进入代码。",
+    "Multiselect 的 focused 布尔与 state=focused 重复；实现只保留单一 Focus 语义（SEL-001）。",
+    "Default 空值文字 Text/disable（Placeholder）。selected / focused 有值文字 Text/Primary。箭头始终 Text/Tertiary。",
+    "Disabled 填充 Background/Background，描边仍是 Border/secondary，不是 Border/disabled。空值禁用用 Placeholder 色；有值禁用文字仍 Primary。",
+    "缺 focused+Disabled。实现 Disabled 优先，不画 Focus 环。",
+    "Selection-Item 缺 Closeicon=true×disabled。禁用标签不显示关闭图标，opacity 50%，文字仍 Primary。",
+    "颜色与文字样式已绑定。触发器高/圆角/内边距为字面值，与 control-S/M/L 和 Radius-XS/SM/MD 同值，节点未绑 Dimension。Small 芯片圆角绑了 Radius/Radius-XS。",
+    "无 Hover / Error variant。Hover 边框 Border/hover、Error 边框、:focus-visible 2px Background/BT_B8 为本地补充，不假装稿上有。",
+    "展示宽 198。产品宽度仍用 160–240，极窄 120。面板复用 Dropdown，不在 Selector 另开 option 状态矩阵。"
+  ],
+  "constraints": [
+    "Placeholder 只属于 Trigger，不进入 Dropdown 选项。",
+    "单选 Selected 必须唯一；提交是一次完整更新。",
+    "status 只表示 default|error；disabled 独立；Focused/Open 派生；Selected 由 value 推导。",
+    "多选结果用 Selection Item；禁用标签不可删除。",
+    "级联/树状模式的面板分别复用 Cascader 与树面板，不在 Selector 页另开母版。",
+    "规范页必须复用 gj-selector / gj-selector-item，不得页面私有方块标签。"
+  ],
+  "selection_model": {
+    "single": { "valueCardinality": "0..1", "selectedOptionCardinality": "0..1", "closeAfterSelect": true },
+    "multiple": { "valueCardinality": "0..n", "selectedOptionCardinality": "0..n", "closeAfterSelect": false },
+    "placeholder": "Trigger-only.",
+    "stateSeparation": "Focus is not selection."
+  },
+  "state_ownership": {
+    "selected": "derived from value",
+    "focused": "interaction",
+    "open": "interaction",
+    "disabled": "prop"
+  },
+  "layout": {
+    "recommendedWidth": 198,
+    "minimumWidth": 120,
+    "productWidthRange": [160, 240]
+  },
+  "keyboard": {
+    "source": "local-supplement",
+    "open": ["Enter", "Space", "ArrowDown", "ArrowUp"],
+    "navigate": ["ArrowDown", "ArrowUp", "Home", "End"],
+    "select": ["Enter", "Space"],
+    "close": ["Escape", "Tab"]
+  },
+  "dependencies": ["Dropdown", "Icon", "Cascader"],
+  "icons": ["icf_Arrow_down.svg", "icf_system_close-md.svg", "icf_system_check.svg"],
+  "knownFigmaIssues": ["SEL-001"],
+  "pendingExtraction": []
+}

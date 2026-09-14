@@ -1,0 +1,346 @@
+{
+  "$schema": "gj-design-skill/component-tokens/v1",
+  "component": "TimePicker",
+  "source": {
+    "figmaNode": "3042:5339",
+    "figmaNodes": ["3042:5340", "3042:5870", "3042:5597", "3042:5655", "3042:5932", "4287:15403", "3042:4592"],
+    "figmaReadDate": "2026-09-09",
+    "componentSchema": "references/components/time-picker/schema.json",
+    "componentMapping": "references/components/time-picker/mapping.json",
+    "confirmedRules": "references/components/time-picker/rules.md",
+    "implementation": "assets/styles/gj-b2b-components.css#.gj-time-trigger"
+  },
+  "properties": {
+    "mode": {
+      "default": "single",
+      "values": ["single", "range", "group"]
+    },
+    "size": {
+      "default": "medium",
+      "values": ["small", "medium", "large"],
+      "figmaValues": ["small", "medium", "Large"]
+    },
+    "status": {
+      "default": "default",
+      "values": ["default", "filled", "disabled"],
+      "figmaValues": ["Default", "filled"]
+    },
+    "panelStyle": {
+      "default": "time",
+      "values": ["time", "ampm"],
+      "figmaValues": ["time", "AM-PM"]
+    }
+  },
+  "tokens": {
+    "trigger.width": {
+      "value": 260,
+      "unit": "px",
+      "cssVariable": "--ds-component-time-picker-trigger-width"
+    },
+    "trigger.small.height": {
+      "value": "{Components/control-S}",
+      "resolved": 24,
+      "unit": "px",
+      "cssVariable": "--ds-component-time-picker-trigger-small-height"
+    },
+    "trigger.small.radius": {
+      "value": "{Radius/Radius-XS}",
+      "resolved": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-time-picker-trigger-small-radius"
+    },
+    "trigger.small.paddingInline": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-time-picker-trigger-small-padding-inline",
+      "note": "Figma Small 实测 8px；不要抄 DatePicker 三档统一 12。"
+    },
+    "trigger.small.iconSize": {
+      "value": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-time-picker-trigger-small-icon"
+    },
+    "trigger.small.textStyle": {
+      "value": "{中文/S8-CN-R}",
+      "cssClass": "gj-type-cn-s8"
+    },
+    "trigger.medium.height": {
+      "value": "{Components/control-M}",
+      "resolved": 32,
+      "unit": "px",
+      "cssVariable": "--ds-component-time-picker-trigger-medium-height"
+    },
+    "trigger.medium.radius": {
+      "value": "{Radius/Radius-SM}",
+      "resolved": 6,
+      "unit": "px",
+      "cssVariable": "--ds-component-time-picker-trigger-medium-radius"
+    },
+    "trigger.medium.paddingInline": {
+      "value": "{Interval/space4}",
+      "resolved": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-time-picker-trigger-medium-padding-inline"
+    },
+    "trigger.medium.iconSize": {
+      "value": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-time-picker-trigger-medium-icon"
+    },
+    "trigger.medium.textStyle": {
+      "value": "{中文/S8-CN-R}",
+      "cssClass": "gj-type-cn-s8"
+    },
+    "trigger.large.height": {
+      "value": "{Components/control-L}",
+      "resolved": 40,
+      "unit": "px",
+      "cssVariable": "--ds-component-time-picker-trigger-large-height"
+    },
+    "trigger.large.radius": {
+      "value": "{Radius/Radius-MD}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-time-picker-trigger-large-radius"
+    },
+    "trigger.large.paddingInline": {
+      "value": "{Interval/space4}",
+      "resolved": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-time-picker-trigger-large-padding-inline"
+    },
+    "trigger.large.iconSize": {
+      "value": 20,
+      "unit": "px",
+      "cssVariable": "--ds-component-time-picker-trigger-large-icon",
+      "note": "Figma Large 时钟 20px；Small/Medium 为 16。"
+    },
+    "trigger.large.textStyle": {
+      "value": "{中文/S7-CN-R}",
+      "cssClass": "gj-type-cn-s7"
+    },
+    "trigger.paddingBlock": {
+      "value": "{Interval/space2}",
+      "resolved": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-time-picker-trigger-padding-block"
+    },
+    "trigger.iconSlotPaddingInlineStart": {
+      "value": "{Interval/space2}",
+      "resolved": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-time-picker-trigger-icon-slot-padding"
+    },
+    "range.separatorWidth": {
+      "value": 32,
+      "unit": "px",
+      "cssVariable": "--ds-component-time-picker-range-separator-width"
+    },
+    "range.separatorHeight": {
+      "value": 24,
+      "unit": "px",
+      "cssVariable": "--ds-component-time-picker-range-separator-height"
+    },
+    "range.segment.mediumSmallWidth": {
+      "value": 88,
+      "unit": "px",
+      "cssVariable": "--ds-component-time-picker-range-segment-medium-small-width"
+    },
+    "range.segment.largeWidth": {
+      "value": 92,
+      "unit": "px",
+      "cssVariable": "--ds-component-time-picker-range-segment-large-width"
+    },
+    "item.width": {
+      "value": 64,
+      "unit": "px",
+      "cssVariable": "--ds-component-time-picker-item-width"
+    },
+    "item.height": {
+      "value": 28,
+      "unit": "px",
+      "cssVariable": "--ds-component-time-picker-item-height",
+      "note": "不等于 Dropdown Item 32。"
+    },
+    "item.paddingInline": {
+      "value": "{Interval/space5}",
+      "resolved": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-time-picker-item-padding-inline"
+    },
+    "item.paddingBlock": {
+      "value": "{Interval/space2}",
+      "resolved": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-time-picker-item-padding-block"
+    },
+    "item.radius": {
+      "value": "{Radius/Radius-XS}",
+      "resolved": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-time-picker-item-radius"
+    },
+    "item.textStyle": {
+      "value": "{中文/S8-CN-R}",
+      "cssClass": "gj-type-cn-s8"
+    },
+    "panel.width": {
+      "value": 140,
+      "unit": "px",
+      "cssVariable": "--ds-component-time-picker-panel-width"
+    },
+    "panel.timeHeight": {
+      "value": 242,
+      "unit": "px",
+      "cssVariable": "--ds-component-time-picker-panel-time-height"
+    },
+    "panel.ampmHeight": {
+      "value": 72,
+      "unit": "px",
+      "cssVariable": "--ds-component-time-picker-panel-ampm-height"
+    },
+    "panel.ampmWidth": {
+      "value": 73,
+      "unit": "px",
+      "cssVariable": "--ds-component-time-picker-panel-ampm-width"
+    },
+    "panel.radius": {
+      "value": "{Radius/Radius-MD}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-time-picker-panel-radius"
+    },
+    "panel.paddingInline": {
+      "value": "{Interval/space2}",
+      "resolved": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-time-picker-panel-padding-inline"
+    },
+    "panel.paddingBlock": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-time-picker-panel-padding-block"
+    },
+    "panel.columnGap": {
+      "value": "{Interval/space2}",
+      "resolved": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-time-picker-panel-column-gap"
+    },
+    "panel.columnHeight": {
+      "value": 182,
+      "unit": "px",
+      "cssVariable": "--ds-component-time-picker-panel-column-height"
+    },
+    "panel.timeBodyToActionsGap": {
+      "value": "{Interval/space4}",
+      "resolved": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-time-picker-panel-time-body-to-actions-gap"
+    },
+    "panel.actionsGap": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-time-picker-panel-actions-gap"
+    },
+    "panel.shadow": {
+      "value": "{shadow-center}",
+      "cssVariable": "--ds-component-time-picker-panel-shadow"
+    },
+    "group.pairGap": {
+      "value": "{Interval/space2}",
+      "resolved": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-time-picker-group-pair-gap"
+    },
+    "group.pairToPeriodGap": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-time-picker-group-pair-to-period-gap"
+    },
+    "group.colonTextStyle": {
+      "value": "{中文/S7-CN-R}",
+      "cssClass": "gj-type-cn-s7",
+      "note": "Medium 组冒号也用 S7，不是跟随触发器 S8。"
+    }
+  },
+  "stateMatrix": {
+    "trigger.default": {
+      "background": "Background/Container",
+      "text": "Text/disable",
+      "border": "Border/secondary",
+      "icon": "Text/Tertiary"
+    },
+    "trigger.hover": {
+      "background": "Background/Container",
+      "text": "Text/disable",
+      "border": "Border/focused",
+      "icon": "Text/Tertiary"
+    },
+    "trigger.filled": {
+      "background": "Background/Container",
+      "text": "Text/Primary",
+      "border": "Border/secondary",
+      "icon": "Text/Tertiary"
+    },
+    "trigger.disabled": {
+      "background": "Background/Background",
+      "text": "Text/disable",
+      "border": "Border/secondary",
+      "icon": "Text/Tertiary"
+    },
+    "item.default": {
+      "background": "transparent",
+      "text": "Text/Primary"
+    },
+    "item.hover": {
+      "background": "Background/Hover",
+      "text": "Text/Primary"
+    },
+    "item.selected": {
+      "background": "transparent",
+      "text": "Text/blue"
+    },
+    "item.disabled": {
+      "background": "transparent",
+      "text": "Text/Primary",
+      "opacity": 0.5
+    },
+    "segment.default": {
+      "background": "Background/Container",
+      "text": "Text/disable",
+      "border": "Border/secondary",
+      "icon": "Text/Tertiary"
+    },
+    "segment.filled": {
+      "background": "Background/Container",
+      "text": "Text/Primary",
+      "border": "Border/secondary",
+      "icon": "Text/Tertiary"
+    },
+    "segment.disabled": {
+      "background": "Background/Background",
+      "text": "Text/disable",
+      "border": "Border/secondary"
+    },
+    "group.disabled": {
+      "opacity": 0.5
+    }
+  },
+  "behavior": {
+    "triggerStatePriority": ["disabled", "error", "open-focused", "hover", "filled-default"],
+    "itemStatePriority": ["disabled", "selected", "hover", "default"],
+    "hover": "Trigger hover uses Border/focused. Not a Figma variant.",
+    "disabled": "Trigger and segment use published Disabled variants. Time-Item and group have no Disabled axis, so only those use 50% opacity fallback.",
+    "itemDisabled": "Unavailable Time-Item including AM/PM options uses 50% opacity. Not a Figma variant.",
+    "groupPeriod": "12-hour AM/PM is Time-Picker-dropdown style=AM-PM. Do not add a hide-AM/PM axis on the group.",
+    "panel": "style=time is hour+minute plus Medium Clear/OK; style=AM-PM is 73×72 with two items and no actions. Do not add a seconds column.",
+    "keyboard": "ArrowUp/Down move the option, Enter confirms, Escape closes. Not a Figma variant.",
+    "rangeValidation": "End cannot be earlier than start; cross-day ranges need date or next-day context."
+  },
+  "openItems": {}
+}

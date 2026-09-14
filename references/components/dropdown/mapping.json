@@ -1,0 +1,9 @@
+{
+  "$schema":"gj-design-skill/component-mapping/v1",
+  "component":"Dropdown",
+  "figmaToContract":{"dropdown_singleselect":"mode=single","dropdown_multiselect":"mode=multiple","arrow":"placement!=none","direction":"placement","item.state=hover":"active-descendant only"},
+  "implementation":{"shell":"gj-dropdown-shell","panel":"gj-dropdown","item":"gj-dropdown-item","label":"gj-dropdown-label","singleCheck":"gj-dropdown-check","multipleCheck":"gj-dropdown-checkbox","pointer":"gj-dropdown-pointer"},
+  "stateMap":{"priority":["disabled","selected","focused","hover","default"],"selected":"aria-selected=true","focused":"active descendant; never selected","disabled":"aria-disabled=true"},
+  "boundaryMap":{"collision":"flip vertically before max-height","dynamicOptions":"synchronize by stable value","async":["loading","empty","error"]},
+  "accessibility":{"panel":"role=listbox","single":"aria-multiselectable=false","multiple":"aria-multiselectable=true","keyboard":["ArrowUp","ArrowDown","Home","End","Enter","Space","Escape","Tab"]}
+}

@@ -1,0 +1,169 @@
+{
+  "$schema": "gj-design-skill/component-schema/v1",
+  "component": "Table",
+  "status": "local-contract",
+  "preview": "../../../preview/table/index.html",
+  "compositionPolicy": "prefer-shared-component",
+  "implementation": {
+    "wrapperClass": "gj-table-wrap",
+    "tableClass": "gj-table",
+    "sizeClasses": {
+      "small": "gj-table-small",
+      "medium": "gj-table",
+      "large": "gj-table-large"
+    },
+    "selectionStateClass": "is-selected",
+    "fixedActionClass": "gj-table-action",
+    "sortControlClass": "gj-table-sort",
+    "headIconClass": "gj-table-head-icon",
+    "expandControlClass": "gj-table-expand",
+    "iconActionsClass": "gj-table-icon-actions"
+  },
+  "size": {
+    "default": "medium",
+    "variants": {
+      "small": {
+        "headerHeight": 40,
+        "cellHeight": 40,
+        "usage": "用户明确要求的高密度表格"
+      },
+      "medium": {
+        "headerHeight": 48,
+        "cellHeight": 48,
+        "usage": "默认 PC 端表格"
+      },
+      "large": {
+        "headerHeight": 52,
+        "cellHeight": 52,
+        "usage": "用户明确要求的疏松或复杂内容表格"
+      }
+    },
+    "atomic": true,
+    "rule": "Header, body cells, fixed columns and all data rows use the same Table size variant."
+  },
+  "header": {
+    "background": "Table/head_bg",
+    "appliesToFixedActionColumn": true,
+    "sortIcon": "assets/icons/iconfont/icf_Arrow_caret.svg",
+    "filterIcon": "assets/icons/iconfont/icf_system_filter.svg"
+  },
+  "colors": {
+    "outerBorder": "Table/border",
+    "cellDivider": "Table/divider",
+    "headerBackground": "Table/head_bg",
+    "bodyBackground": "Table/table_bg1"
+  },
+  "columns": {
+    "requiredFields": [
+      "key",
+      "title",
+      "alignment",
+      "widthPolicy"
+    ],
+    "widthPolicies": [
+      "fixed",
+      "minmax",
+      "flex"
+    ],
+    "fixedCandidates": [
+      "selection",
+      "index",
+      "expand",
+      "status",
+      "actions"
+    ],
+    "flexRequirement": "Keep at least one primary content column flexible.",
+    "overflow": "Preserve readable column widths and scroll horizontally instead of compressing every column.",
+    "actionColumnAlignment": "center"
+  },
+  "interaction": {
+    "sort": {
+      "default": "single-column",
+      "states": [
+        "none",
+        "ascending",
+        "descending"
+      ],
+      "aria": "aria-sort",
+      "multiColumn": "Only when explicitly required; show priority."
+    },
+    "selection": {
+      "rowClickSelects": false,
+      "headerCheckboxScope": "Declare current-page or all-results",
+      "partial": "indeterminate"
+    },
+    "expand": {
+      "independentFromSelection": true,
+      "aria": [
+        "aria-expanded",
+        "aria-controls"
+      ]
+    },
+    "statePriority": [
+      "disabled",
+      "selected",
+      "expanded",
+      "hover",
+      "default"
+    ]
+  },
+  "dataStates": {
+    "loading": "Keep header and column geometry; use Skeleton or row-level loading.",
+    "empty": "Span all columns inside the Table container; do not create fake data rows.",
+    "error": "Keep query context and provide retry.",
+    "paginationWithoutRows": "Hide or disable; never show a fabricated total."
+  },
+  "accessibility": {
+    "structure": "Prefer native table/th/td semantics.",
+    "header": "Declare column scope and expose sorting state.",
+    "controls": "Checkboxes and icon-only actions require accessible names."
+  },
+  "sourceAudit": {
+    "status": "figma-audited",
+    "date": "2026-09-10",
+    "pageNode": "2943:3259",
+    "inventoryPolicy": "master-components-only",
+    "componentSets": [
+      {
+        "name": "Table/title",
+        "figmaNode": "2946:4360",
+        "variants": 15
+      },
+      {
+        "name": "Table/content",
+        "figmaNode": "2946:6674",
+        "variants": 36
+      },
+      {
+        "name": "Table/Collapse",
+        "figmaNode": "2956:8364",
+        "variants": 6
+      }
+    ],
+    "variantCount": 57,
+    "standaloneCount": 6,
+    "closedIssue": "TBL-002",
+    "openIssues": [],
+    "resolvedIssues": [
+      {
+        "id": "TBL-003",
+        "date": "2026-09-10",
+        "result": "Table/content, Table/Collapse and Table/subcontent use Table/divider; Border/default is no longer present."
+      },
+      {
+        "id": "TBL-004",
+        "date": "2026-09-10",
+        "result": "4.subTable and sub_table_item use Text/Secondary; the legacy 文本色/副文 variable is no longer present."
+      }
+    ],
+    "geometryBindingPolicy": "Literal geometry is permitted; do not claim Dimension Token bindings that Figma does not expose.",
+    "localGenerationContract": "complete"
+  },
+  "boundaries": [
+    "Do not redraw Table structure or interaction icons in page CSS.",
+    "Use Table/border for the outer border and Table/divider for structural separators; do not substitute generic Border tokens.",
+    "Do not substitute approximate icons for Table sort, filter or expand affordances.",
+    "The Table specification page and business-pattern pages must use the same shared Table classes; documentation-only parameter tables may use ds-table.",
+    "Use small or large only when the user or an explicit design instance requires a different density."
+  ]
+}

@@ -1,0 +1,214 @@
+{
+  "$schema": "gj-design-skill/component-schema/v1",
+  "component": "Chart",
+  "status": "local-contract",
+  "source": {
+    "rulesSection": "Chart 图表",
+    "inventoryPage": "Chart✅",
+    "status": "local-contract",
+    "figmaAudit": "deferred-2026-09-08",
+    "figma_file_key": "8b01I1e3TzH1IhYlr3tJzd",
+    "read_only": true,
+    "preview": "../../../preview/chart/index.html"
+  },
+  "purpose": "按数据关系表达趋势、比较、构成、维度、达成度或关键词权重。",
+  "preview": "../../../preview/chart/index.html",
+  "implementation": {
+    "rootClass": "gj-chart",
+    "axisTextClass": "gj-chart-axis-text",
+    "valueClass": "gj-chart-value",
+    "gridClass": "gj-chart-grid",
+    "zeroClass": "gj-chart-zero",
+    "barPositiveClass": "gj-chart-bar-positive",
+    "barNegativeClass": "gj-chart-bar-negative",
+    "legendClass": "gj-chart-legend",
+    "legendItemClass": "gj-chart-legend-item",
+    "legendDotClass": "gj-chart-legend-dot",
+    "specPreview": "preview/chart/index.html 使用页面内样式演示全量图种；业务页优先复用 gj-chart* 共享基座，不得把规范页画布尺寸当成产品 Token。"
+  },
+  "properties": {
+    "type": [
+      "line",
+      "curve",
+      "bar",
+      "pie",
+      "donut",
+      "percentage",
+      "radar",
+      "gauge",
+      "progress",
+      "progress-ring",
+      "word-cloud"
+    ],
+    "legend": [
+      "Line",
+      "Block",
+      "Dot",
+      "Dot+Line"
+    ],
+    "legendDirection": [
+      "Horizontal",
+      "Vertical"
+    ],
+    "axisYStyle": [
+      "Dashed",
+      "Solid"
+    ],
+    "axisXScaleType": [
+      "Time",
+      "Month",
+      "Days",
+      "Quarterly"
+    ],
+    "indicatorSeries": [
+      "Single",
+      "Multiple"
+    ],
+    "state": [
+      "loading",
+      "ready",
+      "empty",
+      "error"
+    ],
+    "interactiveIndicator": [
+      "hover",
+      "selected"
+    ]
+  },
+  "defaults": {
+    "legend": "Line",
+    "legendDirection": "Horizontal",
+    "axisYStyle": "Dashed",
+    "state": "ready",
+    "interactiveIndicator": "hover"
+  },
+  "foundationFromPreview": [
+    {
+      "name": "Chart_item/Y-axis",
+      "properties": [
+        "Style: Dashed|Solid"
+      ],
+      "notes": "Y 轴标签右对齐；文字 12/18；线 Border/default。非零刻度虚线，0 刻度与 X 轴共用实线基线。"
+    },
+    {
+      "name": "Chart_item/X-axis-label-group",
+      "properties": [
+        "ScaleType: Month|Time|Days|Quarterly"
+      ],
+      "notes": "只含刻度文字，不含轴线；单位必须明确。"
+    },
+    {
+      "name": "Chart_item/Chart-legend",
+      "properties": [
+        "Type: Line|Block|Dot|Dot+Line",
+        "Direction: Horizontal|Vertical"
+      ],
+      "notes": "Dot 8px；横向间距 16px（2026-09-08 设计确认）；纵向间距 8px。"
+    },
+    {
+      "name": "Chart_item/Data-indicator",
+      "properties": [
+        "Series: Single|Multiple"
+      ],
+      "notes": "Hover 临时出现，Selected 持续；多系列显示同一刻度全部节点。"
+    },
+    {
+      "name": "Chart_item/Chart-title",
+      "properties": [
+        "Subtitle: True|False",
+        "Tooltip: True|False"
+      ],
+      "notes": "标题 16/24；说明 14/22；信息图标 16px。"
+    }
+  ],
+  "structure": [
+    "title-and-optional-actions",
+    "plot",
+    "axes-or-scale",
+    "legend",
+    "tooltip-layer",
+    "state-layer"
+  ],
+  "tokens": {
+    "series": [
+      "Chart/CH01",
+      "Chart/CH02",
+      "Chart/CH03",
+      "Chart/CH04",
+      "Chart/CH05",
+      "Chart/CH06",
+      "Chart/CH07",
+      "Chart/CH08",
+      "Chart/CH09",
+      "Chart/CH10"
+    ],
+    "axisLine": "Border/default",
+    "axisText": "Text/Tertiary",
+    "gaugeTrack": "Background/Secondary",
+    "gaugeValue": "Chart/CH01",
+    "progressTrack": "Background/Secondary",
+    "tooltipRise": "Feedback/error&rise",
+    "tooltipFall": "Feedback/success&decline",
+    "tooltipFlat": "Feedback/plain"
+  },
+  "typography": {
+    "axis": "12/18 current UI font",
+    "dataLabelMin": "14px",
+    "tooltipValue": "current UI font",
+    "title": "16/24",
+    "subtitle": "14/22",
+    "gaugeCore": "GJType 36|44/700"
+  },
+  "behavior": {
+    "colorMapping": "Assign series colors sequentially from Chart/CH01 and keep the same metric mapping stable across the page.",
+    "accessibility": "Do not rely on color alone; retain names in tooltip, legend or labels.",
+    "states": "Provide loading, empty, error and extreme-value handling.",
+    "indicator": "Do not keep data dots on by default; show them on hover or selected.",
+    "numericFont": "GJType is only for Gauge / Progress / Progress Ring core values; axis, labels and ordinary chart numbers use the UI font."
+  },
+  "constraints": [
+    "Choose chart type from the data relationship.",
+    "Do not invent temporary series colors.",
+    "Pie/donut supports 2-10 values.",
+    "Radar supports 3-10 dimensions and 1-3 series; use short labels and a larger plot area for 9-10 dimensions.",
+    "Word-cloud text remains horizontal.",
+    "Gauge only keeps half-circle and three-quarter-circle.",
+    "Bar thickness stays within 12–40px; grouped inner gap 4px.",
+    "Single/positive-negative bar radius 4px; grouped/stacked radius 2px; stacked segment gap 2px.",
+    "Progress round track height 8px; emphasis bar height 16px.",
+    "Do not treat the spec-preview canvas sizes as product tokens.",
+    "图表整体比例（轴线预留宽高、绘图区内边距、类目间距与柱宽公式、默认高度预设）见 rules.md「整体比例与轴线搭配」与 chart.tokens.json 的 layout.* Token；不参考 Figma 复合组件内部约束（CHA-003）。"
+  ],
+  "pendingExtraction": [],
+  "partialMeasurements": [
+    "preview 属性表中的 5 个 Chart_item/* 名称来自已验收规范页，不能直接等同为 inventory 的 5 个组件集",
+    "inventory 记 Chart✅ 为 5 套 / 39 variants / 16 standalone；2026-09-10 设计确认不需要再对齐这些节点（含 Figma 侧的轴线+图表复合组件），local-contract 范围保持现状（CHA-001 已关闭）。"
+  ],
+  "confirmedDecisions": [
+    {
+      "id": "CHA-000",
+      "date": "2026-09-08",
+      "decision": "Chart 变体过多，不走全量 Figma 上传审计。契约按现有 rules.md 与已验收 preview/chart 建立 schema/mapping/audit，成熟度为 local-contract，不得标成 figma-audited。",
+      "source": "用户设计确认"
+    },
+    {
+      "id": "CHA-002",
+      "date": "2026-09-08",
+      "decision": "图例横向项间距采用 16px（Interval/space5），与共享 gj-chart-legend 一致；不再使用旧规则 12px。纵向仍为 8px。",
+      "source": "用户设计确认"
+    },
+    {
+      "id": "CHA-001",
+      "date": "2026-09-10",
+      "decision": "用户确认代码/Token 侧的图表构成本就把「轴线」与「不同图种的原子项」分开存储：CSS 层 gj-chart-grid/gj-chart-zero/gj-chart-axis-text（轴线与刻度文字）与 gj-chart-bar-positive/negative、gj-chart-legend*、gj-chart-value 等（各图种原子项/图例/数据标签）相互独立，不与具体图种耦合；schema 的 foundationFromPreview 也把 Y-axis、X-axis-label-group、Chart-legend、Data-indicator、Chart-title 记为 5 个独立原子。Figma 侧另外准备了「轴线+图表」复合组件方便设计师使用，但设计确认不需要在 skill 内维护这些复合组件——不上传、不逐一对齐 inventory 节点。inventory 记的 5 套/39 variants/16 standalone 不再需要只读复查对齐，local-contract 现状即为最终范围。",
+      "source": "用户设计确认"
+    },
+    {
+      "id": "CHA-003",
+      "date": "2026-09-10",
+      "decision": "补齐轴线与图表主体的整体比例搭配规则（Y/X 轴预留宽高、绘图区内边距、标题/图例间距、网格线数量、柱状图类目间距与柱宽公式、默认高度预设、圆形图表宽高比、响应式收缩顺序）。用户明确不参考 Figma 的「轴线+图表」复合组件（业务场景差异大，需灵活调整），改由 Claude 依据通用数据可视化原则 + 本系统既有 Interval 间距级拟定，写入 rules.md「整体比例与轴线搭配」小节与 chart.tokens.json 的 layout.* 系列 Token。",
+      "source": "用户委托设计 + 通用数据可视化原则推导，非 Figma 逐值核对"
+    }
+  ],
+  "knownFigmaIssues": []
+}

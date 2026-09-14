@@ -1,0 +1,102 @@
+{
+  "$schema": "gj-design-skill/component-mapping/v1",
+  "figmaComponent": "Toast_float / Toast_transparent / Toast_black",
+  "codeComponent": "GjToast",
+  "sourceNodes": [
+    "2638:3208",
+    "3107:2600",
+    "3107:2599",
+    "3107:2597",
+    "3107:2596",
+    "3107:2598",
+    "3107:2595",
+    "3107:2688",
+    "3107:2689",
+    "3107:2693",
+    "3107:2697",
+    "3107:2701",
+    "3107:2705",
+    "3112:2995",
+    "3112:2994",
+    "3112:3008",
+    "3586:40"
+  ],
+  "propertyMap": {
+    "type": "status（Float/Transparent：info|success|error|warning|loading）",
+    "icon": "Black 的 icon=true|false；Float/Transparent 状态图标始终存在",
+    "closeButton": "生成代码 BOOLEAN，画板样本均为 true"
+  },
+  "valueMap": {
+    "type.info": "status=info",
+    "type.success": "status=success",
+    "type.error": "status=error",
+    "type.warning": "status=warning",
+    "type.loading": "status=loading",
+    "icon.true": "Black 显示 16px icf_system_info",
+    "icon.false": "Black 仅文字"
+  },
+  "normalization": {
+    "appearance.Float": "Toast_float",
+    "appearance.Transparent": "Toast_transparent",
+    "appearance.Black": "Toast_black",
+    "oldCss.bottomFixed": "共享 .gj-toast 曾固定在底部、只用 MK_80 黑底。现拆成三套外观：Float/Transparent 顶部居中 24px；Black 仍底部居中 24px（TST-005）。",
+    "placement.black": ".gj-toast-fixed.gj-toast-black → bottom 24px center"
+  },
+  "tokenMap": {
+    "message.textStyle": "中文/S8-CN-R",
+    "message.color.floatTransparent": "Text/Primary",
+    "message.color.black": "Text/reversal",
+    "close.color": "Background/MK_30",
+    "float.background": "Background/Container",
+    "float.border": "Border/default",
+    "float.shadow": "shadow-center",
+    "transparent.info.background": "Background/BG_blue",
+    "transparent.info.border": "Background/BT_B15",
+    "transparent.success.background": "Background/BG_green",
+    "transparent.success.border": "Background/BT_G15",
+    "transparent.error.background": "Background/BG_red",
+    "transparent.error.border": "Background/BT_R15",
+    "transparent.warning.background": "Background/BG_orange",
+    "transparent.warning.border": "Background/BT_O15",
+    "transparent.loading.background": "Background/Container（TST-002 已关闭：loading 中性，不加语义浅底）",
+    "transparent.loading.border": "Border/default",
+    "black.background": "Background/MK_80",
+    "black.paddingInline": "Interval/space6",
+    "black.radius": "Radius/Radius-LG",
+    "info.icon": "Feedback/brand",
+    "success.icon": "Feedback/success&decline",
+    "error.icon": "Feedback/error&rise",
+    "warning.icon": "Feedback/warning",
+    "loading.icon": "Brand/GJ_Blue"
+  },
+  "assetMap": {
+    "info": "assets/icons/iconfont/icf_system_warning-fill.svg",
+    "success": "assets/icons/iconfont/icf_system_check-circle-fill.svg",
+    "error": "assets/icons/iconfont/icf_system_close-circle-fill.svg",
+    "warning": "assets/icons/iconfont/icf_system_alert-fill.svg",
+    "loading": "assets/icons/iconfont/icf_system_loading.svg",
+    "close": "assets/icons/iconfont/icf_system_close.svg",
+    "black.icon": "assets/icons/iconfont/icf_system_info.svg",
+    "colorRule": "使用已登记 iconfont 资源，不手写 SVG。"
+  },
+  "runtimeMap": {
+    "root": ".gj-toast",
+    "fixed": ".gj-toast-fixed",
+    "float": ".gj-toast-float",
+    "transparent": ".gj-toast-transparent",
+    "black": ".gj-toast-black",
+    "info": ".gj-toast-info",
+    "success": ".gj-toast-success",
+    "error": ".gj-toast-error",
+    "warning": ".gj-toast-warning",
+    "loading": ".gj-toast-loading",
+    "icon": ".gj-toast-icon",
+    "text": ".gj-toast-text",
+    "close": ".gj-toast-close"
+  },
+  "interactionMap": {
+    "show": "插入或更新一条 Toast；Loading 结束后原位替换",
+    "dismiss": "到时、关闭按钮或超过 3 条时移除最早一条",
+    "pause": "hover / focus 暂停自动关闭"
+  }
+}

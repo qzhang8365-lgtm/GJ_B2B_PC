@@ -1,0 +1,91 @@
+{
+  "$schema": "gj-design-skill/component-schema/v1",
+  "component": "InputNumber",
+  "source": {
+    "rulesSection": "Input Number 数字输入",
+    "inventoryPage": "Input-Number✅",
+    "figmaFile": "8b01I1e3TzH1IhYlr3tJzd",
+    "pageNodeId": "2638:2479",
+    "preview": "../../../preview/input-number/index.html",
+    "status": "figma-audited",
+    "figmaAudit": "done-2026-09-10"
+  },
+  "purpose": "录入或精确调整数量、金额、比例等可计算数值。",
+  "figma": {
+    "componentSets": 2,
+    "standaloneSymbols": 0,
+    "componentSetNodes": [
+      {
+        "nodeId": "3482:1480",
+        "name": "Input-Number",
+        "variants": 48,
+        "defaultVariant": "3482:1461",
+        "axes": {
+          "size": ["Large", "small", "medium"],
+          "state": ["Default", "filled", "active", "disabled"],
+          "numberhandle": ["false", "true"],
+          "unit": ["false", "true"],
+          "Addon": ["false", "true"]
+        }
+      },
+      {
+        "nodeId": "4293:15642",
+        "name": "swiper",
+        "variants": 4,
+        "defaultVariant": "4293:15648",
+        "axes": {
+          "style": ["basic", "range"],
+          "tooltip": ["no", "yes"]
+        }
+      }
+    ]
+  },
+  "properties": {
+    "mode": ["basic", "stepper", "unit", "right-step", "slider", "range-slider"],
+    "size": ["Small", "Medium", "Large"],
+    "value": "number",
+    "rangeValue": "[number, number]",
+    "min": "number",
+    "max": "number",
+    "step": "number",
+    "unit": "string|null",
+    "showTooltip": "boolean",
+    "disabled": "boolean"
+  },
+  "defaults": {"mode": "basic", "size": "Medium", "step": 1, "showTooltip": false, "disabled": false},
+  "sizes": {
+    "Small": {"width": 100, "height": 24, "paddingInline": 8, "radius": 4, "font": "中文/S8-CN-R"},
+    "Medium": {"width": 112, "height": 32, "paddingInline": 12, "radius": 6, "font": "中文/S8-CN-R"},
+    "Large": {"width": 133, "height": 40, "paddingInline": 12, "radius": 8, "font": "中文/S7-CN-R"}
+  },
+  "states": ["Default", "filled", "active", "disabled"],
+  "structure": {
+    "basic": ["numeric-input"],
+    "stepper": ["decrease-button", "numeric-input", "increase-button"],
+    "unit": ["numeric-input", "fixed-unit"],
+    "right-step": ["numeric-input", "increase-button", "decrease-button"],
+    "slider": ["track", "range-input", "optional-tooltip"],
+    "range-slider": ["track", "start-range-input", "end-range-input", "optional-tooltips"]
+  },
+  "behavior": {
+    "validation": "Min, Max and Step are required component inputs; reject or correct empty, nonnumeric, precision-invalid and out-of-range values with visible feedback.",
+    "stepperBoundary": "Disable decrease at Min and increase at Max.",
+    "rangeBoundary": "Start and end cannot cross; preserve a valid ordered interval.",
+    "format": "Use the current UI font and apply business-defined precision, thousands separators and units consistently.",
+    "disabled": "Prevent typing, stepping and dragging; explain the restriction when users need to understand it."
+  },
+  "constraints": [
+    "Use ordinary Input for account numbers, identity numbers and other numeric strings that are not calculated.",
+    "A fixed unit is displayed by the component and is not retyped by the user.",
+    "Slider is for rapid adjustment; show Tooltip when precise confirmation is required.",
+    "Do not infer default Min, Max, precision or unit from the visual example.",
+    "Figma 无 error 视觉轴；校验反馈不要从本组件 Token 反推描边色。",
+    "Addon 按钮与单位条宽度等于当前档位高度（24/32/40），不要写成固定 32。"
+  ],
+  "dependencies": ["Input", "Button", "Icon", "Tooltip"],
+  "confirmedDecisions": [
+    "2026-09-10：页 2638:2479 实收 2 套 / 52 variants（Input-Number 48 + swiper 4）。旧 inventory 1/48 漏记 Slider 母版。",
+    "active 绑定 Border/focused，无外发光。",
+    "swiper 轨道未激活段 Background/Secondary，激活段 Brand/GJ_Blue，滑块 Button/Primary/Bg-pressed，Tooltip Background/MK_80。"
+  ]
+}

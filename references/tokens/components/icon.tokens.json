@@ -1,0 +1,38 @@
+{
+  "$schema": "gj-design-skill/component-tokens/v1",
+  "component": "Icon",
+  "source": {
+    "componentSchema": "references/components/icon/schema.json",
+    "componentMapping": "references/components/icon/mapping.json",
+    "confirmedRules": "references/components/icon/rules.md",
+    "implementation": "assets/styles/gj-b2b-components.css#.gj-icon",
+    "note": "2026-09-09 按 rules + 用户确认的规范页/Figma 一致性建立，非本轮逐 variant Figma 绑定核实（local-contract，与 Chart 处理方式一致）。2026-09-10 ICO-004：数字后缀图标暂不补语义名与别名，继续用现名。"
+  },
+  "properties": {
+    "type": {
+      "default": "general",
+      "values": ["general", "effect", "file", "motion"]
+    },
+    "size": {
+      "default": 24,
+      "values": [12, 16, 20, 24, 28, 32, 36]
+    },
+    "style": {
+      "default": "line",
+      "values": ["line", "fill"]
+    }
+  },
+  "tokens": {
+    "canvas.default": { "value": 24, "unit": "px", "cssVariable": "--ds-component-icon-canvas-default" },
+    "stroke.width": { "value": 2, "unit": "px", "cssVariable": "--ds-component-icon-stroke-width" },
+    "radius.corner": { "value": 2, "unit": "px", "cssVariable": "--ds-component-icon-radius-corner" },
+    "color.default": { "value": "currentColor", "cssVariable": "--ds-component-icon-color-default", "note": "General/File 图标跟随相邻文字或语义色；Effect Icon 不适用，保留自身渐变。" },
+    "size.12": { "value": 12, "unit": "px", "cssVariable": "--ds-component-icon-size-12" },
+    "size.16": { "value": 16, "unit": "px", "cssVariable": "--ds-component-icon-size-16" },
+    "size.20": { "value": 20, "unit": "px", "cssVariable": "--ds-component-icon-size-20" },
+    "size.24": { "value": 24, "unit": "px", "cssVariable": "--ds-component-icon-size-24" },
+    "size.28": { "value": 28, "unit": "px", "cssVariable": "--ds-component-icon-size-28" },
+    "size.32": { "value": 32, "unit": "px", "cssVariable": "--ds-component-icon-size-32" },
+    "size.36": { "value": 36, "unit": "px", "cssVariable": "--ds-component-icon-size-36" }
+  }
+}

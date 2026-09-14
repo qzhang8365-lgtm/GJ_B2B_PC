@@ -1,0 +1,225 @@
+{
+  "$schema": "gj-design-skill/component-tokens/v1",
+  "component": "Navbar",
+  "source": {
+    "figmaNode": "3025:394",
+    "auditedNodes": "3025:394 / 3143:2981 / 3143:3036 / 3233:256 / 4171:5261",
+    "auditedAt": "2026-09-10",
+    "componentSchema": "references/components/navbar/schema.json",
+    "componentMapping": "references/components/navbar/mapping.json"
+  },
+  "properties": {
+    "style": {
+      "default": "white",
+      "values": [
+        "white",
+        "background"
+      ]
+    },
+    "Menu": {
+      "default": false,
+      "values": [
+        false,
+        true
+      ]
+    },
+    "Avatar": {
+      "default": true,
+      "values": [
+        false,
+        true
+      ]
+    },
+    "Bulletin": {
+      "default": false,
+      "values": [
+        false,
+        true
+      ]
+    },
+    "IconGroup": {
+      "default": true,
+      "values": [
+        false,
+        true
+      ]
+    },
+    "LogButton": {
+      "default": false,
+      "values": [
+        false,
+        true
+      ]
+    },
+    "SearchBox": {
+      "default": true,
+      "values": [
+        false,
+        true
+      ]
+    }
+  },
+  "tokens": {
+    "root.height": {
+      "value": 60,
+      "unit": "px",
+      "cssVariable": "--ds-component-navbar-height"
+    },
+    "root.paddingBlock": {
+      "value": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-navbar-padding-block"
+    },
+    "root.paddingInline": {
+      "value": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-navbar-padding-inline"
+    },
+    "functionalGroupGap": {
+      "value": 20,
+      "unit": "px",
+      "cssVariable": "--ds-component-navbar-functional-group-gap"
+    },
+    "iconButtonGap": {
+      "value": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-navbar-icon-button-gap"
+    },
+    "actionIconSize": {
+      "value": 20,
+      "unit": "px",
+      "cssVariable": "--ds-component-navbar-action-icon-size"
+    },
+    "menuIconSize": {
+      "value": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-navbar-menu-icon-size"
+    },
+    "searchBox.height": {
+      "value": 32,
+      "unit": "px",
+      "cssVariable": "--ds-component-navbar-search-height"
+    },
+    "searchBox.referenceWidth": {
+      "value": 200,
+      "unit": "px",
+      "cssVariable": "--ds-component-navbar-search-width"
+    },
+    "searchBox.radius": {
+      "value": 6,
+      "unit": "px",
+      "cssVariable": "--ds-component-navbar-search-radius"
+    },
+    "avatar.size": {
+      "value": 32,
+      "unit": "px",
+      "cssVariable": "--ds-component-navbar-avatar-size"
+    },
+    "menuItem.height": {
+      "value": 36,
+      "unit": "px",
+      "cssVariable": "--ds-component-navbar-menu-item-height"
+    },
+    "menuItem.paddingBlock": {
+      "value": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-navbar-menu-item-padding-block"
+    },
+    "menuItem.gap": {
+      "value": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-navbar-menu-item-gap"
+    },
+    "menuItem.paddingInline": {
+      "value": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-navbar-menu-item-padding-inline"
+    },
+    "menuItem.radius": {
+      "value": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-navbar-menu-item-radius"
+    },
+    "dropdownItem.height": {
+      "value": 40,
+      "unit": "px",
+      "cssVariable": "--ds-component-navbar-dropdown-item-height"
+    },
+    "dropdownItem.paddingInline": {
+      "value": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-navbar-dropdown-item-padding-inline"
+    },
+    "dropdownItem.radius": {
+      "value": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-navbar-dropdown-item-radius"
+    },
+    "menuDropdown.referenceWidth": {
+      "value": 320,
+      "unit": "px",
+      "cssVariable": "--ds-component-navbar-menu-dropdown-width"
+    },
+    "menuDropdown.padding": {
+      "value": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-navbar-menu-dropdown-padding"
+    },
+    "menuDropdown.gap": {
+      "value": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-navbar-menu-dropdown-gap"
+    },
+    "menuItem.default.text": {
+      "value": "{Text/Primary}",
+      "resolved": "#101828",
+      "cssVariable": "--ds-component-navbar-menu-item-default-text"
+    },
+    "menuItem.active.background": {
+      "value": "{Background/Hover_2}",
+      "resolved": "#00000008",
+      "cssVariable": "--ds-component-navbar-menu-item-active-background"
+    },
+    "menuItem.active.text": {
+      "value": "{Text/Primary}",
+      "resolved": "#101828",
+      "cssVariable": "--ds-component-navbar-menu-item-active-text"
+    },
+    "menuItem.defaultTextStyle": {
+      "value": "{中文/S8-CN-R}",
+      "cssClass": "gj-type-cn-s8"
+    },
+    "menuItem.activeTextStyle": {
+      "value": "{中文/S5-CN-S}",
+      "cssClass": "gj-type-cn-s5"
+    },
+    "dropdown.title.text": {
+      "value": "{Text/Secondary}",
+      "resolved": "#475467",
+      "cssVariable": "--ds-component-navbar-dropdown-title-text"
+    },
+    "dropdown.item.text": {
+      "value": "{Text/Primary}",
+      "resolved": "#101828",
+      "cssVariable": "--ds-component-navbar-dropdown-item-text"
+    },
+    "dropdown.item.hoverBackground": {
+      "value": "{Background/Hover_2}",
+      "resolved": "#00000008",
+      "cssVariable": "--ds-component-navbar-dropdown-item-hover-background"
+    },
+    "menuDropdown.radius": {
+      "value": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-navbar-menu-dropdown-radius"
+    },
+    "menuDropdown.shadow": {
+      "value": "{shadow-center}",
+      "cssVariable": "--ds-component-navbar-menu-dropdown-shadow",
+      "resolved": "Background/MK_10, blur 15, offset 0/0"
+    }
+  },
+  "behavior": {
+    "responsiveCollapseOrder": "公告 → 搜索 → 横向菜单；通知和用户入口保持可访问（收缩优先级由 rules.md 定义）。"
+  }
+}

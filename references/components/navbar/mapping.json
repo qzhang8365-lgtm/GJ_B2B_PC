@@ -1,0 +1,26 @@
+{
+  "$schema":"gj-design-skill/component-mapping/v1",
+  "component":"Navbar",
+  "figmaToContract":{"style":"surface","Menu":"showMenu","Avatar":"showAvatar","Bulletin":"showBulletin","IconGroup":"showActions","LogButton":"showSessionAction","SearchBox":"showSearch","Menu_item.status":"menuState","collapseIcon":"hasChildren","Menu_group.count":"menuCount"},
+  "figmaDefaults":{"surface":"white","showMenu":false,"showAvatar":true,"showBulletin":false,"showActions":true,"showSessionAction":false,"showSearch":true,"menuState":"default","hasChildren":true,"menuCount":3},
+  "composition":{"search":"Search","avatar":"Avatar","actions":"IconButton","menuPopup":"Dropdown","divider":"Divider","logButton":"Button","bulletin":"Bulletin"},
+  "layout":{"height":60,"paddingBlock":12,"paddingInline":16,"functionalGroupGap":20,"iconButtonGap":12,"menuItemPaddingBlock":8},
+  "tokenMap":{
+    "surface":{
+      "white":{"background":"Background/Container","border":"Border/default"},
+      "background":{"background":"Background/Background","border":"none"}
+    },
+    "menuItem":{
+      "default":{"text":"Text/Primary","textStyle":"中文/S8-CN-R"},
+      "active":{"background":"Background/Hover_2","text":"Text/Primary","textStyle":"中文/S5-CN-S"}
+    },
+    "menuDropdown":{
+      "title":{"text":"Text/Secondary","textStyle":"中文/S5-CN-S"},
+      "row":{"text":"Text/Primary","textStyle":"中文/S5-CN-S","hoverBackground":"Background/Hover_2"}
+    },
+    "logButton":{"background":"Button/Primary/Bg-default","text":"#ffffff"},
+    "bulletin":{"text":"#999（未绑定 Token，待设计确认）"}
+  },
+  "responsivePolicy":{"provenance":"local-generation-rule","notFigmaProperties":["collapseOrder","maxVisibleMenuItems","overflowToMore","switchToSidebar","positioningMode"],"collapseOrder":["bulletin","search","horizontalMenu"],"persistent":["notification","userEntry"]},
+  "accessibility":{"root":"header or nav","menu":"navigation landmark with current item","actions":"named buttons","user":"named account entry","expandedMenu":"trigger uses aria-expanded and aria-controls; popup uses menu semantics"}
+}

@@ -1,0 +1,200 @@
+{
+  "$schema": "gj-design-skill/component-tokens/v1",
+  "component": "Toast",
+  "source": {
+    "figmaNode": "3107:2600",
+    "figmaNodes": [
+      "3107:2600",
+      "3107:2688",
+      "3112:2995"
+    ],
+    "figmaReadDate": "2026-09-09; TST-002 and TST-004 re-verified-2026-09-10",
+    "componentSchema": "references/components/toast/schema.json",
+    "componentMapping": "references/components/toast/mapping.json",
+    "confirmedRules": "references/components/toast/rules.md",
+    "implementation": "assets/styles/gj-b2b-components.css#.gj-toast"
+  },
+  "properties": {
+    "appearance": {
+      "default": "float",
+      "values": ["float", "transparent", "black"]
+    },
+    "status": {
+      "default": "info",
+      "values": ["info", "success", "error", "warning", "loading"]
+    },
+    "closable": {
+      "default": true,
+      "values": [true, false]
+    }
+  },
+  "tokens": {
+    "float.width": {
+      "value": 365,
+      "unit": "px",
+      "cssVariable": "--ds-component-toast-float-width"
+    },
+    "float.minHeight": {
+      "value": 48,
+      "unit": "px",
+      "cssVariable": "--ds-component-toast-float-min-height"
+    },
+    "float.radius": {
+      "value": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-toast-float-radius",
+      "note": "get_design_context 实测 8px；variable_defs 未返回 Radius 绑定。"
+    },
+    "float.paddingBlock": {
+      "value": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-toast-float-padding-block"
+    },
+    "float.paddingInline": {
+      "value": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-toast-float-padding-inline"
+    },
+    "float.gap": {
+      "value": "{Interval/space4}",
+      "resolved": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-toast-float-gap",
+      "note": "画板实测 12px，按 space4 记录；variable_defs 未返回 Interval 绑定。"
+    },
+    "float.statusIcon": {
+      "value": 24,
+      "unit": "px",
+      "cssVariable": "--ds-component-toast-float-status-icon"
+    },
+    "float.closeIcon": {
+      "value": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-toast-float-close-icon"
+    },
+    "float.background": {
+      "value": "{Background/Container}",
+      "cssVariable": "--ds-component-toast-float-background"
+    },
+    "float.border": {
+      "value": "{Border/default}",
+      "cssVariable": "--ds-component-toast-float-border"
+    },
+    "float.shadow": {
+      "value": "{shadow-center}",
+      "cssVariable": "--ds-component-toast-float-shadow"
+    },
+    "black.minHeight": {
+      "value": 46,
+      "unit": "px",
+      "cssVariable": "--ds-component-toast-black-min-height"
+    },
+    "black.radius": {
+      "value": "{Radius/Radius-LG}",
+      "resolved": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-toast-black-radius"
+    },
+    "black.paddingBlock": {
+      "value": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-toast-black-padding-block",
+      "note": "生成代码把 12px 垂直内边距绑到 Radius/Radius-LG；实现按 12px，不把圆角 Token 当 padding 别名。"
+    },
+    "black.paddingInline": {
+      "value": "{Interval/space6}",
+      "resolved": 20,
+      "unit": "px",
+      "cssVariable": "--ds-component-toast-black-padding-inline"
+    },
+    "black.gap": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-toast-black-gap"
+    },
+    "black.statusIcon": {
+      "value": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-toast-black-status-icon"
+    },
+    "black.background": {
+      "value": "{Background/MK_80}",
+      "cssVariable": "--ds-component-toast-black-background"
+    },
+    "black.text": {
+      "value": "{Text/reversal}",
+      "cssVariable": "--ds-component-toast-black-text"
+    },
+    "topOffset": {
+      "value": 24,
+      "unit": "px",
+      "cssVariable": "--ds-component-toast-top-offset",
+      "note": "Float / Transparent 距视口顶或固定导航下缘。文档区 3586:40。"
+    },
+    "bottomOffset": {
+      "value": 24,
+      "unit": "px",
+      "cssVariable": "--ds-component-toast-bottom-offset",
+      "note": "Black 距视口底。与顶部 24px 同值；Figma 文档未写底部，见 TST-005。"
+    },
+    "stackGap": {
+      "value": "{Interval/space4}",
+      "resolved": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-toast-stack-gap"
+    },
+    "maxStack": {
+      "value": 3,
+      "cssVariable": "--ds-component-toast-max-stack"
+    },
+    "close.color": {
+      "value": "{Background/MK_30}",
+      "cssVariable": "--ds-component-toast-close-color"
+    },
+    "message.color": {
+      "value": "{Text/Primary}",
+      "cssVariable": "--ds-component-toast-message-color"
+    }
+  },
+  "stateMatrix": {
+    "info": {
+      "icon": "Feedback/brand",
+      "transparentBackground": "Background/BG_blue",
+      "transparentBorder": "Background/BT_B15"
+    },
+    "success": {
+      "icon": "Feedback/success&decline",
+      "transparentBackground": "Background/BG_green",
+      "transparentBorder": "Background/BT_G15"
+    },
+    "error": {
+      "icon": "Feedback/error&rise",
+      "transparentBackground": "Background/BG_red",
+      "transparentBorder": "Background/BT_R15"
+    },
+    "warning": {
+      "icon": "Feedback/warning",
+      "transparentBackground": "Background/BG_orange",
+      "transparentBorder": "Background/BT_O15"
+    },
+    "loading": {
+      "icon": "Brand/GJ_Blue",
+      "transparentBackground": "Background/Container",
+      "transparentBorder": "Border/default"
+    }
+  },
+  "behavior": {
+    "position": {
+      "floatTransparent": "Top center, 24px from viewport or sticky nav.",
+      "black": "Bottom center, 24px from viewport bottom."
+    },
+    "loading": "Replace the same toast in place. Transparent loading keeps Container + Border/default; no semantic tint (TST-002 closed).",
+    "pause": "Pause auto-dismiss on hover or keyboard focus.",
+    "black": "No status axis and no close control. Overlay at bottom center."
+  },
+  "openItems": {
+    "TST-001": "Inventory lists 3/13/0; the board shows 12 symbols.",
+    "TST-003": "Float/Transparent info uses warning-fill; Black uses icf_system_info."
+  }
+}

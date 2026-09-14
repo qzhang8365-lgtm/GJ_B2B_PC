@@ -1,0 +1,57 @@
+{
+  "$schema":"gj-design-skill/component-schema/v1",
+  "source":{"figma_file_key":"8b01I1e3TzH1IhYlr3tJzd","page_node_id":"2638:2418","read_only":true},
+  "component":"Form",
+  "contractName":"FormItem",
+  "status":"local-contract",
+  "description":"由输入项名称、Input 输入控件与必要反馈组成，用于指示用户进行数据录入。",
+  "composition":{"label":"input_item/label","control":"Input","feedback":["help text","error text"],"addons":["prefix","suffix"]},
+  "component_sets":[
+    {"name":"Form_item/Input_horizontal","node_id":"3041:3366","properties":{"status":["normal","error"],"help_text":[false,true],"tooltip":[false,true],"required":[false,true]}},
+    {"name":"Form_item/Input_vertical","node_id":"3097:1674","properties":{"status":["normal","error"],"help_text":[false,true],"tooltip":[false,true],"required":[false,true]}},
+    {"name":"Input-Addon/prefix","node_id":"3036:981","properties":{"type":["prefix-label","prefix-select"],"size":["small","medium","large"]}},
+    {"name":"Input-Addon","node_id":"3037:982","properties":{"type":["label","setting"],"size":["small","medium","large"]},"note":"type 互斥：label 为 .com 等文本后缀，setting 为设置图标。"}
+  ],
+  "normalized_api":{"layout":["vertical","horizontal"],"status":["normal","error"],"label":"string","required":"boolean","tooltip":"string|boolean","helpText":"string","control":"Input slot","prefix":"addon slot","suffix":"addon slot"},
+  "implementation":{
+    "dependency":"Input",
+    "itemClass":"gj-form-item",
+    "layoutClasses":{"vertical":"gj-form-item-vertical","horizontal":"gj-form-item-horizontal"},
+    "labelClass":"gj-form-label",
+    "requiredClass":"gj-form-label-required",
+    "contentClass":"gj-form-content",
+    "helpClass":"gj-form-help",
+    "errorClass":"gj-form-error",
+    "stackClass":"gj-form-stack",
+    "gridClass":"gj-form-grid",
+    "actionsClass":"gj-form-actions",
+    "colonClass":"gj-form-colon",
+    "addonRowClass":"gj-form-addon-row",
+    "addonClass":"gj-input-addon",
+    "controlComposition":"gj-input-wrap outlined|filled small|medium|large"
+  },
+  "constraints":{
+    "required_false":"non-required field",
+    "label_inner_gap":4,
+    "label_to_control_vertical":4,
+    "label_to_control_horizontal":8,
+    "vertical_gap_min":12,
+    "horizontal_gap_min":40,
+    "horizontal_alignment":"align by left edge of input controls",
+    "horizontal_label_nowrap":"Horizontal labels hug content with 8px gap to the control (Figma 3041:3355 right:8px). The control column fills remaining width; do not collapse it with width:0.",
+    "size_pairing":"Form control and addons must use the same size",
+    "suffix_exclusive":"Input-Addon type=label and type=setting are mutually exclusive; do not render .com and the settings icon on the same field."
+  },
+  "tokens":{"label":"Text/Primary","help":"Text/Tertiary","required":"Feedback/error&rise","error":"Feedback/error&rise","input":"reuse Input component tokens"},
+  "rules":[
+    "Form 必须组合共享 Input 基座，不得在 Form 页面或业务页面重画输入框边框、尺寸与状态。",
+    "同一表单区域保持统一标签布局；默认控件尺寸为 Medium，同一视觉层级使用同一尺寸。",
+    "纵向表单项间距不小于 12px，两列表单横向间距不小于 40px。",
+    "错误状态同时提供错误边框和紧邻字段的修正说明，不能只依赖颜色。",
+    "Addon 与其 Input 必须使用同一尺寸档位。",
+    "纵向 Label 到控件 4px，横向 8px；Label 内部元素间距 4px，必填星号不再额外加右边距。",
+    "横向 Label nowrap 并 hug，与输入框相距 8px；输入列占满剩余宽度，不要用 width:0 把容器收窄。",
+    "后缀 type=label 与 type=setting 互斥，同一输入框不得同时出现 .com 与设置图标。"
+  ],
+  "icons":["icf_system_info.svg","icf_Arrow_down.svg","icf_system_settings.svg"]
+}

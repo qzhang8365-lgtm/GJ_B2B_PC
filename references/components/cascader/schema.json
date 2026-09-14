@@ -1,0 +1,192 @@
+{
+  "$schema": "gj-design-skill/component-schema/v1",
+  "component": "Cascader",
+  "source": {
+    "rulesSection": "Cascader 级联选择",
+    "inventoryPage": "cascader✅",
+    "figmaFile": "8b01I1e3TzH1IhYlr3tJzd",
+    "figmaPage": "2638:2478",
+    "status": "figma-audited",
+    "figmaAudit": "done-2026-09-10-CAS-002"
+  },
+  "purpose": "从相互关联的多级数据中逐层定位一个或多个结果，例如省市区、组织层级和事物分类。",
+  "implementation": {
+    "rootClass": "gj-cascader",
+    "columnClass": "gj-cascader-column",
+    "treeClass": "gj-cascader-tree",
+    "itemClass": "gj-cascader-item",
+    "checkedClass": "is-checked",
+    "pathClass": "is-path",
+    "multipleClass": "gj-cascader-multiple",
+    "arrowClass": "gj-cascader-arrow",
+    "checkClass": "gj-cascader-check"
+  },
+  "figma": {
+    "fileKey": "8b01I1e3TzH1IhYlr3tJzd",
+    "pageNodeId": "2638:2478",
+    "pageName": "级联选择器cascader✅",
+    "inventoryListed": { "sets": 1, "variants": 12, "standalone": 2 },
+    "auditedThisPass": {
+      "sets": 2,
+      "variants": 21,
+      "standalone": 3,
+      "note": "2026-09-10 按母版口径。Item 12 + Item-tree 9。三个 Menu 是独立 COMPONENT，无 variant 轴。旧 inventory 1/12/2 漏记 Item-tree 与 Menu-tree。"
+    },
+    "componentSets": [
+      {
+        "nodeId": "2896:313",
+        "name": "Cascader-Menu/Item",
+        "variants": 12,
+        "defaultVariant": { "nodeId": "2896:312", "name": "checkbox=false, state=Default, arrow=true" },
+        "axes": {
+          "checkbox": ["false", "true"],
+          "state": ["Default", "hover", "checked", "disabled"],
+          "arrow": ["true", "false"]
+        },
+        "instanceText": { "property": "menu#4208:32", "default": "级联选项" },
+        "note": "完整笛卡尔 16，实收 12。checkbox=true 只与 arrow=false 组合。多选带箭头父行由 Cascader-Menu_checkbox 拼出，不另计套。"
+      },
+      {
+        "nodeId": "4208:20044",
+        "name": "Cascader-Menu/Item-tree",
+        "variants": 9,
+        "defaultVariant": { "nodeId": "4208:20042", "name": "state=active, level=first, hover=false" },
+        "axes": {
+          "state": ["active", "default"],
+          "level": ["first", "second", "third"],
+          "hover": ["false", "true"]
+        },
+        "note": "完整笛卡尔 12，实收 9。缺 default × hover=true 三级。hover 轴只画在 active 上。"
+      }
+    ],
+    "standalone": [
+      {
+        "nodeId": "3271:6484",
+        "name": "Cascader-Menu",
+        "note": "单选三列。594×240 = 3×198×240，外框圆角 12，自身无填充/描边。"
+      },
+      {
+        "nodeId": "3271:6485",
+        "name": "Cascader-Menu_checkbox",
+        "note": "多选两列组合示意。396×232 = 2×198×232。行是 36px 手拼 Frame，不是 Item 32px 变体。"
+      },
+      {
+        "nodeId": "4208:20186",
+        "name": "Cascader-Menu-tree",
+        "note": "树面板。185×240，圆角 12，填充 Background/Container，无描边。内嵌 7 个 Item-tree 实例。"
+      }
+    ]
+  },
+  "properties": {
+    "mode": ["single", "multiple", "tree"],
+    "checkbox": [false, true],
+    "state": ["Default", "hover", "checked", "disabled"],
+    "arrow": [false, true],
+    "treeState": ["default", "active"],
+    "treeLevel": ["first", "second", "third"],
+    "treeHover": [false, true]
+  },
+  "defaults": {
+    "mode": "single",
+    "item": { "checkbox": false, "state": "Default", "arrow": true },
+    "treeItem": { "state": "active", "level": "first", "hover": false },
+    "expandTrigger": "click",
+    "initialVisibleLevel": 1
+  },
+  "sizes": {
+    "column": { "width": 198, "height": 240, "padding": 8 },
+    "menu": { "radius": 12 },
+    "item": { "width": 185, "height": 32, "padding": 8, "gap": 10, "radius": 4, "icon": 16 },
+    "treeItem": { "gap": 4, "paddingLeft": { "first": 8, "second": 24, "third": 44 } },
+    "treePanel": { "width": 185, "height": 240, "padding": 8, "radius": 12 },
+    "scrollbar": { "width": 4, "height": 217 }
+  },
+  "typography": {
+    "item": { "textStyle": "中文/S8-CN-R", "size": 14, "lineHeight": 22, "weight": 400, "family": "PingFang SC" }
+  },
+  "colorBindings": {
+    "column.background": "Background/Container",
+    "column.border": "Border/default",
+    "item.default.text": "Text/Primary",
+    "item.hover.background": "Background/Hover",
+    "item.hover.text": "Text/Primary",
+    "item.checked.background": "Background/Hover",
+    "item.checked.text": "Text/blue",
+    "item.checkbox.checked.text": "Text/Primary",
+    "item.disabled.opacity": 0.4,
+    "arrow": "Text/Tertiary",
+    "checkbox.unchecked.fill": "Background/Container",
+    "checkbox.unchecked.stroke": "Border/secondary",
+    "checkbox.checked.fill": "Text/blue",
+    "checkbox.checked.tick": "Text/reversal",
+    "leafCheck": "Text/blue",
+    "scrollbar": "Text/disable",
+    "tree.expanded.text": "Text/Primary",
+    "tree.leafSelected.text": "Text/blue",
+    "tree.leafSelected.background": "Background/Hover"
+  },
+  "confirmedDecisions": [
+    "页上母版是 Item 与 Item-tree 两套，21 个 variant；三个 Menu 是独立件。规范展示画板里的实例不计入 sets。",
+    "Item 默认 checkbox=false, state=Default, arrow=true（2896:312）。Item-tree 默认 state=active, level=first, hover=false（4208:20042）。",
+    "checkbox=true 不与 arrow=true 组合。多选带展开箭头的父行由 Cascader-Menu_checkbox 用 checkbox 实例 + icf_Arrow_right 手拼，实现仍按 Item 32px 行高组装，不采用组合稿 36px。",
+    "Item-tree 没有 default+hover。实现仍给折叠行提供 Hover 底，不假装 Figma 有这 3 个 variant。",
+    "颜色与 中文/S8-CN-R 已绑定。列宽 198、高 240、Item 32/8/4、Tree 缩进 8/24/44、间距 10/4 为字面值，未读到 Interval/Radius 变量。",
+    "Hover 只改 Background/Hover，文字保持 Text/Primary。单选 checked（当前路径或已选叶子）才是 Text/blue。多选 checkbox 选中文字仍是 Text/Primary；蓝字只表示当前展开路径。",
+    "展开箭头（级联 icf_Arrow_right、树 icf_Arrow_arrow-right-large / arrow-down-large）固定 Text/Tertiary，不随 hover/选中变蓝。",
+    "Disabled 整行 opacity 40%，文字仍绑 Text/Primary，不是 Text/disable。",
+    "单选叶子确认用 icf_system_check + Text/blue。多选与 Tree 选中叶子都不用这颗勾。",
+    "树一级/二级 active+hover=false 用 arrow-down-large；Figma 里 first active+hover=true 误用 arrow-right-large。实现以展开态用 down、折叠用 right 为准。",
+    "三级 active+hover=false 为选中叶子（Hover + Text/blue）；同级 hover=true 稿文字变回 Primary。实现选中叶子 hover 仍保持蓝字。",
+    "末列无右边框。树面板无描边。Cascader-Menu_checkbox 高 232 是 6×36+16 的组合稿，不是列高规范；列高规范以单选 240 为准，选项不足时可随内容收缩，超出 240 出滚动。",
+    "三套母版与三个独立件 description 均为空，无 Prototype reaction，无 Focus 轴。键盘模型为本地补充，不写入 Figma。"
+  ],
+  "constraints": [
+    "初始只显示第一级；点击含子项节点后逐级展开。",
+    "切换上级立即清除后续旧路径，不得同时展示无效下级。",
+    "2026-09-10 CAS-001 设计确认：允许把非叶子节点选中作为最终值（changeOnSelect 模式）。点击/Enter 任意层级节点（叶子或非叶子）都会立即提交为当前值；非叶子在提交的同时仍展开下一层，用户可以停在该层，也可以继续往下选更具体的值。",
+    "Disabled 节点不可选、不可展开。",
+    "级联与树状模式切换必须复用 gj-tabs gj-tabs-button。",
+    "多选 checkbox 视觉跟 gj-checkbox / Item 的 16px checkbox item，不得页面私有方块。",
+    "规范页与业务页必须复用 gj-cascader，不得只在页面 CSS 重画菜单行。"
+  ],
+  "interaction": {
+    "expandTrigger": "click",
+    "progressive": true,
+    "resetDescendantsOnAncestorChange": true,
+    "initialVisibleLevel": 1,
+    "keyboard": {
+      "source": "local-supplement",
+      "figmaReactions": 0,
+      "cascade": {
+        "ArrowDown": "当前列下一项",
+        "ArrowUp": "当前列上一项",
+        "ArrowRight": "含子项则展开并进入下一列首项",
+        "ArrowLeft": "回到上一列当前路径项",
+        "Enter": "提交当前节点为值；若含子项，同时展开下一列（changeOnSelect，2026-09-10 CAS-001 已关闭）",
+        "Home": "当前列首项",
+        "End": "当前列末项",
+        "Escape": "关闭面板"
+      },
+      "tree": {
+        "ArrowDown": "下一个可见节点",
+        "ArrowUp": "上一个可见节点",
+        "ArrowRight": "折叠则展开；已展开则进入第一个子节点",
+        "ArrowLeft": "展开则折叠；已折叠则回到父节点",
+        "Enter": "提交当前节点为值；若含子项，同时展开/进入下一层（changeOnSelect，2026-09-10 CAS-001 已关闭）",
+        "Home": "第一个可见节点",
+        "End": "最后一个可见节点",
+        "Escape": "关闭面板"
+      },
+      "focus": "Figma 无 Focus variant。代码 :focus-visible 使用 3px Background/BT_B20，与 Button 同源，不写入 Cascader Token。"
+    }
+  },
+  "dependencies": ["Icon", "Checkbox", "Tabs"],
+  "icons": [
+    "icf_Arrow_right.svg",
+    "icf_Arrow_arrow-right-large.svg",
+    "icf_Arrow_arrow-down-large.svg",
+    "icf_system_check.svg"
+  ],
+  "knownFigmaIssues": [],
+  "pendingExtraction": []
+}

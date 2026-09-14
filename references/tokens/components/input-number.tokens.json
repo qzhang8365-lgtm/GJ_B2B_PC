@@ -1,0 +1,258 @@
+{
+  "$schema": "gj-design-skill/component-tokens/v1",
+  "component": "InputNumber",
+  "source": {
+    "figmaNode": "2638:2479",
+    "figmaNodes": ["3482:1480", "3482:1461", "3482:1464", "3482:1465", "3482:1448", "3482:1458", "3482:1473", "3482:1476", "3482:1457", "3482:1454", "3482:1447", "3482:1456", "4293:15642", "4293:15648", "4293:15643", "4293:15657"],
+    "figmaReadDate": "2026-09-10",
+    "componentSchema": "references/components/input-number/schema.json",
+    "componentMapping": "references/components/input-number/mapping.json",
+    "confirmedRules": "references/components/input-number/rules.md",
+    "implementation": "assets/styles/gj-b2b-components.css#.gj-number-input"
+  },
+  "properties": {
+    "mode": {
+      "default": "basic",
+      "values": ["basic", "stepper", "unit", "right-step", "slider", "range-slider"],
+      "figmaAxes": {
+        "numberhandle": ["false", "true"],
+        "unit": ["false", "true"],
+        "Addon": ["false", "true"],
+        "swiper.style": ["basic", "range"]
+      }
+    },
+    "size": {
+      "default": "Medium",
+      "values": ["Small", "Medium", "Large"],
+      "figmaValues": ["small", "medium", "Large"],
+      "figmaDefault": "small",
+      "note": "Figma 母版默认 size=small；产品默认仍用 Medium（与 Input/控件档位一致）。"
+    },
+    "state": {
+      "default": "filled",
+      "values": ["Default", "filled", "active", "disabled"],
+      "figmaDefault": "filled",
+      "note": "Figma 无 error 轴，不写入错误态 Token。"
+    }
+  },
+  "tokens": {
+    "size.small.width": {
+      "value": 100,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-number-small-width",
+      "note": "母版 hug 宽；业务可覆盖。"
+    },
+    "size.small.height": {
+      "value": "{Components/control-S}",
+      "resolved": 24,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-number-small-height"
+    },
+    "size.small.paddingInline": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-number-small-padding-inline"
+    },
+    "size.small.radius": {
+      "value": "{Radius/Radius-XS}",
+      "resolved": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-number-small-radius"
+    },
+    "size.small.textStyle": {
+      "value": "{中文/S8-CN-R}",
+      "cssClass": "gj-type-cn-s8"
+    },
+    "size.medium.width": {
+      "value": 112,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-number-medium-width"
+    },
+    "size.medium.height": {
+      "value": "{Components/control-M}",
+      "resolved": 32,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-number-medium-height"
+    },
+    "size.medium.paddingInline": {
+      "value": "{Interval/space4}",
+      "resolved": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-number-medium-padding-inline"
+    },
+    "size.medium.radius": {
+      "value": "{Radius/Radius-SM}",
+      "resolved": 6,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-number-medium-radius"
+    },
+    "size.large.width": {
+      "value": 133,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-number-large-width"
+    },
+    "size.large.height": {
+      "value": "{Components/control-L}",
+      "resolved": 40,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-number-large-height"
+    },
+    "size.large.paddingInline": {
+      "value": "{Interval/space4}",
+      "resolved": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-number-large-padding-inline",
+      "note": "basic 变体 12px；Addon/unit/numberhandle 组合里 Large 输入区实测 16px，以 basic 为准。"
+    },
+    "size.large.radius": {
+      "value": "{Radius/Radius-MD}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-number-large-radius"
+    },
+    "size.large.textStyle": {
+      "value": "{中文/S7-CN-R}",
+      "cssClass": "gj-type-cn-s7"
+    },
+    "size.large.fontSize": {
+      "value": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-number-large-font-size"
+    },
+    "field.background": {
+      "value": "{Background/Container}",
+      "cssVariable": "--ds-component-input-number-field-background"
+    },
+    "field.border.default": {
+      "value": "{Border/secondary}",
+      "cssVariable": "--ds-component-input-number-field-border"
+    },
+    "field.border.active": {
+      "value": "{Border/focused}",
+      "cssVariable": "--ds-component-input-number-field-active-border",
+      "note": "active 仅 1px 描边，无外发光。"
+    },
+    "field.background.disabled": {
+      "value": "{Background/Background}",
+      "cssVariable": "--ds-component-input-number-field-disabled-background"
+    },
+    "field.text": {
+      "value": "{Text/Primary}",
+      "cssVariable": "--ds-component-input-number-field-text"
+    },
+    "field.text.placeholder": {
+      "value": "{Text/disable}",
+      "cssVariable": "--ds-component-input-number-field-placeholder"
+    },
+    "field.text.disabled": {
+      "value": "{Text/disable}",
+      "cssVariable": "--ds-component-input-number-field-disabled-text"
+    },
+    "caret.color": {
+      "value": "{Text/blue}",
+      "cssVariable": "--ds-component-input-number-caret-color",
+      "note": "active 态 input_item/cursor 矩形绑定。"
+    },
+    "stepper.buttonBackground": {
+      "value": "{Background/Background}",
+      "cssVariable": "--ds-component-input-number-step-button-background"
+    },
+    "stepper.iconSize": {
+      "value": 14,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-number-step-icon-size",
+      "note": "Small/Medium Addon 图标 14；Large 16，见 stepper.iconSize.large。"
+    },
+    "stepper.iconSize.large": {
+      "value": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-number-step-icon-size-large"
+    },
+    "stepper.icon": {
+      "value": "{Text/Primary}"
+    },
+    "unit.labelBackground": {
+      "value": "{Background/Background}",
+      "cssVariable": "--ds-component-input-number-unit-label-background"
+    },
+    "rightStep.controlsWidth": {
+      "value": 24,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-number-right-controls-width"
+    },
+    "rightStep.controlsWidth.large": {
+      "value": 28,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-number-right-controls-width-large"
+    },
+    "rightStep.iconSize": {
+      "value": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-number-right-icon-size"
+    },
+    "rightStep.divider": {
+      "value": "{Border/default}",
+      "cssVariable": "--ds-component-input-number-right-divider"
+    },
+    "slider.width": {
+      "value": 200,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-number-slider-width",
+      "note": "swiper 母版示例宽。"
+    },
+    "slider.trackHeight": {
+      "value": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-number-slider-track-height"
+    },
+    "slider.trackRadius": {
+      "value": 11,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-number-slider-track-radius"
+    },
+    "slider.track.inactive": {
+      "value": "{Background/Secondary}",
+      "cssVariable": "--ds-component-input-number-slider-track-inactive"
+    },
+    "slider.track.active": {
+      "value": "{Brand/GJ_Blue}",
+      "cssVariable": "--ds-component-input-number-slider-track-active"
+    },
+    "slider.thumbSize": {
+      "value": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-number-slider-thumb-size"
+    },
+    "slider.thumb.background": {
+      "value": "{Button/Primary/Bg-pressed}",
+      "cssVariable": "--ds-component-input-number-slider-thumb-background"
+    },
+    "slider.thumb.shadow": {
+      "value": "{Background/MK_10}",
+      "cssVariable": "--ds-component-input-number-slider-thumb-shadow"
+    },
+    "tooltip.background": {
+      "value": "{Background/MK_80}",
+      "cssVariable": "--ds-component-input-number-tooltip-background"
+    },
+    "tooltip.text": {
+      "value": "{Background/Container}",
+      "cssVariable": "--ds-component-input-number-tooltip-text",
+      "note": "tooltip 文字 fill 绑定 Background/Container（白），不是 Text/reversal。"
+    },
+    "tooltip.radius": {
+      "value": "{Radius/Radius-MD}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-number-tooltip-radius"
+    },
+    "tooltip.paddingInline": {
+      "value": "{Interval/space5}",
+      "resolved": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-input-number-tooltip-padding-inline"
+    }
+  },
+  "openItems": {}
+}

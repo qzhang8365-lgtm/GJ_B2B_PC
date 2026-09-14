@@ -1,0 +1,25 @@
+{
+  "$schema": "gj-design-skill/figma-source/v1",
+  "fileKey": "8b01I1e3TzH1IhYlr3tJzd",
+  "collection": {
+    "id": "VariableCollectionId:2720:1725",
+    "name": "GJ_B2B",
+    "mode": { "id": "2720:0", "name": "PC" }
+  },
+  "semanticDocumentationNode": "2614:5953",
+  "counts": {
+    "total": 265,
+    "color": 242,
+    "float": 23,
+    "primitiveColor": 112,
+    "semanticColor": 130
+  },
+  "extractionPolicy": {
+    "figmaReadOnly": true,
+    "includeHiddenFromPublishing": true,
+    "darkMode": false,
+    "valueAuthority": "current local variables in GJ_B2B",
+    "usageAuthority": "semantic documentation node 2614:5953",
+    "primitivePolicy": "raw color values only; no usage semantics"
+  }
+}

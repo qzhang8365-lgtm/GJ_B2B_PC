@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>GJ Design System · 搜索框 Search</title>
+  <link rel="stylesheet" href="../../assets/styles/gj-b2b-tokens.css?v=search-2">
+  <link rel="stylesheet" href="../../assets/styles/gj-b2b-components.css?v=search-2">
+  <link rel="stylesheet" href="../../assets/styles/component-docs.css?v=2">
+  <style>
+    .structure-flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:36px}.structure-card{position:relative;display:grid;min-height:112px;place-content:center;padding:16px;border-radius:8px;background:var(--ds-background-container);text-align:center}.structure-card:not(:last-child)::after{content:"+";position:absolute;left:calc(100% + 10px);top:50%;width:16px;color:var(--ds-text-blue);font-size:20px;font-weight:600;transform:translateY(-50%)}.structure-card b{font-size:15px}.structure-card span{margin-top:6px;color:var(--ds-text-tertiary);font-size:12px;line-height:20px}
+    .mode-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.mode-card{min-width:0;display:grid;gap:12px}.mode-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px}.mode-head b{font-size:15px}.mode-head span{color:var(--ds-text-tertiary);font-size:12px}.mode-desc{margin:0;color:var(--ds-text-secondary);font-size:13px;line-height:21px}.mode-stage{padding:24px;border-radius:8px;display:grid;place-items:center;min-height:160px}
+    .result-demo{position:relative;width:min(320px,100%)}.result-demo .gj-search-results{position:static;margin-top:8px;box-shadow:none;border:1px solid var(--ds-border-default)}
+    .state-scroll{overflow:auto}.state-table{width:100%;min-width:980px;border-collapse:collapse;table-layout:fixed}.state-table th,.state-table td{height:64px;padding:8px 16px;border-bottom:1px solid var(--ds-border-default);text-align:left;vertical-align:middle}.state-table th{background:var(--ds-background-background);color:var(--ds-text-secondary);font-size:12px;font-weight:600}.state-table th:first-child,.state-table td:first-child{width:88px}.state-table tr:last-child td{border-bottom:0}.state-name{color:var(--ds-text-secondary)}
+    .playground{display:grid;grid-template-columns:minmax(0,3fr) minmax(300px,2fr);gap:16px}.lab{min-height:var(--docs-interaction-stage-min-height);padding:28px;border-radius:8px;display:grid;place-items:center;overflow:hidden}.demo-wrap{position:relative;width:min(360px,100%)}.demo-wrap .gj-search-group{width:100%}.demo-wrap .gj-search{width:auto;flex:1}.demo-wrap .gj-search-results{top:calc(100% + 8px)}.event{margin-top:14px;color:var(--ds-text-tertiary);font-size:12px}.event strong{color:var(--ds-text-primary)}
+    .controls{padding:20px;border-radius:8px}.controls h3{margin:0 0 16px;font-size:16px}.control-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 16px}.control{display:grid;gap:6px;min-width:0}.control label{color:var(--ds-text-secondary)}.control select{width:100%;height:36px;padding:0 10px;border:1px solid var(--ds-border-secondary);border-radius:6px;background:var(--ds-background-container)}
+    @media(max-width:960px){.playground{grid-template-columns:1fr}}
+    @media(max-width:720px){.structure-flow{grid-template-columns:1fr;gap:36px}.structure-card:not(:last-child)::after{content:"↓";left:50%;top:calc(100% + 8px);transform:translateX(-50%)}.mode-grid{grid-template-columns:1fr}.control-grid{grid-template-columns:1fr}}
+  </style>
+  <script src="../../assets/scripts/font-runtime.js"></script>
+</head>
+<body>
+<main class="docs-shell">
+  <header class="docs-page-head"><div class="docs-eyebrow">信息录入组件 · Data Entry</div><h1>搜索框 Search</h1><p>搜索帮助用户从大量信息中快速缩小目标范围。结果可实时计算时使用即时联想列表；查询成本较高或条件复杂时改用搜索按钮，由用户确认后触发。Small/Medium/Large 高度 24/32/40px，圆角 4/6/8px，参考宽度 233px，可按业务容器调整，不因响应式布局任意拉伸变形。</p></header>
+  <article class="docs-sheet">
+    <section class="docs-section">
+      <div class="docs-section-head"><div><h2>组成结构</h2><p>搜索框本身只负责关键词输入与状态展示；确认按钮与结果列表按使用模式挂载。</p></div></div>
+      <div class="docs-stage docs-surface-gray"><div class="structure-flow">
+        <div class="structure-card docs-structure-primary"><b>搜索框 Search</b><span>承载关键词与展示状态</span></div>
+        <div class="structure-card"><b>图标 Icon</b><span>提示搜索意图，默认弱化显示</span></div>
+        <div class="structure-card"><b>输入区 Input</b><span>记录关键词，反映聚焦与填写状态</span></div>
+        <div class="structure-card"><b>清除按钮 Clear</b><span>有输入时出现，一键清空</span></div>
+      </div></div>
+    </section>
+    <section class="docs-section">
+      <div class="docs-section-head"><div><h2>使用模式</h2><p>两种模式共用同一套搜索框基座，差异只在触发方式与结果呈现。</p></div></div>
+      <div class="mode-grid">
+        <div class="mode-card"><div class="mode-head"><b>确认搜索</b><span>Search + Button</span></div><p class="mode-desc">输入后点击按钮或按 Enter 触发查询，适合查询成本较高或条件复杂的场景。按钮尺寸需与搜索框档位一致，间距固定 8px。</p>
+          <div class="docs-stage docs-surface-white mode-stage"><div class="gj-search-group"><div class="gj-search"><img class="gj-search-icon" src="../../assets/icons/iconfont/icf_system_search.svg" alt=""><input class="gj-search-input" placeholder="输入关键词搜索"></div><button class="gj-btn gj-btn-primary">搜索</button></div></div>
+        </div>
+        <div class="mode-card"><div class="mode-head"><b>即时联想</b><span>Instant Suggest</span></div><p class="mode-desc">输入过程中实时展示候选结果，命中词使用 Text/blue 高亮，适合结果可快速计算的场景。</p>
+          <div class="docs-stage docs-surface-gray mode-stage"><div class="result-demo"><div class="gj-search gj-search-focused"><img class="gj-search-icon" src="../../assets/icons/iconfont/icf_system_search.svg" alt=""><input class="gj-search-input" value="高亮"><button class="gj-search-clear"><img src="../../assets/icons/iconfont/icf_system_close-circle-fill.svg" alt=""></button></div><div class="gj-search-results"><button class="gj-search-result">搜索结果<span class="gj-search-highlight">高亮</span></button><button class="gj-search-result gj-search-result-active">高亮<span class="gj-search-highlight">高亮</span>搜索结果</button><button class="gj-search-result">历史搜索<span class="gj-search-highlight">高亮</span></button></div></div></div>
+        </div>
+      </div>
+    </section>
+    <section class="docs-section">
+      <div class="docs-section-head"><div><h2>尺寸与状态</h2><p>Default / Focused / Filled / Disabled 覆盖 Small、Medium、Large 三档尺寸；Focused 与 Filled 在真实组件上由 :focus-within 与 :has() 自动生效，此处使用文档专用类并列展示。</p></div></div>
+      <div class="docs-spec-table-wrap state-scroll"><table class="state-table"><thead><tr><th>尺寸</th><th>Default</th><th>Focused</th><th>Filled</th><th>Disabled</th></tr></thead><tbody>
+        <tr><td class="state-name">Small</td><td><div class="gj-search gj-search-small"><img class="gj-search-icon" src="../../assets/icons/iconfont/icf_system_search.svg" alt=""><input class="gj-search-input" placeholder="输入关键词搜索"></div></td><td><div class="gj-search gj-search-small gj-search-focused"><img class="gj-search-icon" src="../../assets/icons/iconfont/icf_system_search.svg" alt=""><input class="gj-search-input" value="输入关键词搜索"></div></td><td><div class="gj-search gj-search-small gj-search-filled"><img class="gj-search-icon" src="../../assets/icons/iconfont/icf_system_search.svg" alt=""><input class="gj-search-input" value="输入关键词搜索"><button class="gj-search-clear"><img src="../../assets/icons/iconfont/icf_system_close-circle-fill.svg" alt=""></button></div></td><td><div class="gj-search gj-search-small gj-search-disabled"><img class="gj-search-icon" src="../../assets/icons/iconfont/icf_system_search.svg" alt=""><input class="gj-search-input" disabled placeholder="输入关键词搜索"></div></td></tr>
+        <tr><td class="state-name">Medium</td><td><div class="gj-search"><img class="gj-search-icon" src="../../assets/icons/iconfont/icf_system_search.svg" alt=""><input class="gj-search-input" placeholder="输入关键词搜索"></div></td><td><div class="gj-search gj-search-focused"><img class="gj-search-icon" src="../../assets/icons/iconfont/icf_system_search.svg" alt=""><input class="gj-search-input" value="输入关键词搜索"></div></td><td><div class="gj-search gj-search-filled"><img class="gj-search-icon" src="../../assets/icons/iconfont/icf_system_search.svg" alt=""><input class="gj-search-input" value="输入关键词搜索"><button class="gj-search-clear"><img src="../../assets/icons/iconfont/icf_system_close-circle-fill.svg" alt=""></button></div></td><td><div class="gj-search gj-search-disabled"><img class="gj-search-icon" src="../../assets/icons/iconfont/icf_system_search.svg" alt=""><input class="gj-search-input" disabled placeholder="输入关键词搜索"></div></td></tr>
+        <tr><td class="state-name">Large</td><td><div class="gj-search gj-search-large"><img class="gj-search-icon" src="../../assets/icons/iconfont/icf_system_search.svg" alt=""><input class="gj-search-input" placeholder="输入关键词搜索"></div></td><td><div class="gj-search gj-search-large gj-search-focused"><img class="gj-search-icon" src="../../assets/icons/iconfont/icf_system_search.svg" alt=""><input class="gj-search-input" value="输入关键词搜索"></div></td><td><div class="gj-search gj-search-large gj-search-filled"><img class="gj-search-icon" src="../../assets/icons/iconfont/icf_system_search.svg" alt=""><input class="gj-search-input" value="输入关键词搜索"><button class="gj-search-clear"><img src="../../assets/icons/iconfont/icf_system_close-circle-fill.svg" alt=""></button></div></td><td><div class="gj-search gj-search-large gj-search-disabled"><img class="gj-search-icon" src="../../assets/icons/iconfont/icf_system_search.svg" alt=""><input class="gj-search-input" disabled placeholder="输入关键词搜索"></div></td></tr>
+      </tbody></table></div>
+    </section>
+    <section class="docs-section">
+      <div class="docs-section-head"><div><h2>交互演示</h2><p>直接使用共享 Search 基座，检查即时联想、清空、键盘切换与禁用后的真实反馈。</p></div></div>
+      <div class="playground">
+        <div class="lab docs-surface-gray"><div class="demo-wrap" id="demoWrap"><div class="gj-search-group" id="demoComponent"><div class="gj-search" id="demoBox"><img class="gj-search-icon" src="../../assets/icons/iconfont/icf_system_search.svg" alt=""><input id="demoInput" class="gj-search-input" placeholder="输入关键词搜索" autocomplete="off"><button id="demoClear" class="gj-search-clear" aria-label="清空"><img src="../../assets/icons/iconfont/icf_system_close-circle-fill.svg" alt=""></button></div><button id="demoButton" class="gj-btn gj-btn-primary">搜索</button></div><div class="gj-search-results" id="demoResults" hidden></div></div><div class="event">当前结果：<strong id="current">尚未搜索</strong></div></div>
+        <aside class="controls docs-surface-white"><h3>属性控制</h3><div class="control-grid">
+          <div class="control"><label for="size">Size</label><select id="size"><option value="medium">Medium</option><option value="large">Large</option><option value="small">Small</option></select></div>
+          <div class="control"><label for="mode">模式</label><select id="mode"><option value="button">搜索按钮</option><option value="instant">即时搜索</option></select></div>
+          <div class="control"><label for="state">状态</label><select id="state"><option value="default">默认</option><option value="disabled">禁用</option></select></div>
+        </div><div class="event">最近事件：<strong id="event">尚未操作</strong></div></aside>
+      </div>
+    </section>
+    <section class="docs-section">
+      <div class="docs-section-head"><div><h2>结构与选用规则</h2><p>确认与联想两种模式共用同一套尺寸、状态与键盘行为规范。</p></div></div>
+      <div class="docs-spec-table-wrap"><table class="docs-spec-table"><thead><tr><th>主题</th><th>推荐做法</th><th>边界与避免</th></tr></thead><tbody>
+        <tr><td>模式选择</td><td>结果可实时计算时用即时联想；查询成本高或条件复杂时用确认按钮。</td><td>不要让用户靠猜测判断当前需要点击按钮还是等待联想结果。</td></tr>
+        <tr><td>结果列表</td><td>宽度始终跟随搜索框，命中词使用 Text/blue 高亮；结果项高 32px。</td><td>不要让结果列表脱离输入框独立变宽、变窄或错位。</td></tr>
+        <tr><td>空结果</td><td>无匹配结果时展示明确的 Empty 提示。</td><td>不要保留上一次查询的旧结果，造成结果仍在更新的误导。</td></tr>
+        <tr><td>清空与键盘</td><td>有输入时展示清除按钮；支持 ↑/↓ 切换结果、Enter 选择、Esc 关闭。</td><td>清空后不应残留候选列表、高亮或选中态。</td></tr>
+        <tr><td>与筛选的边界</td><td>复杂多条件查询组合 Form、Selector 等已有基座，并提供清除条件入口。</td><td>不要把搜索框当成承载全部筛选条件的万能控件。</td></tr>
+        <tr><td>宽度</td><td>参考宽度 233px，可按业务容器调整；与按钮组合间距固定 8px，按钮尺寸须与搜索框一致。</td><td>不要因响应式布局把搜索框任意拉伸变形。</td></tr>
+      </tbody></table></div>
+    </section>
+  </article>
+</main>
+<script>
+(() => {
+  const input=document.getElementById('demoInput'),box=document.getElementById('demoBox'),component=document.getElementById('demoComponent'),wrap=document.getElementById('demoWrap'),results=document.getElementById('demoResults'),button=document.getElementById('demoButton'),eventEl=document.getElementById('event'),current=document.getElementById('current');
+  let active=-1;
+  const data=['搜索结果高亮','高亮搜索结果','历史搜索高亮','相关内容高亮'];
+  function escaped(s){return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}
+  function list(){
+    const q=input.value.trim();
+    results.innerHTML=data.map((x,i)=>`<button class="gj-search-result${i===active?' gj-search-result-active':''}" type="button" data-i="${i}">${q?x.replace(new RegExp(escaped(q),'ig'),m=>`<span class="gj-search-highlight">${m}</span>`):x}</button>`).join('');
+    results.hidden=!q;
+    box.classList.toggle('gj-search-filled',!!q);
+    box.classList.toggle('gj-search-focused',document.activeElement===input);
+    results.querySelectorAll('.gj-search-result').forEach(b=>b.onclick=()=>choose(+b.dataset.i));
+  }
+  function choose(i){input.value=data[i];current.textContent=data[i];eventEl.textContent='选择搜索结果';active=-1;results.hidden=true;list()}
+  function render(){
+    const s=document.getElementById('size').value,disabled=document.getElementById('state').value==='disabled',instant=document.getElementById('mode').value==='instant';
+    const tier=s==='medium'?'':' gj-search-'+s;
+    component.className='gj-search-group';
+    button.className='gj-btn gj-btn-primary'+(s==='medium'?'':' gj-btn-'+s);
+    box.className='gj-search'+tier+(input.value?' gj-search-filled':'')+(document.activeElement===input?' gj-search-focused':'')+(disabled?' gj-search-disabled':'');
+    input.disabled=disabled;button.disabled=disabled;button.style.display=instant?'none':'';
+    list();
+  }
+  input.onfocus=()=>{eventEl.textContent='获得焦点';list()};
+  input.onblur=()=>setTimeout(()=>{box.classList.remove('gj-search-focused')},100);
+  input.oninput=()=>{active=-1;eventEl.textContent='输入内容';render()};
+  input.onkeydown=e=>{
+    if(results.hidden)return;
+    if(e.key==='ArrowDown'){e.preventDefault();active=(active+1)%data.length;list()}
+    else if(e.key==='ArrowUp'){e.preventDefault();active=(active-1+data.length)%data.length;list()}
+    else if(e.key==='Enter'&&active>=0){e.preventDefault();choose(active)}
+    else if(e.key==='Escape'){results.hidden=true}
+  };
+  document.getElementById('demoClear').onclick=()=>{input.value='';current.textContent='已清空';eventEl.textContent='清空输入';active=-1;render();input.focus()};
+  button.onclick=()=>{current.textContent=input.value||'空关键词';eventEl.textContent='执行搜索'};
+  ['size','mode','state'].forEach(id=>document.getElementById(id).onchange=render);
+  render();
+})();
+</script>
+</body>
+</html>

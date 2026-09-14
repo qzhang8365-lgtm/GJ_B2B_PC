@@ -1,0 +1,207 @@
+{
+  "$schema": "gj-design-skill/component-schema/v1",
+  "component": "Carousel",
+  "source": {
+    "rulesSection": "Carousel 走马灯",
+    "inventoryPage": "Carousel",
+    "figmaFile": "8b01I1e3TzH1IhYlr3tJzd",
+    "figmaPage": "2638:1007",
+    "status": "figma-audited",
+    "figmaAudit": "done-2026-09-09; supplemented-2026-09-10-CAR-007(arrows+usage-doc)"
+  },
+  "purpose": "在同一区域按顺序展示一组同层级内容，并通过页码指示器反馈当前位置。",
+  "figma": {
+    "componentSets": 4,
+    "variants": 13,
+    "standaloneComponents": 0,
+    "componentSetNodes": [
+      {
+        "nodeId": "4775:19663",
+        "name": "Carousel",
+        "variants": 3,
+        "axes": {
+          "position": [
+            "bottom_center",
+            "bottom_right",
+            "bottom_left"
+          ]
+        }
+      },
+      {
+        "nodeId": "3016:4641",
+        "name": "pageIndicator",
+        "variants": 2,
+        "axes": {
+          "Direction": [
+            "Horizontal",
+            "Direction3"
+          ]
+        },
+        "normalization": "Direction 实际表达明暗样式，不是方向；API 归一为 theme=light|dark。"
+      },
+      {
+        "nodeId": "3016:4652",
+        "name": ".dot",
+        "variants": 4,
+        "axes": {
+          "ture": [
+            true,
+            false
+          ],
+          "style": [
+            "light",
+            "dark"
+          ]
+        },
+        "normalization": "ture 是 true 的拼写错误；API 归一为 active:boolean。"
+      },
+      {
+        "nodeId": "4806:20805",
+        "name": "Carousel_item_arrows",
+        "variants": 4,
+        "axes": {
+          "direction": [
+            "left",
+            "right"
+          ],
+          "state": [
+            "default",
+            "active"
+          ]
+        },
+        "note": "2026-09-10 新增：此前(2026-09-09)审计时 Figma 还没有原生箭头组件；本轮通过用户提供的节点重新核实，Figma 现已发布该组件。4 个 variant 全部用 get_design_context 核实：4806:20817(left,default)、4806:20804(left,active)、4806:20819(right,default)、4806:20803(right,active)。"
+      }
+    ],
+    "inventoryCorrection": "旧 inventory 为 2 套/4 variants/4 standalone；最新页面 metadata 显示三组均为带 variant 轴的组件集，应更正为 3 套/9 variants/0 standalone。 2026-09-10 补充：新增 Carousel_item_arrows 组件集（4 variants），总计更正为 4 套/13 variants/0 standalone。"
+  },
+  "properties": {
+    "items": "CarouselItem[]",
+    "activeIndex": "integer",
+    "defaultActiveIndex": {
+      "default": 0,
+      "type": "integer"
+    },
+    "indicatorPosition": {
+      "default": "bottom_center",
+      "values": [
+        "bottom_center",
+        "bottom_right",
+        "bottom_left"
+      ]
+    },
+    "indicatorTheme": {
+      "default": "light",
+      "values": [
+        "light",
+        "dark"
+      ]
+    },
+    "showIndicator": {
+      "default": true,
+      "type": "boolean"
+    },
+    "autoplay": {
+      "default": false,
+      "type": "boolean"
+    },
+    "intervalMs": {
+      "default": 5000,
+      "minimum": 3000,
+      "type": "number"
+    },
+    "loop": {
+      "default": true,
+      "type": "boolean"
+    },
+    "pauseOnHover": {
+      "default": true,
+      "type": "boolean"
+    },
+    "keyboard": {
+      "default": true,
+      "type": "boolean"
+    },
+    "showArrows": {
+      "default": true,
+      "type": "boolean",
+      "note": "2026-09-10 产品确认：默认展示左右箭头（不再是可选叠加件）。"
+    }
+  },
+  "dimensions": {
+    "authoredWidth": 385,
+    "authoredHeight": 160,
+    "contentPadding": 12,
+    "indicatorGap": 3,
+    "indicatorHeight": 3,
+    "indicatorActiveWidth": 16,
+    "indicatorInactiveWidth": 8,
+    "indicatorRadius": 4,
+    "note": "385×160 是 Figma 母版尺寸。运行时宽度随容器，默认高度 160px；可按内容覆盖高度，但同组 slide 必须等高。",
+    "arrowButton": {
+      "size": 32,
+      "radius": 16,
+      "padding": 4,
+      "iconSize": 24,
+      "sizeToken": "Components/Control-m",
+      "background": "Background/WT_30 (rgba(255,255,255,.30))",
+      "note": "圆形半透明白底，适合叠加在图片/渐变内容上方。2026-09-10 产品确认：默认展示箭头，空闲用 default 态（50% 透明），hover/focus 用 active 态（100% 不透明）。"
+    }
+  },
+  "stateStyles": {
+    "lightActive": {
+      "background": "Text/reversal #ffffff"
+    },
+    "lightInactive": {
+      "background": "Background/WT_20 rgba(255,255,255,.20)"
+    },
+    "darkActive": {
+      "background": "Text/blue #2b73ff"
+    },
+    "darkInactive": {
+      "background": "Background/MK_20 rgba(0,0,0,.20)"
+    }
+  },
+  "composition": {
+    "root": "可聚焦的溢出裁切容器，包含 slide 轨道和页码指示器。",
+    "track": "每次只暴露一个 active slide；相邻 slide 可用 transform 过渡。",
+    "indicator": "组合 pageIndicator 与 .dot；active 条宽 16，其余宽 8。",
+    "content": "Figma 母版只有渐变示例面与指示器，没有真实 slide 轨道；运行时由 items slot/track 承载图片、卡片或营销内容，并继续使用各自组件与 Token。"
+  },
+  "behavior": {
+    "navigation": "默认展示左右箭头（Carousel_item_arrows）、支持指示器点击与左右方向键；所有入口更新同一 activeIndex。箭头空闲态用 state=default（容器 50% 透明），hover/focus 态切到 state=active（100% 不透明）——2026-09-10 产品已确认此状态映射。",
+    "autoplay": "默认关闭。开启时 interval 不小于 3000ms；悬停、键盘聚焦、页面不可见时暂停，用户操作后重新计时。",
+    "loop": "loop=false 时到达首尾停止，不产生空白帧；loop=true 时首尾连续切换。",
+    "swipe": "触屏拖动达到明确阈值才切换；纵向滚动意图优先，禁止轻触误切页。",
+    "motion": "切换使用短时 transform；prefers-reduced-motion: reduce 时取消动画和自动播放。",
+    "accessibility": "root 使用 region/roledescription=carousel 并提供名称；slide 使用 group/roledescription=slide 和“第 x 项，共 n 项”；非当前 slide 对焦点与辅助技术隐藏。",
+    "announcement": "只在用户主动切换时 polite 播报当前位置；自动播放不连续刷屏。"
+  },
+  "constraints": [
+    "公开 API 禁止暴露 Figma 的 ture 和 Direction3；分别归一为 active 与 dark。",
+    "指示器位置只控制底部左/中/右对齐，不改变 slide 内容布局。",
+    "指示点必须是可点击按钮时，命中区至少 24×24；3px 视觉条居中放在命中区内，不能直接把 3px 元素作为点击目标。",
+    "少于两项时隐藏指示器、自动播放和切换控件。",
+    "不得用断点删减 slide；断点只可调整内容栅格，Carousel 自身保持完整序列。",
+    "Figma 已于 2026-09-10 发布原生箭头组件 `Carousel_item_arrows`（见 componentSetNodes），可直接使用；Disabled 与 Autoplay 仍未发布视觉 variant，这两项不得伪造为设计库原生变体。"
+  ],
+  "dependencies": [
+    "Carousel_item_arrows（原生箭头组件，产品需要左右箭头导航时优先使用）"
+  ],
+  "industryRuleSupplements": [
+    "自动播放暂停条件",
+    "键盘与触屏导航",
+    "减少动态效果",
+    "slide 可访问命名",
+    "指示器命中区"
+  ],
+  "knownFigmaIssues": [
+    "CAR-001",
+    "CAR-002",
+    "CAR-003",
+    "CAR-004",
+    "CAR-005",
+    "CAR-006",
+    "CAR-007"
+  ],
+  "pendingExtraction": []
+}

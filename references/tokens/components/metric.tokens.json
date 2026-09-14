@@ -1,0 +1,97 @@
+{
+  "$schema": "gj-design-skill/component-tokens/v1",
+  "component": "Metric",
+  "source": {
+    "figmaNode": "3143:5677",
+    "figmaReadDate": "2026-09-10",
+    "componentSchema": "references/components/metric/schema.json",
+    "componentMapping": "references/components/metric/mapping.json",
+    "confirmedRules": "references/components/metric/rules.md"
+  },
+  "properties": {
+    "numberSize": {
+      "default": "Medium",
+      "values": ["Xsmall", "Small", "Medium", "Large"]
+    },
+    "color": {
+      "default": "black",
+      "values": ["black", "red", "green", "blue", "grey"]
+    },
+    "nodata": {
+      "default": false,
+      "values": [false, true]
+    },
+    "unit": {
+      "default": false,
+      "values": [false, true]
+    },
+    "labelSize": {
+      "default": "small",
+      "values": ["small", "medium"]
+    },
+    "trend": {
+      "default": "Rise",
+      "values": ["Rise", "Decline", "Flat"]
+    },
+    "badgeStyle": {
+      "default": "fill",
+      "values": ["fill", "none"]
+    }
+  },
+  "tokens": {
+    "number.xsmall.textStyle": { "value": "{数字/S5-NUM-S}", "cssClass": "gj-type-num-s5" },
+    "number.small.textStyle": { "value": "{数字/S4-NUM-S}", "cssClass": "gj-type-num-s4" },
+    "number.medium.textStyle": { "value": "{数字/S3-NUM-S}", "cssClass": "gj-type-num-s3" },
+    "number.large.textStyle": { "value": "{数字/S2-NUM-S}", "cssClass": "gj-type-num-s2" },
+    "number.color.black": { "value": "{Text/Primary}", "resolved": "#101828", "cssVariable": "--ds-component-metric-number-black" },
+    "number.color.red": { "value": "{Feedback/error&rise}", "resolved": "#F93838", "cssVariable": "--ds-component-metric-number-red" },
+    "number.color.green": { "value": "{Feedback/success&decline}", "resolved": "#12B76A", "cssVariable": "--ds-component-metric-number-green" },
+    "number.color.blue": { "value": "{Feedback/brand}", "resolved": "#2B73FF", "cssVariable": "--ds-component-metric-number-blue" },
+    "number.color.grey": { "value": "{Feedback/plain}", "resolved": "#667085", "cssVariable": "--ds-component-metric-number-grey" },
+    "number.unit.gap": { "value": "{Interval/space2}", "resolved": 4, "unit": "px", "cssVariable": "--ds-component-metric-unit-gap", "note": "生成代码为 gap-[4px]；别名是等值映射，不是 Figma 变量绑定证明。" },
+    "number.unit.color": { "value": "{Text/Secondary}", "resolved": "#475467", "cssVariable": "--ds-component-metric-unit-color" },
+    "number.unit.mediumAndBelow.textStyle": { "value": "{中文/S10-CN-R}", "cssClass": "gj-type-cn-s10" },
+    "number.unit.large.textStyle": { "value": "{中文/S9-CN-R}", "cssClass": "gj-type-cn-s9" },
+    "label.small.textStyle": { "value": "{中文/S9-CN-R}", "cssClass": "gj-type-cn-s9" },
+    "label.medium.textStyle": { "value": "{中文/S8-CN-R}", "cssClass": "gj-type-cn-s8" },
+    "label.color": { "value": "{Text/Secondary}", "resolved": "#475467", "cssVariable": "--ds-component-metric-label-color" },
+    "label.tooltip.iconSize": { "value": 16, "unit": "px", "cssVariable": "--ds-component-metric-label-tooltip-icon-size" },
+    "label.tooltip.gap": { "value": "{Interval/space2}", "resolved": 4, "unit": "px", "cssVariable": "--ds-component-metric-label-tooltip-gap" },
+    "badge.height": { "value": "{Components/control-XS}", "resolved": 22, "unit": "px", "cssVariable": "--ds-component-metric-badge-height" },
+    "badge.minWidth": { "value": 40, "unit": "px", "cssVariable": "--ds-component-metric-badge-min-width" },
+    "badge.iconSize": { "value": 14, "unit": "px", "cssVariable": "--ds-component-metric-badge-icon-size" },
+    "badge.textStyle": { "value": "{中文/S6-CN-S}", "cssClass": "gj-type-cn-s6" },
+    "badge.fill.paddingInline": { "value": "{Interval/space3}", "resolved": 8, "unit": "px", "cssVariable": "--ds-component-metric-badge-fill-padding-inline" },
+    "badge.fill.radius": { "value": "{Radius/Radius-XS}", "resolved": 4, "unit": "px", "cssVariable": "--ds-component-metric-badge-fill-radius", "note": "2026-09-10 MET-006：fill 四角绑 Radius-XS。" },
+    "badge.none.radius": { "value": 0, "unit": "px", "cssVariable": "--ds-component-metric-badge-none-radius", "note": "2026-09-10 MET-006：none 无填充，圆角 0。" },
+    "badge.rise.fill.background": { "value": "{Background/BT_R8}", "resolved": "#F9383814", "cssVariable": "--ds-component-metric-badge-rise-fill-background" },
+    "badge.rise.text": { "value": "{Feedback/error&rise}", "resolved": "#F93838", "cssVariable": "--ds-component-metric-badge-rise-text" },
+    "badge.decline.fill.background": { "value": "{Background/BT_G10}", "resolved": "#12B76A1A", "cssVariable": "--ds-component-metric-badge-decline-fill-background" },
+    "badge.decline.text": { "value": "{Feedback/success&decline}", "resolved": "#12B76A", "cssVariable": "--ds-component-metric-badge-decline-text" },
+    "badge.flat.fill.background": { "value": "{Background/MK_5}", "resolved": "#0000000D", "cssVariable": "--ds-component-metric-badge-flat-fill-background" },
+    "badge.flat.text": { "value": "{Feedback/plain}", "resolved": "#667085", "cssVariable": "--ds-component-metric-badge-flat-text" },
+    "graph.size": { "value": 60, "unit": "px", "cssVariable": "--ds-component-metric-graph-size" },
+    "horizontal.gap": { "value": "{Interval/space3}", "resolved": 8, "unit": "px", "cssVariable": "--ds-component-metric-horizontal-gap" },
+    "group.gap": { "value": "{Interval/space9}", "resolved": 40, "unit": "px", "cssVariable": "--ds-component-metric-group-gap", "note": "Count=2 生成代码为 gap-[40px]；别名是等值映射。" },
+    "trend.gap": { "value": "{Interval/space3}", "resolved": 8, "unit": "px", "cssVariable": "--ds-component-metric-trend-gap" },
+    "grid.2x2.columnGap": { "value": 44, "unit": "px", "cssVariable": "--ds-component-metric-grid-2x2-column-gap", "note": "仅核实 count=2*2；3*2/4*2 见 schema partialMeasurements。" },
+    "grid.2x2.rowGap": { "value": "{Interval/space7}", "resolved": 24, "unit": "px", "cssVariable": "--ds-component-metric-grid-2x2-row-gap" },
+    "card.paddingInline": { "value": "{Interval/space7}", "resolved": 24, "unit": "px", "cssVariable": "--ds-component-metric-card-padding-inline" },
+    "card.paddingBlock": { "value": "{Interval/space5}", "resolved": 16, "unit": "px", "cssVariable": "--ds-component-metric-card-padding-block" },
+    "card.radius": { "value": "{Radius/Radius-LG}", "resolved": 12, "unit": "px", "cssVariable": "--ds-component-metric-card-radius" },
+    "card.background": { "value": "{Background/Container}", "resolved": "#FFFFFF", "cssVariable": "--ds-component-metric-card-background" },
+    "card.shadow": { "value": "{shadow-center}", "cssVariable": "--ds-component-metric-card-shadow" },
+    "cardGrid.2x2.columnGap": { "value": "{Interval/space5}", "resolved": 16, "unit": "px", "cssVariable": "--ds-component-metric-card-grid-2x2-column-gap" },
+    "cardGrid.2x2.rowGap": { "value": "{Interval/space4}", "resolved": 12, "unit": "px", "cssVariable": "--ds-component-metric-card-grid-2x2-row-gap" },
+    "cardGrid.cell.radius": { "value": "{Radius/Radius-MD}", "resolved": 8, "unit": "px", "cssVariable": "--ds-component-metric-card-grid-cell-radius", "note": "与 card_withgraph 的 12px 不同。" },
+    "cardGrid.cell.background": { "value": "var(--ds-gradient-blue-background)", "figmaStyle": "蓝色渐变背景", "cssVariable": "--ds-component-metric-card-grid-cell-background" },
+    "listItem.width": { "value": 320, "unit": "px", "cssVariable": "--ds-component-metric-list-item-width" },
+    "listItem.paddingBlock": { "value": "{Interval/space4}", "resolved": 12, "unit": "px", "cssVariable": "--ds-component-metric-list-item-padding-block" },
+    "listItem.valueColumnWidth": { "value": 160, "unit": "px", "cssVariable": "--ds-component-metric-list-item-value-column-width" },
+    "listItem.valueGroupGap": { "value": "{Interval/space3}", "resolved": 8, "unit": "px", "cssVariable": "--ds-component-metric-list-item-value-group-gap" },
+    "listItem.border": { "value": "{Border/default}", "resolved": "#EBEEF2", "cssVariable": "--ds-component-metric-list-item-border" }
+  },
+  "openItems": {
+    "dimensionBindings": "若干间距/圆角与库变量等值，但 get_design_context 返回的是硬编码 Tailwind 类；tokens 中的 Interval/Radius 别名是实现映射，不是 Figma 绑定证明。"
+  }
+}

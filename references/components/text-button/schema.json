@@ -1,0 +1,135 @@
+{
+  "$schema": "gj-design-skill/component/v1",
+  "component": "TextButton",
+  "source": {
+    "rulesSection": "Text Button 文字按钮",
+    "inventoryPage": "Button按钮✅",
+    "figmaFile": "8b01I1e3TzH1IhYlr3tJzd",
+    "pageNodeId": "3959:3750",
+    "status": "figma-audited",
+    "figmaAudit": "done-2026-08-13; re-verified-2026-09-10-TXT-002-and-TXT-006-closed"
+  },
+  "figma": {
+    "fileKey": "8b01I1e3TzH1IhYlr3tJzd",
+    "nodeId": "3959:3750",
+    "name": "Text_Button",
+    "page": "Button按钮✅",
+    "variantCount": 36,
+    "readOnly": true
+  },
+  "definition": "无内边距的轻量文字按钮，可搭配图标。适用于进入下级页面、查看更多、触发筛选，以及需要避免按钮高度额外影响容器高度的场景。",
+  "props": {
+    "label": {
+      "type": "string",
+      "default": "按钮",
+      "figmaProperty": "Label#1158:1"
+    },
+    "size": {
+      "type": "enum",
+      "default": "Large",
+      "values": [
+        "Large",
+        "Medium",
+        "Small"
+      ]
+    },
+    "state": {
+      "type": "enum",
+      "default": "default",
+      "values": [
+        "default",
+        "hover",
+        "pressed",
+        "disabled"
+      ]
+    },
+    "iconPlacement": {
+      "type": "enum",
+      "default": "none",
+      "values": [
+        "none",
+        "left",
+        "right"
+      ]
+    },
+    "icon": {
+      "type": "instance-swap",
+      "figmaProperty": "ButtonIcon#1158:0"
+    },
+    "onClick": {
+      "type": "event",
+      "payload": "MouseEvent"
+    }
+  },
+  "sizes": {
+    "Large": {
+      "height": 24,
+      "fontSize": 16,
+      "lineHeight": 24,
+      "iconSize": 20,
+      "textStyle": "中文/S7-CN-R"
+    },
+    "Medium": {
+      "height": 22,
+      "fontSize": 14,
+      "lineHeight": 22,
+      "iconSize": 16,
+      "textStyle": "中文/S8-CN-R"
+    },
+    "Small": {
+      "height": 18,
+      "fontSize": 12,
+      "lineHeight": 18,
+      "iconSize": 12,
+      "textStyle": "中文/S9-CN-R"
+    }
+  },
+  "layout": {
+    "padding": 0,
+    "iconGap": 4,
+    "background": "none",
+    "border": "none"
+  },
+  "tokens": {
+    "default.text": "Text/Secondary",
+    "hover.text": "Text/Primary",
+    "pressed.text": "Text/blue",
+    "disabled.text": "Text/disable",
+    "iconGap": "Interval/space2"
+  },
+  "behavior": {
+    "nativeElement": "button",
+    "paddingRule": "Must remain zero in every size and state.",
+    "pressedMotion": "Briefly scale to 0.98 while actively pressed; do not translate.",
+    "disabled": "Use native disabled; do not fire onClick.",
+    "focus": "Use focus-visible without changing layout size.",
+    "prototypeReaction": "Not required in the current Figma component set. Hover, pressed and disabled remain published visual states and must be implemented by the runtime component without relying on Figma Prototype Reaction links."
+  },
+  "usageScenarios": {
+    "fitsWhen": [
+      "次要/辅助操作：与 Primary/Secondary/Tertiary 并存时承担次要动作（Modal 取消、表单重置、卡片查看详情/编辑/删除）。",
+      "低风险、可逆操作：展开/收起、刷新、复制、返回。",
+      "密集列表/表格行内操作：编辑、删除、更多、回复、转发、收藏；这是表格行内固定使用 gj-text-btn 的原因。",
+      "工具栏/操作条：需要密集并列展示多个功能入口。",
+      "导航/跳转类：查看更多、了解详情、前往设置——保持与按钮一致的交互语言；纯内容内超链接应改用下划线链接样式。",
+      "空间受限场景：卡片角落、弹窗标题栏、侧栏。"
+    ],
+    "textVsIconText": "操作含义明确、用户熟悉时用纯文字；操作需要快速识别或语义较弱时用文字+图标增强识别；图标含义有歧义时必须保留文字或补充 Tooltip。图标是识别增强，不是文字替代。",
+    "notFitsWhen": [
+      "页面或弹窗的主操作——应使用 Primary Button。",
+      "不可恢复的高风险操作（如永久删除）——需要更强视觉警示和二次确认，不能用弱视觉的 Text Button 承担确认动作。",
+      "表单最终提交——需要明确的 Primary 确认按钮。",
+      "首次使用需要强引导的场景——用户还不熟悉时 Text Button 容易被忽略。",
+      "纯图标、不带文字的场景——Text Button 没有 icon-only 轴，应改用 gj-icon-button 或 gj-btn-icon-only。"
+    ],
+    "source": "2026-09-10 用户补充的使用场景说明，已写入 rules.md「Text Button 适用场景」。"
+  },
+  "confirmedDecisions": [
+    {
+      "id": "TXT-006",
+      "date": "2026-09-10",
+      "decision": "当前不需要为 TextButton 补充 Hover/Pressed/Disabled 的 Figma Prototype Reaction。状态 Variant 与代码交互仍须保留；不得因没有原型连线而删除或忽略这些状态。",
+      "source": "用户设计确认"
+    }
+  ]
+}

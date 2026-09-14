@@ -1,0 +1,4206 @@
+{
+  "$schema": "gj-design-skill/icon-manifest/v1",
+  "source": {
+    "figmaFileKey": "8b01I1e3TzH1IhYlr3tJzd",
+    "nodeId": "2356:255",
+    "readOnly": true,
+    "catalog": "assets/icons/iconfont/all-icons.js"
+  },
+  "count": 369,
+  "rules": {
+    "canvas": 24,
+    "stroke": 2,
+    "radius": 2,
+    "sizes": [
+      12,
+      16,
+      20,
+      24,
+      28,
+      32,
+      36
+    ],
+    "generalFormat": "icon-font",
+    "effectFormat": "svg",
+    "motionFormat": "lottie-json",
+    "assetRoot": "assets/icons/"
+  },
+  "icons": [
+    {
+      "name": "icf_system_add-circle-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "iconfont/icf_system_add-circle-fill.svg",
+      "keywords": [
+        "add",
+        "circle",
+        "fill",
+        "system"
+      ]
+    },
+    {
+      "name": "icf_system_add-circle",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_add-circle.svg",
+      "keywords": [
+        "add",
+        "circle",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_add-classify-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "iconfont/icf_system_add-classify-fill.svg",
+      "keywords": [
+        "add",
+        "classify",
+        "fill",
+        "system"
+      ]
+    },
+    {
+      "name": "icf_system_add-classify",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_add-classify.svg",
+      "keywords": [
+        "add",
+        "classify",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_alert-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "iconfont/icf_system_alert-fill.svg",
+      "keywords": [
+        "alert",
+        "fill",
+        "system"
+      ]
+    },
+    {
+      "name": "icf_system_alert",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_alert.svg",
+      "keywords": [
+        "alert",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_bell-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "iconfont/icf_system_bell-fill.svg",
+      "keywords": [
+        "bell",
+        "fill",
+        "system"
+      ]
+    },
+    {
+      "name": "icf_system_bell",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_bell.svg",
+      "keywords": [
+        "bell",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_calendar-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "iconfont/icf_system_calendar-fill.svg",
+      "keywords": [
+        "calendar",
+        "fill",
+        "system"
+      ]
+    },
+    {
+      "name": "icf_system_calendar",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_calendar.svg",
+      "keywords": [
+        "calendar",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_check-circle-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "iconfont/icf_system_check-circle-fill.svg",
+      "keywords": [
+        "check",
+        "circle",
+        "fill",
+        "system"
+      ]
+    },
+    {
+      "name": "icf_system_check-circle",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_check-circle.svg",
+      "keywords": [
+        "check",
+        "circle",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_checkbox-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "iconfont/icf_system_checkbox-fill.svg",
+      "keywords": [
+        "checkbox",
+        "fill",
+        "system"
+      ]
+    },
+    {
+      "name": "icf_system_checkbox",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_checkbox.svg",
+      "keywords": [
+        "checkbox",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_choice-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "iconfont/icf_system_choice-fill.svg",
+      "keywords": [
+        "choice",
+        "fill",
+        "system"
+      ]
+    },
+    {
+      "name": "icf_system_choice",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_choice.svg",
+      "keywords": [
+        "choice",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_classify-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "iconfont/icf_system_classify-fill.svg",
+      "keywords": [
+        "classify",
+        "fill",
+        "system"
+      ]
+    },
+    {
+      "name": "icf_system_classify",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_classify.svg",
+      "keywords": [
+        "classify",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_close-circle-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "iconfont/icf_system_close-circle-fill.svg",
+      "keywords": [
+        "close",
+        "circle",
+        "fill",
+        "system"
+      ]
+    },
+    {
+      "name": "icf_system_close-circle",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_close-circle.svg",
+      "keywords": [
+        "close",
+        "circle",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_copy-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "iconfont/icf_system_copy-fill.svg",
+      "keywords": [
+        "copy",
+        "fill",
+        "system"
+      ]
+    },
+    {
+      "name": "icf_system_copy",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_copy.svg",
+      "keywords": [
+        "copy",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_delete-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "iconfont/icf_system_delete-fill.svg",
+      "keywords": [
+        "delete",
+        "fill",
+        "system"
+      ]
+    },
+    {
+      "name": "icf_system_delete",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_delete.svg",
+      "keywords": [
+        "delete",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_edit-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "iconfont/icf_system_edit-fill.svg",
+      "keywords": [
+        "edit",
+        "fill",
+        "system"
+      ]
+    },
+    {
+      "name": "icf_system_edit",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_edit.svg",
+      "keywords": [
+        "edit",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_filter-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "iconfont/icf_system_filter-fill.svg",
+      "keywords": [
+        "filter",
+        "fill",
+        "system"
+      ]
+    },
+    {
+      "name": "icf_system_filter",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_filter.svg",
+      "keywords": [
+        "filter",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_grid-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "iconfont/icf_system_grid-fill.svg",
+      "keywords": [
+        "grid",
+        "fill",
+        "system"
+      ]
+    },
+    {
+      "name": "icf_system_grid",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_grid.svg",
+      "keywords": [
+        "grid",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_home-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "iconfont/icf_system_home-fill.svg",
+      "keywords": [
+        "home",
+        "fill",
+        "system"
+      ]
+    },
+    {
+      "name": "icf_system_home",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_home.svg",
+      "keywords": [
+        "home",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_horn-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "iconfont/icf_system_horn-fill.svg",
+      "keywords": [
+        "horn",
+        "fill",
+        "system"
+      ]
+    },
+    {
+      "name": "icf_system_horn",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_horn.svg",
+      "keywords": [
+        "horn",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_info-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "iconfont/icf_system_info-fill.svg",
+      "keywords": [
+        "info",
+        "fill",
+        "system"
+      ]
+    },
+    {
+      "name": "icf_system_info",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_info.svg",
+      "keywords": [
+        "info",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_lock-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "iconfont/icf_system_lock-fill.svg",
+      "keywords": [
+        "lock",
+        "fill",
+        "system"
+      ]
+    },
+    {
+      "name": "icf_system_lock",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_lock.svg",
+      "keywords": [
+        "lock",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_minus-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "iconfont/icf_system_minus-fill.svg",
+      "keywords": [
+        "minus",
+        "fill",
+        "system"
+      ]
+    },
+    {
+      "name": "icf_system_minus",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_minus.svg",
+      "keywords": [
+        "minus",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_notification1-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "iconfont/icf_system_notification1-fill.svg",
+      "keywords": [
+        "notification1",
+        "fill",
+        "system"
+      ]
+    },
+    {
+      "name": "icf_system_notification1",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_notification1.svg",
+      "keywords": [
+        "notification1",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_question-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "iconfont/icf_system_question-fill.svg",
+      "keywords": [
+        "question",
+        "fill",
+        "system"
+      ]
+    },
+    {
+      "name": "icf_system_question",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_question.svg",
+      "keywords": [
+        "question",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_safe-flash-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "iconfont/icf_system_safe-flash-fill.svg",
+      "keywords": [
+        "safe",
+        "flash",
+        "fill",
+        "system"
+      ]
+    },
+    {
+      "name": "icf_system_safe-flash-line",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_safe-flash-line.svg",
+      "keywords": [
+        "safe",
+        "flash",
+        "line",
+        "system"
+      ]
+    },
+    {
+      "name": "icf_system_safety1-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "iconfont/icf_system_safety1-fill.svg",
+      "keywords": [
+        "safety1",
+        "fill",
+        "system"
+      ]
+    },
+    {
+      "name": "icf_system_safety1",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_safety1.svg",
+      "keywords": [
+        "safety1",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_save-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "iconfont/icf_system_save-fill.svg",
+      "keywords": [
+        "save",
+        "fill",
+        "system"
+      ]
+    },
+    {
+      "name": "icf_system_save",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_save.svg",
+      "keywords": [
+        "save",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_search-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "iconfont/icf_system_search-fill.svg",
+      "keywords": [
+        "search",
+        "fill",
+        "system"
+      ]
+    },
+    {
+      "name": "icf_system_search",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_search.svg",
+      "keywords": [
+        "search",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_search-ai-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "iconfont/icf_system_search-ai-fill.svg",
+      "keywords": [
+        "search",
+        "ai",
+        "fill",
+        "system"
+      ]
+    },
+    {
+      "name": "icf_system_search-ai",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_search-ai.svg",
+      "keywords": [
+        "search",
+        "ai",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_settings-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "iconfont/icf_system_settings-fill.svg",
+      "keywords": [
+        "settings",
+        "fill",
+        "system"
+      ]
+    },
+    {
+      "name": "icf_system_settings",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_settings.svg",
+      "keywords": [
+        "settings",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_settings1-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "iconfont/icf_system_settings1-fill.svg",
+      "keywords": [
+        "settings1",
+        "fill",
+        "system"
+      ]
+    },
+    {
+      "name": "icf_system_settings1",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_settings1.svg",
+      "keywords": [
+        "settings1",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_settings2-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "iconfont/icf_system_settings2-fill.svg",
+      "keywords": [
+        "settings2",
+        "fill",
+        "system"
+      ]
+    },
+    {
+      "name": "icf_system_settings2",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_settings2.svg",
+      "keywords": [
+        "settings2",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_share-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "iconfont/icf_system_share-fill.svg",
+      "keywords": [
+        "share",
+        "fill",
+        "system"
+      ]
+    },
+    {
+      "name": "icf_system_share",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_share.svg",
+      "keywords": [
+        "share",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_share1-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "iconfont/icf_system_share1-fill.svg",
+      "keywords": [
+        "share1",
+        "fill",
+        "system"
+      ]
+    },
+    {
+      "name": "icf_system_share1",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_share1.svg",
+      "keywords": [
+        "share1",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_star-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "iconfont/icf_system_star-fill.svg",
+      "keywords": [
+        "star",
+        "fill",
+        "system"
+      ]
+    },
+    {
+      "name": "icf_system_star",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_star.svg",
+      "keywords": [
+        "star",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_thumbdown-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "iconfont/icf_system_thumbdown-fill.svg",
+      "keywords": [
+        "thumbdown",
+        "fill",
+        "system"
+      ]
+    },
+    {
+      "name": "icf_system_thumbdown",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_thumbdown.svg",
+      "keywords": [
+        "thumbdown",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_thumbup-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "iconfont/icf_system_thumbup-fill.svg",
+      "keywords": [
+        "thumbup",
+        "fill",
+        "system"
+      ]
+    },
+    {
+      "name": "icf_system_thumbup",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_thumbup.svg",
+      "keywords": [
+        "thumbup",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_time-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "iconfont/icf_system_time-fill.svg",
+      "keywords": [
+        "time",
+        "fill",
+        "system"
+      ]
+    },
+    {
+      "name": "icf_system_time",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_time.svg",
+      "keywords": [
+        "time",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_unlock-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "iconfont/icf_system_unlock-fill.svg",
+      "keywords": [
+        "unlock",
+        "fill",
+        "system"
+      ]
+    },
+    {
+      "name": "icf_system_unlock",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_unlock.svg",
+      "keywords": [
+        "unlock",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_version-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "iconfont/icf_system_version-fill.svg",
+      "keywords": [
+        "version",
+        "fill",
+        "system"
+      ]
+    },
+    {
+      "name": "icf_system_version",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_version.svg",
+      "keywords": [
+        "version",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_warning-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "iconfont/icf_system_warning-fill.svg",
+      "keywords": [
+        "warning",
+        "fill",
+        "system"
+      ]
+    },
+    {
+      "name": "icf_system_warning",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_warning.svg",
+      "keywords": [
+        "warning",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_zoom-in-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "iconfont/icf_system_zoom-in-fill.svg",
+      "keywords": [
+        "zoom",
+        "in",
+        "fill",
+        "system"
+      ]
+    },
+    {
+      "name": "icf_system_zoom-in",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_zoom-in.svg",
+      "keywords": [
+        "zoom",
+        "in",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_zoom-out-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "iconfont/icf_system_zoom-out-fill.svg",
+      "keywords": [
+        "zoom",
+        "out",
+        "fill",
+        "system"
+      ]
+    },
+    {
+      "name": "icf_system_zoom-out",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_zoom-out.svg",
+      "keywords": [
+        "zoom",
+        "out",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_add",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_add.svg",
+      "keywords": [
+        "add",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_check",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_check.svg",
+      "keywords": [
+        "check",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_close",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_close.svg",
+      "keywords": [
+        "close",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_close-md",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_close-md.svg",
+      "keywords": [
+        "close",
+        "md",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_close-sm",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_close-sm.svg",
+      "keywords": [
+        "close",
+        "sm",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_code-regular",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_code-regular.svg",
+      "keywords": [
+        "code",
+        "regular",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_delete-back",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_delete-back.svg",
+      "keywords": [
+        "delete",
+        "back",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_delete-back-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "iconfont/icf_system_delete-back-fill.svg",
+      "aliases": [
+        "icf_system_delete_back-fill"
+      ],
+      "keywords": [
+        "delete",
+        "back",
+        "fill",
+        "system"
+      ]
+    },
+    {
+      "name": "icf_system_download1",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_download1.svg",
+      "keywords": [
+        "download1",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_eye",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_eye.svg",
+      "keywords": [
+        "eye",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_eye-close",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_eye-close.svg",
+      "keywords": [
+        "eye",
+        "close",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_history",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_history.svg",
+      "keywords": [
+        "history",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_history1",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_history1.svg",
+      "keywords": [
+        "history1",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_file_link-line",
+      "category": "File",
+      "style": "line",
+      "file": "iconfont/icf_file_link-line.svg",
+      "keywords": [
+        "link",
+        "line",
+        "file"
+      ]
+    },
+    {
+      "name": "icf_system_list",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_list.svg",
+      "keywords": [
+        "list",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_list1",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_list1.svg",
+      "keywords": [
+        "list1",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_loading",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_loading.svg",
+      "keywords": [
+        "loading",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_loading1",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_loading1.svg",
+      "keywords": [
+        "loading1",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_loading2",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_loading2.svg",
+      "keywords": [
+        "loading2",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_menu",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_menu.svg",
+      "keywords": [
+        "menu",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_minimize",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_minimize.svg",
+      "keywords": [
+        "minimize",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_more",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_more.svg",
+      "keywords": [
+        "more",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_more1",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_more1.svg",
+      "keywords": [
+        "more1",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_question1",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_question1.svg",
+      "keywords": [
+        "question1",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_refresh",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_refresh.svg",
+      "keywords": [
+        "refresh",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_refresh1",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_refresh1.svg",
+      "keywords": [
+        "refresh1",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_refresh2",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_refresh2.svg",
+      "keywords": [
+        "refresh2",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_safe-alert-fill",
+      "category": "System",
+      "style": "fill",
+      "file": "iconfont/icf_system_safe-alert-fill.svg",
+      "keywords": [
+        "safe",
+        "alert",
+        "fill",
+        "system"
+      ]
+    },
+    {
+      "name": "icf_system_safety",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_safety.svg",
+      "keywords": [
+        "safety",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_scan-line",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_scan-line.svg",
+      "keywords": [
+        "scan",
+        "line",
+        "system"
+      ]
+    },
+    {
+      "name": "icf_system_textarea",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_textarea.svg",
+      "keywords": [
+        "textarea",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_system_upload1",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_upload1.svg",
+      "keywords": [
+        "upload1",
+        "system",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_Arrow_arrow-down-fill",
+      "category": "Arrow",
+      "style": "fill",
+      "file": "iconfont/icf_Arrow_arrow-down-fill.svg",
+      "keywords": [
+        "arrow",
+        "down",
+        "fill"
+      ]
+    },
+    {
+      "name": "icf_Arrow_arrow-down",
+      "category": "Arrow",
+      "style": "line",
+      "file": "iconfont/icf_Arrow_arrow-down.svg",
+      "keywords": [
+        "arrow",
+        "down",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_Arrow_arrow-up-fill",
+      "category": "Arrow",
+      "style": "fill",
+      "file": "iconfont/icf_Arrow_arrow-up-fill.svg",
+      "keywords": [
+        "arrow",
+        "up",
+        "fill"
+      ]
+    },
+    {
+      "name": "icf_Arrow_arrow-up",
+      "category": "Arrow",
+      "style": "line",
+      "file": "iconfont/icf_Arrow_arrow-up.svg",
+      "keywords": [
+        "arrow",
+        "up",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_Arrow_arrow-align-up",
+      "category": "Arrow",
+      "style": "line",
+      "file": "iconfont/icf_Arrow_arrow-align-up.svg",
+      "keywords": [
+        "arrow",
+        "align",
+        "up",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_Arrow_arrow-down-circle",
+      "category": "Arrow",
+      "style": "line",
+      "file": "iconfont/icf_Arrow_arrow-down-circle.svg",
+      "keywords": [
+        "arrow",
+        "down",
+        "circle",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_Arrow_arrow-down-large",
+      "category": "Arrow",
+      "style": "line",
+      "file": "iconfont/icf_Arrow_arrow-down-large.svg",
+      "keywords": [
+        "arrow",
+        "down",
+        "large",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_Arrow_arrow-down-round",
+      "category": "Arrow",
+      "style": "line",
+      "file": "iconfont/icf_Arrow_arrow-down-round.svg",
+      "keywords": [
+        "arrow",
+        "down",
+        "round",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_Arrow_arrow-left",
+      "category": "Arrow",
+      "style": "line",
+      "file": "iconfont/icf_Arrow_arrow-left.svg",
+      "keywords": [
+        "arrow",
+        "left",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_Arrow_arrow-left-circle",
+      "category": "Arrow",
+      "style": "line",
+      "file": "iconfont/icf_Arrow_arrow-left-circle.svg",
+      "keywords": [
+        "arrow",
+        "left",
+        "circle",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_Arrow_arrow-left-large",
+      "category": "Arrow",
+      "style": "line",
+      "file": "iconfont/icf_Arrow_arrow-left-large.svg",
+      "keywords": [
+        "arrow",
+        "left",
+        "large",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_Arrow_arrow-left-round",
+      "category": "Arrow",
+      "style": "line",
+      "file": "iconfont/icf_Arrow_arrow-left-round.svg",
+      "keywords": [
+        "arrow",
+        "left",
+        "round",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_Arrow_arrow-left-up",
+      "category": "Arrow",
+      "style": "line",
+      "file": "iconfont/icf_Arrow_arrow-left-up.svg",
+      "keywords": [
+        "arrow",
+        "left",
+        "up",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_Arrow_arrow-left-up-circle",
+      "category": "Arrow",
+      "style": "line",
+      "file": "iconfont/icf_Arrow_arrow-left-up-circle.svg",
+      "keywords": [
+        "arrow",
+        "left",
+        "up",
+        "circle",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_Arrow_arrow-right",
+      "category": "Arrow",
+      "style": "line",
+      "file": "iconfont/icf_Arrow_arrow-right.svg",
+      "keywords": [
+        "arrow",
+        "right",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_Arrow_arrow-right-circle",
+      "category": "Arrow",
+      "style": "line",
+      "file": "iconfont/icf_Arrow_arrow-right-circle.svg",
+      "keywords": [
+        "arrow",
+        "right",
+        "circle",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_Arrow_arrow-right-down-circle",
+      "category": "Arrow",
+      "style": "line",
+      "file": "iconfont/icf_Arrow_arrow-right-down-circle.svg",
+      "keywords": [
+        "arrow",
+        "right",
+        "down",
+        "circle",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_Arrow_arrow-right-large",
+      "category": "Arrow",
+      "style": "line",
+      "file": "iconfont/icf_Arrow_arrow-right-large.svg",
+      "keywords": [
+        "arrow",
+        "right",
+        "large",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_Arrow_arrow-right-round",
+      "category": "Arrow",
+      "style": "line",
+      "file": "iconfont/icf_Arrow_arrow-right-round.svg",
+      "keywords": [
+        "arrow",
+        "right",
+        "round",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_Arrow_arrow-right-up",
+      "category": "Arrow",
+      "style": "line",
+      "file": "iconfont/icf_Arrow_arrow-right-up.svg",
+      "keywords": [
+        "arrow",
+        "right",
+        "up",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_Arrow_arrow-to-down",
+      "category": "Arrow",
+      "style": "line",
+      "file": "iconfont/icf_Arrow_arrow-to-down.svg",
+      "keywords": [
+        "arrow",
+        "to",
+        "down",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_Arrow_arrow-up-circle",
+      "category": "Arrow",
+      "style": "line",
+      "file": "iconfont/icf_Arrow_arrow-up-circle.svg",
+      "keywords": [
+        "arrow",
+        "up",
+        "circle",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_Arrow_arrow-up-large",
+      "category": "Arrow",
+      "style": "line",
+      "file": "iconfont/icf_Arrow_arrow-up-large.svg",
+      "keywords": [
+        "arrow",
+        "up",
+        "large",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_Arrow_arrow-up-round",
+      "category": "Arrow",
+      "style": "line",
+      "file": "iconfont/icf_Arrow_arrow-up-round.svg",
+      "keywords": [
+        "arrow",
+        "up",
+        "round",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_Arrow_arrows-right-regular",
+      "category": "Arrow",
+      "style": "line",
+      "file": "iconfont/icf_Arrow_arrows-right-regular.svg",
+      "keywords": [
+        "arrows",
+        "right",
+        "regular",
+        "arrow",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_Arrow_caret",
+      "category": "Arrow",
+      "style": "line",
+      "file": "iconfont/icf_Arrow_caret.svg",
+      "keywords": [
+        "caret",
+        "arrow",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_Arrow_caret-down",
+      "category": "Arrow",
+      "style": "line",
+      "file": "iconfont/icf_Arrow_caret-down.svg",
+      "keywords": [
+        "caret",
+        "down",
+        "arrow",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_Arrow_caret-up",
+      "category": "Arrow",
+      "style": "line",
+      "file": "iconfont/icf_Arrow_caret-up.svg",
+      "keywords": [
+        "caret",
+        "up",
+        "arrow",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_Arrow_down",
+      "category": "Arrow",
+      "style": "line",
+      "file": "iconfont/icf_Arrow_down.svg",
+      "keywords": [
+        "down",
+        "arrow",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_Arrow_down-sm",
+      "category": "Arrow",
+      "style": "line",
+      "file": "iconfont/icf_Arrow_down-sm.svg",
+      "keywords": [
+        "down",
+        "sm",
+        "arrow",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_Arrow_enter-right-regular",
+      "category": "Arrow",
+      "style": "line",
+      "file": "iconfont/icf_Arrow_enter-right-regular.svg",
+      "keywords": [
+        "enter",
+        "right",
+        "regular",
+        "arrow",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_Arrow_expand",
+      "category": "Arrow",
+      "style": "line",
+      "file": "iconfont/icf_Arrow_expand.svg",
+      "keywords": [
+        "expand",
+        "arrow",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_Arrow_flat",
+      "category": "Arrow",
+      "style": "line",
+      "file": "iconfont/icf_Arrow_flat.svg",
+      "keywords": [
+        "flat",
+        "arrow",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_Arrow_fold",
+      "category": "Arrow",
+      "style": "line",
+      "file": "iconfont/icf_Arrow_fold.svg",
+      "keywords": [
+        "fold",
+        "arrow",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_Arrow_fullscreen",
+      "category": "Arrow",
+      "style": "line",
+      "file": "iconfont/icf_Arrow_fullscreen.svg",
+      "keywords": [
+        "fullscreen",
+        "arrow",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_Arrow_fullscreen-exit",
+      "category": "Arrow",
+      "style": "line",
+      "file": "iconfont/icf_Arrow_fullscreen-exit.svg",
+      "keywords": [
+        "fullscreen",
+        "exit",
+        "arrow",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_Arrow_left",
+      "category": "Arrow",
+      "style": "line",
+      "file": "iconfont/icf_Arrow_left.svg",
+      "keywords": [
+        "left",
+        "arrow",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_Arrow_left-sm",
+      "category": "Arrow",
+      "style": "line",
+      "file": "iconfont/icf_Arrow_left-sm.svg",
+      "keywords": [
+        "left",
+        "sm",
+        "arrow",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_Arrow_right",
+      "category": "Arrow",
+      "style": "line",
+      "file": "iconfont/icf_Arrow_right.svg",
+      "keywords": [
+        "right",
+        "arrow",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_Arrow_right-sm",
+      "category": "Arrow",
+      "style": "line",
+      "file": "iconfont/icf_Arrow_right-sm.svg",
+      "keywords": [
+        "right",
+        "sm",
+        "arrow",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_Arrow_tarrows-left-regular",
+      "category": "Arrow",
+      "style": "line",
+      "file": "iconfont/icf_Arrow_tarrows-left-regular.svg",
+      "keywords": [
+        "tarrows",
+        "left",
+        "regular",
+        "arrow",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_Arrow_transfer",
+      "category": "Arrow",
+      "style": "line",
+      "file": "iconfont/icf_Arrow_transfer.svg",
+      "keywords": [
+        "transfer",
+        "arrow",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_Arrow_transfer1",
+      "category": "Arrow",
+      "style": "line",
+      "file": "iconfont/icf_Arrow_transfer1.svg",
+      "keywords": [
+        "transfer1",
+        "arrow",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_Arrow_trending-down",
+      "category": "Arrow",
+      "style": "line",
+      "file": "iconfont/icf_Arrow_trending-down.svg",
+      "keywords": [
+        "trending",
+        "down",
+        "arrow",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_Arrow_trending-up",
+      "category": "Arrow",
+      "style": "line",
+      "file": "iconfont/icf_Arrow_trending-up.svg",
+      "keywords": [
+        "trending",
+        "up",
+        "arrow",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_Arrow_up",
+      "category": "Arrow",
+      "style": "line",
+      "file": "iconfont/icf_Arrow_up.svg",
+      "keywords": [
+        "up",
+        "arrow",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_Arrow_up-sm",
+      "category": "Arrow",
+      "style": "line",
+      "file": "iconfont/icf_Arrow_up-sm.svg",
+      "keywords": [
+        "up",
+        "sm",
+        "arrow",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_business_briefcase-fill",
+      "category": "Business",
+      "style": "fill",
+      "file": "iconfont/icf_business_briefcase-fill.svg",
+      "keywords": [
+        "briefcase",
+        "fill",
+        "business"
+      ]
+    },
+    {
+      "name": "icf_business_briefcase",
+      "category": "Business",
+      "style": "line",
+      "file": "iconfont/icf_business_briefcase.svg",
+      "keywords": [
+        "briefcase",
+        "business",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_business_building-1-fill",
+      "category": "Business",
+      "style": "fill",
+      "file": "iconfont/icf_business_building-1-fill.svg",
+      "keywords": [
+        "building",
+        "1",
+        "fill",
+        "business"
+      ]
+    },
+    {
+      "name": "icf_business_building-1-line",
+      "category": "Business",
+      "style": "line",
+      "file": "iconfont/icf_business_building-1-line.svg",
+      "keywords": [
+        "building",
+        "1",
+        "line",
+        "business"
+      ]
+    },
+    {
+      "name": "icf_business_coin-fill",
+      "category": "Business",
+      "style": "fill",
+      "file": "iconfont/icf_business_coin-fill.svg",
+      "keywords": [
+        "coin",
+        "fill",
+        "business"
+      ]
+    },
+    {
+      "name": "icf_business_coin",
+      "category": "Business",
+      "style": "line",
+      "file": "iconfont/icf_business_coin.svg",
+      "keywords": [
+        "coin",
+        "business",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_business_diamond-fill",
+      "category": "Business",
+      "style": "fill",
+      "file": "iconfont/icf_business_diamond-fill.svg",
+      "keywords": [
+        "diamond",
+        "fill",
+        "business"
+      ]
+    },
+    {
+      "name": "icf_business_diamond",
+      "category": "Business",
+      "style": "line",
+      "file": "iconfont/icf_business_diamond.svg",
+      "keywords": [
+        "diamond",
+        "business",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_business_moneybag-fill",
+      "category": "Business",
+      "style": "fill",
+      "file": "iconfont/icf_business_moneybag-fill.svg",
+      "keywords": [
+        "moneybag",
+        "fill",
+        "business"
+      ]
+    },
+    {
+      "name": "icf_business_moneybag",
+      "category": "Business",
+      "style": "line",
+      "file": "iconfont/icf_business_moneybag.svg",
+      "keywords": [
+        "moneybag",
+        "business",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_business_pig-money-fill",
+      "category": "Business",
+      "style": "fill",
+      "file": "iconfont/icf_business_pig-money-fill.svg",
+      "keywords": [
+        "pig",
+        "money",
+        "fill",
+        "business"
+      ]
+    },
+    {
+      "name": "icf_business_pig-money",
+      "category": "Business",
+      "style": "line",
+      "file": "iconfont/icf_business_pig-money.svg",
+      "keywords": [
+        "pig",
+        "money",
+        "business",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_business_stock-fill",
+      "category": "Business",
+      "style": "fill",
+      "file": "iconfont/icf_business_stock-fill.svg",
+      "keywords": [
+        "stock",
+        "fill",
+        "business"
+      ]
+    },
+    {
+      "name": "icf_business_stock",
+      "category": "Business",
+      "style": "line",
+      "file": "iconfont/icf_business_stock.svg",
+      "keywords": [
+        "stock",
+        "business",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_business_wallet-fill",
+      "category": "Business",
+      "style": "fill",
+      "file": "iconfont/icf_business_wallet-fill.svg",
+      "keywords": [
+        "wallet",
+        "fill",
+        "business"
+      ]
+    },
+    {
+      "name": "icf_business_wallet",
+      "category": "Business",
+      "style": "line",
+      "file": "iconfont/icf_business_wallet.svg",
+      "keywords": [
+        "wallet",
+        "business",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_user_contacts-fill",
+      "category": "User",
+      "style": "fill",
+      "file": "iconfont/icf_user_contacts-fill.svg",
+      "keywords": [
+        "contacts",
+        "fill",
+        "user"
+      ]
+    },
+    {
+      "name": "icf_user_contacts",
+      "category": "User",
+      "style": "line",
+      "file": "iconfont/icf_user_contacts.svg",
+      "keywords": [
+        "contacts",
+        "user",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_user_group-fill",
+      "category": "User",
+      "style": "fill",
+      "file": "iconfont/icf_user_group-fill.svg",
+      "keywords": [
+        "group",
+        "fill",
+        "user"
+      ]
+    },
+    {
+      "name": "icf_user_group",
+      "category": "User",
+      "style": "line",
+      "file": "iconfont/icf_user_group.svg",
+      "keywords": [
+        "group",
+        "user",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_user_idcard-fill",
+      "category": "User",
+      "style": "fill",
+      "file": "iconfont/icf_user_idcard-fill.svg",
+      "keywords": [
+        "idcard",
+        "fill",
+        "user"
+      ]
+    },
+    {
+      "name": "icf_user_idcard",
+      "category": "User",
+      "style": "line",
+      "file": "iconfont/icf_user_idcard.svg",
+      "keywords": [
+        "idcard",
+        "user",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_user_user-fill",
+      "category": "User",
+      "style": "fill",
+      "file": "iconfont/icf_user_user-fill.svg",
+      "keywords": [
+        "user",
+        "fill"
+      ]
+    },
+    {
+      "name": "icf_user_user",
+      "category": "User",
+      "style": "line",
+      "file": "iconfont/icf_user_user.svg",
+      "keywords": [
+        "user",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_user_female",
+      "category": "User",
+      "style": "line",
+      "file": "iconfont/icf_user_female.svg",
+      "keywords": [
+        "female",
+        "user",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_user_male",
+      "category": "User",
+      "style": "line",
+      "file": "iconfont/icf_user_male.svg",
+      "keywords": [
+        "male",
+        "user",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_file_bookmark-fill",
+      "category": "File",
+      "style": "fill",
+      "file": "iconfont/icf_file_bookmark-fill.svg",
+      "keywords": [
+        "bookmark",
+        "fill",
+        "file"
+      ]
+    },
+    {
+      "name": "icf_file_bookmark-line",
+      "category": "File",
+      "style": "line",
+      "file": "iconfont/icf_file_bookmark-line.svg",
+      "keywords": [
+        "bookmark",
+        "line",
+        "file"
+      ]
+    },
+    {
+      "name": "icf_file_box-fill",
+      "category": "File",
+      "style": "fill",
+      "file": "iconfont/icf_file_box-fill.svg",
+      "keywords": [
+        "box",
+        "fill",
+        "file"
+      ]
+    },
+    {
+      "name": "icf_file_box",
+      "category": "File",
+      "style": "line",
+      "file": "iconfont/icf_file_box.svg",
+      "keywords": [
+        "box",
+        "file",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_file_box1-fill",
+      "category": "File",
+      "style": "fill",
+      "file": "iconfont/icf_file_box1-fill.svg",
+      "keywords": [
+        "box1",
+        "fill",
+        "file"
+      ]
+    },
+    {
+      "name": "icf_file_box1",
+      "category": "File",
+      "style": "line",
+      "file": "iconfont/icf_file_box1.svg",
+      "keywords": [
+        "box1",
+        "file",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_file_clipboard-fill",
+      "category": "File",
+      "style": "fill",
+      "file": "iconfont/icf_file_clipboard-fill.svg",
+      "keywords": [
+        "clipboard",
+        "fill",
+        "file"
+      ]
+    },
+    {
+      "name": "icf_file_clipboard-line",
+      "category": "File",
+      "style": "line",
+      "file": "iconfont/icf_file_clipboard-line.svg",
+      "keywords": [
+        "clipboard",
+        "line",
+        "file"
+      ]
+    },
+    {
+      "name": "icf_file_document-2-fill",
+      "category": "File",
+      "style": "fill",
+      "file": "iconfont/icf_file_document-2-fill.svg",
+      "keywords": [
+        "document",
+        "2",
+        "fill",
+        "file"
+      ]
+    },
+    {
+      "name": "icf_file_document-2-line",
+      "category": "File",
+      "style": "line",
+      "file": "iconfont/icf_file_document-2-line.svg",
+      "keywords": [
+        "document",
+        "2",
+        "line",
+        "file"
+      ]
+    },
+    {
+      "name": "icf_file_documents-fill",
+      "category": "File",
+      "style": "fill",
+      "file": "iconfont/icf_file_documents-fill.svg",
+      "keywords": [
+        "documents",
+        "fill",
+        "file"
+      ]
+    },
+    {
+      "name": "icf_file_documents-line",
+      "category": "File",
+      "style": "line",
+      "file": "iconfont/icf_file_documents-line.svg",
+      "keywords": [
+        "documents",
+        "line",
+        "file"
+      ]
+    },
+    {
+      "name": "icf_file_download2-fill",
+      "category": "File",
+      "style": "fill",
+      "file": "iconfont/icf_file_download2-fill.svg",
+      "keywords": [
+        "download2",
+        "fill",
+        "file"
+      ]
+    },
+    {
+      "name": "icf_file_download2",
+      "category": "File",
+      "style": "line",
+      "file": "iconfont/icf_file_download2.svg",
+      "keywords": [
+        "download2",
+        "file",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_file_file-fill",
+      "category": "File",
+      "style": "fill",
+      "file": "iconfont/icf_file_file-fill.svg",
+      "keywords": [
+        "file",
+        "fill"
+      ]
+    },
+    {
+      "name": "icf_file_file-line",
+      "category": "File",
+      "style": "line",
+      "file": "iconfont/icf_file_file-line.svg",
+      "keywords": [
+        "file",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_file_file-check-fill",
+      "category": "File",
+      "style": "fill",
+      "file": "iconfont/icf_file_file-check-fill.svg",
+      "keywords": [
+        "file",
+        "check",
+        "fill"
+      ]
+    },
+    {
+      "name": "icf_file_file-check-line",
+      "category": "File",
+      "style": "line",
+      "file": "iconfont/icf_file_file-check-line.svg",
+      "keywords": [
+        "file",
+        "check",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_file_file-code-fill",
+      "category": "File",
+      "style": "fill",
+      "file": "iconfont/icf_file_file-code-fill.svg",
+      "keywords": [
+        "file",
+        "code",
+        "fill"
+      ]
+    },
+    {
+      "name": "icf_file_file-code-line",
+      "category": "File",
+      "style": "line",
+      "file": "iconfont/icf_file_file-code-line.svg",
+      "keywords": [
+        "file",
+        "code",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_file_file-download-fill",
+      "category": "File",
+      "style": "fill",
+      "file": "iconfont/icf_file_file-download-fill.svg",
+      "keywords": [
+        "file",
+        "download",
+        "fill"
+      ]
+    },
+    {
+      "name": "icf_file_file-download-line",
+      "category": "File",
+      "style": "line",
+      "file": "iconfont/icf_file_file-download-line.svg",
+      "keywords": [
+        "file",
+        "download",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_file_file-locked-fill",
+      "category": "File",
+      "style": "fill",
+      "file": "iconfont/icf_file_file-locked-fill.svg",
+      "keywords": [
+        "file",
+        "locked",
+        "fill"
+      ]
+    },
+    {
+      "name": "icf_file_file-locked-line",
+      "category": "File",
+      "style": "line",
+      "file": "iconfont/icf_file_file-locked-line.svg",
+      "keywords": [
+        "file",
+        "locked",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_file_file-search-fill",
+      "category": "File",
+      "style": "fill",
+      "file": "iconfont/icf_file_file-search-fill.svg",
+      "keywords": [
+        "file",
+        "search",
+        "fill"
+      ]
+    },
+    {
+      "name": "icf_file_file-search-line",
+      "category": "File",
+      "style": "line",
+      "file": "iconfont/icf_file_file-search-line.svg",
+      "keywords": [
+        "file",
+        "search",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_file_file-upload-fill",
+      "category": "File",
+      "style": "fill",
+      "file": "iconfont/icf_file_file-upload-fill.svg",
+      "keywords": [
+        "file",
+        "upload",
+        "fill"
+      ]
+    },
+    {
+      "name": "icf_file_file-upload-line",
+      "category": "File",
+      "style": "line",
+      "file": "iconfont/icf_file_file-upload-line.svg",
+      "keywords": [
+        "file",
+        "upload",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_file_file-zip-fill",
+      "category": "File",
+      "style": "fill",
+      "file": "iconfont/icf_file_file-zip-fill.svg",
+      "keywords": [
+        "file",
+        "zip",
+        "fill"
+      ]
+    },
+    {
+      "name": "icf_file_file-zip-line",
+      "category": "File",
+      "style": "line",
+      "file": "iconfont/icf_file_file-zip-line.svg",
+      "keywords": [
+        "file",
+        "zip",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_file_folder-2-fill",
+      "category": "File",
+      "style": "fill",
+      "file": "iconfont/icf_file_folder-2-fill.svg",
+      "keywords": [
+        "folder",
+        "2",
+        "fill",
+        "file"
+      ]
+    },
+    {
+      "name": "icf_file_folder-2-line",
+      "category": "File",
+      "style": "line",
+      "file": "iconfont/icf_file_folder-2-line.svg",
+      "keywords": [
+        "folder",
+        "2",
+        "line",
+        "file"
+      ]
+    },
+    {
+      "name": "icf_file_folder-check-fill",
+      "category": "File",
+      "style": "fill",
+      "file": "iconfont/icf_file_folder-check-fill.svg",
+      "keywords": [
+        "folder",
+        "check",
+        "fill",
+        "file"
+      ]
+    },
+    {
+      "name": "icf_file_folder-check-line",
+      "category": "File",
+      "style": "line",
+      "file": "iconfont/icf_file_folder-check-line.svg",
+      "keywords": [
+        "folder",
+        "check",
+        "line",
+        "file"
+      ]
+    },
+    {
+      "name": "icf_file_folder-download-fill",
+      "category": "File",
+      "style": "fill",
+      "file": "iconfont/icf_file_folder-download-fill.svg",
+      "keywords": [
+        "folder",
+        "download",
+        "fill",
+        "file"
+      ]
+    },
+    {
+      "name": "icf_file_folder-download-line",
+      "category": "File",
+      "style": "line",
+      "file": "iconfont/icf_file_folder-download-line.svg",
+      "keywords": [
+        "folder",
+        "download",
+        "line",
+        "file"
+      ]
+    },
+    {
+      "name": "icf_file_folder-locked-2-fill",
+      "category": "File",
+      "style": "fill",
+      "file": "iconfont/icf_file_folder-locked-2-fill.svg",
+      "keywords": [
+        "folder",
+        "locked",
+        "2",
+        "fill",
+        "file"
+      ]
+    },
+    {
+      "name": "icf_file_folder-locked-2-line",
+      "category": "File",
+      "style": "line",
+      "file": "iconfont/icf_file_folder-locked-2-line.svg",
+      "keywords": [
+        "folder",
+        "locked",
+        "2",
+        "line",
+        "file"
+      ]
+    },
+    {
+      "name": "icf_file_folder-open-fill",
+      "category": "File",
+      "style": "fill",
+      "file": "iconfont/icf_file_folder-open-fill.svg",
+      "keywords": [
+        "folder",
+        "open",
+        "fill",
+        "file"
+      ]
+    },
+    {
+      "name": "icf_file_folder-open-line",
+      "category": "File",
+      "style": "line",
+      "file": "iconfont/icf_file_folder-open-line.svg",
+      "keywords": [
+        "folder",
+        "open",
+        "line",
+        "file"
+      ]
+    },
+    {
+      "name": "icf_file_folder-upload-fill",
+      "category": "File",
+      "style": "fill",
+      "file": "iconfont/icf_file_folder-upload-fill.svg",
+      "keywords": [
+        "folder",
+        "upload",
+        "fill",
+        "file"
+      ]
+    },
+    {
+      "name": "icf_file_folder-upload-line",
+      "category": "File",
+      "style": "line",
+      "file": "iconfont/icf_file_folder-upload-line.svg",
+      "keywords": [
+        "folder",
+        "upload",
+        "line",
+        "file"
+      ]
+    },
+    {
+      "name": "icf_file_folder-zip-fill",
+      "category": "File",
+      "style": "fill",
+      "file": "iconfont/icf_file_folder-zip-fill.svg",
+      "keywords": [
+        "folder",
+        "zip",
+        "fill",
+        "file"
+      ]
+    },
+    {
+      "name": "icf_file_folder-zip-line",
+      "category": "File",
+      "style": "line",
+      "file": "iconfont/icf_file_folder-zip-line.svg",
+      "keywords": [
+        "folder",
+        "zip",
+        "line",
+        "file"
+      ]
+    },
+    {
+      "name": "icf_file_folders-fill",
+      "category": "File",
+      "style": "fill",
+      "file": "iconfont/icf_file_folders-fill.svg",
+      "keywords": [
+        "folders",
+        "fill",
+        "file"
+      ]
+    },
+    {
+      "name": "icf_file_folders-line",
+      "category": "File",
+      "style": "line",
+      "file": "iconfont/icf_file_folders-line.svg",
+      "keywords": [
+        "folders",
+        "line",
+        "file"
+      ]
+    },
+    {
+      "name": "icf_file_image-fill",
+      "category": "File",
+      "style": "fill",
+      "file": "iconfont/icf_file_image-fill.svg",
+      "keywords": [
+        "image",
+        "fill",
+        "file"
+      ]
+    },
+    {
+      "name": "icf_file_image",
+      "category": "File",
+      "style": "line",
+      "file": "iconfont/icf_file_image.svg",
+      "keywords": [
+        "image",
+        "file",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_file_inbox-fill",
+      "category": "File",
+      "style": "fill",
+      "file": "iconfont/icf_file_inbox-fill.svg",
+      "keywords": [
+        "inbox",
+        "fill",
+        "file"
+      ]
+    },
+    {
+      "name": "icf_file_inbox",
+      "category": "File",
+      "style": "line",
+      "file": "iconfont/icf_file_inbox.svg",
+      "keywords": [
+        "inbox",
+        "file",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_file_new-folder-fill",
+      "category": "File",
+      "style": "fill",
+      "file": "iconfont/icf_file_new-folder-fill.svg",
+      "keywords": [
+        "new",
+        "folder",
+        "fill",
+        "file"
+      ]
+    },
+    {
+      "name": "icf_file_new-folder-line",
+      "category": "File",
+      "style": "line",
+      "file": "iconfont/icf_file_new-folder-line.svg",
+      "keywords": [
+        "new",
+        "folder",
+        "line",
+        "file"
+      ]
+    },
+    {
+      "name": "icf_file_news-fill",
+      "category": "File",
+      "style": "fill",
+      "file": "iconfont/icf_file_news-fill.svg",
+      "keywords": [
+        "news",
+        "fill",
+        "file"
+      ]
+    },
+    {
+      "name": "icf_file_news",
+      "category": "File",
+      "style": "line",
+      "file": "iconfont/icf_file_news.svg",
+      "keywords": [
+        "news",
+        "file",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_file_paper-line-fill",
+      "category": "File",
+      "style": "fill",
+      "file": "iconfont/icf_file_paper-line-fill.svg",
+      "keywords": [
+        "paper",
+        "line",
+        "fill",
+        "file"
+      ]
+    },
+    {
+      "name": "icf_file_paper-line",
+      "category": "File",
+      "style": "line",
+      "file": "iconfont/icf_file_paper-line.svg",
+      "keywords": [
+        "paper",
+        "line",
+        "file"
+      ]
+    },
+    {
+      "name": "icf_file_storage-line-fill",
+      "category": "File",
+      "style": "fill",
+      "file": "iconfont/icf_file_storage-line-fill.svg",
+      "keywords": [
+        "storage",
+        "line",
+        "fill",
+        "file"
+      ]
+    },
+    {
+      "name": "icf_file_storage-line",
+      "category": "File",
+      "style": "line",
+      "file": "iconfont/icf_file_storage-line.svg",
+      "keywords": [
+        "storage",
+        "line",
+        "file"
+      ]
+    },
+    {
+      "name": "icf_file_task-fill",
+      "category": "File",
+      "style": "fill",
+      "file": "iconfont/icf_file_task-fill.svg",
+      "keywords": [
+        "task",
+        "fill",
+        "file"
+      ]
+    },
+    {
+      "name": "icf_file_task",
+      "category": "File",
+      "style": "line",
+      "file": "iconfont/icf_file_task.svg",
+      "keywords": [
+        "task",
+        "file",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_file_upload2-fill",
+      "category": "File",
+      "style": "fill",
+      "file": "iconfont/icf_file_upload2-fill.svg",
+      "keywords": [
+        "upload2",
+        "fill",
+        "file"
+      ]
+    },
+    {
+      "name": "icf_file_upload2",
+      "category": "File",
+      "style": "line",
+      "file": "iconfont/icf_file_upload2.svg",
+      "keywords": [
+        "upload2",
+        "file",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_file_attachment",
+      "category": "File",
+      "style": "line",
+      "file": "iconfont/icf_file_attachment.svg",
+      "keywords": [
+        "attachment",
+        "file",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_file_download",
+      "category": "File",
+      "style": "line",
+      "file": "iconfont/icf_file_download.svg",
+      "keywords": [
+        "download",
+        "file",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_file_file-export-line",
+      "category": "File",
+      "style": "line",
+      "file": "iconfont/icf_file_file-export-line.svg",
+      "keywords": [
+        "file",
+        "export",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_file_file-import-line",
+      "category": "File",
+      "style": "line",
+      "file": "iconfont/icf_file_file-import-line.svg",
+      "keywords": [
+        "file",
+        "import",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_file_upload",
+      "category": "File",
+      "style": "line",
+      "file": "iconfont/icf_file_upload.svg",
+      "keywords": [
+        "upload",
+        "file",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_AI_ai-fill",
+      "category": "AI",
+      "style": "fill",
+      "file": "iconfont/icf_AI_ai-fill.svg",
+      "keywords": [
+        "ai",
+        "fill"
+      ]
+    },
+    {
+      "name": "icf_AI_ai-line",
+      "category": "AI",
+      "style": "line",
+      "file": "iconfont/icf_AI_ai-line.svg",
+      "keywords": [
+        "ai",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_AI_bulb-2-ai-fill",
+      "category": "AI",
+      "style": "fill",
+      "file": "iconfont/icf_AI_bulb-2-ai-fill.svg",
+      "keywords": [
+        "bulb",
+        "2",
+        "ai",
+        "fill"
+      ]
+    },
+    {
+      "name": "icf_AI_bulb-2-ai-line",
+      "category": "AI",
+      "style": "line",
+      "file": "iconfont/icf_AI_bulb-2-ai-line.svg",
+      "keywords": [
+        "bulb",
+        "2",
+        "ai",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_AI_bulb-ai-fill",
+      "category": "AI",
+      "style": "fill",
+      "file": "iconfont/icf_AI_bulb-ai-fill.svg",
+      "keywords": [
+        "bulb",
+        "ai",
+        "fill"
+      ]
+    },
+    {
+      "name": "icf_AI_bulb-ai-line",
+      "category": "AI",
+      "style": "line",
+      "file": "iconfont/icf_AI_bulb-ai-line.svg",
+      "keywords": [
+        "bulb",
+        "ai",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_AI_cellphone-2-ai-fill",
+      "category": "AI",
+      "style": "fill",
+      "file": "iconfont/icf_AI_cellphone-2-ai-fill.svg",
+      "keywords": [
+        "cellphone",
+        "2",
+        "ai",
+        "fill"
+      ]
+    },
+    {
+      "name": "icf_AI_cellphone-2-ai-line",
+      "category": "AI",
+      "style": "line",
+      "file": "iconfont/icf_AI_cellphone-2-ai-line.svg",
+      "keywords": [
+        "cellphone",
+        "2",
+        "ai",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_AI_chat-1-ai-fill",
+      "category": "AI",
+      "style": "fill",
+      "file": "iconfont/icf_AI_chat-1-ai-fill.svg",
+      "keywords": [
+        "chat",
+        "1",
+        "ai",
+        "fill"
+      ]
+    },
+    {
+      "name": "icf_AI_chat-1-ai-line",
+      "category": "AI",
+      "style": "line",
+      "file": "iconfont/icf_AI_chat-1-ai-line.svg",
+      "keywords": [
+        "chat",
+        "1",
+        "ai",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_AI_chat-4-ai-fill",
+      "category": "AI",
+      "style": "fill",
+      "file": "iconfont/icf_AI_chat-4-ai-fill.svg",
+      "keywords": [
+        "chat",
+        "4",
+        "ai",
+        "fill"
+      ]
+    },
+    {
+      "name": "icf_AI_chat-4-ai-line",
+      "category": "AI",
+      "style": "line",
+      "file": "iconfont/icf_AI_chat-4-ai-line.svg",
+      "keywords": [
+        "chat",
+        "4",
+        "ai",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_AI_classify-2-ai-fill",
+      "category": "AI",
+      "style": "fill",
+      "file": "iconfont/icf_AI_classify-2-ai-fill.svg",
+      "keywords": [
+        "classify",
+        "2",
+        "ai",
+        "fill"
+      ]
+    },
+    {
+      "name": "icf_AI_classify-2-ai-line",
+      "category": "AI",
+      "style": "line",
+      "file": "iconfont/icf_AI_classify-2-ai-line.svg",
+      "keywords": [
+        "classify",
+        "2",
+        "ai",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_AI_head-ai-fill",
+      "category": "AI",
+      "style": "fill",
+      "file": "iconfont/icf_AI_head-ai-fill.svg",
+      "keywords": [
+        "head",
+        "ai",
+        "fill"
+      ]
+    },
+    {
+      "name": "icf_AI_head-ai-line",
+      "category": "AI",
+      "style": "line",
+      "file": "iconfont/icf_AI_head-ai-line.svg",
+      "keywords": [
+        "head",
+        "ai",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_AI_mic-ai-fill",
+      "category": "AI",
+      "style": "fill",
+      "file": "iconfont/icf_AI_mic-ai-fill.svg",
+      "keywords": [
+        "mic",
+        "ai",
+        "fill"
+      ]
+    },
+    {
+      "name": "icf_AI_mic-ai-line",
+      "category": "AI",
+      "style": "line",
+      "file": "iconfont/icf_AI_mic-ai-line.svg",
+      "keywords": [
+        "mic",
+        "ai",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_AI_pencil-2-ai-fill",
+      "category": "AI",
+      "style": "fill",
+      "file": "iconfont/icf_AI_pencil-2-ai-fill.svg",
+      "keywords": [
+        "pencil",
+        "2",
+        "ai",
+        "fill"
+      ]
+    },
+    {
+      "name": "icf_AI_pencil-2-ai-line",
+      "category": "AI",
+      "style": "line",
+      "file": "iconfont/icf_AI_pencil-2-ai-line.svg",
+      "keywords": [
+        "pencil",
+        "2",
+        "ai",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_AI_pencil-ai-fill",
+      "category": "AI",
+      "style": "fill",
+      "file": "iconfont/icf_AI_pencil-ai-fill.svg",
+      "keywords": [
+        "pencil",
+        "ai",
+        "fill"
+      ]
+    },
+    {
+      "name": "icf_AI_pencil-ai-line",
+      "category": "AI",
+      "style": "line",
+      "file": "iconfont/icf_AI_pencil-ai-line.svg",
+      "keywords": [
+        "pencil",
+        "ai",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_AI_pic-ai-fill",
+      "category": "AI",
+      "style": "fill",
+      "file": "iconfont/icf_AI_pic-ai-fill.svg",
+      "keywords": [
+        "pic",
+        "ai",
+        "fill"
+      ]
+    },
+    {
+      "name": "icf_AI_pic-ai-line",
+      "category": "AI",
+      "style": "line",
+      "file": "iconfont/icf_AI_pic-ai-line.svg",
+      "keywords": [
+        "pic",
+        "ai",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_AI_robot-fill",
+      "category": "AI",
+      "style": "fill",
+      "file": "iconfont/icf_AI_robot-fill.svg",
+      "keywords": [
+        "robot",
+        "fill",
+        "ai"
+      ]
+    },
+    {
+      "name": "icf_AI_robot-line",
+      "category": "AI",
+      "style": "line",
+      "file": "iconfont/icf_AI_robot-line.svg",
+      "keywords": [
+        "robot",
+        "line",
+        "ai"
+      ]
+    },
+    {
+      "name": "icf_media_mic-fill",
+      "category": "Media",
+      "style": "fill",
+      "file": "iconfont/icf_media_mic-fill.svg",
+      "keywords": [
+        "mic",
+        "fill",
+        "media"
+      ]
+    },
+    {
+      "name": "icf_media_mic",
+      "category": "Media",
+      "style": "line",
+      "file": "iconfont/icf_media_mic.svg",
+      "keywords": [
+        "mic",
+        "media",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_media_play-triangle-fill",
+      "category": "Media",
+      "style": "fill",
+      "file": "iconfont/icf_media_play-triangle-fill.svg",
+      "keywords": [
+        "play",
+        "triangle",
+        "media",
+        "fill"
+      ]
+    },
+    {
+      "name": "icf_media_play-triangle-line",
+      "category": "Media",
+      "style": "line",
+      "file": "iconfont/icf_media_play-triangle-line.svg",
+      "keywords": [
+        "play",
+        "triangle",
+        "line",
+        "media"
+      ]
+    },
+    {
+      "name": "icf_media_power-fill",
+      "category": "Media",
+      "style": "fill",
+      "file": "iconfont/icf_media_power-fill.svg",
+      "keywords": [
+        "power",
+        "fill",
+        "media"
+      ]
+    },
+    {
+      "name": "icf_media_power",
+      "category": "Media",
+      "style": "line",
+      "file": "iconfont/icf_media_power.svg",
+      "keywords": [
+        "power",
+        "media",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_media_skip-forward-fill",
+      "category": "Media",
+      "style": "fill",
+      "file": "iconfont/icf_media_skip-forward-fill.svg",
+      "keywords": [
+        "skip",
+        "forward",
+        "fill",
+        "media"
+      ]
+    },
+    {
+      "name": "icf_media_skip-forward",
+      "category": "Media",
+      "style": "line",
+      "file": "iconfont/icf_media_skip-forward.svg",
+      "keywords": [
+        "skip",
+        "forward",
+        "media",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_media_skip-previous-fill",
+      "category": "Media",
+      "style": "fill",
+      "file": "iconfont/icf_media_skip-previous-fill.svg",
+      "keywords": [
+        "skip",
+        "previous",
+        "fill",
+        "media"
+      ]
+    },
+    {
+      "name": "icf_media_skip-previous",
+      "category": "Media",
+      "style": "line",
+      "file": "iconfont/icf_media_skip-previous.svg",
+      "keywords": [
+        "skip",
+        "previous",
+        "media",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_media_stop-fill",
+      "category": "Media",
+      "style": "fill",
+      "file": "iconfont/icf_media_stop-fill.svg",
+      "keywords": [
+        "stop",
+        "fill",
+        "media"
+      ]
+    },
+    {
+      "name": "icf_media_stop",
+      "category": "Media",
+      "style": "line",
+      "file": "iconfont/icf_media_stop.svg",
+      "keywords": [
+        "stop",
+        "media",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_media_fullscreen-exit-regular",
+      "category": "Media",
+      "style": "line",
+      "file": "iconfont/icf_media_fullscreen-exit-regular.svg",
+      "keywords": [
+        "fullscreen",
+        "exit",
+        "regular",
+        "media",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_media_fullscreen-regular",
+      "category": "Media",
+      "style": "line",
+      "file": "iconfont/icf_media_fullscreen-regular.svg",
+      "keywords": [
+        "fullscreen",
+        "regular",
+        "media",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_media_pause-fill",
+      "category": "Media",
+      "style": "fill",
+      "file": "iconfont/icf_media_pause-fill.svg",
+      "keywords": [
+        "pause",
+        "fill",
+        "media"
+      ]
+    },
+    {
+      "name": "icf_media_pause-regular",
+      "category": "Media",
+      "style": "line",
+      "file": "iconfont/icf_media_pause-regular.svg",
+      "keywords": [
+        "pause",
+        "regular",
+        "media",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_media_play",
+      "category": "Media",
+      "style": "line",
+      "file": "iconfont/icf_media_play.svg",
+      "keywords": [
+        "play",
+        "media",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_media_play_fill",
+      "category": "Media",
+      "style": "fill",
+      "file": "iconfont/icf_media_play_fill.svg",
+      "keywords": [
+        "play",
+        "fill",
+        "media"
+      ]
+    },
+    {
+      "name": "icf_media_shuffle",
+      "category": "Media",
+      "style": "line",
+      "file": "iconfont/icf_media_shuffle.svg",
+      "keywords": [
+        "shuffle",
+        "media",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_data_chart-fill",
+      "category": "Data",
+      "style": "fill",
+      "file": "iconfont/icf_data_chart-fill.svg",
+      "keywords": [
+        "chart",
+        "fill",
+        "data"
+      ]
+    },
+    {
+      "name": "icf_data_chart",
+      "category": "Data",
+      "style": "line",
+      "file": "iconfont/icf_data_chart.svg",
+      "keywords": [
+        "chart",
+        "data",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_data_chart1-fill",
+      "category": "Data",
+      "style": "fill",
+      "file": "iconfont/icf_data_chart1-fill.svg",
+      "keywords": [
+        "chart1",
+        "fill",
+        "data"
+      ]
+    },
+    {
+      "name": "icf_data_chart1",
+      "category": "Data",
+      "style": "line",
+      "file": "iconfont/icf_data_chart1.svg",
+      "keywords": [
+        "chart1",
+        "data",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_data_chart2-fill",
+      "category": "Data",
+      "style": "fill",
+      "file": "iconfont/icf_data_chart2-fill.svg",
+      "keywords": [
+        "chart2",
+        "fill",
+        "data"
+      ]
+    },
+    {
+      "name": "icf_data_chart2",
+      "category": "Data",
+      "style": "line",
+      "file": "iconfont/icf_data_chart2.svg",
+      "keywords": [
+        "chart2",
+        "data",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_data_chart4-fill",
+      "category": "Data",
+      "style": "fill",
+      "file": "iconfont/icf_data_chart4-fill.svg",
+      "keywords": [
+        "chart4",
+        "fill",
+        "data"
+      ]
+    },
+    {
+      "name": "icf_data_chart4",
+      "category": "Data",
+      "style": "line",
+      "file": "iconfont/icf_data_chart4.svg",
+      "keywords": [
+        "chart4",
+        "data",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_data_chart5-fill",
+      "category": "Data",
+      "style": "fill",
+      "file": "iconfont/icf_data_chart5-fill.svg",
+      "keywords": [
+        "chart5",
+        "fill",
+        "data"
+      ]
+    },
+    {
+      "name": "icf_data_chart5",
+      "category": "Data",
+      "style": "line",
+      "file": "iconfont/icf_data_chart5.svg",
+      "keywords": [
+        "chart5",
+        "data",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_data_chart6-fill",
+      "category": "Data",
+      "style": "fill",
+      "file": "iconfont/icf_data_chart6-fill.svg",
+      "keywords": [
+        "chart6",
+        "fill",
+        "data"
+      ]
+    },
+    {
+      "name": "icf_data_chart6",
+      "category": "Data",
+      "style": "line",
+      "file": "iconfont/icf_data_chart6.svg",
+      "keywords": [
+        "chart6",
+        "data",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_data_presentation-fill",
+      "category": "Data",
+      "style": "fill",
+      "file": "iconfont/icf_data_presentation-fill.svg",
+      "keywords": [
+        "presentation",
+        "fill",
+        "data"
+      ]
+    },
+    {
+      "name": "icf_data_presentation",
+      "category": "Data",
+      "style": "line",
+      "file": "iconfont/icf_data_presentation.svg",
+      "keywords": [
+        "presentation",
+        "data",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_data_presentation1-fill",
+      "category": "Data",
+      "style": "fill",
+      "file": "iconfont/icf_data_presentation1-fill.svg",
+      "keywords": [
+        "presentation1",
+        "fill",
+        "data"
+      ]
+    },
+    {
+      "name": "icf_data_presentation1",
+      "category": "Data",
+      "style": "line",
+      "file": "iconfont/icf_data_presentation1.svg",
+      "keywords": [
+        "presentation1",
+        "data",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_map_airplane-fill",
+      "category": "Map",
+      "style": "fill",
+      "file": "iconfont/icf_map_airplane-fill.svg",
+      "keywords": [
+        "airplane",
+        "fill",
+        "map"
+      ]
+    },
+    {
+      "name": "icf_map_airplane",
+      "category": "Map",
+      "style": "line",
+      "file": "iconfont/icf_map_airplane.svg",
+      "keywords": [
+        "airplane",
+        "map",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_map_earth-fill",
+      "category": "Map",
+      "style": "fill",
+      "file": "iconfont/icf_map_earth-fill.svg",
+      "keywords": [
+        "earth",
+        "fill",
+        "map"
+      ]
+    },
+    {
+      "name": "icf_map_earth",
+      "category": "Map",
+      "style": "line",
+      "file": "iconfont/icf_map_earth.svg",
+      "keywords": [
+        "earth",
+        "map",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_map_location-fill",
+      "category": "Map",
+      "style": "fill",
+      "file": "iconfont/icf_map_location-fill.svg",
+      "keywords": [
+        "location",
+        "fill",
+        "map"
+      ]
+    },
+    {
+      "name": "icf_map_location",
+      "category": "Map",
+      "style": "line",
+      "file": "iconfont/icf_map_location.svg",
+      "keywords": [
+        "location",
+        "map",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_map_location1-fill",
+      "category": "Map",
+      "style": "fill",
+      "file": "iconfont/icf_map_location1-fill.svg",
+      "keywords": [
+        "location1",
+        "fill",
+        "map"
+      ]
+    },
+    {
+      "name": "icf_map_location1",
+      "category": "Map",
+      "style": "line",
+      "file": "iconfont/icf_map_location1.svg",
+      "keywords": [
+        "location1",
+        "map",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_map_train-2-fill",
+      "category": "Map",
+      "style": "fill",
+      "file": "iconfont/icf_map_train-2-fill.svg",
+      "keywords": [
+        "train",
+        "2",
+        "fill",
+        "map"
+      ]
+    },
+    {
+      "name": "icf_map_train-2-line",
+      "category": "Map",
+      "style": "line",
+      "file": "iconfont/icf_map_train-2-line.svg",
+      "keywords": [
+        "train",
+        "2",
+        "line",
+        "map"
+      ]
+    },
+    {
+      "name": "icf_map_department-filled",
+      "category": "Map",
+      "style": "fill",
+      "file": "iconfont/icf_map_department-filled.svg",
+      "keywords": [
+        "department",
+        "filled",
+        "map",
+        "fill"
+      ]
+    },
+    {
+      "name": "icf_map_department-regular",
+      "category": "Map",
+      "style": "line",
+      "file": "iconfont/icf_map_department-regular.svg",
+      "keywords": [
+        "department",
+        "regular",
+        "map",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_map_route-fill",
+      "category": "Map",
+      "style": "fill",
+      "file": "iconfont/icf_map_route-fill.svg",
+      "keywords": [
+        "route",
+        "fill",
+        "map"
+      ]
+    },
+    {
+      "name": "icf_map_route-regular",
+      "category": "Map",
+      "style": "line",
+      "file": "iconfont/icf_map_route-regular.svg",
+      "keywords": [
+        "route",
+        "regular",
+        "map",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_map_sitemap-filled",
+      "category": "Map",
+      "style": "fill",
+      "file": "iconfont/icf_map_sitemap-filled.svg",
+      "keywords": [
+        "sitemap",
+        "filled",
+        "map",
+        "fill"
+      ]
+    },
+    {
+      "name": "icf_map_sitemap-regular",
+      "category": "Map",
+      "style": "line",
+      "file": "iconfont/icf_map_sitemap-regular.svg",
+      "keywords": [
+        "sitemap",
+        "regular",
+        "map",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_contact_chat-fill",
+      "category": "Contact",
+      "style": "fill",
+      "file": "iconfont/icf_contact_chat-fill.svg",
+      "keywords": [
+        "chat",
+        "fill",
+        "contact"
+      ]
+    },
+    {
+      "name": "icf_contact_chat",
+      "category": "Contact",
+      "style": "line",
+      "file": "iconfont/icf_contact_chat.svg",
+      "keywords": [
+        "chat",
+        "contact",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_contact_chat1-fill",
+      "category": "Contact",
+      "style": "fill",
+      "file": "iconfont/icf_contact_chat1-fill.svg",
+      "keywords": [
+        "chat1",
+        "fill",
+        "contact"
+      ]
+    },
+    {
+      "name": "icf_contact_chat1",
+      "category": "Contact",
+      "style": "line",
+      "file": "iconfont/icf_contact_chat1.svg",
+      "keywords": [
+        "chat1",
+        "contact",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_contact_mail-fill",
+      "category": "Contact",
+      "style": "fill",
+      "file": "iconfont/icf_contact_mail-fill.svg",
+      "keywords": [
+        "mail",
+        "fill",
+        "contact"
+      ]
+    },
+    {
+      "name": "icf_contact_mail",
+      "category": "Contact",
+      "style": "line",
+      "file": "iconfont/icf_contact_mail.svg",
+      "keywords": [
+        "mail",
+        "contact",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_contact_message-fill",
+      "category": "Contact",
+      "style": "fill",
+      "file": "iconfont/icf_contact_message-fill.svg",
+      "keywords": [
+        "message",
+        "fill",
+        "contact"
+      ]
+    },
+    {
+      "name": "icf_contact_message",
+      "category": "Contact",
+      "style": "line",
+      "file": "iconfont/icf_contact_message.svg",
+      "keywords": [
+        "message",
+        "contact",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_contact_message1-fill",
+      "category": "Contact",
+      "style": "fill",
+      "file": "iconfont/icf_contact_message1-fill.svg",
+      "keywords": [
+        "message1",
+        "fill",
+        "contact"
+      ]
+    },
+    {
+      "name": "icf_contact_message1",
+      "category": "Contact",
+      "style": "line",
+      "file": "iconfont/icf_contact_message1.svg",
+      "keywords": [
+        "message1",
+        "contact",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_contact_phone-fill",
+      "category": "Contact",
+      "style": "fill",
+      "file": "iconfont/icf_contact_phone-fill.svg",
+      "keywords": [
+        "phone",
+        "fill",
+        "contact"
+      ]
+    },
+    {
+      "name": "icf_contact_phone",
+      "category": "Contact",
+      "style": "line",
+      "file": "iconfont/icf_contact_phone.svg",
+      "keywords": [
+        "phone",
+        "contact",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_contact_mail-1",
+      "category": "Contact",
+      "style": "line",
+      "file": "iconfont/icf_contact_mail-1.svg",
+      "keywords": [
+        "mail",
+        "1",
+        "contact",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_contact_mail-fill-1",
+      "category": "Contact",
+      "style": "fill",
+      "file": "iconfont/icf_contact_mail-fill-1.svg",
+      "keywords": [
+        "mail",
+        "fill",
+        "1",
+        "contact"
+      ]
+    },
+    {
+      "name": "icf_device_alarm-fill",
+      "category": "Device",
+      "style": "fill",
+      "file": "iconfont/icf_device_alarm-fill.svg",
+      "keywords": [
+        "alarm",
+        "fill",
+        "device"
+      ]
+    },
+    {
+      "name": "icf_device_alarm",
+      "category": "Device",
+      "style": "line",
+      "file": "iconfont/icf_device_alarm.svg",
+      "keywords": [
+        "alarm",
+        "device",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_device_book-fill",
+      "category": "Device",
+      "style": "fill",
+      "file": "iconfont/icf_device_book-fill.svg",
+      "keywords": [
+        "book",
+        "fill",
+        "device"
+      ]
+    },
+    {
+      "name": "icf_device_book",
+      "category": "Device",
+      "style": "line",
+      "file": "iconfont/icf_device_book.svg",
+      "keywords": [
+        "book",
+        "device",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_device_cellphone-fill",
+      "category": "Device",
+      "style": "fill",
+      "file": "iconfont/icf_device_cellphone-fill.svg",
+      "keywords": [
+        "cellphone",
+        "fill",
+        "device"
+      ]
+    },
+    {
+      "name": "icf_device_cellphone",
+      "category": "Device",
+      "style": "line",
+      "file": "iconfont/icf_device_cellphone.svg",
+      "keywords": [
+        "cellphone",
+        "device",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_device_computer-fill",
+      "category": "Device",
+      "style": "fill",
+      "file": "iconfont/icf_device_computer-fill.svg",
+      "keywords": [
+        "computer",
+        "fill",
+        "device"
+      ]
+    },
+    {
+      "name": "icf_device_computer",
+      "category": "Device",
+      "style": "line",
+      "file": "iconfont/icf_device_computer.svg",
+      "keywords": [
+        "computer",
+        "device",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_device_laptop-fill",
+      "category": "Device",
+      "style": "fill",
+      "file": "iconfont/icf_device_laptop-fill.svg",
+      "keywords": [
+        "laptop",
+        "fill",
+        "device"
+      ]
+    },
+    {
+      "name": "icf_device_laptop",
+      "category": "Device",
+      "style": "line",
+      "file": "iconfont/icf_device_laptop.svg",
+      "keywords": [
+        "laptop",
+        "device",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_editor_edit1-fill",
+      "category": "Editor",
+      "style": "fill",
+      "file": "iconfont/icf_editor_edit1-fill.svg",
+      "keywords": [
+        "edit1",
+        "fill",
+        "editor"
+      ]
+    },
+    {
+      "name": "icf_editor_edit1",
+      "category": "Editor",
+      "style": "line",
+      "file": "iconfont/icf_editor_edit1.svg",
+      "keywords": [
+        "edit1",
+        "editor",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_editor_at-regular",
+      "category": "Editor",
+      "style": "line",
+      "file": "iconfont/icf_editor_at-regular.svg",
+      "keywords": [
+        "at",
+        "regular",
+        "editor",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_editor_edit-4-regular",
+      "category": "Editor",
+      "style": "line",
+      "file": "iconfont/icf_editor_edit-4-regular.svg",
+      "keywords": [
+        "edit",
+        "4",
+        "regular",
+        "editor",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_editor_edit-4-regular-filled",
+      "category": "Editor",
+      "style": "fill",
+      "file": "iconfont/icf_editor_edit-4-regular-filled.svg",
+      "keywords": [
+        "edit",
+        "4",
+        "regular",
+        "filled",
+        "editor",
+        "fill"
+      ]
+    },
+    {
+      "name": "icf_editor_edit2",
+      "category": "Editor",
+      "style": "line",
+      "file": "iconfont/icf_editor_edit2.svg",
+      "keywords": [
+        "edit2",
+        "editor",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_editor_sort",
+      "category": "Editor",
+      "style": "line",
+      "file": "iconfont/icf_editor_sort.svg",
+      "keywords": [
+        "sort",
+        "editor",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_editor_translate",
+      "category": "Editor",
+      "style": "line",
+      "file": "iconfont/icf_editor_translate.svg",
+      "keywords": [
+        "translate",
+        "editor",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_emoji_angry",
+      "category": "Emoji",
+      "style": "line",
+      "file": "iconfont/icf_emoji_angry.svg",
+      "keywords": [
+        "angry",
+        "emoji",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_emoji_emoji",
+      "category": "Emoji",
+      "style": "line",
+      "file": "iconfont/icf_emoji_emoji.svg",
+      "keywords": [
+        "emoji",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_emoji_happy",
+      "category": "Emoji",
+      "style": "line",
+      "file": "iconfont/icf_emoji_happy.svg",
+      "keywords": [
+        "happy",
+        "emoji",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_emoji_meh",
+      "category": "Emoji",
+      "style": "line",
+      "file": "iconfont/icf_emoji_meh.svg",
+      "keywords": [
+        "meh",
+        "emoji",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_emoji_sad",
+      "category": "Emoji",
+      "style": "line",
+      "file": "iconfont/icf_emoji_sad.svg",
+      "keywords": [
+        "sad",
+        "emoji",
+        "line"
+      ]
+    },
+    {
+      "name": "icf_emoji_unhappy",
+      "category": "Emoji",
+      "style": "line",
+      "file": "iconfont/icf_emoji_unhappy.svg",
+      "keywords": [
+        "unhappy",
+        "emoji",
+        "line"
+      ]
+    }
+  ]
+}

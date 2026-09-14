@@ -1,0 +1,392 @@
+{
+  "$schema": "gj-design-skill/component-schema/v1",
+  "component": "Metric",
+  "source": {
+    "rulesSection": "Metric 指标数据",
+    "inventoryPage": "Metric✅",
+    "figmaFile": "8b01I1e3TzH1IhYlr3tJzd",
+    "figmaPage": "3143:5677",
+    "figmaDocBoard": "3372:4534",
+    "status": "figma-audited",
+    "figmaAudit": "done-2026-09-08; re-verified-2026-09-10-MET-001-005"
+  },
+  "purpose": "展示指标名称、核心数值、单位、说明和可选趋势；组合组件覆盖横向/纵向、分组、网格、列表与仪表盘卡片。",
+  "figma": {
+    "fileKey": "8b01I1e3TzH1IhYlr3tJzd",
+    "pageNodeId": "3143:5677",
+    "pageName": "指标Metric✅",
+    "authoredSymbolsOnPage": 77,
+    "inventoryListedVariants": 77,
+    "componentSets": [
+      {
+        "nodeId": "3238:1407",
+        "name": "Metric_item/number",
+        "variants": 24,
+        "note": "VARIANT 轴 color×Size×nodata。5 色 × 4 档在 nodata=false 为 20；nodata=true 只存在 color=grey 的 4 档，合计 24。BOOLEAN unit 不增加 symbol。"
+      },
+      {
+        "nodeId": "3209:8691",
+        "name": "Metric_item/label",
+        "variants": 4,
+        "note": "Size=small/medium × tooltip=true/false。2026-09-10 由 toolip 更名为 tooltip（MET-002 已关闭）。规范页已去除 Chevron 实例；Question 示例也已于 2026-09-10 从规范页整体删除，Label Icon States 现仅剩 无图标/Tooltip 两例（MET-004 已关闭）。"
+      },
+      {
+        "nodeId": "3241:2347",
+        "name": "Metric_item/Trend Badge",
+        "variants": 6,
+        "note": "trend=Rise/Decline/Flat × style=fill/none。"
+      },
+      {
+        "nodeId": "3241:2958",
+        "name": "Metric_item/Trend graph",
+        "variants": 3,
+        "note": "Trend=Rise/Decline/regular。60×60 独立 SVG，不是 gj-icon。"
+      },
+      {
+        "nodeId": "3290:11455",
+        "name": "Metric_item/list_item",
+        "variants": 4,
+        "note": "Size=medium/small × Trend=true/false。"
+      },
+      {
+        "nodeId": "3238:1538",
+        "name": "Metric_vertical",
+        "variants": 4,
+        "note": "order=metric_first/lable_first × center=true/false。2026-09-10 由 align=metrictop/labletop 改名（MET-002）。lable_first 仍是 Figma 拼写。"
+      },
+      {
+        "nodeId": "3241:2873",
+        "name": "Metric_horizontal",
+        "variants": 4,
+        "note": "Size=XS/S/M/L。与 number 的 Xsmall/Small/Medium/Large 不是同一套枚举字面值。"
+      },
+      {
+        "nodeId": "3241:2592",
+        "name": "Metric_group_basic",
+        "variants": 5,
+        "note": "Count=2..6；横向排列 Metric_vertical，gap 40px。"
+      },
+      {
+        "nodeId": "3276:8147",
+        "name": "Metric_trend",
+        "variants": 2,
+        "note": "trend=Rise/Decline。环比 label + Trend Badge none。2026-09-10 由 Property 1=Default/Variant2 改名（MET-003 已关闭）。"
+      },
+      {
+        "nodeId": "3285:10543",
+        "name": "Metric_grid",
+        "variants": 3,
+        "note": "count=2*2/3*2/4*2。2*2 已核实 gap-x 44 / gap-y 24，单元格为居中 Metric_vertical。"
+      },
+      {
+        "nodeId": "3285:10544",
+        "name": "Metric_card_grid",
+        "variants": 6,
+        "note": "count=2*2/3*2/4*2；style=gradient/grey/gray（4*2 变体字面值是 gray）。2026-09-10 去掉 count4/count5/count6（MET-007 已关闭）。"
+      },
+      {
+        "nodeId": "3241:2976",
+        "name": "Metric_card_withgraph",
+        "variants": 2,
+        "note": "Trend=Rise/Decline。卡片内左列 label/number/badge，右侧 60 趋势图。"
+      },
+      {
+        "nodeId": "3290:11561",
+        "name": "Metric_list",
+        "variants": 8,
+        "note": "medium count=3..6 等于条数；small count8/count7/count6/count5 实测 3/4/5/6 条。实现按子节点数（MET-007 已关闭）。"
+      },
+      {
+        "nodeId": "3290:12231",
+        "name": "Metric_dashboard",
+        "variants": 2,
+        "note": "count=3/4；卡片之间用竖 Divider（Border/default）。"
+      }
+    ]
+  },
+  "properties": {
+    "number": {
+      "color": [
+        "black",
+        "red",
+        "green",
+        "blue",
+        "grey"
+      ],
+      "Size": [
+        "Xsmall",
+        "Small",
+        "Medium",
+        "Large"
+      ],
+      "nodata": [
+        false,
+        true
+      ],
+      "unit": [
+        false,
+        true
+      ]
+    },
+    "label": {
+      "Size": [
+        "small",
+        "medium"
+      ],
+      "tooltip": [
+        false,
+        true
+      ]
+    },
+    "trendBadge": {
+      "trend": [
+        "Rise",
+        "Decline",
+        "Flat"
+      ],
+      "style": [
+        "fill",
+        "none"
+      ]
+    },
+    "trendGraph": {
+      "Trend": [
+        "Rise",
+        "Decline",
+        "regular"
+      ]
+    },
+    "vertical": {
+      "order": [
+        "metric_first",
+        "lable_first"
+      ],
+      "center": [
+        false,
+        true
+      ]
+    },
+    "horizontal": {
+      "Size": [
+        "XS",
+        "S",
+        "M",
+        "L"
+      ]
+    }
+  },
+  "defaults": {
+    "number.Size": "Medium",
+    "number.color": "black",
+    "number.nodata": false,
+    "number.unit": false,
+    "label.Size": "small",
+    "label.tooltip": false,
+    "vertical.order": "metric_first",
+    "vertical.center": false
+  },
+  "sizes": {
+    "number": {
+      "Xsmall": {
+        "textStyle": "数字/S5-NUM-S",
+        "fontSize": 16,
+        "lineHeight": 24
+      },
+      "Small": {
+        "textStyle": "数字/S4-NUM-S",
+        "fontSize": 20,
+        "lineHeight": 32
+      },
+      "Medium": {
+        "textStyle": "数字/S3-NUM-S",
+        "fontSize": 24,
+        "lineHeight": 32
+      },
+      "Large": {
+        "textStyle": "数字/S2-NUM-S",
+        "fontSize": 30,
+        "lineHeight": 38
+      }
+    },
+    "unit": {
+      "gap": 4,
+      "MediumAndBelow": {
+        "textStyle": "中文/S10-CN-R",
+        "fontSize": 10,
+        "lineHeight": 14
+      },
+      "Large": {
+        "textStyle": "中文/S9-CN-R",
+        "fontSize": 12,
+        "lineHeight": 18
+      }
+    },
+    "label": {
+      "small": {
+        "textStyle": "中文/S9-CN-R",
+        "fontSize": 12,
+        "lineHeight": 18
+      },
+      "medium": {
+        "textStyle": "中文/S8-CN-R",
+        "fontSize": 14,
+        "lineHeight": 22
+      },
+      "tooltipIcon": 16,
+      "tooltipGap": 4
+    },
+    "trendBadge": {
+      "height": 22,
+      "minHeight": 22,
+      "minWidth": 40,
+      "font": "12/18/600",
+      "textStyle": "中文/S6-CN-S",
+      "icon": 14,
+      "fill": {
+        "paddingInline": 8,
+        "radius": 4
+      },
+      "none": {
+        "paddingInline": 0,
+        "radius": 0
+      }
+    },
+    "trendGraph": {
+      "width": 60,
+      "height": 60
+    },
+    "horizontal": {
+      "gap": 8
+    },
+    "groupBasic": {
+      "gap": 40
+    },
+    "grid2x2": {
+      "columnGap": 44,
+      "rowGap": 24,
+      "height": 124
+    },
+    "cardGrid2x2": {
+      "columnGap": 16,
+      "rowGap": 12,
+      "height": 176,
+      "cellPaddingInline": 24,
+      "cellPaddingBlock": 16,
+      "cellRadius": 8
+    },
+    "cardWithGraph": {
+      "paddingInline": 24,
+      "paddingBlock": 16,
+      "radius": 12
+    },
+    "listItem": {
+      "width": 320,
+      "paddingBlock": 12,
+      "valueColumnWidth": 160,
+      "valueGroupGap": 8
+    },
+    "metricTrend": {
+      "gap": 8
+    }
+  },
+  "typography": {
+    "value": "GJType Bold（数字/S2–S5-NUM-S，按 Size 选用）",
+    "label": "中文/S9-CN-R 或 中文/S8-CN-R",
+    "unit": "中文/S10-CN-R（Medium 及以下）或 中文/S9-CN-R（Large）",
+    "trendBadge": "中文/S6-CN-S"
+  },
+  "colorBindings": {
+    "number.black": "Text/Primary（#101828）",
+    "number.red": "Feedback/error&rise（#f93838）",
+    "number.green": "Feedback/success&decline（#12b76a）",
+    "number.blue": "Feedback/brand（#2b73ff）",
+    "number.grey": "Feedback/plain（#667085）",
+    "number.nodata": "`--` + Feedback/plain（MET-001 已关闭；Figma 变体的单个 - / Primary 不是运行时真值）",
+    "label": "Text/Secondary（#475467）",
+    "unit": "Text/Secondary",
+    "badge.Rise.fill.background": "Background/BT_R8",
+    "badge.Rise.text": "Feedback/error&rise",
+    "badge.Decline.fill.background": "Background/BT_G10",
+    "badge.Decline.text": "Feedback/success&decline",
+    "badge.Flat.fill.background": "Background/MK_5",
+    "badge.Flat.text": "Feedback/plain",
+    "card.background": "Background/Container",
+    "card.shadow": "shadow-center",
+    "listItem.border": "Border/default",
+    "cardGrid.cell.background": "蓝色渐变背景（Primitive/Blue/B02 → Primitive/Neutral/N01，180deg）"
+  },
+  "behavior": {
+    "missing": "缺失或尚未返回的数据统一显示 --，色 Feedback/plain。不显示 0、空白、NaN 或 Figma nodata 变体的单个 -。",
+    "format": "同组小数位、千分位和单位保持一致。",
+    "trend": "Trend Badge / Trend graph 只补充相对变化，不重复主数据，也不能替代完整 Chart。",
+    "nodataAxis": "Figma 只为 color=grey 提供 nodata=true；其它颜色没有 nodata symbol。"
+  },
+  "constraints": [
+    "核心数值必须使用 GJType 数字 Text Style；名称、单位、说明使用中文 UI 字体。",
+    "涨跌平只能使用 Feedback/error&rise、Feedback/success&decline、Feedback/plain，不创建临时红绿灰。",
+    "数字 Size 字面值是 Xsmall（不是旧 schema 的 XSmall）；横向组合 Size 是 XS/S/M/L。",
+    "旧 schema 的 status=Base/Rise/Decline/Brand/Plain 不是 Figma 属性；数字色轴是 color=black/red/green/blue/grey。",
+    "Label 的 Chevron / Question 曾出现在规范页实例上，不是 Metric_item/label 的属性；2026-09-10 设计已从规范页移除 Chevron 示例，随后又移除了 Question 示例——Label Icon States 现仅保留 无图标/Tooltip 两例（MET-004 已关闭）。",
+    "Trend Badge fill 圆角 4（Radius-XS），none 圆角 0；不得统一成 pill。",
+    "Trend graph 的第三态是 regular，不是 Flat。",
+    "30px（Large / 数字/S2-NUM-S）只用于少量重点指标。",
+    "缺失数据统一显示 --，色 Feedback/plain；不得照抄 Figma nodata 变体的单个 - / Text/Primary。"
+  ],
+  "dependencies": [
+    "Icon",
+    "Divider",
+    "Tooltip"
+  ],
+  "knownFigmaIssues": [],
+  "pendingExtraction": [],
+  "partialMeasurements": [
+    "Metric_grid 只核实 count=2*2（gap-x 44 / gap-y 24）；3*2 / 4*2 的列宽与 gap-x 未逐档测量",
+    "Metric_card_grid 只核实 count=2*2（gap-x 16 / gap-y 12 / radius 8）；其余 5 个 count 变体未逐档测量",
+    "Metric_horizontal 仅 M 档核实 Medium number + unit=true + medium label；XS/S/L 的 label Size 与是否显示 unit 未逐档复核（变体高度 24/32/32/38 对应数字行高）",
+    "Metric_dashboard 已确认 count=3/4 与竖 Divider；count=4 未逐卡片量宽"
+  ],
+  "confirmedDecisions": [
+    {
+      "id": "MET-004",
+      "date": "2026-09-10",
+      "decision": "不为 Chevron 补组件属性。设计已从规范页 Label Icon States 区块移除 Chevron 示例；随后又移除了 Question 示例，规范页现仅保留 无图标/Tooltip 两例。Metric_item/label 保持 Size × tooltip（当时仍叫 toolip），生成时不当成枚举。",
+      "source": "用户设计确认 + Figma 只读复核（3209:8691 仍为 4 variant，无变化；页面级 metadata 复核确认 Label Icon States 现仅剩 无图标/Tooltip 两例，Chevron 与 Question 均已移除）"
+    },
+    {
+      "id": "MET-002",
+      "date": "2026-09-10",
+      "decision": "Figma 已更名：label.toolip→tooltip；vertical.align=metrictop/labletop→order=metric_first/lable_first。契约改跟新名。lable_first 仍是源文件拼写。",
+      "source": "用户确认源文件已更新；只读复核 3209:8691 / 3238:1538"
+    },
+    {
+      "id": "MET-003",
+      "date": "2026-09-10",
+      "decision": "Metric_trend 已改为 trend=Rise/Decline，不再使用 Property 1=Default/Variant2。",
+      "source": "用户确认源文件已更新；只读复核 3276:8147"
+    },
+    {
+      "id": "MET-006",
+      "date": "2026-09-10",
+      "decision": "Trend Badge fill 圆角改为 Radius/Radius-XS 4px；none 圆角 0。继续按 style 分支，不是 pill。",
+      "source": "用户确认源文件已更新；fill 四角均绑 Radius-XS，none 未绑、字面 0"
+    },
+    {
+      "id": "MET-007",
+      "date": "2026-09-10",
+      "decision": "Metric_card_grid count 统一为 2*2/3*2/4*2。Metric_list 按 Size 分面：medium 3..6=条数；small count8/7/6/5 实测 3/4/5/6 条。实现按实际条目数，不解析字面值。",
+      "source": "用户确认源文件已更新；只读复核 3285:10544 / 3290:11561"
+    },
+    {
+      "id": "MET-001",
+      "date": "2026-09-10",
+      "decision": "缺失数据按 -- 记，色 Feedback/plain。Figma nodata 变体的单个 - / Text/Primary 不是运行时真值。",
+      "source": "用户设计确认"
+    },
+    {
+      "id": "MET-005",
+      "date": "2026-09-10",
+      "decision": "inventory 按组件集母版计数，不算嵌套子组件。Metric 页 14 套 / 77 variants / 0 standalone。旧 85 是把组合内子组件算进去的误记。",
+      "source": "用户设计确认"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "$schema": "gj-design-skill/grid-styles/v1",
+  "source": "Figma local Grid Styles",
+  "styles": {
+    "column-L0": {
+      "pattern": "COLUMNS",
+      "alignment": "STRETCH",
+      "count": 10,
+      "gutterSize": 20,
+      "offset": 16,
+      "visible": true,
+      "previewColor": "#FF00001A",
+      "description": "页面"
+    },
+    "column-L1": {
+      "pattern": "COLUMNS",
+      "alignment": "STRETCH",
+      "count": 8,
+      "gutterSize": 16,
+      "offset": 20,
+      "visible": true,
+      "previewColor": "#FF00001A",
+      "description": "一级卡片"
+    },
+    "column-L2": {
+      "pattern": "COLUMNS",
+      "alignment": "STRETCH",
+      "count": 6,
+      "gutterSize": 12,
+      "offset": 16,
+      "visible": true,
+      "previewColor": "#FF00001A",
+      "description": "二级卡片"
+    },
+    "column-L3": {
+      "pattern": "COLUMNS",
+      "alignment": "STRETCH",
+      "count": 4,
+      "gutterSize": 12,
+      "offset": 12,
+      "visible": true,
+      "previewColor": "#FF00001A",
+      "description": "三级卡片"
+    }
+  }
+}

@@ -1,0 +1,155 @@
+{
+  "$schema": "gj-design-skill/component-schema/v1",
+  "component": "Notification",
+  "source": {
+    "rulesSection": "Notification 通知",
+    "inventoryPage": "Notification✅",
+    "figmaFile": "8b01I1e3TzH1IhYlr3tJzd",
+    "figmaPage": "3619:11945",
+    "status": "figma-audited",
+    "figmaAudit": "done-2026-09-09"
+  },
+  "purpose": "展示比 Toast 停留更久、信息更完整的单一非阻断主题。",
+  "implementation": {
+    "rootClass": "gj-notification",
+    "statusClasses": [
+      "gj-notification-warning",
+      "gj-notification-error",
+      "gj-notification-success"
+    ],
+    "mainClass": "gj-notification-main",
+    "iconClass": "gj-notification-icon",
+    "copyClass": "gj-notification-copy",
+    "titleClass": "gj-notification-title",
+    "descriptionClass": "gj-notification-desc",
+    "closeClass": "gj-notification-close",
+    "actionClass": "gj-notification-action"
+  },
+  "figma": {
+    "fileKey": "8b01I1e3TzH1IhYlr3tJzd",
+    "pageNodeId": "3619:11945",
+    "pageName": "Notification",
+    "inventoryListed": {
+      "sets": 1,
+      "variants": 4,
+      "standalone": 0
+    },
+    "componentSets": [],
+    "boardSymbols": [
+      {
+        "nodeId": "3610:9",
+        "status": "Info"
+      },
+      {
+        "nodeId": "3619:150",
+        "status": "Warning"
+      },
+      {
+        "nodeId": "3619:160",
+        "status": "Error"
+      },
+      {
+        "nodeId": "3619:170",
+        "status": "Success"
+      }
+    ],
+    "boardNote": "画板 3619:11945 只有四个 Status 独立 symbol，没有 Notification COMPONENT_SET。inventory 1/4/0 是页面清单口径；集合锚点用画板 frame。",
+    "componentDescription": "全局非阻断通知。仅包含 Status=Info / Warning / Error / Success；Close 固定显示；确认按钮可显示或隐藏。"
+  },
+  "properties": {
+    "status": [
+      "Info",
+      "Warning",
+      "Error",
+      "Success"
+    ],
+    "showIcon": "boolean",
+    "showDescription": "boolean",
+    "showButton": "boolean",
+    "title": "string",
+    "description": "string"
+  },
+  "defaults": {
+    "status": "Info",
+    "showIcon": true,
+    "showDescription": true,
+    "showButton": true
+  },
+  "sizes": {
+    "width": 384,
+    "padding": 20,
+    "stackGap": 12,
+    "rowGap": 16,
+    "textGap": 8,
+    "radius": 12,
+    "icon": 32,
+    "close": 16,
+    "actionHeight": 32,
+    "contentAlign": "start"
+  },
+  "typography": {
+    "title": "中文/S4-CN-S",
+    "description": "中文/S8-CN-R"
+  },
+  "structure": [
+    "optional-status-icon",
+    "title",
+    "optional-description",
+    "close",
+    "optional-confirm-action"
+  ],
+  "behavior": {
+    "dismissal": "Persist until the user closes it or the business state expires.",
+    "dedupe": "Update repeated content in place.",
+    "focus": "Does not trap focus or require an immediate decision."
+  },
+  "constraints": [
+    "Close is always visible.",
+    "Confirm action is shared Button Medium (height 32, padding-inline 12). Do not restyle it.",
+    "At most one confirm action; no dual buttons, loading or size variants.",
+    "Notification does not trap focus or require immediate decision.",
+    "Content (icon, title, description) is start/left aligned and fills the card. The confirm action stays end/right.",
+    "Use the smallest overlay that still carries title plus description. Escalate to Modal when a decision or form is required.",
+    "gj-notification-close 的 Hover 只改变图标颜色（Text/blue），不叠加背景色；与共享 gj-icon-button、Modal 关闭统一 Hover 语言（2026-09-11 起）。"
+  ],
+  "dependencies": [
+    "Button",
+    "Icon"
+  ],
+  "knownFigmaIssues": [],
+  "pendingExtraction": [],
+  "confirmedDecisions": [
+    {
+      "id": "NTF-001",
+      "date": "2026-09-09",
+      "decision": "Error 语义图标使用图标库 icf_system_close-circle-fill，与 Toast/Modal error 同形。",
+      "source": "用户设计确认"
+    },
+    {
+      "id": "NTF-002",
+      "date": "2026-09-09",
+      "decision": "投影改用全局 effects.json 的 shadow-down，不再实现画板样本上的 drop-shadow/0.12+0.8+0.5。",
+      "source": "用户设计确认"
+    },
+    {
+      "id": "NTF-003",
+      "date": "2026-09-09",
+      "decision": "确认按钮直接使用共享 Button Medium 默认：高 32、水平内边距 12。原先对照的 Medium 水平 20 是误记，不存在冲突。",
+      "source": "用户设计确认"
+    },
+    {
+      "id": "NTF-004",
+      "date": "2026-09-09",
+      "decision": "画板没有 Notification COMPONENT_SET，只有四个 Status 独立 symbol。schema 继续用画板 frame 3619:11945 作集合锚点，不再等待根节点 ID。",
+      "source": "用户设计确认"
+    },
+    "2026-09-11 NTF-005：gj-notification-close 此前未定义任何 Hover 态，补充 Hover 颜色变为 Text/blue（默认已是 Text/Primary，无法再靠加深表达反馈，采用与 gj-input-action/gj-table-sort 等既有交互图标一致的蓝色反馈），不叠加背景，与 gj-icon-button（BTN-006）、Modal 关闭（MDL-009）统一“只变图标颜色”的 Hover 语言；16px 尺寸不变。"
+  ],
+  "partialMeasurements": [
+    "画板无 COMPONENT_SET；四态是独立 symbol。集合锚点用画板 frame 3619:11945。",
+    "主行 gap 16 生成代码未绑 Interval；按 16 实现，等价 space5",
+    "Info 图标色 variable_defs 返回 Text/blue，不是 Toast 的 Feedback/brand；两者都解析为 Primitive/Blue/B06",
+    "画板样本投影曾是 drop-shadow/0.12+0.8+0.5；实现按 NTF-002 使用全局 shadow-down。",
+    "本画板未给出视口锚点；规范页在演示框内展示，不把 Notification 写成 position:fixed"
+  ]
+}

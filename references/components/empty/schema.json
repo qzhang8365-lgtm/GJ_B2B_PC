@@ -1,0 +1,100 @@
+{
+  "$schema": "gj-design-skill/component-schema/v1",
+  "component": "Empty",
+  "source": {
+    "rulesSection": "Empty 空状态",
+    "inventoryPage": "Empty✅",
+    "figmaFile": "8b01I1e3TzH1IhYlr3tJzd",
+    "figmaPage": "3143:5678",
+    "status": "figma-audited",
+    "figmaAudit": "done-2026-09-09"
+  },
+  "purpose": "说明一个明确区域暂时没有可展示内容，并按真实原因提供说明与可执行的恢复路径。",
+  "figma": {
+    "componentSets": 2,
+    "variants": 18,
+    "standaloneComponents": 1,
+    "componentSetNodes": [
+      {
+        "nodeId": "3489:11019",
+        "name": "Empty",
+        "variants": 12,
+        "axes": {"Type": ["TextOnly", "Empty", "NotFound", "Disconnected", "NoPermission", "Error"], "Action": ["None", "Button"]}
+      },
+      {
+        "nodeId": "3143:5853",
+        "name": "Empty_item/img",
+        "variants": 6,
+        "axes": {"type": ["Empty", "notfound", "disconnected", "noPermission", "error", "no chart"]}
+      }
+    ],
+    "standaloneNodes": [
+      {"nodeId": "3143:5844", "name": "Empty_Basic", "status": "deprecated", "reason": "Legacy English No Data component; superseded by the unified Empty set."}
+    ],
+    "inventoryCorrection": "The earlier inventory listed 2 standalone components. Current page metadata exposes only Empty_Basic, so the audited count is 1."
+  },
+  "properties": {
+    "type": {
+      "default": "TextOnly",
+      "values": ["TextOnly", "Empty", "NotFound", "Disconnected", "NoPermission", "Error", "NoChart"],
+      "note": "NoChart is a Skill-level extension backed by Figma illustration node 3912:1180; the main Empty set has not exposed it as a Type variant."
+    },
+    "action": {"default": "None", "values": ["None", "Button"]},
+    "title": "string",
+    "description": "string",
+    "showDescription": {"default": true, "values": [true, false]},
+    "actionLabel": {"type": "string", "source": "industry-rule supplement", "reason": "Figma action text is fixed by Type, but real recovery actions vary by workflow."}
+  },
+  "semanticDefaults": {
+    "TextOnly": {"title": "暂无数据", "description": "当前暂无可展示内容", "action": "None"},
+    "Empty": {"title": "暂无数据", "description": "当前暂无可展示内容", "actionLabel": "创建内容"},
+    "NotFound": {"title": "未找到相关内容", "description": "请调整关键词或筛选条件", "actionLabel": "清空筛选"},
+    "Disconnected": {"title": "网络连接已断开", "description": "请检查网络后重新加载", "actionLabel": "重新加载"},
+    "NoPermission": {"title": "暂无访问权限", "description": "请联系管理员或申请权限", "actionLabel": "申请权限"},
+    "Error": {"title": "加载失败", "description": "内容加载异常，请稍后重试", "actionLabel": "重试"},
+    "NoChart": {"title": "暂无图表数据", "description": "当前条件下暂无可展示的数据", "actionLabel": "清空筛选"}
+  },
+  "dimensions": {
+    "contentWidth": 240,
+    "textGap": 4,
+    "illustrationTextGap": 12,
+    "contentActionGap": 16,
+    "illustration": {"width": 100, "height": {"Empty": 89, "NotFound": 91, "Disconnected": 91, "NoPermission": 89, "Error": 89, "NoChart": 89}},
+    "contentHeight": {"TextOnly": 44, "Empty": 145, "NotFound": 147, "Disconnected": 147, "NoPermission": 145, "Error": 145, "NoChart": 145},
+    "withActionHeight": {"TextOnly": 92, "Empty": 193, "NotFound": 195, "Disconnected": 195, "NoPermission": 193, "Error": 193, "NoChart": 193}
+  },
+  "typography": {
+    "title": {"textStyle": "中文/S5-CN-S", "font": "PingFang SC", "size": 14, "lineHeight": 22, "weight": 600},
+    "description": {"textStyle": "中文/S9-CN-R", "font": "PingFang SC", "size": 12, "lineHeight": 18, "weight": 400}
+  },
+  "colorBindings": {"title": "Text/Primary", "description": "Text/Secondary"},
+  "structure": ["optional-illustration", "text-content(title + optional description)", "optional-action-button"],
+  "behavior": {
+    "initialLoad": "Do not render Empty before the first request settles; use Loading or Skeleton to prevent false-empty flicker.",
+    "partialFailure": "Replace only the failed region. Do not blank a whole page when unaffected content remains usable.",
+    "retry": "Preserve user input, filters and context; prevent duplicate requests while retrying and restore focus to a meaningful target after success.",
+    "dynamicAnnouncement": "Use aria-live=polite/status only when the empty result appears after a user action. Do not make a static initial empty state noisy.",
+    "focus": "Do not move focus to decorative illustration or empty copy. Keep focus on the initiating control or move it to the single recovery action only when that improves task continuation."
+  },
+  "selectionRules": {
+    "TextOnly": "Compact card, table cell or narrow local region; no illustration.",
+    "Empty": "The system or region has no records yet.",
+    "NotFound": "Existing data may exist, but current search/filter returns no match.",
+    "Disconnected": "Network connectivity prevents loading.",
+    "NoPermission": "Access control prevents viewing; do not imply that protected data exists.",
+    "Error": "A request or rendering operation failed and can be retried.",
+    "NoChart": "A chart has no plottable series for the current scope; keep axes/legend only when they still explain the state."
+  },
+  "constraints": [
+    "Use at most one action and render it with the shared Medium Button component.",
+    "Show Action=Button only when the action exists and can be executed in the current context.",
+    "Do not use Empty for Loading, success confirmation, destructive warnings or form validation.",
+    "Do not duplicate the same message with Toast, Alert or Notification in the same region.",
+    "Illustrations are decorative when title and description already express the state; use empty alt text.",
+    "Do not scale the 100px illustration above its authored size merely to fill a large container.",
+    "Long copy wraps within 240px; the component height follows content and must never be fixed with clipping."
+  ],
+  "dependencies": ["Button", "Empty_item/img"],
+  "industryRuleSupplements": ["semantic default copy", "custom actionLabel", "NoChart main-type mapping", "loading/error boundary", "focus and live-region behavior"],
+  "pendingExtraction": []
+}

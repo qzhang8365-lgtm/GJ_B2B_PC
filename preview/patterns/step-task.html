@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>页面模式 · 分步任务</title><link rel="stylesheet" href="../../assets/styles/gj-b2b-tokens.css">
+  <link rel="stylesheet" href="page-patterns.css?v=general-4">
+<script src="../../assets/scripts/font-runtime.js"></script><script src="../../assets/scripts/gj-table-overflow.js?v=1"></script></head>
+<body>
+  <div class="gj-app-shell"><aside class="gj-sidebar"><div class="gj-sidebar-brand"><div class="gj-sidebar-logo"><img src="../../assets/images/preview/sidebar-logo-light.png" alt="国金证券"></div><button type="button" class="gj-sidebar-fold" aria-label="收起侧栏" aria-expanded="true"><span style="--gj-icon:url('../../assets/icons/iconfont/icf_Arrow_fold.svg')"></span></button></div><nav class="gj-sidebar-menu"><button type="button" class="gj-sidebar-item" data-id="home"><span class="gj-sidebar-item-main"><span class="gj-sidebar-item-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_system_home.svg')"></span><span class="gj-sidebar-item-label">工作台</span></span></button><button type="button" class="gj-sidebar-item is-active" data-id="onboarding"><span class="gj-sidebar-item-main"><span class="gj-sidebar-item-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_system_add.svg')"></span><span class="gj-sidebar-item-label">机构开户</span></span><span class="gj-badge gj-badge-s gj-badge-red">3</span></button><button type="button" class="gj-sidebar-item" data-id="customers"><span class="gj-sidebar-item-main"><span class="gj-sidebar-item-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_user_group.svg')"></span><span class="gj-sidebar-item-label">客户管理</span></span><span class="gj-sidebar-item-arrow" style="--gj-icon:url('../../assets/icons/iconfont/icf_Arrow_down.svg')"></span></button></nav></aside><div class="gj-app-main"><header class="gj-navbar"><span class="gj-navbar-spacer"></span><div class="gj-navbar-actions"><div class="gj-search" data-search-box><span class="gj-search-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_system_search.svg')" aria-hidden="true"></span><input class="gj-search-input" placeholder="输入关键词搜索" aria-label="搜索"></div><div class="gj-navbar-icon-group"><button type="button" class="gj-navbar-icon-btn" aria-label="邮件"><span class="gj-navbar-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_contact_mail.svg')"></span><span class="gj-badge-count">5</span></button><button type="button" class="gj-navbar-icon-btn" aria-label="通知"><span class="gj-navbar-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_system_bell.svg')"></span><span class="gj-badge-dot"></span></button></div><span class="gj-navbar-divider"></span><button type="button" class="gj-navbar-user"><span class="gj-avatar gj-avatar-32"><span class="gj-avatar-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_user_user-fill.svg')"></span></span><span>李文</span></button></div></header><main class="page step-task-page">
+    <div class="pattern-label">页面模式 · 分步任务</div>
+    <nav class="gj-breadcrumb" aria-label="面包屑"><button class="gj-breadcrumb-item" type="button">机构开户</button><span class="gj-breadcrumb-separator">/</span><span class="gj-breadcrumb-item" aria-current="page">发起开户</span></nav>
+    <header class="page-head">
+      <div>
+        <h1>机构账户开立</h1>
+        <p>按步骤完成基本信息、材料上传、信息确认和提交</p>
+      </div>
+    </header>
+
+    <section class="card step-task-card">
+      <div class="step-task-progress">
+        <div class="gj-steps" aria-label="开户进度">
+          <div class="gj-step gj-step-process" aria-current="step"><span class="gj-step-indicator">1</span><b>基本信息</b></div>
+          <div class="gj-step"><span class="gj-step-indicator">2</span><b>上传材料</b></div>
+          <div class="gj-step"><span class="gj-step-indicator">3</span><b>确认信息</b></div>
+          <div class="gj-step"><span class="gj-step-indicator">4</span><b>提交完成</b></div>
+        </div>
+      </div>
+
+      <h2 class="step-task-content-title">上传开户材料</h2>
+      <div class="gj-alert gj-alert-info" role="status" id="upload-tip">
+        <span class="gj-alert-icon" style="--gj-icon:url('../../assets/icons/general/system/icon-info-fill.svg')" aria-hidden="true"></span>
+        <span class="gj-alert-content">请上传清晰、完整且在有效期内的材料。支持 PDF、JPG、PNG，单个文件不超过 20 MB。</span>
+        <button class="gj-alert-close" type="button" aria-label="关闭提示" aria-controls="upload-tip">
+          <span class="gj-alert-close-icon" style="--gj-icon:url('../../assets/icons/general/system/icon-close.svg')" aria-hidden="true"></span>
+        </button>
+      </div>
+
+      <div class="gj-table-wrap step-task-table">
+        <table class="gj-table">
+          <thead><tr><th>材料名称</th><th>要求</th><th>文件</th><th>状态</th><th class="gj-table-action">操作</th></tr></thead>
+          <tbody>
+            <tr><td>营业执照</td><td>加盖公章的彩色扫描件</td><td>营业执照扫描件.pdf</td><td><span class="gj-tag gj-tag-success">已上传</span></td><td class="gj-table-action"><button class="gj-text-btn" type="button">删除</button><button class="gj-text-btn" type="button">编辑</button></td></tr>
+            <tr><td>法定代表人身份证明</td><td>正反面，且在有效期内</td><td>--</td><td><span class="gj-tag gj-tag-warning">待上传</span></td><td class="gj-table-action"><button class="gj-text-btn" type="button">删除</button><button class="gj-text-btn" type="button">编辑</button></td></tr>
+            <tr><td>授权委托书</td><td>使用最新模板并加盖公章</td><td>授权委托书.pdf</td><td><span class="gj-tag gj-tag-success">已上传</span></td><td class="gj-table-action"><button class="gj-text-btn" type="button">删除</button><button class="gj-text-btn" type="button">编辑</button></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="step-task-spacer" aria-hidden="true"></div>
+      <div class="step-actions">
+        <button class="gj-btn" type="button">上一步</button>
+        <div class="actions">
+          <button class="gj-btn" type="button">保存草稿</button>
+          <button class="gj-btn gj-btn-primary" type="button" disabled>下一步</button>
+        </div>
+      </div>
+    </section>
+  </main></div></div>
+  <script>
+    document.querySelector('.gj-alert-close').addEventListener('click', function () {
+      document.getElementById(this.getAttribute('aria-controls')).hidden = true;
+    });
+  </script>
+</body>
+</html>

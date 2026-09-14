@@ -1,0 +1,225 @@
+{
+  "$schema": "gj-design-skill/component-schema/v1",
+  "component": "TimePicker",
+  "source": {
+    "rulesSection": "TimePicker 时间选择器",
+    "inventoryPage": "TimePicker",
+    "figmaFile": "8b01I1e3TzH1IhYlr3tJzd",
+    "figmaPage": "3042:5339",
+    "status": "figma-audited",
+    "figmaAudit": "done-2026-09-09"
+  },
+  "purpose": "选择单个时间、时间范围，或用分段下拉组合时/分/AM-PM。",
+  "implementation": {
+    "triggerClass": "gj-time-trigger",
+    "sizeClasses": ["gj-time-trigger-small", "gj-time-trigger-large"],
+    "rangeClass": "gj-time-trigger-range",
+    "itemClass": "gj-time-item",
+    "panelClass": "gj-time-panel",
+    "panelMatchTriggerClass": "gj-time-panel-match-trigger",
+    "groupClass": "gj-time-group",
+    "segmentClass": "gj-time-segment",
+    "filledClass": "gj-time-trigger-has-value",
+    "disabledClass": "gj-time-trigger-disabled",
+    "itemSelectedClass": "gj-time-item-selected",
+    "itemDisabledClass": "gj-time-item-disabled",
+    "groupDisabledClass": "gj-time-group-disabled",
+    "note": "共享基座在 assets/styles/gj-b2b-components.css。触发器与 segment 使用已发布 Disabled；Time-Item/group 因无 Disabled 轴才使用整项 50% 透明度。"
+  },
+  "figma": {
+    "fileKey": "8b01I1e3TzH1IhYlr3tJzd",
+    "pageNodeId": "3042:5339",
+    "pageName": "TimePicker时间选择器✅",
+    "inventoryListed": {
+      "sets": 6,
+      "variants": 53,
+      "standalone": 0
+    },
+    "auditedThisPass": {
+      "sets": 6,
+      "variants": 53,
+      "standalone": 0,
+      "note": "2026-09-09 用户确认 TMP-001：第 6 套是 Time-Picker-dropdown（原 TiTime 前缀已改），子图层 style=time|AM-PM，按母版计，不是 standalone。"
+    },
+    "componentSets": [
+      {
+        "nodeId": "3042:5340",
+        "name": "Time-Picker",
+        "variants": 12,
+        "note": "MCP metadata 将该集呈现为画板内 symbol，未返回 COMPONENT_SET 根类型。Size=small|medium|Large × status=Default|filled × Disabled=false|true。代表 variant：medium Default 3042:5437。"
+      },
+      {
+        "nodeId": "3042:5870",
+        "name": "Time-Picker-Range",
+        "variants": 12,
+        "note": "独立母版，不是 Time-Picker 上的 Range 轴。Size × Status × disabled。代表 variant：Medium Default 3042:5341。"
+      },
+      {
+        "nodeId": "3042:5597",
+        "name": "Time-Picker/Time-Item",
+        "variants": 3,
+        "note": "status=default|hover|selected。64×28。selected 只改 Text/blue，无选中底。无 Disabled 轴；运行时不可选项 opacity 50%（TMP-004 关闭）。"
+      },
+      {
+        "nodeId": "3042:5655",
+        "name": "Time-Picker/item",
+        "variants": 18,
+        "note": "分组触发段。status × AM-PM × Size。箭头 icf_Arrow_down。"
+      },
+      {
+        "nodeId": "3042:5932",
+        "name": "Time-Picker-group",
+        "variants": 6,
+        "note": "status × Size。12h 的 AM/PM 选择走 Time-Picker-dropdown style=AM-PM，不在 group 上另开关闭轴。无 Disabled 轴；运行时整组 opacity 50%（TMP-005 关闭）。"
+      },
+      {
+        "nodeId": "4287:15403",
+        "name": "Time-Picker-dropdown",
+        "variants": 2,
+        "note": "第 6 套。style=time|AM-PM。专用面板，不是 Dropdown 实例。代表：time 3042:6299、AM-PM 4287:15404。AM/PM 项仍是 Time-Item。暂不补充秒列。"
+      }
+    ],
+    "sharedStandalone": [
+      {
+        "nodeId": "3042:4592",
+        "name": "Input-Seperator/Picker-Separator",
+        "note": "与 DatePicker 共用；源拼写 Seperator。不属于 TimePicker 页独立组件计数。"
+      }
+    ]
+  },
+  "properties": {
+    "mode": ["single", "range", "group"],
+    "size": ["Small", "Medium", "Large"],
+    "status": ["default", "filled", "disabled"],
+    "panelStyle": ["time", "ampm"],
+    "disabled": "boolean",
+    "value": "string|range"
+  },
+  "defaults": {
+    "mode": "single",
+    "size": "Medium",
+    "status": "default",
+    "panelStyle": "time",
+    "disabled": false
+  },
+  "normalizedProperties": {
+    "trigger": {
+      "size": ["small", "medium", "Large"],
+      "status": ["Default", "filled"],
+      "Disabled": [false, true]
+    },
+    "range": {
+      "Size": ["Small", "Medium", "Large"],
+      "Status": ["Default", "filled"],
+      "disabled": [false, true]
+    },
+    "timeItem": {
+      "status": ["default", "hover", "selected"],
+      "runtimeDisabled": "opacity 50%; not a published Figma axis"
+    },
+    "segment": {
+      "status": ["Default", "filled", "disabled"],
+      "AM-PM": [false, true],
+      "Size": ["Small", "medium", "Large"]
+    },
+    "group": {
+      "status": ["Default", "filled"],
+      "Size": ["Small", "medium", "Large"]
+    },
+    "dropdown": {
+      "style": ["time", "AM-PM"]
+    }
+  },
+  "sizes": {
+    "trigger": {
+      "width": 260,
+      "height": {"Small": 24, "Medium": 32, "Large": 40},
+      "paddingInline": {"Small": 8, "Medium": 12, "Large": 12},
+      "paddingBlock": 4,
+      "radius": {"Small": 4, "Medium": 6, "Large": 8},
+      "icon": {"Small": 16, "Medium": 16, "Large": 20},
+      "iconSlotPaddingInlineStart": 4,
+      "textStyle": {"Small": "中文/S8-CN-R", "Medium": "中文/S8-CN-R", "Large": "中文/S7-CN-R"}
+    },
+    "range": {
+      "separator": {"width": 32, "height": 24, "paddingInline": 8, "paddingBlock": 2, "icon": 16},
+      "segmentWidth": {"Small": 88, "Medium": 88, "Large": 92}
+    },
+    "timeItem": {
+      "width": 64,
+      "height": 28,
+      "paddingInline": 16,
+      "paddingBlock": 4,
+      "radius": 4,
+      "textStyle": "中文/S8-CN-R"
+    },
+    "panel": {
+      "width": 140,
+      "timeHeight": 242,
+      "ampmWidth": 73,
+      "ampmHeight": 72,
+      "radius": 8,
+      "paddingInline": 4,
+      "paddingBlock": 8,
+      "columnGap": 4,
+      "columnHeight": 182,
+      "timeBodyToActionsGap": 12,
+      "actionsGap": 8,
+      "actionsPaddingInline": 4,
+      "shadow": "shadow-center"
+    },
+    "segment": {
+      "height": {"Small": 24, "Medium": 32, "Large": 40},
+      "padding": {"Small": 4, "Medium": {"inline": 8, "block": 4}},
+      "radius": {"Small": 4, "Medium": 6, "Large": 8},
+      "icon": 16,
+      "widthApprox": {
+        "Small": {"time": 49, "ampm": 54},
+        "Medium": {"time": 57, "ampm": 62},
+        "Large": {"time": 68, "ampm": 73}
+      }
+    },
+    "group": {
+      "pairGap": 4,
+      "pairToPeriodGap": 8,
+      "colonTextStyle": "中文/S7-CN-R"
+    }
+  },
+  "states": ["default", "hover", "filled", "disabled", "item-hover", "item-selected", "item-disabled", "group-disabled"],
+  "behavior": {
+    "keyboard": ["ArrowUp", "ArrowDown", "Enter", "Escape"],
+    "range": "End cannot be earlier than start; cross-day ranges show date or next-day context. Not a Figma variant.",
+    "panel": "Dedicated Time-Picker-dropdown. style=time is two columns plus Medium Clear/OK. Its 140px source width is intrinsic content width; when anchored below a wider single trigger, the popup surface matches the trigger and centers the fixed-width columns. style=AM-PM remains 73×72 with two Time-Items and no footer.",
+    "hover": "Trigger hover uses Border/focused. Not a published Figma variant.",
+    "disabled": "Trigger and Time-Picker/item use their published Disabled variants. Only Time-Item and Time-Picker-group lack Disabled axes, so they use whole-component 50% opacity; do not stack opacity.",
+    "itemSelected": "Selected Time-Item changes text to Text/blue only; no selected background.",
+    "itemDisabled": "Unavailable Time-Item (including AM/PM items) uses 50% opacity. Not a published Figma variant.",
+    "groupPeriod": "12-hour AM/PM is Time-Picker-dropdown style=AM-PM. Do not add a hide-AM/PM axis on Time-Picker-group.",
+    "input": "Typed values must synchronize with panel selection and validate format, range and step. Not a Figma variant."
+  },
+  "constraints": [
+    "Do not mix time formats within one page.",
+    "Do not add a seconds column; 2026-09-09 confirmed TMP-007 closed. style=time is hour+minute only.",
+    "Do not reuse Dropdown item height 32 for Time-Item 28.",
+    "Range is a separate component set, not a Range axis on Time-Picker.",
+    "Use 50% opacity only when Figma has no Disabled definition. Trigger and segment have published Disabled variants.",
+    "Trigger hover uses Border/focused; focus-visible/open still add the 2px BT_B10 ring.",
+    "Small trigger horizontal padding is 8; Medium/Large is 12.",
+    "Large trigger/range clock icon is 20; Small/Medium is 16.",
+    "Do not treat Hover/Focus/Open/Error as published Figma trigger variants; Hover/Disabled follow TMP-003 (closed).",
+    "12-hour AM/PM lives on Time-Picker-dropdown style=AM-PM; do not add a hide-AM/PM axis on Time-Picker-group.",
+    "Do not stack Time-Picker-group disabled opacity with segment disabled opacity.",
+    "When a time panel is directly anchored to a wider single trigger, use gj-time-panel-match-trigger: match the popup surface to the trigger, keep 64px columns centered, and do not stretch the columns.",
+    "Do not copy Figma negative margin on Large range segments."
+  ],
+  "dependencies": ["Button", "Icon"],
+  "icons": ["icf_system_time.svg", "icf_Arrow_enter-right-regular.svg", "icf_Arrow_down.svg"],
+  "knownFigmaIssues": ["TMP-001", "TMP-002", "TMP-003", "TMP-004", "TMP-005", "TMP-006", "TMP-007"],
+  "pendingExtraction": [],
+  "partialMeasurements": [
+    "Large Time-Picker/item 未再拉生成代码；宽约 68/73、高 40 来自 metadata",
+    "Time-Picker-group 画板宽 Small 173 / Medium 197 / Large 230 是 hug 结果，不是强制 min-width",
+    "Large range 生成代码含 mr-[-1.333px]；实现按段宽 92，不复制负 margin",
+    "Time-Item / Time-Picker-group 无 Disabled 轴；运行时 opacity 50% 来自 2026-09-09 确认，不是 Figma 变体"
+  ]
+}

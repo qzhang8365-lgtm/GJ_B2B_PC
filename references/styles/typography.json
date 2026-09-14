@@ -1,0 +1,203 @@
+{
+  "$schema": "gj-design-skill/typography-styles/v1",
+  "source": "Figma local Text Styles",
+  "letterSpacingTokens": {
+    "font.letterSpacing.0": {
+      "value": 0,
+      "unit": "px",
+      "cssVariable": "--font-letter-spacing-0",
+      "usage": "中文正文、按钮、表格、普通数字"
+    },
+    "font.letterSpacing.tight": {
+      "value": -0.2,
+      "unit": "px",
+      "cssVariable": "--font-letter-spacing-tight",
+      "usage": "超大数字指标，可选使用",
+      "optional": true
+    }
+  },
+  "numericTypographyTokens": {
+    "font.numeric.tabular": {
+      "value": "tabular-nums",
+      "cssProperty": "font-variant-numeric",
+      "usage": "仅供 Metric、Gauge、Progress、Progress Ring 的 GJType 核心指标"
+    },
+    "font.feature.tnum": {
+      "value": "tnum",
+      "cssProperty": "font-feature-settings",
+      "usage": "兼容部分字体的等宽数字能力"
+    }
+  },
+  "styles": {
+    "中文/S1-CN-S": {
+      "fontFamily": "PingFang SC",
+      "fontStyle": "Semibold",
+      "fontWeight": 600,
+      "fontSize": 24,
+      "lineHeight": 32,
+      "letterSpacing": "{font.letterSpacing.0}",
+      "usage": "头部banner级标题",
+      "cssClass": "gj-type-cn-s1"
+    },
+    "中文/S2-CN-S": {
+      "fontFamily": "PingFang SC",
+      "fontStyle": "Semibold",
+      "fontWeight": 600,
+      "fontSize": 20,
+      "lineHeight": 30,
+      "letterSpacing": "{font.letterSpacing.0}",
+      "usage": "页面大标题",
+      "cssClass": "gj-type-cn-s2"
+    },
+    "中文/S3-CN-S": {
+      "fontFamily": "PingFang SC",
+      "fontStyle": "Semibold",
+      "fontWeight": 600,
+      "fontSize": 18,
+      "lineHeight": 26,
+      "letterSpacing": "{font.letterSpacing.0}",
+      "usage": "重要模块标题、分组标题、区块标题",
+      "cssClass": "gj-type-cn-s3"
+    },
+    "中文/S4-CN-S": {
+      "fontFamily": "PingFang SC",
+      "fontStyle": "Semibold",
+      "fontWeight": 600,
+      "fontSize": 16,
+      "lineHeight": 24,
+      "letterSpacing": "{font.letterSpacing.0}",
+      "usage": "模块标题、弹窗正文、卡片说明文字",
+      "cssClass": "gj-type-cn-s4"
+    },
+    "中文/S5-CN-S": {
+      "fontFamily": "PingFang SC",
+      "fontStyle": "Semibold",
+      "fontWeight": 600,
+      "fontSize": 14,
+      "lineHeight": 22,
+      "letterSpacing": "{font.letterSpacing.0}",
+      "usage": "表格关键字段、列表重点信息、局部强调",
+      "cssClass": "gj-type-cn-s5"
+    },
+    "中文/S6-CN-S": {
+      "fontFamily": "PingFang SC",
+      "fontStyle": "Semibold",
+      "fontWeight": 600,
+      "fontSize": 12,
+      "lineHeight": 18,
+      "letterSpacing": "{font.letterSpacing.0}",
+      "usage": "提示文字强调，加粗状态标签",
+      "cssClass": "gj-type-cn-s6"
+    },
+    "中文/S7-CN-R": {
+      "fontFamily": "PingFang SC",
+      "fontStyle": "Regular",
+      "fontWeight": 400,
+      "fontSize": 16,
+      "lineHeight": 24,
+      "letterSpacing": "{font.letterSpacing.0}",
+      "usage": "段落标题、弹窗正文",
+      "cssClass": "gj-type-cn-s7"
+    },
+    "中文/S8-CN-R": {
+      "fontFamily": "PingFang SC",
+      "fontStyle": "Regular",
+      "fontWeight": 400,
+      "fontSize": 14,
+      "lineHeight": 22,
+      "letterSpacing": "{font.letterSpacing.0}",
+      "usage": "默认正文、表格内容、表单内容、普通说明",
+      "cssClass": "gj-type-cn-s8"
+    },
+    "中文/S9-CN-R": {
+      "fontFamily": "PingFang SC",
+      "fontStyle": "Regular",
+      "fontWeight": 400,
+      "fontSize": 12,
+      "lineHeight": 18,
+      "letterSpacing": "{font.letterSpacing.0}",
+      "usage": "辅助说明、次要信息、提示文案、表格备注、标签",
+      "cssClass": "gj-type-cn-s9"
+    },
+    "中文/S10-CN-R": {
+      "fontFamily": "PingFang SC",
+      "fontStyle": "Regular",
+      "fontWeight": 400,
+      "fontSize": 10,
+      "lineHeight": 14,
+      "letterSpacing": "{font.letterSpacing.0}",
+      "usage": "最末级辅助信息、提示文案、备注",
+      "cssClass": "gj-type-cn-s10"
+    },
+    "数字/S1-NUM-S": {
+      "fontFamily": "GJType",
+      "fontStyle": "Bold",
+      "fontWeight": 700,
+      "fontSize": 36,
+      "lineHeight": 44,
+      "letterSpacing": "{font.letterSpacing.0}",
+      "usage": "仅供 Metric、Gauge、Progress、Progress Ring 中的核心指标按尺寸选用；其它组件与普通图表标签禁止调用",
+      "cssClass": "gj-type-num-s1"
+    },
+    "数字/S2-NUM-S": {
+      "fontFamily": "GJType",
+      "fontStyle": "Bold",
+      "fontWeight": 700,
+      "fontSize": 30,
+      "lineHeight": 38,
+      "letterSpacing": "{font.letterSpacing.0}",
+      "usage": "仅供 Metric、Gauge、Progress、Progress Ring 中的核心指标按尺寸选用；其它组件与普通图表标签禁止调用",
+      "cssClass": "gj-type-num-s2"
+    },
+    "数字/S3-NUM-S": {
+      "fontFamily": "GJType",
+      "fontStyle": "Bold",
+      "fontWeight": 700,
+      "fontSize": 24,
+      "lineHeight": 32,
+      "letterSpacing": "{font.letterSpacing.0}",
+      "usage": "仅供 Metric、Gauge、Progress、Progress Ring 中的核心指标按尺寸选用；其它组件与普通图表标签禁止调用",
+      "cssClass": "gj-type-num-s3"
+    },
+    "数字/S4-NUM-S": {
+      "fontFamily": "GJType",
+      "fontStyle": "Bold",
+      "fontWeight": 700,
+      "fontSize": 20,
+      "lineHeight": 32,
+      "letterSpacing": "{font.letterSpacing.0}",
+      "usage": "仅供 Metric、Gauge、Progress、Progress Ring 中的核心指标按尺寸选用；其它组件与普通图表标签禁止调用",
+      "cssClass": "gj-type-num-s4"
+    },
+    "数字/S5-NUM-S": {
+      "fontFamily": "GJType",
+      "fontStyle": "Bold",
+      "fontWeight": 700,
+      "fontSize": 16,
+      "lineHeight": 24,
+      "letterSpacing": "{font.letterSpacing.0}",
+      "usage": "仅供 Metric、Gauge、Progress、Progress Ring 中的核心指标按尺寸选用；其它组件与普通图表标签禁止调用",
+      "cssClass": "gj-type-num-s5"
+    },
+    "数字/S6-NUM-S": {
+      "fontFamily": "GJType",
+      "fontStyle": "Bold",
+      "fontWeight": 700,
+      "fontSize": 14,
+      "lineHeight": 22,
+      "letterSpacing": "{font.letterSpacing.0}",
+      "usage": "仅供 Metric、Gauge、Progress、Progress Ring 中的核心指标按尺寸选用；其它组件与普通图表标签禁止调用",
+      "cssClass": "gj-type-num-s6-bold"
+    },
+    "数字/S6-NUM-R": {
+      "fontFamily": "GJType",
+      "fontStyle": "Regular",
+      "fontWeight": 400,
+      "fontSize": 12,
+      "lineHeight": 22,
+      "letterSpacing": "{font.letterSpacing.0}",
+      "usage": "仅供 Metric、Gauge、Progress、Progress Ring 中的核心指标按尺寸选用；其它组件与普通图表标签禁止调用",
+      "cssClass": "gj-type-num-s6-regular"
+    }
+  }
+}

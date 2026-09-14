@@ -1,0 +1,53 @@
+{
+  "$schema": "gj-design-skill/component-tokens/v1",
+  "component": "TextButton",
+  "source": {
+    "figmaNode": "3959:3750",
+    "componentSchema": "references/components/text-button/schema.json",
+    "componentMapping": "references/components/text-button/mapping.json",
+    "confirmedRules": "skill/gj-b2b-design-system/SKILL.md#button-与-text-button"
+  },
+  "definition": "A padding-free lightweight text action for navigation, view-more and filter triggers, including placements where a regular button height would disturb the container layout.",
+  "properties": {
+    "size": { "default": "Large", "values": ["Large", "Medium", "Small"] },
+    "visualState": { "default": "default", "values": ["default", "hover", "pressed", "disabled"], "publicProp": false },
+    "iconPlacement": { "default": "none", "values": ["none", "left", "right"] },
+    "iconOnly": { "supported": false }
+  },
+  "tokens": {
+    "size.large.height": { "value": 24, "unit": "px", "cssVariable": "--ds-component-text-button-size-large-height" },
+    "size.large.iconSize": { "value": 20, "unit": "px", "cssVariable": "--ds-component-text-button-size-large-icon" },
+    "size.large.textStyle": { "value": "{中文/S7-CN-R}", "cssClass": "gj-type-cn-s7" },
+    "size.medium.height": { "value": 22, "unit": "px", "cssVariable": "--ds-component-text-button-size-medium-height" },
+    "size.medium.iconSize": { "value": 16, "unit": "px", "cssVariable": "--ds-component-text-button-size-medium-icon" },
+    "size.medium.textStyle": { "value": "{中文/S8-CN-R}", "cssClass": "gj-type-cn-s8" },
+    "size.small.height": { "value": 18, "unit": "px", "cssVariable": "--ds-component-text-button-size-small-height" },
+    "size.small.iconSize": { "value": 12, "unit": "px", "cssVariable": "--ds-component-text-button-size-small-icon" },
+    "size.small.textStyle": { "value": "{中文/S9-CN-R}", "cssClass": "gj-type-cn-s9" },
+    "padding": { "value": 0, "unit": "px", "cssVariable": "--ds-component-text-button-padding" },
+    "iconGap": { "value": "{Interval/space2}", "resolved": 4, "unit": "px", "cssVariable": "--ds-component-text-button-icon-gap" },
+    "motion.pressedScale": { "value": 0.98, "cssVariable": "--ds-component-text-button-pressed-scale" },
+    "focus.ringColor": { "value": "{Background/BT_B20}", "resolved": "#2B73FF33", "cssVariable": "--ds-component-text-button-focus-ring-color" },
+    "focus.ringWidth": { "value": 3, "unit": "px", "cssVariable": "--ds-component-text-button-focus-ring-width" }
+  },
+  "stateMatrix": {
+    "default": { "text": "Text/Secondary", "icon": "currentColor", "background": "transparent", "border": "none" },
+    "hover": { "text": "Text/Primary", "icon": "currentColor", "background": "transparent", "border": "none" },
+    "pressed": { "text": "Text/blue", "icon": "currentColor", "background": "transparent", "border": "none" },
+    "disabled": { "text": "Text/disable", "icon": "currentColor", "background": "transparent", "border": "none" }
+  },
+  "behavior": {
+    "element": "button",
+    "disabled": "Use native disabled and never fire the action.",
+    "focus": "Provide focus-visible without changing the component layout size.",
+    "pressedMotion": "Scale to 0.98 while actively pressed; never translate vertically.",
+    "hitArea": "Expand the pointer target with an outer wrapper or pseudo-element when necessary; never add visible padding or change the line-box height.",
+    "prototypeReaction": "Not required in Figma. Implement hover, pressed and disabled from the state contract in code; absence of Prototype Reaction is not an absent-state signal."
+  },
+  "content": {
+    "singleLine": true,
+    "recommendedChineseCharacters": "2–6",
+    "maximumChineseCharacters": 8,
+    "overflowRule": "Shorten the action label; do not wrap to two lines."
+  }
+}

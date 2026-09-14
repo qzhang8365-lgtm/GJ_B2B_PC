@@ -1,0 +1,56 @@
+{
+  "$schema": "gj-design-skill/component-mapping/v1",
+  "figmaComponent": "Breadcrumb_item/nav_item / Breadcrumb1 / CoBreadcrumb_item",
+  "codeComponent": "GjBreadcrumb",
+  "sourceNodes": [
+    "2638:2638",
+    "2718:976",
+    "2718:999",
+    "2718:1002",
+    "2718:1013",
+    "2718:1015",
+    "2718:1017",
+    "2718:1018",
+    "4176:18037",
+    "4176:17976",
+    "2981:4127"
+  ],
+  "propertyMap": {
+    "Current": "aria-current=page",
+    "icon": "showIcon",
+    "Count": "items.length 或折叠展示"
+  },
+  "valueMap": {
+    "Current.false": "历史项 Text/Tertiary，可点击",
+    "Current.true": "当前项 Text/Primary，不可点击",
+    "icon.true": "16px 图标 + 4px 间距",
+    "Count.4+": "Home / … / 倒数第二层 / 当前页"
+  },
+  "normalization": {
+    "CoBreadcrumb_item": "separator",
+    "Property 1=Separator": "separator",
+    "Body/regular": "实现用 UI 字体 14/22/400，不引入 Roboto"
+  },
+  "tokenMap": {
+    "history.text": "--ds-component-breadcrumb-history-text",
+    "history.hover.text": "--ds-component-breadcrumb-history-hover-text",
+    "current.text": "--ds-component-breadcrumb-current-text",
+    "item.textStyle": "中文/S8-CN-R → .gj-type-cn-s8",
+    "icon.size": "--ds-component-breadcrumb-icon-size",
+    "icon.gap": "--ds-component-breadcrumb-icon-gap",
+    "separator.color": "--ds-component-breadcrumb-separator-color",
+    "separator.paddingInline": "--ds-component-breadcrumb-separator-padding-inline"
+  },
+  "runtimeMap": {
+    "root": ".gj-breadcrumb",
+    "item": ".gj-breadcrumb-item",
+    "current": "[aria-current=page]",
+    "separator": ".gj-breadcrumb-separator",
+    "icon": ".gj-breadcrumb-icon"
+  },
+  "accessibility": {
+    "root": "nav[aria-label=breadcrumb]",
+    "current": "aria-current=page",
+    "separator": "aria-hidden=true"
+  }
+}

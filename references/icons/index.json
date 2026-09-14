@@ -1,0 +1,49 @@
+{
+  "$schema": "gj-design-skill/icon-index/v1",
+  "assetRoot": "assets/icons/",
+  "catalogs": [
+    {
+      "id": "general",
+      "kind": "iconfont",
+      "manifest": "manifest.json",
+      "count": 369,
+      "when": "普通线性或填充图标；页面用 gj-icon + --gj-icon。",
+      "catalog": "assets/icons/iconfont/all-icons.js"
+    },
+    {
+      "id": "glass",
+      "kind": "effect",
+      "manifest": "glass-manifest.json",
+      "count": 59,
+      "when": "毛玻璃、渐变等 Effect / Glass Icon；宫格导航、入口卡片等。",
+      "catalog": "assets/icons/glassicon/glass-icons.js"
+    },
+    {
+      "id": "file",
+      "kind": "file",
+      "manifest": "file-manifest.json",
+      "count": 10,
+      "when": "文件类型图标；上传列表、附件、文档预览。",
+      "catalog": "assets/icons/fileicon/png/file-icons.js"
+    },
+    {
+      "id": "motion",
+      "kind": "lottie",
+      "manifest": "motion-manifest.json",
+      "count": 4,
+      "when": "加载、更多等 Lottie 动效图标。",
+      "catalog": "assets/icons/animation/motion-icons.js"
+    }
+  ],
+  "lookup": "先读本文件判断类型，再打开对应 manifest。资源路径为 assets/icons/ + file 或 png。不得使用 Emoji、临时 Unicode、CSS 手绘或未登记名称。",
+  "excludedFromCatalogs": {
+    "componentInternalAssets": {
+      "note": "assets/icons/ 根目录下的部分 SVG（radio-pc-*、switch-thumb-*、avatar-user.svg 等）是特定组件状态的固定视觉资产，不是可选用的图标库条目，不计入以上任何 catalog；使用范围、引用位置及未引用文件清单见 component-internal.md。",
+      "detail": "component-internal.md"
+    },
+    "sourceAuditOnly": {
+      "note": "system-manifest.json 与 assets/icons/general/system/ 是 iconfont System 分类的源 SVG 审计层，只在核对源图或重新编译时读取，不是可叠加的第二套图标库；两侧的分类迁移与快照差异见 system-audit.md。",
+      "detail": "system-manifest.json, system-audit.md"
+    }
+  }
+}

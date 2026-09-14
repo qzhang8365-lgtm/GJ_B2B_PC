@@ -1,0 +1,186 @@
+{
+  "$schema": "gj-design-skill/component-schema/v1",
+  "component": "Navbar",
+  "status": "figma-audited",
+  "nameZh": "顶部导航栏",
+  "source": {
+    "type": "figma",
+    "fileKey": "8b01I1e3TzH1IhYlr3tJzd",
+    "sourceNodeId": "2638:1002",
+    "documentationNodeId": "4171:4760",
+    "readOnly": true,
+    "figmaIsSourceOfTruth": true,
+    "status": "figma-audited",
+    "figmaAudit": "done-2026-09-10-NAV-001"
+  },
+  "componentSets": {
+    "Navbar": {
+      "nodeId": "3025:394",
+      "variants": 4,
+      "note": "style(white/background) × Menu(false/true) = 2×2=4，4 个 variant 已逐一用 get_design_context 核实：white+false(3025:317，默认)、background+false(3025:395)、white+true(3143:3542)、background+true(3143:3600)。",
+      "size": {"height": 60, "referenceWidth": 1241},
+      "properties": {
+        "style": ["white", "background"],
+        "Menu": [false, true],
+        "Avatar": "boolean",
+        "Bulletin": "boolean",
+        "IconGroup": "boolean",
+        "LogButton": "boolean",
+        "SearchBox": "boolean"
+      },
+      "defaults": {
+        "Avatar": true,
+        "Bulletin": false,
+        "IconGroup": true,
+        "LogButton": false,
+        "SearchBox": true,
+        "note": "4 个 style×Menu 组合下默认值完全一致，非按 variant 各自设置。"
+      },
+      "surfaceTokens": {
+        "white": {
+          "background": "Background/Container (#ffffff)",
+          "border": "border-bottom 1px solid Border/default (#ebeef2)"
+        },
+        "background": {
+          "background": "Background/Background (#f5f7fa)",
+          "border": "无边框"
+        },
+        "note": "颜色不是唯一差异：white 表面额外带底部 1px 描边（Border/default），background 表面无边框，靠背景色本身与页面区分。此前假设的“颜色只换表面，结构不变”不完全准确，已在 audit.md 中更正。"
+      }
+    },
+    "Menu_item": {
+      "nodeId": "3143:2981",
+      "variants": 4,
+      "note": "status(default/active) × collapseIcon(true/false) = 2×2=4，4 个 variant 已全部核实：3143:2980(default+true)、3143:3013(default+false)、4172:5505(active+false)、3143:2991(active+true)。",
+      "size": {"height": 36, "paddingHorizontal": 12, "paddingVertical": 8, "radius": 8, "gap": 8},
+      "properties": {
+        "status": ["default", "active"],
+        "collapseIcon": [true, false]
+      },
+      "states": {
+        "default": {
+          "background": "无（透明）",
+          "textStyle": "中文/S8-CN-R (Regular 14/22)",
+          "textToken": "Text/Primary (#101828)"
+        },
+        "active": {
+          "background": "Background/Hover_2 (rgba(0,0,0,0.03))",
+          "textStyle": "中文/S5-CN-S (Semibold 14/22)",
+          "textToken": "Text/Primary (#101828)"
+        },
+        "collapseIcon=true": {
+          "icon": "default 态用 icf_Arrow_down.svg，active 态用 icf_Arrow_up.svg，均 14×14，跟随 status 切换方向，不是固定图标"
+        }
+      },
+      "leadingIcon": {"size": 16, "example": "icf_business_coin.svg（示例图标，非固定语义）"}
+    },
+    "Menu_group": {
+      "nodeId": "3143:3036",
+      "variants": 4,
+      "note": "count(Default/4/5/6) = 4 个 variant。本轮已读取整个组件集上下文，并分别读取 4 个 variant 的变量绑定；四档均为同一 Menu_item 结构的水平重复排列，无额外样式差异。",
+      "size": {"height": 36},
+      "properties": {"count": ["Default", 4, 5, 6]},
+      "verified": {"Default": "confirmed-figma", "4": "confirmed-figma", "5": "confirmed-figma", "6": "confirmed-figma"}
+    },
+    "Menu_dropdown": {
+      "nodeId": "3233:256",
+      "type": "independent-component",
+      "referenceWidth": 320,
+      "note": "此前 schema 记为 231，本轮 get_design_context 实测为 320，已更正。",
+      "radius": 12,
+      "padding": 16,
+      "gap": 8,
+      "background": "Background/Container (#ffffff)",
+      "effectStyle": "shadow-center（未核实：get_variable_defs 对该节点未返回任何 effect/shadow 键，是 MCP 工具限制而非“确认没有阴影”，如需精确阴影值需人工在 Figma 里核对）",
+      "title": {
+        "textStyle": "中文/S5-CN-S (Semibold 14/22)",
+        "textToken": "Text/Secondary (#475467)"
+      },
+      "row": {
+        "count": 4,
+        "height": 40,
+        "paddingHorizontal": 8,
+        "radius": 8,
+        "gap": 8,
+        "iconSize": 20,
+        "textStyle": "中文/S5-CN-S (Semibold 14/22)",
+        "textToken": "Text/Primary (#101828)",
+        "note": "全部 4 行文字均为 Semibold，并非仅首行或激活行加粗；本轮取样的第一行节点命名为 hover 并带 Background/Hover_2 (rgba(0,0,0,0.03)) 背景，其余 3 行命名为 default 且无背景色，判断 hover 是行级交互态而非独立顶层 variant。"
+      }
+    }
+  },
+  "elements": {
+    "Divider": {
+      "nodeId": "2394:866",
+      "usage": "Navbar 内复用两次：Bulletin 文案与图标之间、icongroup 与 usergroup 之间。",
+      "defaults": {"type": "vertical", "dashed": false, "position": "center", "title": false},
+      "size": {"height": 20, "width": 1},
+      "token": "Border/default (#ebeef2)"
+    },
+    "Bulletin": {
+      "nodeId": "3143:3603（示例，随 variant 变化）",
+      "structure": "「公告」图形(26.903×11.886 svg) + Divider(复用上面的 Divider) + 提示文案",
+      "text": {
+        "content": "示例文案：暂时没有需要特别关注的公告哦～",
+        "font": "PingFang SC Regular 12/18",
+        "colorRaw": "#999（原始十六进制色值，未绑定到任何 Token，也未匹配到已命名 Text Style，需设计确认后补 Token）",
+        "align": "right"
+      }
+    },
+    "LogButton": {
+      "structure": "复用通用 Button 组件（Figma 内部命名为 Button）",
+      "size": {"height": 24, "paddingHorizontal": 8, "paddingVertical": 5, "radius": 4},
+      "background": "Button/Primary/Bg-default (#2b73ff)",
+      "text": {"content": "退出", "font": "PingFang SC Regular 12/18", "color": "白色"}
+    },
+    "IconGroup": {
+      "gap": 12,
+      "iconSize": 20,
+      "example": ["icf_contact_mail.svg", "system/icon-notification.svg"]
+    },
+    "SearchBox": {
+      "note": "Navbar 内固定用 200px 宽度覆盖 SearchBox 组件自身默认的 233px，属于 Navbar 场景化覆盖，不代表 SearchBox 组件本身默认值变化（SearchBox 组件自身 schema 请见 searchbox/schema.json）。",
+      "referenceWidthInNavbar": 200,
+      "referenceWidthOwnDefault": 233
+    },
+    "usergroup": {
+      "structure": "Avatar + 「用户」文案",
+      "gap": 8,
+      "text": {"font": "PingFang SC Regular 14/22", "token": "Text/Primary (#101828)", "textStyle": "中文/S8-CN-R"}
+    }
+  },
+  "layout": {
+    "height": 60,
+    "paddingVertical": 12,
+    "paddingHorizontal": 16,
+    "functionalGroupGap": 20,
+    "iconButtonGap": 12,
+    "searchBox": {"height": 32, "referenceWidth": 200, "radius": 6},
+    "avatar": {"size": 32, "shape": "circle"},
+    "actionIconSize": 20,
+    "menuIconSize": 16,
+    "menuItem": {"height": 36, "paddingHorizontal": 12, "paddingVertical": 8, "radius": 8},
+    "dropdownItem": {"height": 40, "paddingHorizontal": 8, "radius": 8}
+  },
+  "usage": [
+    "用于提供全局搜索、通知入口、个人主页入口及登录或退出等基础通用功能。",
+    "背景可按页面需求选择白色或全局背景灰色；背景灰可降低导航视觉权重。白色表面额外带底部 1px 描边（Border/default），背景灰表面不加边框。",
+    "可按需添加系统或平台 Logo、公告栏和登录或退出按钮。",
+    "系统或平台 Logo 不应与侧边栏中的同一 Logo 重复展示。",
+    "网页平台型场景可使用横向菜单替代侧边栏进行页面跳转。",
+    "存在下级入口的菜单项使用折叠图标并通过下拉浮层展示，图标随展开/收起状态在向下/向上箭头间切换。"
+  ],
+  "implementationAdvice": [
+    "Navbar 为全局组件，同一产品内保持高度、对齐和核心入口位置稳定。",
+    "按任务优先级启用属性，避免搜索、公告、菜单和操作按钮同时堆叠造成拥挤。",
+    "响应式收缩顺序建议为公告、搜索、横向菜单；通知和用户入口保持可访问。",
+    "横向菜单与侧边栏不应重复承载同一信息层级。",
+    "Bulletin 文案色 #999 未绑定 Token，接入真实业务前需设计确认对应的语义色。",
+    "Menu_dropdown 阴影（effectStyle）本轮工具未能读出具体数值，如需像素级还原需人工在 Figma 内核对。"
+  ],
+  "provenanceBoundary": {
+    "figmaFacts": "componentSets、elements、layout、surface token、文字样式及组件属性默认值均来自上述审计节点。",
+    "localResponsivePolicy": "收缩优先级、最多 6 个横向菜单、更多菜单与 Sidebar 切换、Sticky/Fixed 选择均是本地生成规则，不是 Figma variant。",
+    "rule": "不得把本地响应式建议写回 Figma 默认属性，也不得用窄屏覆盖值替换组件 Token。"
+  }
+}

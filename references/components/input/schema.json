@@ -1,0 +1,288 @@
+{
+  "$schema": "gj-design-skill/component-schema/v1",
+  "component": "Input",
+  "source": {
+    "rulesSection": "Input 输入框",
+    "inventoryPage": "Input",
+    "figmaFile": "8b01I1e3TzH1IhYlr3tJzd",
+    "figmaPage": "4744:3963",
+    "status": "figma-audited",
+    "figmaAudit": "done-2026-09-09-INP-007; re-verified-2026-09-10-INP-005; re-verified-2026-09-10-INP-004; figma-sync-INP-005-2026-09-10; re-verified-2026-09-10-INP-002-partial; figma-sync-INP-002-icon-2026-09-10; figma-sync-INP-STATE-typing-to-focused-2026-09-10"
+  },
+  "purpose": "接收和编辑单行或多行文本与密码，可组合标签、提示、错误反馈、字数限制和图标。",
+  "implementation": {
+    "fieldClass": "gj-field",
+    "wrapperClass": "gj-input-wrap",
+    "appearanceClasses": [
+      "outlined",
+      "filled"
+    ],
+    "sizeClasses": [
+      "small",
+      "medium",
+      "large"
+    ],
+    "iconClass": "gj-input-icon",
+    "actionClass": "gj-input-action",
+    "countClass": "gj-input-count"
+  },
+  "figma": {
+    "fileKey": "8b01I1e3TzH1IhYlr3tJzd",
+    "pageNodeId": "4744:3963",
+    "pageName": "Input",
+    "authoredSymbolsOnBoard": 55,
+    "inventoryListedVariants": 66,
+    "componentSets": [
+      {
+        "nodeId": "2926:1451",
+        "name": "Input_outlined",
+        "variants": 20,
+        "note": "VARIANT：Size × State × text area × Error。text area 只出现在 Middle-h32。Error=true 只与 State=focused 组合（2026-09-10 起，原 State=typing 已由 Figma 改名为 focused）。BOOLEAN：2026-09-10 起为 Show Icon（原 lefticon，已删除 right icon，仅保留左侧图标一个开关）、Show Length Limit（原 input length limit），不增加 published symbol。"
+      },
+      {
+        "nodeId": "2989:648",
+        "name": "Input_filled",
+        "variants": 20,
+        "note": "结构与 outlined 相同。2026-09-10 复查（INP-002）：错误属性字面值已统一为 Error（大写），与 outlined 一致（历史：此前 filled 侧为小写 error）；布尔属性同 outlined，已改名为 Show Icon（原 lefticon，已删除 right icon）、Show Length Limit（原 input length limit）。"
+      },
+      {
+        "nodeId": "2991:4218",
+        "name": "Input_Password",
+        "variants": 9,
+        "note": "Size=small/medium/large × Filled × Visible，不是全笛卡尔。Filled 表示已填写，不是 appearance=filled。"
+      },
+      {
+        "nodeId": "2996:2903",
+        "name": "1.Input_Basic",
+        "variants": 2,
+        "note": "align=vertical|horizontal，2 variants。BOOLEAN：helperHint、informationicon。默认实例 Input_outlined Middle-h32 default。是标签+控件+hint 组合，不是第四套输入外观。"
+      }
+    ],
+    "standalone": [
+      {
+        "nodeId": "2911:4644",
+        "name": "input_item/cursor"
+      },
+      {
+        "nodeId": "3271:5228",
+        "name": "input_item/label"
+      },
+      {
+        "nodeId": "3271:5231",
+        "name": "input_item/hint"
+      },
+      {
+        "nodeId": "3271:5236",
+        "name": "input_item/error"
+      }
+    ]
+  },
+  "properties": {
+    "type": [
+      "text",
+      "textarea",
+      "password"
+    ],
+    "appearance": [
+      "outlined",
+      "filled"
+    ],
+    "size": [
+      "small",
+      "medium",
+      "large"
+    ],
+    "state": [
+      "default",
+      "focused",
+      "filled",
+      "disabled"
+    ],
+    "error": [
+      false,
+      true
+    ],
+    "icon": [
+      false,
+      true
+    ],
+    "showCount": [
+      false,
+      true
+    ],
+    "passwordVisible": [
+      false,
+      true
+    ],
+    "align": [
+      "vertical",
+      "horizontal"
+    ],
+    "helperHint": [
+      false,
+      true
+    ],
+    "informationicon": [
+      false,
+      true
+    ]
+  },
+  "defaults": {
+    "type": "text",
+    "appearance": "outlined",
+    "size": "medium",
+    "state": "default",
+    "error": false,
+    "helperHint": true,
+    "informationicon": false
+  },
+  "sizes": {
+    "small": {
+      "height": 24,
+      "padding": 8,
+      "radius": 4,
+      "gap": 4,
+      "icon": 14,
+      "textStyle": "中文/S8-CN-R"
+    },
+    "medium": {
+      "height": 32,
+      "padding": 8,
+      "radius": 6,
+      "gap": 8,
+      "icon": 16,
+      "textStyle": "中文/S8-CN-R"
+    },
+    "large": {
+      "height": 40,
+      "paddingInline": 12,
+      "paddingBlock": 8,
+      "radius": 8,
+      "gap": 8,
+      "icon": 18,
+      "textStyle": "中文/S7-CN-R"
+    },
+    "textarea": {
+      "height": 80,
+      "paddingInline": 12,
+      "paddingBlock": 8,
+      "radius": "follow size; default medium = 6"
+    },
+    "password": {
+      "followSize": true,
+      "note": "INP-005：与 outlined/filled 同档，不另开独立 padding/gap/icon。"
+    },
+    "hint": {
+      "height": 18,
+      "textStyle": "中文/S9-CN-R",
+      "color": "Text/Tertiary"
+    },
+    "cursor.standalone": {
+      "width": 1,
+      "height": 20,
+      "paddingInline": 4,
+      "radius": 2,
+      "color": "Text/blue"
+    },
+    "cursor.inField": {
+      "width": 1,
+      "height": 16
+    },
+    "basic.vertical": {
+      "labelGap": 12,
+      "hintGap": 8
+    },
+    "basic.horizontal": {
+      "labelWidth": 80,
+      "labelGap": 12,
+      "hintGap": 4
+    }
+  },
+  "constraints": [
+    "Outlined 与 Filled 根据页面背景选择，同一区域保持一致。",
+    "与按钮等控件并排时必须使用同一尺寸档位。",
+    "错误必须同时使用错误边框与紧邻字段的说明文字，不能只靠颜色。",
+    "text area 在 Figma 只覆盖 Middle-h32；Small/Large 没有 textarea published variant。",
+    "Error=true 在 Figma 只与 State=focused 组合（2026-09-10 起，原 State=typing 已改名为 focused）；不要编造 error+disabled。",
+    "Password 的 Filled 不是 filled 外观，是已填写。",
+    "Password 与主输入框共用同一尺寸档（small/medium/large），不得另写 password.medium 独立 padding/gap/icon。",
+    "Text Area 圆角跟随当前尺寸档（默认 medium = Radius-SM 6px），不单独使用 Figma Middle textarea 字面 8px。",
+    "规范页与业务页必须复用 gj-input-wrap，不得在页面 CSS 重画边框、尺寸和状态。",
+    "1.Input_Basic 只描述标签/控件/hint 组合；表单场景的 Label 到控件间距仍以 Form Token 为准，不得用 Input_Basic 的 12px 覆盖 Form_item。",
+    "hint 使用 中文/S9-CN-R + Text/Tertiary，与错误说明同档字号、不同颜色。"
+  ],
+  "dependencies": [
+    "Icon",
+    "Form"
+  ],
+  "icons": [
+    "icf_system_search.svg",
+    "icf_system_close-circle-fill.svg",
+    "icf_system_eye.svg",
+    "icf_system_eye-close.svg",
+    "icf_system_info.svg"
+  ],
+  "knownFigmaIssues": [
+    "INP-008"
+  ],
+  "pendingExtraction": [],
+  "confirmedDecisions": [
+    {
+      "id": "INP-003",
+      "date": "2026-09-08",
+      "decision": "Filled 默认边框采用 Figma Border/default；Outlined 禁用文字采用实测 Text/Tertiary；Filled 禁用背景契约使用 Background/Background（Figma 源文件实测曾为 Tertiary，需设计改绑）。",
+      "source": "用户设计确认"
+    },
+    {
+      "id": "INP-006",
+      "date": "2026-09-08",
+      "decision": "保留现有 hover 状态矩阵，outlined.hover 使用 Border/hover。",
+      "source": "用户设计确认"
+    },
+    {
+      "id": "INP-007",
+      "date": "2026-09-09",
+      "decision": "已补读 hint 3271:5231、cursor 2911:4644、Input_Basic 2996:2903。hint=S9+Tertiary；独立光标 Text/blue 1×20；Input_Basic 为 1 套/2 variants 组合。",
+      "source": "Figma 只读复查"
+    },
+    {
+      "id": "INP-005",
+      "date": "2026-09-10",
+      "decision": "密码框不是独立尺寸。Padding/gap/icon 与主输入框同档（medium 8/8/16）。2026-09-10 设计改稿后，Input_Password 9 个 variant 已与 outlined Input field 对齐。",
+      "source": "用户确认源文件已修改；只读重测 9 variants"
+    },
+    {
+      "id": "INP-004",
+      "date": "2026-09-10",
+      "decision": "确认主输入框（Outlined/Filled）也需要 2px 外圈：设计已在 Figma 为 typing 态新建正式 Effect Style「focused_outline」（DROP_SHADOW，Background/BT_B10，spread 2），并统一应用到 Input_outlined、Input_filled 的 typing 变体与 Input_Password 的 Filled+Visible 变体。已抽样核实 Small/Medium/Large、outlined/filled、单行与文本域共 6 个代表节点，均绑定该 Effect Style；Error 态不叠加。实现同步：effects.json 新增 focused_outline → 编译为 --ds-effect-focused-outline；.gj-input-wrap.outlined/.filled 的 focus-within/typing box-shadow 改用该变量（数值不变）。",
+      "source": "用户设计确认 + Figma 只读复核（6 个代表节点）"
+    },
+    {
+      "id": "INP-002",
+      "date": "2026-09-10",
+      "decision": "复查节点 4744:3963：Input_outlined 与 Input_filled 的 Error/error 大小写已由 Figma 统一为 Error（该子项关闭）。Size 字面值（Small-h24/Middle-h32/Large-h40 vs Password 的 large/small/medium）与布尔属性命名（lefticon/right icon/input length limit 内部风格）仍未在 Figma 改名，mapping.json 归一化继续兜底；这两个子项保持开放，待设计决定是否改名（P3，不阻塞实现）。",
+      "source": "Figma 只读复查（get_metadata + get_design_context，节点 4744:3963, 2926:1179, 2989:697）"
+    },
+    {
+      "id": "INP-002",
+      "date": "2026-09-10",
+      "decision": "尺寸字面值不统一（Small-h24/Middle-h32/Large-h40 vs Password 的 large/small/medium）：用户确认不改，保持现状，继续依赖 mapping.json 的 Size.Small-h24→size=small 等归一化。该子项关闭。lefticon/right icon/input length limit 命名风格不统一：用户要求给出改名建议，Claude 建议按设计系统既有的 Show 前缀 Title Case 约定统一改为「Show Left Icon」「Show Right Icon」「Show Length Limit」（对齐 Empty 的「Show Description」→showDescription、Notification 的 showIcon/showDescription/showButton、Modal 的 showClose 等已有先例）。此建议已提出，待设计在 Figma 落地后复查确认关闭。",
+      "source": "用户决策（尺寸字面值）+ Claude 命名建议（布尔属性，待落地）"
+    },
+    {
+      "id": "INP-002",
+      "date": "2026-09-10",
+      "decision": "INP-002 全部关闭。复查节点 2926:1451（Input_outlined）与 2989:648（Input_filled）：设计已在 Figma 删除 right icon 布尔属性，仅保留左侧图标，并改名为 Show Icon（原 lefticon）；input length limit 改名为 Show Length Limit。两个组件集的生成代码 props 均确认为 showIcon / showLengthLimit，不再有 rightIcon。代码契约同步：schema.json 的 properties.leftIcon 改名为 icon，rightIcon 字段整体移除（此前代码侧本就只有单一通用 .gj-input-icon 图标槽，从未实现过独立右图标，此次删除与实现一致）。尺寸字面值不统一（Small-h24 vs small）用户确认不改，继续用 mapping 归一化兜底。备注：Figma 组件描述文案（Component description）仍显示旧文案「lefticon, right icon, input length limit」，实际属性定义已更新，文案属于非阻塞的文档滞后。",
+      "source": "用户确认 Figma 已改名/删除属性 + Claude 只读复查（get_design_context，节点 2926:1451, 2989:648, 2926:1247, 2989:697）"
+    },
+    {
+      "id": "INP-STATE-RENAME",
+      "date": "2026-09-10",
+      "decision": "Figma 将 Input_outlined/Input_filled 的 State 属性值 typing 改名为 focused（Input_Password 无 State 属性，不受影响）。复查节点 2926:1451、2989:648：全部相关 variant 均已确认为 State=focused。代码契约同步：schema.json 的 properties.state 由 [default, typing, filled, disabled] 改为 [default, focused, filled, disabled]；mapping.json 的 propertyMap/valueMap/tokenMap/interactionMap 中 typing 相关 key 同步改名为 focused；assets/styles/gj-b2b-components.css 的 .typing class 改名为 .focused；preview/input/index.html 的演示状态同步改名。此前 mapping.json 已把 Figma 的 typing 归一化为语义名 focused（propertyMap 注释「typing → focused」），本次是 Figma 真值与代码既有语义名趋于一致。Search 组件的 state=typing（映射 Search-Box state=active）是独立属性，本次未核实、未改动。",
+      "source": "Figma 只读复查（get_metadata，节点 2926:1451, 2989:648）+ 用户告知"
+    }
+  ],
+  "partialMeasurements": [
+    "Inventory 该页仍记 5 套 / 66 variants；本画板点到 4 套 + 4 独立件、55 个 symbol（INP-008）"
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "$schema": "gj-design-skill/component-tokens/v1",
+  "component": "Breadcrumb",
+  "source": {
+    "figmaNode": "2638:2638",
+    "figmaNodes": ["2718:976", "2718:999", "2718:1002", "2718:1013", "2718:1015", "2718:1017", "2718:1018", "2718:1028", "4176:18037", "4176:17976", "2981:4127"],
+    "figmaReadDate": "2026-09-09",
+    "componentSchema": "references/components/breadcrumb/schema.json",
+    "componentMapping": "references/components/breadcrumb/mapping.json",
+    "confirmedRules": "references/components/breadcrumb/rules.md",
+    "implementation": "assets/styles/gj-b2b-components.css#.gj-breadcrumb"
+  },
+  "properties": {
+    "Current": {
+      "default": false,
+      "values": [false, true]
+    },
+    "icon": {
+      "default": false,
+      "values": [false, true]
+    },
+    "Count": {
+      "default": "4",
+      "values": ["2", "3", "4", "4+"],
+      "note": "Figma 展示预设。实现按真实层级自定义；4+ 是折叠建议，不是上限。"
+    }
+  },
+  "tokens": {
+    "root.height": {
+      "value": 22,
+      "unit": "px",
+      "cssVariable": "--ds-component-breadcrumb-height",
+      "note": "与 中文/S8-CN-R 行高 22 一致。"
+    },
+    "history.text": {
+      "value": "{Text/Tertiary}",
+      "resolved": "#8D96A3",
+      "cssVariable": "--ds-component-breadcrumb-history-text",
+      "note": "Current=false。节点 2718:1015 / 2718:1002。"
+    },
+    "history.hover.text": {
+      "value": "{Text/blue}",
+      "resolved": "#2B73FF",
+      "cssVariable": "--ds-component-breadcrumb-history-hover-text",
+      "note": "Figma 无 Hover 轴。代码补充，与 rules 可点击高亮一致。"
+    },
+    "current.text": {
+      "value": "{Text/Primary}",
+      "resolved": "#101828",
+      "cssVariable": "--ds-component-breadcrumb-current-text",
+      "note": "Current=true。节点 2718:1013 / 2718:999。"
+    },
+    "item.textStyle": {
+      "value": "{中文/S8-CN-R}",
+      "cssClass": "gj-type-cn-s8"
+    },
+    "icon.size": {
+      "value": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-breadcrumb-icon-size",
+      "note": "icon=true 时 16×16，垂直居中 y=3。颜色跟随当前项文字。"
+    },
+    "icon.gap": {
+      "value": "{Interval/space2}",
+      "resolved": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-breadcrumb-icon-gap",
+      "note": "生成代码 gap-[4px]；图标右缘到文字 4px。"
+    },
+    "separator.color": {
+      "value": "{Background/MK_30}",
+      "resolved": "#0000004D",
+      "cssVariable": "--ds-component-breadcrumb-separator-color",
+      "note": "节点 4176:17976。"
+    },
+    "separator.paddingInline": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-breadcrumb-separator-padding-inline"
+    },
+    "separator.glyph": {
+      "value": "/",
+      "note": "Figma 文案为 / 。实现直接输出该字符。"
+    },
+    "separator.textStyle": {
+      "value": "Body/regular",
+      "resolved": "Roboto 14/22/400",
+      "note": "Figma 分隔符仍绑旧 Body/regular。实现按 UI 字体配对保持 14/22/400，不引入 Roboto。不写花括号别名，因统一 typography.json 未收录该旧样式。"
+    }
+  },
+  "behavior": {
+    "count": "按产品层级自定义，无固定上限。Figma Count 2/3/4/4+ 只是展示预设。",
+    "collapse": "4+ 为 Home / … / 倒数第二层 / 当前页。长路径建议折叠，不是强制上限。",
+    "current": "末级不可点。历史项可点，Hover 用 Text/blue。",
+    "icon": "跟随所在项文字色（currentColor）。"
+  }
+}

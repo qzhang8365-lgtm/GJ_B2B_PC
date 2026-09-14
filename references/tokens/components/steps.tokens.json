@@ -1,0 +1,109 @@
+{
+  "$schema": "gj-design-skill/component-tokens/v1",
+  "component": "Steps",
+  "source": {
+    "figmaNode": "4465:8293",
+    "figmaReadDate": "2026-09-08",
+    "componentSchema": "references/components/steps/schema.json",
+    "componentMapping": "references/components/steps/mapping.json",
+    "confirmedRules": "references/components/steps/rules.md",
+    "implementation": "assets/styles/gj-b2b-components.css#.gj-steps"
+  },
+  "properties": {
+    "style": {
+      "default": "dot",
+      "values": [
+        "dot",
+        "serial"
+      ]
+    },
+    "infoVisible": {
+      "default": true,
+      "values": [
+        true,
+        false
+      ]
+    }
+  },
+  "tokens": {
+    "item.width": {
+      "value": 264,
+      "unit": "px",
+      "cssVariable": "--ds-component-steps-item-width"
+    },
+    "assembly.4.width": {
+      "value": 1056,
+      "unit": "px",
+      "cssVariable": "--ds-component-steps-assembly-4-width"
+    },
+    "dot.indicator": {
+      "value": 20,
+      "unit": "px",
+      "cssVariable": "--ds-component-steps-dot-indicator"
+    },
+    "serial.indicator": {
+      "value": 32,
+      "unit": "px",
+      "cssVariable": "--ds-component-steps-serial-indicator"
+    },
+    "track.gap": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-steps-track-gap"
+    },
+    "stack.gap": {
+      "value": "{Interval/space2}",
+      "resolved": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-steps-stack-gap"
+    },
+    "connector.thickness": {
+      "value": 1,
+      "unit": "px",
+      "cssVariable": "--ds-component-steps-connector-thickness",
+      "note": "Figma stroke 生成代码 inset 1.4px；实现用 1px。"
+    },
+    "title.textStyle": {
+      "value": "{中文/S4-CN-S}",
+      "cssClass": "gj-type-cn-s4"
+    },
+    "description.textStyle": {
+      "value": "{中文/S9-CN-R}",
+      "cssClass": "gj-type-cn-s9"
+    },
+    "serial.textStyle": {
+      "value": "{中文/S4-CN-S}",
+      "cssClass": "gj-type-cn-s4"
+    }
+  },
+  "stateMatrix": {
+    "wait": {
+      "indicator": "Background/Secondary",
+      "text": "Text/Tertiary",
+      "connector": "Border/secondary"
+    },
+    "process": {
+      "indicator": "Text/blue",
+      "serialText": "Text/reversal",
+      "text": "Text/Primary",
+      "connector": "Border/secondary"
+    },
+    "finished": {
+      "indicator": "Text/blue",
+      "serialText": "Text/reversal",
+      "text": "Text/Primary",
+      "connector": "Border/focused"
+    }
+  },
+  "behavior": {
+    "continuity": "Exactly one process item. Previous items finished, following items wait.",
+    "finishedIndicator": "Same solid Text/blue circle as process; keep the serial number.",
+    "connector": "Finished outgoing uses Border/focused; process/wait outgoing uses Border/secondary.",
+    "endVisual": "Last item has no outgoing line. Serial Figma publishes end+process only; last-step finished uses that visual.",
+    "pageFullWidth": "Inset start/end by Interval/space10 (48px). Keep Serial/Dot, title and description on one center axis; do not edge-align start/end."
+  },
+  "openItems": {
+    "STP-001": "Inventory lists 9/78/0; the user board showed 8 frames / 42 symbols."
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "$schema": "gj-design-skill/component-mapping/v1",
+  "figmaComponent": "Modal / modal_item/feedback-content",
+  "codeComponent": "GjModal",
+  "sourceNodes": [
+    "4759:19935",
+    "3553:11705",
+    "3552:2",
+    "3553:11541",
+    "3553:11623",
+    "4515:22054",
+    "4515:22051",
+    "4515:22052",
+    "4515:22053",
+    "4515:22055",
+    "4515:23456"
+  ],
+  "propertyMap": {
+    "Type": "published Standard only",
+    "Size": "size（Small-400|Medium-600|Large-800）",
+    "showClose": "closable",
+    "state": "feedback（modal_item/feedback-content：Default|alert|success|error）"
+  },
+  "valueMap": {
+    "Size.Small-400": "size=Small width=400",
+    "Size.Medium-600": "size=Medium width=600",
+    "Size.Large-800": "size=Large width=800",
+    "Type.Standard": "chrome=Standard；Confirm/Destructive/Result 未作为 Type 发布",
+    "state.Default": "feedback=Default",
+    "state.alert": "feedback=Alert",
+    "state.success": "feedback=Success",
+    "state.error": "feedback=Error"
+  },
+  "normalization": {
+    "description.sizes": "Figma 组件说明仍写 400/520/720；画板 Size 是 400/600/800。",
+    "description.types": "说明写四类场景；画板 Modal Type 只有 Standard。场景落在内容插槽。",
+    "oldCss.defaultWidth": "共享 .gj-modal 曾默认 400。Figma 默认 Medium 600。",
+    "sample.formAlign": "画板 Medium 表单样本悬挂右对齐标签、控件栏 left 120、justify-center。MDL-007：实现改为内容左对齐撑满，不复制该居中观感。",
+    "footer.height": "2026-09-09 用户确认：Footer 高度 76px = pt20+按钮32+pb24（右下角、页边距24、距上方内容至少20），替代此前压缩 pt 到 16 凑 72 的实现。",
+    "padding.unify": "2026-09-09 用户确认：Header/Footer/Feedback 水平内边距统一为 20px（不是 24）；Footer 底部内边距保持 24px。"
+  },
+  "tokenMap": {
+    "surface": "Background/Container",
+    "radius": "Radius/Radius-LG",
+    "shadow": "shadow-center",
+    "title.textStyle": "中文/S4-CN-S",
+    "title.color": "Text/Primary",
+    "close.color": "Text/Tertiary",
+    "close.radius": "Radius/Radius-SM",
+    "close.hitSize": "32px（代码侧无障碍热区，非 Figma 真值；用负 margin 让图标视觉位置与 20px 时完全一致，2026-09-10 新增）",
+    "footer.gap": 8,
+    "footer.button": "Button Medium 32 / Interval/space6 水平内边距",
+    "cancel": "Secondary：Background/Container + Border/secondary + Text/Primary",
+    "confirm": "Button/Primary/Bg-default + Text/reversal",
+    "feedback.title.textStyle": "中文/S5-CN-S",
+    "feedback.description.textStyle": "中文/S9-CN-R",
+    "feedback.description.color": "Text/Secondary",
+    "feedback.default.icon": "Feedback/brand",
+    "feedback.alert.icon": "Feedback/warning",
+    "feedback.success.icon": "Feedback/success&decline",
+    "feedback.error.icon": "Feedback/error&rise",
+    "mask": "Background/MK_45（本画板未画 Mask）",
+    "footer.padding": "pt 20 / px 20 / pb 24（2026-09-09 修正，见 normalization）",
+    "header.paddingInline": "20px（统一后的水平内边距基准）",
+    "feedback.paddingInline": "20px（2026-09-09 从 24 修正为与 Header/Footer 一致）"
+  },
+  "assetMap": {
+    "close": "assets/icons/iconfont/icf_system_close.svg",
+    "feedback.default": "assets/icons/iconfont/icf_system_question-fill.svg",
+    "feedback.alert": "assets/icons/iconfont/icf_system_warning-fill.svg",
+    "feedback.success": "assets/icons/iconfont/icf_system_check-circle-fill.svg",
+    "feedback.error": "assets/icons/iconfont/icf_system_close-circle-fill.svg",
+    "colorRule": "使用已登记 iconfont 资源，不手写 SVG。alert 节点 3107:2143 与 Toast info 的 warning-fill 同实例，不是 alert-fill。"
+  },
+  "runtimeMap": {
+    "layer": ".gj-modal-layer",
+    "root": ".gj-modal",
+    "small": ".gj-modal-sm",
+    "large": ".gj-modal-lg",
+    "header": ".gj-modal-header",
+    "title": ".gj-modal-title",
+    "close": ".gj-modal-close",
+    "content": ".gj-modal-content",
+    "body": ".gj-modal-body",
+    "footer": ".gj-modal-footer",
+    "feedback": ".gj-modal-feedback"
+  },
+  "interactionMap": {
+    "open": "焦点进入弹窗并限制在内部",
+    "close": "关闭按钮 / 取消 / Escape；脏数据需先确认",
+    "maskClick": "有编辑内容时不要直接关闭",
+    "contentAlign": "内容区左对齐撑满；不要居中表单或提示语"
+  }
+}

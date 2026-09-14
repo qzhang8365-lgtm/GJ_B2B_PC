@@ -1,0 +1,153 @@
+{
+  "$schema": "gj-design-skill/component-schema/v1",
+  "component": "Switch",
+  "source": {
+    "rulesSection": "Switch 开关",
+    "inventoryPage": "switch",
+    "status": "figma-audited",
+    "figmaAudit": "done-2026-09-08"
+  },
+  "purpose": "控制立即生效的布尔设置。",
+  "figma": {
+    "fileKey": "8b01I1e3TzH1IhYlr3tJzd",
+    "pageNodeId": "2638:2420",
+    "componentSets": [
+      {
+        "nodeId": "3014:1927",
+        "name": "Switch",
+        "variants": 8,
+        "variantNodeIds": [
+          "3014:1926",
+          "3014:1925",
+          "3014:1924",
+          "3014:1922",
+          "3014:1923",
+          "3014:1921",
+          "3014:1920",
+          "3014:1919"
+        ]
+      }
+    ],
+    "rawProperties": {
+      "Size": [
+        "medium",
+        "small"
+      ],
+      "on": [
+        true,
+        false
+      ],
+      "disable": [
+        false,
+        true
+      ]
+    },
+    "visualStateCoverage": [
+      "on",
+      "off",
+      "on-disabled",
+      "off-disabled"
+    ],
+    "missingInteractiveVariants": [
+      "hover",
+      "pressed",
+      "focused"
+    ]
+  },
+  "properties": {
+    "size": [
+      "medium",
+      "small"
+    ],
+    "checked": "boolean",
+    "disabled": "boolean",
+    "label": "string"
+  },
+  "defaults": {
+    "size": "medium",
+    "checked": false,
+    "disabled": false,
+    "provenance": "本地规则默认值；Figma 组件集未提供独立的默认值说明。"
+  },
+  "sizes": {
+    "medium": {
+      "track": [
+        44,
+        24
+      ],
+      "thumb": 20,
+      "figmaThumbX": {
+        "on=true": 22,
+        "on=false": 2
+      }
+    },
+    "small": {
+      "track": [
+        28,
+        16
+      ],
+      "thumb": 12,
+      "figmaThumbX": {
+        "on=true": 14,
+        "on=false": 2
+      }
+    }
+  },
+  "stateBindings": {
+    "on": {
+      "track": "Brand/GJ_Blue",
+      "thumb": "Background/Container",
+      "shadow": "shadow_small"
+    },
+    "off": {
+      "track": "Text/disable",
+      "thumb": "Background/Container",
+      "shadow": "shadow_small"
+    },
+    "on-disabled": {
+      "track": "Brand/GJ_Blue",
+      "thumb": "Background/Container",
+      "shadow": "shadow_small",
+      "visual": "Figma 截图可见整体弱化"
+    },
+    "off-disabled": {
+      "track": "Text/disable",
+      "thumb": "Background/Container",
+      "shadow": "shadow_small",
+      "visual": "Figma 截图可见整体弱化"
+    },
+    "thumbSemanticNote": "2026-09-10 设计确认：thumb 正式语义为 Background/Container（容器白），componentToken 与 Figma 均以此为准；Figma 节点历史上绑定的是 Text/reversal，两者视觉值相同（#FFFFFF），但 Background/Container 语义更准确、主题迁移更安全（SWI-002 已关闭）。建议 Figma 侧后续把节点绑定也同步改为 Background/Container，本地已先行确认，不阻塞。"
+  },
+  "behavior": {
+    "change": "Apply immediately; on failure restore the previous value and explain the error.",
+    "implementationDirection": "checked/on 向右、unchecked/off 向左；2026-09-08 已复查 Figma Medium/Small 启用与禁用共 8 个 variant，方向一致。",
+    "implementationSupplements": "Hover、Pressed、Focus 不在 Figma variant 中；代码可保留原生 focus-visible 和轻微 pressed 反馈，但不得声称为 Figma variant。"
+  },
+  "constraints": [
+    "Do not use for deferred form consent or mutually exclusive choices.",
+    "Disabled cannot toggle；Figma 截图确认弱化，但精确 opacity 未由只读节点响应暴露。",
+    "Irreversible or high-risk actions require confirmation or an explicit action control."
+  ],
+  "verifiedFixes": [
+    {
+      "auditId": "SWI-001",
+      "status": "closed-2026-09-08",
+      "result": "Figma on=true thumb 已移至右侧，on=false 已移至左侧；Medium/Small 与 Disabled 组合全部复查通过。"
+    }
+  ],
+  "pendingExtraction": [],
+  "confirmedDecisions": [
+    {
+      "id": "SWI-003",
+      "date": "2026-09-10",
+      "decision": "Figma Switch 组件集只提供 on/off/disabled（含 Size=medium/small），不补充 Hover/Pressed/Focus variant。设计确认不需要在 Figma 侧补充这些交互态资产，边界由代码侧实现（原生 focus-visible + 轻微 pressed 反馈），不得声称为 Figma variant。",
+      "source": "用户设计确认"
+    },
+    {
+      "id": "SWI-002",
+      "date": "2026-09-10",
+      "decision": "thumb 正式语义确认为 Background/Container，而非 Figma 当前节点绑定的 Text/reversal。两者视觉值相同（#FFFFFF），componentToken 已统一为 Background/Container；建议 Figma 侧后续同步，不阻塞当前实现。",
+      "source": "用户设计确认"
+    }
+  ]
+}

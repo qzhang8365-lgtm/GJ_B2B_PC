@@ -1,0 +1,127 @@
+{
+  "$schema": "gj-design-skill/component-tokens/v1",
+  "component": "Notification",
+  "source": {
+    "figmaNode": "3619:11945",
+    "figmaReadDate": "2026-09-09",
+    "componentSchema": "references/components/notification/schema.json",
+    "componentMapping": "references/components/notification/mapping.json",
+    "confirmedRules": "references/components/notification/rules.md",
+    "implementation": "assets/styles/gj-b2b-components.css#.gj-notification"
+  },
+  "properties": {
+    "status": {
+      "default": "info",
+      "values": ["info", "warning", "error", "success"]
+    },
+    "showIcon": {
+      "default": true,
+      "values": [true, false]
+    },
+    "showDescription": {
+      "default": true,
+      "values": [true, false]
+    },
+    "showButton": {
+      "default": true,
+      "values": [true, false]
+    }
+  },
+  "tokens": {
+    "width": {
+      "value": 384,
+      "unit": "px",
+      "cssVariable": "--ds-component-notification-width"
+    },
+    "radius": {
+      "value": "{Radius/Radius-LG}",
+      "resolved": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-notification-radius"
+    },
+    "padding": {
+      "value": "{Interval/space6}",
+      "resolved": 20,
+      "unit": "px",
+      "cssVariable": "--ds-component-notification-padding"
+    },
+    "stackGap": {
+      "value": "{Interval/space4}",
+      "resolved": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-notification-stack-gap"
+    },
+    "rowGap": {
+      "value": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-notification-row-gap",
+      "note": "生成代码 gap 16px，variable_defs 未返回 Interval 绑定；等价 space5。"
+    },
+    "textGap": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-notification-text-gap"
+    },
+    "icon": {
+      "value": 32,
+      "unit": "px",
+      "cssVariable": "--ds-component-notification-icon"
+    },
+    "close": {
+      "value": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-notification-close"
+    },
+    "background": {
+      "value": "{Background/Container}",
+      "cssVariable": "--ds-component-notification-background"
+    },
+    "shadow": {
+      "value": "{shadow-down}",
+      "cssVariable": "--ds-component-notification-shadow",
+      "note": "NTF-002：实现使用全局 shadow-down，不再跟画板样本 drop-shadow/0.12+0.8+0.5。"
+    },
+    "title.color": {
+      "value": "{Text/Primary}",
+      "cssVariable": "--ds-component-notification-title-color"
+    },
+    "description.color": {
+      "value": "{Text/Secondary}",
+      "cssVariable": "--ds-component-notification-description-color"
+    },
+    "close.color": {
+      "value": "{Text/Primary}",
+      "cssVariable": "--ds-component-notification-close-color"
+    },
+    "info.icon": {
+      "value": "{Text/blue}",
+      "cssVariable": "--ds-component-notification-info-icon"
+    },
+    "warning.icon": {
+      "value": "{Feedback/warning}",
+      "cssVariable": "--ds-component-notification-warning-icon"
+    },
+    "error.icon": {
+      "value": "{Feedback/error&rise}",
+      "cssVariable": "--ds-component-notification-error-icon"
+    },
+    "success.icon": {
+      "value": "{Feedback/success&decline}",
+      "cssVariable": "--ds-component-notification-success-icon"
+    },
+    "action.height": {
+      "value": "{Components/control-M}",
+      "resolved": 32,
+      "unit": "px",
+      "cssVariable": "--ds-component-notification-action-height",
+      "note": "NTF-003：确认按钮使用共享 Button Medium，高度来自 control-M；水平内边距由 Button Medium（12）提供，Notification 不再单独覆盖。"
+    }
+  },
+  "behavior": {
+    "close": "Always visible.",
+    "action": "At most one confirm button; can be hidden.",
+    "placement": "This board does not specify a viewport anchor. Spec-page samples stay in the demo stage."
+  },
+  "openItems": {}
+}

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GJ Design System · 居中弹出框 Popover</title>
+<link rel="stylesheet" href="../../assets/styles/gj-b2b-tokens.css?v=popover-1"><link rel="stylesheet" href="../../assets/styles/gj-b2b-components.css?v=popover-1"><link rel="stylesheet" href="../../assets/styles/data-table.css">
+<style>
+:root{--font:var(--ds-font-family-ui)}*{box-sizing:border-box}html,body{margin:0;min-height:100%}body{color:var(--ds-text-primary);font:14px/1.55 var(--font)}button,input,select{font:inherit;color:inherit}.shell{max-width:var(--docs-page-max-width);margin:auto;padding:var(--docs-page-padding)}.intro{margin:0 4px 30px}.eyebrow{margin-bottom:10px;color:var(--ds-text-blue);font-size:13px;font-weight:600}.intro h1{margin:0 0 8px;font-size:32px;line-height:42px}.intro p{max-width:980px;margin:0;color:var(--ds-text-secondary);font-size:15px;line-height:1.75}.component{padding:24px;border-radius:20px;background:var(--ds-background-container)}.component-heading{display:flex;align-items:center;gap:12px;padding-bottom:16px;border-bottom:1px solid var(--ds-border-default)}.component-heading h1{margin:0;font-size:28px;line-height:32px}.component-heading span{color:var(--ds-text-tertiary);font-size:14px}.component-description{margin:24px 0;color:var(--ds-text-secondary)}.grid{display:grid;grid-template-columns:minmax(0,3fr) minmax(360px,2fr);gap:16px;align-items:start}.column{display:grid;gap:16px;min-width:0}.panel{min-width:0;padding:20px;border:1px solid var(--ds-border-default);border-radius:12px;background:var(--ds-background-container)}.panel-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:16px}.panel-head h2{margin:0;font-size:16px;font-weight:600}.panel-head span{color:var(--ds-text-tertiary);font-size:12px}.variant-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.stage{min-height:480px;display:grid;place-items:center;padding:24px;border:1px dashed var(--ds-border-secondary);border-radius:12px;background:var(--ds-background-background)}.controls{margin-top:18px;padding-top:18px;border-top:1px solid var(--ds-border-default)}.controls h3{margin:0;font-size:16px}.control-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 16px;margin-top:14px}.control{display:grid;gap:7px}.control input,.control select{height:36px;min-width:0;padding:0 10px;border:1px solid var(--ds-border-secondary);border-radius:6px;background:var(--ds-background-container)}.event{margin-top:12px;color:var(--ds-text-tertiary);font-size:12px}.event b{color:var(--ds-text-primary)}.rules{display:grid;gap:10px}.rule{padding:14px 16px;border-radius:10px;background:var(--ds-background-background)}.rule b{display:block;margin-bottom:4px}.rule p{margin:0;color:var(--ds-text-secondary);font-size:13px}.boundary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.boundary-item{padding:16px;border-radius:10px;background:var(--ds-background-background)}.boundary-item b{display:block;margin-bottom:6px}.boundary-item p{margin:0;color:var(--ds-text-secondary);font-size:13px}@media(max-width:1080px){.grid{grid-template-columns:1fr}}@media(max-width:760px){.shell{padding:var(--docs-page-padding-compact)}.component{padding:18px}.variant-list,.control-grid,.boundary{grid-template-columns:1fr}}
+</style>  <script src="../../assets/scripts/font-runtime.js"></script>
+</head><body><main class="shell">
+<header class="intro"><div class="eyebrow">操作反馈类型组件 · Feedback</div><h1>居中弹出框 Popover</h1><p>用于短文本结果反馈与简单确认。该组件无指向箭头，采用居中布局；图形是 48px 填充图标插槽，不是 Status 变体轴。</p></header>
+<section class="component"><header class="component-heading"><h1>Popover</h1><span>popover_basic · button=1 / button=2</span></header><p class="component-description">内容结构固定为“视觉图形＋标题＋说明＋操作区”，不承载复杂表单。单按钮用于确认结果，双按钮用于轻量决策；需要更多字段、步骤或业务组件时应使用 Modal。</p>
+<div class="grid"><section class="column">
+<article class="panel"><div class="panel-head"><h2>操作形式</h2><span>button=1 / button=2</span></div><div class="variant-list" id="variantList"></div></article>
+<article class="panel"><div class="panel-head"><h2>结构与规格</h2><span>固定表格样式</span></div><div class="ds-table-wrap"><table class="ds-table"><thead><tr><th>结构</th><th>规格</th><th>规则</th></tr></thead><tbody><tr><td>容器</td><td>宽 360px；上 40px、左右 24px、下 24px；列间距 20px</td><td>圆角 16px；白色容器；shadow-center</td></tr><tr><td>状态图形</td><td>48 × 48px</td><td>填充图标插槽。样本：成功 check-circle-fill / 权限 safety1-fill</td></tr><tr><td>标题与说明</td><td>标题 20/30·600；说明 14/22·400</td><td>居中对齐；标题与说明间距 16px；文字区域左右内缩 20px</td></tr><tr><td>操作区</td><td>Button Large 40×16；双按钮间距 12px</td><td>单按钮铺满 Primary；双按钮等宽 Tertiary 取消 + 唯一 Primary</td></tr></tbody></table></div></article>
+<article class="panel"><div class="panel-head"><h2>反馈组件边界</h2><span>选择正确的反馈层级</span></div><div class="boundary"><div class="boundary-item"><b>Toast</b><p>短消息、无操作、自动消失。用于即时反馈操作结果。</p></div><div class="boundary-item"><b>Popover</b><p>居中短结果或简单确认；最多两个 Large 按钮，不承载表单。</p></div><div class="boundary-item"><b>Modal</b><p>需要用户决策或承载表单、级联选择等复杂内容时使用。</p></div></div></article>
+<article class="panel"><div class="panel-head"><h2>选用规则</h2><span>Usage rules</span></div><div class="rules"><div class="rule"><b>只处理短结果或简单确认</b><p>正文控制在简短段落内；不放表单、列表、级联选择或多步骤任务。</p></div><div class="rule"><b>视觉图形必须承载语义</b><p>图形应与结果、权限或场景一致，不得仅为装饰而使用高视觉权重资源。</p></div><div class="rule"><b>操作数量最多两个</b><p>单按钮用于完成确认；双按钮仅使用“取消＋主操作”，禁止增加第三个操作。</p></div><div class="rule"><b>与其他反馈组件区分</b><p>无需操作且自动消失用 Toast；非阻断长期通知用 Notification；复杂决策与内容录入用 Modal。</p></div></div></article>
+</section><aside class="column"><article class="panel"><div class="panel-head"><h2>交互属性</h2><span>居中布局 · 非锚定</span></div><div class="stage"><div id="preview"></div></div><div class="controls"><h3>属性控制</h3><div class="control-grid"><label class="control">按钮数量<select id="buttons"><option value="1">button=1 单主按钮</option><option value="2">button=2 取消＋主操作</option></select></label><label class="control">标题<input id="titleInput" value="任务创建成功"></label><label class="control">说明<input id="descriptionInput" value="任务已进入处理队列，可前往任务中心查看进度。"></label></div><div class="event">最近事件：<b id="event">尚未操作</b></div></div></article></aside></div></section></main>
+<script>
+const iconUrl=name=>`../../assets/icons/iconfont/${name}`;
+const meta={
+  1:{label:'单主按钮',title:'任务创建成功',description:'任务已进入处理队列，可前往任务中心查看进度。',icon:'icf_system_check-circle-fill.svg',tone:'',iconLabel:'成功'},
+  2:{label:'取消＋主操作',title:'申请开通权限',description:'开通后可使用相关业务功能，是否继续提交申请？',icon:'icf_system_safety1-fill.svg',tone:' gj-popover-brand',iconLabel:'权限安全'}
+};
+function popoverMarkup(button,opts={}){
+  const item=meta[button];
+  const cancel=button==='2'?'<button class="gj-btn gj-btn-large" type="button" data-action="cancel">取消</button>':'';
+  return `<section class="gj-popover${item.tone}"><span class="gj-popover-icon" style="--gj-icon:url('${iconUrl(item.icon)}')" role="img" aria-label="${item.iconLabel}"></span><div class="gj-popover-copy"><strong class="gj-popover-title"></strong><p class="gj-popover-desc"></p></div><div class="gj-popover-actions">${cancel}<button class="gj-btn gj-btn-primary gj-btn-large" type="button" data-action="confirm">确认</button></div></section>`;
+}
+const variantList=document.getElementById('variantList');
+Object.entries(meta).forEach(([button,item])=>{
+  const wrap=document.createElement('div');
+  wrap.className='variant';
+  wrap.innerHTML=`<h3>${item.label}</h3>${popoverMarkup(button)}`;
+  wrap.querySelector('.gj-popover-title').textContent=item.title;
+  wrap.querySelector('.gj-popover-desc').textContent=item.description;
+  wrap.querySelector('[data-action="cancel"]')?.addEventListener('click',()=>{});
+  wrap.querySelector('[data-action="confirm"]').onclick=()=>{};
+  variantList.append(wrap);
+});
+const preview=document.getElementById('preview'),buttons=document.getElementById('buttons'),titleInput=document.getElementById('titleInput'),descriptionInput=document.getElementById('descriptionInput'),eventEl=document.getElementById('event');
+function render(){
+  const button=buttons.value;
+  preview.innerHTML=popoverMarkup(button);
+  preview.querySelector('.gj-popover-title').textContent=titleInput.value||meta[button].title;
+  preview.querySelector('.gj-popover-desc').textContent=descriptionInput.value;
+  preview.querySelector('[data-action="cancel"]')?.addEventListener('click',()=>eventEl.textContent='已取消');
+  preview.querySelector('[data-action="confirm"]').onclick=()=>eventEl.textContent='已确认';
+}
+buttons.onchange=()=>{const item=meta[buttons.value];titleInput.value=item.title;descriptionInput.value=item.description;render()};
+[titleInput,descriptionInput].forEach(el=>el.oninput=render);
+render();
+</script></body></html>

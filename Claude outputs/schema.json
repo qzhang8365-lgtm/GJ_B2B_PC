@@ -1,0 +1,48 @@
+{
+  "$schema": "gj-design-skill/component-schema/v1",
+  "component": "InputNumber",
+  "source": {
+    "designSystemRules": "references/design-system-rules.md#input-number-数字输入（约第 1070–1076 行）",
+    "figma": null,
+    "note": "本轮未收到 Figma 链接或节点 ID，未调用 get_design_context 做逐 variant 核实。契约完全基于 design-system-rules.md 原文，以及本仓库已确认的 Radius 语义 Token（dimensions.json）与 Input 组件已核实的真实 Figma token 绑定（references/components/input.json）推导，属 rules-derived，不是 figma-audited。若需升级为 figma-audited，需要用户提供 Input-Number 页面的 Figma 链接。"
+  },
+  "definition": "用于数量、金额、比例等可计算数值的输入控件；账号、证件号等数字字符串仍使用普通 Input，不使用本组件。",
+  "properties": {
+    "mode": {
+      "values": ["basic", "stepper", "unit", "rightStep", "slider", "rangeSlider"],
+      "note": "对应规则原文六种模式：基础输入 / 左右加减 / 固定单位或币种 / 右侧步进 / 单值 Slider / Range Slider。design-system-rules.md 未指明默认模式，不臆造 default。"
+    },
+    "size": {
+      "values": ["Small", "Medium", "Large"],
+      "note": "design-system-rules.md 未指明默认尺寸；Medium 作为推荐默认值仅是与 Input/Button 等同尺寸体系的惯例推断，不是已核实事实，见 audit.md。"
+    },
+    "min": { "type": "number", "required": true },
+    "max": { "type": "number", "required": true },
+    "step": { "type": "number", "required": true },
+    "value": {
+      "type": "number | [number, number]",
+      "note": "mode=rangeSlider 时为二元数组 [start, end]，其余模式为单一数值"
+    },
+    "unit": {
+      "type": "string",
+      "appliesTo": ["unit"],
+      "note": "固定展示的单位或币种，不要求用户重复输入"
+    },
+    "disabled": { "type": "boolean", "default": false },
+    "disabledReason": { "type": "string", "note": "disabled=true 且必要时应说明原因，不能只置灰" },
+    "status": { "values": ["default", "error"], "default": "default" }
+  },
+  "sizes": {
+    "Small": { "width": 100, "height": 24, "radius": 4, "radiusToken": "{Radius/Radius-XS}" },
+    "Medium": { "width": 112, "height": 32, "radius": 6, "radiusToken": "{Radius/Radius-SM}" },
+    "Large": { "width": 133, "height": 40, "radius": 8, "radiusToken": "{Radius/Radius-MD}" }
+  },
+  "constraints": [
+    "min/max/step 必须定义；越界、空值和非法格式必须及时反馈，不允许静默丢弃",
+    "到达 min 或 max 边界时，对应方向的加/减/步进控件必须禁用，不可继续操作",
+    "mode=rangeSlider 两端不得交叉产生非法区间",
+    "mode=slider 或 rangeSlider 用于快速调整；需要精确确认数值时必须显示 Tooltip",
+    "disabled 必要时需说明原因",
+    "输入值使用当前 UI 字体（--ds-font-family-ui），并遵守千分位与小数精度规则——design-system-rules.md 未给出具体分隔符或小数位数，实现时需按业务明确，本文件不臆造具体数值"
+  ]
+}

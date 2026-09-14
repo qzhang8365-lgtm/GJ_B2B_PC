@@ -1,0 +1,330 @@
+{
+  "$schema": "gj-design-skill/component-tokens/v1",
+  "component": "Chart",
+  "source": {
+    "componentSchema": "references/components/chart/schema.json",
+    "componentMapping": "references/components/chart/mapping.json",
+    "confirmedRules": "references/components/chart/rules.md",
+    "implementation": "assets/styles/gj-b2b-components.css#.gj-chart",
+    "note": "2026-09-08 按 rules + 已验收预览建立，非 Figma 逐 variant 绑定。系列色使用全局 Chart/CH01–CH10，不复制组件变量。",
+    "layoutRulesAddedAt": "2026-09-10：新增整体比例与轴线搭配规则（CHA-003），未参考 Figma 复合组件，纯 local-contract 设计推导。"
+  },
+  "properties": {
+    "type": {
+      "default": "line",
+      "values": [
+        "line",
+        "curve",
+        "bar",
+        "pie",
+        "donut",
+        "percentage",
+        "radar",
+        "gauge",
+        "progress",
+        "progress-ring",
+        "word-cloud"
+      ]
+    },
+    "legend": {
+      "default": "Line",
+      "values": [
+        "Line",
+        "Block",
+        "Dot",
+        "Dot+Line"
+      ]
+    },
+    "legendDirection": {
+      "default": "Horizontal",
+      "values": [
+        "Horizontal",
+        "Vertical"
+      ]
+    }
+  },
+  "tokens": {
+    "axis.text": {
+      "value": "{Text/Tertiary}",
+      "resolved": "#8D96A3",
+      "cssVariable": "--ds-component-chart-axis-text"
+    },
+    "axis.textStyle": {
+      "value": "{中文/S9-CN-R}",
+      "cssClass": "gj-type-cn-s9"
+    },
+    "axis.line": {
+      "value": "{Border/default}",
+      "resolved": "#EBEEF2",
+      "cssVariable": "--ds-component-chart-axis-line"
+    },
+    "axis.thickness": {
+      "value": 1,
+      "unit": "px",
+      "cssVariable": "--ds-component-chart-axis-thickness"
+    },
+    "legend.gap.horizontal": {
+      "value": "{Interval/space5}",
+      "resolved": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-chart-legend-gap-horizontal",
+      "note": "CHA-002 已关闭：2026-09-08 设计确认横向 16px，不再用旧规则 12px。"
+    },
+    "legend.gap.vertical": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-chart-legend-gap-vertical"
+    },
+    "legend.item.gap": {
+      "value": "{Interval/space2}",
+      "resolved": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-chart-legend-item-gap"
+    },
+    "legend.marker.dot": {
+      "value": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-chart-legend-marker-dot"
+    },
+    "legend.marker.block": {
+      "value": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-chart-legend-marker-block"
+    },
+    "legend.marker.lineWidth": {
+      "value": "{Interval/space5}",
+      "resolved": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-chart-legend-marker-line-width"
+    },
+    "title.iconSize": {
+      "value": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-chart-title-icon-size"
+    },
+    "dataLabel.minSize": {
+      "value": 14,
+      "unit": "px",
+      "cssVariable": "--ds-component-chart-data-label-min-size"
+    },
+    "dataLabel.color": {
+      "value": "{Text/Secondary}",
+      "resolved": "#475467",
+      "cssVariable": "--ds-component-chart-data-label-color"
+    },
+    "bar.thickness.min": {
+      "value": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-chart-bar-thickness-min"
+    },
+    "bar.thickness.max": {
+      "value": 40,
+      "unit": "px",
+      "cssVariable": "--ds-component-chart-bar-thickness-max"
+    },
+    "bar.grouped.gap": {
+      "value": "{Interval/space2}",
+      "resolved": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-chart-bar-grouped-gap"
+    },
+    "bar.radius.single": {
+      "value": "{Radius/Radius-XS}",
+      "resolved": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-chart-bar-radius-single"
+    },
+    "bar.radius.grouped": {
+      "value": 2,
+      "unit": "px",
+      "cssVariable": "--ds-component-chart-bar-radius-grouped",
+      "note": "库内无 2px 圆角变量；Grouped/Stacked 与堆叠分段间距均为字面 2px。"
+    },
+    "bar.stacked.segmentGap": {
+      "value": 2,
+      "unit": "px",
+      "cssVariable": "--ds-component-chart-bar-stacked-segment-gap"
+    },
+    "donut.cornerRadius.max": {
+      "value": "{Radius/Radius-XS}",
+      "resolved": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-chart-donut-corner-max"
+    },
+    "percentage.segmentGap": {
+      "value": 2,
+      "unit": "px",
+      "cssVariable": "--ds-component-chart-percentage-segment-gap"
+    },
+    "percentage.radius": {
+      "value": "{Radius/Radius-XS}",
+      "resolved": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-chart-percentage-radius"
+    },
+    "gauge.track": {
+      "value": "{Background/Secondary}",
+      "resolved": "#EBEEF2",
+      "cssVariable": "--ds-component-chart-gauge-track"
+    },
+    "gauge.value": {
+      "value": "{Chart/CH01}",
+      "resolved": "#2B73FF",
+      "cssVariable": "--ds-component-chart-gauge-value"
+    },
+    "gauge.core.textStyle": {
+      "value": "{数字/S1-NUM-S}",
+      "cssClass": "gj-type-num-s1"
+    },
+    "progress.track.height": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-chart-progress-track-height"
+    },
+    "progress.bar.height": {
+      "value": "{Interval/space5}",
+      "resolved": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-chart-progress-bar-height"
+    },
+    "progress.track": {
+      "value": "{Background/Secondary}",
+      "resolved": "#EBEEF2",
+      "cssVariable": "--ds-component-chart-progress-track"
+    },
+    "tooltip.rise": {
+      "value": "{Feedback/error&rise}",
+      "resolved": "#F93838",
+      "cssVariable": "--ds-component-chart-tooltip-rise"
+    },
+    "tooltip.fall": {
+      "value": "{Feedback/success&decline}",
+      "resolved": "#12B76A",
+      "cssVariable": "--ds-component-chart-tooltip-fall"
+    },
+    "tooltip.flat": {
+      "value": "{Feedback/plain}",
+      "resolved": "#667085",
+      "cssVariable": "--ds-component-chart-tooltip-flat"
+    },
+    "layout.axis.yLabelGap": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-chart-layout-y-label-gap",
+      "note": "Y 轴标签右边缘到绘图区/轴线的间距；预留总宽度 = 实测标签宽度 + 本间距，不使用固定像素。"
+    },
+    "layout.axis.yLabelMinWidth": {
+      "value": 32,
+      "unit": "px",
+      "cssVariable": "--ds-component-chart-layout-y-label-min-width",
+      "note": "Y 轴预留宽度下限，应对极短标签（个位数、百分比）。"
+    },
+    "layout.axis.xLabelGap": {
+      "value": "{Interval/space2}",
+      "resolved": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-chart-layout-x-label-gap",
+      "note": "X 轴线到刻度标签的间距；标签默认单行，不换行。"
+    },
+    "layout.plot.paddingTop": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-chart-layout-plot-padding-top",
+      "note": "绘图区顶部内边距；开启 Data Label 时需再加约 22px（14/22 标签行高）避免顶部数值被裁切。"
+    },
+    "layout.plot.paddingRight": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-chart-layout-plot-padding-right",
+      "note": "绘图区右侧内边距，保证末端数据点/端点圆点（>=8px）不贴边。"
+    },
+    "layout.title.gapToPlot": {
+      "value": "{Interval/space5}",
+      "resolved": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-chart-layout-title-gap"
+    },
+    "layout.legend.gapToPlot.bottom": {
+      "value": "{Interval/space4}",
+      "resolved": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-chart-layout-legend-gap-bottom",
+      "note": "图例在绘图区下方时的间距。"
+    },
+    "layout.legend.gapToPlot.side": {
+      "value": "{Interval/space6}",
+      "resolved": 20,
+      "unit": "px",
+      "cssVariable": "--ds-component-chart-layout-legend-gap-side",
+      "note": "图例在绘图区右侧时的横向间距（饼/环常见布局）。"
+    },
+    "layout.grid.targetLines": {
+      "value": 3,
+      "cssVariable": "--ds-component-chart-layout-grid-target-lines",
+      "note": "默认非零虚线参考线数量（另加 1 条零刻度实线基线，共 4 条）；按数值整洁分档，不超过 5 条。"
+    },
+    "layout.bar.categoryGap.default": {
+      "value": "{Interval/space5}",
+      "resolved": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-chart-layout-category-gap-default"
+    },
+    "layout.bar.categoryGap.min": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-chart-layout-category-gap-min",
+      "note": "类目间距下限；低于此值仍无法让柱宽达到 12px 时，改横向布局或启用横向滚动，不再压缩。"
+    },
+    "layout.height.compact": {
+      "value": 200,
+      "unit": "px",
+      "cssVariable": "--ds-component-chart-layout-height-compact",
+      "note": "列表内嵌趋势图等紧凑场景。"
+    },
+    "layout.height.standard": {
+      "value": 300,
+      "unit": "px",
+      "cssVariable": "--ds-component-chart-layout-height-standard",
+      "note": "默认标准高度，与既有规范页演示一致。"
+    },
+    "layout.height.large": {
+      "value": 400,
+      "unit": "px",
+      "cssVariable": "--ds-component-chart-layout-height-large",
+      "note": "详情分析视图。"
+    },
+    "layout.plot.minHeight": {
+      "value": 120,
+      "unit": "px",
+      "cssVariable": "--ds-component-chart-layout-plot-min-height",
+      "note": "矩形绘图区最小可用高度（不含标题/图例/轴线带）；低于此值改用 Sparkline 或数值卡片。"
+    },
+    "layout.circular.aspect": {
+      "value": "1:1",
+      "note": "饼/环/仪表/环状进度固定 1:1 宽高比，不套用矩形图表高度预设。"
+    },
+    "layout.circular.sizeDefault": {
+      "value": 200,
+      "unit": "px",
+      "cssVariable": "--ds-component-chart-layout-circular-size-default"
+    },
+    "layout.circular.sizeMin": {
+      "value": 120,
+      "unit": "px",
+      "cssVariable": "--ds-component-chart-layout-circular-size-min"
+    }
+  },
+  "behavior": {
+    "series": "按出现顺序使用全局 Chart/CH01–CH10 与 --ds-chart-ch01–10；不在组件层再复制一套色。",
+    "legend": "默认横向 16px；饼/环右侧或空间不足时纵向 8px。",
+    "numericFont": "仅 Gauge / Progress / Progress Ring 核心值使用 GJType；轴、标签、普通图表数字使用 UI 字体。",
+    "indicator": "默认不铺满数据圆点；Hover 临时出现，Selected 持续。",
+    "layout": "轴线预留宽高按内容实测，不固定像素；柱宽/类目间距按公式计算，详见 rules.md「整体比例与轴线搭配」。响应式收缩顺序：图例收纳到下方 → 类目间距压缩到 8px 下限 → 减少可见刻度密度 → 柱状图横向滚动或切横向布局。"
+  }
+}

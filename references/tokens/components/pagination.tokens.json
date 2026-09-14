@@ -1,0 +1,178 @@
+{
+  "$schema": "gj-design-skill/component-tokens/v1",
+  "component": "Pagination",
+  "source": {
+    "figmaNode": "2402:14",
+    "figmaNodes": ["2889:3460", "2889:3459", "2889:3458", "2889:3457", "2889:3472", "2889:3580", "2889:3575", "2889:3579", "2889:3573", "2889:3755", "2889:3754", "2889:3753", "2889:3752", "4176:18061"],
+    "figmaReadDate": "2026-09-09",
+    "componentSchema": "references/components/pagination/schema.json",
+    "componentMapping": "references/components/pagination/mapping.json",
+    "confirmedRules": "references/components/pagination/rules.md",
+    "implementation": "assets/styles/gj-b2b-components.css#.gj-pagination"
+  },
+  "properties": {
+    "size": {
+      "default": "default",
+      "values": ["default", "mini"]
+    },
+    "type": {
+      "default": "default",
+      "values": ["default", "mini", "full"],
+      "note": "Figma type=type4 映射为 full。"
+    },
+    "showJump": {
+      "default": false,
+      "values": [false, true]
+    }
+  },
+  "tokens": {
+    "item.size.default": {
+      "value": 32,
+      "unit": "px",
+      "cssVariable": "--ds-component-pagination-item-size-default",
+      "note": "字面 32，未读到 Components/control-M。"
+    },
+    "item.size.mini": {
+      "value": 24,
+      "unit": "px",
+      "cssVariable": "--ds-component-pagination-item-size-mini"
+    },
+    "item.radius": {
+      "value": 6,
+      "unit": "px",
+      "cssVariable": "--ds-component-pagination-item-radius",
+      "note": "字面 6，与 Radius-SM 同值，未读到变量绑定。"
+    },
+    "item.gap": {
+      "value": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-pagination-item-gap",
+      "note": "default/mini 组合与 type4 组内 gap-[4px]。"
+    },
+    "full.gap": {
+      "value": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-pagination-full-gap",
+      "note": "type4 总数与页码组外层 gap-[8px]。"
+    },
+    "arrow.icon.default": {
+      "value": 20,
+      "unit": "px",
+      "cssVariable": "--ds-component-pagination-arrow-icon-default"
+    },
+    "arrow.icon.mini": {
+      "value": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-pagination-arrow-icon-mini"
+    },
+    "arrow.padding.default": {
+      "value": 6,
+      "unit": "px",
+      "cssVariable": "--ds-component-pagination-arrow-padding-default"
+    },
+    "jump.input.width": {
+      "value": 48,
+      "unit": "px",
+      "cssVariable": "--ds-component-pagination-jump-input-width"
+    },
+    "jump.input.height": {
+      "value": 26,
+      "unit": "px",
+      "cssVariable": "--ds-component-pagination-jump-input-height"
+    },
+    "jump.input.radius": {
+      "value": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-pagination-jump-input-radius"
+    },
+    "jump.gap": {
+      "value": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-pagination-jump-gap"
+    },
+    "jump.input.background": {
+      "value": "{Background/Container}",
+      "cssVariable": "--ds-component-pagination-jump-input-background"
+    },
+    "jump.input.border": {
+      "value": "{Border/default}",
+      "cssVariable": "--ds-component-pagination-jump-input-border"
+    },
+    "jump.label": {
+      "value": "{Text/Primary}",
+      "cssVariable": "--ds-component-pagination-jump-label"
+    },
+    "number.default.text": {
+      "value": "{Text/Primary}",
+      "resolved": "#101828",
+      "cssVariable": "--ds-component-pagination-number-default-text"
+    },
+    "number.hover.text": {
+      "value": "{Text/blue}",
+      "resolved": "#2B73FF",
+      "cssVariable": "--ds-component-pagination-number-hover-text",
+      "note": "数字 Hover 无背景。节点 2889:3458。"
+    },
+    "number.selected.background": {
+      "value": "{Background/Selected}",
+      "resolved": "#E5F0FF",
+      "cssVariable": "--ds-component-pagination-number-selected-background"
+    },
+    "number.selected.text": {
+      "value": "{Text/blue}",
+      "resolved": "#2B73FF",
+      "cssVariable": "--ds-component-pagination-number-selected-text"
+    },
+    "number.disabled.text": {
+      "value": "{Text/disable}",
+      "resolved": "#B8C0CC",
+      "cssVariable": "--ds-component-pagination-number-disabled-text"
+    },
+    "arrow.default.text": {
+      "value": "{Text/Tertiary}",
+      "resolved": "#8D96A3",
+      "cssVariable": "--ds-component-pagination-arrow-default-text"
+    },
+    "arrow.hover.background": {
+      "value": "{Background/Hover_2}",
+      "resolved": "#00000008",
+      "cssVariable": "--ds-component-pagination-arrow-hover-background",
+      "note": "只用于箭头 Hover，不用于数字。"
+    },
+    "arrow.hover.text": {
+      "value": "{Text/Tertiary}",
+      "resolved": "#8D96A3",
+      "cssVariable": "--ds-component-pagination-arrow-hover-text"
+    },
+    "arrow.disabled.text": {
+      "value": "{Text/Tertiary}",
+      "resolved": "#8D96A3",
+      "cssVariable": "--ds-component-pagination-arrow-disabled-text"
+    },
+    "ellipsis.color": {
+      "value": "{Text/disable}",
+      "resolved": "#B8C0CC",
+      "cssVariable": "--ds-component-pagination-ellipsis-color",
+      "note": "type4 省略图标 2889:3679。"
+    },
+    "total.text": {
+      "value": "{Text/Primary}",
+      "cssVariable": "--ds-component-pagination-total-text"
+    },
+    "textStyle": {
+      "value": "{中文/S8-CN-R}",
+      "cssClass": "gj-type-cn-s8"
+    },
+    "selectedTextStyle": {
+      "value": "{中文/S5-CN-S}",
+      "cssClass": "gj-type-cn-s5"
+    }
+  },
+  "behavior": {
+    "boundaries": "首页禁用上一页，末页禁用下一页。箭头禁用为 Tertiary + 40% 透明。",
+    "longRange": "保留首、尾、当前及邻近页码；省略 icf_system_more，不可点击。",
+    "fastNavigation": "双箭头只在 arrow 母版；组合默认不含。默认跳 5 页，产品可显式配置。",
+    "jumpValidation": "仅接受有效页码范围内的整数。",
+    "hover": "数字 Hover 只改 Text/blue；箭头 Hover 用 Hover_2，图标保持 Tertiary。"
+  }
+}

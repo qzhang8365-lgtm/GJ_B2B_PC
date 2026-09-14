@@ -1,0 +1,123 @@
+{
+  "$schema": "gj-design-skill/component-tokens/v1",
+  "component": "GridNav",
+  "source": {
+    "figmaNode": "2638:1000",
+    "figmaNodes": ["2938:3783", "2938:3782", "2942:539", "3372:4331", "2942:532", "2942:531", "2943:2411", "2942:603", "2943:2443"],
+    "figmaReadDate": "2026-09-09",
+    "componentSchema": "references/components/grid-nav/schema.json",
+    "componentMapping": "references/components/grid-nav/mapping.json",
+    "confirmedRules": "references/components/grid-nav/rules.md",
+    "implementation": "assets/styles/gj-b2b-components.css#.gj-gridnav"
+  },
+  "properties": {
+    "grid": {
+      "default": "4*1",
+      "values": ["4*1", "5*1", "4*2", "5*2"]
+    },
+    "item.badge": {
+      "default": "none",
+      "values": ["none", "dot", "number"],
+      "figmaValues": {
+        "none": "badge=false, number_badge=false",
+        "dot": "badge=true, number_badge=false",
+        "number": "badge=true, number_badge=true"
+      },
+      "note": "2026-09-09：Figma 带 badge 的 GridNav-item 仅设计师侧示意。代码组合 Badge 组件及其位置规则，本文件不收录徽标直径/高度。"
+    }
+  },
+  "tokens": {
+    "item.width": {
+      "value": 68,
+      "unit": "px",
+      "cssVariable": "--ds-component-grid-nav-item-width",
+      "note": "母版 hug 宽。无 Components/* 对应档。"
+    },
+    "item.height": {
+      "value": 70,
+      "unit": "px",
+      "cssVariable": "--ds-component-grid-nav-item-height",
+      "note": "4+36+8+18+4 的 hug 结果，不是独立高度变量。"
+    },
+    "item.paddingBlock": {
+      "value": "{Interval/space2}",
+      "resolved": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-grid-nav-item-padding-block"
+    },
+    "icon.size": {
+      "value": 36,
+      "unit": "px",
+      "cssVariable": "--ds-component-grid-nav-icon-size"
+    },
+    "icon.radius": {
+      "value": "{Radius/Radius-MD}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-grid-nav-icon-radius",
+      "note": "2026-09-09 复查：Placeholder 已绑定 Radius/Radius-MD。"
+    },
+    "icon.background": {
+      "value": "{Background/Secondary}",
+      "cssVariable": "--ds-component-grid-nav-icon-background",
+      "note": "2026-09-09 用户确认旧 背景色/* 改绑 Background/Secondary。Placeholder 子树仍可见 Background/Container，可见槽填充以 Secondary 为准。"
+    },
+    "item.hover.background": {
+      "value": "{Background/Hover}",
+      "cssVariable": "--ds-component-grid-nav-item-hover-background",
+      "note": "2026-09-09 确认：Figma 不发布 Hover variant；代码 Hover 使用 Background/Hover。"
+    },
+    "iconTitle.gap": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-grid-nav-icon-title-gap"
+    },
+    "column.gap": {
+      "value": "{Interval/space4}",
+      "resolved": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-grid-nav-column-gap",
+      "note": "母版 4 列 308、5 列 388。说明实例 2976:765 被挤成 8px 间距，不用。"
+    },
+    "row.gap": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-grid-nav-row-gap"
+    },
+    "grid.4.width": {
+      "value": 308,
+      "unit": "px",
+      "cssVariable": "--ds-component-grid-nav-grid-4-width",
+      "note": "4×68+3×12 hug 宽，不是强制 min-width。"
+    },
+    "grid.5.width": {
+      "value": 388,
+      "unit": "px",
+      "cssVariable": "--ds-component-grid-nav-grid-5-width",
+      "note": "5×68+4×12 hug 宽，不是强制 min-width。"
+    },
+    "label.color": {
+      "value": "{Text/Secondary}",
+      "cssVariable": "--ds-component-grid-nav-label-color"
+    },
+    "label.textStyle": {
+      "value": "{中文/S9-CN-R}",
+      "cssClass": "gj-type-cn-s9"
+    }
+  },
+  "composition": {
+    "item": "GridNav-item",
+    "iconSlot": "Placeholder/placeholder 36×36，业务替换为已维护图标资产",
+    "badge": "Figma 带 badge 的 GridNav-item 仅设计师示意。代码组合 Badge 组件，位置按 Badge 规则锚在图标槽右上角，不复制徽标尺寸。",
+    "tooltip": "标题省略时 Hover / 键盘聚焦显示完整名称"
+  },
+  "behavior": {
+    "clickTarget": "整项可点，不要求精确点图标或文字。",
+    "overflow": "项数不超过当前 grid 容量；超过则分类 + Tabs，不无限加行。",
+    "truncatedTitle": "单行省略；完整名称走 Tooltip。",
+    "hover": "Figma 不发布状态轴。代码 Hover 使用 Background/Hover，不移动图标。",
+    "disabled": "Figma 不发布 Disabled 轴。若入口必须占位，整项 opacity 50% 且不可点。"
+  }
+}

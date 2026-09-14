@@ -1,0 +1,159 @@
+{
+  "$schema": "gj-design-skill/component-tokens/v1",
+  "component": "Drawer",
+  "source": {
+    "componentSchema": "references/components/drawer/schema.json",
+    "componentMapping": "references/components/drawer/mapping.json",
+    "confirmedRules": "references/components/drawer/rules.md",
+    "implementation": "preview/drawer/index.html + assets/styles/gj-b2b-components.css 的 .gj-drawer* 共享基座（2026-09-09 提炼完成，见 audit.md）",
+    "note": "2026-09-09 按 rules + 用户确认「规范页实现标准」建立，非本轮逐 variant Figma 绑定核实（local-contract，与 Chart/Icon 处理方式一致）。 2026-09-09：共享 CSS 基座已提炼完成，DRW-001 关闭。 2026-09-10：修复 gj-b2b-tokens.css 中因损坏同步产生的多处无效声明（header 内边距/间距、shadow、motion-duration、scrim-motion-duration 均曾失效），详见 audit.md。"
+  },
+  "properties": {
+    "size": {
+      "default": "Medium",
+      "values": [
+        "Small",
+        "Medium",
+        "Large"
+      ]
+    },
+    "footer": {
+      "default": true,
+      "values": [
+        true,
+        false
+      ]
+    },
+    "closable": {
+      "default": true,
+      "values": [
+        true,
+        false
+      ]
+    },
+    "maskClosable": {
+      "default": false,
+      "values": [
+        true,
+        false
+      ]
+    },
+    "dirty": {
+      "default": false,
+      "values": [
+        true,
+        false
+      ]
+    }
+  },
+  "tokens": {
+    "size.small.width": {
+      "value": 400,
+      "unit": "px",
+      "cssVariable": "--gj-drawer-width（运行时 JS 行内设置；CSS 级默认兜底见 --ds-component-drawer-width）"
+    },
+    "size.medium.width": {
+      "value": 600,
+      "unit": "px",
+      "cssVariable": "--gj-drawer-width（运行时 JS 行内设置，等于 --ds-component-drawer-width 默认值 600px）"
+    },
+    "size.large.width": {
+      "value": 800,
+      "unit": "px",
+      "cssVariable": "--gj-drawer-width（运行时 JS 行内设置）"
+    },
+    "header.height": {
+      "value": 64,
+      "unit": "px",
+      "cssVariable": "--ds-component-drawer-header-height"
+    },
+    "header.textStyle": {
+      "value": "16/24、600",
+      "cssClass": "gj-type-cn-s6-strong",
+      "note": "预览页 .drawer-title 实测：16px/24px、font-weight 600。"
+    },
+    "header.border": {
+      "value": "{Border/default}",
+      "resolved": "#ebeef2",
+      "cssVariable": "直接引用 var(--ds-border-default)，未建立组件专属别名"
+    },
+    "content.padding": {
+      "value": 20,
+      "unit": "px",
+      "cssVariable": "--ds-component-drawer-content-padding"
+    },
+    "footer.padding": {
+      "value": 20,
+      "unit": "px",
+      "cssVariable": "--ds-component-drawer-footer-padding"
+    },
+    "footer.buttonHeight": {
+      "value": 40,
+      "unit": "px",
+      "cssVariable": "不适用——Footer 内按钮尺寸由放入的 Button 组件自身决定"
+    },
+    "footer.buttonGap": {
+      "value": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-drawer-footer-gap"
+    },
+    "close.size": {
+      "value": 24,
+      "unit": "px",
+      "cssVariable": "--ds-component-drawer-close-size"
+    },
+    "close.icon": {
+      "value": "icf_system_close-md",
+      "cssVariable": "直接写死在 .gj-drawer-close::after 的 mask-image 里，非可替换变量"
+    },
+    "close.color.default": {
+      "value": "{Text/Tertiary}",
+      "resolved": "#8d96a3",
+      "cssVariable": "--ds-component-drawer-close-color"
+    },
+    "close.color.hover": {
+      "value": "{Text/Primary}",
+      "resolved": "#101828",
+      "cssVariable": "--ds-component-drawer-close-hover-color"
+    },
+    "mask.background": {
+      "value": "{Background/MK_45}",
+      "cssVariable": "--ds-component-drawer-scrim-background",
+      "note": "预览页 .scrim 实测绑定。"
+    },
+    "drawer.shadow": {
+      "value": "-8px 0 24px {Background/MK_20}",
+      "cssVariable": "--ds-component-drawer-shadow",
+      "note": "预览页 .demo-drawer 实测绑定；投影方向朝左（抽屉从右侧进入）。"
+    },
+    "motion.duration": {
+      "value": 260,
+      "unit": "ms",
+      "cssVariable": "--ds-component-drawer-motion-duration",
+      "note": "rules.md 建议区间 240–300ms；预览页实测 260ms 落在区间内。"
+    },
+    "motion.easing": {
+      "value": "cubic-bezier(.2,0,0,1)",
+      "cssVariable": "未建立变量，直接写死在 .gj-drawer 的 transition 里",
+      "note": "预览页实测缓动曲线，近似 ease-out。"
+    },
+    "motion.scrimDuration": {
+      "value": 220,
+      "unit": "ms",
+      "cssVariable": "--ds-component-drawer-scrim-motion-duration",
+      "note": "蒙层淡入淡出使用独立时长，与面板 260ms 本就不同，未强行统一。"
+    },
+    "header.padding": {
+      "value": "0 20px",
+      "cssVariable": "--ds-component-drawer-header-padding",
+      "note": "2026-09-10 新增：此前 gj-b2b-tokens.css 中该 token 缺失（被一次损坏的同步误写成说明文字当作变量名），导致标题栏左右内边距丢失为 0；已修复并补齐 token，横向对齐 content/footer 的 20px。"
+    },
+    "header.gap": {
+      "value": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-drawer-header-gap",
+      "note": "2026-09-10 新增：标题与关闭按钮之间的间距，同一次修复中补齐（原缺失，取值 var(--ds-space-4)）。"
+    }
+  },
+  "openItems": {}
+}

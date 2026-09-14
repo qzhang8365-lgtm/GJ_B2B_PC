@@ -1,0 +1,78 @@
+{
+  "$schema": "gj-design-skill/component-mapping/v1",
+  "figmaComponent": "Notification",
+  "codeComponent": "GjNotification",
+  "sourceNodes": [
+    "3619:11945",
+    "3610:9",
+    "3619:150",
+    "3619:160",
+    "3619:170"
+  ],
+  "propertyMap": {
+    "Status": "status（Info|Warning|Error|Success）",
+    "showIcon": "showIcon",
+    "showDescription": "showDescription",
+    "showButton": "showButton"
+  },
+  "valueMap": {
+    "Status.Info": "status=Info",
+    "Status.Warning": "status=Warning",
+    "Status.Error": "status=Error",
+    "Status.Success": "status=Success"
+  },
+  "normalization": {
+    "oldRules.gap": "旧 rules 把 12px 写成统一间距。画板是列 gap 12（卡片内边距与操作行之间）+ 主行 gap 16（图标/文案/关闭）。",
+    "oldRules.infoColor": "旧规则写 Feedback 对应状态色。Info 实测绑定 Text/blue。",
+    "shadow": "画板样本是 drop-shadow/0.12+0.8+0.5；实现按 NTF-002 使用全局 shadow-down。",
+    "confirm": "确认按钮是共享 Button Medium（高 32、水平 12），不要再单独覆盖 padding。"
+  },
+  "tokenMap": {
+    "surface": "Background/Container",
+    "radius": "Radius/Radius-LG",
+    "padding": "Interval/space6",
+    "stackGap": "Interval/space4",
+    "textGap": "Interval/space3",
+    "title.textStyle": "中文/S4-CN-S",
+    "title.color": "Text/Primary",
+    "description.textStyle": "中文/S8-CN-R",
+    "description.color": "Text/Secondary",
+    "close.color": "Text/Primary",
+    "info.icon": "Text/blue",
+    "warning.icon": "Feedback/warning",
+    "error.icon": "Feedback/error&rise",
+    "success.icon": "Feedback/success&decline",
+    "action.background": "Brand/GJ_Blue",
+    "action.text": "Text/reversal",
+    "action.height": "Button Medium / Components/control-M",
+    "action.paddingInline": "Button Medium（12）",
+    "action.radius": "Button Medium / Radius/Radius-SM",
+    "shadow": "shadow-down"
+  },
+  "assetMap": {
+    "info": "assets/icons/iconfont/icf_system_warning-fill.svg",
+    "warning": "assets/icons/iconfont/icf_system_alert-fill.svg",
+    "error": "assets/icons/iconfont/icf_system_close-circle-fill.svg",
+    "success": "assets/icons/iconfont/icf_system_check-circle-fill.svg",
+    "close": "assets/icons/iconfont/icf_system_close.svg",
+    "colorRule": "使用已登记 iconfont 资源，不手写 SVG。Info 节点 3107:2143 与 Toast info 的 warning-fill 同实例。Warning 节点 3107:2165 为 alert-fill。Success 节点 3107:2160 为 check-circle-fill。Error 按 NTF-001 确认使用 icf_system_close-circle-fill。"
+  },
+  "runtimeMap": {
+    "root": ".gj-notification",
+    "warning": ".gj-notification-warning",
+    "error": ".gj-notification-error",
+    "success": ".gj-notification-success",
+    "main": ".gj-notification-main",
+    "icon": ".gj-notification-icon",
+    "copy": ".gj-notification-copy",
+    "title": ".gj-notification-title",
+    "description": ".gj-notification-desc",
+    "close": ".gj-notification-close",
+    "action": ".gj-notification-action"
+  },
+  "interactionMap": {
+    "close": "关闭入口始终显示；点击后移除该通知",
+    "confirm": "最多一个确认按钮，可隐藏；用于轻量确认或进入详情",
+    "dedupe": "同类重复内容更新原通知，不无限堆叠"
+  }
+}

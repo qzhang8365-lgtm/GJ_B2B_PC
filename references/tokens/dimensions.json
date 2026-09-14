@@ -1,0 +1,29 @@
+{
+  "$schema": "gj-design-skill/dimensions/v1",
+  "source": "Figma GJ_B2B / PC",
+  "variables": {
+    "Radius/Radius-XS": { "value": 4, "unit": "px", "usage": "Tag、小徽标，小号按钮和控件圆角" },
+    "Radius/Radius-SM": { "value": 6, "unit": "px", "usage": "Input、Button，中号按钮和控件圆角" },
+    "Radius/Radius-MD": { "value": 8, "unit": "px", "usage": "大号按钮和控件圆角" },
+    "Radius/Radius-LG": { "value": 12, "unit": "px", "usage": "Card、Popover、Dropdown卡片，小型窗口圆角" },
+    "Radius/Radius-XL": { "value": 16, "unit": "px", "usage": "Modal、Drawer，弹窗，大卡片圆角" },
+    "Radius/Radius-2XL": { "value": 24, "unit": "px", "usage": "Banner, 特殊卡片" },
+    "Radius/Radius-full": { "value": 999, "unit": "px", "usage": "round button，avatar" },
+    "Components/control-XXS": { "value": 20, "unit": "px", "usage": "最小控件高度" },
+    "Components/control-XS": { "value": 22, "unit": "px", "usage": "mini控件高度" },
+    "Components/control-S": { "value": 24, "unit": "px", "usage": "小号控件高度，用于紧凑表格、工具栏和低层级操作区" },
+    "Components/control-M": { "value": 32, "unit": "px", "usage": "中号、默认控件高度" },
+    "Components/control-L": { "value": 40, "unit": "px", "usage": "大号控件高度" },
+    "Components/control-XL": { "value": 48, "unit": "px", "usage": "超大控件高度" },
+    "Interval/space1": { "value": 0, "unit": "px", "usage": "显式取消间距或贴边布局；不作为常规页面内容间距" },
+    "Interval/space2": { "value": 4, "unit": "px", "usage": "最小单位" },
+    "Interval/space3": { "value": 8, "unit": "px", "usage": "基础内容间距，用于图文、按钮组、小型字段和 L3/L4 层级关系" },
+    "Interval/space4": { "value": 12, "unit": "px", "usage": "紧凑组件组、表单字段组及 L2/L3 模块间距" },
+    "Interval/space5": { "value": 16, "unit": "px", "usage": "常规卡片内容、字段分组及 L1/L2 模块间距" },
+    "Interval/space6": { "value": 20, "unit": "px", "usage": "一级卡片常规内边距和主要内容区间距" },
+    "Interval/space7": { "value": 24, "unit": "px", "usage": "页面级模块、宽松卡片和主要区块间距" },
+    "Interval/space8": { "value": 32, "unit": "px", "usage": "大型区块之间或页面标题区到主体内容的候选间距" },
+    "Interval/space9": { "value": 40, "unit": "px", "usage": "需要明显分组的大型页面区块间距，避免在组件内部高频使用" },
+    "Interval/space10": { "value": 48, "unit": "px", "usage": "超大页面区块或独立章节间距，仅在明确需要强分隔时使用" }
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "$schema": "gj-design-skill/component-mapping/v1",
+  "component": "Chart",
+  "codeComponent": "GjChart",
+  "source": "rules.md + preview/chart/index.html；无本轮 Figma 节点 ID",
+  "figmaToContract": {
+    "Chart_item/Y-axis.Style": "axisYStyle",
+    "Chart_item/X-axis-label-group.ScaleType": "axisXScaleType",
+    "Chart_item/Chart-legend.Type": "legend",
+    "Chart_item/Chart-legend.Direction": "legendDirection",
+    "Chart_item/Data-indicator.Series": "indicatorSeries",
+    "Chart_item/Chart-title.Subtitle": "title.subtitle",
+    "Chart_item/Chart-title.Tooltip": "title.info"
+  },
+  "typeMap": {
+    "line": "折线，阶段变化与转折",
+    "curve": "平滑曲线，强调连续趋势，不用于掩盖突变",
+    "bar": "离散比较；Vertical/Horizontal × Basic/Grouped/Stacked/Positive-Negative",
+    "pie": "构成，2–10 个指标",
+    "donut": "构成，中心可承载总量，不与 Progress Ring 混用",
+    "percentage": "横向百分比条，各段间距 2px、圆角 4px",
+    "radar": "3–10 维、1–3 组；9–10 维使用简短标签并扩大绘图区",
+    "gauge": "half-circle | three-quarter-circle",
+    "progress": "水平进度；列表比较或单项构成",
+    "progress-ring": "完整圆环进度，不表达构成",
+    "word-cloud": "权重气泡，文字保持水平"
+  },
+  "valueMap": {
+    "legend.Line": "线段标记，折线/曲线/雷达默认",
+    "legend.Block": "色块标记，柱/百分比常用",
+    "legend.Dot": "8px 圆点",
+    "legend.Dot+Line": "圆点叠加线段，多系列折线常用",
+    "legendDirection.Horizontal": "默认；项间距 16px（CHA-002 已确认）",
+    "legendDirection.Vertical": "饼/环右侧或横向空间不足；项间距 8px",
+    "axisYStyle.Dashed": "非零刻度",
+    "axisYStyle.Solid": "0 刻度与 X 轴基线，或整轴实线预览",
+    "indicator.hover": "临时出现",
+    "indicator.selected": "持续显示"
+  },
+  "tokenMap": {
+    "series.n": "Chart/CH0n，n=1–10，按出现顺序连续取色，不跳号；使用全局 --ds-chart-ch01–10",
+    "legend.horizontal.gap": "Interval/space5 · 16px（CHA-002）",
+    "legend.vertical.gap": "Interval/space3 · 8px",
+    "axis.line": "Border/default",
+    "axis.text": "Text/Tertiary",
+    "dataLabel": "Text/Secondary，字号不得小于 14px",
+    "gauge.track": "Background/Secondary",
+    "gauge.value": "Chart/CH01",
+    "progress.track": "Background/Secondary",
+    "tooltip.rise": "Feedback/error&rise",
+    "tooltip.fall": "Feedback/success&decline",
+    "tooltip.flat": "Feedback/plain"
+  },
+  "implementation": {
+    "runtime": {
+      "root": "gj-chart",
+      "axisText": "gj-chart-axis-text",
+      "value": "gj-chart-value",
+      "grid": "gj-chart-grid",
+      "zero": "gj-chart-zero",
+      "barPositive": "gj-chart-bar-positive",
+      "barNegative": "gj-chart-bar-negative",
+      "legend": "gj-chart-legend",
+      "legendItem": "gj-chart-legend-item",
+      "legendSwatch": "gj-chart-legend-dot"
+    },
+    "specPreview": {
+      "page": "preview/chart/index.html",
+      "seriesStroke": ".line1/.line2/.line3 → --ds-chart-ch01–03",
+      "bars": ".bar1/.bar2/.bar3",
+      "legend": ".legend / .legend.vertical / .legend-line / .legend-block / .legend-dot / .legend-dot-line",
+      "tooltip": ".tooltip-compact",
+      "note": "规范页样式是展示层，不是第二套设计真值；业务实现应对齐本 mapping 与 rules.md。"
+    }
+  },
+  "composition": {
+    "tooltip": "图表内部数据点提示，不复用独立 Tooltip 组件规则",
+    "metric": "Trend graph 不替代完整 Chart",
+    "empty": "无数据状态可组合 Empty，不得只留空白画布"
+  },
+  "accessibility": {
+    "plot": "svg[role=img] 或等效 aria-label，说明图种、单位与关键结论",
+    "color": "系列不能只靠颜色区分；Tooltip、Legend 或标签必须保留名称",
+    "tooltip": "指针悬停可用时，键盘或等效说明仍需可获得数值"
+  }
+}

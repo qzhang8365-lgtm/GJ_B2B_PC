@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>GJ Design System · 标签 Tag</title><link rel="stylesheet" href="../../assets/styles/gj-b2b-tokens.css">
+  <link rel="stylesheet" href="../../assets/styles/gj-b2b-components.css?v=general-2">
+  <link rel="stylesheet" href="../../assets/styles/component-docs.css?v=1">
+  <style>
+    :root{
+      
+      
+      --blue-pale:var(--ds-background-selected);--focus:var(--ds-background-bt-b20);
+      --font:var(--ds-font-family-ui);
+      --mono:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:transparent;color:var(--ds-text-primary);font:16px/1.5 var(--font)}
+    button,input,select{font:inherit}
+    .shell{max-width:var(--docs-page-max-width);margin:auto;padding:var(--docs-page-padding)}
+    .intro{margin-bottom:30px;padding:0 4px}
+    .eyebrow{display:flex;align-items:center;gap:10px;color:var(--ds-text-blue);font-size:13px;font-weight:600;letter-spacing:.04em;margin-bottom:10px}
+    .eyebrow:before{content:"";width:6px;height:6px;border-radius:50%;background:var(--ds-text-blue);box-shadow:0 0 0 3px var(--ds-background-bt-b10)}
+    .intro h1{font-size:32px;line-height:42px;margin:0 0 8px}
+    .intro p{max-width:900px;margin:0;color:var(--ds-text-secondary);font-size:15px;line-height:1.75}
+
+    .component-section{background:var(--ds-background-container);border-radius:20px;padding:24px;overflow:hidden}
+    .component-heading{display:flex;align-items:center;gap:12px;padding-bottom:16px;border-bottom:1px solid var(--ds-border-default)}
+    .component-heading h1{font-size:28px;line-height:32px;margin:0}
+    .component-heading span{font-size:14px;color:var(--ds-text-tertiary)}
+    .component-description{font-size:14px;line-height:22px;color:var(--ds-text-disable);margin:24px 0}
+
+    .grid{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);grid-template-rows:auto auto;gap:14px 20px;align-items:start;font-size:14px}
+    .region-title{font-size:18px;line-height:28px;margin:0 0 4px;font-weight:600}
+    .demo-title{grid-column:1;grid-row:1}
+    .interaction-title{grid-column:2;grid-row:1}
+    .demo-column{grid-column:1;grid-row:2;min-width:0}
+    .demo-grid{display:grid;gap:16px}
+    .panel{background:var(--ds-background-container);border:1px solid var(--ds-border-default);border-radius:16px}
+    .demo-card{padding:20px;min-width:0}
+    .panel-head{margin-bottom:8px}
+    .panel-head h2{font-size:16px;line-height:24px;font-weight:600;margin:0}
+    .demo-desc{margin:0 0 24px;color:var(--ds-text-secondary);font-size:14px;line-height:22px}
+    .demo-stage{min-height:96px;padding:20px;background:var(--ds-background-container);border-radius:10px}
+
+    /* Tag dimensions, palette and shapes all come from gj-b2b-components.css. */
+    .tag-row{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+    .tag-row.compact{gap:4px}
+    .basic-stack{display:grid;gap:24px}
+    .spec-line{display:grid;grid-template-columns:132px minmax(0,1fr);gap:20px;align-items:center}
+    .spec-label{color:var(--ds-text-tertiary);font-size:12px;line-height:18px}
+
+    /* Dynamic tag layout only; visuals come from gj-tag / gj-tag-add / gj-tag-input. */
+    .dynamic-wrap{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+    .dynamic-hint{margin-top:14px;color:var(--ds-text-tertiary);font-size:12px;line-height:18px}
+
+    /* Matrix */
+    .matrix-wrap{width:100%;overflow-x:auto;padding-bottom:4px}
+    .tag-matrix{display:grid;grid-template-columns:112px repeat(11,55px);gap:0;min-width:717px;align-items:stretch}
+    .matrix-cell{min-height:38px;display:flex;align-items:center;justify-content:center;padding:7px 5px;border-bottom:1px solid var(--ds-background-background)}
+    .matrix-head{background:var(--ds-background-background);color:var(--ds-feedback-plain);font-size:11px;line-height:14px;text-align:center;border-bottom:0}
+    .matrix-head.first{border-radius:8px 0 0 8px}
+    .matrix-head.last{border-radius:0 8px 8px 0}
+    .matrix-side{display:grid;grid-template-columns:54px 58px;padding:0;align-items:stretch;background:var(--ds-background-tertiary);color:var(--ds-feedback-plain)}
+    .matrix-size{display:grid;place-items:center;text-align:center;font-size:11px;line-height:15px;padding:6px;border-right:1px solid var(--ds-background-background)}
+    .matrix-style{display:grid;place-items:center;font-size:11px;line-height:14px}
+    .matrix-side.first-row{border-radius:8px 0 0 0}
+    .matrix-side.last-row{border-radius:0 0 0 8px}
+
+    /* Radius */
+    .radius-groups{display:flex;gap:54px;flex-wrap:wrap;align-items:center}
+    .radius-group{display:flex;align-items:center;gap:10px}
+    .radius-name{width:58px;color:var(--ds-text-tertiary);font-size:12px}
+
+    /* Corner tags + business examples */
+    .corner-samples{display:flex;align-items:center;flex-wrap:wrap;gap:12px 14px;margin-bottom:24px}
+    .corner-tag{height:22px;min-width:40px;padding:0 8px;color:var(--ds-text-reversal);display:inline-flex;align-items:center;justify-content:center;gap:4px;font-size:12px;line-height:18px;font-weight:600}
+    .corner-tag.tl{border-radius:8px 0 8px 0}
+    .corner-tag.tr{border-radius:0 8px 0 8px}
+    .business-grid{display:grid;grid-template-columns:minmax(360px,1.2fr) minmax(300px,.8fr);gap:20px;align-items:center}
+    .report-card{height:118px;border-radius:12px;background:var(--ds-background-container);box-shadow:0 0 15px var(--ds-background-mk-10);display:grid;grid-template-columns:140px 1fr;gap:16px;padding:12px;position:relative}
+    .report-cover{height:94px;border-radius:8px;background:linear-gradient(90deg,var(--ds-primitive-blue-b08),var(--ds-primitive-blue-b03));position:relative;overflow:hidden}
+    .report-cover .corner-tag{position:absolute;left:0;top:0;background:var(--ds-background-mk-45)}
+    .report-content{min-width:0;display:flex;flex-direction:column;padding:4px 0}
+    .report-title-line{display:flex;align-items:center;gap:8px;min-width:0}
+    .report-title{font-size:16px;line-height:24px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .report-meta{margin-top:auto;color:var(--ds-text-secondary);font-size:12px;line-height:18px}
+    .meeting-card{height:92px;border:1px solid var(--ds-border-default);border-radius:8px;background:var(--ds-background-tertiary);padding:18px 16px 14px;position:relative;display:flex;flex-direction:column;justify-content:center}
+    .meeting-label{color:var(--ds-text-secondary);font-size:12px;line-height:18px}
+    .meeting-title{font-size:14px;line-height:22px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .meeting-card .corner-left{position:absolute;left:0;top:0;opacity:.5}
+    .meeting-card .corner-right{position:absolute;right:0;top:0}
+    .callout{margin-top:14px;padding:10px 12px;border-radius:8px;background:var(--ds-background-tertiary);color:var(--ds-feedback-plain);font-size:12px;line-height:18px}
+
+    /* Icon tags */
+    .icon-tags{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+
+    /* Interaction panel */
+    .controls{grid-column:2;grid-row:2;padding:20px;position:sticky;top:20px;display:flex;flex-direction:column}
+    .controls .lab{order:1;min-height:230px;padding:28px;margin-bottom:16px;border:1px dashed var(--ds-border-secondary);border-radius:10px;background:var(--ds-background-container);display:grid;place-items:center}
+    .controls>.panel-head{order:3;padding-top:20px;border-top:1px solid var(--ds-border-default)}
+    .control-fields{order:4;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 16px}
+    .field{display:grid;gap:7px}
+    .field label{font-size:14px;color:var(--ds-text-secondary)}
+    .field select,.field input{height:36px;border:1px solid var(--ds-border-secondary);border-radius:6px;padding:0 10px;background:var(--ds-background-container);color:var(--ds-text-primary);min-width:0}
+    .field input:focus,.field select:focus{outline:3px solid var(--focus);border-color:var(--ds-text-blue)}
+    .field-wide{grid-column:1/-1}
+    .field-note{font-size:11px;line-height:16px;color:var(--ds-text-tertiary)}
+    .preview-note{margin-top:12px;color:var(--ds-text-tertiary);font-size:12px;line-height:18px;text-align:center}
+
+    @media(max-width:1050px){
+      .business-grid{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr}
+      .demo-title,.interaction-title,.controls,.demo-column{grid-column:1;grid-row:auto}
+      .controls{position:static}
+    }
+    @media(max-width:760px){
+      .shell{padding:var(--docs-page-padding-compact)}.component-section{padding:20px}.intro h1{font-size:28px}
+      .control-fields{grid-template-columns:1fr}.field-wide{grid-column:auto}
+      .spec-line{grid-template-columns:1fr;gap:8px}
+      .radius-groups{gap:24px}.business-grid{grid-template-columns:1fr}.report-card{grid-template-columns:110px 1fr}.report-cover{width:110px}
+    }
+    /* Unified component-document flow: examples first, playground second. */
+    .component-section{border-radius:var(--docs-section-radius)}
+    .grid{display:flex;flex-direction:column;gap:0;min-width:0}
+    .demo-title{display:none}
+    .demo-column{order:1;width:100%;min-width:0}
+    .interaction-title{order:2;width:100%;margin:32px 0 16px;padding-top:32px;border-top:1px solid var(--ds-border-default)}
+    .controls{order:3;width:100%;position:static;display:grid;grid-template-columns:minmax(0,var(--docs-layout-demo-fr)) minmax(var(--docs-interaction-min-width),var(--docs-layout-interaction-fr));gap:var(--docs-layout-column-gap);padding:0;border:0;background:transparent}
+    .controls .lab{grid-column:1;grid-row:1 / span 2;order:initial;min-width:0;max-width:100%;margin:0;padding:28px;background:var(--ds-background-container);border:1px solid var(--ds-border-default);border-radius:var(--docs-panel-radius);overflow:hidden}
+    .controls>.panel-head{grid-column:2;grid-row:1;order:initial;margin:0;padding:20px 20px 0;background:var(--ds-background-container);border:1px solid var(--ds-border-default);border-bottom:0;border-radius:var(--docs-panel-radius) var(--docs-panel-radius) 0 0}
+    .control-fields{grid-column:2;grid-row:2;order:initial;padding:12px 20px 20px;background:var(--ds-background-container);border:1px solid var(--ds-border-default);border-top:0;border-radius:0 0 var(--docs-panel-radius) var(--docs-panel-radius)}
+    .demo-grid{gap:0}
+    .panel.demo-card{padding:32px 0;background:transparent;border:0;border-top:1px solid var(--ds-border-default);border-radius:0}
+    .panel.demo-card:first-child{padding-top:0;border-top:0}
+    .demo-stage{min-width:0;max-width:100%;overflow:hidden;background:var(--ds-background-container);border:1px solid var(--ds-border-default);border-radius:var(--docs-panel-radius)}
+    .matrix-wrap{max-width:100%;overflow:auto}
+    @media(max-width:960px){
+      .controls{grid-template-columns:1fr}
+      .controls .lab,.controls>.panel-head,.control-fields{grid-column:1;grid-row:auto}
+      .controls .lab{margin-bottom:16px}
+    }
+  </style>
+  <script src="../../assets/scripts/font-runtime.js"></script>
+</head>
+<body>
+<main class="docs-shell">
+  <header class="docs-page-head">
+    <div class="docs-eyebrow">通用组件 · Components</div>
+    <h1>标签 Tag</h1>
+    <p>标签用于标识、分类或突出显示信息，帮助用户快速识别内容的属性或状态。支持基础标签、动态标签、不同圆角形态、边角标签与带 Icon 标签。</p>
+  </header>
+
+  <section class="component-section docs-sheet">
+
+    <div class="grid">
+      <h2 class="region-title demo-title">组件示例</h2>
+      <h2 class="region-title interaction-title">交互属性</h2>
+
+      <aside class="panel controls">
+        <div class="lab"><div><div id="previewTag"></div><div class="preview-note" id="previewNote">Regular · 22px</div></div></div>
+        <span id="props" hidden></span>
+        <div class="panel-head"><h2>属性控制</h2></div>
+        <div class="control-fields">
+          <div class="field field-wide"><label for="labelInput">Label</label><input id="labelInput" value="标签"></div>
+          <div class="field"><label for="sizeSelect">Size</label><select id="sizeSelect"><option value="Regular">Regular · 22px</option><option value="Small">Small · 18px</option></select></div>
+          <div class="field"><label for="styleSelect">Style</label><select id="styleSelect"><option value="filled">Filled</option><option value="light" selected>Light</option><option value="line">Line</option></select></div>
+          <div class="field"><label for="colorSelect">Color</label><select id="colorSelect"></select></div>
+          <div class="field"><label for="shapeSelect">Shape</label><select id="shapeSelect"><option value="default">Default · 4px</option><option value="pill">Pill</option></select></div>
+          <div class="field field-wide"><label for="iconSelect">Icon</label><select id="iconSelect"><option value="none">None</option><option value="paper">Paper</option><option value="time">Time</option><option value="stock">Stock</option></select><span class="field-note" id="iconNote">Small 尺寸不提供 Icon 状态。</span></div>
+        </div>
+      </aside>
+
+      <section class="demo-column">
+        <div class="demo-grid">
+          <article class="panel demo-card">
+            <div class="panel-head"><h2>基础用法</h2></div>
+            <p class="demo-desc">基础标签之间默认间距为 8px；内容紧凑状态的小尺寸标签可以使用 4px 间距。</p>
+            <div class="demo-stage">
+              <div class="basic-stack">
+                <div class="spec-line"><div class="spec-label">Regular / Medium · 22px<br>默认间距 8px</div><div class="tag-row" id="basicRegular"></div></div>
+                <div class="spec-line"><div class="spec-label">Small · 18px<br>紧凑间距 4px</div><div class="tag-row compact" id="basicSmall"></div></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel demo-card">
+            <div class="panel-head"><h2>动态标签</h2></div>
+            <p class="demo-desc">用于动态添加标签或删除、可编辑标签的情况。点击已有标签的关闭图标可删除，点击“标签”可新增。</p>
+            <div class="demo-stage">
+              <div class="dynamic-wrap" id="dynamicTags"></div>
+              <div class="dynamic-hint" id="dynamicHint">当前 3 个标签</div>
+            </div>
+          </article>
+
+          <article class="panel demo-card">
+            <div class="panel-head"><h2>标签展示</h2></div>
+            <p class="demo-desc">基础标签分为 Regular / Small 两种尺寸，按风格分为 Filled / Light / Line 三种样式；颜色覆盖全局色盘中的 11 个色系。</p>
+            <div class="demo-stage">
+              <div class="matrix-wrap"><div class="tag-matrix" id="tagMatrix"></div></div>
+            </div>
+          </article>
+
+          <article class="panel demo-card">
+            <div class="panel-head"><h2>标签圆角</h2></div>
+            <p class="demo-desc">默认 B 端页面优先采用圆角矩形作为首选标签形；轻量风格网页项目或存在多种标签类别时，可选用胶囊型标签。</p>
+            <div class="demo-stage">
+              <div class="radius-groups">
+                <div class="radius-group"><span class="radius-name">Filled</span><span id="radiusFilledDefault"></span><span id="radiusFilledPill"></span></div>
+                <div class="radius-group"><span class="radius-name">Light</span><span id="radiusLightDefault"></span><span id="radiusLightPill"></span></div>
+                <div class="radius-group"><span class="radius-name">Line</span><span id="radiusLineDefault"></span><span id="radiusLinePill"></span></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel demo-card">
+            <div class="panel-head"><h2>异形标签</h2></div>
+            <p class="demo-desc">用于卡片和容器边角。标签圆角值应与卡片圆角保持一致；如果卡片圆角较大（大于等于 12），不建议使用边角标签。边角标签的使用应以不遮挡任何可见信息为前提。</p>
+            <div class="demo-stage">
+              <div class="corner-samples">
+                <span class="corner-tag tl" style="background:var(--ds-background-mk-45)">标签</span>
+                <span class="corner-tag tr" style="background:var(--ds-background-mk-45)">标签</span>
+                <span class="corner-tag tl" style="background:var(--ds-feedback-error-rise)">标签</span>
+                <span class="corner-tag tr" style="background:var(--ds-feedback-error-rise)">标签</span>
+                <span class="corner-tag tl" style="background:var(--ds-brand-gj-blue)">标签</span>
+                <span class="corner-tag tr" style="background:var(--ds-brand-gj-blue)">标签</span>
+              </div>
+              <div class="business-grid">
+                <div class="report-card">
+                  <div class="report-cover"><span class="corner-tag tl">电新</span></div>
+                  <div class="report-content">
+                    <div class="report-title-line"><span id="reportTypeTag"></span><span class="report-title">研报标题</span></div>
+                    <div class="report-meta">姚遥 · 彭治强　2026-08-05</div>
+                  </div>
+                </div>
+                <div>
+                  <div class="meeting-card">
+                    <span class="corner-tag tl corner-left" style="background:var(--ds-brand-gj-blue)"><i class="gj-icon gj-icon-12" style="--gj-icon:url('../../assets/icons/iconfont/icf_system_close.svg')" aria-hidden="true"></i>标签遮挡或过近</span>
+                    <span class="corner-tag tr corner-right" style="background:var(--ds-brand-gj-blue)"><i class="gj-icon gj-icon-12" style="--gj-icon:url('../../assets/icons/iconfont/icf_system_check.svg')" aria-hidden="true"></i>会议接入信息</span>
+                    <span class="meeting-label">会议主题:</span><span class="meeting-title">半导体设备国产替代专家交流</span>
+                  </div>
+                  <div class="callout">左侧示例表示边角标签遮挡/过近的错误状态；右侧示例保留内容安全区。</div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel demo-card">
+            <div class="panel-head"><h2>Icon 标签</h2></div>
+            <p class="demo-desc">带 Icon 的标签用于需要表达明确语义分类的场景，Icon 颜色与标签字体颜色一致；Small 尺寸标签无 Icon 状态。</p>
+            <div class="demo-stage"><div class="icon-tags" id="iconTags"></div></div>
+          </article>
+        </div>
+      </section>
+    </div>
+  </section>
+</main>
+
+<script>
+  // Colour swatch captions only; the palette itself lives in gj-tag-* classes.
+  const colorLabels={Blue:'blue',Neutral:'gray',Red:'red',Green:'green',Orange:'orange',Yellow:'yellow',Cyan:'cyan',Sky:'sky',DeepBlue:'deep\nblue',Purple:'violet',Pink:'pink'};
+  const colorKeys=Object.keys(colorLabels);
+
+  const iconFiles={paper:'icf_file_paper-line-fill.svg',time:'icf_system_time-fill.svg',stock:'icf_business_stock-fill.svg',add:'icf_system_add.svg'};
+  function tagIcon(name){return `<i class="gj-tag-icon" style="--gj-icon:url('../../assets/icons/iconfont/${iconFiles[name]}')" aria-hidden="true"></i>`}
+  function tagMarkup({label='标签',size='Regular',style='filled',color='Blue',shape='default',icon='none'}){
+    const cls=['gj-tag','gj-tag-'+color.toLowerCase(),'gj-tag-'+style,size==='Small'?'gj-tag-small':'',shape==='pill'?'gj-tag-pill':''].filter(Boolean).join(' ');
+    const iconHtml=icon!=='none'&&size!=='Small'?tagIcon(icon):'';
+    return `<span class="${cls}">${iconHtml}${escapeHtml(label)}</span>`;
+  }
+  function escapeHtml(value){return String(value).replace(/[&<>'"]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[ch]))}
+
+  // Basic usage
+  document.getElementById('basicRegular').innerHTML=Array.from({length:6},(_,i)=>tagMarkup({label:`标签${i+1}`,style:'line',color:'Blue'})).join('');
+  document.getElementById('basicSmall').innerHTML=Array.from({length:6},(_,i)=>tagMarkup({label:`标签${i+1}`,size:'Small',style:'line',color:'Neutral'})).join('');
+
+  // Dynamic tags
+  let dynamicItems=['标签','标签','标签'];
+  let addingMode=false;
+  const MAX_TAGS=8;
+  function focusDynamicInput(){
+    const el=document.getElementById('dynamicInput');
+    if(el){el.focus()}
+  }
+  function renderDynamic(){
+    const wrap=document.getElementById('dynamicTags');
+    const itemsHtml=dynamicItems.map((x,i)=>`<span class="gj-tag gj-tag-neutral" data-index="${i}">${escapeHtml(x)}<button class="gj-tag-close" type="button" aria-label="删除"></button></span>`).join('');
+    const canAdd=dynamicItems.length<MAX_TAGS;
+    const addBtn=canAdd&&!addingMode?`<button class="gj-tag-add" id="addDynamic" type="button">${tagIcon('add')}<span>标签</span></button>`:'';
+    const inputHtml=addingMode?`<input class="gj-tag-input" id="dynamicInput" type="text" maxlength="16" placeholder="输入标签名，回车保存" autocomplete="off">`:'';
+    wrap.innerHTML=itemsHtml+addBtn+inputHtml;
+    document.getElementById('dynamicHint').textContent=addingMode?'输入标签名称，回车保存，Esc 或点击空白取消':`当前 ${dynamicItems.length} 个标签`;
+    wrap.querySelectorAll('.gj-tag-close').forEach(btn=>btn.addEventListener('click',()=>{const tag=btn.closest('[data-index]');dynamicItems.splice(Number(tag.dataset.index),1);renderDynamic()}));
+    const addEl=document.getElementById('addDynamic');
+    if(addEl)addEl.addEventListener('click',()=>{if(!addingMode){addingMode=true;renderDynamic();focusDynamicInput()}});
+    const inputEl=document.getElementById('dynamicInput');
+    if(inputEl){
+      inputEl.addEventListener('keydown',e=>{
+        if(e.key==='Enter'){
+          const v=inputEl.value.trim();
+          if(v&&dynamicItems.length<MAX_TAGS){dynamicItems.push(v);addingMode=false;renderDynamic();}
+        }else if(e.key==='Escape'){addingMode=false;renderDynamic();}
+      });
+      inputEl.addEventListener('blur',()=>{if(addingMode){addingMode=false;renderDynamic()}});
+    }
+  }
+  renderDynamic();
+
+  // Matrix
+  const matrix=document.getElementById('tagMatrix');
+  const head=[`<div class="matrix-cell matrix-head first"></div>`].concat(colorKeys.map((key,i)=>`<div class="matrix-cell matrix-head${i===colorKeys.length-1?' last':''}">${colorLabels[key].replace('\n','<br>')}</div>`)).join('');
+  const rows=[
+    {size:'Regular',sizeLabel:'Medium / Regular<br>(22px)',style:'filled',styleLabel:'Filled'},
+    {size:'Regular',sizeLabel:'',style:'light',styleLabel:'Light'},
+    {size:'Regular',sizeLabel:'',style:'line',styleLabel:'Line'},
+    {size:'Small',sizeLabel:'Small<br>(18px)',style:'filled',styleLabel:'Filled'},
+    {size:'Small',sizeLabel:'',style:'light',styleLabel:'Light'},
+    {size:'Small',sizeLabel:'',style:'line',styleLabel:'Line'}
+  ];
+  const rowHtml=rows.map((r,rowIndex)=>{
+    const groupStart=rowIndex===0||rowIndex===3;
+    const side=`<div class="matrix-cell matrix-side ${rowIndex===0?'first-row':''} ${rowIndex===5?'last-row':''}"><div class="matrix-size">${groupStart?r.sizeLabel:''}</div><div class="matrix-style">${r.styleLabel}</div></div>`;
+    return side+colorKeys.map(key=>`<div class="matrix-cell">${tagMarkup({size:r.size,style:r.style,color:key})}</div>`).join('');
+  }).join('');
+  matrix.innerHTML=head+rowHtml;
+
+  // Radius examples
+  const radiusExamples=[
+    ['radiusFilledDefault','filled','default'],['radiusFilledPill','filled','pill'],
+    ['radiusLightDefault','light','default'],['radiusLightPill','light','pill'],
+    ['radiusLineDefault','line','default'],['radiusLinePill','line','pill']
+  ];
+  radiusExamples.forEach(([id,style,shape])=>document.getElementById(id).innerHTML=tagMarkup({style,color:'Blue',shape}));
+
+  // Business + icon examples
+  document.getElementById('reportTypeTag').innerHTML=tagMarkup({label:'公司点评',style:'light',color:'Blue'});
+  document.getElementById('iconTags').innerHTML=[
+    tagMarkup({label:'新闻速读',style:'filled',color:'Blue',icon:'paper'}),
+    tagMarkup({label:'1h要闻速递',style:'filled',color:'Purple',icon:'time'}),
+    tagMarkup({label:'A股午盘',style:'filled',color:'Orange',icon:'stock'})
+  ].join('');
+
+  // Interaction panel
+  const colorSelect=document.getElementById('colorSelect');
+  colorSelect.innerHTML=colorKeys.map(key=>`<option value="${key}">${key==='Neutral'?'Gray / Neutral':key}</option>`).join('');
+  const controls=['labelInput','sizeSelect','styleSelect','colorSelect','shapeSelect','iconSelect'];
+  function renderPreview(){
+    const label=document.getElementById('labelInput').value||'标签';
+    const size=document.getElementById('sizeSelect').value;
+    const style=document.getElementById('styleSelect').value;
+    const color=document.getElementById('colorSelect').value;
+    const shape=document.getElementById('shapeSelect').value;
+    const iconSelect=document.getElementById('iconSelect');
+    if(size==='Small'){iconSelect.value='none';iconSelect.disabled=true}else{iconSelect.disabled=false}
+    const icon=iconSelect.value;
+    document.getElementById('previewTag').innerHTML=tagMarkup({label,size,style,color,shape,icon});
+    document.getElementById('previewNote').textContent=size==='Regular'?'Regular · 22px':'Small · 18px · 无 Icon 状态';
+    const propLabel=label.replace(/\\/g,'\\\\').replace(/"/g,'\\"');
+    document.getElementById('props').textContent=`<Tag\n  label="${propLabel}"\n  size="${size}"\n  style="${style}"\n  color="${color}"\n  shape="${shape}"${icon!=='none'?`\n  icon="${icon}"`:''}\n/>`;
+  }
+  controls.forEach(id=>document.getElementById(id).addEventListener(id==='labelInput'?'input':'change',renderPreview));
+  renderPreview();
+</script>
+</body>
+</html>

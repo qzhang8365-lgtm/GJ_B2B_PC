@@ -1,0 +1,143 @@
+{
+  "$schema": "gj-design-skill/component-tokens/v1",
+  "component": "Dropdown",
+  "source": {
+    "componentSchema": "references/components/dropdown/schema.json",
+    "componentMapping": "references/components/dropdown/mapping.json",
+    "confirmedRules": "references/design-system-rules.md#dropdown-下拉菜单",
+    "implementation": "assets/styles/gj-b2b-components.css#.gj-dropdown"
+  },
+  "properties": {
+    "mode": {
+      "default": "single",
+      "values": [
+        "single",
+        "multiple"
+      ]
+    },
+    "placement": {
+      "default": "none",
+      "values": [
+        "none",
+        "top-left",
+        "top-center",
+        "top-right",
+        "bottom-left",
+        "bottom-center",
+        "bottom-right"
+      ]
+    },
+    "visualState": {
+      "default": "default",
+      "values": [
+        "default",
+        "hover",
+        "focused",
+        "selected",
+        "disabled"
+      ],
+      "publicProp": false
+    }
+  },
+  "tokens": {
+    "panel.width": {
+      "value": 198,
+      "unit": "px",
+      "cssVariable": "--ds-component-dropdown-panel-width"
+    },
+    "panel.maxHeight": {
+      "value": 240,
+      "unit": "px",
+      "cssVariable": "--ds-component-dropdown-panel-max-height"
+    },
+    "panel.padding": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-dropdown-panel-padding"
+    },
+    "panel.radius": {
+      "value": "{Radius/Radius-MD}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-dropdown-panel-radius"
+    },
+    "panel.shadow": {
+      "value": "{shadow-down}",
+      "cssVariable": "--ds-component-dropdown-panel-shadow"
+    },
+    "item.height": {
+      "value": "{Components/control-M}",
+      "resolved": 32,
+      "unit": "px",
+      "cssVariable": "--ds-component-dropdown-item-height"
+    },
+    "item.paddingInline": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-dropdown-item-padding-inline"
+    },
+    "item.radius": {
+      "value": "{Radius/Radius-XS}",
+      "resolved": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-dropdown-item-radius"
+    },
+    "indicator.size": {
+      "value": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-dropdown-indicator-size"
+    },
+    "pointer.size": {
+      "value": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-dropdown-pointer-size"
+    },
+    "focus.outlineWidth": {
+      "value": 2,
+      "unit": "px",
+      "cssVariable": "--ds-component-dropdown-focus-outline-width"
+    }
+  },
+  "stateMatrix": {
+    "default": {
+      "background": "Background/Container",
+      "text": "Text/Primary",
+      "border": "transparent"
+    },
+    "hover": {
+      "background": "Background/Hover",
+      "text": "Text/Primary",
+      "border": "transparent"
+    },
+    "focused": {
+      "background": "Background/Container",
+      "text": "Text/Primary",
+      "border": "Border/focused"
+    },
+    "selected": {
+      "background": "Background/Hover",
+      "text": "Text/blue",
+      "border": "transparent"
+    },
+    "disabled": {
+      "background": "Background/Container",
+      "text": "Text/disable",
+      "border": "transparent"
+    }
+  },
+  "behavior": {
+    "single": "Selected cardinality 0..1; only selected shows check and selection closes the panel.",
+    "multiple": "Selected cardinality 0..n; panel stays open.",
+    "focus": "Active descendant is transient and never changes selected state.",
+    "statePriority": ["disabled", "selected", "focused", "hover", "default"],
+    "viewport": "Match or exceed trigger width; flip vertically before constraining the scrollable option region.",
+    "dataStates": ["loading", "empty", "error"],
+    "dismiss": [
+      "outside pointer",
+      "Escape",
+      "Tab"
+    ]
+  }
+}

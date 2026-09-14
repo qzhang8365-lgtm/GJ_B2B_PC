@@ -1,0 +1,91 @@
+{
+  "$schema": "gj-design-skill/component-mapping/v1",
+  "figmaComponent": "Empty / Empty_item/img",
+  "codeComponent": "GjEmpty",
+  "sourceNodes": [
+    "3143:5678",
+    "3489:11019",
+    "3143:5853",
+    "3143:5844",
+    "3912:1180"
+  ],
+  "propertyMap": {
+    "Type": "type",
+    "Action": "action",
+    "Title": "title",
+    "Description": "description",
+    "Show Description": "showDescription",
+    "local.actionLabel": "actionLabel"
+  },
+  "valueMap": {
+    "Type.TextOnly": "type=TextOnly, no illustration",
+    "Type.Empty": "type=Empty → image type=Empty",
+    "Type.NotFound": "type=NotFound → image type=notfound",
+    "Type.Disconnected": "type=Disconnected → image type=disconnected",
+    "Type.NoPermission": "type=NoPermission → image type=noPermission",
+    "Type.Error": "type=Error → image type=error",
+    "Type.NoChart": "Skill extension → image type=no chart (Figma node 3912:1180)",
+    "Action.None": "hide action",
+    "Action.Button": "render one shared Medium Button"
+  },
+  "normalization": {
+    "image.notfound": "NotFound",
+    "image.disconnected": "Disconnected",
+    "image.noPermission": "NoPermission",
+    "image.error": "Error",
+    "image.no chart": "NoChart",
+    "legacy.Empty_Basic": "Deprecated; map to type=Empty, action=None and localized copy."
+  },
+  "tokenMap": {
+    "title.text": "Text/Primary",
+    "title.typography": "中文/S5-CN-S",
+    "description.text": "Text/Secondary",
+    "description.typography": "中文/S9-CN-R",
+    "button": "Button/Primary/Medium",
+    "textGap": "4px",
+    "illustrationTextGap": "12px",
+    "contentActionGap": "16px"
+  },
+  "assetMap": {
+    "source": "Figma component set Empty_item/img (3143:5853); preserve exact exported artwork, never redraw with CSS or generic icons.",
+    "Empty": "3143:5854",
+    "NotFound": "3143:5866",
+    "Disconnected": "3143:5887",
+    "NoPermission": "3487:15",
+    "Error": "3487:22",
+    "NoChart": "3912:1180",
+    "runtimeRule": "Commit exact exported assets or use the component library’s packaged illustrations; Figma localhost URLs are audit-only and must not ship. 2026-09-14：已按此规则执行，见 committedAssetPath。",
+    "committedAssetPath": {
+      "source": "2026-09-14 从 preview/empty/index.html 内嵌 base64（与 Figma 插图逐一核对过 Type 对应关系）导出为真实文件，提交到 assets/images/empty/ 下；此前该目录不存在任何 Empty 插图文件。",
+      "Empty": "assets/images/empty/empty.png",
+      "NotFound": "assets/images/empty/notfound.png",
+      "Disconnected": "assets/images/empty/disconnected.png",
+      "NoPermission": "assets/images/empty/no-permission.png",
+      "Error": "assets/images/empty/error.png",
+      "NoChart": "assets/images/empty/no-chart.png",
+      "note": "导出后的实际像素尺寸与 rules.md 文档宽 100px、高 89/91px 存在小幅出入（disconnected 102×97、error 103×96，其余五个精确匹配），CSS 用 object-fit:contain 按 100px 宽/最大 91px 高约束显示，不影响视觉效果；如未来重新导出应对齐文档尺寸。"
+    }
+  },
+  "runtimeMap": {
+    "root": ".gj-empty-state",
+    "illustration": ".gj-empty-state__illustration",
+    "text": ".gj-empty-state__copy",
+    "title": ".gj-empty-state__title",
+    "description": ".gj-empty-state__description",
+    "action": ".gj-btn.gj-btn-primary (Medium default)",
+    "note": "2026-09-14 复核确认：以上类名已在 assets/styles/gj-b2b-components.css 中真实实现（.gj-empty-state 家族，含 --ds-component-empty-* tokens），并非仅存在于文档；此前 EMP-012 认为“文档记录的类名在实现中完全不存在”的判断有误，已在 audit-tracker.md 更正。唯一的真实差距是：插图变体此前在整个代码库中都没有被任何页面实际使用过（仅 preview/table/index.html 用了 --text-only 变体），search-list.html 的空状态是本项目第一个真正用上 .gj-empty-state__illustration + 真实图片的地方。"
+  },
+  "interactionMap": {
+    "static": "No component hover/pressed state; only the nested Button owns interaction states.",
+    "retry": "Disable or show loading on the action while a retry is in flight; preserve the user's current context.",
+    "search": "NotFound action clears or adjusts filters without discarding unrelated page state.",
+    "permission": "Show an action only when a real permission request/contact route exists.",
+    "dynamic": "Announce a newly produced empty result politely; avoid duplicate Toast/Alert announcements."
+  },
+  "accessibility": {
+    "illustration": "Use alt='' and aria-hidden=true when title/description already carry the meaning.",
+    "announcement": "Static state needs no live region. For post-action results, use role=status or aria-live=polite on the message container.",
+    "error": "Use role=alert only for an urgent failure that requires immediate attention; ordinary retryable empty errors remain polite.",
+    "focus": "Do not focus the illustration. Preserve focus on the initiating control or the available recovery action."
+  }
+}
