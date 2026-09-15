@@ -70,15 +70,15 @@
     "dotButton": ".gj-carousel-dot",
     "dotVisual": ".gj-carousel-dot::before",
     "paused": ".is-paused（行为状态，不改变 Figma 视觉）",
-    "arrowLeft": ".gj-carousel-arrow.is-left（默认渲染，:hover/:focus-visible 加 .is-active）",
-    "arrowRight": ".gj-carousel-arrow.is-right（默认渲染，:hover/:focus-visible 加 .is-active）"
+    "arrowLeft": ".gj-carousel-arrow.is-left（2026-09-15 已实现：默认渲染，:hover/:focus-visible 自动切到 100% 不透明；.is-active 是给静态文档页用的强制展示类，不是运行时需要 JS 添加的类）",
+    "arrowRight": ".gj-carousel-arrow.is-right（同上，右侧箭头）"
   },
   "interactionMap": {
     "indicatorClick": "设置对应 activeIndex，并重置自动播放计时。",
     "keyboard": "ArrowLeft/ArrowRight 切换；不劫持输入控件内部的方向键。",
     "autoplay": "默认 false；hover/focus/visibility/reduced-motion 任一暂停条件成立时停止。",
     "swipe": "水平位移超过阈值且大于纵向位移才切换。",
-    "arrowClick": "点击左右箭头切换到上一/下一项，并重置自动播放计时。箭头默认展示（2026-09-10 产品确认），空闲态 class 对应 state=default（50% 透明），hover/focus 态切换为 state=active（100% 不透明）。"
+    "arrowClick": "点击左右箭头切换到上一/下一项，并重置自动播放计时。箭头默认展示（2026-09-10 产品确认），空闲态 opacity 50%（Token: --ds-component-carousel-arrow-idle-opacity），:hover/:focus-visible 自动切到 100%（--ds-component-carousel-arrow-active-opacity），无需 JS 手动切换 class。loop=false 且到达首尾边界时原生 disabled，透明度切到 --ds-component-carousel-arrow-disabled-opacity（0.35，独立于 default/active 两态）。2026-09-15（CAR-008）已实现并同步到 dashboard.html。"
   },
   "accessibility": {
     "root": "role=region，aria-roledescription=carousel，必须有 aria-label 或关联标题。",

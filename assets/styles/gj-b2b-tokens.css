@@ -620,6 +620,12 @@
   --ds-component-carousel-dot-inactive-width: 8px;
   --ds-component-carousel-dot-radius: 4px;
   --ds-component-carousel-motion-duration: 240ms;
+  --ds-component-carousel-arrow-size: 32px;
+  --ds-component-carousel-arrow-radius: 16px;
+  --ds-component-carousel-arrow-padding: 4px;
+  --ds-component-carousel-arrow-idle-opacity: 0.5;
+  --ds-component-carousel-arrow-active-opacity: 1;
+  --ds-component-carousel-arrow-disabled-opacity: 0.35;
   --ds-component-steps-item-width: 264px;
   --ds-component-steps-assembly-4-width: 1056px;
   --ds-component-steps-dot-indicator: 20px;
@@ -1775,6 +1781,9 @@
   --ds-component-carousel-lightinactive-background: var(--ds-background-wt-20);
   --ds-component-carousel-darkactive-background: var(--ds-text-blue);
   --ds-component-carousel-darkinactive-background: var(--ds-background-mk-20);
+  --ds-component-carousel-arrow-background: var(--ds-background-wt-30);
+  --ds-component-carousel-arrow-icon-color: var(--ds-text-reversal);
+  --ds-component-carousel-arrow-focus-ring: var(--ds-background-bt-b20);
   --ds-component-steps-wait-indicator: var(--ds-background-secondary);
   --ds-component-steps-wait-text: var(--ds-text-tertiary);
   --ds-component-steps-wait-connector: var(--ds-border-secondary);

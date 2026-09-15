@@ -16,6 +16,7 @@
     "core": {
       "designSystemRules": "design-system-rules.md",
       "pagePatterns": "page-patterns.md",
+      "pagePatternMetadata": "page-pattern-metadata.json",
       "coverage": "coverage.json",
       "auditTracker": "audit-tracker.md",
       "generationVerification": "generation-verification.md",
@@ -97,7 +98,7 @@
     "pageVerification": {
       "path": "../scripts/verify-page.mjs",
       "audience": "maintenance-script",
-      "runWhen": "生成或修改任一页面模式、组件预览页或业务原型之后，按 generation-verification.md 的协议执行；依赖 Playwright，本仓库未提交该依赖，需单独 npm install。",
+      "runWhen": "生成或修改任一页面模式、组件预览页或业务原型之后，按 generation-verification.md 的协议执行；依赖 Playwright，已在仓库根目录 package.json 声明，首次使用前执行一次 npm install。涉及预览页/模式页或共享样式的提交还会被本地提交门禁（scripts/git-hooks/）自动调用一次。",
       "usage": "node scripts/verify-page.mjs <html文件路径> [--width=1440,1280]"
     },
     "previewRuntimes": {
@@ -112,6 +113,14 @@
         "initializes": "select.gj-select",
         "consumers": [
           "../preview/patterns/search-list.html",
+          "../preview/patterns/form-edit.html",
+          "../preview/patterns/object-detail.html"
+        ]
+      },
+      "cascader": {
+        "path": "../assets/scripts/gj-cascader.js",
+        "initializes": "[data-gj-cascader-field] Selector trigger and floating Cascader panel",
+        "consumers": [
           "../preview/patterns/form-edit.html"
         ]
       },
@@ -120,6 +129,27 @@
         "initializes": "[data-gj-date-picker]",
         "consumers": [
           "../preview/patterns/search-list.html"
+        ]
+      },
+      "tableOverflow": {
+        "path": "../assets/scripts/gj-table-overflow.js",
+        "initializes": ".gj-table-wrap overflow state",
+        "consumers": [
+          "../preview/patterns/dashboard.html",
+          "../preview/patterns/object-detail.html",
+          "../preview/patterns/search-list.html",
+          "../preview/patterns/step-task.html"
+        ]
+      },
+      "sidebar": {
+        "path": "../assets/scripts/gj-sidebar.js",
+        "initializes": "[data-gj-sidebar] collapse state and page-mode selection",
+        "consumers": [
+          "../preview/patterns/search-list.html",
+          "../preview/patterns/form-edit.html",
+          "../preview/patterns/object-detail.html",
+          "../preview/patterns/dashboard.html",
+          "../preview/patterns/step-task.html"
         ]
       },
       "iconWorkbench": {

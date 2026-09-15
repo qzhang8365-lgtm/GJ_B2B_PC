@@ -120,6 +120,24 @@
     });
   }
 
+  function skeletonRow() {
+    return '<tr class="query-skeleton-row" aria-hidden="true"><td></td>' +
+      '<td><div class="gj-skeleton gj-skeleton-line gj-skeleton-w86"></div></td>' +
+      '<td><div class="gj-skeleton gj-skeleton-line gj-skeleton-w72"></div></td>' +
+      '<td><div class="gj-skeleton gj-skeleton-line gj-skeleton-w54"></div></td>' +
+      '<td><div class="gj-skeleton gj-skeleton-line gj-skeleton-w54"></div></td>' +
+      '<td><div class="gj-skeleton gj-skeleton-line gj-skeleton-w54"></div></td>' +
+      '<td><div class="gj-skeleton gj-skeleton-line gj-skeleton-w72"></div></td>' +
+      '<td><div class="gj-skeleton gj-skeleton-line gj-skeleton-w86"></div></td>' +
+      '<td><div class="gj-skeleton gj-skeleton-line gj-skeleton-w54"></div></td></tr>';
+  }
+  function renderSkeleton(rows = 6) {
+    tableWrap.hidden = false;
+    empty.hidden = true;
+    footer.hidden = true;
+    tableBody.innerHTML = Array.from({ length: rows }).map(skeletonRow).join('');
+  }
+
   function render() {
     closeActionMenu();
     const result = filteredRows();
@@ -215,6 +233,7 @@
     button.disabled = true;
     label.textContent = '查询中…';
     $('#tableRegion').setAttribute('aria-busy', 'true');
+    renderSkeleton();
     setTimeout(() => { applyQuery(); button.disabled = false; label.textContent = '查询'; $('#tableRegion').setAttribute('aria-busy', 'false'); }, 320);
   });
   form.addEventListener('reset', () => setTimeout(() => { filters = {}; selected.clear(); page = 1; syncFilterTags(); render(); }, 0));
@@ -274,8 +293,8 @@
     if (action === 'delete') openDelete([item.id], returnTarget);
   });
   document.addEventListener('pointerdown', event => { if (!actionMenu.hidden && !actionMenu.contains(event.target) && !event.target.closest('[data-row-action="more"]')) closeActionMenu(); });
-  $('#modalClose').addEventListener('click', closeModal);
   $('#modalCancel').addEventListener('click', closeModal);
+  document.querySelector('[data-modal-close]')?.addEventListener('click', closeModal);
   $('#modalConfirm').addEventListener('click', () => {
     const count = pendingDelete.length;
     documents = documents.filter(item => !pendingDelete.includes(item.id));

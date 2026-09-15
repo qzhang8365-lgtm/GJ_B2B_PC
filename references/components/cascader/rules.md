@@ -8,6 +8,8 @@
 - `mode`：`single`（级联单选）、`multiple`（级联多选）、`tree`（树状）。
 - 级联与树状的模式切换必须复用 Button Tab（`gj-tabs gj-tabs-button` + `gj-tab` / `gj-tab-active`），不得用文字按钮或 `.switch` 自绘分段控件。
 - 规范页与业务页必须复用 `.gj-cascader`，不得只在页面 CSS 重画菜单行。
+- 表单中的 Cascader 必须由 Selector 触发器打开：默认只展示触发器，`.gj-cascader` 作为浮层面板默认隐藏，禁止把展开面板常驻在表单布局中。
+- 触发器与面板通过 `aria-expanded` 同步开关状态；选择叶子节点后回填完整路径并关闭，点击外部或按 `Escape` 也必须关闭。
 
 #### Figma 母版与默认组合
 

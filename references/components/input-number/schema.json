@@ -21,11 +21,29 @@
         "variants": 48,
         "defaultVariant": "3482:1461",
         "axes": {
-          "size": ["Large", "small", "medium"],
-          "state": ["Default", "filled", "active", "disabled"],
-          "numberhandle": ["false", "true"],
-          "unit": ["false", "true"],
-          "Addon": ["false", "true"]
+          "size": [
+            "Large",
+            "small",
+            "medium"
+          ],
+          "state": [
+            "Default",
+            "filled",
+            "active",
+            "disabled"
+          ],
+          "numberhandle": [
+            "false",
+            "true"
+          ],
+          "unit": [
+            "false",
+            "true"
+          ],
+          "Addon": [
+            "false",
+            "true"
+          ]
         }
       },
       {
@@ -34,15 +52,32 @@
         "variants": 4,
         "defaultVariant": "4293:15648",
         "axes": {
-          "style": ["basic", "range"],
-          "tooltip": ["no", "yes"]
+          "style": [
+            "basic",
+            "range"
+          ],
+          "tooltip": [
+            "no",
+            "yes"
+          ]
         }
       }
     ]
   },
   "properties": {
-    "mode": ["basic", "stepper", "unit", "right-step", "slider", "range-slider"],
-    "size": ["Small", "Medium", "Large"],
+    "mode": [
+      "basic",
+      "stepper",
+      "unit",
+      "right-step",
+      "slider",
+      "range-slider"
+    ],
+    "size": [
+      "Small",
+      "Medium",
+      "Large"
+    ],
     "value": "number",
     "rangeValue": "[number, number]",
     "min": "number",
@@ -52,20 +87,71 @@
     "showTooltip": "boolean",
     "disabled": "boolean"
   },
-  "defaults": {"mode": "basic", "size": "Medium", "step": 1, "showTooltip": false, "disabled": false},
-  "sizes": {
-    "Small": {"width": 100, "height": 24, "paddingInline": 8, "radius": 4, "font": "中文/S8-CN-R"},
-    "Medium": {"width": 112, "height": 32, "paddingInline": 12, "radius": 6, "font": "中文/S8-CN-R"},
-    "Large": {"width": 133, "height": 40, "paddingInline": 12, "radius": 8, "font": "中文/S7-CN-R"}
+  "defaults": {
+    "mode": "basic",
+    "size": "Medium",
+    "step": 1,
+    "showTooltip": false,
+    "disabled": false
   },
-  "states": ["Default", "filled", "active", "disabled"],
+  "sizes": {
+    "Small": {
+      "width": 100,
+      "height": 24,
+      "paddingInline": 8,
+      "radius": 4,
+      "font": "中文/S8-CN-R"
+    },
+    "Medium": {
+      "width": 112,
+      "height": 32,
+      "paddingInline": 12,
+      "radius": 6,
+      "font": "中文/S8-CN-R"
+    },
+    "Large": {
+      "width": 133,
+      "height": 40,
+      "paddingInline": 12,
+      "radius": 8,
+      "font": "中文/S7-CN-R"
+    }
+  },
+  "states": [
+    "Default",
+    "filled",
+    "active",
+    "disabled"
+  ],
   "structure": {
-    "basic": ["numeric-input"],
-    "stepper": ["decrease-button", "numeric-input", "increase-button"],
-    "unit": ["numeric-input", "fixed-unit"],
-    "right-step": ["numeric-input", "increase-button", "decrease-button"],
-    "slider": ["track", "range-input", "optional-tooltip"],
-    "range-slider": ["track", "start-range-input", "end-range-input", "optional-tooltips"]
+    "basic": [
+      "numeric-input"
+    ],
+    "stepper": [
+      "decrease-button",
+      "numeric-input",
+      "increase-button"
+    ],
+    "unit": [
+      "numeric-input",
+      "fixed-unit"
+    ],
+    "right-step": [
+      "numeric-input",
+      "increase-button",
+      "decrease-button"
+    ],
+    "slider": [
+      "track",
+      "range-input",
+      "optional-tooltip"
+    ],
+    "range-slider": [
+      "track",
+      "start-range-input",
+      "end-range-input",
+      "optional-tooltips"
+    ]
   },
   "behavior": {
     "validation": "Min, Max and Step are required component inputs; reject or correct empty, nonnumeric, precision-invalid and out-of-range values with visible feedback.",
@@ -80,9 +166,14 @@
     "Slider is for rapid adjustment; show Tooltip when precise confirmation is required.",
     "Do not infer default Min, Max, precision or unit from the visual example.",
     "Figma 无 error 视觉轴；校验反馈不要从本组件 Token 反推描边色。",
-    "Addon 按钮与单位条宽度等于当前档位高度（24/32/40），不要写成固定 32。"
+    "Addon（步进）按钮宽度等于当前档位高度（24/32/40），不要写成固定 32；单位/币种后缀条宽度不再与 Addon 一致固定为档位高度——单字符或单个符号渲染为等高正方形，两个及以上字符按内容宽度自适应并左右各留 8px 内边距。"
   ],
-  "dependencies": ["Input", "Button", "Icon", "Tooltip"],
+  "dependencies": [
+    "Input",
+    "Button",
+    "Icon",
+    "Tooltip"
+  ],
   "confirmedDecisions": [
     "2026-09-10：页 2638:2479 实收 2 套 / 52 variants（Input-Number 48 + swiper 4）。旧 inventory 1/48 漏记 Slider 母版。",
     "active 绑定 Border/focused，无外发光。",

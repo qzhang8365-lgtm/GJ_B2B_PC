@@ -69,3 +69,44 @@ InputNumber 升级为 `figma-audited`。INN-003 关闭。
 验证：脚本二次扫描确认页面残留死选择器为 0；`<style>` 块大括号计数与逐字符深度校验均通过（与 button.html 同批次校验时一并发现并排除结构性错误）；本文件删除/裁剪的选择器均逐一比对过页面真实 `class="..."` 与 `classList` 调用，确认为未引用的旧代码，属于低风险清理，未单独截图复核。
 
 结论：INN-004 已关闭。`preview/input-number/index.html` 内嵌 CSS 现在只包含仍被页面实际使用的选择器。
+
+
+## 2026-09-15：单位后缀容器改为「单字符 1:1 正方形 + 两字符以上内容自适应」，边距 8px（新增并关闭 INN-005）
+
+背景：用户在 `preview/patterns/form-edit.html`「首次预计入金金额」字段截图反馈：「数字输入的单位部分的容器那宽度不应该是固定的，而是根据单位内容宽度适应，边距4」——该字段单位文字为「万元」（2 字符），单位容器明显偏窄、文字拥挤。
+
+**第一轮修复**：将 `.gj-number-input-unit-label` 从固定 `width:var(--h)`（与输入框同高的正方形）改为纯内容自适应：
+
+```
+.gj-number-input-unit-label{display:grid;place-items:center;flex:none;align-self:stretch;width:auto;padding:0 4px;box-sizing:border-box;background:var(--ds-component-input-number-unit-label-background);font-family:var(--ds-font-family-ui);white-space:nowrap}
+```
+
+Playwright 验证：「万元」（2 字符）容器为 `36px`，「￥」（1 字符）容器为 `22px`，均按内容自适应、不再拥挤。
+
+**用户追加更精确的规则**：「实际上合理的情况应该是如果单位是单字符，或者单位标点，则灰色背景部分的尺寸是1:1，而如果超过两个字符应该就是自适应，然后现在看似乎左右边距还是不够宽，调整到8px」——即单字符/单个符号（￥、%、元等）应严格保持与输入框同高的正方形（1:1），只有两字符及以上时才按内容自适应展开，且自适应时的左右内边距要从 4px 加宽到 8px。
+
+排查：第一轮的纯 `width:auto` 方案下，单字符单位的实际宽度完全由「字形宽度 + 内边距」决定，并不严格等于容器高度——视觉上接近正方形只是巧合（Medium 档下 22px 宽 vs 30px 内容区高，其实是明显的长方形，只是没有多字符场景那么夸张），不满足用户「1:1」的精确要求。
+
+修复：改为在自适应宽度基础上叠加一个「正方形下限」：
+
+```
+.gj-number-input-unit-label{display:grid;place-items:center;flex:none;align-self:stretch;width:auto;min-width:calc(var(--h) - 2px);padding:0 8px;box-sizing:border-box;background:var(--ds-component-input-number-unit-label-background);font-family:var(--ds-font-family-ui);white-space:nowrap}
+```
+
+- `padding:0 4px` → `padding:0 8px`：按用户要求把自适应场景的左右内边距加宽到 8px。
+- 新增 `min-width:calc(var(--h) - 2px)`：`--h` 是 `.gj-number-input` 声明的档位高度变量（Medium 32px/Large 40px/Small 24px），但 `.gj-number-input` 自身有 `border:1px solid`，配合全局 `*{box-sizing:border-box}` 重置，其内容区实际高度是 `--h` 减去上下各 1px 描边；单位容器用 `align-self:stretch` 撑满的是这个内容区高度，而不是 `--h` 本身，所以 `min-width` 要对齐 `calc(var(--h) - 2px)` 而不是直接用 `var(--h)`，否则会比实际高度宽 2px、达不到精确 1:1。
+- 效果：当「内容宽度 + 16px 内边距」小于等于这个正方形下限时（单字符/单个符号场景），容器被 `min-width` 钳制成精确正方形，多出的空间由 `place-items:center` 居中吸收；当内容更长（两字符及以上）时，内容+内边距自然超过正方形下限，容器按内容宽度自适应展开，不再受限。这样不需要用 JS 判断字符数，纯 CSS 的「取两者较大值」（`width:auto` 与 `min-width` 的浏览器自动比较）就同时满足了两种场景。
+
+验证（Playwright，Medium 档 `--h`=32px，内容区高 30px）：
+
+- 静态示例「单位 / 币种」卡片「￥」（1 字符）：由第一轮的 `22px` 修正为 `30×30px`，精确正方形。
+- 交互演示依次切换单位下拉「￥」「%」「元」：均为 `30×30px`。
+- `form-edit.html`「万元」（2 字符）：`44×30px`（内容宽度 + 左右各 8px 内边距），按内容自适应，非正方形，符合「超过两字符自适应」的要求；截图确认与输入框、帮助文案排布协调。
+- 额外用脚本临时把交互演示单位替换成三字符「百分比」验证更长文本：`58×30px`，同样正确自适应，不换行、不裁切。
+- 额外核对其他档位：Large 档（`gj-number-input-large`，`--h`=40px）单字符同样被精确钳制为 `38×38px` 正方形。Small 档（`--h`=24px）下单字符实测宽度为 `30.2px`，超出 `22px` 的正方形阈值——原因是 `.gj-number-input-small` 没有像 `.gj-number-input-large` 那样声明更小的字号，字形宽度与 Medium 相同，导致「字形 + 16px 内边距」天然大于 Small 更矮的档位高度，在当前字号设定下无法同时满足「1:1 正方标」与「8px 内边距」两条约束。核查全项目 `grep`，确认目前没有任何页面把 Small 尺寸与单位后缀组合使用，属于尚未出现的理论边界场景，本次不做处理，记录在案；如未来业务需要 Small + 单位组合，需要连带调整 Small 档字号或内边距才能保证正方形。
+- 整页截图复核「尺寸」「状态」「左右加减」「右侧步进」「滑动输入条」「尺寸与结构」「选用规则」「交互属性」各板块：均未受本次改动影响，无视觉或交互回归。
+- `assets/styles/gj-b2b-components.css` 修改后 `<style>` 范围内大括号计数复核为平衡（984/984）。
+
+同步文档：`references/components/input-number/rules.md` 与 `schema.json#constraints` 更新为「单字符/单个符号 = 与档位高度一致的正方形，两字符及以上按内容自适应、左右 8px 内边距」，不再写「Addon 与单位条宽度都等于档位高度」。
+
+结论：INN-005 已关闭。`.gj-number-input-unit-label` 现在单字符/单个符号严格保持 1:1 正方形，两字符及以上按内容宽度自适应并留 8px 内边距；Small 尺寸配合单位后缀在当前字号下的边界场景已记录、暂无实际影响。

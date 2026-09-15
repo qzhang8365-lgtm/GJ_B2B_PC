@@ -1,5 +1,33 @@
 # Avatar Figma 审计
 
+## 2026-09-15 · AVT-005 带徽标的头像与头像组合两处遗漏共享类导致放大，并暴露 Avatar+Badge 叠加的裁切/Token 漂移潜伏 bug（已关闭）
+
+- **触发：** 用户提供「带徽标的头像」板块两张截图，追问「这地方头像为什么那么大」；核查过程中用户又追加反馈「头像组合那里也需要调整」。
+
+- **现象一（带徽标的头像）：** 该板块头像显示为远超 64px/40px 设计尺寸的大图。排查发现这两个 `style-item` 是手写静态 HTML，没有像同页面 `sizeMatrix`/`styleSamples`/`previewAvatar` 那样通过 `avatar()` 函数生成，只带页面私有类 `avatar picture circle s64`/`s40`；而页面 `<style>` 里 `.s64`/`.s40` 等类实际只定义了 `font-size`，从未定义 `width`/`height`，`.avatar` 基类本身也没有尺寸声明，于是 `<img style="width:100%;height:100%">` 里的百分比失去了可依赖的容器尺寸，回退成图片自身的原始像素尺寸（源文件 582KB，天然远大于 64px）。
+
+- **现象二（头像组合，用户追加指出）：** 同一页面「头像组合」板块的 `#avatarGroup` 也是 JS 拼接的静态字符串模板 `` `<span class="avatar picture circle s32">...</span>` ``，同样缺失真正的共享类，存在与「带徽标的头像」完全相同的放大问题。值得记录的是：AVT-004（见下一节）的关闭说明曾写「规范页的基础矩阵、风格样例、**头像组**和交互预览统一组合 `gj-avatar`……」，但实际代码里这一行模板从未被改动过——AVT-004 的关闭记录与真实实现不一致，是本 Skill 里第二次出现"文档说已覆盖、实际漏改一处"的情况（第一次见 CAR-008）。已用全项目 `grep 'class="avatar '` 排除 `gj-avatar` 命中，确认整个项目里只有这一行模板残留旧写法，问题不会扩散到其他页面。
+
+- **修复（现象一、二）：** 「带徽标的头像」两处标记补上真实共享类：`avatar gj-avatar gj-avatar-64 gj-avatar-picture picture circle s64`、`avatar gj-avatar gj-avatar-picture picture circle s40`（40 是默认尺寸不需要额外 size 类）；`avatarGroup` 的 JS 模板补上 `gj-avatar gj-avatar-32 gj-avatar-picture`。同时删除「带徽标的头像」区块此前依赖的页面私有死 CSS `.badge-wrap/.badge-dot/.badge-count`（已 grep 确认页面内无其他引用）。
+
+- **现象三（复核时新发现，非用户原始报告）：** 放大问题修复后复核截图，发现两个角标（数字「12」、状态圆点）几乎不可见。用临时脚本把 `.gj-avatar` 的 `overflow` 由 `hidden` 改成 `visible` 做对照截图，确认角标其实定位正确，只是被 `.gj-avatar` 自身为裁圆/裁方而设的 `overflow:hidden` 顺手裁掉了——角标当时作为 `.gj-avatar` 的子元素，靠 `transform:translate(30%,-30%)` 平移到容器边角之外，天然会被父级裁剪。
+
+- **根因（现象三）：** 对照 `avatar/schema.json` 的 `badgeDefault` 字段与 `avatar/mapping.json` 的 `tokenMap.badge.*`（AVT-002 已核实的文档），以及 `gj-b2b-tokens.css` 里早已定义的 `--ds-component-avatar-badge-position`（`translate(50%,-50%)`）、`--ds-component-avatar-badge-dot-size-24/-other`、`--ds-component-avatar-badge-number-height/-min-width` 等 Token，发现文档与 Token 一直是对的，但 `gj-b2b-components.css` 里实际的角标定位规则用的是硬编码 `translate(30%,-30%)`（既不匹配 Token，位移量也不够把角标完全推出裁剪区），且从未引用过上述任何一个尺寸 Token。这是一处文档正确、Token 已备好、但 CSS 落地实现与两者脱节的潜伏 bug；用全项目 `grep` 确认在本次之前，项目里没有任何页面真正同时用到 `gj-avatar` 与 `gj-badge-dot`/`gj-badge-count`，所以这个组合从未被实际渲染过，也就从未暴露。
+
+- **修复（现象三）：** 新增不参与裁剪的包裹类 `.gj-avatar-badge{position:relative;display:inline-flex;vertical-align:middle}`，让角标成为 `.gj-avatar` 的兄弟节点而不是被裁剪的子节点；角标定位规则相应从 `.gj-avatar .gj-badge-dot,.gj-avatar .gj-badge-count` 改挂到 `.gj-avatar-badge .gj-badge-dot,.gj-avatar-badge .gj-badge-count`，位移由硬编码改为引用 `var(--ds-component-avatar-badge-position,translate(50%,-50%))`；补上此前定义了但从未被引用的四个尺寸 Token：`.gj-avatar-badge .gj-badge-dot` 默认取 `--ds-component-avatar-badge-dot-size-other`（8px），24px 头像用兄弟选择器 `.gj-avatar-24~.gj-badge-dot` 单独取 `--ds-component-avatar-badge-dot-size-24`（6px）；`.gj-avatar-badge .gj-badge-count` 的高度/最小宽度分别引用 `--ds-component-avatar-badge-number-height`/`--ds-component-avatar-badge-number-min-width`（均 20px）。`preview/avatar/index.html` 的两处标记同步改为用 `<span class="gj-avatar-badge">` 包裹「`.gj-avatar` 头像 + 角标」两个兄弟元素。
+
+- **验证：** Playwright 核实「带徽标的头像」64px/40px 两个样例头像分别是 `64×64`/`40×40`；数字角标 `21.3×20`（满足 20px 高、min-width 20px）、圆点角标 `8×8`（40px 头像走的是 `-other` 档而非 24px 专用的 6px 档），两者 `transform` 分别等于自身宽高一半（对应 `translate(50%,-50%)`），`opacity`/`visibility` 均正常，不再被裁切；截图确认角标完整可见，不再是裁切前几乎看不见的一条红色细边。「头像组合」板块 6 个头像全部为 `32×32`，重叠排列恢复正常观感。全项目 `grep` 复核：仅 `preview/badge/index.html` 单独使用 `gj-badge-dot`/`gj-badge-count`（不含 `gj-avatar`，选择器改动对它无影响）；另外 6 个使用 `gj-avatar` 的业务模式页（`navbar`、`object-detail`、`dashboard`、`step-task`、`search-list`、`form-edit`）均不含角标叠加，本次新增的 `.gj-avatar-badge`/兄弟选择器规则对它们是无操作，未见回归。`preview/avatar/index.html` 标签计数（div/span/section/article/table/tr/td/th）与 `<style>`/`<script>` 大括号、括号计数复核均平衡；`gj-b2b-components.css` 大括号计数复核为 996/996 平衡。
+
+- **结论：** AVT-005 已关闭。已确认 AVT-002 记录的角标叠加规格（位置、描边、Dot/Number 尺寸）从文档层面看一直是正确的，本次只是把共享 CSS 的实际实现修正为与文档/Token 一致，不涉及规格变更；`rules.md`/`schema.json`/`mapping.json` 已补充「实现已于 2026-09-15 核实与文档一致」的说明，避免今后误以为这仍是未落地的默认值。
+
+## 2026-09-15 · AVT-004 规范页 24px 展示回归（已关闭）
+ 规范页 24px 展示回归（已关闭）
+
+- **现象：** `preview/avatar/index.html` 的基础用法矩阵中，最右侧 24px 圆形与方形头像均显示为接近 40px，默认人物图标也随之偏大。
+- **根因：** Avatar 共享基座和组件 Token 已正确定义 24px 容器与 16px 图标，但规范页的 `avatar()` 仍生成页面私有 `s*` 结构。2026-09-11 的死代码扫描又未识别模板字符串 `s${size}` 的动态取值，误删 `s24` 两条规则，导致最小档回退到默认/资源固有尺寸。
+- **修复：** 规范页的基础矩阵、风格样例、头像组和交互预览统一组合 `gj-avatar`、`gj-avatar-24/32/64`、`gj-avatar-square`、`gj-avatar-icon` 等共享基座；默认人物图标改用共享 mask 图标并由对应 size Token 控制。同步补齐共享基座此前遗漏的 64px 默认图标映射，确保四档全部由组件 Token 驱动。
+- **防回归：** 头像尺寸矩阵必须覆盖 schema 发布的全部 size 枚举；不能依赖图片固有尺寸。死代码扫描遇到模板字符串或动态 class 时，必须枚举运行时可能值或渲染 DOM 后再判断，不能仅靠静态字面 class 搜索删除规则。
+
 来源：Figma 组件集 `2982:622`（Avatar✅），2026-09-09 只读检查。24 个 variant：`Size`(24/32/40/64) × `Shape`(circle/square) × `Style`(default/Letter/picture) = 4×2×3=24。用户直接提供该组件链接定位（`node-id=2982-622`），未通过猜测节点 ID 获得。MCP `get_metadata` 把该组件集呈现为画板内的一组 symbol，未返回独立的 COMPONENT_SET 根节点，但 24 个子节点的 Size/Shape/Style 命名组合与预期完全吻合，判定为完整覆盖。
 
 本轮用 `get_variable_defs` 拉取了整个子树绑定的全部变量（`Primitive/Neutral/N01`、`Primitive/Neutral/N05`、`Border/default`、`Text/blue`），并对 7 个代表性 variant 逐一用 `get_design_context` 核实：size40-square-default(`2982:673`)、size40-circle-Letter(`2982:743`)、size40-circle-picture(`2982:850`)、size24-square-default(`2982:663`)、size64-square-default(`2982:678`)、size32-square-default(`2982:678` 附近)、size24-square-picture(`2982:835`)。用 `get_screenshot`（`enableBase64Response: true`）对整个组件集截图做了视觉复核。完整设计上下文接口未出现超时，本轮未使用"接口超时故不写入"的免责声明。
@@ -44,3 +72,5 @@ Avatar 的 1 个组件集（24 variants）已完成真实 Figma 审计；schema.
 验证：脚本二次扫描确认页面残留死选择器为 0；`<style>` 块大括号计数与逐字符深度校验均通过（与 button.html 同批次校验时一并发现并排除结构性错误）；本文件删除/裁剪的选择器均逐一比对过页面真实 `class="..."` 与 `classList` 调用，确认为未引用的旧代码，属于低风险清理，未单独截图复核。
 
 结论：AVT-003 已关闭。`preview/avatar/index.html` 内嵌 CSS 现在只包含仍被页面实际使用的选择器。
+
+后续更正：AVT-003 对动态模板类 `s${size}` 的判断存在假阴性，删除 `s24` 后造成 24px 展示回归；该问题已由 AVT-004 通过迁移到共享 `gj-avatar` 基座关闭。以后动态类不能只用静态类名扫描判死。

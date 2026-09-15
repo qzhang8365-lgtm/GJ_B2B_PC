@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# 国金 B 端设计 Skill 提交门禁。
+# 实际检查逻辑在同目录 pre-commit-checks.mjs 里；本文件只负责调用并把
+# 退出码透传给 git。
+#
+# 安装：仓库根目录执行一次 `npm run install-hooks`
+# （等价于 `git config core.hooksPath scripts/git-hooks`）。
+#
+# 检查内容见 pre-commit-checks.mjs 文件头注释：JSON/CSS/HTML 结构安全
+# 网、审计留痕（audit.md ↔ audit-tracker.md）同步、以及涉及预览页/共享
+# 样式改动时的渲染一致性验证（generation-verification.md）。
+#
+# 紧急情况下可用 `git commit --no-verify` 跳过本次检查，但应在提交信息
+# 里注明跳过原因，方便日后追溯。
+set -e
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+node "$REPO_ROOT/scripts/git-hooks/pre-commit-checks.mjs"

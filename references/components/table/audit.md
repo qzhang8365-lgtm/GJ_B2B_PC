@@ -75,3 +75,17 @@
 验证：Playwright 核实四个模式页（dashboard / step-task / search-list / object-detail）操作列表头的 `getComputedStyle().textAlign` 均为 `center`；截图确认 dashboard 的「查看」文字按钮、step-task 的「删除」「编辑」两个文字按钮都居中显示；search-list 的三个文字按钮（查看/编辑/更多）和 object-detail 的「查看」按钮保持原有的居中效果不变；四个页面结构完整性（table/tr/td/th/button/div 标签计数）与其余功能（下拉筛选、批量选择、分页、展开等，仅做视觉核对未逐一交互回归，因改动只涉及两个 class 属性的新增）均未受影响。
 
 结论：TBL-006 的操作列居中规则现已同步到全部 4 个实际使用 Table 的业务模式页，不再存在共享组件页面已改、模式页遗漏的不一致。
+
+## 2026-09-14：补上 `.gj-table-wrap` 的 `has-overflow` 自动切换（新增并关闭 TBL-007）
+
+背景：给 5 个模式页接入统一壳（`.gj-sidebar` 固定占宽约 200px）后，`search-list.html` 在 1280px 视口下第一次出现 `.gj-table.query-table`（`min-width:1100px`）超出 `.gj-table-wrap` 可用宽度（约 998px）的情况，sticky 定位的 `.gj-table-action` 操作列直接压在"最近修改"列上，没有任何视觉提示（1440px 视口不受影响，未溢出）。
+
+排查：共享 CSS 里 `.gj-table-wrap.has-overflow .gj-table-action{box-shadow:-10px 0 14px var(--ds-background-mk-10)}` 这条"操作列悬浮阴影提示可横向滚动"的规则一直存在，说明组件设计本身已经预见了这种情况、也有视觉方案——缺的是没有任何 JS 真正去 toggle `has-overflow` 这个类。`grep -rl "has-overflow" --include="*.js" .` 和 `grep -rn "has-overflow" references/components/table/` 都是零匹配，确认全项目没有别的地方补过这段逻辑，不是这次改动引入的新缺陷，而是此前一直存在、从未被触发过的组件缺口。
+
+但 `preview/table/index.html`（本组件已审计的规范页）自己的"交互属性"demo 其实一直有这段逻辑，只是用页面私有选择器实现：`function syncOverflow(){document.querySelectorAll('.showcase-wrap').forEach(wrap=>wrap.classList.toggle('has-overflow',wrap.scrollWidth>wrap.clientWidth+1))}`，在 `render()` 之后用 `requestAnimationFrame` 调用，并绑定了 `window.addEventListener('resize',syncOverflow)`。这套实现是对的，只是从未跳出这个 demo 被提炼成共享脚本——和 Navbar/Avatar 基座建设（NAV-004）是同一种"真实实现只存在于规范页、未回收进共享资产"的模式。
+
+修复：把这段已验证正确的逻辑提炼成共享脚本 `assets/scripts/gj-table-overflow.js`，选择器从页面私有的 `.showcase-wrap` 泛化成真正的共享类 `.gj-table-wrap`；比规范页的原版更完整一些——除了 `window resize` 兜底，还用 `ResizeObserver` 分别监听每个 `wrap` 和它内部 `table` 的尺寸变化，用 `MutationObserver` 监听新增到页面里的 `.gj-table-wrap`（覆盖异步渲染出表格的场景），自动扫描并 toggle `has-overflow`，业务页面不需要手动调用任何函数，只要引入这一个 `<script>` 标签。接入了 `dashboard/object-detail/search-list/step-task.html` 四个实际用到 `.gj-table-wrap` 的模式页（`form-edit.html` 没有表格，不需要）。
+
+验证：Playwright 核实 `search-list.html` 在 1280px 下 `.gj-table-wrap.clientWidth=998`、`scrollWidth=1100`，`has-overflow` 正确挂上，操作列 `box-shadow` 为 `-10px 0 14px`；1440px 下 `clientWidth===scrollWidth`，不挂类。对表头逐格测了 `getBoundingClientRect`，确认"操作"列确实以 sticky 方式压在"最近修改"列上方——这是设计本身就要的"冻结列覆盖被滚动内容"效果（类似 Excel 冻结列），阴影就是用来提示"这里还有更多内容、可以横向滚动"，不是要消除重叠本身。四个接入脚本的模式页跑 `verify-page.mjs` 与 Playwright 截图，零请求失败、零 pageerror，无新增视觉回归。
+
+结论：TBL-007 已关闭。`.gj-table-wrap` 现在会自动感知自身是否溢出并给出滚动提示，不再需要每个业务页面各自实现或者干脆遗漏。

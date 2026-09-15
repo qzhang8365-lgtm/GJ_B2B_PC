@@ -1,15 +1,163 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GJ Design System · 时间轴 Timeline</title><link rel="stylesheet" href="../../assets/styles/gj-b2b-tokens.css"><link rel="stylesheet" href="../../assets/styles/gj-b2b-components.css?v=general-1"><link rel="stylesheet" href="../../assets/styles/data-table.css"><style>.gj-timeline-h-shell{align-items:start!important}.gj-timeline-h-shell>.gj-timeline-arrow{margin-top:18px}</style><style>
-:root{--font:var(--ds-font-family-ui)}*{box-sizing:border-box}body{margin:0;color:var(--ds-text-primary);font:14px/1.55 var(--font)}button,input,select{font:inherit;color:inherit}.shell{max-width:var(--docs-page-max-width);margin:auto;padding:var(--docs-page-padding)}.intro{margin:0 4px 30px}.eyebrow{margin-bottom:10px;color:var(--ds-text-blue);font-size:13px;font-weight:600}.intro h1{margin:0 0 8px;font-size:32px;line-height:42px}.intro p{max-width:920px;margin:0;color:var(--ds-text-secondary);font-size:15px;line-height:1.75}.component{padding:24px;border-radius:20px;background:var(--ds-background-container)}.component-heading{display:flex;align-items:center;gap:12px;padding-bottom:16px;border-bottom:1px solid var(--ds-border-default)}.component-heading h1{margin:0;font-size:28px;line-height:32px}.component-heading span{color:var(--ds-text-tertiary);font-size:14px}.component-description{margin:24px 0;color:var(--ds-text-disable)}.content{display:grid;gap:20px}.region-title{margin:0;font-size:18px;font-weight:600}.panel{min-width:0;padding:20px;border:1px solid var(--ds-border-default);border-radius:16px;background:var(--ds-background-container)}.panel-head{display:flex;justify-content:space-between;gap:12px;margin-bottom:16px}.panel-head h2{margin:0;font-size:16px;font-weight:600}.panel-head span{color:var(--ds-text-tertiary);font-size:12px}.desc{margin:-8px 0 24px;color:var(--ds-text-secondary)}.stage{padding:28px 24px;border:1px dashed var(--ds-border-secondary);border-radius:10px;background:var(--ds-background-container);overflow:auto}.vertical-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.variant{display:grid;justify-items:center;gap:18px;padding:20px;border-radius:12px;background:var(--ds-background-background)}.variant-label{display:flex;justify-content:space-between;width:100%;color:var(--ds-text-secondary)}.variant-label b{color:var(--ds-text-primary);font-weight:600}.horizontal-stage{min-width:720px}.interactive{display:grid;grid-template-columns:minmax(0,3fr) minmax(280px,2fr);gap:20px;align-items:start}.control-panel{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.field{display:grid;gap:5px}.field label{color:var(--ds-text-secondary);font-size:12px}.field select{width:100%;height:36px;padding:0 10px;border:1px solid var(--ds-border-secondary);border-radius:6px;background:var(--ds-background-container)}.rule-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.rule{padding:16px;border-radius:10px;background:var(--ds-background-background)}.rule b{display:block;margin-bottom:6px;font-weight:600}.rule p{margin:0;color:var(--ds-text-secondary);font-size:13px;line-height:20px}.metric{min-width:780px}@media(max-width:1000px){.interactive{grid-template-columns:1fr}.rule-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:680px){.shell{padding:var(--docs-page-padding-compact)}.component{padding:18px}.vertical-pair,.rule-grid,.control-panel{grid-template-columns:1fr}}
-</style>  <script src="../../assets/scripts/font-runtime.js"></script>
-</head><body><main class="shell"><header class="intro"><div class="eyebrow">信息展示组件 · Data Display</div><h1>时间轴 Timeline</h1><p>用于按时间顺序呈现事件、进度记录或阶段历史，帮助用户理解事件发生的先后关系和当前状态。</p></header><section class="component"><header class="component-heading"><h1>Timeline</h1><span>时间轴</span></header><p class="component-description">纵向时间轴适合阅读事件详情与历史记录；横向时间轴适合展示数量有限、阶段清晰的时间进程。节点样式应在同一组内保持一致。</p><div class="content"><h2 class="region-title">组件展示</h2>
-<article class="panel"><div class="panel-head"><h2>纵向时间轴</h2><span>Dot / Checkmark</span></div><p class="desc">Dot 强调时间顺序；Checkmark 强调节点已经完成。等待节点统一使用弱化状态。</p><div class="vertical-pair"><div class="variant"><div class="variant-label"><b>圆点</b><span>Dot</span></div><div class="gj-timeline-v" data-static-style="dot"></div></div><div class="variant"><div class="variant-label"><b>完成图标</b><span>Checkmark</span></div><div class="gj-timeline-v" data-static-style="check"></div></div></div></article>
-<article class="panel"><div class="panel-head"><h2>横向时间轴</h2><span>Horizontal</span></div><p class="desc">单元宽度以 155px 为基准；内容超过可视区域时，通过左右切换浏览，不压缩标题与说明。</p><div class="stage horizontal-stage"><div class="gj-timeline-h-shell"><button class="gj-timeline-arrow gj-icon-button" id="staticPrev" aria-label="向前"><i class="gj-icon gj-icon-16" style="--gj-icon:url('../../assets/icons/iconfont/icf_Arrow_left.svg')" aria-hidden="true"></i></button><div class="gj-timeline-h-viewport"><div class="gj-timeline-h" id="staticHorizontal"></div></div><button class="gj-timeline-arrow gj-icon-button" id="staticNext" aria-label="向后"><i class="gj-icon gj-icon-16" style="--gj-icon:url('../../assets/icons/iconfont/icf_Arrow_right.svg')" aria-hidden="true"></i></button></div></div></article>
-<article class="panel"><div class="panel-head"><h2>交互属性</h2><span>实时预览</span></div><div class="interactive"><div class="stage"><div id="interactiveDemo"></div></div><div class="control-panel"><div class="field"><label>方向</label><select id="direction"><option value="vertical">纵向</option><option value="horizontal">横向</option></select></div><div class="field"><label>节点样式</label><select id="nodeStyle"><option value="dot">Dot 圆点</option><option value="check">Checkmark 完成</option></select></div><div class="field"><label>节点数量</label><select id="count"><option>3</option><option selected>4</option><option>5</option><option>6</option><option>7</option><option>8</option></select></div><div class="field"><label>当前节点</label><select id="current"><option>1</option><option>2</option><option selected>3</option><option>4</option></select></div></div></div></article>
-<article class="panel"><div class="panel-head"><h2>结构与属性</h2><span>Component metrics</span></div><div class="ds-table-wrap"><table class="ds-table metric"><thead><tr><th>组成</th><th>尺寸 / 样式</th><th>变量或文字样式</th><th>说明</th></tr></thead><tbody><tr><td>纵向节点容器</td><td>20 × 20px</td><td>—</td><td>统一节点与轨道对齐</td></tr><tr><td>Dot 圆点</td><td>10 × 10px · 999px 圆角</td><td>Brand/GJ_Blue</td><td>默认节点样式</td></tr><tr><td>Checkmark</td><td>16 × 16px</td><td>icf_system_check-circle-fill</td><td>只表达节点已完成</td></tr><tr><td>纵向标题</td><td>14/22 · Semibold</td><td>中文/S5-CN-S · Text/Primary</td><td>日期或事件标题</td></tr><tr><td>纵向说明</td><td>12/18 · Regular</td><td>Text/Secondary</td><td>节点补充信息</td></tr><tr><td>横向单元</td><td>155px 基准宽 · 112px 基准高</td><td>标题 14/22 Semibold；说明 14/22 Regular</td><td>长内容换行，不缩窄单元</td></tr><tr><td>状态</td><td>finished / waiting</td><td>Brand/GJ_Blue / Text/Disable</td><td>完成与等待状态保持连续</td></tr></tbody></table></div></article>
-<article class="panel"><div class="panel-head"><h2>使用规则与建议</h2><span>Usage guidance</span></div><div class="rule-grid"><div class="rule"><b>按真实时间排序</b><p>默认按时间正序展示；如采用倒序，应明确标注并保持整个页面一致。</p></div><div class="rule"><b>方向选择</b><p>详情多、节点多时使用纵向；横向仅用于数量有限且阶段清晰的进程。</p></div><div class="rule"><b>节点状态连续</b><p>完成节点必须连续，等待状态不得夹在已完成节点之间。</p></div><div class="rule"><b>长内容处理</b><p>标题可换行，详情建议控制在 1–3 行；更多内容通过展开或详情入口承载。</p></div><div class="rule"><b>横向溢出</b><p>保持 155px 基准单元宽；容器不足时提供切换或横向滚动，不挤压文字。</p></div><div class="rule"><b>时间格式统一</b><p>同一条时间轴使用相同日期粒度和格式，不混用日期、月份与时分秒。</p></div><div class="rule"><b>状态与图标</b><p>Checkmark 只表示完成，不用作当前或异常状态。</p></div><div class="rule"><b>交互边界</b><p>默认用于信息展示。仅在允许查看详情时让标题或整项可点击。</p></div><div class="rule"><b>无数据与加载</b><p>没有事件时使用空状态组件；异步加载时保留稳定容器。</p></div></div></article></div></section></main><script>
+<!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GJ Design System · 时间轴 Timeline</title>
+<link rel="stylesheet" href="../../assets/styles/gj-b2b-tokens.css"><link rel="stylesheet" href="../../assets/styles/gj-b2b-components.css?v=timeline-docs-2"><link rel="stylesheet" href="../../assets/styles/component-docs.css?v=4">
+<style>
+.gj-timeline-h-shell{align-items:start!important}
+.gj-timeline-h-shell>.gj-timeline-arrow{margin-top:18px}
+.structure{display:grid;grid-template-columns:repeat(7,auto);gap:12px;align-items:stretch;justify-content:center}
+.structure-card{min-width:132px;padding:16px;border-radius:var(--docs-item-radius);background:var(--ds-background-container);display:grid;align-content:center;gap:4px;text-align:center}
+.structure-card b{font-size:14px}
+.structure-card span{color:var(--ds-text-tertiary);font-size:12px;line-height:18px}
+.structure-symbol{display:grid;place-items:center;color:var(--ds-text-tertiary);font-size:20px;font-weight:600}
+.type-row+.type-row{margin-top:20px}
+.type-row-label{display:block;margin:0 0 10px;color:var(--ds-text-secondary);font-size:13px;font-weight:500}
+.samples{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.sample-stage{min-height:170px}
+.horizontal-stage{overflow:auto}
+.states{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.state-card{min-height:80px;display:grid;place-items:center;align-content:center;gap:10px}
+.state-card span{color:var(--ds-text-tertiary);font-size:12px}
+.playground{display:grid;grid-template-columns:minmax(0,3fr) minmax(300px,2fr);gap:16px;align-items:stretch}
+.interaction{min-width:0;padding:var(--docs-panel-padding);display:grid;place-items:center;overflow:auto;border-radius:var(--docs-panel-radius);background:var(--ds-background-container);border:1px solid var(--ds-border-default)}
+.controls{min-width:0;padding:var(--docs-panel-padding);border-radius:var(--docs-panel-radius)}
+.control-title{margin:0 0 4px;font-size:16px}
+.control-desc{margin:0 0 16px;color:var(--ds-text-tertiary);font-size:12px;line-height:18px}
+.control-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 16px}
+.field{display:grid;gap:7px}
+.field label{color:var(--ds-text-secondary);font-size:13px}
+.field select{width:100%;height:36px;min-width:0;padding:0 10px;border:1px solid var(--ds-border-secondary);border-radius:var(--docs-item-radius);background:var(--ds-background-container)}
+.event{margin-top:14px;color:var(--ds-text-tertiary);font-size:12px}
+.event strong{color:var(--ds-text-primary)}
+@media(max-width:900px){.playground{grid-template-columns:1fr}}
+@media(max-width:680px){.samples,.states,.control-grid{grid-template-columns:1fr}.structure{grid-template-columns:1fr}.structure-symbol{transform:rotate(90deg)}}
+</style><script src="../../assets/scripts/font-runtime.js"></script></head><body>
+<main class="docs-shell"><header class="docs-page-head"><div class="docs-eyebrow">信息展示组件 · Data Display</div><h1>时间轴 Timeline</h1><p>用于按时间顺序呈现事件、进度记录或阶段历史，帮助用户理解事件发生的先后关系和当前状态。</p></header>
+<article class="docs-sheet">
+
+<section class="docs-section"><header class="docs-section-head"><div><h2>组成结构</h2><p>节点表达事件是否已完成，连接线串联相邻事件的先后关系，内容区承载标题与说明。</p></div></header><div class="docs-stage docs-surface-gray"><div class="structure">
+<div class="structure-card docs-structure-primary"><b>Item</b><span>时间轴事件</span></div>
+<div class="structure-symbol">=</div>
+<div class="structure-card"><b>Node</b><span>节点，Dot 或 Checkmark，表达 Finished / Waiting</span></div>
+<div class="structure-symbol">+</div>
+<div class="structure-card"><b>Connector</b><span>连接线，串联相邻事件</span></div>
+<div class="structure-symbol">+</div>
+<div class="structure-card"><b>Content</b><span>标题与说明</span></div>
+</div></div></section>
+
+<section class="docs-section"><header class="docs-section-head"><div><h2>主要类型</h2><p>纵向适合阅读事件详情与历史记录；横向适合展示数量有限、阶段清晰的时间进程。节点样式在同一组内应保持一致。</p></div></header>
+
+<div class="type-row"><span class="type-row-label">方向：纵向</span><div class="docs-stage docs-surface-gray sample-stage" style="max-width:400px" id="dirVertical"></div></div>
+<div class="type-row"><span class="type-row-label">方向：横向</span><div class="docs-stage docs-surface-gray horizontal-stage sample-stage" id="dirHorizontal"></div></div>
+
+<div class="type-row"><span class="type-row-label">节点样式：Dot / Checkmark</span><div class="samples">
+<div class="docs-stage docs-surface-gray sample-stage" id="styleDot"></div>
+<div class="docs-stage docs-surface-gray sample-stage" id="styleCheck"></div>
+</div></div>
+
+</section>
+
+<section class="docs-section"><header class="docs-section-head"><div><h2>状态</h2><p>Finished 节点必须连续，Waiting 不得夹在已完成节点之间；Checkmark 只表示完成，不表示当前或异常。</p></div></header><div class="states">
+<div class="docs-stage docs-surface-white state-card" id="stateDotFinished"></div>
+<div class="docs-stage docs-surface-white state-card" id="stateDotWaiting"></div>
+<div class="docs-stage docs-surface-white state-card" id="stateCheckFinished"></div>
+<div class="docs-stage docs-surface-white state-card" id="stateCheckWaiting"></div>
+</div></section>
+
+<section class="docs-section"><header class="docs-section-head"><div><h2>交互演示</h2><p>切换方向、节点样式与节点数量；横向可通过左右箭头翻页，点击任意节点可将其设为当前节点。</p></div></header><div class="playground">
+<div class="interaction" id="interactiveDemo"></div>
+<aside class="controls docs-surface-white"><h3 class="control-title">属性控制</h3><p class="control-desc">最近事件：<strong id="event">尚未操作</strong></p><div class="control-grid">
+<div class="field"><label for="direction">方向</label><select id="direction"><option value="vertical">纵向</option><option value="horizontal">横向</option></select></div>
+<div class="field"><label for="nodeStyle">节点样式</label><select id="nodeStyle"><option value="dot">Dot 圆点</option><option value="check">Checkmark 完成</option></select></div>
+<div class="field"><label for="count">节点数量</label><select id="count"><option>3</option><option selected>4</option><option>5</option><option>6</option><option>7</option><option>8</option></select></div>
+<div class="field"><label for="current">当前节点</label><select id="current"><option>1</option><option>2</option><option selected>3</option><option>4</option></select></div>
+</div></aside>
+</div></section>
+
+<section class="docs-section"><header class="docs-section-head"><div><h2>结构与规格</h2><p>纵向、横向共用同一套节点与状态语义，尺寸和文字样式均由组件 Token 驱动。</p></div></header><div class="docs-spec-table-wrap"><table class="docs-spec-table"><colgroup><col style="width:18%"><col style="width:24%"><col></colgroup><thead><tr><th>结构</th><th>尺寸 / 样式</th><th>说明</th></tr></thead><tbody>
+<tr><td>纵向节点容器</td><td>20 × 20px</td><td>统一节点与连接线对齐基准</td></tr>
+<tr><td>Dot 圆点</td><td>10 × 10px · 999px 圆角</td><td>Finished 为 Brand/GJ_Blue，Waiting 为 Text/Disable</td></tr>
+<tr><td>Checkmark</td><td>16 × 16px</td><td>icf_system_check-circle-fill；只表达节点已完成</td></tr>
+<tr><td>纵向连接线</td><td>1px 虚线</td><td>Border/hover；Waiting 只改变节点颜色，连接线样式不变</td></tr>
+<tr><td>纵向标题 / 说明</td><td>14/22 Semibold · 12/18 Regular</td><td>中文/S5-CN-S、中文/S9-CN-R；说明建议 1–3 行</td></tr>
+<tr><td>横向单元</td><td>155px 基准宽</td><td>标题、说明均为 14/22；内容超出容器时左右翻页，不压缩单元宽度</td></tr>
+<tr><td>状态</td><td>finished / waiting</td><td>Finished 连续、Waiting 不夹在中间；仅节点与连接线颜色随状态变化</td></tr>
+</tbody></table></div></section>
+
+<section class="docs-section"><header class="docs-section-head"><div><h2>选用规则</h2><p>Timeline 用于呈现已经发生或按计划将要发生的事件，不承担流程进度提交的职责。</p></div></header><div class="docs-spec-table-wrap"><table class="docs-spec-table"><colgroup><col style="width:16%"><col style="width:42%"><col></colgroup><thead><tr><th>主题</th><th>推荐做法</th><th>边界与避免</th></tr></thead><tbody>
+<tr><td>时间排序</td><td>默认按真实时间正序展示。</td><td>如采用倒序应明确标注并保持整个页面一致。</td></tr>
+<tr><td>方向选择</td><td>详情多、节点多时使用纵向。</td><td>横向仅用于数量有限且阶段清晰的进程。</td></tr>
+<tr><td>节点状态</td><td>完成节点必须连续。</td><td>等待状态不得夹在已完成节点之间。</td></tr>
+<tr><td>长内容</td><td>标题可换行，详情建议 1–3 行。</td><td>更多内容通过展开或详情入口承载，不撑破单元。</td></tr>
+<tr><td>横向溢出</td><td>保持 155px 基准单元宽，提供左右切换。</td><td>容器不足时不得挤压文字或压缩单元宽度。</td></tr>
+<tr><td>时间格式</td><td>同一条时间轴使用相同日期粒度和格式。</td><td>不混用日期、月份与时分秒。</td></tr>
+<tr><td>Checkmark 语义</td><td>只用于表示节点已完成。</td><td>不得用作当前进行中或异常状态。</td></tr>
+<tr><td>交互边界</td><td>默认用于信息展示。</td><td>仅在允许查看详情时让标题或整项可点击。</td></tr>
+<tr><td>无数据与加载</td><td>没有事件时使用 Empty 组件。</td><td>异步加载时保留稳定容器，不使布局跳动。</td></tr>
+</tbody></table></div></section>
+
+</article></main>
+<script>
 const entries=[['2026-04-23','完成需求确认'],['2026-04-25','完成方案评审'],['2026-04-28','进入开发阶段'],['2026-05-06','提交测试版本'],['2026-05-12','完成首轮验收'],['2026-05-18','修复反馈问题'],['2026-05-22','发布生产环境'],['2026-05-26','完成项目归档']];
-function verticalMarkup(count=4,current=3,style='dot'){return entries.slice(0,count).map((item,i)=>'<div class="gj-timeline-v-item '+(i+1>=current?'is-wait':'is-finished')+'"><div class="gj-timeline-v-head"><i class="'+(style==='check'?'gj-timeline-v-check gj-icon gj-icon-16':'gj-timeline-v-dot')+'"'+(style==='check'?' style="--gj-icon:url(\'../../assets/icons/iconfont/icf_system_check-circle-fill.svg\')"':'')+'></i></div><div class="gj-timeline-v-copy"><strong>'+item[0]+'</strong><span>'+item[1]+'</span></div></div>').join('')}
-function horizontalMarkup(count=4,current=3){return entries.slice(0,count).map((item,i)=>'<button type="button" class="gj-timeline-h-item '+(i+1<current?'is-finished':'is-wait')+'" data-index="'+(i+1)+'"><strong>'+item[0]+'</strong><span class="gj-timeline-h-track"></span><p>'+item[1]+'，补充本阶段的关键记录与结果</p></button>').join('')}
-document.querySelectorAll('[data-static-style]').forEach(el=>el.innerHTML=verticalMarkup(4,4,el.dataset.staticStyle));const staticTrack=document.getElementById('staticHorizontal'),staticPrev=document.getElementById('staticPrev'),staticNext=document.getElementById('staticNext');staticTrack.innerHTML=horizontalMarkup(8,5);let staticOffset=0;function updateStatic(){staticTrack.style.transform='translateX('+(-staticOffset*155)+'px)';staticPrev.disabled=staticOffset===0;staticNext.disabled=staticOffset===4}function slide(delta){staticOffset=Math.max(0,Math.min(4,staticOffset+delta));updateStatic()}staticPrev.onclick=()=>slide(-1);staticNext.onclick=()=>slide(1);staticTrack.onclick=e=>{const item=e.target.closest('[data-index]');if(!item)return;staticTrack.innerHTML=horizontalMarkup(8,Number(item.dataset.index));updateStatic()};updateStatic();
-const controls={direction:document.getElementById('direction'),style:document.getElementById('nodeStyle'),count:document.getElementById('count'),current:document.getElementById('current'),demo:document.getElementById('interactiveDemo')};let demoOffset=0;function syncCurrent(){const count=Number(controls.count.value),selected=Math.min(Number(controls.current.value),count);controls.current.innerHTML=Array.from({length:count},(_,i)=>'<option '+(i+1===selected?'selected':'')+'>'+(i+1)+'</option>').join('')}function render(){const count=Number(controls.count.value),current=Number(controls.current.value),horizontal=controls.direction.value==='horizontal';controls.style.disabled=horizontal;demoOffset=Math.min(demoOffset,Math.max(0,count-4));controls.demo.innerHTML=horizontal?'<div class="horizontal-stage"><div class="gj-timeline-h-shell"><button class="gj-timeline-arrow gj-icon-button" id="demoPrev" aria-label="向前"><i class="gj-icon gj-icon-16" style="--gj-icon:url(\'../../assets/icons/iconfont/icf_Arrow_left.svg\')" aria-hidden="true"></i></button><div class="gj-timeline-h-viewport"><div class="gj-timeline-h" id="demoTrack">'+horizontalMarkup(count,current)+'</div></div><button class="gj-timeline-arrow gj-icon-button" id="demoNext" aria-label="向后"><i class="gj-icon gj-icon-16" style="--gj-icon:url(\'../../assets/icons/iconfont/icf_Arrow_right.svg\')" aria-hidden="true"></i></button></div></div>':'<div class="gj-timeline-v">'+verticalMarkup(count,current,controls.style.value)+'</div>';if(horizontal)bindDemoHorizontal(count)}function bindDemoHorizontal(count){const track=document.getElementById('demoTrack'),prev=document.getElementById('demoPrev'),next=document.getElementById('demoNext'),max=Math.max(0,count-4);function update(){track.style.transform='translateX('+(-demoOffset*155)+'px)';prev.disabled=demoOffset===0;next.disabled=demoOffset===max}prev.onclick=()=>{demoOffset=Math.max(0,demoOffset-1);update()};next.onclick=()=>{demoOffset=Math.min(max,demoOffset+1);update()};track.onclick=e=>{const item=e.target.closest('[data-index]');if(!item)return;controls.current.value=item.dataset.index;render()};update()}controls.direction.onchange=()=>{demoOffset=0;render()};controls.style.onchange=render;controls.current.onchange=render;controls.count.onchange=()=>{demoOffset=0;syncCurrent();render()};render();
-</script></body></html>
+const CHECK_ICON="../../assets/icons/iconfont/icf_system_check-circle-fill.svg";
+
+function verticalMarkup(count=4,current=3,style='dot'){
+  return entries.slice(0,count).map((item,i)=>'<div class="gj-timeline-v-item '+(i+1>=current?'is-wait':'is-finished')+'"><div class="gj-timeline-v-head"><i class="'+(style==='check'?'gj-timeline-v-check gj-icon gj-icon-16':'gj-timeline-v-dot')+'"'+(style==='check'?' style="--gj-icon:url(\''+CHECK_ICON+'\')"':'')+'></i></div><div class="gj-timeline-v-copy"><strong>'+item[0]+'</strong><span>'+item[1]+'</span></div></div>').join('');
+}
+function horizontalMarkup(count=4,current=3){
+  return entries.slice(0,count).map((item,i)=>'<button type="button" class="gj-timeline-h-item '+(i+1<current?'is-finished':'is-wait')+'" data-index="'+(i+1)+'"><strong>'+item[0]+'</strong><span class="gj-timeline-h-track"></span><p>'+item[1]+'，补充本阶段的关键记录与结果</p></button>').join('');
+}
+function horizontalShell(id,count,current){
+  return '<div class="gj-timeline-h-shell"><button class="gj-timeline-arrow gj-icon-button" id="'+id+'Prev" aria-label="向前"><i class="gj-icon gj-icon-16" style="--gj-icon:url(\'../../assets/icons/iconfont/icf_Arrow_left.svg\')" aria-hidden="true"></i></button><div class="gj-timeline-h-viewport"><div class="gj-timeline-h" id="'+id+'Track">'+horizontalMarkup(count,current)+'</div></div><button class="gj-timeline-arrow gj-icon-button" id="'+id+'Next" aria-label="向后"><i class="gj-icon gj-icon-16" style="--gj-icon:url(\'../../assets/icons/iconfont/icf_Arrow_right.svg\')" aria-hidden="true"></i></button></div>';
+}
+function bindPager(id,count,getCurrent,onJump){
+  const track=document.getElementById(id+'Track'),prev=document.getElementById(id+'Prev'),next=document.getElementById(id+'Next');
+  const max=Math.max(0,count-4);let offset=0;
+  function update(){track.style.transform='translateX('+(-offset*155)+'px)';prev.disabled=offset===0;next.disabled=offset===max}
+  prev.onclick=()=>{offset=Math.max(0,offset-1);update()};
+  next.onclick=()=>{offset=Math.min(max,offset+1);update()};
+  track.onclick=e=>{const item=e.target.closest('[data-index]');if(!item)return;onJump(Number(item.dataset.index))};
+  update();
+  return {update};
+}
+
+// 主要类型：方向
+document.getElementById('dirVertical').innerHTML='<div class="gj-timeline-v">'+verticalMarkup(4,3,'dot')+'</div>';
+document.getElementById('dirHorizontal').innerHTML=horizontalShell('dirH',8,5);
+bindPager('dirH',8,()=>5,()=>{});
+
+// 主要类型：节点样式
+document.getElementById('styleDot').innerHTML='<div class="gj-timeline-v">'+verticalMarkup(4,3,'dot')+'</div>';
+document.getElementById('styleCheck').innerHTML='<div class="gj-timeline-v">'+verticalMarkup(4,3,'check')+'</div>';
+
+// 状态：单节点展示
+function nodeCard(style,finished){
+  const cls=finished?'is-finished':'is-wait';
+  const inner=style==='check'?'<i class="gj-timeline-v-check gj-icon gj-icon-16" style="--gj-icon:url(\''+CHECK_ICON+'\')"></i>':'<i class="gj-timeline-v-dot"></i>';
+  return '<div class="gj-timeline-v-item '+cls+'" style="min-height:0;padding-bottom:0"><div class="gj-timeline-v-head" style="height:20px">'+inner+'</div></div>';
+}
+document.getElementById('stateDotFinished').innerHTML=nodeCard('dot',true)+'<span>Dot · Finished</span>';
+document.getElementById('stateDotWaiting').innerHTML=nodeCard('dot',false)+'<span>Dot · Waiting</span>';
+document.getElementById('stateCheckFinished').innerHTML=nodeCard('check',true)+'<span>Checkmark · Finished</span>';
+document.getElementById('stateCheckWaiting').innerHTML=nodeCard('check',false)+'<span>Checkmark · Waiting</span>';
+
+// 交互演示
+const controls={direction:document.getElementById('direction'),style:document.getElementById('nodeStyle'),count:document.getElementById('count'),current:document.getElementById('current'),demo:document.getElementById('interactiveDemo'),event:document.getElementById('event')};
+function syncCurrent(){const count=Number(controls.count.value),selected=Math.min(Number(controls.current.value),count);controls.current.innerHTML=Array.from({length:count},(_,i)=>'<option '+(i+1===selected?'selected':'')+'>'+(i+1)+'</option>').join('')}
+function setCurrent(n){controls.current.value=String(n);render()}
+function render(){
+  const count=Number(controls.count.value),current=Number(controls.current.value),horizontal=controls.direction.value==='horizontal';
+  controls.style.disabled=horizontal;
+  if(horizontal){
+    controls.demo.innerHTML=horizontalShell('demo',count,current);
+    bindPager('demo',count,()=>current,setCurrent);
+    document.getElementById('demoTrack').onclick=e=>{const item=e.target.closest('[data-index]');if(!item)return;controls.event.textContent='选中节点 '+item.dataset.index;setCurrent(Number(item.dataset.index))};
+  }else{
+    controls.demo.innerHTML='<div class="gj-timeline-v">'+verticalMarkup(count,current,controls.style.value)+'</div>';
+  }
+}
+controls.direction.onchange=()=>{controls.event.textContent='切换方向';render()};
+controls.style.onchange=()=>{controls.event.textContent='切换节点样式';render()};
+controls.current.onchange=()=>{controls.event.textContent='选择当前节点';render()};
+controls.count.onchange=()=>{controls.event.textContent='更新节点数量';syncCurrent();render()};
+render();
+</script>
+</body></html>

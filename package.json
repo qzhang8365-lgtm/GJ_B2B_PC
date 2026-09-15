@@ -1,0 +1,16 @@
+{
+  "name": "gj-b2b-pc-design-skill",
+  "private": true,
+  "version": "1.0.0",
+  "description": "国金 PC 端 B 端设计系统 Skill 的生成后校验与维护脚本依赖清单；不改变 Figma 只读策略与 AI 工作流本身，仅用于本地生成/提交前的自动化检查。",
+  "scripts": {
+    "verify-page": "node scripts/verify-page.mjs",
+    "build-tokens": "node scripts/build-tokens.mjs",
+    "validate-tokens": "node scripts/validate-tokens.mjs",
+    "build-coverage": "node scripts/build-coverage.mjs",
+    "install-hooks": "git config core.hooksPath scripts/git-hooks && chmod +x scripts/git-hooks/pre-commit && echo 已启用本地提交门禁（scripts/git-hooks，可用 git commit --no-verify 临时跳过）"
+  },
+  "devDependencies": {
+    "playwright": "^1.63.0"
+  }
+}

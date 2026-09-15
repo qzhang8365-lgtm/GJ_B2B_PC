@@ -21,7 +21,7 @@
 
 - Navbar 默认高度 60px，上下内边距 12px，左右内边距 16px。
 - 功能组横向间距 20px，图标按钮间距 12px。
-- Search Box：必须复用 Medium 档 `gj-search`，高度 32px、圆角 6px；Navbar 内布局宽度参考 200px，不得再自绘 `.search-box`。宽度不足时由 Navbar 布局收起搜索，而不是改搜索框尺寸档。
+- Search Box：必须复用 Medium 档 `gj-search`，高度 32px、圆角 6px，并从图标库引入 `icf_system_search.svg`；Navbar 内布局宽度参考 200px，不得再自绘 `.search-box` 或省略搜索图标。宽度不足时由 Navbar 布局收起搜索，而不是改搜索框尺寸档。
 - Avatar：32×32px，圆形。
 - 操作图标 20px；Menu Item 图标 16px。
 - 各功能分区应平均和弹性分配可用空间，不把所有内容紧凑堆在中间。

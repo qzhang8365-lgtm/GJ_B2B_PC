@@ -7,7 +7,7 @@
     "figmaFile": "8b01I1e3TzH1IhYlr3tJzd",
     "figmaPage": "2638:1007",
     "status": "figma-audited",
-    "figmaAudit": "done-2026-09-09; supplemented-2026-09-10-CAR-007(arrows+usage-doc)"
+    "figmaAudit": "done-2026-09-09; supplemented-2026-09-10-CAR-007(arrows+usage-doc); implemented-2026-09-15-CAR-008(共享CSS落地+同步dashboard.html)"
   },
   "purpose": "在同一区域按顺序展示一组同层级内容，并通过页码指示器反馈当前位置。",
   "figma": {
@@ -69,7 +69,7 @@
             "active"
           ]
         },
-        "note": "2026-09-10 新增：此前(2026-09-09)审计时 Figma 还没有原生箭头组件；本轮通过用户提供的节点重新核实，Figma 现已发布该组件。4 个 variant 全部用 get_design_context 核实：4806:20817(left,default)、4806:20804(left,active)、4806:20819(right,default)、4806:20803(right,active)。"
+        "note": "2026-09-10 新增：此前(2026-09-09)审计时 Figma 还没有原生箭头组件；本轮通过用户提供的节点重新核实，Figma 现已发布该组件。4 个 variant 全部用 get_design_context 核实：4806:20817(left,default)、4806:20804(left,active)、4806:20819(right,default)、4806:20803(right,active)。 2026-09-15（CAR-008）：此前只写入文档，现已落地为共享 CSS 类 `.gj-carousel-arrow`（assets/styles/gj-b2b-components.css），并同步到 preview/carousel/index.html 与 preview/patterns/dashboard.html。"
       }
     ],
     "inventoryCorrection": "旧 inventory 为 2 套/4 variants/4 standalone；最新页面 metadata 显示三组均为带 variant 轴的组件集，应更正为 3 套/9 variants/0 standalone。 2026-09-10 补充：新增 Carousel_item_arrows 组件集（4 variants），总计更正为 4 套/13 variants/0 standalone。"
@@ -144,7 +144,7 @@
       "iconSize": 24,
       "sizeToken": "Components/Control-m",
       "background": "Background/WT_30 (rgba(255,255,255,.30))",
-      "note": "圆形半透明白底，适合叠加在图片/渐变内容上方。2026-09-10 产品确认：默认展示箭头，空闲用 default 态（50% 透明），hover/focus 用 active 态（100% 不透明）。"
+      "note": "圆形半透明白底，适合叠加在图片/渐变内容上方。2026-09-10 产品确认：默认展示箭头，空闲用 default 态（50% 透明），hover/focus 用 active 态（100% 不透明）。 2026-09-15：已实现为共享类 `.gj-carousel-arrow`（`.is-left`/`.is-right` 控制位置，`.is-active` 为文档专用强制类，`:disabled` 用独立 disabled-opacity token）。"
     }
   },
   "stateStyles": {
@@ -201,7 +201,8 @@
     "CAR-004",
     "CAR-005",
     "CAR-006",
-    "CAR-007"
+    "CAR-007",
+    "CAR-008"
   ],
   "pendingExtraction": []
 }

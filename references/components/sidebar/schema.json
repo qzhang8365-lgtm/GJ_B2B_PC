@@ -30,7 +30,10 @@
     "railClass": "gj-sidebar-rail",
     "thirdGroupClass": "gj-sidebar-third",
     "activeClass": "is-active",
-    "selectedClass": "is-selected"
+    "selectedClass": "is-selected",
+    "runtime": "assets/scripts/gj-sidebar.js",
+    "rootHook": "data-gj-sidebar",
+    "toggleHook": "data-gj-sidebar-toggle"
   },
   "figma": {
     "fileKey": "8b01I1e3TzH1IhYlr3tJzd",

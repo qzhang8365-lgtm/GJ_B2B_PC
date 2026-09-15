@@ -15,6 +15,8 @@
   - `blue`：`Primitive/DeepBlue/DB10`，行用 item dark；折叠图标 `Text/reversal`
   - `background`：`Background/Background`，行用 item light
 - 静态基座：`gj-sidebar`；blue 加 `gj-sidebar-blue`；background 加 `gj-sidebar-background`；整栏收起加 `is-collapsed`。
+- 交互基座：页面只加载一次 `assets/scripts/gj-sidebar.js`，使用 `data-gj-sidebar` / `data-gj-sidebar-toggle` 绑定。折叠按钮必须真实切换 `is-collapsed`，同步 `aria-expanded`、按钮说明与箭头方向；同一预览会话切换页面时保留折叠状态。禁止在页面内另写重复初始化脚本。
+- 页面模式壳：查询列表、新建/编辑表单、对象详情、概览/工作台、分步任务五种模式的切换入口统一放入侧边栏。当前模式同时标记 `is-active is-selected` 与 `aria-current="page"`；收起后保留图标入口和完整 `title`，不能因隐藏文字而失去导航能力。
 - 一级/二级同时展开的可见样本：浅色实例 `4156:958`、深色实例 `4769:3370`（均为 200×612）。Default 变体里同结构图层是 hidden，以这两个实例为准。
 - 一级展开后，二级列表左侧加 **1px** 饰条。浅色表面（light / background）用 `Background/MK_10`；深色表面（blue）用 `Background/BT_DB20`（`4769:3370` 的 Divider Line 已绑定该变量）。不要两边都用 `Border/default`。子树容器 `pl-20`、饰条与列表间距 **4**。二级展开后的三级列表再左缩 **12**。子树内条目垂直贴齐（间距 0）。整栏收起时隐藏子树。
 - 一级分支默认手风琴：同一时间只展开一个一级。展开的一级/二级为 Active（加粗、箭头朝上、无选中底）；当前页为 Selected。
@@ -34,6 +36,6 @@
 - Figma 子组件未发布 Hover / Disabled 变体。代码规则（浅色、深色相同）：Hover 在当前默认外观上叠加 `Background/Hover`；Disabled 整项透明度 **50%**。不要另造 Hover-2。
 - 基座：`gj-sidebar-item`，深色加 `-dark`，层级加 `-second` / `-third`，收起加 `-collapsed`，禁用加 `is-disabled` 或 `disabled`。
 
-## 尚未核实
+## 收起态可访问性
 
-- 收起态 Hover 完整名称提示。
+- 收起态只隐藏可见文案，一级入口必须保留 `title` 和 `aria-label`，鼠标悬停可读取完整名称；键盘焦点样式沿用基座。

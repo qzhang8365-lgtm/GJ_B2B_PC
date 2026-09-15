@@ -5,7 +5,7 @@
     "rulesSection": "Avatar 头像",
     "inventoryPage": "Avatar✅",
     "status": "figma-audited",
-    "figmaAudit": "done-2026-09-09"
+    "figmaAudit": "done-2026-09-09; implemented-2026-09-15-AVT-005(共享 CSS 的角标定位与尺寸 Token 落地实现已核实与 badgeDefault 一致)"
   },
   "purpose": "表示用户或实体身份，并提供稳定的图片失败兜底。",
   "figma": {
@@ -121,6 +121,7 @@
       "minWidth": 20,
       "note": "复用 Badge 组件自身的 20/20px；24px 头像不支持 Number（20px 高的徽标相对 24px 头像过大，按通用惯例仅保留 Dot）。"
     },
-    "confirmedBy": "用户 2026-09-09：无 Figma 依据时优先按通用惯例设置默认值，不必逐项升级确认"
+    "confirmedBy": "用户 2026-09-09：无 Figma 依据时优先按通用惯例设置默认值，不必逐项升级确认",
+    "implementationVerified": "2026-09-15（AVT-005）：此前共享 CSS 未真正引用 position/dot/number 各 Token 且角标被 .gj-avatar 的 overflow:hidden 裁切，属实现漂移；已改为 .gj-avatar-badge 包裹类并接入全部 Token，Playwright 核实位移、尺寸均与本字段一致"
   }
 }

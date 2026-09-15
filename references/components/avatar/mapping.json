@@ -72,7 +72,8 @@
     "badge.position": "右上角，圆心对齐边角：translate(50%,-50%)",
     "badge.stroke": "2px solid {Background/Container}（#ffffff）",
     "badge.dot.size": "24px 头像=6px；32/40/64px 头像=8px（复用 Badge 组件的 8px）",
-    "badge.number.sizeAndAvailability": "高20/最小宽20px（复用 Badge 组件），仅 size≥32 可用；24px 头像不支持 Number"
+    "badge.number.sizeAndAvailability": "高20/最小宽20px（复用 Badge 组件），仅 size≥32 可用；24px 头像不支持 Number",
+    "badge.implementation": "2026-09-15（AVT-005）：共享 CSS 已改为 .gj-avatar-badge 包裹类 + var(--ds-component-avatar-badge-position/-dot-size-24/-dot-size-other/-number-height/-number-min-width) 落地，此前是硬编码 translate(30%,-30%) 且未接入这些 Token、角标会被 .gj-avatar 的 overflow:hidden 裁切，Playwright 已核实修正后与上述 tokenMap 一致"
   },
   "interactionMap": {
     "states": [

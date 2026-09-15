@@ -10,5 +10,6 @@
   - **AVT-001**：首字母兜底在 Figma 里是背景色块与文字被合并导出成的单个矢量图形（非独立可编辑文字层），不能直接复用 Figma 导出资源；前端必须用真实文字节点在代码里根据用户名动态生成首字母，Figma 仅作为背景色（`Text/blue`）与排版比例的参考。
 - 可叠加 Dot 或 Number Badge，固定右上角并用容器色描边，不遮挡主体；同一头像不同时显示两种 Badge。
   - **AVT-002（已按通用惯例设置默认值，非 Figma 已核实）**：Avatar 组件集的 24 个 variant 里没有 badge 相关的 variant 轴，缺乏 Figma 依据。2026-09-09 已复用 Badge 组件自身既有尺寸（Dot 8px、Number 高/最小宽 20px）与主流设计系统惯用的头像角标叠加方式（右上角、圆心对齐边角、2px 容器色描边），24px 头像仅支持 Dot（缩小到 6px）不支持 Number。具体 token 见 `avatar.tokens.json` 的 `badge.*`；后续若有真实叠加设计稿以 Figma 为准覆盖，见 `avatar/audit.md` AVT-002。
+  - **AVT-005（实现漂移已修正）**：2026-09-15 发现共享 CSS 此前未真正引用上述 Token（硬编码位移且未接入尺寸 Token），且角标作为 `.gj-avatar` 子元素会被其 `overflow:hidden` 裁掉。已改为 `.gj-avatar-badge` 包裹类（角标与头像变成兄弟节点）并接入全部 Token，实现已与本节描述的规格一致，详见 `avatar/audit.md` AVT-005。
 - 头像组保持相同尺寸、形状和重叠间距；数量多时显示代表头像和末尾“+数量”，不无限延伸。
 

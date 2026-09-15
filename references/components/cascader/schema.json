@@ -12,6 +12,10 @@
   "purpose": "从相互关联的多级数据中逐层定位一个或多个结果，例如省市区、组织层级和事物分类。",
   "implementation": {
     "rootClass": "gj-cascader",
+    "fieldClass": "gj-cascader-field",
+    "triggerClass": "gj-selector-trigger",
+    "popupClass": "gj-cascader-popup",
+    "runtime": "assets/scripts/gj-cascader.js",
     "columnClass": "gj-cascader-column",
     "treeClass": "gj-cascader-tree",
     "itemClass": "gj-cascader-item",
@@ -180,7 +184,7 @@
       "focus": "Figma 无 Focus variant。代码 :focus-visible 使用 3px Background/BT_B20，与 Button 同源，不写入 Cascader Token。"
     }
   },
-  "dependencies": ["Icon", "Checkbox", "Tabs"],
+  "dependencies": ["Selector", "Icon", "Checkbox", "Tabs"],
   "icons": [
     "icf_Arrow_right.svg",
     "icf_Arrow_arrow-right-large.svg",

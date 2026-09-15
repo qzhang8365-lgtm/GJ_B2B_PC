@@ -36,6 +36,7 @@
 
 - `coverage.json` 是组件覆盖状态的唯一可机读看板，按组件合并 Figma inventory、叙述规则、结构化契约、组件 Token 和预览页。
 - 本文件不再维护另一份“完成/未完成”状态表。组件产物或 inventory 变更后，运行 `node scripts/build-coverage.mjs`，再执行统一校验。
+- `coverage.json`（及 `references/audit-tracker.md`）按组件名或问题 ID 定点检索对应条目，禁止整份 Read；这两个文件设计为按需查行，不是按需通读。
 
 ## 全局硬规则
 

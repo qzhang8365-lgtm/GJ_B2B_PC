@@ -8,9 +8,9 @@
  * 用法：
  *   node scripts/verify-page.mjs <html文件路径> [--width=1440,1280]
  *
- * 依赖 Playwright（本仓库未提交 package.json/node_modules，需要单独
- * `npm install playwright` 才能运行；例如在有权限安装依赖的分析环境
- * 里跑，而不是假设本机已经装好）。
+ * 依赖 Playwright，已在仓库根目录 package.json 声明为 devDependency，
+ * 首次使用前在仓库根目录执行一次 `npm install` 即可（本机无法联网安装时，
+ * 可以在有权限的分析环境里跑，例如 Claude 的沙箱环境）。
  *
  * 输出：结构化 JSON 报告，写到 stdout；发现任何问题时以非 0 退出码
  * 结束，方便接入自动化流程。
@@ -45,6 +45,12 @@
  *   比较颜色时（例如导航栏图标 vs 它角标上的数字、头像占位图标 vs 页面上不相关
  *   的用户名文案），这不是同一组"图标+说明文字"，颜色差异没有意义，应先确认
  *   两个元素是否真的属于同一个组件实例再判断。
+ * - sibling-overlap（sticky 操作列 × 被滚动列）：`.gj-table-wrap` 真的横向溢出、
+ *   `has-overflow` 也正确挂上时，`position:sticky;right:0` 的 `.gj-table-action`
+ *   操作列本来就设计成压在被滚动出去的其他列上方（类似 Excel 冻结列），阴影就是
+ *   用来提示这里还有更多内容（见 TBL-007）；这类重叠先看是否伴随
+ *   scrollable-needs-affordance-check 一起出现、且重叠方是 `.gj-table-action`，
+ *   是的话不是缺陷，跳过。
  */
 
 import path from 'node:path';
@@ -81,7 +87,7 @@ async function loadPlaywright() {
     return await import('playwright');
   } catch (err) {
     console.error(
-      '[verify-page] 找不到 playwright，请先 `npm install playwright`（本项目未提交该依赖）。'
+      '[verify-page] 找不到 playwright，请先在仓库根目录执行 `npm install`（依赖已在 package.json 声明）。'
     );
     console.error(String(err && err.message ? err.message : err));
     process.exit(3);

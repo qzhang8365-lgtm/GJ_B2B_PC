@@ -10,7 +10,7 @@
 - 支持左右方向键、指示器点击与触屏滑动。指示器的视觉条只有 3px 高，但点击目标至少 24×24。
 - 当前 slide 必须可感知并可操作；其他 slide 从 Tab 顺序与辅助技术中隐藏。主动切换时播报“第 x 项，共 n 项”，自动轮播不反复播报。
 - `loop=false` 在首尾停止；`loop=true` 首尾连续。少于两项时隐藏指示器和所有切换行为。
-- Figma 已发布原生箭头组件 `Carousel_item_arrows`（2026-09-10 新增，节点 `4806:20805`）：32×32 圆形按钮，圆角 16（`Components/Control-m` 尺寸 token），内边距 4，背景 `Background/WT_30`（半透明白，rgba(255,255,255,.30)，适合叠在图片/渐变内容上）；图标 `icf_Arrow_left` / `icf_Arrow_right`，约 24×24。`state=default` 时容器 50% 透明（常态弱化），`state=active` 时 100% 不透明（hover/focus 态）。**产品已确认（2026-09-10）：走马灯默认展示左右箭头，空闲时用 default 态，鼠标悬停/键盘聚焦时切到 active 态。** 若产品需要左右箭头导航，应优先使用这个原生组件，而不是再拼装通用 Button/Icon。Disabled、Autoplay 仍没有对应的视觉 variant，这两项仍不得伪造为设计库原生变体。
+- Figma 已发布原生箭头组件 `Carousel_item_arrows`（2026-09-10 新增，节点 `4806:20805`）：32×32 圆形按钮，圆角 16（`Components/Control-m` 尺寸 token），内边距 4，背景 `Background/WT_30`（半透明白，rgba(255,255,255,.30)，适合叠在图片/渐变内容上）；图标 `icf_Arrow_left` / `icf_Arrow_right`，约 24×24。`state=default` 时容器 50% 透明（常态弱化），`state=active` 时 100% 不透明（hover/focus 态）。**产品已确认（2026-09-10）：走马灯默认展示左右箭头，空闲时用 default 态，鼠标悬停/键盘聚焦时切到 active 态。** 若产品需要左右箭头导航，应优先使用这个原生组件，而不是再拼装通用 Button/Icon。Disabled、Autoplay 仍没有对应的视觉 variant，这两项仍不得伪造为设计库原生变体。**2026-09-15（CAR-008）：此前该组件只停留在文档记录层面，现已落地为共享 CSS 类 `.gj-carousel-arrow`（`.is-left`/`.is-right` 控制左右位置；`:hover`/`:focus-visible` 或文档专用类 `.is-active` 切到 100% 不透明；`:disabled` 用独立的禁用透明度，不借用 default/active 语义），组件预览页新增「导航箭头」小节展示三态，并已同步到唯一实际使用走马灯的业务模式页 `preview/patterns/dashboard.html`（原为页面私有拼装的深色小图标按钮，现改用原生规格）。**
 - 宽度随容器适配，默认高度 160px；业务可覆盖高度，但同一 Carousel 内所有 slide 必须等高，避免切换时页面跳动。
 - `prefers-reduced-motion: reduce` 下取消位移动画和自动播放。
 

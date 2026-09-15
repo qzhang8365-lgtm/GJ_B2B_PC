@@ -274,6 +274,22 @@ for (const filename of ["search-list.html", "form-edit.html", "object-detail.htm
   const source = fs.readFileSync(path.join(root, "preview/patterns", filename), "utf8");
   if (!source.includes("page-patterns.css")) fail(`Page pattern missing namespaced stylesheet: ${filename}`);
   if (/(?:^|[/'"=])patterns\.(?:css|js)(?:[?"'\s]|$)/m.test(source)) fail(`Page pattern retains generic shared asset name: ${filename}`);
+  const navbar = source.match(/<header class="gj-navbar"[^>]*>[\s\S]*?<\/header>/)?.[0];
+  if (!navbar || !navbar.includes("data-gj-navbar") || !navbar.includes('aria-label="全局顶部导航"')) fail(`Page pattern must compose one semantic shared Navbar: ${filename}`);
+  for (const sharedClass of ["gj-navbar-spacer", "gj-navbar-actions", "gj-search", "gj-navbar-icon-group", "gj-navbar-divider", "gj-navbar-user", "gj-avatar"]) {
+    if (!navbar.includes(sharedClass)) fail(`Page pattern Navbar missing shared ${sharedClass}: ${filename}`);
+  }
+  if (!navbar.includes('data-surface="white"') || !navbar.includes('data-menu="false"')) fail(`Sidebar page Navbar must explicitly use the standard White / Menu=false combination: ${filename}`);
+  if (!navbar.includes('gj-search-icon') || !navbar.includes('icf_system_search.svg')) fail(`Page pattern Navbar Search must use the shared icon-library search icon: ${filename}`);
+  if (/class="(?:navbar|menu-item|dropdown)(?:\s|")/.test(navbar)) fail(`Page pattern Navbar retains a private implementation: ${filename}`);
+  const sidebar = source.match(/<aside class="gj-sidebar"[^>]*>[\s\S]*?<\/aside>/)?.[0];
+  if (!sidebar || !sidebar.includes('data-gj-sidebar') || !sidebar.includes('data-gj-sidebar-toggle')) fail(`Page pattern Sidebar must bind the shared collapse runtime: ${filename}`);
+  if ((source.match(/gj-sidebar\.js/g) || []).length !== 1) fail(`Page pattern must load the shared Sidebar runtime exactly once: ${filename}`);
+  for (const page of ["search-list.html", "form-edit.html", "object-detail.html", "dashboard.html", "step-task.html"]) {
+    if (!sidebar.includes(`href="${page}"`) || !sidebar.includes('data-pattern-page')) fail(`Page pattern Sidebar missing mode entry ${page}: ${filename}`);
+  }
+  const currentLink = new RegExp(`<a class="gj-sidebar-item[^"]*is-selected[^"]*" href="${filename}"[^>]*aria-current="page"`);
+  if (!currentLink.test(sidebar)) fail(`Page pattern Sidebar must mark the current mode selected: ${filename}`);
 }
 
 const knownColorNames = new Set([...Object.keys(primitive), ...Object.keys(semantic)]);
@@ -414,7 +430,9 @@ if (uploadPreviewHtml.includes('<img class="gj-upload-file-icon" src="../../asse
 if (imagePreviewHtml.includes("figma-audited") || imagePreviewHtml.includes("节点 3536")) fail("Image preview must not expose internal extraction or Figma process notes");
 if (!componentCss.includes('.gj-dropdown-item:not([aria-selected="true"]) .gj-dropdown-check{display:none}')) fail("Unselected Dropdown check icons must be hidden by the component base style");
 if (!componentCss.includes('.gj-table .gj-text-btn+.gj-text-btn{margin-left:var(--ds-component-button-group-gap-medium)}')) fail("Adjacent text actions in Table must use the medium button-group gap token");
+if (!componentCss.includes('.gj-table .gj-table-action{position:sticky;right:0;text-align:center}')) fail("Table action headers and cells must remain center-aligned");
 if (!componentCss.includes('.gj-table thead .gj-table-action{z-index:2;background:var(--ds-table-head-bg)}')) fail("Fixed Table header cells must retain the Table header background token");
+if (!componentCss.includes('.gj-table-icon-actions{display:flex;align-items:center;justify-content:center;gap:12px}')) fail("Table icon action groups must remain centered");
 if (!componentCss.includes('.gj-table-sort-icon{')) fail("Shared Table sort icon style is missing");
 if (!componentCss.includes('.gj-table tbody tr.is-selected td{background:var(--ds-background-selected)}')) fail("Shared Table selected-row state is missing");
 if (!componentCss.includes('.gj-table tbody tr.is-disabled:hover td{background:var(--ds-table-bg-1)')) fail("Disabled Table rows must suppress hover background");
@@ -448,6 +466,10 @@ for (const sharedClass of ["gj-table-wrap", "gj-table-sort", "gj-table-head-icon
   if (!tablePreviewHtml.includes(sharedClass)) fail(`Table specification demo missing shared composition class: ${sharedClass}`);
 }
 if (!tablePreviewHtml.includes("icf_Arrow_caret.svg") || !tablePreviewHtml.includes("icf_system_filter.svg")) fail("Table specification demo must use the contract sort and filter icons");
+if (!componentCss.includes(".gj-empty-state{") || !componentCss.includes(".gj-empty-state__illustration{")) fail("Shared Empty runtime must implement its documented component classes");
+if ((tablePreviewHtml.match(/class="gj-empty-state(?:\s|\")/g) || []).length < 3) fail("Table result states must compose the shared Empty base");
+if (tablePreviewHtml.includes("icf_file_inbox-fill") || tablePreviewHtml.includes("icf_system_alert-fill") || tablePreviewHtml.includes("loadingState=document")) fail("Table states must not retain generic status icons or legacy runtime rewrites");
+if (!tablePreviewHtml.includes('class="gj-table nested-table"') || !tablePreviewHtml.includes('class="nested-description"')) fail("Expandable Table demo must retain the full-width nested Table structure");
 for (const [name, source, rulesLabel] of [["Table", tablePreviewHtml, "表格选用规则"], ["Avatar", avatarPreviewHtml, "头像选用规则"]]) {
   if (!source.includes('class="docs-legacy"') || !source.includes("component-docs.css")) fail(`${name} preview must use the unified documentation layout`);
   if (!source.includes("docs-structure-primary")) fail(`${name} preview must use the primary structure block`);
@@ -458,10 +480,17 @@ if (paginationPreviewHtml.includes('class="pagination ') || paginationPreviewHtm
 if (!componentCss.includes(".gj-page-btn-selected{background:var(--ds-component-pagination-number-selected-background") && !componentCss.includes(".gj-page-btn-selected{background:var(--ds-background-selected")) fail("Pagination selected state must use the selected-background token");
 if (paginationPreviewHtml.includes("data-more")) fail("Pagination ellipsis must remain a non-interactive range indicator");
 if (!paginationPreviewHtml.includes('data-step="${step}"') || !paginationPreviewHtml.includes('double?5:1')) fail("Pagination double arrows must implement the default five-page fast navigation step");
-if (!navbarPreviewHtml.includes('width:var(--ds-component-navbar-menu-dropdown-width)')) fail("Navbar Menu Dropdown must consume its audited width token");
-if (!navbarPreviewHtml.includes('.menu-item.active{color:var(--ds-component-navbar-menu-item-active-text);font-weight:600}')) fail("Navbar active Menu Item must keep primary text and use the audited Semibold style");
-if (!navbarPreviewHtml.includes('font:600 14px/22px var(--ds-font-family-ui);cursor:pointer')) fail("Navbar dropdown rows must use the audited Semibold text style");
-if (navbarPreviewHtml.includes('width:231px') || navbarPreviewHtml.includes('.menu-item.active{color:var(--ds-text-blue)')) fail("Navbar preview retains retired pre-audit values");
+for (const sharedClass of ["gj-navbar", "gj-navbar-menu", "gj-navbar-menu-item", "gj-navbar-actions", "gj-navbar-icon-group", "gj-navbar-user", "gj-navbar-dropdown", "gj-navbar-dropdown-item"]) {
+  if (!navbarPreviewHtml.includes(sharedClass)) fail(`Navbar specification preview missing shared composition class: ${sharedClass}`);
+}
+for (const sharedSelector of [".gj-navbar-menu-item.is-active{color:var(--ds-component-navbar-menu-item-active-text", ".gj-navbar-dropdown{", ".gj-navbar-dropdown-item{"]) {
+  if (!componentCss.includes(sharedSelector)) fail(`Shared Navbar base missing audited selector: ${sharedSelector}`);
+}
+if (!componentCss.includes('width:var(--ds-component-navbar-menu-dropdown-width,320px)')) fail("Navbar Menu Dropdown must consume its audited width token");
+if (!componentCss.includes('.gj-search-icon:not(img)') || !componentCss.includes('img.gj-search-icon{display:block;background:transparent')) fail("Search icon base must separate mask spans from transparent SVG images");
+if (!componentCss.includes('.gj-calendar-day-notice::before{content:"";position:absolute;bottom:4px;left:50%') || !componentCss.includes('transform:translateX(-50%)')) fail("Calendar notice and today dots must align to the date-cell center line");
+if (!componentCss.includes('font:600 14px/22px var(--ds-font-family-ui);text-align:left;cursor:pointer')) fail("Navbar dropdown rows must use the audited Semibold text style");
+if (navbarPreviewHtml.includes('width:231px') || /class="(?:navbar|menu-item|dropdown|drop-item)(?:\s|")/.test(navbarPreviewHtml) || navbarPreviewHtml.includes('.menu-item.active')) fail("Navbar preview retains a retired private implementation");
 if (!breadcrumbPreviewHtml.includes('class="gj-breadcrumb"') || !breadcrumbPreviewHtml.includes('class="gj-breadcrumb-item"')) fail("Breadcrumb specification demos must compose the shared Breadcrumb base");
 if (breadcrumbPreviewHtml.includes('class="breadcrumb"') || breadcrumbPreviewHtml.includes('class="crumb-item')) fail("Breadcrumb specification demos must not use retired private Breadcrumb classes");
 if (!inputPreviewHtml.includes('class="gj-input-wrap')) fail("Input specification demos must compose the shared Input wrapper");

@@ -82,3 +82,18 @@ Breadcrumb 升级为 `figma-audited`。3 套 / 9 variants 已读取。`pendingEx
 验证：脚本二次扫描确认页面残留死选择器为 0；`<style>` 块大括号计数与逐字符深度校验均通过（与 button.html 同批次校验时一并发现并排除结构性错误）；本文件删除/裁剪的选择器均逐一比对过页面真实 `class="..."` 与 `classList` 调用，确认为未引用的旧代码，属于低风险清理，未单独截图复核。
 
 结论：BCR-002 已关闭。`preview/breadcrumb/index.html` 内嵌 CSS 现在只包含仍被页面实际使用的选择器。
+
+## 2026-09-15：核查 5 个页面模式的面包屑是否为真实组件（新增并关闭 BCR-003）
+
+用户提问：当前模式页（`preview/patterns/*.html`）的面包屑是真实共享组件还是页面私有一次性 CSS？
+
+核查结论：**是真实共享组件，不是一次性 CSS。** `search-list.html`/`form-edit.html`/`object-detail.html`/`step-task.html` 四个页面（`dashboard.html` 作为顶层工作台页本就不需要面包屑，未使用属预期）用的 `.gj-breadcrumb`/`.gj-breadcrumb-item`/`.gj-breadcrumb-separator` 全部定义在共享基座 `assets/styles/gj-b2b-components.css`，并绑定真实 Token（`--ds-component-breadcrumb-*`）；`preview/patterns/page-patterns.css` 里唯一相关的一条规则 `.page>.gj-breadcrumb{margin-bottom:12px}` 只是页面级排版间距覆盖，不重新定义组件本身，属于合理的页面私有布局微调。
+
+但逐字比对 `preview/breadcrumb/index.html` 规范页的真实渲染函数 `breadcrumb()` 后，发现 4 个模式页的面包屑标记和规范页存在两处细节偏差：
+
+1. 当前页面项：规范页用的是 `<button class="gj-breadcrumb-item" aria-current="page" disabled>`（和历史项一样是按钮，只是加了 `disabled`），4 个模式页当时写的是 `<span class="gj-breadcrumb-item" aria-current="page">`——视觉效果因为都吃 `[aria-current="page"]` 选择器所以看不出差异，但标签语义和规范页不一致。
+2. 分隔符：规范页的分隔符带 `aria-hidden="true"`（纯装饰、不应被屏幕阅读器读出），4 个模式页当时缺失这个属性。
+
+处理：4 个文件的当前项改为 `<button type="button" aria-current="page" disabled>`，分隔符补上 `aria-hidden="true"`，与规范页的真实标记完全对齐。Playwright 逐页验证：`gj-breadcrumb-item` 均渲染为 `BUTTON`，当前项 `disabled=true` 且 `aria-current=page`，历史项可点击不禁用，分隔符 `aria-hidden=true`，4 页 HTML 标签计数（div/span/button/nav）配平，零控制台报错、零 404，视觉截图与规范页一致。
+
+结论：BCR-003 已关闭——面包屑本身一直是真实组件，这次只是把模式页的标记里两处和规范页不一致的细节（当前项标签、分隔符可访问性属性）对齐，不是新引入交互或样式。
