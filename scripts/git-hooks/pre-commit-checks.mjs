@@ -6,7 +6,7 @@
  * package.json 的 install-hooks 脚本（`npm run install-hooks`），
  * 本质是 `git config core.hooksPath scripts/git-hooks`。
  *
- * 覆盖三类检查，命中"阻断项"即拒绝本次提交；命中"需人工确认项"只打印
+ * 覆盖六类检查，命中"阻断项"即拒绝本次提交；命中"需人工确认项"只打印
  * 提示、不阻断（原因见下方"生成后一致性验证"小节的分级说明）。紧急情况
  * 下可用 `git commit --no-verify` 跳过全部检查，但应在提交信息里注明
  * 跳过原因，方便日后追溯。
@@ -23,14 +23,38 @@
  *    新生成或修改的页面模式/组件预览页、或改动共享样式后，交付前必须
  *    完成渲染实测；本检查在提交命中这些文件时自动调用
  *    scripts/verify-page.mjs。
+ * 4. 组件覆盖看板新鲜度：提交涉及 references/components/**、
+ *    references/tokens/components/**、references/components/inventory.json
+ *    或 preview/** 时，自动跑一次 `node scripts/build-coverage.mjs --check`；
+ *    coverage.json 与实际文件（schema/mapping/audit/组件 Token/预览页是否
+ *    存在）不同步即阻断，提示先重新生成。这是把 SKILL.md「维护」章节里
+ *    "组件产物变更后运行 scripts.coverageBuild"这条文字要求变成强制门禁，
+ *    而不是新写一套校验逻辑。
+ * 5. 组件登记完整性：扫描 references/components/ 下各组件目录的 schema.json，逐一确认
+ *    每个目录都能在 inventory.json 的 schemaRegistry.executionOrder 里找到
+ *    对应登记项。SKILL.md 规定 AI 只通过 inventory.json 这唯一入口发现组件，
+ *    一个建好了但没登记的目录，AI 会永远读不到——这项检查专门抓这种"孤儿
+ *    组件目录"，是 4 的镜像检查（4 抓"登记了但文件缺"，5 抓"文件在但没登记"）。
+ * 6. 组件规则标注与 Token 真源一致性：扫描本次提交涉及的
+ *    references/components/ 下各组件目录的 rules.md，抓取形如"8px（Radius/Radius-MD）"
+ *    这类紧跟在具体数值后、括号内点名了 dimensions.json 里某个 Token 的
+ *    标注，核对标注的像素数与该 Token 的真实值是否一致，防止"改了真源没
+ *    同步文字"或"文字写错真源被当真"这两类漂移（对应同事那套 C 端 skill
+ *    validate.py 里"尺寸 token 值即名"检查的思路，但我们的 Token 走
+ *    XS/SM/MD/LG 档位命名、不是数值即名，所以改成核对标注值而不是核对
+ *    Token 名本身）。
  *
  * 已知局限（刻意保持这是一次"微调"而不是重做校验体系）：
- * - 渲染检查读取的是工作区文件内容，不是 git 暂存区快照；正常"改完就
- *   git add 再提交"的流程下两者一致，只有刻意只暂存部分修改时才会有偏差。
+ * - 渲染检查、组件覆盖看板检查、孤儿组件目录检查读取的是工作区文件内容，
+ *   不是 git 暂存区快照；正常"改完就 git add 再提交"的流程下两者一致，
+ *   只有刻意只暂存部分修改时才会有偏差。
  * - 不检查"源 Token 改了但没跑 build-tokens.mjs"这类语义规则，仍需
  *   人工遵守 SKILL.md「维护」章节。
  * - 依赖 Playwright；未安装时会阻断涉及预览页/共享样式的提交并提示
  *   `npm install`，而不是静默跳过验证。
+ * - 标注一致性检查只认得 dimensions.json 里已登记的 Radius/Interval/
+ *   Components 档位；rules.md 里没有点名具体 Token 的像素标注（例如只写
+ *   "10px（标签与右箭头）"这种说明性文字）不受影响，也不会被误判。
  */
 
 import { execFileSync } from 'node:child_process';
@@ -68,14 +92,43 @@ function stagedFiles() {
     { cwd: REPO_ROOT }
   ).toString('utf8');
   const tokens = raw.split('\0').filter(Boolean);
-  return tokens.map((t) => {
-    const tab = t.indexOf('\t');
-    return { status: t.slice(0, tab), file: t.slice(tab + 1) };
-  });
+  // `-z` 让 git 用 NUL 而不是 TAB 分隔 status 和路径，两个各自独立一个
+  // token（而不是同一个 token 里用 \t 连接），所以要按「status, path」两两
+  // 配对读取，不能在单个 token 里找 \t——旧实现按 \t 切分本该出现的组合
+  // token，实际永远找不到 \t，导致 status 和路径被拆成两条各自残缺的记录
+  // （status 字段本身未在任何检查里被使用，属于纯展示性 bug，不影响既有
+  // 检查的判断逻辑，但会让「N 个暂存文件」的提示数字翻倍失真）。
+  // --diff-filter=ACM 只包含新增/拷贝/修改，不含改名，因此每条记录固定是
+  // 「status, path」两个 token，不会出现改名时的第三个 token。
+  const result = [];
+  for (let i = 0; i < tokens.length; i += 2) {
+    result.push({ status: tokens[i], file: tokens[i + 1] });
+  }
+  return result;
 }
 
 function stagedContent(file) {
   return execFileSync('git', ['show', ':' + file], { cwd: REPO_ROOT }).toString('utf8');
+}
+
+// 优先读取本次提交的暂存内容；该文件未被暂存时退回工作区磁盘内容。
+// 用于第 4/5/6 类检查里需要读取的支撑文件（inventory.json、
+// dimensions.json），保证同一提交里"先改真源、再改引用它的文件"的场景
+// 能读到改后的值，而不是旧的磁盘内容。
+function effectiveContent(relPath, stagedPathSet) {
+  if (stagedPathSet.has(relPath)) {
+    try {
+      return stagedContent(relPath);
+    } catch (e) {
+      // 文件在本次提交里被删除
+      return null;
+    }
+  }
+  try {
+    return fs.readFileSync(path.join(REPO_ROOT, relPath), 'utf8');
+  } catch (e) {
+    return null;
+  }
 }
 
 function countMatches(str, re) {
@@ -90,6 +143,8 @@ const files = stagedFiles();
 if (files.length === 0) {
   process.exit(0);
 }
+
+const stagedPaths = new Set(files.map((f) => f.file));
 
 // ---------- 1. JSON / 标签平衡安全网 ----------
 for (const { file } of files) {
@@ -164,7 +219,6 @@ for (const { file } of files) {
 }
 
 // ---------- 2. 审计留痕同步 ----------
-const stagedPaths = new Set(files.map((f) => f.file));
 const auditMdChanged = files.filter((f) => /^references\/components\/[^/]+\/audit\.md$/.test(f.file));
 if (auditMdChanged.length > 0 && !stagedPaths.has('references/audit-tracker.md')) {
   blocking.push({
@@ -278,6 +332,121 @@ if (renderCheckSet.size > 0) {
             `渲染实测发现需人工确认的项（历史上这些类型存在已知合理场景，例如 Badge 叠在头像上、` +
             `sticky 操作列压住被滚动列、图标使用独立语义色，不自动阻断，但请对照 references/generation-verification.md 核实）：\n${reviewHits.join('\n')}`,
         });
+      }
+    }
+  }
+}
+
+// ---------- 4. 组件覆盖看板新鲜度 ----------
+const coverageRelevant = files.some(
+  (f) =>
+    /^references\/components\//.test(f.file) ||
+    /^references\/tokens\/components\//.test(f.file) ||
+    f.file === 'references/components/inventory.json' ||
+    /^preview\//.test(f.file)
+);
+if (coverageRelevant) {
+  const buildCoverageScript = path.join(REPO_ROOT, 'scripts', 'build-coverage.mjs');
+  if (fs.existsSync(buildCoverageScript)) {
+    try {
+      execFileSync('node', [buildCoverageScript, '--check'], { cwd: REPO_ROOT });
+    } catch (e) {
+      const out = ((e.stdout ? e.stdout.toString('utf8') : '') + (e.stderr ? e.stderr.toString('utf8') : '')).trim();
+      blocking.push({
+        file: 'references/coverage.json',
+        message:
+          `本次提交涉及组件/组件 Token/预览相关文件，但 references/coverage.json 与实际文件不同步：\n${out || '(build-coverage.mjs --check 退出码非 0)'}\n` +
+          '请先执行 `node scripts/build-coverage.mjs` 重新生成后再提交。',
+      });
+    }
+  }
+}
+
+// ---------- 5. 组件登记完整性（孤儿组件目录） ----------
+const componentFilesChanged = files.some((f) => /^references\/components\//.test(f.file));
+if (componentFilesChanged) {
+  const inventoryRaw = effectiveContent('references/components/inventory.json', stagedPaths);
+  if (inventoryRaw) {
+    let registeredPaths = null;
+    try {
+      const inventory = JSON.parse(inventoryRaw);
+      registeredPaths = new Set(
+        (inventory.schemaRegistry?.executionOrder || []).map((entry) => entry.path).filter(Boolean)
+      );
+    } catch (e) {
+      registeredPaths = null; // inventory.json 本身的合法性已由第 1 类检查兜底
+    }
+    if (registeredPaths) {
+      const componentsDir = path.join(REPO_ROOT, 'references', 'components');
+      let dirNames = [];
+      try {
+        dirNames = fs
+          .readdirSync(componentsDir, { withFileTypes: true })
+          .filter((entry) => entry.isDirectory())
+          .map((entry) => entry.name);
+      } catch (e) {
+        dirNames = [];
+      }
+      for (const name of dirNames) {
+        const schemaRel = `${name}/schema.json`;
+        const schemaAbs = path.join(componentsDir, name, 'schema.json');
+        if (fs.existsSync(schemaAbs) && !registeredPaths.has(schemaRel)) {
+          blocking.push({
+            file: `references/components/${schemaRel}`,
+            message:
+              '该目录存在 schema.json，但未在 references/components/inventory.json 的 ' +
+              'schemaRegistry.executionOrder 里登记。SKILL.md 规定 AI 只通过 inventory.json 这唯一入口发现组件，' +
+              '未登记的目录会被永久忽略。请补登记，或如果是临时/废弃目录请删除。',
+          });
+        }
+      }
+    }
+  }
+}
+
+// ---------- 6. 组件规则标注与 Token 真源一致性 ----------
+const rulesMdChanged = files.filter((f) => /^references\/components\/[^/]+\/rules\.md$/.test(f.file));
+if (rulesMdChanged.length > 0) {
+  const dimensionsRaw = effectiveContent('references/tokens/dimensions.json', stagedPaths);
+  let dimensionValues = null;
+  if (dimensionsRaw) {
+    try {
+      const parsed = JSON.parse(dimensionsRaw);
+      dimensionValues = {};
+      for (const [name, def] of Object.entries(parsed.variables || {})) {
+        if (def && typeof def.value === 'number' && def.unit === 'px') {
+          dimensionValues[name] = def.value;
+        }
+      }
+    } catch (e) {
+      dimensionValues = null; // dimensions.json 本身的合法性已由第 1 类检查兜底
+    }
+  }
+  if (dimensionValues && Object.keys(dimensionValues).length > 0) {
+    const tokenNames = Object.keys(dimensionValues);
+    const annotationRe = /(\d+)px([（(][^）)]{0,60}[）)])/g;
+    for (const { file } of rulesMdChanged) {
+      let content;
+      try {
+        content = stagedContent(file);
+      } catch (e) {
+        continue; // 文件已被删除
+      }
+      let m;
+      while ((m = annotationRe.exec(content))) {
+        const num = Number(m[1]);
+        const parenText = m[2];
+        const matchedToken = tokenNames.find((name) => parenText.includes(name));
+        if (!matchedToken) continue;
+        const real = dimensionValues[matchedToken];
+        if (real !== num) {
+          blocking.push({
+            file,
+            message:
+              `标注"${m[0]}"写的是 ${num}px，但 references/tokens/dimensions.json 里 ${matchedToken} 的真实值是 ${real}px，` +
+              '两者不一致，请核对是标注写错了还是真源改了没同步文字。',
+          });
+        }
       }
     }
   }
