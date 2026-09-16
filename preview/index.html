@@ -136,7 +136,7 @@
     if(doc){
       const componentStyles=doc.createElement('link');
       componentStyles.rel='stylesheet';
-      componentStyles.href='../../assets/styles/gj-b2b-components.css?v=general-2';
+      componentStyles.href='../../assets/styles/gj-b2b-components.css';
       componentStyles.addEventListener('load',fitFrame,{once:true});
       doc.head.insertBefore(componentStyles,doc.head.firstChild);
       const lightweightStyles=doc.createElement('style');
