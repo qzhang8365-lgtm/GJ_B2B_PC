@@ -55,7 +55,7 @@ description: 使用国金 PC 端 B 端设计系统的设计 Token、组件规则
    - `schema.json` 的 `source.status=rules-derived` 表示门禁已有机器契约但 Figma 全量抽取仍待完成；`inventory-only` 只允许识别组件存在并阻止误推断，实施前必须读取 Figma，不得把空属性补成经验值；
    - 页面必须引用或组合全局组件基座中的实现，禁止在页面 CSS、页面脚本或业务组件内复制其结构、尺寸和状态；
    - 只有 inventory、contract、preview 与当前 Figma 组件节点均未查询到对应组件时，才允许基于语义 Token 新建实现，并明确记录“组件库未收录”及查询范围；新增的可复用实现进入全局组件基座，不留在单个页面中。
-1. 列出当前页面实际使用的组件及其 `variant / size / state / icon / disabled / loading` 等属性，不以视觉近似代替枚举。
+1. 产出《本页用料清单》，作为写 CSS/代码前的强制中间交付物：逐项列出当前页面实际使用的组件（含 `variant / size / state / icon / disabled / loading` 等属性）、需要引用的图标、以及需要点名到具体色阶的关键颜色；每一项标注库内确切引用——组件对应 `references/components/<name>/schema.json` 的组件名与命中状态，图标对应 `icons/index.json` 命中的图标 key，颜色对应命中的语义 Token 名。查不到确切引用的项标记「⏳待补」并注明已查询范围（inventory/contract/preview/Figma），不得以视觉近似代替枚举，也不得跳过未查到的项直接开始实现。清单里出现「⏳待补」，代表对应查库工作尚未完成，需先补齐查询或明确记录「组件库未收录」，才能进入下一步。
 2. 按以下优先级读取依据，前者覆盖后者：
    - 当前业务设计稿中明确使用的 Figma 组件实例；
    - `references/tokens/components/` 中的组件 Token 与状态矩阵；
@@ -137,7 +137,7 @@ description: 使用国金 PC 端 B 端设计系统的设计 Token、组件规则
 
 1. 页面目标和核心任务。
 2. 所选页面模式与信息层级。
-3. 页面区域及组件清单。
+3. 页面区域及组件清单（复用实现前产出的《本页用料清单》，标注库内引用或「⏳待补」）。
 4. 关键交互、反馈和边界状态。
 5. 使用的语义 Token 和图标资源。
 6. 可供前端映射的结构或原型；不虚构真实组件库 API。
