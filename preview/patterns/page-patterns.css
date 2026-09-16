@@ -1,5 +1,5 @@
 @import url("../../assets/styles/gj-b2b-tokens.css");
-@import url("../../assets/styles/gj-b2b-components.css?v=navbar-shared-2");
+@import url("../../assets/styles/gj-b2b-components.css");
 
 /* Form alignment and responsive sizing contract. Higher specificity keeps fields shrinkable. */
 .page.form-page{min-width:0}
