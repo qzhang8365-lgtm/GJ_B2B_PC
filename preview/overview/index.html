@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>总览 · 国金 B 端设计系统</title>
+  <link rel="stylesheet" href="../../assets/styles/gj-b2b-tokens.css">
+  <link rel="stylesheet" href="../../assets/styles/gj-b2b-components.css?v=overview-1">
+  <style>
+    :root{--font:var(--ds-font-family-ui);--page:var(--ds-background-background);--surface:var(--ds-background-container);--soft:var(--ds-background-tertiary);--border:var(--ds-border-default);--blue:var(--ds-text-blue);--blue-soft:var(--ds-background-selected);--text:var(--ds-text-primary);--secondary:var(--ds-text-secondary);--tertiary:var(--ds-text-tertiary)}
+    *{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:var(--font);color:var(--text);background:transparent}body{font-size:14px}.shell{width:min(var(--docs-page-max-width),100%);margin:0 auto;padding:var(--docs-page-padding)}
+    .hero{position:relative;overflow:hidden;min-height:330px;padding:52px 48px 44px;border:1px solid var(--border);border-radius:var(--docs-section-radius);background:linear-gradient(135deg,var(--surface) 0%,var(--ds-background-selected) 100%)}.hero:after{content:"";position:absolute;right:-86px;top:-118px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,var(--ds-background-bt-b20) 0%,transparent 68%);pointer-events:none}.hero-content{position:relative;z-index:1}.status{display:inline-flex;align-items:center;gap:8px;height:28px;padding:0 12px;border:1px solid var(--ds-button-primary-bg-disable);border-radius:999px;background:var(--surface);color:var(--blue);font:600 12px/18px var(--font)}.status:before{content:"";width:6px;height:6px;border-radius:50%;background:var(--ds-button-primary-bg-default);box-shadow:0 0 0 3px var(--ds-background-bt-b10)}h1{margin:20px 0 12px;font-size:38px;line-height:50px;letter-spacing:-.02em;white-space:nowrap}h1 span{color:var(--blue)}.hero-copy{max-width:680px;margin:0;color:var(--secondary);font-size:15px;line-height:26px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}.gj-btn{text-decoration:none}.stats{position:relative;z-index:1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));max-width:760px;margin-top:38px}.stat{padding:0 18px;background:transparent}.stat:first-child{padding-left:0}.stat+.stat{border-left:1px solid var(--border)}.stat strong{display:block;color:var(--blue);font-size:24px;line-height:32px}.stat span{display:block;margin-top:2px;color:var(--tertiary);font-size:12px;line-height:18px}
+    .section{margin-top:28px;padding:24px;border-radius:var(--docs-section-radius);background:var(--surface)}.section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:20px}.section-kicker{color:var(--blue);font:600 11px/18px var(--font);letter-spacing:.08em}.section h2{margin:4px 0 0;font-size:22px;line-height:30px}.section-desc{max-width:560px;margin:0;color:var(--tertiary);font-size:13px;line-height:22px;text-align:right}.entry-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.entry{position:relative;min-height:168px;padding:20px;border:1px solid var(--border);border-radius:var(--docs-panel-radius);background:var(--surface);color:inherit;text-decoration:none;transition:border-color .15s,transform .15s,box-shadow .15s}.entry:hover{border-color:var(--ds-button-primary-bg-default);transform:translateY(-2px);box-shadow:0 8px 24px var(--ds-background-hover-2)}.entry-index{position:absolute;right:16px;top:14px;color:var(--ds-background-bt-b10);font:600 30px/1 var(--font)}.entry-icon{display:grid;place-items:center;width:36px;height:36px;margin-bottom:15px;border-radius:10px;background:var(--blue-soft);color:var(--blue)}.entry-icon .mask-icon{display:block;width:18px;height:18px;background:currentColor;-webkit-mask:center/contain no-repeat;mask:center/contain no-repeat}.entry h3{margin:0 0 7px;font-size:16px;line-height:24px}.entry p{margin:0;color:var(--secondary);font-size:13px;line-height:21px}
+    .skill-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.12fr);gap:16px}.download-card,.steps{padding:24px;border:1px solid var(--border);border-radius:var(--docs-panel-radius);background:var(--soft)}.download-card{background:linear-gradient(145deg,var(--ds-background-selected),var(--surface) 62%)}.card-label{color:var(--blue);font:600 11px/18px var(--font);letter-spacing:.08em}.download-card h3,.steps h3{margin:8px 0 8px;font-size:18px;line-height:26px}.download-card p{margin:0;color:var(--secondary);line-height:23px}.file-row{display:flex;align-items:center;gap:10px;margin:18px 0;padding:12px 14px;border:1px dashed var(--ds-button-primary-bg-disable);border-radius:10px;background:var(--ds-background-wt-80)}.file-icon,.btn-icon{display:block;flex:none;background:currentColor;-webkit-mask:center/contain no-repeat;mask:center/contain no-repeat}.file-icon{width:18px;height:18px;color:var(--blue);-webkit-mask-image:url('../../assets/icons/iconfont/icf_system_download1.svg');mask-image:url('../../assets/icons/iconfont/icf_system_download1.svg')}.file-name{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font:600 12px/18px ui-monospace,SFMono-Regular,Menlo,monospace}.latest{margin-left:auto;padding:2px 8px;border-radius:999px;background:var(--blue-soft);color:var(--blue);font-size:11px;line-height:18px}.btn-icon{width:16px;height:16px;-webkit-mask-image:url('../../assets/icons/iconfont/icf_system_download1.svg');mask-image:url('../../assets/icons/iconfont/icf_system_download1.svg')}.step{display:grid;grid-template-columns:30px minmax(0,1fr);gap:12px;align-items:start;padding:13px 0;border-bottom:1px solid var(--border)}.step:last-child{border-bottom:0;padding-bottom:0}.step-no{display:grid;place-items:center;width:28px;height:24px;border-radius:7px;background:var(--blue-soft);color:var(--blue);font:600 11px/18px var(--font)}.step p{margin:1px 0 0;color:var(--secondary);font-size:13px;line-height:21px}.step code{padding:2px 5px;border-radius:4px;background:var(--surface);font:11px/18px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--text)}
+    .log-list{border:1px solid var(--border);border-radius:var(--docs-panel-radius);overflow:hidden}.log{display:grid;grid-template-columns:110px minmax(0,1fr) 92px;gap:16px;align-items:start;padding:16px 18px;border-bottom:1px solid var(--border)}.log:last-child{border-bottom:0}.log:hover{background:var(--soft)}.log-version{width:max-content;padding:2px 9px;border-radius:999px;background:var(--blue-soft);color:var(--blue);font:600 11px/18px ui-monospace,SFMono-Regular,Menlo,monospace}.log p{margin:0;color:var(--secondary);font-size:13px;line-height:21px}.log-date{color:var(--tertiary);font:11px/18px ui-monospace,SFMono-Regular,Menlo,monospace;text-align:right}.footnote{margin:14px 2px 0;color:var(--tertiary);font-size:12px;line-height:20px}
+    @media(max-width:1000px){.entry-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.skill-grid{grid-template-columns:1fr}}
+    @media(max-width:720px){.shell{padding:20px}.hero{padding:34px 24px}.hero h1{font-size:30px;line-height:40px;white-space:normal}.stats{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:20px}.stat:nth-child(odd){padding-left:0;border-left:0}.stat:nth-child(n+3){padding-top:20px;border-top:1px solid var(--border)}.section{padding:20px}.section-head{display:block}.section-desc{margin-top:8px;text-align:left}.entry-grid{grid-template-columns:1fr}.log{grid-template-columns:1fr;gap:6px}.log-date{text-align:left}}
+  </style>
+  <script src="../../assets/scripts/font-runtime.js"></script>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <div class="hero-content">
+        <span class="status">GJ B2B PC DESIGN SYSTEM · V1.0.0</span>
+        <h1>统一设计事实来源，<span>让 B 端界面生成更可靠</span></h1>
+        <p class="hero-copy">这套设计系统把变量、字体、布局、图标、组件契约、交互状态与页面模式组织为一套可查询、可校验的 Skill。设计、产品与前端可以从同一份规范快速生成和走查 PC 端 B 类项目界面。</p>
+        <div class="hero-actions">
+          <a class="gj-btn gj-btn-primary" href="https://github.com/qzhang8365-lgtm/GJ_B2B_PC/releases/download/v1.0.0/gj-b2b-pc-design-skill-v1.0.0.zip" download><span class="btn-icon" aria-hidden="true"></span>下载 Skill 包</a>
+          <a class="gj-btn gj-btn-secondary" href="https://www.figma.com/design/8b01I1e3TzH1IhYlr3tJzd" target="_blank" rel="noopener noreferrer">查看 Figma 规范</a>
+        </div>
+      </div>
+      <div class="stats" aria-label="设计系统覆盖数据">
+        <div class="stat"><strong>42</strong><span>组件结构化契约</span></div>
+        <div class="stat"><strong>112</strong><span>Primitive 颜色</span></div>
+        <div class="stat"><strong>5</strong><span>PC 页面模式</span></div>
+        <div class="stat"><strong>4</strong><span>自动化质量门禁</span></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><div><div class="section-kicker">01 · SYSTEM OVERVIEW</div><h2>设计系统包含什么</h2></div><p class="section-desc">人工预览站与 AI 可读资产分层存储；页面展示帮助理解，结构化 JSON、规则与校验脚本负责生成时的准确性。</p></div>
+      <div class="entry-grid">
+        <a class="entry" href="../index.html#color" target="_parent"><span class="entry-index">01</span><span class="entry-icon"><span class="mask-icon" style="-webkit-mask-image:url('../../assets/icons/iconfont/icf_system_settings.svg');mask-image:url('../../assets/icons/iconfont/icf_system_settings.svg')"></span></span><h3>基础规范</h3><p>颜色、字体、布局、圆角与效果 Token，作为所有组件和页面的共同底座。</p></a>
+        <a class="entry" href="../index.html#button" target="_parent"><span class="entry-index">02</span><span class="entry-icon"><span class="mask-icon" style="-webkit-mask-image:url('../../assets/icons/iconfont/icf_AI_robot-fill.svg');mask-image:url('../../assets/icons/iconfont/icf_AI_robot-fill.svg')"></span></span><h3>组件规范</h3><p>组件 schema、映射、审计、状态 Token 与交互预览，生成前按名称查询。</p></a>
+        <a class="entry" href="../patterns/index.html" target="_blank"><span class="entry-index">03</span><span class="entry-icon"><span class="mask-icon" style="-webkit-mask-image:url('../../assets/icons/iconfont/icf_business_stock.svg');mask-image:url('../../assets/icons/iconfont/icf_business_stock.svg')"></span></span><h3>页面模式</h3><p>查询列表、表单填写、对象详情、工作台和分步任务五种常用 B 端结构。</p></a>
+        <a class="entry" href="../index.html#icon" target="_parent"><span class="entry-index">04</span><span class="entry-icon"><span class="mask-icon" style="-webkit-mask-image:url('../../assets/icons/iconfont/icf_system_check-circle-fill.svg');mask-image:url('../../assets/icons/iconfont/icf_system_check-circle-fill.svg')"></span></span><h3>资源与门禁</h3><p>统一图标、字体、构建脚本、覆盖状态和生成后验证，避免凭经验猜测。</p></a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><div><div class="section-kicker">02 · AI-READY PACKAGE</div><h2>设计系统 Skill</h2></div><p class="section-desc">发布包不包含 Git 历史、开发依赖和过程截图，只保留 AI 执行与人工验收所需的正式资产。</p></div>
+      <div class="skill-grid">
+        <div class="download-card">
+          <div class="card-label">SKILL PACKAGE</div><h3>国金 B 端设计 Skill（PC）</h3><p>包含 SKILL.md、全局规则、组件契约、Token、图标字体及矢量资源、五个页面模式、预览站与校验脚本。</p>
+          <div class="file-row"><span class="file-icon" aria-hidden="true"></span><span class="file-name">gj-b2b-pc-design-skill-v1.0.0.zip</span><span class="latest">最新版</span></div>
+          <a class="gj-btn gj-btn-primary" href="https://github.com/qzhang8365-lgtm/GJ_B2B_PC/releases/download/v1.0.0/gj-b2b-pc-design-skill-v1.0.0.zip" download><span class="btn-icon" aria-hidden="true"></span>下载 Skill 包 · v1.0.0</a>
+        </div>
+        <div class="steps">
+          <div class="card-label">HOW TO USE</div><h3>接入方式</h3>
+          <div class="step"><span class="step-no">01</span><p>下载并解压发布包，保持目录结构不变。</p></div>
+          <div class="step"><span class="step-no">02</span><p>把完整目录放入 AI 工具或工作区可读取的位置；入口文件为 <code>SKILL.md</code>。</p></div>
+          <div class="step"><span class="step-no">03</span><p>描述要生成或检查的 B 端页面，Skill 会先查询组件契约与 Token，再组合页面。</p></div>
+          <div class="step"><span class="step-no">04</span><p>交付前运行 Token、覆盖状态和页面验证脚本，确认没有原生 CSS 替代已有组件。</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><div><div class="section-kicker">03 · CHANGELOG</div><h2>版本更新记录</h2></div><p class="section-desc">记录发布包的主要能力变化；组件级问题和关闭结论仍以各组件 audit.md 与 audit-tracker.md 为准。</p></div>
+      <div class="log-list">
+        <div class="log"><span class="log-version">v1.0.0</span><p>形成 PC 端最小可用正式包：42 个组件契约、41 份组件 Token、完整资源索引、覆盖状态看板、五种页面模式、总览与使用指南。</p><span class="log-date">2026-09-16</span></div>
+        <div class="log"><span class="log-version">2026.09.16</span><p>批量完成高频组件与交互状态审计，补齐组件映射、审计追踪和共享组件基座；加强缓存版本与唯一实现检查。</p><span class="log-date">2026-09-16</span></div>
+        <div class="log"><span class="log-version">2026.09.15</span><p>加入 Token 构建与校验、覆盖状态生成、页面验证及 Git 提交门禁，并补充下游消费仓库最小校验包。</p><span class="log-date">2026-09-15</span></div>
+        <div class="log"><span class="log-version">BASELINE</span><p>建立 PC 端设计 Skill 基线，拆分 SKILL.md 与专项 references，统一图标、字体、布局、组件和页面模式的可预测入口。</p><span class="log-date">2026-09-14</span></div>
+      </div>
+      <p class="footnote">当前页面展示的是发布摘要，不替代 Git 记录与组件审计台账。</p>
+    </section>
+  </main>
+</body>
+</html>

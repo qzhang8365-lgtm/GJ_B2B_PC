@@ -3,3 +3,5 @@
 .workbuddy/
 node_modules/
 .cursor/
+Claude outputs/
+preview/downloads/

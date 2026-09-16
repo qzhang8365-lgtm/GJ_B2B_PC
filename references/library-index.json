@@ -166,6 +166,8 @@
   "humanPreviewSite": {
     "audience": "human-preview-only",
     "entryPoints": {
+      "overview": "../preview/overview/index.html",
+      "guide": "../preview/guide/index.html",
       "componentWorkbench": "../preview/index.html",
       "pagePatterns": "../preview/patterns/index.html"
     },
