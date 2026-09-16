@@ -36,6 +36,7 @@ description: 使用国金 PC 端 B 端设计系统的设计 Token、组件规则
 - 页面结构与组合：从 `aiWorkflow.core.pagePatterns` 读取文字规则，并从 `aiWorkflow.core.pagePatternMetadata` 读取所选模式的结构化元信息。生成前必须逐项解析十个字段，未知业务信息标记“待确认”，不得留空后自行补造；只在需要人工视觉验收时打开 `humanPreviewSite.entryPoints.pagePatterns` 及对应页面。页面模式不得重新并入组件工作台。
 - 图标查找：始终从 `aiWorkflow.icons` 指向的唯一图标索引进入；具体 catalog、manifest、资源根目录和 System 源 SVG 审计关系均由图标子索引维护，`SKILL.md` 不再复制该清单。
 - 组件预览：在 `preview/` 查找对应组件页面，仅用于理解和验收。
+- 术语与前缀速查：遇到不熟悉的 Token 前缀、状态取值枚举或文件缩写，先查 `GLOSSARY.md`，不在 `SKILL.md` 或各组件 `rules.md` 里重复解释；`GLOSSARY.md` 与正文冲突时以正文为准。
 - 待确认项总览：读取 `references/audit-tracker.md`。各组件与 Token/Styles/Icon 的 `audit.md` 保存证据详情，跟踪表是开放项、优先级和状态的唯一汇总入口；处理或关闭审计问题时必须同步两处。禁止整份 Read 该文件；按组件代号或问题 ID（如 `AVT-`、`TBL-`）定点检索命中的行及其上下文，只加载命中条目。
 - 组件覆盖度：从 `references/library-index.json#aiWorkflow.core.coverage` 读取可机读看板。它是每次补组件前的检查入口；组件产物变更后运行 `scripts.coverageBuild`，不手工修改其组件行。查询时按目标组件名过滤 `components` 数组中的对应条目（如用 `jq`/脚本检索），不得整份 Read `coverage.json`。
 - 生成后一致性验证：从 `references/library-index.json#aiWorkflow.core.generationVerification` 读取 `generation-verification.md`。任何新生成或修改的页面模式、组件预览页或业务原型交付前，都必须按该文件的方法和检查清单核查内容溢出、尺寸准确性、Icon 颜色、间距四类高频问题，不得只凭读代码或肉眼看一次截图判断。
