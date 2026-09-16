@@ -99,3 +99,37 @@
 验证：以真实共享 CSS 重新渲染规范页；要求四字标签完整显示，Active 与 Default 字号一致，且文字右边缘不越过组合边界。缓存版本同步提升，避免浏览器继续读取旧基座。
 
 结论：TAB-006 已关闭。`.gj-tabs-left` 组合 Active 与其余四种 Tabs 类型统一为「变色+加粗、字号不变」的实现方式；独立 Left-item 的 Figma 完整字号契约不受影响。
+
+## 2026-09-16：Card Tab 展示区容器背景与按钮默认背景同色（新增并关闭 TAB-007）
+
+背景：用户反馈「基础用法」板块里 Card Tab 展示区的按钮背景和展示容器底部背景颜色一样。
+
+排查：Card Tab 非选中态按钮的 `--ds-component-tabs-card-default-background` 取值就是 `var(--ds-background-background)`，这是 Figma 已确认的真实组件默认背景（不是本地臆造，不应改动组件自身样式）；而 `renderBasic()` 里 Card Tab 示例的展示容器用的是 `surface:'gray'`（即 `docs-surface-gray`，背景同样是 `var(--ds-background-background)`），与组件按钮背景完全同值，导致非选中态按钮在容器里"隐形"，只有选中态（品牌蓝）和文字还能看清边界。
+
+依据：`component-page-conventions.md`「展示背景选择」一节的既有规则——"组件自身带灰色填充……需要灰色画布制造至少一级明度差"是针对白底组件的规则；反过来，"组件自身带灰色填充"的场景要用**白色**展示背景才能形成明度差，这与 Checkbox/Radio 的道理相同，只是填充色相反。Card Tab 非选中态背景本就是灰色系，属于这一分支，之前误配成了灰色画布。
+
+修复：`preview/tabs/index.html` 的 `renderBasic()` 里，Card Tab 示例项的 `surface` 由 `'gray'` 改为 `'white'`，与其余四种 Tab 类型（Highlight/Pill/Button/Left）保持一致的白色展示背景；未改动 `.gj-tabs-card` 组件自身任何 CSS 或 Token。
+
+验证：Playwright 核实展示容器计算背景色为白色（`rgb(255,255,255)`），非选中态按钮计算背景色为浅灰（`rgb(245,247,250)`），两者不再相同；全项目 grep 确认「Card Tab」文案与 `type:'card'` 在页面内均只出现这一处，没有遗漏的第二个 Card Tab 展示区；截图复核选中态（品牌蓝）与非选中态（浅灰）在白色容器上均清晰可辨；零控制台报错、零 404。
+
+结论：TAB-007 已关闭。
+
+## 2026-09-16：「灰色背景与自定义强调」板块非选中态按钮与灰色容器对比度不足（新增并关闭 TAB-008）
+
+背景：TAB-007 修复的是「基础用法」板块（容器背景本不该是灰色，改成了白色）。用户随后指出「灰色背景与自定义强调」板块表面上看起来相似，但根因和修法都不一样——这个板块的灰色容器是有意为之（就是要展示 Tabs 在灰色背景上的表现），不能像 TAB-007 那样改容器颜色；应该改的是按钮自身的背景色。
+
+排查：`renderBackground()` 渲染 4 个用例，容器统一是 `docs-surface-gray`（计算背景 `rgb(245,247,250)`，即 `--ds-background-background`）：
+- Card · 品牌蓝强调（`card` + `theme-blue`）：`.gj-tabs-card.gj-tabs-theme-blue` 规则此前并不存在，非选中态按钮直接落回基础规则 `--ds-component-tabs-card-default-background`（同为 `--ds-background-background`），与容器同色，对比度为零；
+- Card · 白色中性强调（`card` + `theme-neutral`）：非选中态按钮背景是 `--ds-background-wt-30`（半透明白 30%），叠加在灰色容器上后观感仍偏浅灰，明度差不足；
+- Pill · 白色中性强调（`pill` + `theme-neutral`）：Pill 容器背景是 `--ds-background-wt-40`（半透明白 40%），同样偏浅灰，明度差不足；
+- Pill · 品牌蓝强调（`pill` + `theme-blue`）：容器背景已经是 `--ds-background-container`（纯白），与灰色画布对比度充足，用户也未将其列入需要修改的范围，保持不动。
+
+修复：`assets/styles/gj-b2b-components.css`——
+1. `.gj-tabs-card.gj-tabs-theme-neutral .gj-tab` 的 `background` 由 `var(--ds-background-wt-30)` 改为 `var(--ds-background-secondary)`；
+2. `.gj-tabs-pill.gj-tabs-theme-neutral` 的 `background` 由 `var(--ds-background-wt-40)` 改为 `var(--ds-background-secondary)`；
+3. 新增 `.gj-tabs-card.gj-tabs-theme-blue` 规则组（此前缺失）：非选中态 `.gj-tab` 背景设为 `var(--ds-background-secondary)`；同时显式声明 `.gj-tab-active` 为 `background:var(--ds-component-tabs-card-active-background);color:var(--ds-component-tabs-card-active-text)`（即品牌蓝底、反色文字），数值与新增前依赖基础规则兜底渲染出的选中态完全一致，只是从隐式兜底改为显式声明，避免新增的非选中态规则（选择器优先级更高）意外盖掉选中态样式；选中态视觉不变。
+均只改按钮/容器背景，未触碰选中态相关的任何背景、文字、字重声明；`gj-b2b-components.css?v=tab-left-4` 版本号同步升级为 `tab-left-5` 避免浏览器缓存旧样式。
+
+验证：Playwright 核实灰色容器计算背景 `rgb(245,247,250)`；Card·白色中性强调与 Card·品牌蓝强调的非选中态按钮计算背景均变为 `rgb(235,238,242)`（`--ds-background-secondary`），与容器色可明显区分；Pill·白色中性强调的 Pill 容器计算背景同样变为 `rgb(235,238,242)`；Pill·品牌蓝强调容器背景保持 `rgb(255,255,255)` 未变；四个用例的选中态背景/文字色核实不变（品牌蓝配白字或白底配深字，与修改前一致）；截图复核四个用例在灰色画布上均清晰可辨；零控制台报错、零 404；grep 确认 `--ds-background-wt-30`/`--ds-background-wt-40` 在全项目内仅这两处引用，改动无副作用。
+
+结论：TAB-008 已关闭。

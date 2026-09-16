@@ -1,5 +1,7 @@
 # Toast Figma 审计
 
+> 2026-09-16 预览页维护：按统一规范页结构重构 `preview/toast/index.html`。外观、状态、交互、规格、选用规则改为独立一级区段；交互控制区改用共享 Medium Input / Select / Checkbox / Button，Toast 样本继续直接引用 `.gj-toast` 契约。此次仅优化文档呈现与演示逻辑，不改变 Figma 审计结论及组件 Token。
+
 来源：用户提供画板 `2638:3208`（轻提示Toast✅），2026-09-09 只读检查。未修改 Figma。官方 MCP `get_design_context` / `get_variable_defs` / `get_metadata` 读取；文档区 `3586:40` 一并核对。
 
 inventory 该页原记 **3 套 / 13 variants / standalone 0**，画板可见 symbol **12**（Float 5 + Transparent 5 + Black 2）；2026-09-10 复查确认旧值 13 有误，正确数量为 3 套/12，见 TST-001（已关闭）。同日再次读取页面 metadata，已返回三套组件的根容器 ID：`3107:2600`、`3107:2688`、`3112:2995`，TST-004 已关闭。

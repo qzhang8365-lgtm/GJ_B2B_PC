@@ -163,3 +163,23 @@ Figma 中部分 Primitive 蓝色色阶带有 Hover、Pressed、背景等 descrip
 验证：脚本二次扫描确认页面残留死选择器为 0；`<style>` 块大括号计数与逐字符深度校验均通过（与 button.html 同批次校验时一并发现并排除结构性错误）；本文件删除/裁剪的选择器均逐一比对过页面真实 `class="..."` 与 `classList` 调用，确认为未引用的旧代码，属于低风险清理，未单独截图复核。
 
 结论：TOK-006 已关闭。`preview/radius/index.html` 内嵌 CSS 现在只包含仍被页面实际使用的选择器。
+
+## 2026-09-16：修复 Color 色块背景丢失（新增并关闭 TOK-007）
+
+现象：Color 规范页的 Token 名称与 Hex 文本仍正常显示，但全局色盘的色块背景消失；快捷色与语义色样本也存在尺寸坍缩风险。Token JSON、编译产物和页面数据均未丢失，问题仅发生在预览层。
+
+根因：
+
+- TOK-005 的静态死代码扫描只识别了 HTML 与部分 `classList` 中的显式类名，没有识别 `swatch(value, cls)` 运行时传入的 `quick-swatch`、`table-swatch`，因此误删了这两个动态类的尺寸与定位规则。
+- Primitive 色盘将颜色写入原生 `<button>` 的内联 `background` 简写；Safari 的按钮原生外观／绘制路径下出现了文字色生效、背景色未绘制的兼容问题。
+
+修复：
+
+- 恢复 `.quick-swatch`、`.table-swatch` 的明确宽高、定位、边框与圆角；这些类属于运行时生成的有效组件结构，不再视为死代码。
+- `.color-cell` 显式重置 `appearance`，通过 `--cell-bg`、`--cell-text` 实例变量分别绑定 `background-color` 与 `color`，避免依赖按钮原生外观及 `background` 简写。
+- 规范站 Color 入口缓存版本更新为 `v=26`；同时修正 Color 父级导航行为：点击父项保持子目录展开，点击箭头才切换折叠，直接加载 `#color` 也会自动展开子目录。
+- 未修改 Primitive、Semantic、Gradient 的任何 Token 真值或 JSON 数据。
+
+验证：Color 页与规范站入口内联脚本语法通过；`validate-tokens.mjs`、`build-coverage.mjs --check` 与相关文件 `git diff --check` 均通过。
+
+结论：TOK-007 已关闭。以后清理预览页 CSS 时，必须把模板字符串、函数参数和运行时生成类纳入引用扫描，不能仅凭静态 `class` 字面量判断为未使用。

@@ -11,6 +11,13 @@
   "valueMap": {
     "position.top_center": "top"
   },
+  "runtimeMap": {
+    "root": ".gj-tooltip",
+    "style.dark": ".gj-tooltip",
+    "style.light": ".gj-tooltip.gj-tooltip-light",
+    "polygon.true": ".gj-tooltip-arrow",
+    "placement": "调用方负责 top_center 定位、8px 触发间距与生命周期；共享基座不推断其他方向或自动翻转"
+  },
   "tokenMap": {
     "dark.background": "Background/MK_80",
     "light.background": "Background/Container",

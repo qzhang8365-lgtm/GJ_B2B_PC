@@ -222,3 +222,57 @@ INP-002 三个子问题（`Error`/`error` 大小写、尺寸字面值、布尔�
 
 结论：INP-010 已关闭。`preview/input/index.html` 现在与 Button/Divider/Tabs/Sidebar/Navbar/GridNav/Checkbox/Radio 使用同一套背景选择规则，具体画布深浅按「这一层是否已经有另一层颜色在承担对比」逐段判断，而不是机械地套用组件类型 → 固定背景色的映射。
 
+### 2026-09-16：Text Area 拖拽调整高度时，外层可视边框不跟随（新增并关闭 INP-011）
+
+用户反馈截图：Text Area 右下角的拖拽手柄图标拖动后，输入框的可视边框大小没有跟着变化，只有手柄图标本身跟着移动。
+
+复现：用 Playwright 模拟原生 resize 拖拽（鼠标按在 `<textarea>` 右下角、拖拽、松开），测量发现拖拽后 `<textarea>` 自身确实被浏览器原生 resize 正确设置了更大的内联 `height`（例如从 62px 变成 142px），但外层可视容器 `.gj-input-wrap.textarea-wrap`（实际画边框、背景的那一层）高度纹丝不动，仍是固定 80px——`overflow:visible` 下多出来的文本框内容会直接溢出到边框外，盖住下方的提示文案或紧邻的下一个字段，肉眼看正是用户描述的"边框没跟着拖"。
+
+根因排查（比预期更绕，记录下来避免下次重复踩坑）：
+1. 第一次尝试只把 `.gj-input-wrap.textarea-wrap` 的 `height:80px` 改成 `min-height:80px`，结果外层容器高度还是纹丝不动地卡在 80px。
+2. 排查发现：`.textarea-wrap` 和 `.medium`（`.gj-input-wrap.medium{height:var(--ds-component-input-size-medium-height)}`）是同时命中同一个元素的两条独立规则、优先级相同（各一个类选择器）。`min-height` 和 `height` 是两个不同属性，不会互相覆盖，会同时生效——`height` 仍然是 `.medium` 给出的定长值，`min-height:80px` 只是把这个"定长的 height"再抬高到 80，结果得到的还是一个不会随内容增长的固定高度框，不是真正意义上"内容驱动、80px 兜底"的弹性高度。
+3. 改为显式 `height:auto`（配合 `min-height:80px`）覆盖掉 `.medium` 的定长 `height`，容器才真正变回内容驱动。
+4. 容器改成内容驱动后，内部 `<textarea>` 原来依赖的 `.gj-input-wrap input,.gj-input-wrap textarea{height:100%}` 也跟着失效（父级不再是"确定高度"，`height:100%` 按规范会退化成 `auto`，文本框会缩成浏览器默认的一两行高，比原来矮）——补一条更高优先级的 `.gj-input-wrap.textarea-wrap textarea{height:62px}` 显式初始高度（62 = 原 80px 总高 − 上下各 8px padding − 上下各 1px 边框，`box-sizing:border-box` 下精确换算，确保修复后默认态与修复前逐像素一致），resize 拖拽产生的内联样式仍然会按正常优先级覆盖这个初始值。
+
+修复：`.gj-input-wrap.textarea-wrap{height:80px}` → `height:auto;min-height:80px`；新增 `.gj-input-wrap.textarea-wrap textarea{height:62px;flex:none}`。只影响 Text Area（`.textarea-wrap`）这一种变体，单行 Input/Select（small/medium/large）不受影响。
+
+验证：Playwright 在 3 个真实消费点（`preview/input/index.html` 组件规范页本体两处 Text Area 示例、`preview/modal/index.html` 表单里的"任务说明"、`preview/patterns/form-edit.html` 模式页里的"备注"）分别测过——默认态外层容器像素级精确回到 80px（无回归），原生拖拽手柄拖拽后外层容器高度正确跟随内部文本框一起变大（80→144/160px 量级），不再有内容溢出边框、遮住下方文案的问题；单行 Medium Input 尺寸测得 32px，确认未被这次改动影响；三处零控制台报错、零 404。
+
+结论：INP-011 已关闭。这是共享基座 `assets/styles/gj-b2b-components.css` 里的真实实现缺陷（并非某个页面的私有问题），一次修复覆盖全站所有 Text Area 用法。
+
+### 2026-09-16（再续）：图标边距与字数统计位置（新增并关闭 INP-013）
+
+**问题来源**：用户继续测试 Text Area，提出两点：
+1. 右下角拖拽小图标距离容器右边缘、下边缘应各为 4px；
+2. 展示字数限制的指示文字（如 "20/50"）应位于拖拽小图标左侧，保持 8px 间距。
+
+**排查与实现**：
+
+1. 图标边距（4px/4px）。原生 `resize` 手柄无法单独定位样式，其位置始终贴合 textarea 自身的 border-box 右下角，因此只能通过调整 `.gj-input-wrap.textarea-wrap` 的内边距间接控制。容器本身有 1px 边框（`box-sizing:border-box`），若单纯把 `padding-right`/`padding-bottom` 设为 4px，则图标到容器可见边缘（边框外沿）的实测距离是 边框1px + 内边距4px = 5px，比预期多 1px。修正为 `padding-right:3px; padding-bottom:3px`，使总间距为 1px(边框) + 3px(内边距) = 4px，与需求精确匹配（Playwright 测量确认 right/bottom 均为 4px）。同时按 box-sizing 精确反推，将 textarea 显式高度由 66px 调整为 67px，以保持默认总高度仍为 80px（1+8+67+3+1=80），不产生外观回归。
+
+2. 字数统计位置与"计数器溢出容器"的预置缺陷。排查中通过 Playwright 测量发现一个此前未被留意的问题：`.gj-input-count`（"52/50"）此前依赖 flex 布局中的 `align-self:flex-end` 定位，但由于 `.gj-input-wrap` 是行方向 flex 容器，且 textarea 设置了 `width:100%`，会把同为 flex 子项的计数器完全挤出可视区域之外（实测 `.gj-input-count` 的 left 已经超出容器的 right，即完全溢出在外，肉眼不可见）——这是一个与本次拖拽/图标间距需求无关的独立预置缺陷，借本次排查顺带修复。修复方式：给 `.gj-input-wrap.textarea-wrap` 增加 `position:relative`，计数器改为 `position:absolute;right:27px;bottom:3px`（27px = 3px 容器内边距 + 预留的原生图标区域宽度 + 8px 间距的估算值——由于原生 resize 手柄的确切渲染宽度无法通过 CSS 精确获取，该数值为工程上的合理估算，视觉验证间距接近 8px），并新增 `.gj-input-wrap.textarea-wrap:has(.gj-input-count) textarea{padding-right:56px}`，为计数器/图标区域预留水平空间，避免用户输入的文字与其重叠。
+
+**验证结果**（Playwright，覆盖 `preview/input/index.html` 两种变体、`preview/modal/index.html`、`preview/patterns/form-edit.html`）：
+- 图标到容器右/下边缘距离均实测为 4px、4px；
+- 默认（未拖拽）总高度保持 80px，无外观回归；
+- 计数器 "52/50" 完全渲染在可视边框内部，不再溢出容器，且位于拖拽图标左侧、间距接近 8px；
+- 最小高度钳制（INP-012）：向上拖拽小图标无法将 textarea 收缩到 67px 以下，仍然有效，无回归；
+- label 左上角对齐（INP-012）：`preview/modal/index.html` 的网格表单中"任务说明"标签仍与输入框顶部对齐，无回归；
+- 三个真实消费页（`preview/input/index.html`、`preview/modal/index.html`、`preview/patterns/form-edit.html`）均无控制台报错、无 404。
+
+**涉及文件**：`assets/styles/gj-b2b-components.css`
+
+### 2026-09-16（续）：INP-011 修复后用户继续测试发现两处遗留问题，一并修复（新增并关闭 INP-012）
+
+用户在 INP-011 的修复基础上继续测试并反馈两点：
+
+1. **拖拽手柄可以一直向上拖，把输入框拖到 placeholder 文字都被切掉**——INP-011 只解决了"外层容器不跟随变大"，没有给 `<textarea>` 本身设一个不能再缩小的下限，原生 resize 在浏览器层面几乎没有实际意义上的最小限制，可以一路拖到看不清占位文字。
+2. **"任务说明"这类横排标签，文字是和输入框垂直居中对齐的，应该是左上角对齐**——排查发现 Modal 表单用的是 `.gj-form-stack`（CSS Grid 两栏布局：`.gj-form-stack:has(> .gj-form-item-horizontal){grid-template-columns:auto minmax(0,1fr)}`），网格默认 `align-items:stretch`，会把 `.gj-form-label` 这一列拉伸到和同一行的输入框等高（比如 80px 的 Text Area 那一行），而 `.gj-form-label` 自己又是 `display:inline-flex;align-items:center`，于是标签文字在这个被拉高的盒子里被居中，形成"标签整体垂直居中"的视觉效果。而 flex 布局分支（`.gj-form-item-horizontal{align-items:flex-start}` 及标签自带的 `padding-top:5px`）其实一直是按"顶部对齐、以 5px 顶部内边距凑齐第一行文字基线"设计的——Grid 分支从未补上等价的顶部对齐规则，属于两套布局分支实现不一致导致的遗留缺陷，不是有意为之的居中设计。
+
+修复：
+- `.gj-input-wrap.textarea-wrap textarea{height:62px}` 补上 `min-height:62px`——默认高度本身就是设计上的最小可用高度，拖拽手柄现在只能从这个高度往大拖，拖不小。
+- `.gj-form-stack>.gj-form-item-horizontal>.gj-form-label{justify-self:end}` 补上 `align-self:start`，让 Grid 分支下的标签也不再被拉伸铺满整行高度，而是回到顶部、和 flex 分支的顶部对齐效果保持一致。
+
+验证：Playwright 用力向上拖拽（超出正常操作范围的拖拽距离）确认 `<textarea>` 渲染高度稳定卡在 62px、占位文字完整不被裁切；测量 `preview/modal/index.html`"任务说明"字段的标签顶部坐标与输入框顶部坐标，两者精确重合（此前标签因居中会明显低于输入框顶部）；同时复核了同一表单里"任务名称/优先级/开始时间"三个单行字段，标签对齐无视觉回归；`preview/form/index.html`（Form 组件规范页本体，同样走 `.gj-form-stack` Grid 分支）也人工复核过，标签与输入框、以及输入框下方的提示文字都对齐正常。三处零控制台报错、零 404。
+
+结论：INP-012 已关闭。同样是共享基座级修复（`assets/styles/gj-b2b-components.css`），覆盖全站所有使用 `.gj-form-stack` 横排标签布局与 Text Area 的地方。

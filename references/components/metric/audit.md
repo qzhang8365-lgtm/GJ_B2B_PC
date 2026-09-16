@@ -2,7 +2,7 @@
 
 来源：Figma 页面 `3143:5677`（指标Metric✅），文档画板 `3372:4534`（指标 Metric），2026-09-08 只读检查。用户直接提供页面链接（`node-id=3143-5677`），未通过猜测节点 ID 获得。本轮未修改 Figma。
 
-14 个组件集全部在页面上点名。按母版口径 **14 套 / 77 variants / 0 standalone**（MET-005 已关闭；旧 inventory 85 把嵌套子组件算进去了）。原子件（number / label / Trend Badge / Trend graph / list_item）和主要组合（vertical / horizontal / group_basic / trend / card_withgraph）已用 `get_design_context` 或 `get_variable_defs` 核对绑定；`Metric_grid` 与 `Metric_card_grid` 各抽了 `2*2` 样本，其余 count 变体未逐个拆 token。
+15 个组件集全部在页面上点名。按母版口径 **15 套 / 84 variants / 4 standalone**（2026-09-15 新增 Metric_card_colorstyle 7 variants 与 4 个 Transparent_illustration 独立组件）。原子件（number / label / Trend Badge / Trend graph / list_item）和主要组合已用 `get_design_context` 或 `get_variable_defs` 核对绑定；`Metric_grid` 与 `Metric_card_grid` 各抽了 `2*2` 样本，其余 count 变体未逐个拆 token。
 
 旧 `schema.json` 把 Metric 写成单一组件、`status=Base/Rise/Decline/Brand/Plain`、`size=XSmall`、`trend=none/badge/sparkline`。这些是规则推断，不是 Figma 属性。真值是 14 个组件集，数字色轴为 `color=black/red/green/blue/grey`。
 
@@ -88,6 +88,12 @@ list_item medium+trend：宽 320，`py 12`，底边 `Border/default`；右侧 ba
 
 `count=3/4`。count=3 为三张 `Metric_card_withgraph` + 竖 Divider（`Border/default`）。count=4 未逐卡片量宽。
 
+### Metric_card_colorstyle（`5048:5750`，7 variants）
+
+2026-09-15 读取组件集与变量：Color=blue/purple/orange/pink/cyan/deepblue/sky，单卡 275×79，px 20 / py 16，圆角 12；标签为 PingFang SC Regular 12/18，数据为 GJType Bold 20/32，文字均绑定 Text/reversal。blue / purple / orange 分别引用极客蓝渐变、国金紫渐变、活力橙渐变；pink / cyan / deepblue / sky 使用对应 Primitive 色阶组合。
+
+装饰资源节点 `5048:5850` 含 4 个 Transparent_illustration 独立组件，均为 80×60；已按 Figma 原始 SVG 写入 `assets/images/metric/`。运行时固定 right=0 / bottom=0，装饰语义隐藏。组级规则由用户确认：2–4 张横排、颜色互异、冷色优先、orange/pink 备用、gap 12–20 且默认采用 L1 的 16px。
+
 ## 开放问题
 
 1. **MET-001 · P1 · 已关闭（2026-09-10）**
@@ -116,13 +122,24 @@ list_item medium+trend：宽 320，`py 12`，底边 `Border/default`；右侧 ba
    - `Metric_card_grid` count 已统一为 `2*2/3*2/4*2`。
    - `Metric_list` 确认按 Size 分面：medium `3..6`；small `count8..count5` 实测 3..6 条。实现仍按实际条目数。
 
-## 预览页（非本轮修改）
+8. **MET-008 · P1 · 已关闭（2026-09-15）**
+   - 新增彩色指标卡尚未进入本地契约、Token、预览与库存。现已补齐 7 色 schema/mapping/componentToken、共享 CSS、预览示例，并更新 inventory/coverage。
 
-`preview/metric/index.html` 仍按旧推断契约展示（status 下拉 Rise/Decline/Brand、nodata 显示 `--`、Badge 图标用 trending-up/down）。与本轮 Figma 真值有差，但不阻塞契约升级；预览同步作为后续任务。
+9. **MET-009 · P1 · 已关闭（2026-09-15）**
+   - 4 个白色半透明插图的资源身份、尺寸和定位原先无工程约束。现已保存 Figma 原始 SVG，固定 80×60、右下角零边距，并规定装饰性无障碍语义。
+
+10. **MET-010 · P2 · 已关闭（2026-09-15）**
+   - 颜色选择和组间距由用户确认：2–4 张、同组颜色互异、优先 blue/purple/cyan/deepblue/sky，orange/pink 备用；gap 允许 12–20px，L1 默认 16px。
+
+## 预览页
+
+`preview/metric/index.html` 已增加彩色指标卡 4 卡横排示例，直接引用共享 `.gj-metric-color-card*` 组件类和 4 个原始插图资源；响应式只换列，不改组件内部尺寸。
+
+2026-09-15 进一步将预览页迁移到统一 `component-docs` 文档骨架；基础数值、名称、单位、趋势标签与趋势图均改为调用 `mapping.json` 声明的 `.gj-metric-*` 共享类。字号与状态、结构规格改为分组卡片；使用规则按设计反馈保留三列规则表，集中呈现主题、推荐做法与边界。交互演示保留并扩展为可调整内容、字号、语义状态、顺序、对齐、单位、Tooltip、Trend Badge 与 Trend Graph 的属性面板。
 
 ## 结论
 
-Metric 已从 `rules-derived` 升级为 `figma-audited`。生成页面时必须优先读取本目录三件套与 `metric.tokens.json`；Figma 没有提供的交互态不得编造；nodata 运行时显示 `--`。`pendingExtraction` 已清空；网格/卡片网格/横向档位/仪表盘的未逐档测量项记在 `schema.json` 的 `partialMeasurements` 与本文件对应段落，不把未量过的 gap 编成真值。
+Metric 保持 `figma-audited`。生成页面时必须优先读取本目录三件套与 `metric.tokens.json`；Figma 没有提供的交互态不得编造；nodata 运行时显示 `--`。彩色指标卡与插图已完成结构、Token、资产、预览和库存闭环；`pendingExtraction` 仍为空。
 
 
 ## 2026-09-10：Chevron 示例移除（关闭 MET-004）

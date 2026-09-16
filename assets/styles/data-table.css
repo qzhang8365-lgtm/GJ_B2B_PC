@@ -30,7 +30,7 @@
 .ds-table th,
 .ds-table td {
   box-sizing: border-box;
-  padding: 0 14px;
+  padding: var(--ds-space-3, 8px) 14px;
   text-align: left;
   vertical-align: middle;
   white-space: normal;

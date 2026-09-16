@@ -1,13 +1,158 @@
-<!doctype html><html lang="zh-CN" data-gj-numeric="true"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GJ Design System · 指标数据 Metric</title><link rel="stylesheet" href="../../assets/styles/gj-b2b-tokens.css?v=metric-2"><link rel="stylesheet" href="../../assets/styles/gj-b2b-components.css?v=metric-2"><link rel="stylesheet" href="../../assets/styles/data-table.css"><style>.info-trigger{position:relative;display:inline-grid;place-items:center;width:16px;height:16px;padding:0;border:0;background:transparent;cursor:help}.info-icon{display:block;width:16px;height:16px;background:var(--ds-text-tertiary);mask:var(--icon) center/contain no-repeat;-webkit-mask:var(--icon) center/contain no-repeat}.tooltip{position:absolute;z-index:10;left:50%;bottom:calc(100% + 8px);width:max-content;max-width:240px;padding:8px 10px;border-radius:6px;background:var(--ds-background-mk-80);color:var(--ds-text-reversal);font:12px/18px var(--font);text-align:left;white-space:normal;box-shadow:0 4px 12px var(--ds-background-mk-20);opacity:0;visibility:hidden;transform:translate(-50%,4px);transition:.16s ease;pointer-events:none}.tooltip:after{content:"";position:absolute;left:50%;top:100%;border:5px solid transparent;border-top-color:var(--ds-background-mk-80);transform:translateX(-50%)}.info-trigger:hover .tooltip,.info-trigger:focus-visible .tooltip{opacity:1;visibility:visible;transform:translate(-50%,0)}</style><style>
-:root{--font:var(--ds-font-family-ui)}*{box-sizing:border-box}body{margin:0;color:var(--ds-text-primary);font:14px/1.55 var(--font)}button,input,select{font:inherit;color:inherit}.shell{max-width:var(--docs-page-max-width);margin:auto;padding:var(--docs-page-padding)}.intro{margin:0 4px 30px}.eyebrow{margin-bottom:10px;color:var(--ds-text-blue);font-size:13px;font-weight:600}.intro h1{margin:0 0 8px;font-size:32px;line-height:42px}.intro p{max-width:960px;margin:0;color:var(--ds-text-secondary);font-size:15px;line-height:1.75}.component{padding:24px;border-radius:20px;background:var(--ds-background-container)}.component-heading{display:flex;align-items:center;gap:12px;padding-bottom:16px;border-bottom:1px solid var(--ds-border-default)}.component-heading h1{margin:0;font-size:28px;line-height:32px}.component-heading span{color:var(--ds-text-tertiary);font-size:14px}.component-description{margin:24px 0;color:var(--ds-text-disable)}.content{display:grid;gap:20px}.region-title{margin:0;font-size:18px;font-weight:600}.panel{min-width:0;padding:20px;border:1px solid var(--ds-border-default);border-radius:16px;background:var(--ds-background-container)}.panel-head{display:flex;justify-content:space-between;gap:12px;margin-bottom:16px}.panel-head h2{margin:0;font-size:16px;font-weight:600}.panel-head span{color:var(--ds-text-tertiary);font-size:12px}.desc{margin:-8px 0 22px;color:var(--ds-text-secondary)}.demo-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.demo-card{min-height:132px;padding:20px;border-radius:12px;background:var(--ds-background-background);display:flex;align-items:center}.metric{display:flex;flex-direction:column;align-items:flex-start}.metric.center{align-items:center;text-align:center;width:100%}.metric.label-top .metric-label{order:-1}.metric-label{display:flex;align-items:center;gap:4px;color:var(--ds-text-secondary);font-size:12px;line-height:18px}.metric-label.medium{font-size:14px;line-height:22px}.metric-number{display:flex;align-items:baseline;gap:4px;font-family:GJType,var(--font);font-weight:700;color:var(--ds-text-primary)}.metric-number.xsmall{font-size:16px;line-height:24px}.metric-number.small{font-size:20px;line-height:32px}.metric-number.medium{font-size:24px;line-height:32px}.metric-number.large{font-size:30px;line-height:38px}.metric-number.rise{color:var(--ds-feedback-error-rise)}.metric-number.decline{color:var(--ds-feedback-success-decline)}.metric-number.flat{color:var(--ds-feedback-plain)}.metric-number.brand{color:var(--ds-feedback-brand)}.unit{font-family:var(--font);font-size:12px;font-weight:400;color:var(--ds-text-secondary)}.states{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}.state{display:grid;justify-items:center;gap:8px;padding:18px;border-radius:10px;background:var(--ds-background-background)}.state small{color:var(--ds-text-tertiary)}.trend-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.trend-card{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:24px;border-radius:12px;background:var(--ds-background-background)}.trend-badges{display:flex;flex-wrap:wrap;gap:12px}.badge{display:inline-flex;align-items:center;gap:2px;min-width:40px;height:22px;padding:0 8px;border-radius:var(--ds-component-metric-badge-fill-radius);font-size:12px;font-weight:600;line-height:18px}.trend-icon{display:inline-block;width:14px;height:14px;flex:none;background:currentColor;-webkit-mask:var(--icon) center/contain no-repeat;mask:var(--icon) center/contain no-repeat}.badge.rise{color:var(--ds-feedback-error-rise);background:color-mix(in srgb,var(--ds-feedback-error-rise) 8%,transparent)}.badge.decline{color:var(--ds-feedback-success-decline);background:color-mix(in srgb,var(--ds-feedback-success-decline) 10%,transparent)}.badge.flat{color:var(--ds-feedback-plain);background:var(--ds-background-hover-2)}.spark{display:block;width:60px;height:60px;flex:none;background:var(--ds-feedback-error-rise);-webkit-mask:url('../../assets/images/preview/table-trend-lg.svg') center/contain no-repeat;mask:url('../../assets/images/preview/table-trend-lg.svg') center/contain no-repeat}.spark.decline{background:var(--ds-feedback-success-decline);transform:scaleY(-1)}.spark.flat{height:2px;background:var(--ds-feedback-plain);-webkit-mask:none;mask:none}.interactive{display:grid;grid-template-columns:minmax(0,3fr) minmax(280px,2fr);gap:20px;align-items:start}.stage{min-height:220px;padding:32px;border:1px dashed var(--ds-border-secondary);border-radius:10px;background:var(--ds-background-container);display:grid;place-items:center}.control-panel{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.field{display:grid;gap:5px}.field.full{grid-column:1/-1}.field label{color:var(--ds-text-secondary);font-size:12px}.field select,.field input{width:100%;height:36px;padding:0 10px;border:1px solid var(--ds-border-secondary);border-radius:6px;background:var(--ds-background-container)}.check{display:flex;align-items:center;gap:8px;min-height:36px}.rule-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.rule{padding:16px;border-radius:10px;background:var(--ds-background-background)}.rule b{display:block;margin-bottom:6px;font-weight:600}.rule p{margin:0;color:var(--ds-text-secondary);font-size:13px;line-height:20px}.metric-table{min-width:840px}@media(max-width:1000px){.demo-grid{grid-template-columns:repeat(2,1fr)}.states{grid-template-columns:repeat(3,1fr)}.interactive{grid-template-columns:1fr}}@media(max-width:680px){.shell{padding:var(--docs-page-padding-compact)}.component{padding:18px}.demo-grid,.states,.trend-grid,.rule-grid,.control-panel{grid-template-columns:1fr}.field.full{grid-column:auto}}
-</style>  <script src="../../assets/scripts/font-runtime.js"></script>
-</head><body><main class="shell"><header class="intro"><div class="eyebrow">信息展示组件 · Data Display</div><h1>指标数据 Metric</h1><p>用于集中展示指标名称与核心数值。数字采用 GJType；根据布局可左对齐或居中，根据内容密度选择数字字号，并使用语义颜色准确表达涨、跌、平状态。</p></header><section class="component"><header class="component-heading"><h1>Metric</h1><span>指标数据</span></header><p class="component-description">基础结构由指标名称与数据组成，可按需增加单位、说明图标、趋势标签或 60×60px 趋势图。装饰性趋势图只用于重点指标卡片，不替代完整图表。</p><div class="content"><h2 class="region-title">组件展示</h2>
-<article class="panel"><div class="panel-head"><h2>基础指标与对齐</h2><span>Left / Center · Label top / Metric top</span></div><div class="demo-grid"><div class="demo-card"><div class="metric"><div class="metric-number medium">432</div><div class="metric-label">资产总额</div></div></div><div class="demo-card"><div class="metric label-top"><div class="metric-number medium">432<span class="unit">万元</span></div><div class="metric-label">资产总额</div></div></div><div class="demo-card"><div class="metric center"><div class="metric-number medium">432</div><div class="metric-label">客户总数</div></div></div><div class="demo-card"><div class="metric center label-top"><div class="metric-number medium">432<span class="unit">户</span></div><div class="metric-label medium">客户总数 <button class="info-trigger" aria-label="查看指标说明"><i class="info-icon" style="--icon:url('../../assets/icons/iconfont/icf_system_info.svg')"></i><span class="tooltip" role="tooltip">统计当前系统中有效客户的总数量</span></button></div></div></div></div></article>
-<article class="panel"><div class="panel-head"><h2>字号与数据状态</h2><span>16 / 20 / 24 / 30px</span></div><p class="desc">数字字号按信息密度选择，不按业务类型机械绑定；同一指标组应保持统一档位。</p><div class="states"><div class="state"><div class="metric-number xsmall">432</div><small>Xsmall · 16</small></div><div class="state"><div class="metric-number small rise">+4.32%</div><small>Rise · 20</small></div><div class="state"><div class="metric-number medium decline">-4.32%</div><small>Decline · 24</small></div><div class="state"><div class="metric-number large brand">432</div><small>Brand · 30</small></div><div class="state"><div class="metric-number medium flat">--</div><small>No data</small></div></div></article>
-<article class="panel"><div class="panel-head"><h2>趋势补充</h2><span>Badge / Trend graph</span></div><div class="trend-grid"><div class="trend-card"><div><b>趋势标签</b><p class="desc" style="margin:6px 0 0">用于数据旁的紧凑趋势补充，可选择带底色或无底色。</p></div><div class="trend-badges"><span class="badge rise"><i class="trend-icon" style="--icon:url('../../assets/icons/iconfont/icf_Arrow_trending-up.svg')"></i>0.45%</span><span class="badge decline"><i class="trend-icon" style="--icon:url('../../assets/icons/iconfont/icf_Arrow_trending-down.svg')"></i>0.45%</span><span class="badge flat"><i class="trend-icon" style="--icon:url('../../assets/icons/iconfont/icf_system_minus.svg')"></i>0.45%</span></div></div><div class="trend-card"><div class="metric"><div class="metric-label">近 30 日资产</div><div class="metric-number large">88,432.00<span class="unit">元</span></div></div><i class="spark rise" role="img" aria-label="上涨趋势"></i></div></div></article>
-<article class="panel"><div class="panel-head"><h2>交互属性</h2><span>实时预览</span></div><div class="interactive"><div class="stage"><div id="preview"></div></div><div class="control-panel"><div class="field"><label>指标名称</label><input id="label" value="资产总额"></div><div class="field"><label>数据</label><input id="value" value="88,432.00"></div><div class="field"><label>字号</label><select id="size"><option value="xsmall">Xsmall · 16</option><option value="small">Small · 20</option><option value="medium" selected>Medium · 24</option><option value="large">Large · 30</option></select></div><div class="field"><label>状态</label><select id="status"><option value="">基础文字</option><option value="rise">涨 Rise</option><option value="decline">跌 Decline</option><option value="flat">平 Flat</option><option value="brand">品牌蓝</option><option value="nodata">数据缺失</option></select></div><div class="field"><label>对齐</label><select id="align"><option value="">靠左</option><option value="center">居中</option></select></div><div class="field"><label>内容顺序</label><select id="order"><option value="">数据在上</option><option value="label-top">名称在上</option></select></div><div class="field"><label>单位文字</label><input id="unitText" value="万元"></div><div class="field"><label>Tooltip 说明</label><input id="tooltipText" value="统计当前账户的资产总额"></div><label class="check"><input class="gj-checkbox" id="unitVisible" type="checkbox" checked>显示单位</label><label class="check"><input class="gj-checkbox" id="tooltipVisible" type="checkbox" checked>显示 Tooltip 图标</label><label class="check"><input class="gj-checkbox" id="badge" type="checkbox">显示趋势标签</label><label class="check"><input class="gj-checkbox" id="graph" type="checkbox">显示趋势图</label></div></div></article>
-<article class="panel"><div class="panel-head"><h2>结构与属性</h2><span>Component metrics</span></div><div class="ds-table-wrap"><table class="ds-table metric-table"><thead><tr><th>组成</th><th>属性 / 变体</th><th>尺寸与文字样式</th><th>颜色变量</th></tr></thead><tbody><tr><td>Metric_item/Label</td><td>size: small / medium；tooltip: true / false</td><td>12/18 Regular；14/22 Regular</td><td>Text/Secondary</td></tr><tr><td>Metric_item/Number</td><td>size: Xsmall / Small / Medium / Large</td><td>GJType Bold：16/24、20/32、24/32、30/38</td><td>Text/Primary</td></tr><tr><td>数据颜色</td><td>black / red / green / blue / grey</td><td>保持当前字号档位</td><td>Text/Primary；Feedback/Error&Rise；Feedback/Success&Decline；Feedback/Brand；Feedback/Plain</td></tr><tr><td>无数据</td><td>nodata: true</td><td>统一显示“--”</td><td>Feedback/Plain</td></tr><tr><td>Trend Badge</td><td>Rise / Decline / Flat；fill / none</td><td>高 22px；12/18 Semibold；图标 14px</td><td>对应 Feedback 语义色</td></tr><tr><td>Trend Graph</td><td>Rise / Decline / Regular</td><td>60 × 60px</td><td>对应趋势语义色</td></tr></tbody></table></div></article>
-<article class="panel"><div class="panel-head"><h2>使用规则与建议</h2><span>Usage guidance</span></div><div class="rule-grid"><div class="rule"><b>字体职责</b><p>指标名称、单位与说明使用系统中文字体；真正的金融数值使用 GJType。</p></div><div class="rule"><b>涨跌平颜色</b><p>只使用 Feedback 中的 Rise、Decline、Plain，不创建临时红绿灰色。</p></div><div class="rule"><b>缺失数据</b><p>数据不可用或尚未返回时统一显示“--”，不要显示 0、空白或 NaN。</p></div><div class="rule"><b>对齐方式</b><p>卡片或仪表盘重点区域可居中；列表、表格及连续指标组优先左对齐。</p></div><div class="rule"><b>字号选择</b><p>16/20 用于高密度区域，24 为常用档，30 用于少量重点指标。</p></div><div class="rule"><b>单位处理</b><p>单位使用系统字体并弱化；同组指标单位相同时可移至组标题统一说明。</p></div><div class="rule"><b>趋势标签</b><p>用于补充相对变化，不重复主要数据；涨跌方向与颜色必须保持一致。</p></div><div class="rule"><b>趋势图表</b><p>仅用于重点数据的视觉概览，不显示轴线，也不能替代可读的完整趋势图。</p></div><div class="rule"><b>小数精度</b><p>同组数据统一小数位与千分位规则，避免因格式差异造成错误比较。</p></div></div></article>
-</div></section></main><script>
-const els={label:document.getElementById('label'),value:document.getElementById('value'),size:document.getElementById('size'),status:document.getElementById('status'),align:document.getElementById('align'),order:document.getElementById('order'),unitVisible:document.getElementById('unitVisible'),unitText:document.getElementById('unitText'),tooltipVisible:document.getElementById('tooltipVisible'),tooltipText:document.getElementById('tooltipText'),badge:document.getElementById('badge'),graph:document.getElementById('graph'),preview:document.getElementById('preview')};const assets={rise:'../../assets/icons/iconfont/icf_Arrow_trending-up.svg',decline:'../../assets/icons/iconfont/icf_Arrow_trending-down.svg',flat:'../../assets/icons/iconfont/icf_system_minus.svg'};const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));function render(){const s=els.status.value,trend=['rise','decline','flat'].includes(s)?s:'flat',value=s==='nodata'?'--':esc(els.value.value),unit=els.unitVisible.checked&&s!=='nodata'?'<span class="unit">'+esc(els.unitText.value)+'</span>':'',tooltip=els.tooltipVisible.checked?'<button class="info-trigger" aria-label="查看指标说明"><i class="info-icon" style="--icon:url(\'../../assets/icons/iconfont/icf_system_info.svg\')"></i><span class="tooltip" role="tooltip">'+esc(els.tooltipText.value)+'</span></button>':'';els.preview.innerHTML='<div style="display:flex;align-items:center;gap:20px"><div class="metric '+els.align.value+' '+els.order.value+'"><div class="metric-number '+els.size.value+' '+(s==='nodata'?'flat':s)+'">'+value+unit+'</div><div class="metric-label medium">'+esc(els.label.value)+tooltip+'</div>'+(els.badge.checked?'<span class="badge '+trend+'"><i class="trend-icon" style="--icon:url(\''+assets[trend]+'\')"></i>0.45%</span>':'')+'</div>'+(els.graph.checked?'<i class="spark '+trend+'" role="img" aria-label="趋势图"></i>':'')+'</div>'}Object.values(els).forEach(el=>{if(el!==els.preview){el.addEventListener('input',render);el.addEventListener('change',render)}});render();
-</script></body></html>
+<!doctype html>
+<html lang="zh-CN" data-gj-numeric="true">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>GJ Design System · 指标数据 Metric</title>
+  <link rel="stylesheet" href="../../assets/styles/gj-b2b-tokens.css">
+  <link rel="stylesheet" href="../../assets/styles/gj-b2b-components.css?v=metric-docs-4">
+  <link rel="stylesheet" href="../../assets/styles/component-docs.css?v=4">
+  <style>
+    .showcase-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+    .metric-demo-card{display:flex;min-width:0;min-height:122px;align-items:center;padding:20px;border-radius:var(--docs-panel-radius);background:var(--ds-background-background)}
+    .metric-demo-card .gj-metric-stack{gap:4px}
+    .state-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+    .state-card{display:grid;min-width:0;min-height:108px;place-items:center;align-content:center;gap:8px;padding:16px;border-radius:var(--docs-panel-radius);background:var(--ds-background-background)}
+    .state-card small{color:var(--ds-text-tertiary);font:400 12px/18px var(--ds-font-family-ui)}
+    .trend-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+    .trend-card{display:flex;min-width:0;min-height:132px;align-items:center;justify-content:space-between;gap:24px;padding:20px;border-radius:var(--docs-panel-radius);background:var(--ds-background-background)}
+    .trend-copy h3{margin:0 0 6px;font-size:14px;line-height:22px}.trend-copy p{margin:0;color:var(--ds-text-secondary);font-size:12px;line-height:20px}
+    .trend-badges{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:12px}
+    .playground{display:grid;grid-template-columns:minmax(0,3fr) minmax(320px,2fr);gap:16px;align-items:stretch}
+    .interaction-stage{display:grid;min-width:0;min-height:280px;place-items:center;padding:32px;border-radius:var(--docs-panel-radius);background:var(--ds-background-background)}
+    .metric-preview-row{display:flex;align-items:center;justify-content:center;gap:24px;max-width:100%}
+    .control-panel{min-width:0;padding:20px;border:1px solid var(--ds-border-default);border-radius:var(--docs-panel-radius);background:var(--ds-background-container)}
+    .control-panel h3{margin:0 0 4px;font-size:16px;line-height:24px}.control-panel>p{margin:0 0 16px;color:var(--ds-text-tertiary);font-size:12px;line-height:18px}
+    .control-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+    .field{display:grid;gap:8px}.field label{color:var(--ds-text-secondary);font-size:13px;line-height:20px}
+    .field .gj-input,.field select{width:100%;height:var(--ds-component-input-size-medium-height);min-width:0}
+    .field select{padding:0 32px 0 12px;border:1px solid var(--ds-border-secondary);border-radius:var(--ds-component-selector-size-medium-radius);background:var(--ds-background-container);color:var(--ds-text-primary)}
+    .check{display:flex;align-items:center;gap:8px;min-height:36px;color:var(--ds-text-secondary);font-size:13px}
+    .metric-tooltip-trigger{position:relative;display:inline-grid;place-items:center;width:16px;height:16px;padding:0;border:0;background:transparent;color:var(--ds-text-tertiary);cursor:help}
+    .metric-tooltip-trigger>.gj-icon{background:currentColor}.metric-tooltip{position:absolute;z-index:10;left:50%;bottom:calc(100% + 8px);width:max-content;max-width:240px;padding:8px 10px;border-radius:6px;background:var(--ds-background-mk-80);color:var(--ds-text-reversal);font:400 12px/18px var(--ds-font-family-ui);text-align:left;white-space:normal;box-shadow:var(--ds-effect-shadow-down);opacity:0;visibility:hidden;transform:translate(-50%,4px);transition:.16s ease;pointer-events:none}
+    .metric-tooltip-trigger:hover .metric-tooltip,.metric-tooltip-trigger:focus-visible .metric-tooltip{opacity:1;visibility:visible;transform:translate(-50%,0)}
+    .spec-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+    .spec-card{min-width:0;padding:16px;border-radius:var(--docs-panel-radius);background:var(--ds-background-background)}
+    .spec-card h3{margin:0 0 6px;font-size:14px;font-weight:600;line-height:22px}.spec-card strong{display:block;margin-bottom:6px;color:var(--ds-text-blue);font:600 13px/20px var(--ds-font-family-ui)}.spec-card p{margin:0;color:var(--ds-text-secondary);font-size:12px;line-height:20px}
+    @media(max-width:1100px){.showcase-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.state-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.spec-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:900px){.playground{grid-template-columns:1fr}}
+    @media(max-width:680px){.showcase-grid,.state-grid,.trend-grid,.control-grid,.spec-grid{grid-template-columns:1fr}.metric-preview-row{flex-direction:column}.trend-card{align-items:flex-start}.trend-badges{justify-content:flex-start}}
+  </style>
+  <script src="../../assets/scripts/font-runtime.js"></script>
+</head>
+<body>
+<main class="docs-shell">
+  <header class="docs-page-head">
+    <div class="docs-eyebrow">信息展示组件 · Data Display</div>
+    <h1>指标数据 Metric</h1>
+    <p>用于集中展示指标名称与核心数值。数字使用 GJType；布局、字号、语义颜色和趋势信息共同建立清晰的数据层级。</p>
+  </header>
+
+  <article class="docs-sheet">
+    <section class="docs-section">
+      <header class="docs-section-head"><div><h2>彩色指标卡</h2><p>用于视觉要求较高的重点指标区。通常 2–4 张横排，同组颜色互异；优先蓝、紫、青等冷色。</p></div></header>
+      <div class="gj-metric-color-card-group">
+        <div class="gj-metric-color-card" data-color="blue"><div class="gj-metric-color-card-body"><span class="gj-metric-color-card-label">近1年收益率</span><strong class="gj-metric-color-card-value">+8.52%</strong></div><img class="gj-metric-color-card-illustration" src="../../assets/images/metric/transparent-illustration-1.svg" alt="" aria-hidden="true"></div>
+        <div class="gj-metric-color-card" data-color="purple"><div class="gj-metric-color-card-body"><span class="gj-metric-color-card-label">累计服务客户</span><strong class="gj-metric-color-card-value">1,286</strong></div><img class="gj-metric-color-card-illustration" src="../../assets/images/metric/transparent-illustration-2.svg" alt="" aria-hidden="true"></div>
+        <div class="gj-metric-color-card" data-color="cyan"><div class="gj-metric-color-card-body"><span class="gj-metric-color-card-label">今日任务完成率</span><strong class="gj-metric-color-card-value">92.6%</strong></div><img class="gj-metric-color-card-illustration" src="../../assets/images/metric/transparent-illustration-3.svg" alt="" aria-hidden="true"></div>
+        <div class="gj-metric-color-card" data-color="sky"><div class="gj-metric-color-card-body"><span class="gj-metric-color-card-label">本月触达次数</span><strong class="gj-metric-color-card-value">3,842</strong></div><img class="gj-metric-color-card-illustration" src="../../assets/images/metric/transparent-illustration-4.svg" alt="" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <section class="docs-section">
+      <header class="docs-section-head"><div><h2>基础布局</h2><p>同一组指标保持字号、单位格式和对齐方式一致；连续数据优先左对齐，重点卡片可居中。</p></div></header>
+      <div class="showcase-grid">
+        <div class="metric-demo-card"><div class="gj-metric-stack"><div class="gj-metric-number is-medium">432</div><div class="gj-metric-label">资产总额</div></div></div>
+        <div class="metric-demo-card"><div class="gj-metric-stack is-label-first"><div class="gj-metric-number is-medium">432<span class="gj-metric-unit">万元</span></div><div class="gj-metric-label">资产总额</div></div></div>
+        <div class="metric-demo-card"><div class="gj-metric-stack is-center"><div class="gj-metric-number is-medium">432</div><div class="gj-metric-label">客户总数</div></div></div>
+        <div class="metric-demo-card"><div class="gj-metric-stack is-center is-label-first"><div class="gj-metric-number is-medium">432<span class="gj-metric-unit">户</span></div><div class="gj-metric-label is-medium">客户总数 <button class="metric-tooltip-trigger" type="button" aria-label="查看指标说明"><i class="gj-icon gj-icon-16" style="--gj-icon:url('../../assets/icons/iconfont/icf_system_info.svg')" aria-hidden="true"></i><span class="metric-tooltip" role="tooltip">统计当前系统中有效客户的总数量</span></button></div></div></div>
+      </div>
+    </section>
+
+    <section class="docs-section">
+      <header class="docs-section-head"><div><h2>字号与数据状态</h2><p>字号按信息密度选择，不按业务类型机械绑定；涨、跌、平及缺失状态使用系统语义色。</p></div></header>
+      <div class="state-grid">
+        <div class="state-card"><div class="gj-metric-number is-xsmall">432</div><small>Xsmall · 16/24</small></div>
+        <div class="state-card"><div class="gj-metric-number is-small is-rise">+4.32%</div><small>Rise · 20/32</small></div>
+        <div class="state-card"><div class="gj-metric-number is-medium is-decline">-4.32%</div><small>Decline · 24/32</small></div>
+        <div class="state-card"><div class="gj-metric-number is-large is-brand">432</div><small>Brand · 30/38</small></div>
+        <div class="state-card"><div class="gj-metric-number is-medium is-nodata">--</div><small>No data · Plain</small></div>
+      </div>
+    </section>
+
+    <section class="docs-section">
+      <header class="docs-section-head"><div><h2>趋势补充</h2><p>Trend Badge 和 60×60px 趋势图只补充相对变化，不重复主数据，也不替代完整 Chart。</p></div></header>
+      <div class="trend-grid">
+        <article class="trend-card"><div class="trend-copy"><h3>趋势标签</h3><p>Fill 与 none 保持各自圆角规则。</p></div><div class="trend-badges"><span class="gj-metric-badge is-rise"><i class="gj-metric-badge-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_Arrow_arrow-up-large.svg')" aria-hidden="true"></i>0.45%</span><span class="gj-metric-badge is-decline"><i class="gj-metric-badge-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_Arrow_arrow-down-large.svg')" aria-hidden="true"></i>0.45%</span><span class="gj-metric-badge is-flat"><i class="gj-metric-badge-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_Arrow_flat.svg')" aria-hidden="true"></i>0.00%</span></div></article>
+        <article class="trend-card"><div class="gj-metric-stack is-label-first"><div class="gj-metric-number is-large">88,432.00<span class="gj-metric-unit">元</span></div><div class="gj-metric-label">近 30 日资产</div></div><i class="gj-metric-graph is-rise" style="--gj-metric-graph:url('../../assets/images/preview/table-trend-lg.svg')" role="img" aria-label="上涨趋势"></i></article>
+      </div>
+    </section>
+
+    <section class="docs-section">
+      <header class="docs-section-head"><div><h2>交互演示</h2><p>调整指标内容、字号、语义色、对齐和趋势附件，观察同一组件契约的组合结果。</p></div></header>
+      <div class="playground">
+        <div class="interaction-stage"><div id="metricPreview"></div></div>
+        <aside class="control-panel"><h3>属性控制</h3><p>所有变化仅用于预览组件属性，不改变规则真值。</p><div class="control-grid">
+          <div class="field"><label for="metricLabel">指标名称</label><input class="gj-input" id="metricLabel" value="资产总额"></div>
+          <div class="field"><label for="metricValue">数据</label><input class="gj-input" id="metricValue" value="88,432.00"></div>
+          <div class="field"><label for="metricSize">字号</label><select id="metricSize"><option value="xsmall">Xsmall · 16</option><option value="small">Small · 20</option><option value="medium" selected>Medium · 24</option><option value="large">Large · 30</option></select></div>
+          <div class="field"><label for="metricStatus">状态</label><select id="metricStatus"><option value="base">基础文字</option><option value="rise">涨 Rise</option><option value="decline">跌 Decline</option><option value="plain">平 Plain</option><option value="brand">品牌蓝</option><option value="nodata">数据缺失</option></select></div>
+          <div class="field"><label for="metricAlign">对齐</label><select id="metricAlign"><option value="left">靠左</option><option value="center">居中</option></select></div>
+          <div class="field"><label for="metricOrder">内容顺序</label><select id="metricOrder"><option value="metric-first">数据在上</option><option value="label-first">名称在上</option></select></div>
+          <div class="field"><label for="unitText">单位文字</label><input class="gj-input" id="unitText" value="万元"></div>
+          <div class="field"><label for="tooltipText">Tooltip 说明</label><input class="gj-input" id="tooltipText" value="统计当前账户的资产总额"></div>
+          <label class="check"><input class="gj-checkbox" id="unitVisible" type="checkbox" checked>显示单位</label>
+          <label class="check"><input class="gj-checkbox" id="tooltipVisible" type="checkbox" checked>显示 Tooltip</label>
+          <label class="check"><input class="gj-checkbox" id="badgeVisible" type="checkbox">显示趋势标签</label>
+          <label class="check"><input class="gj-checkbox" id="graphVisible" type="checkbox">显示趋势图</label>
+        </div></aside>
+      </div>
+    </section>
+
+    <section class="docs-section">
+      <header class="docs-section-head"><div><h2>结构与规格</h2><p>按组件职责拆分阅读，避免在一张宽表里同时比较字体、尺寸、颜色和状态。</p></div></header>
+      <div class="spec-grid">
+        <article class="spec-card"><h3>Label</h3><strong>small 12/18 · medium 14/22</strong><p>使用中文 UI 字体和 Text/Secondary；Tooltip 图标为 16px。</p></article>
+        <article class="spec-card"><h3>Number</h3><strong>16/24 · 20/32 · 24/32 · 30/38</strong><p>使用 GJType Bold；数字色由 black/red/green/blue/grey 属性决定。</p></article>
+        <article class="spec-card"><h3>Unit</h3><strong>与数据间距 4px</strong><p>使用中文 UI 字体和 Text/Secondary，不继承数字字体。</p></article>
+        <article class="spec-card"><h3>Trend Badge</h3><strong>高 22px · 图标 14px</strong><p>Rise / Decline / Flat；fill 圆角 4px，none 圆角 0。</p></article>
+        <article class="spec-card"><h3>Trend Graph</h3><strong>60×60px</strong><p>Rise / Decline / regular 三态，是独立图形资源而非 iconfont。</p></article>
+        <article class="spec-card"><h3>彩色指标卡</h3><strong>275×79 母版 · R12 · gap 16</strong><p>插图 80×60 贴右下角；同组 2–4 张且颜色互异。</p></article>
+      </div>
+    </section>
+
+    <section class="docs-section">
+      <header class="docs-section-head"><div><h2>使用规则</h2><p>先保证数据准确可比较，再使用颜色、趋势与装饰建立视觉重点。</p></div></header>
+      <div class="docs-spec-table-wrap"><table class="docs-spec-table" aria-label="指标数据使用规则"><colgroup><col style="width:18%"><col style="width:42%"><col></colgroup><thead><tr><th>主题</th><th>推荐做法</th><th>边界与避免</th></tr></thead><tbody>
+        <tr><td>字体职责</td><td>核心数值使用 GJType；名称、单位和说明使用中文 UI 字体。</td><td>不要让单位继承数字字形。</td></tr>
+        <tr><td>语义颜色</td><td>涨、跌、平只使用 Feedback/Rise、Decline、Plain。</td><td>不得创建临时红、绿、灰。</td></tr>
+        <tr><td>缺失数据</td><td>不可用或尚未返回时统一显示“--”并使用 Plain。</td><td>不显示 0、空白、NaN 或单个“-”。</td></tr>
+        <tr><td>对齐与精度</td><td>连续指标优先左对齐；同组统一小数位、千分位和单位。</td><td>仅重点卡片或仪表盘区域考虑居中。</td></tr>
+        <tr><td>趋势信息</td><td>Badge 或趋势图用于补充相对变化，涨跌方向、颜色与图标保持一致。</td><td>不重复主要数据，也不替代完整 Chart。</td></tr>
+        <tr><td>彩色卡片</td><td>2–4 张横排、颜色互异，优先蓝、紫、青等冷色。</td><td>橙色和粉色只在冷色不足时备用。</td></tr>
+      </tbody></table></div>
+    </section>
+  </article>
+</main>
+
+<script>
+  const controls={label:document.getElementById('metricLabel'),value:document.getElementById('metricValue'),size:document.getElementById('metricSize'),status:document.getElementById('metricStatus'),align:document.getElementById('metricAlign'),order:document.getElementById('metricOrder'),unit:document.getElementById('unitVisible'),unitText:document.getElementById('unitText'),tooltip:document.getElementById('tooltipVisible'),tooltipText:document.getElementById('tooltipText'),badge:document.getElementById('badgeVisible'),graph:document.getElementById('graphVisible'),preview:document.getElementById('metricPreview')};
+  const iconAssets={rise:'../../assets/icons/iconfont/icf_Arrow_arrow-up-large.svg',decline:'../../assets/icons/iconfont/icf_Arrow_arrow-down-large.svg',flat:'../../assets/icons/iconfont/icf_Arrow_flat.svg'};
+  const escapeHtml=value=>String(value).replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+  function renderMetric(){
+    const status=controls.status.value;
+    const trend=status==='rise'||status==='decline'?status:'flat';
+    const displayValue=status==='nodata'?'--':escapeHtml(controls.value.value);
+    const stackClasses=['gj-metric-stack',controls.align.value==='center'?'is-center':'',controls.order.value==='label-first'?'is-label-first':''].filter(Boolean).join(' ');
+    const numberClasses=['gj-metric-number','is-'+controls.size.value,status==='base'?'':'is-'+status].filter(Boolean).join(' ');
+    const unit=controls.unit.checked&&status!=='nodata'?'<span class="gj-metric-unit">'+escapeHtml(controls.unitText.value)+'</span>':'';
+    const tooltip=controls.tooltip.checked?'<button class="metric-tooltip-trigger" type="button" aria-label="查看指标说明"><i class="gj-icon gj-icon-16" style="--gj-icon:url(\'../../assets/icons/iconfont/icf_system_info.svg\')" aria-hidden="true"></i><span class="metric-tooltip" role="tooltip">'+escapeHtml(controls.tooltipText.value)+'</span></button>':'';
+    const badge=controls.badge.checked?'<span class="gj-metric-badge is-none is-'+trend+'"><i class="gj-metric-badge-icon" style="--gj-icon:url(\''+iconAssets[trend]+'\')" aria-hidden="true"></i>0.45%</span>':'';
+    const graph=controls.graph.checked?'<i class="gj-metric-graph is-'+trend+'" style="--gj-metric-graph:url(\'../../assets/images/preview/table-trend-lg.svg\')" role="img" aria-label="趋势图"></i>':'';
+    controls.preview.innerHTML='<div class="metric-preview-row"><div class="'+stackClasses+'"><div class="'+numberClasses+'">'+displayValue+unit+'</div><div class="gj-metric-label is-medium">'+escapeHtml(controls.label.value)+tooltip+'</div>'+badge+'</div>'+graph+'</div>';
+  }
+  Object.values(controls).forEach(control=>{if(control!==controls.preview){control.addEventListener('input',renderMetric);control.addEventListener('change',renderMetric)}});
+  renderMetric();
+</script>
+</body>
+</html>

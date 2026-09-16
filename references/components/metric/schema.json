@@ -8,15 +8,16 @@
     "figmaPage": "3143:5677",
     "figmaDocBoard": "3372:4534",
     "status": "figma-audited",
-    "figmaAudit": "done-2026-09-08; re-verified-2026-09-10-MET-001-005"
+    "figmaAudit": "done-2026-09-08; re-verified-2026-09-10-MET-001-007; extended-2026-09-15-colorstyle"
   },
   "purpose": "展示指标名称、核心数值、单位、说明和可选趋势；组合组件覆盖横向/纵向、分组、网格、列表与仪表盘卡片。",
   "figma": {
     "fileKey": "8b01I1e3TzH1IhYlr3tJzd",
     "pageNodeId": "3143:5677",
     "pageName": "指标Metric✅",
-    "authoredSymbolsOnPage": 77,
-    "inventoryListedVariants": 77,
+    "authoredSymbolsOnPage": 84,
+    "inventoryListedVariants": 84,
+    "standaloneComponentsOnPage": 4,
     "componentSets": [
       {
         "nodeId": "3238:1407",
@@ -101,7 +102,19 @@
         "name": "Metric_dashboard",
         "variants": 2,
         "note": "count=3/4；卡片之间用竖 Divider（Border/default）。"
+      },
+      {
+        "nodeId": "5048:5750",
+        "name": "Metric_card_colorstyle",
+        "variants": 7,
+        "note": "Color=blue/purple/orange/pink/cyan/deepblue/sky。单卡 275×79，圆角 12，px 20 / py 16；右下角可配置 80×60 白色半透明装饰插图。"
       }
+    ],
+    "standaloneComponents": [
+      { "nodeId": "5048:5684", "name": "Transparent_illustration/1", "width": 80, "height": 60 },
+      { "nodeId": "5048:5683", "name": "Transparent_illustration/2", "width": 80, "height": 60 },
+      { "nodeId": "5048:5682", "name": "Transparent_illustration/3", "width": 80, "height": 60 },
+      { "nodeId": "5048:5681", "name": "Transparent_illustration/4", "width": 80, "height": 60 }
     ]
   },
   "properties": {
@@ -173,6 +186,24 @@
         "M",
         "L"
       ]
+    },
+    "colorCard": {
+      "Color": [
+        "blue",
+        "purple",
+        "orange",
+        "pink",
+        "cyan",
+        "deepblue",
+        "sky"
+      ],
+      "illustration": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "none"
+      ]
     }
   },
   "defaults": {
@@ -183,7 +214,10 @@
     "label.Size": "small",
     "label.tooltip": false,
     "vertical.order": "metric_first",
-    "vertical.center": false
+    "vertical.center": false,
+    "colorCard.Color": "blue",
+    "colorCard.illustration": "1",
+    "colorCard.groupGap": 16
   },
   "sizes": {
     "number": {
@@ -287,13 +321,30 @@
     },
     "metricTrend": {
       "gap": 8
+    },
+    "colorCard": {
+      "authoredWidth": 275,
+      "height": 79,
+      "paddingInline": 20,
+      "paddingBlock": 16,
+      "radius": 12,
+      "contentGap": 8,
+      "illustrationWidth": 80,
+      "illustrationHeight": 60,
+      "illustrationRight": 0,
+      "illustrationBottom": 0,
+      "groupCount": [2, 3, 4],
+      "groupGapDefault": 16,
+      "groupGapRange": [12, 20]
     }
   },
   "typography": {
     "value": "GJType Bold（数字/S2–S5-NUM-S，按 Size 选用）",
     "label": "中文/S9-CN-R 或 中文/S8-CN-R",
     "unit": "中文/S10-CN-R（Medium 及以下）或 中文/S9-CN-R（Large）",
-    "trendBadge": "中文/S6-CN-S"
+    "trendBadge": "中文/S6-CN-S",
+    "colorCardLabel": "中文/S9-CN-R（PingFang SC Regular 12/18）",
+    "colorCardValue": "GJType Bold 20px / normal line-height（Figma 未绑定数字 Text Style）"
   },
   "colorBindings": {
     "number.black": "Text/Primary（#101828）",
@@ -313,13 +364,23 @@
     "card.background": "Background/Container",
     "card.shadow": "shadow-center",
     "listItem.border": "Border/default",
-    "cardGrid.cell.background": "蓝色渐变背景（Primitive/Blue/B02 → Primitive/Neutral/N01，180deg）"
+    "cardGrid.cell.background": "蓝色渐变背景（Primitive/Blue/B02 → Primitive/Neutral/N01，180deg）",
+    "colorCard.text": "Text/reversal（#ffffff）",
+    "colorCard.blue": "极客蓝渐变",
+    "colorCard.purple": "国金紫渐变",
+    "colorCard.orange": "活力橙渐变",
+    "colorCard.pink": "Primitive/Pink/PK06 → PK05",
+    "colorCard.cyan": "Primitive/Cyan/C06 → C05",
+    "colorCard.deepblue": "Primitive/DeepBlue/DB05 → DB06",
+    "colorCard.sky": "Primitive/Sky/S04 → S06"
   },
   "behavior": {
     "missing": "缺失或尚未返回的数据统一显示 --，色 Feedback/plain。不显示 0、空白、NaN 或 Figma nodata 变体的单个 -。",
     "format": "同组小数位、千分位和单位保持一致。",
     "trend": "Trend Badge / Trend graph 只补充相对变化，不重复主数据，也不能替代完整 Chart。",
-    "nodataAxis": "Figma 只为 color=grey 提供 nodata=true；其它颜色没有 nodata symbol。"
+    "nodataAxis": "Figma 只为 color=grey 提供 nodata=true；其它颜色没有 nodata symbol。",
+    "colorCardGroup": "高视觉要求场景使用 2–4 张横向卡片；同组颜色不可重复。优先 blue、purple、cyan、deepblue、sky，只有冷色不足或卡片较多时才使用 orange、pink。",
+    "colorCardIllustration": "插图是可配置的装饰资源；固定 80×60，贴右下角且 right/bottom 均为 0，不占用业务语义，也不接收指针事件。"
   },
   "constraints": [
     "核心数值必须使用 GJType 数字 Text Style；名称、单位、说明使用中文 UI 字体。",
@@ -330,12 +391,18 @@
     "Trend Badge fill 圆角 4（Radius-XS），none 圆角 0；不得统一成 pill。",
     "Trend graph 的第三态是 regular，不是 Flat。",
     "30px（Large / 数字/S2-NUM-S）只用于少量重点指标。",
-    "缺失数据统一显示 --，色 Feedback/plain；不得照抄 Figma nodata 变体的单个 - / Text/Primary。"
+    "缺失数据统一显示 --，色 Feedback/plain；不得照抄 Figma nodata 变体的单个 - / Text/Primary。",
+    "彩色指标卡只用于视觉要求较高的重点指标区，通常 2–4 张横向排布；同组每张卡必须使用不同颜色。",
+    "彩色指标卡默认 gap 16px（L1 卡片组）；允许按父级层级在 12–20px 调整，不得超出该范围。",
+    "彩色指标卡优先使用 blue、purple、cyan、deepblue、sky；orange、pink 仅作卡片数量较多时的备用。",
+    "彩色指标卡装饰插图固定 80×60，必须贴右下角且无边距；只能使用登记的 Transparent_illustration 资源，不得用 CSS 临摹。",
+    "彩色指标卡的文字统一使用 Text/reversal；标签 12/18 Regular，数值 GJType Bold 20px / normal line-height。不得机械套用旧 Metric number 的 20/32 Text Style。"
   ],
   "dependencies": [
     "Icon",
     "Divider",
-    "Tooltip"
+    "Tooltip",
+    "Transparent_illustration"
   ],
   "knownFigmaIssues": [],
   "pendingExtraction": [],

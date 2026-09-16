@@ -51,3 +51,19 @@ Drawer 仍为 `local-contract`（未做 Figma 节点级审计，不受本次改�
 已用本地 HTTP 服务器 + Playwright 完整复现（直接打开单个预览页不会复现，必须经过 `preview/index.html` 的 iframe 注入逻辑，file:// 协议下同源限制还会挡住 `contentDocument` 访问，所以只能起 HTTP 服务器测）：修复前 `position:absolute`、`contained:false`（抽屉铺满整个 iframe）；把 `appendChild` 改成 `doc.head.insertBefore(componentStyles,doc.head.firstChild)`（让重新注入的样式表永远排在最前，不再晚于页面自己的 `<style>`）后，`position:static`、`contained:true`，与直接打开单文件的结果完全一致。已通过 `preview/index.html#drawer` 端到端截图确认，`preview/index.html#skeleton` 同步验证未受影响、也无回归。
 
 这是外壳页级别的问题，理论上影响所有"预览页局部覆盖某个 `.gj-*` 共享类默认样式"这一模式的组件，不止 Drawer——外壳页的加载顺序一改，全部预览页都会一起受益，不需要逐个组件排查。
+
+## 2026-09-16：规范页优化与 Token 源回归修复（关闭 DRW-002）
+
+本轮优化规范页时重新从 `drawer.tokens.json` 执行构建，发现 2026-09-10 曾在生成 CSS 中修复的问题并未完全回写到 Token 源：三档尺寸、Header Border、Footer Button Height、Close Icon、Motion Easing 等条目的 `cssVariable` 字段仍写着说明性中文，构建器会把这些文字误生成为非法 CSS 属性名；`drawer.shadow` 仍包含无法在组合字符串内解析的 `{Background/MK_20}`。因此每次重新运行 `build-tokens.mjs` 都会让损坏声明复发。
+
+修复：把非 CSS 变量的说明移入 `note`；新增合法的 `--ds-component-drawer-width` 与 `--ds-component-drawer-title-color` 源 Token；投影改成可直接生成的 `-8px 0 24px var(--ds-background-mk-20)`。重建后 Drawer Token 区只保留合法自定义属性，`validate-tokens.mjs` 全量通过。schema 同步删除已关闭的“缺少共享基座”旧约束并登记实际 `.gj-drawer*` 实现入口。
+
+规范页迁移到统一 `component-docs.css` 骨架，重组为组件结构、尺寸结构、交互演示、组件边界四段；静态与交互示例均引用共享 Drawer、Button、Input、Selector、DatePicker、Textarea、Checkbox 与 Modal。交互补齐显式打开入口、蒙层关闭开关、dirty 二次确认、Escape、Focus Trap、关闭后焦点返回、只读内容隐藏 Footer；未引入 Drawer 嵌套。
+
+结论：DRW-002 已关闭，无新增待确认项；组件仍保持 `local-contract`，不升级为 Figma 审计状态。
+
+2026-09-16 版式复核：组件结构恢复 Header、Content、Close、Footer 四组带方向箭头的空间标注；“尺寸与结构”移至交互演示之后，先体验行为再查参数。
+
+同日展示层精简：预览页将 4 张承载边界卡片改为 1 张对照表，并把 6 条行为规则合并为 3 张双规则卡；底层规则、schema、mapping 与 Token 均未删减。
+
+同日结构标注复核：箭头不再按两块说明区域平均定位，改为对应 Drawer 的真实三段高度（Header 64px、Content 252px、Footer 80px）；Close 与 Footer 的右侧箭头继续伸入面板 32px，分别对准关闭图标中心线和操作区。

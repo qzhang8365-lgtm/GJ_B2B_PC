@@ -1,5 +1,7 @@
 # Notification Figma 审计
 
+> 2026-09-16 预览页维护：按统一规范页结构重构 `preview/notification/index.html`。结构、语义状态、交互、规格和反馈层级改为独立一级区段；交互控制区改用共享 Medium Input / Select / Checkbox / Button。新增关闭后重新显示与同类通知原位更新演示，并明确 384px 固定宽度、关闭入口固定存在、最多一个操作及不锁定焦点。此次不改变 Figma 审计结论及 Notification Token。
+
 来源：用户提供画板 `3619:11945`（Notification），2026-09-09 只读检查。未修改 Figma。官方 MCP `get_design_context` / `get_variable_defs` / `get_metadata` 读取。
 
 inventory 该页记 **1 套 / 4 variants / standalone 0**。画板可见 **4** 个独立 Status symbol，与 variant 计数一致。画板上**没有** Notification COMPONENT_SET，见已关闭的 NTF-004。

@@ -18,7 +18,13 @@
     "3285:10544",
     "3241:2976",
     "3290:11561",
-    "3290:12231"
+    "3290:12231",
+    "5048:5750",
+    "5048:5850",
+    "5048:5684",
+    "5048:5683",
+    "5048:5682",
+    "5048:5681"
   ],
   "propertyMap": {
     "color": "number.color",
@@ -35,7 +41,9 @@
     "Trend": "trendGraph.trend 或 list_item.showTrend",
     "Count": "groupBasic.count",
     "count": "grid / cardGrid / list / dashboard 的条目数",
-    "Property 1": "历史名；现为 Metric_trend.trend"
+    "Property 1": "历史名；现为 Metric_trend.trend",
+    "Color": "colorCard.color",
+    "illustration": "colorCard.illustration（1/2/3/4/none，运行时插槽）"
   },
   "valueMap": {
     "Size.Xsmall": "number.size=Xsmall（16/24，数字/S5-NUM-S）",
@@ -68,7 +76,14 @@
     "count.count6": "Metric_list small，实测 5 条",
     "count.count5": "Metric_list small，实测 6 条",
     "style.grey": "card_grid 2*2 / 3*2 的浅底",
-    "style.gray": "card_grid 仅 4*2 使用该拼写，与 grey 同语义"
+    "style.gray": "card_grid 仅 4*2 使用该拼写，与 grey 同语义",
+    "Color.blue": "colorCard.color=blue → 极客蓝渐变（首选）",
+    "Color.purple": "colorCard.color=purple → 国金紫渐变（首选）",
+    "Color.cyan": "colorCard.color=cyan → C06→C05（首选）",
+    "Color.deepblue": "colorCard.color=deepblue → DB05→DB06（首选）",
+    "Color.sky": "colorCard.color=sky → S04→S06（首选）",
+    "Color.orange": "colorCard.color=orange → 活力橙渐变（备用）",
+    "Color.pink": "colorCard.color=pink → PK06→PK05（备用）"
   },
   "normalization": {
     "oldSchema.status": "已废弃。不要把 Base/Rise/Decline/Brand/Plain 当成 Figma 属性；数字色用 color，趋势用独立 Badge/Graph。",
@@ -97,7 +112,12 @@
     "cardGrid.cell.background": "蓝色渐变背景",
     "group.gap": "40px（与 Interval/space9 同值；生成代码为硬编码 gap-[40px]）",
     "horizontal.gap": "8px（与 Interval/space3 同值）",
-    "number.unit.gap": "4px（与 Interval/space2 同值）"
+    "number.unit.gap": "4px（与 Interval/space2 同值）",
+    "colorCard.group.gap": "默认 16px（L1 gap）；允许 12–20px，跟随共同父容器层级",
+    "colorCard.text": "Text/reversal",
+    "colorCard.label": "中文/S9-CN-R",
+    "colorCard.value": "数字/S4-NUM-S",
+    "colorCard.radius": "Radius/Radius-LG"
   },
   "assetMap": {
     "badge.Rise": "assets/icons/iconfont/icf_Arrow_arrow-up-large.svg",
@@ -107,7 +127,12 @@
     "label.chevron.removed": "2026-09-10：设计已从规范页移除 Chevron 示例（原 icf_Arrow_right 实例），不再是 Label 文档的一部分，也确认不补组件属性（MET-004 已关闭）。",
     "trendGraph": "独立 60×60 SVG 资产，不是 gj-icon；Rise/Decline 为方向相反的迷你走势图",
     "colorRule": "Badge 图标颜色跟随文字 currentColor / 绑定的 Feedback 色；Trend graph 是独立绘图层。",
-    "label.question.removed": "2026-09-10：规范页 Question 示例已删除（原 icf_system_question 实例），Label Icon States 现仅剩 无图标/Tooltip 两例，不再是文档的一部分（MET-004 已关闭）。"
+    "label.question.removed": "2026-09-10：规范页 Question 示例已删除（原 icf_system_question 实例），Label Icon States 现仅剩 无图标/Tooltip 两例，不再是文档的一部分（MET-004 已关闭）。",
+    "colorCard.illustration.1": "assets/images/metric/transparent-illustration-1.svg",
+    "colorCard.illustration.2": "assets/images/metric/transparent-illustration-2.svg",
+    "colorCard.illustration.3": "assets/images/metric/transparent-illustration-3.svg",
+    "colorCard.illustration.4": "assets/images/metric/transparent-illustration-4.svg",
+    "colorCard.illustration.rule": "固定 80×60，position:absolute; right:0; bottom:0；alt 为空并 aria-hidden=true；不得用 CSS 临摹。"
   },
   "runtimeMap": {
     "number": ".gj-metric-number",
@@ -116,17 +141,24 @@
     "badge": ".gj-metric-badge",
     "graph": ".gj-metric-graph",
     "vertical": ".gj-metric[data-layout=vertical]",
-    "horizontal": ".gj-metric[data-layout=horizontal]"
+    "horizontal": ".gj-metric[data-layout=horizontal]",
+    "colorCardGroup": ".gj-metric-color-card-group",
+    "colorCard": ".gj-metric-color-card[data-color]",
+    "colorCardIllustration": ".gj-metric-color-card-illustration"
   },
   "interactionMap": {
     "default": "Metric 是展示组件，Figma 14 个组件集均无 hover/pressed/disabled variant。",
     "tooltip": "label.tooltip=true 只提供 icf_system_info 图标位；浮层内容复用 Tooltip 组件，不在本组件集内设计。",
-    "nodata": "运行时缺失数据统一显示 --，色 Feedback/plain。不要复制 Figma nodata 变体的单个 -。"
+    "nodata": "运行时缺失数据统一显示 --，色 Feedback/plain。不要复制 Figma nodata 变体的单个 -。",
+    "colorCard": "纯展示组件，无 hover/pressed/selected 状态；不得因卡片视觉强而自动添加交互态。",
+    "colorCardGroup": "2–4 张横排，同组 data-color 必须互不相同；冷色优先，orange/pink 仅在冷色不足时使用。"
   },
   "accessibility": {
     "value": "核心数值对读屏应读出完整数字和单位，不能只暴露装饰性趋势图。",
     "trend": "涨跌不能只靠颜色：Badge 必须带方向图标或可读文本。",
     "missing": "缺失态需要明确的文本 -- 与 Feedback/plain，不要用空白、0 或单个 - 代替。",
-    "tooltip": "说明图标需要可聚焦控件与 accessible name，浮层内容与 Tooltip 无障碍规则一致。"
+    "tooltip": "说明图标需要可聚焦控件与 accessible name，浮层内容与 Tooltip 无障碍规则一致。",
+    "colorCardContrast": "文字使用 Text/reversal，标签与数值不可通过透明度继续弱化。",
+    "colorCardIllustration": "装饰插图使用空 alt 与 aria-hidden=true；核心数值和名称保持在 DOM 文本中。"
   }
 }

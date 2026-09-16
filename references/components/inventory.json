@@ -10,11 +10,11 @@
   "scope": {
     "pagesScanned": 55,
     "pagesWithComponents": 43,
-    "componentSets": 152,
-    "variants": 1690,
-    "standaloneComponents": 326,
+    "componentSets": 153,
+    "variants": 1697,
+    "standaloneComponents": 330,
     "standaloneIcons": 267,
-    "nonIconStandaloneComponents": 63
+    "nonIconStandaloneComponents": 67
   },
   "interpretationRules": [
     "页面名称中的 ✅ 仅记录 Figma 当前标记，不自动等同于已通过代码化验收。",
@@ -684,9 +684,10 @@
         },
         {
           "page": "Metric✅",
-          "sets": 14,
-          "variants": 77,
-          "standalone": 0
+          "sets": 15,
+          "variants": 84,
+          "standalone": 4,
+          "note": "2026-09-15 新增 Metric_card_colorstyle（7 色 variants）与 4 个 Transparent_illustration 独立装饰组件；按母版口径计数。"
         },
         {
           "page": "Empty✅",

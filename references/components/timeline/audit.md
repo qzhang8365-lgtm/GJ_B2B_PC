@@ -50,3 +50,20 @@ Timeline 仍为 `local-contract`（未做 Figma 节点级审计，不受本次�
 ## 结论
 
 Timeline 升级为 `figma-audited`。TML-002 关闭。
+# 2026-09-15 规范页优化复核
+
+- 移除非必要的顶部「组成结构」大图，将 `Node + Connector + Content` 并入「结构与规格」表格。
+- 删除规范页对 `.gj-timeline-h-shell` 的 `!important` 对齐修补，以及状态节点的内联高度/间距覆盖；所有节点回归共享基座。
+- Finished 边界改为包含用户所选节点，保证已完成节点连续，Waiting 不夹在 Finished 中间。
+- 静态横向 Timeline 使用非按钮项；只有明确开启详情/调整能力的演示才生成按钮项与 Hover。
+- 横向翻页依据实际 viewport 和单元宽度计算可见数量，删除固定 4 项与重复 `onclick` 绑定。
+
+## 2026-09-16：「选用规则」改为表格展示（新增并关闭 TML-003）
+
+**问题来源**：用户要求把时间轴规范页的「选用规则」区块从卡片列表改为表格展示，与站内其余组件规范页（Button、Form、Selector、Search 等）保持一致。
+
+**改动**：`preview/timeline/index.html` 原来的 `<div class="rule-list">` + 6 个 `<article class="rule-item"><h3>主题</h3><p>推荐做法<span class="avoid">边界与避免</span></p></article>` 卡片列表，按站内既有的「结构与选用规则」表格惯例改写为 `docs-spec-table-wrap > table.docs-spec-table`，三列固定为「主题 / 推荐做法 / 边界与避免」，逐条对应原有 6 条规则（方向选择、时间与排序、状态连续性、内容长度、交互边界、空与加载），文案原样保留，未改写措辞。同时删除了页面内联 `<style>` 里因此变为孤立的 `.rule-list`/`.rule-item` 及其 4 条子规则声明，并从响应式媒体查询里摘掉了对 `.rule-list` 的引用，避免残留死代码（沿用 TBL-005 的清理惯例）。
+
+**验证结果**（Playwright）：6 行内容逐字核对与原卡片列表一致，无缺漏或错位；表格继承 TBL-008 的行高/内边距修复，单行内容 48px 高度、上下各 14px 留白，无贴边；桌面 1300px 视口下页面无横向溢出；420px 窄屏下表格在自身容器内横向滚动、不撑破页面布局（与站内其余规范表格行为一致）；零控制台报错、零 404。
+
+**涉及文件**：`preview/timeline/index.html`

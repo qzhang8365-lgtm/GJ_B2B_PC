@@ -69,7 +69,7 @@
       "grids": 4,
       "breakpoints": 5,
       "components": 41,
-      "componentTokens": 1057,
+      "componentTokens": 1084,
       "componentStateTokens": 535,
       "docsSiteTokens": 18
     }
@@ -9473,7 +9473,7 @@
       "component": "Metric",
       "source": {
         "figmaNode": "3143:5677",
-        "figmaReadDate": "2026-09-10",
+        "figmaReadDate": "2026-09-15",
         "componentSchema": "references/components/metric/schema.json",
         "componentMapping": "references/components/metric/mapping.json",
         "confirmedRules": "references/components/metric/rules.md"
@@ -9531,6 +9531,39 @@
           "default": "fill",
           "values": [
             "fill",
+            "none"
+          ]
+        },
+        "colorCardColor": {
+          "default": "blue",
+          "preferred": [
+            "blue",
+            "purple",
+            "cyan",
+            "deepblue",
+            "sky"
+          ],
+          "fallback": [
+            "orange",
+            "pink"
+          ],
+          "values": [
+            "blue",
+            "purple",
+            "orange",
+            "pink",
+            "cyan",
+            "deepblue",
+            "sky"
+          ]
+        },
+        "colorCardIllustration": {
+          "default": "1",
+          "values": [
+            "1",
+            "2",
+            "3",
+            "4",
             "none"
           ]
         }
@@ -9803,6 +9836,151 @@
           "value": "{Border/default}",
           "resolved": "#EBEEF2",
           "cssVariable": "--ds-component-metric-list-item-border"
+        },
+        "colorCard.authoredWidth": {
+          "value": 275,
+          "unit": "px",
+          "cssVariable": "--ds-component-metric-color-card-authored-width",
+          "note": "Figma 母版宽度；组合布局中使用 width:100% 等分父容器，不设固定运行时宽度。"
+        },
+        "colorCard.height": {
+          "value": 79,
+          "unit": "px",
+          "cssVariable": "--ds-component-metric-color-card-height"
+        },
+        "colorCard.paddingInline": {
+          "value": "{Interval/space6}",
+          "resolved": 20,
+          "unit": "px",
+          "cssVariable": "--ds-component-metric-color-card-padding-inline"
+        },
+        "colorCard.paddingBlock": {
+          "value": "{Interval/space5}",
+          "resolved": 16,
+          "unit": "px",
+          "cssVariable": "--ds-component-metric-color-card-padding-block"
+        },
+        "colorCard.radius": {
+          "value": "{Radius/Radius-LG}",
+          "resolved": 12,
+          "unit": "px",
+          "cssVariable": "--ds-component-metric-color-card-radius"
+        },
+        "colorCard.contentGap": {
+          "value": "{Interval/space3}",
+          "resolved": 8,
+          "unit": "px",
+          "cssVariable": "--ds-component-metric-color-card-content-gap"
+        },
+        "colorCard.groupGap": {
+          "value": "{Interval/space5}",
+          "resolved": 16,
+          "unit": "px",
+          "cssVariable": "--ds-component-metric-color-card-group-gap",
+          "note": "L1 卡片组默认；可按父级层级在 12–20px 范围覆盖。"
+        },
+        "colorCard.groupGapMin": {
+          "value": "{Interval/space4}",
+          "resolved": 12,
+          "unit": "px",
+          "cssVariable": "--ds-component-metric-color-card-group-gap-min"
+        },
+        "colorCard.groupGapMax": {
+          "value": "{Interval/space6}",
+          "resolved": 20,
+          "unit": "px",
+          "cssVariable": "--ds-component-metric-color-card-group-gap-max"
+        },
+        "colorCard.label.textStyle": {
+          "value": "{中文/S9-CN-R}",
+          "cssClass": "gj-type-cn-s9"
+        },
+        "colorCard.value.fontSize": {
+          "value": 20,
+          "unit": "px",
+          "cssVariable": "--ds-component-metric-color-card-value-font-size"
+        },
+        "colorCard.value.fontWeight": {
+          "value": 700,
+          "cssVariable": "--ds-component-metric-color-card-value-font-weight"
+        },
+        "colorCard.value.lineHeight": {
+          "value": "normal",
+          "cssVariable": "--ds-component-metric-color-card-value-line-height",
+          "note": "Figma 节点为 GJType Bold 20 / normal，未绑定数字/S4-NUM-S；不要套旧 Metric 的 20/32。"
+        },
+        "colorCard.text": {
+          "value": "{Text/reversal}",
+          "resolved": "#FFFFFF",
+          "cssVariable": "--ds-component-metric-color-card-text"
+        },
+        "colorCard.illustration.width": {
+          "value": 80,
+          "unit": "px",
+          "cssVariable": "--ds-component-metric-color-card-illustration-width"
+        },
+        "colorCard.illustration.height": {
+          "value": 60,
+          "unit": "px",
+          "cssVariable": "--ds-component-metric-color-card-illustration-height"
+        },
+        "colorCard.illustration.right": {
+          "value": 0,
+          "unit": "px",
+          "cssVariable": "--ds-component-metric-color-card-illustration-right"
+        },
+        "colorCard.illustration.bottom": {
+          "value": 0,
+          "unit": "px",
+          "cssVariable": "--ds-component-metric-color-card-illustration-bottom"
+        },
+        "colorCard.gradient.blue": {
+          "value": "linear-gradient(251.66deg, var(--ds-primitive-blue-b05) 5.78%, var(--ds-primitive-blue-b07) 87.77%)",
+          "figmaStyle": "极客蓝渐变",
+          "cssVariable": "--ds-component-metric-color-card-gradient-blue",
+          "note": "按 275×79 卡片上的 Figma gradient transform 换算；角度不可直接复用其它纵横比样本。"
+        },
+        "colorCard.gradient.purple": {
+          "value": "linear-gradient(90deg, var(--ds-brand-gj-violet) 0%, #A071FF 100%)",
+          "figmaStyle": "国金紫渐变",
+          "cssVariable": "--ds-component-metric-color-card-gradient-purple"
+        },
+        "colorCard.gradient.orange": {
+          "value": "linear-gradient(88.81deg, #FF7D00 0%, #FF9B3B 100%)",
+          "figmaStyle": "活力橙渐变",
+          "cssVariable": "--ds-component-metric-color-card-gradient-orange"
+        },
+        "colorCard.gradient.pink": {
+          "value": "linear-gradient(90deg, var(--ds-primitive-pink-pk06) 0%, var(--ds-primitive-pink-pk05) 100%)",
+          "resolved": [
+            "#EC4899",
+            "#F472B6"
+          ],
+          "cssVariable": "--ds-component-metric-color-card-gradient-pink"
+        },
+        "colorCard.gradient.cyan": {
+          "value": "linear-gradient(88.81deg, var(--ds-primitive-cyan-c06) 0%, var(--ds-primitive-cyan-c05) 100%)",
+          "resolved": [
+            "#06B6D4",
+            "#22D3EE"
+          ],
+          "cssVariable": "--ds-component-metric-color-card-gradient-cyan"
+        },
+        "colorCard.gradient.deepblue": {
+          "value": "linear-gradient(251.66deg, var(--ds-primitive-deepblue-db05) 5.78%, var(--ds-primitive-deepblue-db06) 87.77%)",
+          "resolved": [
+            "#6388F2",
+            "#4167D8"
+          ],
+          "cssVariable": "--ds-component-metric-color-card-gradient-deepblue"
+        },
+        "colorCard.gradient.sky": {
+          "value": "linear-gradient(251.66deg, var(--ds-primitive-sky-s04) 5.78%, var(--ds-primitive-sky-s06) 87.77%)",
+          "resolved": [
+            "#7DD3FC",
+            "#0EA5E9"
+          ],
+          "cssVariable": "--ds-component-metric-color-card-gradient-sky"
         }
       },
       "openItems": {
@@ -10636,17 +10814,22 @@
         "size.small.width": {
           "value": 400,
           "unit": "px",
-          "cssVariable": "--gj-drawer-width（运行时 JS 行内设置；CSS 级默认兜底见 --ds-component-drawer-width）"
+          "note": "运行时通过 --gj-drawer-width 设置；不生成组件级固定尺寸变量。"
         },
         "size.medium.width": {
           "value": 600,
           "unit": "px",
-          "cssVariable": "--gj-drawer-width（运行时 JS 行内设置，等于 --ds-component-drawer-width 默认值 600px）"
+          "note": "默认值，同时作为 --ds-component-drawer-width 的 CSS 级兜底。"
         },
         "size.large.width": {
           "value": 800,
           "unit": "px",
-          "cssVariable": "--gj-drawer-width（运行时 JS 行内设置）"
+          "note": "运行时通过 --gj-drawer-width 设置；不生成组件级固定尺寸变量。"
+        },
+        "width.default": {
+          "value": 600,
+          "unit": "px",
+          "cssVariable": "--ds-component-drawer-width"
         },
         "header.height": {
           "value": 64,
@@ -10661,7 +10844,7 @@
         "header.border": {
           "value": "{Border/default}",
           "resolved": "#ebeef2",
-          "cssVariable": "直接引用 var(--ds-border-default)，未建立组件专属别名"
+          "note": "共享样式直接引用 var(--ds-border-default)，不建立组件专属别名。"
         },
         "content.padding": {
           "value": 20,
@@ -10676,7 +10859,7 @@
         "footer.buttonHeight": {
           "value": 40,
           "unit": "px",
-          "cssVariable": "不适用——Footer 内按钮尺寸由放入的 Button 组件自身决定"
+          "note": "Footer 内按钮尺寸由共享 Button Large 决定，不生成 Drawer 私有变量。"
         },
         "footer.buttonGap": {
           "value": 8,
@@ -10690,7 +10873,7 @@
         },
         "close.icon": {
           "value": "icf_system_close-md",
-          "cssVariable": "直接写死在 .gj-drawer-close::after 的 mask-image 里，非可替换变量"
+          "note": "共享样式固定引用登记资源，不生成可替换变量。"
         },
         "close.color.default": {
           "value": "{Text/Tertiary}",
@@ -10708,7 +10891,7 @@
           "note": "预览页 .scrim 实测绑定。"
         },
         "drawer.shadow": {
-          "value": "-8px 0 24px {Background/MK_20}",
+          "value": "-8px 0 24px var(--ds-background-mk-20)",
           "cssVariable": "--ds-component-drawer-shadow",
           "note": "预览页 .demo-drawer 实测绑定；投影方向朝左（抽屉从右侧进入）。"
         },
@@ -10720,8 +10903,7 @@
         },
         "motion.easing": {
           "value": "cubic-bezier(.2,0,0,1)",
-          "cssVariable": "未建立变量，直接写死在 .gj-drawer 的 transition 里",
-          "note": "预览页实测缓动曲线，近似 ease-out。"
+          "note": "共享样式直接使用，未建立变量；预览页实测缓动曲线，近似 ease-out。"
         },
         "motion.scrimDuration": {
           "value": 220,
@@ -10739,6 +10921,10 @@
           "unit": "px",
           "cssVariable": "--ds-component-drawer-header-gap",
           "note": "2026-09-10 新增：标题与关闭按钮之间的间距，同一次修复中补齐（原缺失，取值 var(--ds-space-4)）。"
+        },
+        "title.color": {
+          "value": "{Text/Primary}",
+          "cssVariable": "--ds-component-drawer-title-color"
         }
       },
       "openItems": {}

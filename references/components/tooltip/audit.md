@@ -29,3 +29,10 @@
 ## 结论
 
 Tooltip 已完成 Figma 读取和四件套产出（schema.json / rules.md / mapping.json / audit.md），状态为 `figma-audited`。上述 6 项问题已全部由设计侧确认并关闭，无遗留待确认项。`preview/tooltip/index.html` 已同步更新为确认后的内容、Token 绑定与精简后的 position（仅 top_center），并修正了此前箭头未精确对齐触发元素的问题。Figma 源文件的 position 变体尚未同步精简，待设计侧手动调整。
+
+## 2026-09-16 规范页维护记录
+
+- 将旧预览页内的 `.tt` / `.tt-arrow` 私有实现收敛为共享组件基座 `.gj-tooltip` / `.gj-tooltip-light` / `.gj-tooltip-arrow`，并在 schema 与 mapping 中登记工程引用关系。
+- 预览页按统一规范页结构重组为组件结构、风格、交互、规格、选用边界五段；Button、Input、Select、Checkbox 均直接引用共享组件。
+- 交互演示补齐 Hover 400ms 延迟、Focus 立即显示、移出 150ms 延迟、Tooltip 内容可悬停、Esc / Scroll / Resize 立即关闭与 `aria-describedby` / `role=tooltip` 关联。
+- 删除旧页中与已确认契约冲突的“多方向自动翻转”说明；位置只保留 `top_center`，箭头尖端与触发元素维持 8px 净间距。

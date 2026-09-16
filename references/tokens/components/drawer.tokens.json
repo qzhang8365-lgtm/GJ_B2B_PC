@@ -50,17 +50,22 @@
     "size.small.width": {
       "value": 400,
       "unit": "px",
-      "cssVariable": "--gj-drawer-width（运行时 JS 行内设置；CSS 级默认兜底见 --ds-component-drawer-width）"
+      "note": "运行时通过 --gj-drawer-width 设置；不生成组件级固定尺寸变量。"
     },
     "size.medium.width": {
       "value": 600,
       "unit": "px",
-      "cssVariable": "--gj-drawer-width（运行时 JS 行内设置，等于 --ds-component-drawer-width 默认值 600px）"
+      "note": "默认值，同时作为 --ds-component-drawer-width 的 CSS 级兜底。"
     },
     "size.large.width": {
       "value": 800,
       "unit": "px",
-      "cssVariable": "--gj-drawer-width（运行时 JS 行内设置）"
+      "note": "运行时通过 --gj-drawer-width 设置；不生成组件级固定尺寸变量。"
+    },
+    "width.default": {
+      "value": 600,
+      "unit": "px",
+      "cssVariable": "--ds-component-drawer-width"
     },
     "header.height": {
       "value": 64,
@@ -75,7 +80,7 @@
     "header.border": {
       "value": "{Border/default}",
       "resolved": "#ebeef2",
-      "cssVariable": "直接引用 var(--ds-border-default)，未建立组件专属别名"
+      "note": "共享样式直接引用 var(--ds-border-default)，不建立组件专属别名。"
     },
     "content.padding": {
       "value": 20,
@@ -90,7 +95,7 @@
     "footer.buttonHeight": {
       "value": 40,
       "unit": "px",
-      "cssVariable": "不适用——Footer 内按钮尺寸由放入的 Button 组件自身决定"
+      "note": "Footer 内按钮尺寸由共享 Button Large 决定，不生成 Drawer 私有变量。"
     },
     "footer.buttonGap": {
       "value": 8,
@@ -104,7 +109,7 @@
     },
     "close.icon": {
       "value": "icf_system_close-md",
-      "cssVariable": "直接写死在 .gj-drawer-close::after 的 mask-image 里，非可替换变量"
+      "note": "共享样式固定引用登记资源，不生成可替换变量。"
     },
     "close.color.default": {
       "value": "{Text/Tertiary}",
@@ -122,7 +127,7 @@
       "note": "预览页 .scrim 实测绑定。"
     },
     "drawer.shadow": {
-      "value": "-8px 0 24px {Background/MK_20}",
+      "value": "-8px 0 24px var(--ds-background-mk-20)",
       "cssVariable": "--ds-component-drawer-shadow",
       "note": "预览页 .demo-drawer 实测绑定；投影方向朝左（抽屉从右侧进入）。"
     },
@@ -134,8 +139,7 @@
     },
     "motion.easing": {
       "value": "cubic-bezier(.2,0,0,1)",
-      "cssVariable": "未建立变量，直接写死在 .gj-drawer 的 transition 里",
-      "note": "预览页实测缓动曲线，近似 ease-out。"
+      "note": "共享样式直接使用，未建立变量；预览页实测缓动曲线，近似 ease-out。"
     },
     "motion.scrimDuration": {
       "value": 220,
@@ -153,6 +157,10 @@
       "unit": "px",
       "cssVariable": "--ds-component-drawer-header-gap",
       "note": "2026-09-10 新增：标题与关闭按钮之间的间距，同一次修复中补齐（原缺失，取值 var(--ds-space-4)）。"
+    },
+    "title.color": {
+      "value": "{Text/Primary}",
+      "cssVariable": "--ds-component-drawer-title-color"
     }
   },
   "openItems": {}

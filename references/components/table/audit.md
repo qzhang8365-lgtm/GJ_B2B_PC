@@ -89,3 +89,42 @@
 验证：Playwright 核实 `search-list.html` 在 1280px 下 `.gj-table-wrap.clientWidth=998`、`scrollWidth=1100`，`has-overflow` 正确挂上，操作列 `box-shadow` 为 `-10px 0 14px`；1440px 下 `clientWidth===scrollWidth`，不挂类。对表头逐格测了 `getBoundingClientRect`，确认"操作"列确实以 sticky 方式压在"最近修改"列上方——这是设计本身就要的"冻结列覆盖被滚动内容"效果（类似 Excel 冻结列），阴影就是用来提示"这里还有更多内容、可以横向滚动"，不是要消除重叠本身。四个接入脚本的模式页跑 `verify-page.mjs` 与 Playwright 截图，零请求失败、零 pageerror，无新增视觉回归。
 
 结论：TBL-007 已关闭。`.gj-table-wrap` 现在会自动感知自身是否溢出并给出滚动提示，不再需要每个业务页面各自实现或者干脆遗漏。
+
+
+## 2026-09-16：规范页 Token/规则表格多行文字贴行边（新增并关闭 TBL-008）
+
+**问题来源**：用户截图反馈"走马灯 Carousel"规范页「尺寸与 Token」表格中，"导航箭头"一行的说明文字（三行长文本）上下贴着单元格边框，没有留白；要求修复表格行高适配规则，但不能影响单行文字的行高表现。
+
+**根因**：共享基座样式 `assets/styles/component-docs.css` 中 `.docs-spec-table th,.docs-spec-table td,.ds-table th,.ds-table td{height:var(--docs-table-row-height);padding:0 16px;...}` 只设置了左右内边距，上下内边距为 0。单行文字时行高够用（内容高度小于 `--docs-table-row-height`(48px) 这个最小高度约束，靠 `vertical-align:middle` 在 48px 内居中，视觉上有留白），但当说明文字换行到 2~3 行时，单元格内容自身高度（行数 × 22px 行高）已经超过 48px，没有上下内边距兜底，文字会精确撑满整个单元格，导致首尾行紧贴单元格上下边框。
+
+**修复**：给该共享规则补上垂直内边距 `padding:var(--ds-space-3) 16px`（8px 上下 + 16px 左右）。由于 `--docs-table-row-height` 固定为 48px 且作为最小高度约束生效，单行文字（22px 内容 + 16px 上下内边距 = 38px < 48px）仍然按 48px 渲染、居中留白视觉不变；多行文字会撑高单元格到"内容高度 + 16px"，从而在文字上下各留出约 8~9px 的呼吸空间，不再贴边。
+
+**影响范围说明**：`.docs-spec-table`/`.ds-table` 是横跨全站 28 个非 legacy 规范页共用的基座表格样式（`preview/**/index.html` 中引用 `component-docs.css` 的规范表格），本次是基座级修复，一次性覆盖所有页面的多行说明文字场景。另有 8 个标了 `.docs-legacy` 的旧版页面（Avatar、Badge、Table、Empty、Image、InputNumber、TimePicker、Upload）通过更高优先级的 `.docs-legacy .ds-table td{padding-top:0;padding-bottom:0}` 规则维持原有 0 内边距的紧凑表现，未受影响（这些页面本身设计上就是紧凑旧版风格，本次不在整改范围内）。此外，Chart/Drawer/Popover/Skeleton 四个页面的表格走的是另一套完全独立的旧版样式文件 `assets/styles/data-table.css`（该文件自身标注为 legacy 表格壳，与本次改动的 `component-docs.css` 无关联），也不受本次修复影响。
+
+**验证结果**（Playwright，`preview/carousel/index.html` 及 `button`/`form`/`selector`/`table`(legacy)/`avatar`(legacy) 五个页面抽样回归）：
+- Carousel 规范页"导航箭头"一行（3 行文字）单元格由贴边（原上下间距 0）变为上下各约 9px 留白，单元格自适应增高到约 82.5px；
+- 所有单行文字行仍保持 48px 固定高度、视觉居中效果不变，无回归；
+- `button`/`form`/`selector` 三个页面里此前同样存在但未被专门指出的多行说明文字行，同步获得了正确的上下留白（作为基座修复的自然收益）；
+- `table`/`avatar` 两个 legacy 页面表格保持原有 0 内边距、48px 紧凑高度，未受影响；
+- 全部测试页面 Playwright 零控制台报错、零 404。
+
+**涉及文件**：`assets/styles/component-docs.css`
+
+## 2026-09-16（续）：应用户要求扩大到全部规范页，含旧版 `.docs-legacy` 与独立 `data-table.css` 体系（TBL-008 补充）
+
+**问题来源**：用户看到 TBL-008 的修复说明里提到"8 个 `.docs-legacy` 页面维持原样不受影响""4 个 `data-table.css` 独立页面不受影响"后，明确要求"整体全局规范页都要改"——不满足于只修复主流的 28 个页面，要求全站所有规范页的表格都统一获得这个修复。
+
+**改动**：
+
+1. `assets/styles/component-docs.css`：原本 `.docs-legacy .ds-table th,.docs-legacy .ds-table td{height:...;padding-top:0;padding-bottom:0}` 会强制把这 8 个旧版页面的表格垂直内边距重新清零，抵消掉刚加的修复。第一次尝试直接整条删除，但验证后发现这样会让这些页面的单元格 `height` 失去约束、意外回退到 `data-table.css` 里 `.ds-table tbody td{height:66px}` 这条优先级更高的规则（从 66px 变化，与站内其余页面统一使用的 48px 基准不一致，属于新引入的行高回归）。修正为只删掉 `padding-top:0;padding-bottom:0` 这两行，保留 `height:var(--docs-table-row-height)`，这样单行文字仍锁定在与全站一致的 48px，只是垂直内边距不再被清零，多行文字能正确获得留白。
+2. `assets/styles/data-table.css`：这是 Chart/Drawer/Popover/Skeleton 四个页面独立使用、完全不依赖 `component-docs.css` 的另一套旧版表格样式，其 `.ds-table th,.ds-table td{padding:0 14px}` 同样只有左右内边距。补上 `padding:var(--ds-space-3, 8px) 14px`。这套体系的行高基准本来就是 66px（不是 48px），维持其自身原有单行行高不变，只解决多行文字贴边问题。
+
+**验证结果**（Playwright，共抽样 15 个规范页，覆盖三类表格体系）：
+- 当前基座体系（`component-docs.css` 非 legacy）：Carousel、Button、Modal、Tabs、Dropdown；
+- 旧版 `.docs-legacy` 体系（同样吃 `component-docs.css`，但走精简布局分支）：Avatar、Table、Image、InputNumber、TimePicker、Upload；
+- 独立旧版体系（仅 `data-table.css`，不依赖 `component-docs.css`）：Popover、Chart、Drawer、Skeleton。
+
+全部 15 页的所有表格行逐行测量文字到单元格上下边框的距离，无一行小于 3px（即不再有贴边情况）；`.docs-legacy` 页面单行文字行高确认仍锁定在 48px（与非 legacy 页面一致，未回归）；独立体系页面单行文字行高确认仍是其原有的 66px（未被误改）；15 个页面 Playwright 加载均为零控制台报错、零 404。
+
+**涉及文件**：`assets/styles/component-docs.css`、`assets/styles/data-table.css`
+

@@ -1434,9 +1434,9 @@
         "status": "listed",
         "page": "Metric✅",
         "pageMarkedComplete": true,
-        "componentSets": 14,
-        "variants": 77,
-        "standaloneComponents": 0,
+        "componentSets": 15,
+        "variants": 84,
+        "standaloneComponents": 4,
         "relation": "direct-page",
         "registryStatus": "figma-audited"
       },

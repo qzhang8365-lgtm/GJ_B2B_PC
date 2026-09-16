@@ -1,5 +1,7 @@
 # Modal Figma 审计
 
+> 2026-09-16 预览页维护：按统一规范页结构重构 `preview/modal/index.html`。结构、内容配方、交互、尺寸和选用规则改为独立一级区段；交互控制区改用共享 Medium Input / Select / Checkbox / Button，表单日期改用 DatePicker Trigger，Large 复杂选择改用共享 Cascader 基座。补齐关闭后重新打开、Tab 焦点限制、焦点恢复及共享组件覆盖原生 `hidden` 的显隐约束。此次不改变 Figma 审计结论及 Modal Token。
+
 来源：用户提供画板 `4759:19935`（Modal），2026-09-09 只读检查。未修改 Figma。官方 MCP `get_design_context` / `get_variable_defs` / `get_metadata` 读取。
 
 inventory 该页记 **1 套 / 12 variants / standalone 0**。画板可见 **3** 个 Modal symbol（Standard × 三档宽度）+ **4** 个 `modal_item/feedback-content` symbol，见 MDL-001。MCP 把 Modal 呈现为画板 frame `3553:11705` 内的 symbol，**没有**返回 COMPONENT_SET 根节点。

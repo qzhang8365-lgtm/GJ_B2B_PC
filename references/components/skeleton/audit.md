@@ -74,3 +74,9 @@ Skeleton 仍为 `local-contract`（未做 Figma 节点级审计，不受本次�
 验证：脚本二次扫描确认页面残留死选择器为 0；`<style>` 块大括号计数与逐字符深度校验均通过（与 button.html 同批次校验时一并发现并排除结构性错误）；本文件删除/裁剪的选择器均逐一比对过页面真实 `class="..."` 与 `classList` 调用，确认为未引用的旧代码，属于低风险清理，未单独截图复核。
 
 结论：SKE-003 已关闭。`preview/skeleton/index.html` 内嵌 CSS 现在只包含仍被页面实际使用的选择器。
+
+## 2026-09-16：规范页展示层优化
+
+预览页迁移到统一 `component-docs.css` 结构，阅读顺序调整为“结构与组合形态 → 交互演示 → 尺寸与结构 → 状态边界与选用规则”。四种契约类型 Text / List / Card / Table 均继续使用 `.gj-skeleton*` 共享基座；交互演示补齐 Table，并增加加载完成/重新加载切换，用于核对骨架与终态结构是否接近。
+
+展示层同步修正旧表格残留的文字圆角 6px 描述为已确认的 4px，并将六条重复卡片式规则收敛为状态边界对照表与三张关键规则卡。底层 `rules.md`、schema、mapping 与 componentToken 未删减，组件仍保持 `local-contract`。

@@ -1,31 +1,22 @@
 <!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GJ Design System · 步骤条 Steps</title>
-<link rel="stylesheet" href="../../assets/styles/gj-b2b-tokens.css"><link rel="stylesheet" href="../../assets/styles/gj-b2b-components.css?v=steps-docs-3"><link rel="stylesheet" href="../../assets/styles/component-docs.css?v=4">
+<link rel="stylesheet" href="../../assets/styles/gj-b2b-tokens.css"><link rel="stylesheet" href="../../assets/styles/gj-b2b-components.css?v=steps-docs-4"><link rel="stylesheet" href="../../assets/styles/component-docs.css?v=4">
 <style>
-.structure{display:grid;grid-template-columns:repeat(7,auto);gap:12px;align-items:stretch;justify-content:center}
-.structure-card{min-width:132px;padding:16px;border-radius:var(--docs-item-radius);background:var(--ds-background-container);display:grid;align-content:center;gap:4px;text-align:center}
-.structure-card b{font-size:14px}
-.structure-card span{color:var(--ds-text-tertiary);font-size:12px;line-height:18px}
-.structure-symbol{display:grid;place-items:center;color:var(--ds-text-tertiary);font-size:20px;font-weight:600}
-.samples{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-.sample-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:10px}
+.samples{display:grid;gap:20px}
+.sample-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:8px}
 .sample-head strong{font-size:14px}
 .sample-head span{color:var(--ds-text-tertiary);font-size:12px}
 .steps-stage{min-width:0;padding:28px 20px;overflow-x:auto}
-.gj-steps{min-width:520px}
-.states{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-.state-card{min-height:112px;display:grid;place-items:center;align-content:center;gap:10px}
-.state-card .gj-steps{min-width:0;flex:none;width:auto}
-.state-card span{color:var(--ds-text-tertiary);font-size:12px}
+.steps-stage .gj-steps,.interaction-stage .gj-steps{width:max(100%,calc(var(--gj-step-count) * var(--ds-component-steps-item-width)));min-width:calc(var(--gj-step-count) * var(--ds-component-steps-item-width))}
+.state-stage{overflow-x:auto}
 .playground{display:grid;grid-template-columns:minmax(0,3fr) minmax(300px,2fr);gap:16px;align-items:stretch}
-.interaction{min-width:0;padding:var(--docs-panel-padding);display:grid;gap:18px;align-content:center;overflow:hidden;border-radius:var(--docs-panel-radius);background:var(--ds-background-container);border:1px solid var(--ds-border-default)}
-.interaction-stage{overflow-x:auto}
-.interaction .gj-steps{min-width:520px}
+.interaction{min-width:0;padding:var(--docs-panel-padding);display:grid;gap:18px;align-content:center;overflow:hidden;border-radius:var(--docs-panel-radius);background:var(--ds-background-background)}
+.interaction-stage{overflow-x:auto;background:var(--ds-background-container)}
 .nav-actions{display:flex;justify-content:center;gap:8px}
 .controls{min-width:0;padding:var(--docs-panel-padding);border-radius:var(--docs-panel-radius)}
 .control-title{margin:0 0 4px;font-size:16px}
 .control-desc{margin:0 0 16px;color:var(--ds-text-tertiary);font-size:12px;line-height:18px}
-.control-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 16px}
-.field{display:grid;gap:7px}
+.control-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.field{display:grid;gap:8px}
 .field.field-wide{grid-column:1/-1}
 .field label{color:var(--ds-text-secondary);font-size:13px}
 .field select{width:100%;height:36px;min-width:0;padding:0 10px;border:1px solid var(--ds-border-secondary);border-radius:var(--docs-item-radius);background:var(--ds-background-container)}
@@ -33,34 +24,20 @@
 .event{margin-top:14px;color:var(--ds-text-tertiary);font-size:12px}
 .event strong{color:var(--ds-text-primary)}
 @media(max-width:900px){.playground{grid-template-columns:1fr}}
-@media(max-width:680px){.samples,.states,.control-grid{grid-template-columns:1fr}.field.field-wide{grid-column:auto}.structure{grid-template-columns:1fr}.structure-symbol{transform:rotate(90deg)}}
+@media(max-width:680px){.control-grid{grid-template-columns:1fr}.field.field-wide{grid-column:auto}}
 </style><script src="../../assets/scripts/font-runtime.js"></script></head><body>
 <main class="docs-shell"><header class="docs-page-head"><div class="docs-eyebrow">导航组件 · Navigation</div><h1>步骤条 Steps</h1><p>用于展示一个任务或流程的步骤顺序、当前进度与已完成状态，帮助用户理解所处位置以及后续路径。</p></header>
 <article class="docs-sheet">
-
-<section class="docs-section"><header class="docs-section-head"><div><h2>组成结构</h2><p>指示器表达进度状态，连接线表达步骤之间的路径关系，文字区承载标题与可选说明。</p></div></header><div class="docs-stage docs-surface-gray"><div class="structure">
-<div class="structure-card docs-structure-primary"><b>Step</b><span>步骤单元</span></div>
-<div class="structure-symbol">=</div>
-<div class="structure-card"><b>Indicator</b><span>指示器，表达 Wait / Process / Finished</span></div>
-<div class="structure-symbol">+</div>
-<div class="structure-card"><b>Connector</b><span>连接线，表达与相邻步骤的路径关系</span></div>
-<div class="structure-symbol">+</div>
-<div class="structure-card"><b>Copy</b><span>标题与可选说明</span></div>
-</div></div></section>
 
 <section class="docs-section"><header class="docs-section-head"><div><h2>主要类型</h2><p>Dot 弱化序号、强调流程关系；Serial 显示明确编号，适合需要识别「第几步」的场景。同一产品内不建议混用两种类型。</p></div></header><div class="samples">
 <div class="sample"><div class="sample-head"><strong>Dot 点状</strong><span>指示器 20 × 20px</span></div><div class="docs-stage docs-surface-gray steps-stage"><div class="gj-steps gj-steps-dot" id="typeDot"></div></div></div>
 <div class="sample"><div class="sample-head"><strong>Serial 序号</strong><span>指示器 32 × 32px</span></div><div class="docs-stage docs-surface-gray steps-stage"><div class="gj-steps" id="typeSerial"></div></div></div>
 </div></section>
 
-<section class="docs-section"><header class="docs-section-head"><div><h2>状态</h2><p>同一时刻仅存在一个 Process；Process 之前的步骤统一为 Finished，之后统一为 Wait，不出现跳跃或多个当前步骤。</p></div></header><div class="states">
-<div class="docs-stage docs-surface-white state-card"><div class="gj-steps" id="stateWait"></div><span>Wait</span></div>
-<div class="docs-stage docs-surface-white state-card"><div class="gj-steps" id="stateProcess"></div><span>Process</span></div>
-<div class="docs-stage docs-surface-white state-card"><div class="gj-steps" id="stateFinished"></div><span>Finished</span></div>
-</div></section>
+<section class="docs-section"><header class="docs-section-head"><div><h2>状态连续性</h2><p>用一条完整步骤链同时展示 Finished、Process 和 Wait，避免将三种互相依赖的状态拆成孤立、失真的单节点。</p></div></header><div class="docs-stage docs-surface-gray steps-stage state-stage"><div id="stateSequence"></div></div></section>
 
 <section class="docs-section"><header class="docs-section-head"><div><h2>交互演示</h2><p>调整类型、步骤数量与说明文字显隐；除「上一步 / 下一步」外，点击已完成步骤的指示器可直接跳转，用于验证允许回看的场景。</p></div></header><div class="playground">
-<div class="interaction"><div class="docs-stage interaction-stage"><div class="gj-steps" id="interactiveSteps"></div></div><div class="nav-actions"><button class="gj-btn gj-btn-secondary" type="button" id="previous">上一步</button><button class="gj-btn gj-btn-primary" type="button" id="next">下一步</button></div></div>
+<div class="interaction"><div class="docs-stage interaction-stage"><div id="interactiveSteps"></div></div><div class="nav-actions"><button class="gj-btn gj-btn-secondary" type="button" id="previous">上一步</button><button class="gj-btn gj-btn-primary" type="button" id="next">下一步</button></div></div>
 <aside class="controls docs-surface-white"><h3 class="control-title">属性控制</h3><p class="control-desc">最近事件：<strong id="event">尚未操作</strong></p><div class="control-grid">
 <div class="field"><label for="style">类型</label><select id="style"><option value="serial">Serial 序号</option><option value="dot">Dot 点状</option></select></div>
 <div class="field"><label for="count">步骤数量</label><select id="count"><option value="3">3 步</option><option value="4" selected>4 步</option><option value="5">5 步</option><option value="6">6 步</option></select></div>
@@ -70,6 +47,7 @@
 </div></section>
 
 <section class="docs-section"><header class="docs-section-head"><div><h2>结构与规格</h2><p>视觉尺寸与文字样式均由组件 Token 驱动，规范页仍按 264px 基准单元展示。</p></div></header><div class="docs-spec-table-wrap"><table class="docs-spec-table"><colgroup><col style="width:20%"><col style="width:20%"><col></colgroup><thead><tr><th>结构</th><th>尺寸 / 样式</th><th>说明</th></tr></thead><tbody>
+<tr><td>组成</td><td>Indicator + Connector + Copy</td><td>指示器表达状态，连接线表达路径关系，文字区承载标题与可选说明</td></tr>
 <tr><td>Dot 指示器</td><td>20 × 20px</td><td>999px 圆角；wait 为 Background/Secondary，process / finished 为实心 Text/blue</td></tr>
 <tr><td>Serial 指示器</td><td>32 × 32px</td><td>序号 16/24 Semibold；process / finished 序号色为 Text/reversal</td></tr>
 <tr><td>连接线</td><td>1px</td><td>与指示器居中对齐，两侧留白 8px；finished 出向连接线为 Border/focused，其余为 Border/secondary</td></tr>
@@ -97,16 +75,14 @@ function stepsMarkup({style='serial',current=2,count=4,info=true,clickable=false
     const number=i+1,state=number<current?'finished':number===current?'process':'wait';
     const tag=clickable&&state==='finished'?'button':'div';
     const clickAttrs=clickable&&state==='finished'?` type="button" data-jump="${number}"`:'';
-    return `<${tag} class="gj-step gj-step-${state}"${state==='process'?' aria-current="step"':''}${clickAttrs}><span class="gj-step-indicator">${style==='serial'?number:''}</span><b>${labels[i]}</b>${info?'<span class="gj-step-desc">这里是说明文字</span>':''}</${tag}>`;
+    return `<${tag} class="gj-step gj-step-${state}${tag==='button'?' gj-step-button':''}"${state==='process'?' aria-current="step"':''}${clickAttrs}><span class="gj-step-indicator">${style==='serial'?number:''}</span><b>${labels[i]}</b>${info?'<span class="gj-step-desc">这里是说明文字</span>':''}</${tag}>`;
   }).join('');
   return `<div class="gj-steps${style==='dot'?' gj-steps-dot':''}" style="--gj-step-count:${count}">${items}</div>`;
 }
 
 document.getElementById('typeDot').outerHTML=stepsMarkup({style:'dot',current:2,count:4,info:true});
 document.getElementById('typeSerial').outerHTML=stepsMarkup({style:'serial',current:2,count:4,info:true});
-document.getElementById('stateWait').outerHTML=stepsMarkup({style:'serial',current:0,count:1,info:false});
-document.getElementById('stateProcess').outerHTML=stepsMarkup({style:'serial',current:1,count:1,info:false});
-document.getElementById('stateFinished').outerHTML=stepsMarkup({style:'serial',current:2,count:1,info:false});
+document.getElementById('stateSequence').innerHTML=stepsMarkup({style:'serial',current:2,count:3,info:false});
 
 const els={steps:document.getElementById('interactiveSteps'),style:document.getElementById('style'),current:document.getElementById('current'),count:document.getElementById('count'),info:document.getElementById('infoVisible'),previous:document.getElementById('previous'),next:document.getElementById('next'),event:document.getElementById('event')};
 function syncCurrentOptions(){const count=Number(els.count.value),current=Math.min(Number(els.current.value),count);els.current.innerHTML=Array.from({length:count},(_,i)=>`<option value="${i+1}" ${i+1===current?'selected':''}>步骤 ${i+1}</option>`).join('')}

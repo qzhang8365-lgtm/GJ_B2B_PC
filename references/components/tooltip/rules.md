@@ -54,10 +54,15 @@
 - **Tooltip**：Hover / Focus 触发，解释当前元素，无操作。
 - **Popover**：Click 触发，可承载较复杂信息和操作，持续停留。
 - **Toast**：全局结果反馈，与当前元素无锚定关系，短时自动消失。
-- 推荐：解释图标、补全截断文字、保持简短、自动避让。
+- 推荐：解释图标、补全截断文字、保持简短，并按当前契约固定使用 `top_center`。
 - 避免：隐藏必填标签、承载按钮、显示错误警告、页面加载后主动弹出、放置长段帮助内容。
 - Do not infer placement, arrow, size, delay, states or tokens from Popover or Chart tooltip：图表内部的数据点提示是独立机制，不与本组件共用规则或样式。
 
 ## 边界
 
 - Tooltip 始终不可点击、不可获得焦点，也不承载展开、跳转或选择行为；这些行为由触发它的元素或改用 Popover 承担。
+
+## 工程引用
+
+- 必须从 `assets/styles/gj-b2b-components.css` 引用共享基座：根节点使用 `.gj-tooltip`，light 变体追加 `.gj-tooltip-light`，需要箭头时添加 `.gj-tooltip-arrow`。
+- 共享基座只负责已审计的外观与尺寸；调用方负责 `top_center` 定位、箭头与触发元素中心对齐、8px 净间距，以及 Hover / Focus / Esc / Scroll / Resize 生命周期。不得在业务页面重新绘制另一套 Tooltip 外观。

@@ -126,3 +126,18 @@ Search 为 `figma-audited`：四个用户指定节点均已逐项读取，Search
 验证：结构完整性校验（div/section/table/tr/td/button 开闭标签计数、`<style>`/`<script>` 大括号与括号平衡）全部通过；CSS 死选择器扫描确认无孤立选择器；Playwright 全流程交互测试（输入触发联想、方向键选中、Enter 确认、清空、模式/尺寸/状态切换、禁用态）与 720px/480px 窄屏截图（`structure-flow` 由横向「+」连接切换为纵向「↓」、`mode-grid`/`control-grid` 收为单列、两张表格各自在 `docs-spec-table-wrap`/`state-scroll` 容器内局部横向滚动、`document.documentElement.scrollWidth` 在 480/720/960px 视口下均未超出视口宽度）均通过，无视觉或交互回归。
 
 结论：SEA-005 已关闭。`preview/search/index.html` 现已接入项目统一的 `docs-*` 共享展示框架，状态展示为真实二维矩阵，且额外修正了一处 `.gj-btn` 隐藏逻辑缺陷。
+
+## 2026-09-16：清除按钮图标未跟随搜索图标的灰色基座处理，仍显示原始黑色（新增并关闭 SEA-006）
+
+背景：用户反馈「search组件的清除按钮icon颜色还是黑色的，没有绑定灰色，这点应该是基座问题」，并附了 preview/search/index.html「即时联想」演示区的截图——输入框内清除按钮（✕）明显比左侧搜索图标深，前者接近纯黑，后者是柔和灰色。
+
+排查：项目里搜索图标与清除按钮图标其实来自同一批原始 SVG（`icf_system_search.svg`、`icf_system_close-circle-fill.svg`），两个文件内部 `fill` 都硬编码为 `#101828`（深色，非灰色）。搜索图标之所以在页面上看起来是灰色，并不是因为 SVG 本身是灰色，而是共享基座类 `.gj-search-icon{opacity:.64}`（`gj-b2b-components.css`）统一给所有搜索图标加了 64% 不透明度，把深色压成视觉上的灰色。但清除按钮的图标——不论是 `preview/search/index.html` 里直接用的 `<button class="gj-search-clear"><img></button>`（原始 `<img>` 标签），还是 `preview/navbar/index.html` 里通过 JS `mask()` 生成的 `<span class="gj-search-clear-icon">`（currentColor 遮罩方案）——此前都没有对应的不透明度处理，`<img>` 版本直接显示 SVG 原始的深色，`<span>` 版本则因为没有显式 `color` 声明而回退到浏览器按钮默认颜色（同样接近纯黑），两条路径都会显示成黑色。这是共享基座层（`gj-b2b-components.css`）遗漏的处理，不是某个组件页各自的问题，与用户的判断一致。
+
+修复：`assets/styles/gj-b2b-components.css`——
+1. `.gj-search-clear img{...}` 补充 `opacity:.64`，与 `.gj-search-icon` 的处理方式完全一致（覆盖 `preview/search/index.html` 这类直接用 `<img>` 的场景）；
+2. `.gj-search-clear-icon{...}` 补充 `opacity:.64` 与 `color:var(--ds-component-search-default-icon,var(--ds-text-tertiary))`，与搜索图标遮罩变体（`.gj-search-icon:not(img)`）的双重处理（灰色 Token + 64% 透明度）保持一致（覆盖 `preview/navbar/index.html` 这类通过 `mask()` 生成遮罩图标的场景）。
+两处修复只处理颜色/透明度，未改动图标尺寸、布局、显示/隐藏逻辑；同步把 `preview/search/index.html`、`preview/navbar/index.html` 引用 `gj-b2b-components.css` 的版本号分别升级（`search-2`→`search-3`、`navbar-shared-1`→`navbar-shared-2`）避免浏览器缓存旧样式。
+
+验证：Playwright 核实两条路径下清除图标计算透明度均为 `0.64`（与搜索图标一致）；`navbar` 页遮罩图标的计算颜色与搜索图标一致（同为 `--ds-text-tertiary` 灰）；截图复核 `preview/search/index.html`「即时联想」演示区与 `preview/navbar/index.html` 搜索框，清除按钮均变为与搜索图标同色的柔和灰，不再显示黑色；全项目 grep 确认 `.gj-search-clear` 只在这两个页面使用，改动范围明确；对全部 39 个组件规范页跑零报错/零 404 回归扫描，仅 metric 页面出现与本次改动无关的既有图片 404（本地镜像缺文件，非 CSS 改动引入）。
+
+结论：SEA-006 已关闭。

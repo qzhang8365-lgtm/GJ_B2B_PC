@@ -9,6 +9,13 @@
     "preview": "../../../preview/tooltip/index.html"
   },
   "purpose": "解释图标、字段、缩写或被截断内容的轻量、只读提示；不承载操作，不用于必须被看到的信息或需要多段说明的帮助内容。",
+  "implementation": {
+    "stylesheet": "../../../assets/styles/gj-b2b-components.css",
+    "rootClass": "gj-tooltip",
+    "lightClass": "gj-tooltip-light",
+    "arrowClass": "gj-tooltip-arrow",
+    "placementOwner": "调用方负责 top_center 定位、8px 触发间距与显示/关闭生命周期"
+  },
   "figma": {
     "fileKey": "8b01I1e3TzH1IhYlr3tJzd",
     "componentSets": {
