@@ -1,0 +1,702 @@
+{
+  "$comment": "静态快照，由 build-package.mjs 从 references/tokens/gj-b2b.tokens.json 自动生成，不要手工编辑。",
+  "generatedFrom": "references/tokens/gj-b2b.tokens.json",
+  "generatedAt": "2026-09-16",
+  "hexToTokenNames": {
+    "#F2F7FF": [
+      "Primitive/Blue/B01"
+    ],
+    "#E5F0FF": [
+      "Primitive/Blue/B02",
+      "Background/Selected",
+      "Background/BG_blue"
+    ],
+    "#C7DDFF": [
+      "Primitive/Blue/B03"
+    ],
+    "#9CC0FF": [
+      "Primitive/Blue/B04",
+      "Button/Primary/Bg-disable",
+      "Button/Secondary/Disable"
+    ],
+    "#6D9FFF": [
+      "Primitive/Blue/B05",
+      "Button/Primary/Bg-hover",
+      "Chart/CH07"
+    ],
+    "#2B73FF": [
+      "Primitive/Blue/B06",
+      "Brand/GJ_Blue",
+      "Text/blue",
+      "Button/Primary/Bg-default",
+      "Feedback/brand",
+      "Chart/CH01",
+      "Border/focused"
+    ],
+    "#1F63F0": [
+      "Primitive/Blue/B07",
+      "Button/Primary/Bg-pressed"
+    ],
+    "#1754D4": [
+      "Primitive/Blue/B08"
+    ],
+    "#1145B0": [
+      "Primitive/Blue/B09"
+    ],
+    "#0D3385": [
+      "Primitive/Blue/B10"
+    ],
+    "#FFFFFF": [
+      "Primitive/Neutral/N01",
+      "Text/reversal",
+      "Table/table_bg1",
+      "Background/Container"
+    ],
+    "#FAFBFC": [
+      "Primitive/Neutral/N02",
+      "Table/table_bg2",
+      "Background/Tertiary"
+    ],
+    "#F5F7FA": [
+      "Primitive/Neutral/N03",
+      "Table/head_bg",
+      "Background/Background"
+    ],
+    "#EBEEF2": [
+      "Primitive/Neutral/N04",
+      "Table/border",
+      "Table/divider",
+      "Border/default",
+      "Border/disabled",
+      "Background/Secondary"
+    ],
+    "#D7DCE3": [
+      "Primitive/Neutral/N05",
+      "Border/secondary"
+    ],
+    "#B8C0CC": [
+      "Primitive/Neutral/N06",
+      "Text/disable",
+      "Border/hover"
+    ],
+    "#8D96A3": [
+      "Primitive/Neutral/N07",
+      "Text/Tertiary"
+    ],
+    "#667085": [
+      "Primitive/Neutral/N08",
+      "Feedback/plain"
+    ],
+    "#475467": [
+      "Primitive/Neutral/N09",
+      "Text/Secondary"
+    ],
+    "#344054": [
+      "Primitive/Neutral/N10"
+    ],
+    "#1D2939": [
+      "Primitive/Neutral/N11"
+    ],
+    "#101828": [
+      "Primitive/Neutral/N12",
+      "Text/Primary"
+    ],
+    "#FEF2F2": [
+      "Primitive/Red/R01"
+    ],
+    "#FEE2E2": [
+      "Primitive/Red/R02",
+      "Background/BG_red"
+    ],
+    "#FECACA": [
+      "Primitive/Red/R03"
+    ],
+    "#FD9B9B": [
+      "Primitive/Red/R04",
+      "Button/Red/Bg-disable"
+    ],
+    "#F96666": [
+      "Primitive/Red/R05",
+      "Button/Red/Bg-hover"
+    ],
+    "#F93838": [
+      "Primitive/Red/R06",
+      "Brand/GJ_red",
+      "Button/Red/Bg-default",
+      "Feedback/error&rise",
+      "Border/error"
+    ],
+    "#D92020": [
+      "Primitive/Red/R07",
+      "Button/Red/Bg-pressed"
+    ],
+    "#B41818": [
+      "Primitive/Red/R08"
+    ],
+    "#911818": [
+      "Primitive/Red/R09"
+    ],
+    "#5C0000": [
+      "Primitive/Red/R10"
+    ],
+    "#ECFDF3": [
+      "Primitive/Green/G01"
+    ],
+    "#D1FADF": [
+      "Primitive/Green/G02",
+      "Background/BG_green"
+    ],
+    "#A6F4C5": [
+      "Primitive/Green/G03"
+    ],
+    "#6CE9A6": [
+      "Primitive/Green/G04",
+      "Button/Green/Bg-disable",
+      "Chart/CH06"
+    ],
+    "#32D583": [
+      "Primitive/Green/G05",
+      "Button/Green/Bg-hover"
+    ],
+    "#12B76A": [
+      "Primitive/Green/G06",
+      "Button/Green/Bg-default",
+      "Feedback/success&decline"
+    ],
+    "#039855": [
+      "Primitive/Green/G07",
+      "Button/Green/Bg-pressed"
+    ],
+    "#027A48": [
+      "Primitive/Green/G08"
+    ],
+    "#05603A": [
+      "Primitive/Green/G09"
+    ],
+    "#054F31": [
+      "Primitive/Green/G10"
+    ],
+    "#FFF7ED": [
+      "Primitive/Orange/O01"
+    ],
+    "#FFEDD5": [
+      "Primitive/Orange/O02",
+      "Background/BG_orange"
+    ],
+    "#FED7AA": [
+      "Primitive/Orange/O03"
+    ],
+    "#FDBA74": [
+      "Primitive/Orange/O04"
+    ],
+    "#FB923C": [
+      "Primitive/Orange/O05",
+      "Chart/CH04"
+    ],
+    "#F77C09": [
+      "Primitive/Orange/O06",
+      "Feedback/warning"
+    ],
+    "#FF6A00": [
+      "Primitive/Orange/O07"
+    ],
+    "#C2410C": [
+      "Primitive/Orange/O08"
+    ],
+    "#9A3412": [
+      "Primitive/Orange/O09"
+    ],
+    "#772509": [
+      "Primitive/Orange/O10"
+    ],
+    "#FFFBE6": [
+      "Primitive/Yellow/Y01"
+    ],
+    "#FFF3BF": [
+      "Primitive/Yellow/Y02",
+      "Background/BG_yellow"
+    ],
+    "#FFE68A": [
+      "Primitive/Yellow/Y03"
+    ],
+    "#FFD95A": [
+      "Primitive/Yellow/Y04",
+      "Chart/CH08"
+    ],
+    "#FFC928": [
+      "Primitive/Yellow/Y05"
+    ],
+    "#F5B800": [
+      "Primitive/Yellow/Y06"
+    ],
+    "#D99A00": [
+      "Primitive/Yellow/Y07"
+    ],
+    "#B77900": [
+      "Primitive/Yellow/Y08"
+    ],
+    "#8F5F00": [
+      "Primitive/Yellow/Y09"
+    ],
+    "#704A00": [
+      "Primitive/Yellow/Y10"
+    ],
+    "#ECFEFF": [
+      "Primitive/Cyan/C01"
+    ],
+    "#CFFAFE": [
+      "Primitive/Cyan/C02",
+      "Background/BG_cyan"
+    ],
+    "#A5F3FC": [
+      "Primitive/Cyan/C03"
+    ],
+    "#67E8F9": [
+      "Primitive/Cyan/C04"
+    ],
+    "#22D3EE": [
+      "Primitive/Cyan/C05",
+      "Chart/CH03"
+    ],
+    "#06B6D4": [
+      "Primitive/Cyan/C06"
+    ],
+    "#0891B2": [
+      "Primitive/Cyan/C07"
+    ],
+    "#0E7490": [
+      "Primitive/Cyan/C08"
+    ],
+    "#155E75": [
+      "Primitive/Cyan/C09"
+    ],
+    "#164E63": [
+      "Primitive/Cyan/C10"
+    ],
+    "#F0F9FF": [
+      "Primitive/Sky/S01"
+    ],
+    "#E0F2FE": [
+      "Primitive/Sky/S02",
+      "Background/BG_sky"
+    ],
+    "#BAE6FD": [
+      "Primitive/Sky/S03"
+    ],
+    "#7DD3FC": [
+      "Primitive/Sky/S04"
+    ],
+    "#38BDF8": [
+      "Primitive/Sky/S05"
+    ],
+    "#0EA5E9": [
+      "Primitive/Sky/S06"
+    ],
+    "#0284C7": [
+      "Primitive/Sky/S07",
+      "Chart/CH09"
+    ],
+    "#0369A1": [
+      "Primitive/Sky/S08"
+    ],
+    "#075985": [
+      "Primitive/Sky/S09"
+    ],
+    "#0C4A6E": [
+      "Primitive/Sky/S10"
+    ],
+    "#EEF3FF": [
+      "Primitive/DeepBlue/DB01"
+    ],
+    "#DDE7FF": [
+      "Primitive/DeepBlue/DB02",
+      "Background/BG_deepblue"
+    ],
+    "#BFD2FF": [
+      "Primitive/DeepBlue/DB03"
+    ],
+    "#91B0FF": [
+      "Primitive/DeepBlue/DB04"
+    ],
+    "#6388F2": [
+      "Primitive/DeepBlue/DB05"
+    ],
+    "#4167D8": [
+      "Primitive/DeepBlue/DB06"
+    ],
+    "#2F4FB8": [
+      "Primitive/DeepBlue/DB07",
+      "Chart/CH05"
+    ],
+    "#263F94": [
+      "Primitive/DeepBlue/DB08"
+    ],
+    "#21367A": [
+      "Primitive/DeepBlue/DB09"
+    ],
+    "#1D2F66": [
+      "Primitive/DeepBlue/DB10"
+    ],
+    "#F5F3FF": [
+      "Primitive/Purple/P01"
+    ],
+    "#EDE9FE": [
+      "Primitive/Purple/P02",
+      "Background/BG_purple"
+    ],
+    "#DDD6FE": [
+      "Primitive/Purple/P03"
+    ],
+    "#C4B5FD": [
+      "Primitive/Purple/P04"
+    ],
+    "#A78BFA": [
+      "Primitive/Purple/P05"
+    ],
+    "#8B5CF6": [
+      "Primitive/Purple/P06",
+      "Chart/CH02"
+    ],
+    "#7C3AED": [
+      "Primitive/Purple/P07"
+    ],
+    "#6D28D9": [
+      "Primitive/Purple/P08"
+    ],
+    "#5B21B6": [
+      "Primitive/Purple/P09"
+    ],
+    "#4C1D95": [
+      "Primitive/Purple/P10"
+    ],
+    "#FDF2F8": [
+      "Primitive/Pink/PK01"
+    ],
+    "#FCE7F3": [
+      "Primitive/Pink/PK02",
+      "Background/BG_pink"
+    ],
+    "#FBCFE8": [
+      "Primitive/Pink/PK03"
+    ],
+    "#F9A8D4": [
+      "Primitive/Pink/PK04"
+    ],
+    "#F472B6": [
+      "Primitive/Pink/PK05"
+    ],
+    "#EC4899": [
+      "Primitive/Pink/PK06",
+      "Chart/CH10"
+    ],
+    "#DB2777": [
+      "Primitive/Pink/PK07"
+    ],
+    "#BE185D": [
+      "Primitive/Pink/PK08"
+    ],
+    "#9D174D": [
+      "Primitive/Pink/PK09"
+    ],
+    "#831843": [
+      "Primitive/Pink/PK10"
+    ],
+    "#667FFF": [
+      "Brand/GJ_purple"
+    ],
+    "#8B52FF": [
+      "Brand/GJ_violet"
+    ],
+    "#2B73FF0D": [
+      "Background/Hover",
+      "Background/BT_B5"
+    ],
+    "#00000008": [
+      "Background/Hover_2",
+      "Background/MK_3"
+    ],
+    "#2B73FF14": [
+      "Background/BT_B8"
+    ],
+    "#2B73FF1A": [
+      "Background/BT_B10"
+    ],
+    "#2B73FF26": [
+      "Background/BT_B15"
+    ],
+    "#2B73FF33": [
+      "Background/BT_B20"
+    ],
+    "#F938380D": [
+      "Background/BT_R5"
+    ],
+    "#F9383814": [
+      "Background/BT_R8"
+    ],
+    "#F938381A": [
+      "Background/BT_R10"
+    ],
+    "#F9383826": [
+      "Background/BT_R15"
+    ],
+    "#F9383833": [
+      "Background/BT_R20"
+    ],
+    "#12B76A0D": [
+      "Background/BT_G5"
+    ],
+    "#12B76A14": [
+      "Background/BT_G8"
+    ],
+    "#12B76A1A": [
+      "Background/BT_G10"
+    ],
+    "#12B76A26": [
+      "Background/BT_G15"
+    ],
+    "#12B76A33": [
+      "Background/BT_G20"
+    ],
+    "#F77C090D": [
+      "Background/BT_O5"
+    ],
+    "#F77C0914": [
+      "Background/BT_O8"
+    ],
+    "#F77C091A": [
+      "Background/BT_O10"
+    ],
+    "#F77C0926": [
+      "Background/BT_O15"
+    ],
+    "#F77C0933": [
+      "Background/BT_O20"
+    ],
+    "#F5B8000D": [
+      "Background/BT_Y5"
+    ],
+    "#F5B80014": [
+      "Background/BT_Y8"
+    ],
+    "#F5B8001A": [
+      "Background/BT_Y10"
+    ],
+    "#F5B80026": [
+      "Background/BT_Y15"
+    ],
+    "#F5B80033": [
+      "Background/BT_Y20"
+    ],
+    "#06B6D40D": [
+      "Background/BT_C5"
+    ],
+    "#06B6D414": [
+      "Background/BT_C8"
+    ],
+    "#06B6D41A": [
+      "Background/BT_C10"
+    ],
+    "#06B6D426": [
+      "Background/BT_C15"
+    ],
+    "#06B6D433": [
+      "Background/BT_C20"
+    ],
+    "#0EA5E90D": [
+      "Background/BT_S5"
+    ],
+    "#0EA5E914": [
+      "Background/BT_S8"
+    ],
+    "#0EA5E91A": [
+      "Background/BT_S10"
+    ],
+    "#0EA5E926": [
+      "Background/BT_S15"
+    ],
+    "#0EA5E933": [
+      "Background/BT_S20"
+    ],
+    "#4167D80D": [
+      "Background/BT_DB5"
+    ],
+    "#4167D814": [
+      "Background/BT_DB8"
+    ],
+    "#4167D81A": [
+      "Background/BT_DB10"
+    ],
+    "#4167D826": [
+      "Background/BT_DB15"
+    ],
+    "#4167D833": [
+      "Background/BT_DB20"
+    ],
+    "#8B5CF60D": [
+      "Background/BT_P5"
+    ],
+    "#8B5CF614": [
+      "Background/BT_P8"
+    ],
+    "#8B5CF61A": [
+      "Background/BT_P10"
+    ],
+    "#8B5CF626": [
+      "Background/BT_P15"
+    ],
+    "#8B5CF633": [
+      "Background/BT_P20"
+    ],
+    "#EC48990D": [
+      "Background/BT_PK5"
+    ],
+    "#EC489914": [
+      "Background/BT_PK8"
+    ],
+    "#EC48991A": [
+      "Background/BT_PK10"
+    ],
+    "#EC489926": [
+      "Background/BT_PK15"
+    ],
+    "#EC489933": [
+      "Background/BT_PK20"
+    ],
+    "#0000000D": [
+      "Background/MK_5"
+    ],
+    "#0000001A": [
+      "Background/MK_10"
+    ],
+    "#00000033": [
+      "Background/MK_20"
+    ],
+    "#0000004D": [
+      "Background/MK_30"
+    ],
+    "#00000073": [
+      "Background/MK_45"
+    ],
+    "#00000099": [
+      "Background/MK_60"
+    ],
+    "#000000CC": [
+      "Background/MK_80"
+    ],
+    "#FFFFFF1A": [
+      "Background/WT_10"
+    ],
+    "#FFFFFF33": [
+      "Background/WT_20"
+    ],
+    "#FFFFFF4D": [
+      "Background/WT_30"
+    ],
+    "#FFFFFF66": [
+      "Background/WT_40"
+    ],
+    "#FFFFFF73": [
+      "Background/WT_45"
+    ],
+    "#FFFFFF99": [
+      "Background/WT_60"
+    ],
+    "#FFFFFFCC": [
+      "Background/WT_80"
+    ]
+  },
+  "spacingLadderPx": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24,
+    32,
+    40,
+    48
+  ],
+  "pxToTokenNames": {
+    "0": [
+      "Interval/space1"
+    ],
+    "4": [
+      "Radius/Radius-XS",
+      "Interval/space2"
+    ],
+    "6": [
+      "Radius/Radius-SM"
+    ],
+    "8": [
+      "Radius/Radius-MD",
+      "Interval/space3"
+    ],
+    "12": [
+      "Radius/Radius-LG",
+      "Interval/space4"
+    ],
+    "16": [
+      "Radius/Radius-XL",
+      "Interval/space5"
+    ],
+    "20": [
+      "Components/control-XXS",
+      "Interval/space6"
+    ],
+    "22": [
+      "Components/control-XS"
+    ],
+    "24": [
+      "Radius/Radius-2XL",
+      "Components/control-S",
+      "Interval/space7"
+    ],
+    "32": [
+      "Components/control-M",
+      "Interval/space8"
+    ],
+    "40": [
+      "Components/control-L",
+      "Interval/space9"
+    ],
+    "48": [
+      "Components/control-XL",
+      "Interval/space10"
+    ],
+    "999": [
+      "Radius/Radius-full"
+    ]
+  },
+  "forbiddenPrivateClasses": [
+    {
+      "selector": ".btn",
+      "reuseInstead": "gj-* 共享 Button 类",
+      "note": "SKILL.md：不得用 .input / .form-item / .btn 等页面私有类重画同一组件"
+    },
+    {
+      "selector": ".input",
+      "reuseInstead": "gj-field / gj-input-wrap",
+      "note": "SKILL.md：Input 的共享基座为 gj-field + gj-input-wrap"
+    },
+    {
+      "selector": ".form-item",
+      "reuseInstead": "gj-form-item",
+      "note": "SKILL.md：Form 的共享基座为 gj-form-item"
+    },
+    {
+      "selector": ".navbar",
+      "reuseInstead": "gj-navbar",
+      "note": "SKILL.md：禁止在规范页或模式页保留 .navbar / .menu-item / .dropdown 等私有复制实现"
+    },
+    {
+      "selector": ".menu-item",
+      "reuseInstead": "gj-navbar-menu-*",
+      "note": "同上，Navbar 横向菜单"
+    },
+    {
+      "selector": ".dropdown",
+      "reuseInstead": "gj-dropdown / gj-dropdown-item",
+      "note": "同上，Navbar 浮层；也适用于其它场景下自建的 .dropdown"
+    }
+  ]
+}

@@ -76,6 +76,16 @@ git clone https://github.com/qzhang8365-lgtm/GJ_B2B_PC.git gj-b2b-pc-design-syst
 
 克隆下来的目录名建议保持为 `gj-b2b-pc-design-system`（跟 `SKILL.md` frontmatter 里的 `name` 字段一致），这样各类支持 Skill 目录发现机制的 Agent（例如把技能放进 `.claude/skills/<name>/` 的用法）能正确识别。具体接入方式取决于同事用的 Agent 产品，不确定的话可以直接把这个目录路径告诉 Agent，并指向 `SKILL.md` 作为入口文件。
 
+### 生成的页面要提交进你自己的项目仓库？可以带一份轻量校验
+
+如果生成结果不只是临时看看，而是要提交进你自己的项目仓库，可以额外把这份仓库里的 `scripts/downstream-check/` 整个文件夹复制到你自己仓库里，跑一次零依赖的静态检查（不需要装 Playwright）：
+
+```bash
+node scripts/downstream-check/check-page.mjs path/to/your/page.html
+```
+
+用法、检查范围和局限说明见该文件夹下的 `README.md`。这是一份最小可用版，只做裸十六进制颜色撞库、私有类名重画这类静态文本扫描，不做真实渲染校验，也不附带 pre-commit/CI 模板——接入方式由你自己项目决定。
+
 ## 给维护方（改动这份 Skill 的人）
 
 - 改动前先读根目录 `SKILL.md`「工作流」与「组件实现与引用协议」两节。
