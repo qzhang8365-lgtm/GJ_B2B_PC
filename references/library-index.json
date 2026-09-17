@@ -153,8 +153,8 @@
         ]
       },
       "iconWorkbench": {
-        "path": "../assets/icons/icon-content.js",
-        "initializes": "preview/icons/index.html catalog UI",
+        "path": "../assets/icons/icon-content.json",
+        "initializes": "preview/icons/index.html 复制/下载按钮（首次点击时按需 fetch，不再随页面预加载；2026-09 性能优化前是 icon-content.js，随页面同步加载）",
         "consumers": [
           "../preview/icons/index.html"
         ]
