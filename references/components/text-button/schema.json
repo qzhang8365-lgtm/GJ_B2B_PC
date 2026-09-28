@@ -130,6 +130,36 @@
       "date": "2026-09-10",
       "decision": "当前不需要为 TextButton 补充 Hover/Pressed/Disabled 的 Figma Prototype Reaction。状态 Variant 与代码交互仍须保留；不得因没有原型连线而删除或忽略这些状态。",
       "source": "用户设计确认"
+    },
+    {
+      "id": "TXT-007",
+      "date": "2026-09-28",
+      "decision": "新增一个并存的蓝色默认态颜色变体（class gj-text-btn-blue），不改动标准 gj-text-btn 的灰色默认契约（TXT 状态色契约不变）。两个变体并存，由业务场景决定使用哪一个；未显式声明 gj-text-btn-blue 时一律按灰色默认态渲染。 2026-09-28 用户进一步确认：这是表格通用规则（含弹窗内详情表格），不是仅针对某个具体页面的特例。",
+      "source": "业务需求确认，用户澄清「既需要默认状态为灰色的textbutton也需要默认为蓝色的textbutton」"
     }
-  ]
+  ],
+  "colorVariants": {
+    "default": {
+      "className": null,
+      "description": "标准灰色默认态，全局默认，无需额外叠加类。",
+      "tokens": {
+        "default.text": "Text/Secondary",
+        "hover.text": "Text/Primary",
+        "pressed.text": "Text/blue",
+        "disabled.text": "Text/disable"
+      }
+    },
+    "blue": {
+      "className": "gj-text-btn-blue",
+      "description": "与灰色默认态并存的可选变体，在 gj-text-btn 基础上叠加 gj-text-btn-blue（class=\"gj-text-btn gj-text-btn-blue\"）。用于业务明确要求操作类按钮默认就是蓝色的场景，例如表格行内操作。不是把标准 Text Button 的默认态改成蓝色。 表格通用规则：适用于表格行内所有可点击操作控件，含主表格行内操作与表格内嵌的详情/弹窗子表格，同一张表内不应混用灰色默认态和 Blue 变体。",
+      "tokens": {
+        "default.text": "--ds-component-text-button-blue-default-text (--ds-text-blue / --ds-primitive-blue-b06)",
+        "hover.text": "--ds-component-text-button-blue-hover-text (--ds-primitive-blue-b07)",
+        "pressed.text": "--ds-component-text-button-blue-pressed-text (--ds-primitive-blue-b08)",
+        "disabled.text": "--ds-component-text-button-blue-disabled-text (Text/disable，同灰色变体)"
+      },
+      "addedDate": "2026-09-28",
+      "source": "业务需求（呼叫中心录音查询页表格行内操作），非 Figma 组件集自带 Variant；Figma 只读，未在 Figma 侧新增对应 Variant。"
+    }
+  }
 }

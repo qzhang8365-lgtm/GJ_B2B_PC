@@ -24,7 +24,15 @@
 - 需要更大点击范围时，应由外层命中区域提供，不改变 Text Button 的视觉尺寸和页面排版。
 - Text Button 按压同样允许轻微缩放，不使用向下位移动效。
 - 当前不要求在 Figma 中为 Hover / Pressed / Disabled 建立 Prototype Reaction；这些仍是正式状态，代码必须依据状态契约实现，不能把“没有原型连线”理解为“不需要交互态”。
-- 静态组件基座为 `gj-text-btn`，不写尺寸按 Medium 渲染，`gj-text-btn-large / -small` 对应 24/18px。图标子元素为 `gj-text-btn-icon`。文档页可用 `is-hover / is-pressed / is-disabled` 冻结交互态。页面不得再自绘 `.gj-text-button`。
+- 静态组件基座为 `gj-text-btn`，不写尺寸按 Medium 渲染，`gj-text-btn-large / -small` 对应 24/18px。图标子元素为 `gj-text-btn-icon`。文档页可用 `is-hover / is-pressed / is-disabled` 冻结交互态。页面不得再自绘 `.gj-text-button`。 需要蓝色默认态时在此基础上叠加 `gj-text-btn-blue`（见下方「颜色变体」）。
+
+#### Text Button 颜色变体（Blue，2026-09-28 新增）
+
+- 灰色默认态是 Text Button 的标准契约（Default=`Text/Secondary`，Hover=`Text/Primary`，Pressed=`Text/blue`，Disabled=`Text/disable`），绝大多数场景直接用 `gj-text-btn`，不改动默认态颜色。
+- 2026-09-28 起新增一个并存的蓝色默认态变体：在 `gj-text-btn` 基础上叠加 `gj-text-btn-blue`（`class="gj-text-btn gj-text-btn-blue"`），用于业务明确要求“操作类按钮默认就是蓝色”的场景（例如表格行内操作需要更强的可操作性提示）。这不是把标准 Text Button 的默认态改成蓝色，是新增一个可选变体，两者并存，默认仍是灰色。
+- Blue 变体状态色：Default 用 `--ds-text-blue`（即 `--ds-primitive-blue-b06`）；Hover 用 `--ds-primitive-blue-b07`（比 Default 深一档，方向与灰色变体“悬停加深”一致）；Pressed 用 `--ds-primitive-blue-b08`（再深一档）；Disabled 复用同一个 `Text/disable`，不单独定义蓝色禁用态。
+- 是否使用 Blue 变体由业务场景决定，不是尺寸/图标之外的必选属性；未显式声明 `gj-text-btn-blue` 时一律按灰色默认态渲染。
+- 这是表格通用规则，不是针对某一个具体页面的特例：凡是表格行内可点击的交互操作控件都算数，包括主表格行内操作，也包括表格内嵌的详情/弹窗子表格（例如详情弹窗里的文件名、下载）；同一张表里所有这类控件要么都用灰色默认态，要么都用 Blue 变体，不要在同一张表里混用两种默认色。
 
 #### Text Button 适用场景
 
