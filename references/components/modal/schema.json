@@ -107,6 +107,11 @@
       "gap": 8,
       "buttonHeight": 32
     },
+    "content": {
+      "paddingBlock": 20,
+      "paddingInline": 20,
+      "note": "2026-09-28 新增默认值；此前 .gj-modal-content 本身无内边距，由 .gj-modal-body/.gj-modal-feedback/消费页面自定义结构各自补内边距，详见 rules.md。"
+    },
     "feedback": {
       "paddingInline": 20,
       "icon": 28,
@@ -188,7 +193,13 @@
       "decision": "关闭控件保持 Figma 真值 20x20（关闭按钮 icon 为 20px），不套用共享 gj-icon-button 的 32/16 配方。Icon 组件的 size 阶梯为 12/16/20/24/28/32/36，20 是合法值，不是需要修正的临时数字；Modal 关闭按钮沿用画板 20px。",
       "source": "用户设计确认 + Figma 只读复核（3552:2 的 Close action/Close icon 均为 20x20，与画板记录一致）"
     },
-    "2026-09-11 MDL-009：gj-modal-close 的 Hover 取消背景色叠加（Background/Hover），改为仅改变图标颜色（Text/primary），与 gj-icon-button（BTN-006）、Notification 关闭（NTF-005）统一 Hover 语言；Pressed（Background/Hover_2）与 Focus 环不变；20×20 视觉尺寸与 32px 无障碍热区均不受影响。"
+    "2026-09-11 MDL-009：gj-modal-close 的 Hover 取消背景色叠加（Background/Hover），改为仅改变图标颜色（Text/primary），与 gj-icon-button（BTN-006）、Notification 关闭（NTF-005）统一 Hover 语言；Pressed（Background/Hover_2）与 Focus 环不变；20×20 视觉尺寸与 32px 无障碍热区均不受影响。",
+    {
+      "id": "MDL-011",
+      "date": "2026-09-28",
+      "decision": "反转此前「.gj-modal-content 本身无内边距，由各插槽自定义」的决定：改为 .gj-modal-content 默认自带 20px 内边距（水平/垂直一致，与 Header 水平内边距对齐）。起因：呼叫中心录音查询项目的听录音弹窗（无 Footer、内容区直接放表格）忘记补内边距，表格贴住了圆角边缘。为避免每个消费页面都要记得手动补内边距，把默认值收进组件本身；.gj-modal-body（原 16/20px）与 .gj-modal-feedback（原 0/20px）相应摘掉各自的内边距，避免叠加成双重内边距。需要贴边内容的场景仍可在消费页面用更高优先级选择器局部覆盖为 0。",
+      "source": "用户设计确认（2026-09-28）"
+    }
   ],
   "partialMeasurements": [
     "COMPONENT_SET 根 ID 未返回，schema 用画板 frame 3553:11705 作集合锚点",

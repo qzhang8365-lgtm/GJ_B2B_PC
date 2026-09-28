@@ -1053,6 +1053,8 @@
   --ds-component-modal-header-padding-block: var(--ds-space-4);
   --ds-component-modal-header-padding-inline: var(--ds-space-6);
   --ds-component-modal-close-size: 20px;
+  --ds-component-modal-content-padding-block: var(--ds-space-6);
+  --ds-component-modal-content-padding-inline: var(--ds-space-6);
   --ds-component-modal-footer-height: 76px;
   --ds-component-modal-footer-padding-block-start: var(--ds-space-6);
   --ds-component-modal-footer-padding-block-end: var(--ds-space-7);

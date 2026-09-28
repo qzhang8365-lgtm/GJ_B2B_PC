@@ -3,7 +3,7 @@
   "component": "Modal",
   "source": {
     "figmaNode": "4759:19935",
-    "figmaReadDate": "2026-09-09",
+    "figmaReadDate": "2026-09-28",
     "componentSchema": "references/components/modal/schema.json",
     "componentMapping": "references/components/modal/mapping.json",
     "confirmedRules": "references/components/modal/rules.md",
@@ -80,6 +80,20 @@
       "cssVariable": "--ds-component-modal-close-size",
       "note": "关闭图标的可见尺寸（画板真值，MDL-005 已确认 20px 合法）。不代表可点击热区，热区见 close.hitSize。"
     },
+    "content.paddingBlock": {
+      "value": "{Interval/space6}",
+      "resolved": 20,
+      "unit": "px",
+      "cssVariable": "--ds-component-modal-content-padding-block",
+      "note": "2026-09-28 新增：.gj-modal-content 默认内边距（此前该组件内容区本身无内边距，由各内容插槽自行定义，详见 rules.md 与 mapping.json normalization.content.defaultPadding）。"
+    },
+    "content.paddingInline": {
+      "value": "{Interval/space6}",
+      "resolved": 20,
+      "unit": "px",
+      "cssVariable": "--ds-component-modal-content-padding-inline",
+      "note": "与 Header/Footer 水平内边距一致。"
+    },
     "footer.height": {
       "value": 76,
       "unit": "px",
@@ -117,7 +131,7 @@
       "resolved": 20,
       "unit": "px",
       "cssVariable": "--ds-component-modal-feedback-padding-inline",
-      "note": "2026-09-09 从 24 修正为 20，与 Header/Footer 水平内边距统一。"
+      "note": "2026-09-09 从 24 修正为 20，与 Header/Footer 水平内边距统一。2026-09-28 起该值改由 .gj-modal-content 的 content.paddingInline 提供，.gj-modal-feedback 自身不再声明 padding，此 token 保留仅作历史/概念记录，CSS 中不再直接引用。"
     },
     "feedback.icon": {
       "value": 28,
