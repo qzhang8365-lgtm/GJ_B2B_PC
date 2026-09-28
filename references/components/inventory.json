@@ -474,6 +474,19 @@
         ],
         "path": "drawer/schema.json",
         "status": "local-contract"
+      },
+      {
+        "order": 42,
+        "group": "data-display",
+        "component": "Audio",
+        "aliases": [
+          "audio",
+          "audio-bar",
+          "audio-player",
+          "recording-player"
+        ],
+        "path": "audio/schema.json",
+        "status": "figma-audited"
       }
     ]
   },

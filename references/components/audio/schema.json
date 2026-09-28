@@ -1,0 +1,161 @@
+{
+  "$schema": "gj-design-skill/component/v1",
+  "component": "Audio",
+  "source": {
+    "rulesSection": "Audio 音频播放条",
+    "inventoryPage": "音频Audio",
+    "figmaFile": "8b01I1e3TzH1IhYlr3tJzd",
+    "pageNodeId": "5026:7599",
+    "status": "figma-audited",
+    "figmaAudit": "done-2026-09-28"
+  },
+  "figma": {
+    "fileKey": "8b01I1e3TzH1IhYlr3tJzd",
+    "nodeId": "5026:7599",
+    "name": "音频Audio",
+    "page": "音频Audio",
+    "variantCount": 2,
+    "readOnly": true,
+    "childNodes": {
+      "Audio_Bar": "5026:7663",
+      "State=Paused": "5026:7664",
+      "State=Playing": "5026:7665"
+    }
+  },
+  "definition": "带播放控制的轻量音频播放条，用于详情/记录类场景（如通话录音、语音留言）内嵌展示一段可回放音频，提供播放/暂停、上一首/下一首、进度拖拽与关闭。不是独立的全功能播放器页面。",
+  "props": {
+    "state": {
+      "type": "enum",
+      "default": "paused",
+      "values": ["paused", "playing"],
+      "figmaProperty": "state#Paused|Playing"
+    },
+    "recordedAt": {
+      "type": "string",
+      "default": "2025-04-22 08:56:44",
+      "note": "时间戳文案，内容由业务传入，不做格式约束"
+    },
+    "progress": {
+      "type": "number",
+      "note": "交由内部复用的 .gj-slider 承载，精度/映射由业务决定"
+    },
+    "elapsed": {
+      "type": "string",
+      "default": "0:01",
+      "note": "与 duration 拼接为如 0:01/0:16 的文案"
+    },
+    "duration": {
+      "type": "string",
+      "default": "0:16"
+    },
+    "closable": {
+      "type": "boolean",
+      "default": true,
+      "note": "为 false 时由使用方在渲染时不插入 .gj-audio-close 节点，组件本身不提供隐藏占位开关"
+    },
+    "onTogglePlay": { "type": "event", "payload": "void" },
+    "onPrev": { "type": "event", "payload": "void" },
+    "onNext": { "type": "event", "payload": "void" },
+    "onClose": { "type": "event", "payload": "void" },
+    "onSeek": { "type": "event", "payload": "number", "note": "透传自内部 .gj-slider 的拖拽/点击事件" }
+  },
+  "layout": {
+    "display": "flex",
+    "alignItems": "center",
+    "gap": 21,
+    "height": 34,
+    "paddingBlock": 8,
+    "paddingInline": 12,
+    "maxWidth": 640,
+    "borderRadius": "Radius/Radius-md (8px)",
+    "border": "1px solid Brand/gj_blue",
+    "background": "Background/BG_blue"
+  },
+  "controls": {
+    "gap": 18,
+    "iconSize": 16,
+    "items": ["prev", "toggle", "next"],
+    "iconColor": "Brand/gj_blue",
+    "toggleIcons": {
+      "paused": "icf_media_play-triangle-fill",
+      "playing": "icf_media_pause-regular"
+    },
+    "prevIcon": "icf_media_skip-previous-fill",
+    "nextIcon": "icf_media_skip-forward-fill"
+  },
+  "progressTrack": {
+    "reuses": "gj-slider (input-number component)",
+    "referenceWidth": 200,
+    "height": 16,
+    "note": "Figma 的 Audio_Bar 节点是 200×16px 静态图形，代码侧直接复用已有 .gj-slider 组件获得真实拖拽交互，不重建或内嵌静态图"
+  },
+  "timeText": {
+    "textStyle": "中文/S9-CN-R",
+    "color": "Text/Primary",
+    "recordedAtWidth": "auto",
+    "durationWidth": 60
+  },
+  "closeButton": {
+    "size": 16,
+    "defaultColor": "Text/Tertiary",
+    "hoverColor": "Text/Primary",
+    "hoverBehavior": "color-only, no translate/scale"
+  },
+  "tokens": {
+    "height": "--ds-component-audio-height",
+    "maxWidth": "--ds-component-audio-max-width",
+    "paddingBlock": "--ds-component-audio-padding-block",
+    "paddingInline": "--ds-component-audio-padding-inline",
+    "gap": "--ds-component-audio-gap",
+    "radius": "--ds-component-audio-radius",
+    "background": "--ds-component-audio-background",
+    "border": "--ds-component-audio-border",
+    "text": "--ds-component-audio-text",
+    "controlsGap": "--ds-component-audio-controls-gap",
+    "iconSize": "--ds-component-audio-icon-size",
+    "iconColor": "--ds-component-audio-icon-color",
+    "closeSize": "--ds-component-audio-close-size",
+    "closeColor": "--ds-component-audio-close-color",
+    "closeHoverColor": "--ds-component-audio-close-hover-color",
+    "durationWidth": "--ds-component-audio-duration-width"
+  },
+  "behavior": {
+    "nativeElement": "div[role=group] 容器，内部三个控制按钮与关闭按钮均为 button",
+    "stateOwnership": "根节点 .gj-audio-bar 加/去 .is-playing 驱动播放/暂停图标切换；真正的音频 play()/pause() 调用与事件绑定由运行时实现，CSS 只负责外观",
+    "disabled": "上一首/下一首在无列表语义的单条音频场景下建议置 disabled 而非从 DOM 移除，以维持组件宽度与间距节奏",
+    "focus": "三个控制按钮与关闭按钮均需可聚焦、有 focus-visible 态，不改变布局尺寸",
+    "prototypeReaction": "Figma 组件集仅定义 state（Paused/Playing）两个 Variant，未见按钮级 Hover/Pressed 的 Prototype Reaction；运行时仍需实现基础的可聚焦/可点击反馈，不因缺少原型连线而省略"
+  },
+  "accessibility": {
+    "toggle": "播放/暂停按钮需要 aria-pressed 与随状态切换的 aria-label（如「播放」/「暂停」），不能仅靠图标传达状态",
+    "prevNext": "上一首/下一首按钮需要明确的 aria-label，说明其作用于同一列表内的音频切换，而非音频内部快进快退",
+    "seek": "进度条继承 .gj-slider 自身的无障碍实现，不在 Audio 层重复定义",
+    "close": "关闭按钮需要 aria-label 说明其移除/收起当前音频播放条，而不是删除录音本身"
+  },
+  "usageScenarios": {
+    "fitsWhen": [
+      "详情/记录类场景中展示一段可回放的音频（通话录音、语音留言）并提供基础播放控制。",
+      "需要嵌入弹窗、抽屉、展开行等容器内的轻量播放条。",
+      "同一列表内多段音频之间需要切换（上一首/下一首）。"
+    ],
+    "notFitsWhen": [
+      "需要音量、倍速、下载等扩展控制的完整播放器页面——应在 .gj-audio-bar 外部另行放置对应控件，不塞进本组件内部。",
+      "只有单条音频且业务明确不需要切换语义时，仍建议保留按钮位并置 disabled，而不是移除，以维持视觉节奏。"
+    ],
+    "source": "2026-09-28 组件上线时随 Figma 节点 5026:7599 一并补充，非独立于本次审计的既有决议。"
+  },
+  "confirmedDecisions": [
+    {
+      "id": "AUD-001",
+      "date": "2026-09-28",
+      "decision": "暂停态→播放态切换图标选用 icf_media_play-triangle-fill.svg（而非 -line 变体），依据截图为实心三角形、且与同组的 skip-previous-fill/skip-forward-fill 视觉重量一致。",
+      "source": "本地视觉核实，Figma 节点命名未带 fill/line 后缀，存在歧义，详见 audit.md AUD-001。"
+    },
+    {
+      "id": "AUD-003",
+      "date": "2026-09-28",
+      "decision": "进度条复用 .gj-slider（input-number 组件），不重建滑块或使用 Audio_Bar 静态图形资源；Audio 组件归入 inventory.json 的 data-display 分组（第 42 项）。",
+      "source": "设计-代码映射决策，详见 audit.md「实现决策」与「归组说明」。"
+    }
+  ]
+}

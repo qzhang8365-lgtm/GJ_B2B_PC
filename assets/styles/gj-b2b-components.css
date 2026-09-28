@@ -764,6 +764,26 @@ button.gj-timeline-h-item:hover strong{color:var(--ds-text-blue)}
 .gj-slider-tooltip:after{content:"";position:absolute;left:50%;bottom:-7px;transform:translateX(-50%);border:8px solid transparent;border-top-color:var(--ds-component-input-number-tooltip-background);border-bottom:0}
 .gj-slider.is-range .gj-slider-tooltip+.gj-slider-tooltip{left:var(--tip-end)}
 
+/* Audio: playback bar for a single recording (timestamp + transport controls + progress + duration + close).
+   Reuses .gj-slider as-is for the progress track instead of re-implementing a slider. State (Paused/Playing)
+   is a runtime concern: toggle .is-playing on the root .gj-audio-bar and keep aria-pressed/aria-label on the
+   toggle button in sync; this stylesheet only swaps the icon glyph. */
+.gj-audio-bar{box-sizing:border-box;display:flex;align-items:center;gap:var(--ds-component-audio-gap);width:100%;max-width:var(--ds-component-audio-max-width);height:var(--ds-component-audio-height);padding:var(--ds-component-audio-padding-block) var(--ds-component-audio-padding-inline);border:1px solid var(--ds-component-audio-border);border-radius:var(--ds-component-audio-radius);background:var(--ds-component-audio-background);color:var(--ds-component-audio-text)}
+.gj-audio-bar-time{flex:none;color:var(--ds-component-audio-text);font-family:var(--ds-type-cn-s9-font-family);font-size:var(--ds-type-cn-s9-font-size);line-height:var(--ds-type-cn-s9-line-height);font-weight:var(--ds-type-cn-s9-font-weight);letter-spacing:var(--ds-font-letter-spacing-0);white-space:nowrap}
+.gj-audio-bar-controls{display:flex;flex:none;align-items:center;gap:var(--ds-component-audio-controls-gap)}
+.gj-audio-btn{position:relative;flex:none;width:var(--ds-component-audio-icon-size);height:var(--ds-component-audio-icon-size);padding:0;border:0;background:transparent;cursor:pointer}
+.gj-audio-btn::after{content:"";position:absolute;inset:0;background:var(--ds-component-audio-icon-color);-webkit-mask:var(--gj-icon) center/contain no-repeat;mask:var(--gj-icon) center/contain no-repeat}
+.gj-audio-btn-prev::after{--gj-icon:url('../icons/iconfont/icf_media_skip-previous-fill.svg')}
+.gj-audio-btn-next::after{--gj-icon:url('../icons/iconfont/icf_media_skip-forward-fill.svg')}
+.gj-audio-btn-toggle::after{--gj-icon:url('../icons/iconfont/icf_media_play-triangle-fill.svg')}
+.gj-audio-bar.is-playing .gj-audio-btn-toggle::after{--gj-icon:url('../icons/iconfont/icf_media_pause-regular.svg')}
+.gj-audio-bar .gj-slider{flex:none}
+.gj-audio-bar-duration{flex:none;width:var(--ds-component-audio-duration-width);color:var(--ds-component-audio-text);font-family:var(--ds-type-cn-s9-font-family);font-size:var(--ds-type-cn-s9-font-size);line-height:var(--ds-type-cn-s9-line-height);font-weight:var(--ds-type-cn-s9-font-weight);letter-spacing:var(--ds-font-letter-spacing-0);white-space:nowrap}
+.gj-audio-bar-spacer{flex:1 0 0;min-width:8px}
+.gj-audio-close{position:relative;flex:none;width:var(--ds-component-audio-close-size);height:var(--ds-component-audio-close-size);padding:0;border:0;background:transparent;cursor:pointer}
+.gj-audio-close::after{content:"";position:absolute;inset:0;background:var(--ds-component-audio-close-color);-webkit-mask:url('../icons/iconfont/icf_system_close-md.svg') center/contain no-repeat;mask:url('../icons/iconfont/icf_system_close-md.svg') center/contain no-repeat}
+.gj-audio-close:hover::after{background:var(--ds-component-audio-close-hover-color)}
+
 /* Drawer: shared right-side sliding panel classes, extracted from validated preview page 2026-09-09. The panel is positioned absolute within a position:relative stage/viewport by default; a page embedding it in-flow (e.g. a static anatomy diagram) must locally override position/top/right/height/transform. */
 .gj-drawer{box-sizing:border-box;display:flex;flex-direction:column;position:absolute;z-index:2;top:0;right:0;width:min(var(--gj-drawer-width,var(--ds-component-drawer-width)),88%);height:100%;background:var(--ds-background-container);box-shadow:var(--ds-component-drawer-shadow);transform:translateX(0);transition:transform var(--ds-component-drawer-motion-duration) cubic-bezier(.2,0,0,1)}
 .gj-drawer.is-closed{transform:translateX(102%)}

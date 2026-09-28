@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>GJ Design System · 音频 Audio</title>
+  <link rel="stylesheet" href="../../assets/styles/gj-b2b-tokens.css">
+  <link rel="stylesheet" href="../../assets/styles/gj-b2b-components.css">
+  <link rel="stylesheet" href="../../assets/styles/component-docs.css">
+  <style>
+    .stage-audio{display:grid;place-items:center;min-height:160px;padding:24px;border-radius:var(--docs-panel-radius);background:var(--ds-background-background)}
+    .structure-list{display:grid;gap:10px;margin-top:16px}
+    .structure-row{display:grid;grid-template-columns:130px minmax(0,1fr);gap:12px;padding-bottom:10px;border-bottom:1px solid var(--ds-border-default);font-size:13px;line-height:20px}
+    .structure-row:last-child{padding-bottom:0;border-bottom:0}
+    .structure-row strong{color:var(--ds-text-primary);font-weight:600}
+    .structure-row span{color:var(--ds-text-secondary)}
+    .playground{display:grid;grid-template-columns:minmax(0,3fr) minmax(280px,2fr);gap:16px;align-items:stretch}
+    .demo-stage{position:relative;min-width:0;display:grid;align-content:center;justify-items:center;gap:16px;min-height:240px;padding:24px;border-radius:var(--docs-panel-radius);background:var(--ds-background-background)}
+    .restore-hint{display:grid;justify-items:center;gap:10px;color:var(--ds-text-tertiary);font-size:13px}
+    .control-panel{min-width:0;padding:20px;border-radius:var(--docs-panel-radius);background:var(--ds-background-background)}
+    .control-panel h3{margin:0 0 4px;font-size:16px;line-height:24px}
+    .control-panel>p{margin:0 0 16px;color:var(--ds-text-tertiary);font-size:12px;line-height:18px}
+    .check-row{display:grid;gap:14px}
+    .check-row .gj-checkbox-label{font-size:13px}
+    .event{margin-top:16px;color:var(--ds-text-tertiary);font-size:12px;line-height:18px}
+    .event b{color:var(--ds-text-primary)}
+    .rule-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:16px}
+    .rule-card{min-width:0;padding:18px;border-radius:var(--docs-panel-radius);background:var(--ds-background-background)}
+    .rule-card h3{margin:0 0 10px;font-size:14px;line-height:22px}
+    .rule-card p{margin:0;color:var(--ds-text-secondary);font-size:12px;line-height:20px}
+    @media(max-width:980px){.playground{grid-template-columns:1fr}}
+    @media(max-width:760px){.rule-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<main class="docs-shell">
+  <header class="docs-page-head">
+    <div class="docs-eyebrow">内容展示类组件 · Data Display</div>
+    <h1>音频 Audio</h1>
+    <p>用于详情、记录类场景内嵌展示一段可回放音频（如通话录音、语音留言），提供播放/暂停、上一首/下一首、进度拖拽与关闭。来源 Figma <code>5026:7599</code>，2026-09-28 新增。</p>
+  </header>
+
+  <article class="docs-sheet">
+    <section class="docs-section">
+      <header class="docs-section-head"><div><h2>组件结构</h2><p>容器整体最大宽度 640px，静态基座为 <code>gj-audio-bar</code>，从左到右由 6 个子部分组成。</p></div></header>
+      <div class="stage-audio">
+        <div class="gj-audio-bar">
+          <span class="gj-audio-bar-time">2025-04-22 08:56:44</span>
+          <span class="gj-audio-bar-controls">
+            <button class="gj-audio-btn gj-audio-btn-prev" type="button" aria-label="上一首"></button>
+            <button class="gj-audio-btn gj-audio-btn-toggle" type="button" aria-pressed="false" aria-label="播放"></button>
+            <button class="gj-audio-btn gj-audio-btn-next" type="button" aria-label="下一首"></button>
+          </span>
+          <div class="gj-slider" style="--end:6%">
+            <div class="gj-slider-track"></div>
+            <input type="range" min="0" max="16" value="1" aria-label="播放进度">
+          </div>
+          <span class="gj-audio-bar-duration">0:01/0:16</span>
+          <span class="gj-audio-bar-spacer"></span>
+          <button class="gj-audio-close" type="button" aria-label="关闭音频播放条"></button>
+        </div>
+      </div>
+      <div class="structure-list">
+        <div class="structure-row"><strong>时间戳</strong><span><code>.gj-audio-bar-time</code> · 中文/S9-CN-R，Text/Primary，内容由业务传入，宽度随文案自适应。</span></div>
+        <div class="structure-row"><strong>控制区</strong><span><code>.gj-audio-bar-controls</code> · 上一首/播放-暂停/下一首三个 16px 图标按钮，间距 18px，图标色 Brand/gj_blue；播放-暂停通过根节点 <code>.is-playing</code> 切换图标。</span></div>
+        <div class="structure-row"><strong>进度条</strong><span>直接复用 <code>.gj-slider</code>（input-number 组件），默认参考宽度 200px，与 Figma <code>Audio_Bar</code> symbol 规格一致，不重新实现滑块。</span></div>
+        <div class="structure-row"><strong>剩余时长</strong><span><code>.gj-audio-bar-duration</code> · 与时间戳同字号，宽度锁定 60px（Figma 实测值），避免位数变化顶偏后续元素。</span></div>
+        <div class="structure-row"><strong>弹性留白</strong><span><code>.gj-audio-bar-spacer</code> · <code>flex:1 0 0</code>，把关闭按钮推到最右侧。</span></div>
+        <div class="structure-row"><strong>关闭按钮</strong><span><code>.gj-audio-close</code> · 16px，默认 Text/Tertiary，悬停 Text/Primary，仅换色不做位移/缩放。</span></div>
+      </div>
+    </section>
+
+    <section class="docs-section">
+      <header class="docs-section-head"><div><h2>交互演示</h2><p>验证播放/暂停图标切换、进度拖拽联动时长文案、上一首/下一首禁用态、关闭后可恢复。</p></div></header>
+      <div class="playground">
+        <div class="demo-stage" id="stage">
+          <div class="gj-audio-bar" id="demoAudio">
+            <span class="gj-audio-bar-time">2025-04-22 08:56:44</span>
+            <span class="gj-audio-bar-controls">
+              <button class="gj-audio-btn gj-audio-btn-prev" type="button" id="prevBtn" aria-label="上一首"></button>
+              <button class="gj-audio-btn gj-audio-btn-toggle" type="button" id="toggleBtn" aria-pressed="false" aria-label="播放"></button>
+              <button class="gj-audio-btn gj-audio-btn-next" type="button" id="nextBtn" aria-label="下一首"></button>
+            </span>
+            <div class="gj-slider" id="sliderWrap" style="--end:6%">
+              <div class="gj-slider-track"></div>
+              <input type="range" min="0" max="16" value="1" id="seek" aria-label="播放进度">
+            </div>
+            <span class="gj-audio-bar-duration" id="durationText">0:01/0:16</span>
+            <span class="gj-audio-bar-spacer"></span>
+            <button class="gj-audio-close" type="button" id="closeBtn" aria-label="关闭音频播放条"></button>
+          </div>
+          <div class="restore-hint" id="restoreHint" hidden>
+            <span>音频播放条已关闭</span>
+            <button class="gj-btn" type="button" id="restoreBtn">重新展示</button>
+          </div>
+        </div>
+        <aside class="control-panel">
+          <h3>属性控制</h3>
+          <p>默认可关闭、上一首/下一首可用；播放中会每秒推进一次进度，便于观察联动。</p>
+          <div class="check-row">
+            <label class="gj-checkbox-label"><input class="gj-checkbox" id="closable" type="checkbox" checked>可关闭 closable</label>
+            <label class="gj-checkbox-label"><input class="gj-checkbox" id="noList" type="checkbox">无列表可切换（禁用上一首/下一首）</label>
+          </div>
+          <div class="event" aria-live="polite">最近事件：<b id="event">尚未播放</b></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="docs-section">
+      <header class="docs-section-head"><div><h2>尺寸与结构</h2><p>所有数值来自 Figma <code>5026:7599</code> 的实测与变量绑定，颜色/圆角与本地 primitive token 逐字节核对一致。</p></div></header>
+      <div class="docs-spec-table-wrap"><table class="docs-spec-table" aria-label="Audio 尺寸与结构"><colgroup><col style="width:20%"><col style="width:28%"><col></colgroup><thead><tr><th>部分</th><th>数值</th><th>说明</th></tr></thead><tbody>
+        <tr><td>容器</td><td>高 34px · 内边距 8/12px · gap 21px</td><td>圆角 Radius-md(8px)，描边 Brand/gj_blue，背景 Background/BG_blue，最大宽度 640px</td></tr>
+        <tr><td>控制区</td><td>gap 18px · 图标 16px</td><td>上一首/播放-暂停/下一首，图标色 Brand/gj_blue，无背景无描边</td></tr>
+        <tr><td>进度条</td><td>参考宽度 200px · 高 16px</td><td>直接复用 <code>.gj-slider</code>（input-number 组件），追加 <code>flex:none</code> 防止被拉伸</td></tr>
+        <tr><td>时间文案</td><td>中文/S9-CN-R · 12/18px</td><td>时间戳宽度自适应；剩余时长宽度锁定 60px（Figma 实测值）</td></tr>
+        <tr><td>关闭按钮</td><td>16px</td><td>默认 Text/Tertiary，悬停 Text/Primary</td></tr>
+      </tbody></table></div>
+    </section>
+
+    <section class="docs-section">
+      <header class="docs-section-head"><div><h2>组件边界与行为规则</h2><p>预览页只展示选型所需的关键差异；完整约束以 <code>rules.md</code> 与 <code>schema.json</code> 为准。</p></div></header>
+      <div class="rule-grid">
+        <article class="rule-card"><h3>复用而非重建</h3><p>进度条必须复用 <code>.gj-slider</code>，不得为 Audio 单独实现新的滑块视觉或交互；<code>.gj-slider</code> 自身规则不在本组件重复定义。</p></article>
+        <article class="rule-card"><h3>禁用而非移除</h3><p>单条音频、无列表切换语义时，上一首/下一首建议置 disabled 而非从 DOM 移除，保持宽度与间距节奏；是否禁用由业务判断。</p></article>
+        <article class="rule-card"><h3>不做完整播放器</h3><p>不承载音量、倍速、下载等扩展控制；这些如业务需要应在 <code>.gj-audio-bar</code> 外部另行放置，不塞进本组件内部撑大宽度。</p></article>
+      </div>
+    </section>
+  </article>
+</main>
+
+<script>
+  const audio=document.getElementById('demoAudio'),stage=document.getElementById('stage'),restoreHint=document.getElementById('restoreHint');
+  const toggleBtn=document.getElementById('toggleBtn'),prevBtn=document.getElementById('prevBtn'),nextBtn=document.getElementById('nextBtn'),closeBtn=document.getElementById('closeBtn'),restoreBtn=document.getElementById('restoreBtn');
+  const sliderWrap=document.getElementById('sliderWrap'),seek=document.getElementById('seek'),durationText=document.getElementById('durationText');
+  const closableEl=document.getElementById('closable'),noListEl=document.getElementById('noList'),eventEl=document.getElementById('event');
+  const DURATION=16;
+  let playing=false,timer=null;
+
+  function fmt(sec){const s=Math.max(0,Math.min(DURATION,Math.round(sec)));return `0:${String(s).padStart(2,'0')}`}
+  function renderProgress(){const v=Number(seek.value);sliderWrap.style.setProperty('--end',`${(v/DURATION*100).toFixed(1)}%`);durationText.textContent=`${fmt(v)}/${fmt(DURATION)}`}
+  function setPlaying(next){playing=next;audio.classList.toggle('is-playing',playing);toggleBtn.setAttribute('aria-pressed',String(playing));toggleBtn.setAttribute('aria-label',playing?'暂停':'播放');if(playing){eventEl.textContent='已播放';timer=window.setInterval(()=>{const v=Math.min(DURATION,Number(seek.value)+1);seek.value=v;renderProgress();if(v>=DURATION){setPlaying(false);eventEl.textContent='已播放完毕，自动暂停'}},1000)}else{eventEl.textContent='已暂停';window.clearInterval(timer)}}
+
+  toggleBtn.onclick=()=>setPlaying(!playing);
+  prevBtn.onclick=()=>{if(prevBtn.disabled)return;eventEl.textContent='已点击上一首（示例音频，无列表可切换）'};
+  nextBtn.onclick=()=>{if(nextBtn.disabled)return;eventEl.textContent='已点击下一首（示例音频，无列表可切换）'};
+  seek.oninput=()=>{renderProgress();eventEl.textContent=`已拖拽进度至 ${fmt(Number(seek.value))}`};
+  closeBtn.onclick=()=>{setPlaying(false);audio.hidden=true;restoreHint.hidden=false;eventEl.textContent='已关闭音频播放条'};
+  restoreBtn.onclick=()=>{audio.hidden=false;restoreHint.hidden=true;eventEl.textContent='已重新展示音频播放条'};
+  closableEl.onchange=()=>{closeBtn.style.visibility=closableEl.checked?'visible':'hidden';eventEl.textContent=closableEl.checked?'已开启可关闭':'已关闭 closable（隐藏关闭按钮）'};
+  noListEl.onchange=()=>{prevBtn.disabled=noListEl.checked;nextBtn.disabled=noListEl.checked;prevBtn.style.opacity=noListEl.checked?'.4':'1';nextBtn.style.opacity=noListEl.checked?'.4':'1';eventEl.textContent=noListEl.checked?'已禁用上一首/下一首':'已恢复上一首/下一首可用'};
+
+  renderProgress();
+</script>
+</body>
+</html>

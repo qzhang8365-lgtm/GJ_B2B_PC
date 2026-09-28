@@ -1,0 +1,127 @@
+{
+  "$schema": "gj-design-skill/component-tokens/v1",
+  "component": "Audio",
+  "source": {
+    "figmaNode": "5026:7599",
+    "figmaNodes": ["5026:7663", "5026:7664", "5026:7665"],
+    "figmaReadDate": "2026-09-28",
+    "componentSchema": "references/components/audio/schema.json",
+    "componentMapping": "references/components/audio/mapping.json",
+    "confirmedRules": "references/components/audio/rules.md",
+    "implementation": "assets/styles/gj-b2b-components.css#.gj-audio-bar"
+  },
+  "properties": {
+    "state": {
+      "default": "paused",
+      "values": ["paused", "playing"],
+      "figmaSets": {
+        "paused": "State=Paused",
+        "playing": "State=Playing"
+      }
+    },
+    "closable": {
+      "default": true,
+      "values": [true, false]
+    }
+  },
+  "tokens": {
+    "container.height": {
+      "value": 34,
+      "unit": "px",
+      "cssVariable": "--ds-component-audio-height"
+    },
+    "container.maxWidth": {
+      "value": 640,
+      "unit": "px",
+      "cssVariable": "--ds-component-audio-max-width"
+    },
+    "container.paddingBlock": {
+      "value": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-audio-padding-block"
+    },
+    "container.paddingInline": {
+      "value": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-audio-padding-inline"
+    },
+    "container.gap": {
+      "value": 21,
+      "unit": "px",
+      "cssVariable": "--ds-component-audio-gap"
+    },
+    "container.radius": {
+      "value": "{Radius/Radius-md}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-audio-radius"
+    },
+    "container.background": {
+      "value": "{Background/BG_blue}",
+      "resolved": "#E5F0FF",
+      "cssVariable": "--ds-component-audio-background"
+    },
+    "container.border": {
+      "value": "{Brand/gj_blue}",
+      "resolved": "#2B73FF",
+      "cssVariable": "--ds-component-audio-border"
+    },
+    "text.color": {
+      "value": "{Text/Primary}",
+      "resolved": "#101828",
+      "cssVariable": "--ds-component-audio-text"
+    },
+    "text.style": {
+      "value": "{中文/S9-CN-R}",
+      "note": "12px/18px Regular，直接引用 --ds-type-cn-s9-* 变量，不使用 .gj-type-cn-s9 工具类"
+    },
+    "text.durationWidth": {
+      "value": 60,
+      "unit": "px",
+      "cssVariable": "--ds-component-audio-duration-width",
+      "note": "Figma 实测值，锁定剩余时长文案宽度，避免位数变化顶偏后续元素"
+    },
+    "controls.gap": {
+      "value": 18,
+      "unit": "px",
+      "cssVariable": "--ds-component-audio-controls-gap"
+    },
+    "controls.iconSize": {
+      "value": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-audio-icon-size"
+    },
+    "controls.iconColor": {
+      "value": "{Brand/gj_blue}",
+      "resolved": "#2B73FF",
+      "cssVariable": "--ds-component-audio-icon-color"
+    },
+    "progressTrack": {
+      "value": "reuses --ds-component-input-number-slider-* (input-number 组件)",
+      "note": "不新建独立滑块 token；默认参考宽度 200px 与 Figma Audio_Bar symbol 尺寸一致"
+    },
+    "close.size": {
+      "value": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-audio-close-size"
+    },
+    "close.defaultColor": {
+      "value": "{Text/Tertiary}",
+      "cssVariable": "--ds-component-audio-close-color"
+    },
+    "close.hoverColor": {
+      "value": "{Text/Primary}",
+      "cssVariable": "--ds-component-audio-close-hover-color"
+    }
+  },
+  "icons": {
+    "prev": "assets/icons/iconfont/icf_media_skip-previous-fill.svg",
+    "next": "assets/icons/iconfont/icf_media_skip-forward-fill.svg",
+    "togglePaused": "assets/icons/iconfont/icf_media_play-triangle-fill.svg",
+    "togglePlaying": "assets/icons/iconfont/icf_media_pause-regular.svg",
+    "close": "assets/icons/iconfont/icf_system_close-md.svg"
+  },
+  "openItems": {
+    "AUD-001": "播放三角图标 Figma 节点命名未带 fill/line 后缀，已按视觉核实选用 -fill 变体，详见 audit.md。"
+  }
+}
