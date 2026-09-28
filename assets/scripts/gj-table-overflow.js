@@ -1,6 +1,10 @@
 (() => {
+  const syncScrollEnd = wrap => {
+    wrap.classList.toggle('at-scroll-end', wrap.scrollLeft + wrap.clientWidth >= wrap.scrollWidth - 1);
+  };
   const sync = wrap => {
     wrap.classList.toggle('has-overflow', wrap.scrollWidth > wrap.clientWidth + 1);
+    syncScrollEnd(wrap);
   };
   const syncAll = () => document.querySelectorAll('.gj-table-wrap').forEach(sync);
 
@@ -9,6 +13,7 @@
     if (observed.has(wrap)) return;
     observed.add(wrap);
     sync(wrap);
+    wrap.addEventListener('scroll', () => syncScrollEnd(wrap), { passive: true });
     if (window.ResizeObserver) {
       const ro = new ResizeObserver(() => sync(wrap));
       ro.observe(wrap);

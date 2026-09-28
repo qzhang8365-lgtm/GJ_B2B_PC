@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>GJ Design System · Text Button</title>
+  <link rel="stylesheet" href="../../assets/styles/gj-b2b-tokens.css">
+  <link rel="stylesheet" href="../../assets/styles/gj-b2b-components.css">
+  <link rel="stylesheet" href="../../assets/styles/component-docs.css">
+  <style>
+    .preview-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.preview-card{display:grid;min-width:0;gap:16px;padding:20px;border-radius:var(--docs-panel-radius);background:var(--ds-background-background)}.preview-card h3{margin:0;font-size:14px;line-height:22px}.button-row{display:flex;align-items:center;gap:20px;min-height:40px;flex-wrap:wrap}.state-wrap{max-width:100%;overflow:auto}.state-matrix{display:grid;grid-template-columns:120px repeat(4,minmax(116px,1fr));gap:12px;align-items:center;min-width:680px}.state-label{color:var(--ds-text-secondary);font-size:12px;line-height:20px}.state-cell{display:grid;min-height:48px;place-items:center;border-radius:var(--docs-item-radius);background:var(--ds-background-container)}.table-action-demo{display:flex;align-items:center;justify-content:center;gap:var(--ds-component-button-group-gap-medium);min-height:48px;background:var(--ds-background-container)}.playground{display:grid;grid-template-columns:minmax(0,var(--docs-layout-demo-fr)) minmax(var(--docs-interaction-min-width),var(--docs-layout-interaction-fr));gap:var(--docs-layout-column-gap)}.stage{display:grid;min-height:240px;place-items:center;padding:32px;border-radius:var(--docs-panel-radius);background:var(--ds-background-background)}.controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;padding:20px}.field{display:grid;gap:6px;min-width:0}.field label{color:var(--ds-text-secondary);font-size:12px;line-height:20px}.field select{width:100%;height:36px;padding:0 10px;border:1px solid var(--ds-border-secondary);border-radius:var(--docs-item-radius);background:var(--ds-background-container)}.rules-table{min-width:760px}@media(max-width:900px){.preview-grid,.playground{grid-template-columns:1fr}}@media(max-width:640px){.controls{grid-template-columns:1fr}}
+  </style>
+  <script src="../../assets/scripts/font-runtime.js"></script>
+</head>
+<body>
+<main class="docs-shell">
+  <header class="docs-page-head">
+    <div class="docs-eyebrow">通用组件 · Components</div>
+    <h1>文字按钮 Text Button</h1>
+    <p>无背景、无描边、无可见内边距的轻量操作组件。标准灰色默认态与 Blue 可选变体并存，Blue 不替代标准契约。</p>
+  </header>
+  <article class="docs-sheet">
+    <section class="docs-section">
+      <header class="docs-section-head"><div><h2>颜色变体</h2><p>默认优先使用标准灰色；只有业务明确需要更强可操作性提示时才声明 Blue。同一操作组保持一致。</p></div></header>
+      <div class="preview-grid">
+        <div class="preview-card"><h3>Default · 标准灰色</h3><div class="button-row"><button class="gj-text-btn" type="button">查看详情</button><button class="gj-text-btn" type="button"><span>更多信息</span><span class="gj-text-btn-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_Arrow_right.svg')" aria-hidden="true"></span></button></div></div>
+        <div class="preview-card"><h3>Blue · 可选蓝色</h3><div class="button-row"><button class="gj-text-btn gj-text-btn-blue" type="button">听录音</button><button class="gj-text-btn gj-text-btn-blue" type="button"><span class="gj-text-btn-icon" style="--gj-icon:url('../../assets/icons/iconfont/icf_system_download1.svg')" aria-hidden="true"></span><span>下载</span></button></div></div>
+      </div>
+    </section>
+    <section class="docs-section">
+      <header class="docs-section-head"><div><h2>尺寸</h2><p>Large、Medium、Small 的可见高度分别为 24、22、18px；图标随尺寸同步变化，内边距始终为 0。</p></div></header>
+      <div class="preview-grid">
+        <div class="preview-card"><h3>Default</h3><div class="button-row"><button class="gj-text-btn gj-text-btn-large">Large 16px</button><button class="gj-text-btn">Medium 14px</button><button class="gj-text-btn gj-text-btn-small">Small 12px</button></div></div>
+        <div class="preview-card"><h3>Blue</h3><div class="button-row"><button class="gj-text-btn gj-text-btn-large gj-text-btn-blue">Large 16px</button><button class="gj-text-btn gj-text-btn-blue">Medium 14px</button><button class="gj-text-btn gj-text-btn-small gj-text-btn-blue">Small 12px</button></div></div>
+      </div>
+    </section>
+    <section class="docs-section">
+      <header class="docs-section-head"><div><h2>状态矩阵</h2><p>两种颜色变体均覆盖 Default、Hover、Pressed、Disabled；图标使用 currentColor 与文字同步。</p></div></header>
+      <div class="state-wrap"><div class="state-matrix">
+        <span></span><span class="state-label">Default</span><span class="state-label">Hover</span><span class="state-label">Pressed</span><span class="state-label">Disabled</span>
+        <span class="state-label">标准灰色</span>
+        <span class="state-cell"><button class="gj-text-btn">查看</button></span><span class="state-cell"><button class="gj-text-btn is-hover">查看</button></span><span class="state-cell"><button class="gj-text-btn is-pressed">查看</button></span><span class="state-cell"><button class="gj-text-btn" disabled>查看</button></span>
+        <span class="state-label">Blue</span>
+        <span class="state-cell"><button class="gj-text-btn gj-text-btn-blue">查看</button></span><span class="state-cell"><button class="gj-text-btn gj-text-btn-blue is-hover">查看</button></span><span class="state-cell"><button class="gj-text-btn gj-text-btn-blue is-pressed">查看</button></span><span class="state-cell"><button class="gj-text-btn gj-text-btn-blue" disabled>查看</button></span>
+      </div></div>
+    </section>
+    <section class="docs-section">
+      <header class="docs-section-head"><div><h2>表格组合</h2><p>文字操作使用 Small；相邻操作保持 8px。Blue 是整组显式选择，同一张表不要与灰色默认态混用。</p></div></header>
+      <div class="preview-grid">
+        <div class="preview-card"><h3>标准灰色操作组</h3><div class="table-action-demo"><button class="gj-text-btn gj-text-btn-small">编辑</button><button class="gj-text-btn gj-text-btn-small">删除</button></div></div>
+        <div class="preview-card"><h3>Blue 操作组</h3><div class="table-action-demo"><button class="gj-text-btn gj-text-btn-small gj-text-btn-blue">听录音</button><button class="gj-text-btn gj-text-btn-small gj-text-btn-blue">下载</button></div></div>
+      </div>
+    </section>
+    <section class="docs-section">
+      <header class="docs-section-head"><div><h2>交互演示</h2><p>切换尺寸、颜色和图标位置，演示区始终直接调用共享 TextButton 基座。</p></div></header>
+      <div class="playground">
+        <div class="stage"><button id="demo" class="gj-text-btn" type="button">查看详情</button></div>
+        <aside class="controls docs-surface-white">
+          <div class="field"><label for="variant">颜色变体</label><select id="variant"><option value="default">Default</option><option value="blue">Blue</option></select></div>
+          <div class="field"><label for="size">尺寸</label><select id="size"><option value="large">Large</option><option value="medium" selected>Medium</option><option value="small">Small</option></select></div>
+          <div class="field"><label for="icon">图标</label><select id="icon"><option value="none">None</option><option value="left">Left</option><option value="right">Right</option></select></div>
+          <div class="field"><label for="state">状态</label><select id="state"><option value="default">Default</option><option value="hover">Hover</option><option value="pressed">Pressed</option><option value="disabled">Disabled</option></select></div>
+        </aside>
+      </div>
+    </section>
+    <section class="docs-section">
+      <header class="docs-section-head"><div><h2>选用规则</h2><p>Text Button 负责轻量操作，不承担主提交或高风险确认。</p></div></header>
+      <div class="docs-spec-table-wrap"><table class="docs-spec-table rules-table"><thead><tr><th>主题</th><th>推荐做法</th><th>边界与避免</th></tr></thead><tbody>
+        <tr><td>默认颜色</td><td>绝大多数场景使用标准灰色变体。</td><td>不得为了“像链接”而把所有 Text Button 默认改蓝。</td></tr>
+        <tr><td>Blue 变体</td><td>业务明确要求操作入口持续可见时显式声明。</td><td>同一张表或同一操作组不得混用两种默认色。</td></tr>
+        <tr><td>尺寸</td><td>按容器层级选择 Large / Medium / Small；表格行内操作使用 Small。</td><td>同一操作组不得混用尺寸。</td></tr>
+        <tr><td>图标</td><td>使用组件库图标并通过 currentColor 跟随文字。</td><td>不支持 Icon-only；纯图标操作改用 Icon Button。</td></tr>
+        <tr><td>点击热区</td><td>需要扩大时由外层命中区域或伪元素提供。</td><td>不得增加可见 padding 或改变 Text Button 行盒高度。</td></tr>
+      </tbody></table></div>
+    </section>
+  </article>
+</main>
+<script>
+  const demo=document.getElementById('demo'),variant=document.getElementById('variant'),size=document.getElementById('size'),icon=document.getElementById('icon'),state=document.getElementById('state');
+  const arrow='<span class="gj-text-btn-icon" style="--gj-icon:url(\'../../assets/icons/iconfont/icf_Arrow_right.svg\')" aria-hidden="true"></span>';
+  function render(){const classes=['gj-text-btn'];if(variant.value==='blue')classes.push('gj-text-btn-blue');if(size.value!=='medium')classes.push('gj-text-btn-'+size.value);if(state.value!=='default'&&state.value!=='disabled')classes.push('is-'+state.value);demo.className=classes.join(' ');demo.disabled=state.value==='disabled';demo.innerHTML=icon.value==='left'?arrow+'<span>查看详情</span>':icon.value==='right'?'<span>查看详情</span>'+arrow:'<span>查看详情</span>'}
+  [variant,size,icon,state].forEach(control=>control.addEventListener('change',render));render();
+</script>
+</body>
+</html>

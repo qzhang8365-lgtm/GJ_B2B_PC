@@ -38,7 +38,7 @@
     "sample.formAlign": "画板 Medium 表单样本悬挂右对齐标签、控件栏 left 120、justify-center。MDL-007：实现改为内容左对齐撑满，不复制该居中观感。",
     "footer.height": "2026-09-09 用户确认：Footer 高度 76px = pt20+按钮32+pb24（右下角、页边距24、距上方内容至少20），替代此前压缩 pt 到 16 凑 72 的实现。",
     "padding.unify": "2026-09-09 用户确认：Header/Footer/Feedback 水平内边距统一为 20px（不是 24）；Footer 底部内边距保持 24px。",
-    "content.defaultPadding": "2026-09-28 反转此前决定：原先 .gj-modal-content 本身无内边距，由各内容插槽（.gj-modal-body、.gj-modal-feedback 或消费页面自定义结构）各自定义内边距；因业务里出现无 Footer、直接塞表格的弹窗忘记补内边距、表格贴边的问题，改为 .gj-modal-content 默认自带 20px 内边距（与 Header 水平内边距对齐），同时摘掉 .gj-modal-body（原 16/20px）与 .gj-modal-feedback（原 0/20px）各自的内边距，避免与新默认值叠加。极少数需要内容贴边的场景仍可在消费页面用更高优先级选择器覆盖为 0。"
+    "content.defaultPadding": "2026-09-28 用户确认正式规则：.gj-modal-content 默认上下 12px、左右 20px；水平与 Header 对齐。原先 Content 无默认内边距，现将基础留白收进组件本身，并移除 .gj-modal-body/.gj-modal-feedback 的重复 padding。明确需要贴边内容时才允许实例级覆盖。"
   },
   "tokenMap": {
     "surface": "Background/Container",
@@ -64,7 +64,7 @@
     "footer.padding": "pt 20 / px 20 / pb 24（2026-09-09 修正，见 normalization）",
     "header.paddingInline": "20px（统一后的水平内边距基准）",
     "feedback.paddingInline": "20px（2026-09-09 从 24 修正为与 Header/Footer 一致）",
-    "content.paddingBlock": "20px（--ds-component-modal-content-padding-block，2026-09-28 新增默认值）",
+    "content.paddingBlock": "12px（--ds-component-modal-content-padding-block / Interval/space4）",
     "content.paddingInline": "20px（--ds-component-modal-content-padding-inline，与 Header/Footer 水平内边距一致）"
   },
   "assetMap": {

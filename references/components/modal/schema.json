@@ -108,9 +108,9 @@
       "buttonHeight": 32
     },
     "content": {
-      "paddingBlock": 20,
+      "paddingBlock": 12,
       "paddingInline": 20,
-      "note": "2026-09-28 新增默认值；此前 .gj-modal-content 本身无内边距，由 .gj-modal-body/.gj-modal-feedback/消费页面自定义结构各自补内边距，详见 rules.md。"
+      "note": "2026-09-28 用户确认正式规则：.gj-modal-content 默认上下 12px、左右 20px；此前内容插槽本身无内边距。"
     },
     "feedback": {
       "paddingInline": 20,
@@ -145,7 +145,7 @@
     "Use the smallest size that fits: Small 400, Medium 600, Large 800. Ignore the stale 520/720 in the Figma description.",
     "Published Type is Standard only. Confirm / Destructive / Result are content recipes, not extra Type variants on this board.",
     "Footer has secondary/cancel on the left of the group and one Primary on the right.",
-    "Content is a slot with no built-in padding. Feedback copy uses modal_item/feedback-content (px 24).",
+    "Content is a slot with built-in padding: 12px block and 20px inline. Nested body and feedback recipes must not add another content padding layer.",
     "Content slot, forms and feedback copy are start/left aligned and fill the slot. Do not center the inner block. Header title stays start; footer actions stay end. Horizontal form labels inside Modal are start-aligned.",
     "Close icon is 20x20 in Figma (the artboard control has no separate hit-area padding); confirmed against the shared 12/16/20/24/28/32/36 icon size ladder (MDL-005 closed 2026-09-10): 20 is a valid rung, so this is an intentional deviation from gj-icon-button 32/16 icon sizing, not an inconsistency to fix. 2026-09-10 follow-up: the implementation adds a code-only 32px click/hover hit area around the unchanged 20px icon (--ds-component-modal-close-hit-size), purely for touch/accessibility target size — this is not a Figma variant and does not change the visible icon.",
     "Footer height 76px = paddingBlockStart 20 + button 32 + paddingBlockEnd 24（用户 2026-09-09 确认的计算依据：按钮组右下角、页边距24、距上方内容至少20），不再用「压缩顶部内边距到16以凑72」的旧实现。",
@@ -197,13 +197,13 @@
     {
       "id": "MDL-011",
       "date": "2026-09-28",
-      "decision": "反转此前「.gj-modal-content 本身无内边距，由各插槽自定义」的决定：改为 .gj-modal-content 默认自带 20px 内边距（水平/垂直一致，与 Header 水平内边距对齐）。起因：呼叫中心录音查询项目的听录音弹窗（无 Footer、内容区直接放表格）忘记补内边距，表格贴住了圆角边缘。为避免每个消费页面都要记得手动补内边距，把默认值收进组件本身；.gj-modal-body（原 16/20px）与 .gj-modal-feedback（原 0/20px）相应摘掉各自的内边距，避免叠加成双重内边距。需要贴边内容的场景仍可在消费页面用更高优先级选择器局部覆盖为 0。",
+      "decision": "反转此前「.gj-modal-content 本身无内边距，由各插槽自定义」的决定：.gj-modal-content 默认上下 12px、左右 20px。起因是无 Footer、内容区直接放表格的弹窗容易遗漏留白并贴住圆角边缘。默认值收进组件本身后，.gj-modal-body 与 .gj-modal-feedback 不再单独声明 padding，避免双重叠加；明确需要贴边内容时才允许实例级覆盖。",
       "source": "用户设计确认（2026-09-28）"
     }
   ],
   "partialMeasurements": [
     "COMPONENT_SET 根 ID 未返回，schema 用画板 frame 3553:11705 作集合锚点",
-    "内容插槽本身无内边距；表单样本 Medium 内容 top 16、标签悬挂在槽外。MDL-007 不以该悬挂居中布局作为实现。",
+    "Figma 原始内容插槽未提供统一内边距；本地正式规则 MDL-011 采用上下 12px、左右 20px。表单样本 Medium 内容 top 16、标签悬挂在槽外；MDL-007 不以该悬挂居中布局作为实现。",
     "Error 反馈图标在独立 get_design_context 未返回 iconfont 节点名，按 close-circle-fill 与 Toast error 同形记录",
     "本画板没有 Mask 图层；遮罩色按现有实现 Background/MK_45，不是 Mask 默认 MK_60",
     "Footer 高度与内边距已按用户 2026-09-09 的显式计算修正为 76px / 20·20·24，不再是 Figma 生成代码的字面值，见 confirmedDecisions MDL-004。"

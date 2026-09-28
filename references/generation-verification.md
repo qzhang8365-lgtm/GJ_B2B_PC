@@ -15,6 +15,21 @@
 - 至少覆盖两个视口宽度：1440px（设计基准）与 1280px（最低承诺支持宽度）；页面模式还需按 `page-patterns.md` 里对应的降级规则加测 1024px 或更窄的应急宽度。
 - 修完问题后必须重新渲染截图/重新实测，不能只 diff 代码确认"应该改对了"。
 
+### 项目资源独立性
+
+- 依据本 Skill 生成或覆盖业务页面后，先按 `project-asset-delivery.md` 将页面直接依赖及其依赖闭包归档到目标项目 `assets/`；不得复制整个 Skill、完整 Icon 库或未使用资源。
+- 从目标项目根目录运行 `node <skill目录>/scripts/stage-project-assets.mjs <页面HTML或目录> --write`，再以 `--check` 复核。公共 Skill 路径、项目外绝对路径、项目内缺失资源任一命中即为阻断。
+- 交付前临时移走或不可用化公共 Skill 路径，并在断网环境重新加载页面；样式、运行时、Icon、字体和图片必须仍能完整工作。
+- `file://` 交付在通过本门禁后，还需执行下一节的 SVG Mask 内嵌与双内核验收；两套检查不能互相替代。
+
+### 本地 `file://` 交付的浏览器矩阵
+
+- 只要交付说明包含“可直接双击 HTML”“离线打开”或“拷贝给同事”，就必须把 `file://` 视为独立运行环境；HTTP/localhost 验收不能替代本地文件验收。
+- 至少使用一个 Chromium 内核浏览器（Chrome 或 Edge）直接打开 `file://` 页面。若本机具备 Safari/WebKit，再用 WebKit 内核复核。Safari 显示正常不能推断 Chrome 正常，反之亦然。
+- 验收前运行 `node scripts/prepare-file-delivery.mjs <html> --check`。出现外部 SVG mask 即为阻断项；使用 `--write` 内嵌后必须重新执行 `--check`。
+- 分别检查 Sidebar、Navbar、Search、Button、Pagination 等含 Icon 的组件，以及 hover / selected / disabled 等会改变 `currentColor` 的状态。静态 `<img src="*.svg">` 可以继续外链，但不能替代需要随状态变色的 mask 或内联 SVG。
+- 字体、图片和脚本也需在断网条件下可用；任何依赖远程 CDN、绝对本机路径或开发服务器的资源都视为本地交付失败。
+
 ## 四类高频问题的判定标准与检查方式
 
 ### 1. 内容溢出

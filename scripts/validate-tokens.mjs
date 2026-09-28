@@ -58,13 +58,14 @@ const componentPopover = read("references/tokens/components/popover.tokens.json"
 const componentSidebar = read("references/tokens/components/sidebar.tokens.json");
 const componentGridNav = read("references/tokens/components/grid-nav.tokens.json");
 const componentInputNumber = read("references/tokens/components/input-number.tokens.json");
+const componentAudio = read("references/tokens/components/audio.tokens.json");
 const componentImage = read("references/tokens/components/image.tokens.json");
 const componentBadge = read("references/tokens/components/badge.tokens.json");
 const componentTimeline = read("references/tokens/components/timeline.tokens.json");
 // Structural components (no interactive stateMatrix): checked for schema validity and token
 // alias resolution below, but excluded from the interactive requiredStates check via the `?? []`
 // guard further down, since they are not form controls with hover/focus/disabled states.
-const componentSources = [componentButton, componentTextButton, componentInput, componentTable, componentSelector, componentDropdown, componentCheckbox, componentRadio, componentSwitch, componentTag, componentDatePicker, componentSearch, componentTimePicker, componentUpload, componentCarousel, componentSteps, componentDivider, componentTooltip, componentNavbar, componentBreadcrumb, componentPagination, componentCascader, componentForm, componentTabs, componentMetric, componentChart, componentEmpty, componentToast, componentAvatar, componentIcon, componentDrawer, componentModal, componentSkeleton, componentNotification, componentPopover, componentSidebar, componentGridNav, componentInputNumber, componentImage, componentBadge, componentTimeline];
+const componentSources = [componentButton, componentTextButton, componentInput, componentTable, componentSelector, componentDropdown, componentCheckbox, componentRadio, componentSwitch, componentTag, componentDatePicker, componentSearch, componentTimePicker, componentUpload, componentCarousel, componentSteps, componentDivider, componentTooltip, componentNavbar, componentBreadcrumb, componentPagination, componentCascader, componentForm, componentTabs, componentMetric, componentChart, componentEmpty, componentToast, componentAvatar, componentIcon, componentDrawer, componentModal, componentSkeleton, componentNotification, componentPopover, componentSidebar, componentGridNav, componentInputNumber, componentAudio, componentImage, componentBadge, componentTimeline];
 const selectorContract = read("references/components/selector/schema.json");
 const dropdownContract = read("references/components/dropdown/schema.json");
 const tableContract = read("references/components/table/schema.json");
@@ -90,6 +91,7 @@ const countStateFields = value => {
 };
 const expectedStateTokenCount = countStateFields(componentButton.stateMatrix)
   + countStateFields(componentTextButton.stateMatrix)
+  + countStateFields(componentTextButton.blueStateMatrix)
   + componentSources.slice(2).reduce((sum, component) => sum + countStateFields(component.stateMatrix), 0)
   + Object.values(componentButton.intentMatrix).reduce((sum, intent) => sum + Object.keys(intent.states).length + 1, 0);
 
@@ -111,7 +113,7 @@ const expectedCounts = {
 for (const [name, expected] of Object.entries(expectedCounts)) {
   if (unified.meta.counts[name] !== expected) fail(`Count mismatch for ${name}: ${unified.meta.counts[name]} != ${expected}`);
 }
-const expectedComponentIds = ["button", "textButton", "input", "table", "selector", "dropdown", "checkbox", "radio", "switch", "tag", "date-picker", "search", "time-picker", "upload", "carousel", "steps", "toast", "divider", "tooltip", "navbar", "breadcrumb", "pagination", "cascader", "form", "tabs", "metric", "chart", "empty", "avatar", "icon", "drawer", "modal", "skeleton", "notification", "popover", "sidebar", "grid-nav", "input-number", "image", "badge", "timeline"];
+const expectedComponentIds = ["button", "textButton", "input", "table", "selector", "dropdown", "checkbox", "radio", "switch", "tag", "date-picker", "search", "time-picker", "upload", "carousel", "steps", "toast", "divider", "tooltip", "navbar", "breadcrumb", "pagination", "cascader", "form", "tabs", "metric", "chart", "empty", "avatar", "icon", "drawer", "modal", "skeleton", "notification", "popover", "sidebar", "grid-nav", "input-number", "audio", "image", "badge", "timeline"];
 if (JSON.stringify(Object.keys(unified.component)) !== JSON.stringify(expectedComponentIds)) fail("Unified component token registry is incomplete or out of order");
 
 if (libraryIndex["$schema"] !== "gj-design-skill/library-index/v2") fail("Library index must use the complete v2 resource schema");
@@ -171,7 +173,7 @@ assertLibraryPath(libraryIndex.aiWorkflow.components, "aiWorkflow.components");
 assertLibraryPath(libraryIndex.aiWorkflow.icons, "aiWorkflow.icons");
 for (const [index, relativePath] of libraryIndex.outputAssets.styles.loadOrder.entries()) assertLibraryPath(relativePath, `outputAssets.styles.loadOrder[${index}]`);
 assertLibraryPath(libraryIndex.outputAssets.fonts.root, "outputAssets.fonts.root");
-const maintenanceScriptNames = ["tokenBuild", "coverageBuild", "validation", "semanticColorMigration", "pageVerification"];
+const maintenanceScriptNames = ["tokenBuild", "coverageBuild", "validation", "semanticColorMigration", "previewServer", "pageVerification", "localFileDelivery", "projectAssetStaging"];
 for (const name of maintenanceScriptNames) assertLibraryPath(libraryIndex.scripts[name].path, `scripts.${name}.path`);
 for (const [name, runtime] of Object.entries(libraryIndex.scripts.previewRuntimes)) {
   if (runtime && typeof runtime === "object" && runtime.path) assertLibraryPath(runtime.path, `scripts.previewRuntimes.${name}.path`);

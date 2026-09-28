@@ -3,7 +3,7 @@
   "component": "Modal",
   "source": {
     "figmaNode": "4759:19935",
-    "figmaReadDate": "2026-09-28",
+    "figmaReadDate": "2026-09-09",
     "componentSchema": "references/components/modal/schema.json",
     "componentMapping": "references/components/modal/mapping.json",
     "confirmedRules": "references/components/modal/rules.md",
@@ -81,11 +81,11 @@
       "note": "关闭图标的可见尺寸（画板真值，MDL-005 已确认 20px 合法）。不代表可点击热区，热区见 close.hitSize。"
     },
     "content.paddingBlock": {
-      "value": "{Interval/space6}",
-      "resolved": 20,
+      "value": "{Interval/space4}",
+      "resolved": 12,
       "unit": "px",
       "cssVariable": "--ds-component-modal-content-padding-block",
-      "note": "2026-09-28 新增：.gj-modal-content 默认内边距（此前该组件内容区本身无内边距，由各内容插槽自行定义，详见 rules.md 与 mapping.json normalization.content.defaultPadding）。"
+      "note": "2026-09-28 用户确认的本地正式规则：.gj-modal-content 默认上下内边距 12px；这是本地组件决策，不代表 2026-09-28 重新读取 Figma。"
     },
     "content.paddingInline": {
       "value": "{Interval/space6}",

@@ -23,7 +23,7 @@ Figma 组件说明（绑在 `3553:11705`）仍写「Standard、Confirm、Destruc
 - 容器 `Background/Container`、圆角 `Radius/Radius-LG` **12**、效果 **`shadow-center`**（0 0 15 `Background/MK_10`）
 - Header **64**，`px 20 / py 12`，标题 `中文/S4-CN-S` / `Text/Primary`
 - 关闭 **20×20**，`Radius/Radius-SM` 6，色 `Text/Tertiary`，BOOLEAN `showClose` 默认 true
-- 内容为 Slot，组件本身**没有**内边距；占位文案 `中文/S9-CN-R` / `Text/Secondary`
+- Figma 原始内容为无统一内边距的 Slot；本地正式规则 MDL-011 采用上下 12px、左右 20px；占位文案 `中文/S9-CN-R` / `Text/Secondary`
 - Footer **72**，`gap 8`，`px 24`，生成代码 `pt 20 / pb 24`，按钮 Medium **32**（`Components/control-M`），右对齐
 - 取消：Container + `Border/secondary` + `Text/Primary`
 - 确认：`Button/Primary/Bg-default` + `Text/reversal`
@@ -60,16 +60,17 @@ Footer 高 72 与 `20+32+24` 对不上，见 MDL-004。Small / Large 生成代�
 2. **MDL-005 · P3 · 已关闭（2026-09-10）** — Modal 关闭 20px，与 Button 规则里 `gj-icon-button` 32/16 不一致。设计确认：关闭按钮的 icon 就是 20px，Icon 组件尺寸阶梯（12/16/20/24/28/32/36）本来就有 20 这一档，不是临时凑出来的数值；Modal 关闭控件保持画板 20×20 真值，不套用 gj-icon-button 的 32/16 配方。
 3. **MDL-006 · P3 · 待 Figma 复查** — error 反馈图标独立读取未返回 iconfont 节点名。
 4. **MDL-007 · 已确认** — 内容区左对齐撑满。画板表单样本的悬挂右对齐标签与垂直居中不作为实现依据。
+5. **MDL-011 · 已关闭（2026-09-28）** — 用户确认 Content 默认内边距为上下 **12px**、左右 **20px**。`gj-modal-body` 与 `gj-modal-feedback` 不再重复设置 padding；明确需要贴边内容时才允许实例级覆盖。
 
 ## 已关闭问题（2026-09-09，用户确认）
 
-5. **MDL-002/003 · 已关闭** — 宽度采用画板发布值 **400/600/800**；Figma 组件说明里的「400/520/720」与「Standard/Confirm/Destructive/Result」四类 Type 判定为未同步的旧描述文案，不作为设计真值。与 Drawer 的三档宽度体系保持一致。
-6. **MDL-004 · 已关闭** — Footer 计算依据用户明确给出：按钮组位于卡片右下角、页边距 24、距上方内容至少 20。据此 Footer 高度改为 **76px**（20 顶部间距 + 32 按钮 + 24 底部页边距），不再用「压缩顶部内边距到 16 去凑 Figma 标注的 72」这种反过来牺牲间距约束的实现。
-7. **MDL-008 · 已关闭（本轮新发现，当场关闭）** — Header 水平内边距 20px 与 Footer/Feedback 原有的 24px 不一致；用户复核后确认统一为 **20px**（不是提到 24），Footer 底部内边距 24px 不受影响，只统一左右内边距。已同步进 `schema.json`/`mapping.json`/`rules.md`/`modal.tokens.json`/`assets/styles/gj-b2b-components.css`（CSS 变量回退值）/`preview/modal/index.html`（文字说明），并重新跑过 `build-tokens.mjs` 让规范示意页的实际渲染值同步生效。
+6. **MDL-002/003 · 已关闭** — 宽度采用画板发布值 **400/600/800**；Figma 组件说明里的「400/520/720」与「Standard/Confirm/Destructive/Result」四类 Type 判定为未同步的旧描述文案，不作为设计真值。与 Drawer 的三档宽度体系保持一致。
+7. **MDL-004 · 已关闭** — Footer 计算依据用户明确给出：按钮组位于卡片右下角、页边距 24、距上方内容至少 20。据此 Footer 高度改为 **76px**（20 顶部间距 + 32 按钮 + 24 底部页边距），不再用「压缩顶部内边距到 16 去凑 Figma 标注的 72」这种反过来牺牲间距约束的实现。
+8. **MDL-008 · 已关闭（本轮新发现，当场关闭）** — Header 水平内边距 20px 与 Footer/Feedback 原有的 24px 不一致；用户复核后确认统一为 **20px**（不是提到 24），Footer 底部内边距 24px 不受影响，只统一左右内边距。已同步进 `schema.json`/`mapping.json`/`rules.md`/`modal.tokens.json`/`assets/styles/gj-b2b-components.css`（CSS 变量回退值）/`preview/modal/index.html`（文字说明），并重新跑过 `build-tokens.mjs` 让规范示意页的实际渲染值同步生效。
 
 ## 结论
 
-Modal 为 `figma-audited`。三档宽度、Header/Footer、关闭 20px、shadow-center、反馈四态色与 Default/alert/success 图标已抽样核实。MDL-002/003/004/005/008 已经用户确认关闭；剩余 MDL-001/006 为非阻断的低优先级差异，`pendingExtraction` 为空。
+Modal 为 `figma-audited`。三档宽度、Header/Footer、关闭 20px、shadow-center、反馈四态色与 Default/alert/success 图标已抽样核实。MDL-002/003/004/005/008/011 已经用户确认关闭；剩余 MDL-001/006 为非阻断的低优先级差异，`pendingExtraction` 为空。
 
 
 ## 2026-09-10：关闭控件尺寸确认（关闭 MDL-005）

@@ -14,6 +14,7 @@
     },
     "selectionStateClass": "is-selected",
     "fixedActionClass": "gj-table-action",
+    "scrollEndStateClass": "at-scroll-end",
     "sortControlClass": "gj-table-sort",
     "headIconClass": "gj-table-head-icon",
     "expandControlClass": "gj-table-expand",
@@ -51,7 +52,9 @@
     "outerBorder": "Table/border",
     "cellDivider": "Table/divider",
     "headerBackground": "Table/head_bg",
-    "bodyBackground": "Table/table_bg1"
+    "bodyBackground": "Table/table_bg1",
+    "fixedActionBackground": "Table/table_bg1",
+    "fixedActionHoverOverlay": "Background/Hover"
   },
   "columns": {
     "requiredFields": [
@@ -77,6 +80,12 @@
     "actionColumnAlignment": "center"
   },
   "interaction": {
+    "fixedActionColumn": {
+      "sticky": true,
+      "bodyBackgroundRule": "Keep an opaque Table/table_bg1 base at all times. On row hover, layer Background/Hover above that base; never replace the base with the translucent overlay.",
+      "overflowShadow": "Show only while horizontal overflow exists and the scroll position has not reached the end.",
+      "scrollEndStateClass": "at-scroll-end"
+    },
     "sort": {
       "default": "single-column",
       "states": [
@@ -154,6 +163,16 @@
         "id": "TBL-004",
         "date": "2026-09-10",
         "result": "4.subTable and sub_table_item use Text/Secondary; the legacy 文本色/副文 variable is no longer present."
+      },
+      {
+        "id": "TBL-010",
+        "date": "2026-09-28",
+        "result": "Fixed action cells retain an opaque Table/table_bg1 base and layer Background/Hover above it, preventing scrolled content from showing through the sticky column."
+      },
+      {
+        "id": "TBL-011",
+        "date": "2026-09-28",
+        "result": "The overflow runtime toggles at-scroll-end so the fixed-column shadow disappears at the horizontal scroll boundary and returns when more content remains."
       }
     ],
     "geometryBindingPolicy": "Literal geometry is permitted; do not claim Dimension Token bindings that Figma does not expose.",
@@ -162,6 +181,7 @@
   "boundaries": [
     "Do not redraw Table structure or interaction icons in page CSS.",
     "Use Table/border for the outer border and Table/divider for structural separators; do not substitute generic Border tokens.",
+    "Fixed action cells must keep an opaque Table/table_bg1 base; row hover is a translucent Background/Hover overlay, not a replacement background.",
     "Do not substitute approximate icons for Table sort, filter or expand affordances.",
     "The Table specification page and business-pattern pages must use the same shared Table classes; documentation-only parameter tables may use ds-table.",
     "Use small or large only when the user or an explicit design instance requires a different density."

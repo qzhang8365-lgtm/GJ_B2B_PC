@@ -25,7 +25,16 @@
     "dot.activeWidth": {"value": 16, "unit": "px", "cssVariable": "--ds-component-carousel-dot-active-width"},
     "dot.inactiveWidth": {"value": 8, "unit": "px", "cssVariable": "--ds-component-carousel-dot-inactive-width"},
     "dot.radius": {"value": 4, "unit": "px", "cssVariable": "--ds-component-carousel-dot-radius"},
-    "motion.duration": {"value": 240, "unit": "ms", "cssVariable": "--ds-component-carousel-motion-duration", "note": "行业交互补充；Figma 未定义 motion。"}
+    "motion.duration": {"value": 240, "unit": "ms", "cssVariable": "--ds-component-carousel-motion-duration", "note": "行业交互补充；Figma 未定义 motion。"},
+    "arrow.size": {"value": 32, "unit": "px", "cssVariable": "--ds-component-carousel-arrow-size"},
+    "arrow.radius": {"value": 16, "unit": "px", "cssVariable": "--ds-component-carousel-arrow-radius"},
+    "arrow.padding": {"value": 4, "unit": "px", "cssVariable": "--ds-component-carousel-arrow-padding"},
+    "arrow.idleOpacity": {"value": 0.5, "cssVariable": "--ds-component-carousel-arrow-idle-opacity"},
+    "arrow.activeOpacity": {"value": 1, "cssVariable": "--ds-component-carousel-arrow-active-opacity"},
+    "arrow.disabledOpacity": {"value": 0.35, "cssVariable": "--ds-component-carousel-arrow-disabled-opacity"},
+    "arrow.background": {"value": "{Background/WT_30}", "cssVariable": "--ds-component-carousel-arrow-background"},
+    "arrow.iconColor": {"value": "{Text/reversal}", "cssVariable": "--ds-component-carousel-arrow-icon-color"},
+    "arrow.focusRing": {"value": "{Background/BT_B20}", "cssVariable": "--ds-component-carousel-arrow-focus-ring"}
   },
   "stateMatrix": {
     "lightActive": {"background": "Text/reversal"},

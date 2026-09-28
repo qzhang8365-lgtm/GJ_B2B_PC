@@ -61,7 +61,7 @@
       "cssVariable": "--ds-component-audio-gap"
     },
     "container.radius": {
-      "value": "{Radius/Radius-md}",
+      "value": "{Radius/Radius-MD}",
       "resolved": 8,
       "unit": "px",
       "cssVariable": "--ds-component-audio-radius"
@@ -72,7 +72,7 @@
       "cssVariable": "--ds-component-audio-background"
     },
     "container.border": {
-      "value": "{Brand/gj_blue}",
+      "value": "{Brand/GJ_Blue}",
       "resolved": "#2B73FF",
       "cssVariable": "--ds-component-audio-border"
     },
@@ -102,7 +102,7 @@
       "cssVariable": "--ds-component-audio-icon-size"
     },
     "controls.iconColor": {
-      "value": "{Brand/gj_blue}",
+      "value": "{Brand/GJ_Blue}",
       "resolved": "#2B73FF",
       "cssVariable": "--ds-component-audio-icon-color"
     },
@@ -110,13 +110,13 @@
       "value": "reuses --ds-component-input-number-slider-* (input-number 组件)",
       "note": "不新建独立滑块 token；默认参考宽度 200px 与 Figma Audio_Bar symbol 尺寸一致",
       "thumbBackground": {
-        "value": "{Background/BG_container}",
+        "value": "{Background/Container}",
         "resolved": "#FFFFFF",
         "cssVariable": "--ds-component-audio-slider-thumb-background",
         "note": "Audio 自有 Figma 资产 Audio_Bar（5026:7663）圆点为白色填充，与共享 .gj-slider 基座默认实心蓝色不同，scoped 覆盖仅作用于 .gj-audio-bar 内"
       },
       "thumbBorderColor": {
-        "value": "{Brand/gj_blue}",
+        "value": "{Brand/GJ_Blue}",
         "resolved": "#2B73FF",
         "cssVariable": "--ds-component-audio-slider-thumb-border-color"
       },

@@ -83,3 +83,10 @@
 本次未在 Figma 侧新增对应的 Variant/组件集条目（只读访问，无法写入），本地 `schema.json`/`rules.md`/`gj-b2b-components.css`/`gj-b2b-tokens.css` 先落地代码实现；后续如需要在 Figma 组件库里正式补一个 Blue 变体，需要设计师在 Figma 侧新建，再由本 Skill 回读核实。
 
 用户进一步确认：这条规则属于表格通用，不是只针对录音查询这一个页面——凡是表格行内可点击的操作控件（含表格内嵌的详情/弹窗子表格）都按同一套逻辑处理。据此已同步把 Blue 变体应用到录音查询页主表格的“听录音/下载”和音频详情弹窗子表格的文件名/下载按钮，并顺手把 `preview/table/index.html`「文字操作」示例（此前发现和真实组件不一致的那处手绘 CSS）改成直接复用真实的 `gj-text-btn`，同时新增一行展示 Blue 变体，两者并列对比。
+
+### 2026-09-28 闭环补充
+
+- 组件 Token 已增加 `blueStateMatrix`，Default / Hover / Pressed / Disabled 分别映射 `Text/blue`、`Primitive/Blue/B07`、`Primitive/Blue/B08`、`Text/disable`；图标统一使用 `currentColor`。
+- `mapping.json` 已增加 `colorVariant=default|blue` 到共享 class 与对应状态矩阵的映射，并记录同一表格操作组不得混用两种默认色。
+- 新增独立 `preview/text-button/index.html`，覆盖三个尺寸、两种颜色变体、四个正式状态、左右图标和实时切换；Table 规范页继续保留真实组合示例。
+- `TXT-007` 已同步进入总审计追踪表并关闭；Blue 仍是本地已确认扩展，不能冒充 Figma 已发布 Variant。

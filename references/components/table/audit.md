@@ -128,3 +128,52 @@
 
 **涉及文件**：`assets/styles/component-docs.css`、`assets/styles/data-table.css`
 
+
+## 2026-09-28：溢出阴影提示在真实浏览器里从未渲染过（新增并关闭 TBL-009）
+
+**背景**：审计一个业务方页面（呼叫中心录音查询，`recording-query-gj.html`）时发现，其结果表格实际有 20 列（含勾选框、固定在右侧的操作列），默认视口下只能看到约 10 列，`.gj-table-action` 依赖 `.gj-table-wrap.has-overflow .gj-table-action{box-shadow:-10px 0 14px var(--ds-background-mk-10)}` 在固定列左侧投一道阴影提示"还能横向滚动"（此规则和 TBL-007 修的 `has-overflow` 类切换逻辑是配套的两件事：TBL-007 负责类什么时候挂上，这条负责挂上之后阴影长什么样）。
+
+**排查**：计算样式显示 `box-shadow` 确实是 `rgba(0,0,0,0.1) -10px 0 14px`，`has-overflow` 类也确实挂在 `.gj-table-wrap` 上，但对阴影所在的实际像素采样是纯白 `(255,255,255)`——阴影完全没有画出来。做了最小复现：同样结构（`position:sticky` 的 `<td>` 加 `box-shadow`），唯一变量是父级 `<table>` 的 `border-collapse`。`collapse` 下阴影 100% 不显示（即便把透明度调到 60% 这种远比线上 10% 更显眼的值也一样），`separate` 下阴影正常显示。确认这是浏览器对"折叠边框表格"里单元格 `box-shadow` 的一个长期存在的渲染限制，和 sticky 定位、z-index 都无关，纯粹是 `border-collapse:collapse` 导致的。
+
+**归类**：组件基座问题。`.gj-table{border-collapse:collapse}` 是全站共用的基座样式，此前任何页面只要出现"列数超出可视宽度 + 右侧固定操作列"的场景（TBL-007 已经在处理"什么时候提示"），这个阴影提示实际上都是失效的，只是此前没有一个真正宽到需要横向滚动、且被仔细核对过阴影是否画出来的用例——业务页面 20 列的规模是第一次真正暴露出来。
+
+**修复**：`.gj-table` 的 `border-collapse` 由 `collapse` 改为 `separate`（保留 `border-spacing:0`）。当前 `.gj-table th,.gj-table td` 只用了 `border-bottom` 一条横向分隔线，没有任何左右边框，所以 separate 模式不会产生"折叠边框"要解决的双线问题，视觉上和 collapse 几乎没有差异。
+
+**验证**：
+- 业务页面（`recording-query-gj.html`）修复前后对同一像素坐标采样：修复前阴影区域全程 `(255,255,255)`；修复后出现从 `(255,255,255)` 渐变到 `(232,232,232)` 的明显灰阶过渡，与预期的 10% 透明度阴影吻合。
+- `preview/table/index.html` 规范页截图核对，表头/单元格分隔线视觉未见变化。
+- 全站 39 个预览页/规范页 Playwright 回归，零控制台报错、零 404。
+
+**结论**：TBL-009 已关闭。`.gj-table` 现在改用 `border-collapse:separate`，`.gj-table-wrap.has-overflow .gj-table-action` 的溢出阴影提示可以正常渲染，不再是一条"写了但从来没生效过"的死规则。
+
+**涉及文件**：`assets/styles/gj-b2b-components.css`
+
+## 2026-09-28：sticky 操作列 hover 态透明底色叠加穿帮（新增并关闭 TBL-010），滚动到底阴影未消失（新增并关闭 TBL-011）
+
+**TBL-010**：用户截图反馈"表格在单行 hover 状态，底部内容透出了操作列"，并明确要求"保留白色填充的情况下叠加蓝色 hover，这一点如果基座上或者 skill 规则里没有，必须加上"。
+
+**排查**：`--ds-background-hover`（即 `--ds-background-bt-b5:#2B73FF0D`）本身就是设计成约 5% 透明度的蓝色，用来叠加在不透明背景上做 hover 提示，这个设计意图没有问题。但 `.gj-table-action` 是 `position:sticky` 固定在表格右侧的列，横向滚动时视觉上会盖住其余列的内容；`.gj-table tbody tr:hover .gj-table-action{background:var(--ds-background-hover)}` 把半透明色当成 `background` 唯一值写入——CSS 的 `background` 简写属性是整体替换，不会跟同选择器下 `.gj-table tbody .gj-table-action{background:var(--ds-table-bg-1)}` 定义的不透明白底"叠加"，所以 hover 态下操作列完全没有不透明底色兜底，被横向滚动到它下面的其他单元格文字直接透出来。核实 `table/rules.md` 和基座 CSS 里都从未记录过"sticky 列 hover 必须保留不透明底色"这条要求，是一个此前从未被注意到的真实基座缺口。
+
+**修复**：改用 CSS 多重 background 图层——`background:linear-gradient(var(--ds-background-hover),var(--ds-background-hover)),var(--ds-table-bg-1)`。第一层是拉伸成纯色的半透明蓝色渐变（hover 提示层），第二层是 `--ds-table-bg-1` 不透明白色兜底层；多重 background 天然按声明顺序层叠渲染（先声明的在最上层），非 sticky/未滚动场景下视觉与之前完全一致，但现在任何场景都有不透明底色兜底，不会再透出下层内容。
+
+**TBL-011**：用户同时反馈"表格拉到最右侧的时候，操作行的灰色投影应该消失"。
+
+**排查**：共享脚本 `gj-table-overflow.js`（TBL-007 引入）只用 `scrollWidth>clientWidth` 判断"是否存在横向溢出"来挂 `has-overflow` 类，从未监听过 `.gj-table-wrap` 的 `scroll` 事件、也从未判断当前滚动位置，导致这条"还有更多列可滚动"的阴影只要表格存在溢出就常驻显示，即使已经滚到最右侧、右边已经没有任何被遮挡的列，阴影依然存在。
+
+**修复**：给 `sync()` 拆出 `syncScrollEnd()`，在 `observe()` 里给每个 `.gj-table-wrap` 绑定 `scroll` 事件（`passive:true`），实时判断 `wrap.scrollLeft+wrap.clientWidth>=wrap.scrollWidth-1` 并挂/摘 `at-scroll-end` 类；CSS 阴影选择器由 `.gj-table-wrap.has-overflow .gj-table-action` 收紧为 `.gj-table-wrap.has-overflow:not(.at-scroll-end) .gj-table-action`。
+
+**验证**：
+- TBL-010：业务页横向滚动到底后 hover 首行，采样操作列 `background-image` 为两层（半透明蓝渐变 + `none`，配合 `background-color:rgb(255,255,255)` 兜底），修复前是 `none`（即没有 hover 渲染出来）。
+- TBL-011：滚动到最右侧后 `at-scroll-end` 类正确挂上、`box-shadow` 计算值为 `none`；滚回起始位置后类摘除、阴影恢复 `rgba(0,0,0,0.1) -10px 0 14px`；`has-overflow` 类本身不受影响。
+- 全站 54 个预览/规范/业务模式页 Playwright 回归零报错零 404，非滚动场景截图复核视觉无变化。
+
+**结论**：TBL-010、TBL-011 均已关闭。design-skill 仓库与业务文件夹的 bundled 副本同步应用。
+
+### 2026-09-28 闭环补充
+
+- `table.tokens.json` 已增加 `fixedAction.background` 和 `fixedAction.hoverOverlay`，分别映射不透明的 `Table/table_bg1` 与半透明的 `Background/Hover`；`fixedActionCell.default/hover` 状态矩阵明确记录两层组合关系。
+- `schema.json` 与 `mapping.json` 已增加固定操作列背景、`at-scroll-end` 和阴影边界行为的可机读契约；`rules.md` 同步写入“Hover 叠加而非替换白底”的硬规则。
+- `preview/table/index.html` 已改为只加载共享 `gj-table-overflow.js`，删除页面内旧的 `syncOverflow` 初始化逻辑；新增受控窄容器演示，可直接切换滚动起始/末端并观察操作列背景与阴影。
+- 本地浏览器实测：演示容器 `clientWidth=758`、`scrollWidth=1040` 时，起始位置存在 `has-overflow` 且操作列阴影为 `rgba(0,0,0,0.1) -10px 0 14px`；滚动到 `scrollLeft=282` 后产生 `at-scroll-end`，阴影计算值变为 `none`。行 Hover 时操作列计算背景为蓝色半透明渐变，且 `background-color` 仍为 `rgb(255,255,255)`，未透出下层内容。
+
+**涉及文件**：`assets/styles/gj-b2b-components.css`、`assets/scripts/gj-table-overflow.js`

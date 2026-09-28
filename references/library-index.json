@@ -20,6 +20,8 @@
       "coverage": "coverage.json",
       "auditTracker": "audit-tracker.md",
       "generationVerification": "generation-verification.md",
+      "projectAssetDelivery": "project-asset-delivery.md",
+      "localFileDelivery": "local-file-delivery.md",
       "tokenContract": "tokens/token-contract.md"
     },
     "tokens": {
@@ -60,7 +62,7 @@
         "../assets/styles/gj-b2b-tokens.css",
         "../assets/styles/gj-b2b-components.css"
       ],
-      "policy": "Only these two stylesheets are normal HTML/CSS prototype workflow entries."
+      "policy": "Only these two stylesheets are normal HTML/CSS prototype workflow entries. For business-page delivery, copy the selected files and their dependency closure into the target project's assets/; never keep runtime links to this Skill directory."
     },
     "fonts": {
       "root": "../assets/fonts/",
@@ -95,11 +97,29 @@
       "status": "retained-one-off",
       "runWhen": "Only when an explicit legacy semantic-color migration is requested; never run as part of normal generation."
     },
+    "previewServer": {
+      "path": "../scripts/serve-preview.mjs",
+      "audience": "maintenance-script",
+      "runWhen": "需要在本机以接近 Netlify 的 HTTP 路径规则预览规范站时运行；它不是业务页面运行时。",
+      "usage": "npm run serve"
+    },
     "pageVerification": {
       "path": "../scripts/verify-page.mjs",
       "audience": "maintenance-script",
       "runWhen": "生成或修改任一页面模式、组件预览页或业务原型之后，按 generation-verification.md 的协议执行；依赖 Playwright，已在仓库根目录 package.json 声明，首次使用前执行一次 npm install。涉及预览页/模式页或共享样式的提交还会被本地提交门禁（scripts/git-hooks/）自动调用一次。",
       "usage": "node scripts/verify-page.mjs <html文件路径> [--width=1440,1280]"
+    },
+    "localFileDelivery": {
+      "path": "../scripts/prepare-file-delivery.mjs",
+      "audience": "maintenance-script",
+      "runWhen": "当 HTML 需要通过双击、邮件或共享盘以 file:// 直接打开时，在交付前检查并内嵌外部 SVG mask 资源。",
+      "usage": "node scripts/prepare-file-delivery.mjs <html文件路径> --check | --write"
+    },
+    "projectAssetStaging": {
+      "path": "../scripts/stage-project-assets.mjs",
+      "audience": "maintenance-script",
+      "runWhen": "生成或覆盖业务页面后，将页面实际使用的设计系统资源及其依赖复制到目标项目 assets/，并移除对公共 Skill 安装目录的运行时引用。",
+      "usage": "node <skill目录>/scripts/stage-project-assets.mjs <页面HTML或目录> --write | --check [--project-root=<项目根目录>]"
     },
     "previewRuntimes": {
       "audience": "human-preview-only",
@@ -152,6 +172,13 @@
           "../preview/patterns/step-task.html"
         ]
       },
+      "slider": {
+        "path": "../assets/scripts/gj-slider.js",
+        "initializes": ".gj-slider single-value and range track/tooltip synchronization",
+        "consumers": [
+          "../preview/audio/index.html"
+        ]
+      },
       "iconWorkbench": {
         "path": "../assets/icons/icon-content.json",
         "initializes": "preview/icons/index.html 复制/下载按钮（首次点击时按需 fetch，不再随页面预加载；2026-09 性能优化前是 icon-content.js，随页面同步加载）",
@@ -190,6 +217,7 @@
     "Load primitiveColors only for raw palette lookup or alias resolution; use semanticColors for component and page color decisions.",
     "Resolve components and icons through their single child indexes instead of duplicating their catalogs here.",
     "HTML/CSS prototypes load outputAssets.styles.loadOrder in order.",
+    "Before delivering a generated or covered business page, stage only its referenced output assets and dependency closure into the target project's assets/ by following aiWorkflow.core.projectAssetDelivery.",
     "Run scripts.tokenBuild after Token sources change, scripts.coverageBuild after component coverage changes, and scripts.validation before delivery.",
     "Do not read humanPreviewSite or scripts.previewRuntimes as design truth; use them only for implementation and human acceptance when the task requires a preview."
   ]

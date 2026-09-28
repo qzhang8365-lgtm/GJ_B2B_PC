@@ -141,3 +141,23 @@ Search 为 `figma-audited`：四个用户指定节点均已逐项读取，Search
 验证：Playwright 核实两条路径下清除图标计算透明度均为 `0.64`（与搜索图标一致）；`navbar` 页遮罩图标的计算颜色与搜索图标一致（同为 `--ds-text-tertiary` 灰）；截图复核 `preview/search/index.html`「即时联想」演示区与 `preview/navbar/index.html` 搜索框，清除按钮均变为与搜索图标同色的柔和灰，不再显示黑色；全项目 grep 确认 `.gj-search-clear` 只在这两个页面使用，改动范围明确；对全部 39 个组件规范页跑零报错/零 404 回归扫描，仅 metric 页面出现与本次改动无关的既有图片 404（本地镜像缺文件，非 CSS 改动引入）。
 
 结论：SEA-006 已关闭。
+
+## 2026-09-28：搜索框 placeholder/输入值过长时被硬裁切，无省略号（新增并关闭 SEA-007）
+
+用户以业务页导航栏搜索框截图反馈"搜索栏的 placeholder 超出容器时没办法全部展示，这种 input、search、selector 等组件的共同逻辑可能都不完整"，并提出的修复方向是"如果 placeholder 文字过长，应该同步调整容器宽度以全部展示"。
+
+**排查与方案取舍**：`.gj-search-input` 和 `.gj-input` 此前都没有设置 `overflow`/`text-overflow`，容器较窄、文字较长时被输入框硬裁切（无省略号，视觉上就是文字被整字截断）。是否应该"让容器变宽"而不是"截断文字"，核实后倾向于截断方案，原因：
+
+1. 站内已有明确先例——`.gj-selector-option-label{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}`，下拉候选项文字过长时用省略号，而不是撑开候选面板宽度。
+2. `.gj-search`/`.gj-input` 所在的场景（筛选栅格每列固定宽度、表单网格、导航栏搜索框与右侧铃铛/头像固定间距）大多依赖容器宽度稳定；如果允许容器随内容动态变宽，这些场景的对齐关系会被打破。
+3. 占位符/输入内容是运营侧或用户随时可改的文案，用不可预测的文案长度反过来撑开布局，风险比"看不全、有省略号提示"更大。
+
+**修复**：给 `.gj-search-input` 补 `overflow:hidden;text-overflow:ellipsis;white-space:nowrap`；给 `.gj-input` 同样补齐（`.gj-select` 是原生下拉框、`.gj-textarea` 是多行控件，浏览器自身已有相应处理，未改动）。
+
+**验证**：`preview/search/index.html` 三档尺寸×四种状态计算样式确认 `overflow:hidden;text-overflow:ellipsis` 已生效，示例文案本身未超宽，视觉无变化；业务页导航栏搜索框（"菜单名称/客户昵称/资金账号"占位符，`--ds-component-navbar-search-width` 默认 200px 容器）截断处正确显示省略号。全站 54 个预览/规范/业务模式页 Playwright 回归零报错零 404。
+
+**遗留建议（未采纳"容器自适应宽度"方案的补充说明）**：如果这个导航栏场景确实需要完整展示这段占位符文案，更稳妥的做法是单独调整该页面的 `--ds-component-navbar-search-width`（默认 200px）或精简占位符文案本身，而不是让全站搜索框/输入框都变成"按内容自适应宽度"——已向用户说明，供其判断是否需要单独调整这个业务页的导航栏宽度。
+
+**结论**：SEA-007 已关闭。
+
+**涉及文件**：`assets/styles/gj-b2b-components.css`

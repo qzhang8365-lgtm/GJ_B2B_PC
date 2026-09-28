@@ -11,13 +11,28 @@
     "icon=Right_Icon": "iconPlacement=right",
     "state=hover": ":hover",
     "state=pressed": ":active",
-    "state=disabled": "disabled=true"
+    "state=disabled": "disabled=true",
+    "colorVariant=default": "class=gj-text-btn",
+    "colorVariant=blue": "class=gj-text-btn gj-text-btn-blue"
+  },
+  "colorVariantMap": {
+    "default": {
+      "className": "gj-text-btn",
+      "stateMatrix": "references/tokens/components/text-button.tokens.json#stateMatrix",
+      "status": "Figma component contract"
+    },
+    "blue": {
+      "className": "gj-text-btn gj-text-btn-blue",
+      "stateMatrix": "references/tokens/components/text-button.tokens.json#blueStateMatrix",
+      "status": "locally confirmed optional variant; not yet a Figma variant"
+    }
   },
   "implementationConstraints": {
     "padding": "0",
     "background": "transparent",
     "border": "0",
     "lineHeight": "Controls the visual component height",
-    "iconGap": "4px"
+    "iconGap": "4px",
+    "variantConsistency": "Use either default or blue consistently within one table action group; do not mix default colors in the same table."
   }
 }

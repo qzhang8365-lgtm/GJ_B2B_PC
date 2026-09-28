@@ -21,4 +21,5 @@
 - 行 Hover、Selected、Expanded、Disabled 不得互相代替：Hover 只是指针反馈；Selected 由 Checkbox/外部选择状态驱动；Expanded 只控制子内容；Disabled 优先级最高并抑制行操作。点击行不默认等于选中，除非业务明确定义整行为单一操作热区。
 - 加载时保留表头和列宽，数据区使用 Skeleton 或行内 Loading，避免布局跳动。Empty 与 Error 在表格容器内占满全列，不生成伪数据行；分页在无数据时隐藏或禁用，不得显示虚假总数。
 - 滚动和固定列属于同一容器行为：只在实际溢出时显示固定列阴影，滚动到边界后消失。固定表头与固定操作列必须保持所属区域的表头/行背景，不能透出下层文字。
+- 固定操作列的正文背景必须始终以不透明的 `Table/table_bg1` 作为底层。行 Hover 时在该底层之上叠加 `Background/Hover`，不得用半透明 Hover 色直接替换白色底层；否则横向滚动后，被覆盖列的文字会从 sticky 操作列下方透出。共享基座使用 `--ds-component-table-fixed-action-background` 与 `--ds-component-table-fixed-action-hover-overlay` 组合实现，页面不得自行重画。
 - 可访问性：优先使用原生 `table/th/td`；表头声明列范围，排序状态可读，Checkbox 和行内 Icon Button 有可理解名称，展开按钮同步 `aria-expanded` 与对应内容 ID。

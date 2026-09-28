@@ -19,26 +19,24 @@
   },
   "completionRule": "A component is complete only when narrativeRules, structuredContract, componentToken, and previewPage are complete or explicitly not-required.",
   "summary": {
-    "components": 42,
-    "registeredComponents": 42,
+    "components": 43,
+    "registeredComponents": 43,
     "unregisteredInventoryComponents": 0,
     "overall": {
-      "complete": 41,
-      "partial": 1
+      "complete": 43
     },
     "narrativeRules": {
-      "complete": 42
+      "complete": 43
     },
     "structuredContract": {
-      "complete": 42
+      "complete": 43
     },
     "componentToken": {
-      "complete": 41,
+      "complete": 42,
       "not-required": 1
     },
     "previewPage": {
-      "complete": 40,
-      "missing": 1,
+      "complete": 42,
       "not-required": 1
     }
   },
@@ -129,13 +127,11 @@
         "path": "tokens/components/text-button.tokens.json"
       },
       "previewPage": {
-        "status": "missing",
+        "status": "complete",
         "path": "../preview/text-button/index.html"
       },
-      "overallStatus": "partial",
-      "needs": [
-        "previewPage"
-      ]
+      "overallStatus": "complete",
+      "needs": []
     },
     {
       "id": "divider",
@@ -1973,6 +1969,52 @@
       "previewPage": {
         "status": "complete",
         "path": "../preview/drawer/index.html"
+      },
+      "overallStatus": "complete",
+      "needs": []
+    },
+    {
+      "id": "audio",
+      "component": "Audio",
+      "group": "data-display",
+      "order": 42,
+      "figmaInventory": {
+        "status": "missing",
+        "page": null,
+        "pageMarkedComplete": false,
+        "componentSets": 0,
+        "variants": 0,
+        "standaloneComponents": 0,
+        "relation": "none",
+        "registryStatus": "figma-audited"
+      },
+      "narrativeRules": {
+        "status": "complete",
+        "path": "components/audio/rules.md"
+      },
+      "structuredContract": {
+        "status": "complete",
+        "maturity": "figma-audited",
+        "schema": {
+          "status": "present",
+          "path": "components/audio/schema.json"
+        },
+        "mapping": {
+          "status": "present",
+          "path": "components/audio/mapping.json"
+        },
+        "audit": {
+          "status": "present",
+          "path": "components/audio/audit.md"
+        }
+      },
+      "componentToken": {
+        "status": "complete",
+        "path": "tokens/components/audio.tokens.json"
+      },
+      "previewPage": {
+        "status": "complete",
+        "path": "../preview/audio/index.html"
       },
       "overallStatus": "complete",
       "needs": []

@@ -31,8 +31,9 @@ description: 使用国金 PC 端 B 端设计系统的设计 Token、组件规则
 
 - 颜色、字体、效果、栅格、断点、圆角等全局规范：读取 `references/design-system-rules.md` 中的相关章节。组件详细规则（用途、属性枚举、组合规则、边界）：读取 `references/components/<name>/rules.md`；design-system-rules.md 里的组件章节现在只是指向对应 rules.md 的重定向，不重复正文。
 - 完整统一 Token：从 `references/library-index.json` 的 `aiWorkflow.tokens.unified` 定位，不另行猜测文件名。
-- HTML/CSS 原型：按 `references/library-index.json` 的 `outputAssets.styles.loadOrder` 顺序加载工作流 CSS，页面基础组件必须优先使用其共享 `gj-*` 静态组件类。需要人工预览交互增强时，才按 `scripts.previewRuntimes` 登记加载脚本；这些脚本不是生产组件库源码。
+- HTML/CSS 原型：按 `references/library-index.json` 的 `outputAssets.styles.loadOrder` 顺序加载工作流 CSS，页面基础组件必须优先使用其共享 `gj-*` 静态组件类。需要人工预览交互增强时，才按 `scripts.previewRuntimes` 登记加载脚本；这些脚本不是生产组件库源码。生成或覆盖业务页面时必须读取 `references/project-asset-delivery.md`：公共 Skill 目录只作为复制源，页面所需 CSS、运行时、Icon、字体和图片按依赖闭包复制到目标项目 `assets/`，最终页面不得继续引用公共 Skill 路径。若页面要通过双击 HTML、邮件或共享盘以 `file://` 直接交付，还必须读取 `references/local-file-delivery.md`，按其中的 Icon 传输与跨浏览器验收协议处理，不能把 HTTP 预览成功当作本地交付成功。
 - 规范站外壳：仅维护规范网页时读取 `references/tokens/docs-site.tokens.json`；其中 `--docs-*` 禁止用于业务产品页面。
+- 业务方接入验收：审计业务团队自己编写、消费本 skill 共享资产的页面（而非本仓库自己生成的规范页/组件预览页）时，读取 `references/business-integration-checklist.md`——里面收录的是已核实的真实翻车模式（如表单标签宽度写死导致溢出、程序化设置组件默认值未走共享事件机制导致视觉不同步），发现新的同类问题时应补充进这份清单，而不是只写进当次审计报告。
 - 页面结构与组合：从 `aiWorkflow.core.pagePatterns` 读取文字规则，并从 `aiWorkflow.core.pagePatternMetadata` 读取所选模式的结构化元信息。生成前必须逐项解析十个字段，未知业务信息标记“待确认”，不得留空后自行补造；只在需要人工视觉验收时打开 `humanPreviewSite.entryPoints.pagePatterns` 及对应页面。页面模式不得重新并入组件工作台。
 - 图标查找：始终从 `aiWorkflow.icons` 指向的唯一图标索引进入；具体 catalog、manifest、资源根目录和 System 源 SVG 审计关系均由图标子索引维护，`SKILL.md` 不再复制该清单。
 - 组件预览：在 `preview/` 查找对应组件页面，仅用于理解和验收。
@@ -121,6 +122,7 @@ description: 使用国金 PC 端 B 端设计系统的设计 Token、组件规则
 
 ## 全局硬规则
 
+- 公共 Skill 安装目录只允许在生成阶段读取，禁止成为业务页面运行时依赖。不得复制整个 Skill 或完整资源库；只把本页实际引用的文件及其 CSS/运行时静态依赖复制到目标项目根目录 `assets/`，并将 HTML/CSS/JS 改为项目内相对路径。不得使用指回公共 Skill 的绝对路径、`file://` URL 或符号链接。
 - 优先使用语义 Token；已有语义变量时不直接写 HEX、随意尺寸或近似阴影。
 - UI 字体只调用用户本机字体，并固定成对使用：苹方 + SF Pro、微软雅黑 + Arial、思源黑体 + Source Sans Pro；同一页面不得任意混搭。Figma 字体仅作视觉参考。
 - GJType 仅允许用于 Metric、Gauge、Progress、Progress Ring 的核心指标；表格数据、普通图表标签、日期时间、分页、Badge 和正文即使包含数字也必须使用当前 UI 字体配对。
@@ -129,7 +131,7 @@ description: 使用国金 PC 端 B 端设计系统的设计 Token、组件规则
 - 页面与组件优先复用现有模式；具体设计稿中的已确认实例可覆盖默认规则。
 - 必须考虑 default、hover、focus、pressed、disabled、loading、empty、error 和无权限等与任务相关的状态。
 - 不输出不存在的组件名、属性名、导入路径或包名。技术栈未指定时，输出设计中立的结构、HTML/CSS 原型或清晰伪代码，并标注前端映射点。
-- Button 内的 Icon 必须使用 `currentColor` 与按钮文字保持同色，并随 default、hover、pressed、disabled、loading 等状态同步变化；不得保留 SVG 资源自身的固定填充色或描边色。静态 HTML 优先使用 CSS mask，前端 SVG 使用 `fill="currentColor"` 或 `stroke="currentColor"`。
+- Button 内的 Icon 必须使用 `currentColor` 与按钮文字保持同色，并随 default、hover、pressed、disabled、loading 等状态同步变化；不得保留 SVG 资源自身的固定填充色或描边色。HTTP/HTTPS 页面可优先使用外部 SVG CSS mask；`file://` 本地交付必须把 mask 源内嵌为 `data:` URL 或使用内联 SVG，禁止引用外部 SVG mask。前端 SVG 使用 `fill="currentColor"` 或 `stroke="currentColor"`。
 - 内联 SVG 图表/图形元素禁止使用 `preserveAspectRatio="none"` 等会让内部文字、图标等内容随容器宽高比非等比拉伸变形的缩放方式；`viewBox` 宽高比与实际渲染容器不一致时，使用默认或显式的 `xMidYMid meet`（允许留白），或让 `viewBox` 动态匹配容器实际像素尺寸，不得整体非等比拉伸。
 
 ## 默认交付内容
@@ -165,6 +167,8 @@ description: 使用国金 PC 端 B 端设计系统的设计 Token、组件规则
 - Sidebar 是否误用了标注表 `layout.sider` 或 208/240/288、收起 64/80，而不是母版 200/56？
 - 是否把待确认事项与已确认规范明确区分？
 - 是否避免虚构前端组件库、API、依赖和设计变量？
+- 是否已按 `references/project-asset-delivery.md` 只归档本页依赖，并运行 `scripts/stage-project-assets.mjs --check`，确认页面换目录、换电脑或移除公共 Skill 后仍能加载全部样式、脚本、Icon、字体和图片？
+- 若交付方式包含直接双击 HTML，是否已运行 `scripts/prepare-file-delivery.mjs --check`，并分别用 Chromium 内核与 WebKit/Safari 直接打开 `file://` 页面验证 Icon、字体、样式和交互？
 
 ## 维护
 

@@ -11,6 +11,7 @@
   "properties": {
     "size": { "default": "Large", "values": ["Large", "Medium", "Small"] },
     "visualState": { "default": "default", "values": ["default", "hover", "pressed", "disabled"], "publicProp": false },
+    "colorVariant": { "default": "default", "values": ["default", "blue"], "note": "Blue is an explicitly declared optional local variant and does not replace the standard gray default contract." },
     "iconPlacement": { "default": "none", "values": ["none", "left", "right"] },
     "iconOnly": { "supported": false }
   },
@@ -36,13 +37,20 @@
     "pressed": { "text": "Text/blue", "icon": "currentColor", "background": "transparent", "border": "none" },
     "disabled": { "text": "Text/disable", "icon": "currentColor", "background": "transparent", "border": "none" }
   },
+  "blueStateMatrix": {
+    "default": { "text": "Text/blue", "icon": "currentColor", "background": "transparent", "border": "none" },
+    "hover": { "text": "Primitive/Blue/B07", "icon": "currentColor", "background": "transparent", "border": "none" },
+    "pressed": { "text": "Primitive/Blue/B08", "icon": "currentColor", "background": "transparent", "border": "none" },
+    "disabled": { "text": "Text/disable", "icon": "currentColor", "background": "transparent", "border": "none" }
+  },
   "behavior": {
     "element": "button",
     "disabled": "Use native disabled and never fire the action.",
     "focus": "Provide focus-visible without changing the component layout size.",
     "pressedMotion": "Scale to 0.98 while actively pressed; never translate vertically.",
     "hitArea": "Expand the pointer target with an outer wrapper or pseudo-element when necessary; never add visible padding or change the line-box height.",
-    "prototypeReaction": "Not required in Figma. Implement hover, pressed and disabled from the state contract in code; absence of Prototype Reaction is not an absent-state signal."
+    "prototypeReaction": "Not required in Figma. Implement hover, pressed and disabled from the state contract in code; absence of Prototype Reaction is not an absent-state signal.",
+    "colorVariant": "Use stateMatrix for default and blueStateMatrix for blue. Keep one color variant across the same table or action group."
   },
   "content": {
     "singleLine": true,

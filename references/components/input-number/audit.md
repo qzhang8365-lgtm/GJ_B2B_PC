@@ -110,3 +110,17 @@ Playwright 验证：「万元」（2 字符）容器为 `36px`，「￥」（1 �
 同步文档：`references/components/input-number/rules.md` 与 `schema.json#constraints` 更新为「单字符/单个符号 = 与档位高度一致的正方形，两字符及以上按内容自适应、左右 8px 内边距」，不再写「Addon 与单位条宽度都等于档位高度」。
 
 结论：INN-005 已关闭。`.gj-number-input-unit-label` 现在单字符/单个符号严格保持 1:1 正方形，两字符及以上按内容宽度自适应并留 8px 内边距；Small 尺寸配合单位后缀在当前字号下的边界场景已记录、暂无实际影响。
+
+## 2026-09-28：组件从未定义过错误态样式，沿用其他输入类组件"给内部 input 加 gj-form-error"的惯用法会完全不可见（新增并关闭 INN-006）
+
+业务页面把呼叫中心录音查询页的原生 `<input type=number class=gj-input>` 双输入框换成规范的 `.gj-number-input` 组件包裹（见 Input 组件相关业务接入修复）后暴露出这个问题。
+
+**排查**：业务页"通话时长（秒）"区间校验（最小值不能大于最大值）原先直接给原生 `<input type=number class=gj-input>` 加 `gj-form-error` 类触发红色边框，视觉正确——因为 `.gj-form-error{border-color:...}` 本来就是配合 `.gj-input` 自身画边框设计的。换成 `.gj-number-input` 组件后：组件的边框画在外层 `<label class=gj-number-input>` 上（`border:1px solid ...`），内部 `<input>` 本身 `border:0`，如果继续把 `gj-form-error` 加在内部 `<input>` 上，边框颜色变化会因为 `<input>` 根本没有边框而完全不可见。核实这不是业务页迁移引入的新问题，而是 `.gj-number-input` 组件自诞生以来就从未定义过错误态样式——此前项目里没有任何页面把校验错误应用在这个组件上，是一个此前从未暴露过的基座缺口。
+
+**修复**：补 `.gj-number-input.gj-form-error,.gj-number-input.is-error{border-color:var(--ds-component-input-number-field-error-border,var(--ds-border-error))}`，与 Date Picker（DTP 系列）"触发器组件同样是外层元素画边框，错误态类要加在外层"的既有模式保持一致；业务页 JS 同步改为把错误类加在 `.closest('.gj-number-input')` 外层元素上，而不是内部 `<input>`。
+
+**验证**：Playwright 模拟"最小值>最大值"触发校验，边框正确变红（`rgb(249,56,56)`）；修正数值后错误类正确移除、边框恢复默认色；全站 54 个预览/规范/业务模式页回归零报错零 404。
+
+**结论**：INN-006 已关闭。
+
+**涉及文件**：`assets/styles/gj-b2b-components.css`

@@ -58,6 +58,7 @@ const input = {
   componentSidebar: "references/tokens/components/sidebar.tokens.json",
   componentGridNav: "references/tokens/components/grid-nav.tokens.json",
   componentInputNumber: "references/tokens/components/input-number.tokens.json",
+  componentAudio: "references/tokens/components/audio.tokens.json",
   componentImage: "references/tokens/components/image.tokens.json",
   componentBadge: "references/tokens/components/badge.tokens.json",
   componentTimeline: "references/tokens/components/timeline.tokens.json"
@@ -190,7 +191,8 @@ const componentButton = {
 };
 const componentTextButton = {
   ...data.componentTextButton,
-  stateMatrix: enrichFlatStateMatrix("text-button", data.componentTextButton.stateMatrix)
+  stateMatrix: enrichFlatStateMatrix("text-button", data.componentTextButton.stateMatrix),
+  blueStateMatrix: enrichFlatStateMatrix("text-button-blue", data.componentTextButton.blueStateMatrix)
 };
 const flatComponentSources = {
   input: data.componentInput,
@@ -237,6 +239,7 @@ const structuralComponentSources = {
   sidebar: data.componentSidebar,
   "grid-nav": data.componentGridNav,
   "input-number": data.componentInputNumber,
+  audio: data.componentAudio,
   image: data.componentImage,
   badge: data.componentBadge,
   timeline: data.componentTimeline
@@ -266,7 +269,7 @@ const unified = {
       breakpoints: Object.keys(data.responsive.breakpoints).length,
       components: componentSources.length,
       componentTokens: componentSources.reduce((sum, component) => sum + Object.keys(component.tokens).length, 0),
-      componentStateTokens: countCssVariableLeaves(componentButton.stateMatrix) + countCssVariableLeaves(componentTextButton.stateMatrix) + countCssVariableLeaves(componentButton.intentMatrix) + Object.values(flatComponents).reduce((sum, component) => sum + countCssVariableLeaves(component.stateMatrix), 0),
+      componentStateTokens: countCssVariableLeaves(componentButton.stateMatrix) + countCssVariableLeaves(componentTextButton.stateMatrix) + countCssVariableLeaves(componentTextButton.blueStateMatrix) + countCssVariableLeaves(componentButton.intentMatrix) + Object.values(flatComponents).reduce((sum, component) => sum + countCssVariableLeaves(component.stateMatrix), 0),
       docsSiteTokens: Object.keys(data.docsSite.tokens).length
     }
   },
@@ -376,12 +379,13 @@ const cssLines = [
   ...Object.entries(dimensions).map(([, token]) => `  ${token.cssVariable}: ${token.value}${token.unit};`),
   "",
   "  /* Component tokens */",
-  ...componentSources.flatMap(component => Object.values(component.tokens).flatMap(token => {
+  ...componentSources.flatMap(component => collectCssVariableLeaves(component.tokens).flatMap(token => {
     if (!token.cssVariable) return [];
     const cssValue = componentValueToCss(token);
     return cssValue === null ? [] : [`  ${token.cssVariable}: ${cssValue};`];
   })),
   ...Object.values(unified.component).flatMap(component => collectCssVariableLeaves(component.stateMatrix).map(token => `  ${token.cssVariable}: ${componentStateValueToCss(token.value)};`)),
+  ...collectCssVariableLeaves(componentTextButton.blueStateMatrix).map(token => `  ${token.cssVariable}: ${componentStateValueToCss(token.value)};`),
   ...Object.values(componentButton.intentMatrix).flatMap(intent => [
     ...Object.values(intent.states),
     intent.text

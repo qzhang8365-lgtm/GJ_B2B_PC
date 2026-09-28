@@ -86,3 +86,17 @@ Selector 升级为 `figma-audited`。生成时：Disabled 描边 secondary、有
 `scripts/verify-page.mjs` 对 5 个页面模式做生成后一致性验证时发现 `.gj-selector-trigger` 的 `--ds-component-selector-trigger-gap` 是 10px，不在 4px 间距阶梯上；该值在 SEL-002（2026-09-10）里已按 Figma 稿上 itemSpacing=10 确认过（旧 CSS 是 6）。这次用户明确要求把 Button、Selector 两处间距都改到阶梯值上，优先级高于之前 SEL-002 记录的 Figma 原稿数值，因此重新调整。
 
 修复：改为 8px（`{Interval/space3}`），与站内其它同类图标/内容间距（`--ds-component-tooltip-trigger-gap`、`.toolbar`/`.actions` 等）保持一致。`selector.tokens.json` 的 `trigger.gap` 更新为 `{Interval/space3}`/`resolved:8`，并在 note 里记录本次改动与 SEL-002 的关系；`node scripts/build-tokens.mjs` 重新生成；`assets/styles/gj-b2b-components.css` 里 `.gj-selector-trigger` 的 var() 兜底值同步改成 8px。`node scripts/validate-tokens.mjs` 通过；`scripts/verify-page.mjs` 重新跑 search-list/form-edit 两个用到 Selector 的页面模式确认相关 `spacing-off-ladder` 发现清零。
+
+## 2026-09-28：触发器当前值/占位符文本过长时挤出箭头图标或溢出边框（新增并关闭 SEL-005）
+
+与 Search 组件的 SEA-007 同批排查（用户反馈时把 Input/Search/Selector 三者的占位符溢出问题归为"共同逻辑可能都不完整"一并提出）。
+
+**排查**：`.gj-selector-trigger` 是 `display:flex`，展示当前值/占位符的直接子 `<span>`（`.gj-selector-placeholder` 或页面自定义的值文案 span）此前没有任何宽度约束，长文本会撑大 `<span>` 自身宽度，挤压甚至推出右侧箭头图标 `.gj-selector-arrow`。多选标签模式（`.chip-line` 包裹一组 `.gj-selector-item`）不受影响，标签自身已有独立的换行/删除逻辑。
+
+**修复**：补 `.gj-selector-trigger>span:not(.chip-line){flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}`，排除 `.chip-line` 避免影响多选标签行。
+
+**验证**：`preview/selector/index.html` 单选/多选/尺寸/状态各示例截图核实：单选值/占位符 span 均正确获得 `flex:1 1 0%` 与 `text-overflow:ellipsis`；多选 `.chip-line` 保持原有 `flex:0 1 auto`，视觉与交互均无回归。全站 54 个预览/规范/业务模式页 Playwright 回归零报错零 404。
+
+**结论**：SEL-005 已关闭。
+
+**涉及文件**：`assets/styles/gj-b2b-components.css`

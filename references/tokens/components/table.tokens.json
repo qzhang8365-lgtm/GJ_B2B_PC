@@ -94,6 +94,18 @@
       "resolved": 8,
       "unit": "px",
       "cssVariable": "--ds-component-table-text-action-gap"
+    },
+    "fixedAction.background": {
+      "value": "{Table/table_bg1}",
+      "resolved": "#FFFFFF",
+      "cssVariable": "--ds-component-table-fixed-action-background",
+      "note": "Sticky action cells require an opaque base so horizontally scrolled content cannot show through."
+    },
+    "fixedAction.hoverOverlay": {
+      "value": "{Background/Hover}",
+      "resolved": "#2B73FF0D",
+      "cssVariable": "--ds-component-table-fixed-action-hover-overlay",
+      "note": "Layer above fixedAction.background on row hover; never use as the only background layer."
     }
   },
   "stateMatrix": {
@@ -122,6 +134,16 @@
       "text": "Text/disable",
       "border": "Table/divider"
     },
+    "fixedActionCell.default": {
+      "backgroundBase": "Table/table_bg1",
+      "backgroundOverlay": "transparent",
+      "composition": "opaque-base"
+    },
+    "fixedActionCell.hover": {
+      "backgroundBase": "Table/table_bg1",
+      "backgroundOverlay": "Background/Hover",
+      "composition": "overlay-over-opaque-base"
+    },
     "action.default": {
       "background": "transparent",
       "text": "Text/Tertiary",
@@ -140,7 +162,8 @@
   },
   "behavior": {
     "size": "Header, body and fixed columns share one size.",
-    "overflow": "Allow horizontal scroll and keep action column visible.",
+    "overflow": "Allow horizontal scroll and keep action column visible. Show its shadow only while more columns remain in the scroll direction; at-scroll-end removes the shadow.",
+    "fixedActionBackground": "Always keep the opaque fixedAction.background base. On row hover, layer fixedAction.hoverOverlay above it instead of replacing it.",
     "selection": "Checkbox state drives selected rows and parent indeterminate state.",
     "statePriority": ["disabled", "selected", "expanded", "hover", "default"],
     "sort": "Single-column none/ascending/descending by default; expose aria-sort and clear the previous sorted column.",

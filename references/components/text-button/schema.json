@@ -43,6 +43,19 @@
         "disabled"
       ]
     },
+    "colorVariant": {
+      "type": "enum",
+      "default": "default",
+      "values": [
+        "default",
+        "blue"
+      ],
+      "implementation": {
+        "default": "gj-text-btn",
+        "blue": "gj-text-btn gj-text-btn-blue"
+      },
+      "source": "Local confirmed extension; blue is not yet a published Figma variant."
+    },
     "iconPlacement": {
       "type": "enum",
       "default": "none",
