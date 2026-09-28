@@ -1,10 +1,12 @@
 {
+<<<<<<< ours
   "name": "gj-b2b-pc-design-skill",
   "private": true,
   "version": "1.0.0",
   "description": "国金 PC 端 B 端设计系统 Skill 的生成后校验与维护脚本依赖清单；不改变 Figma 只读策略与 AI 工作流本身，仅用于本地生成/提交前的自动化检查。",
   "scripts": {
     "verify-page": "node scripts/verify-page.mjs",
+    "serve": "node scripts/serve-preview.mjs",
     "build-tokens": "node scripts/build-tokens.mjs",
     "validate-tokens": "node scripts/validate-tokens.mjs",
     "build-coverage": "node scripts/build-coverage.mjs",
@@ -12,5 +14,14 @@
   },
   "devDependencies": {
     "playwright": "^1.63.0"
+=======
+  "name": "gj_b2b-construction",
+  "version": "0.1.0",
+  "private": true,
+  "description": "GJ_B2B建设组件库展示网站",
+  "scripts": {
+    "start": "python3 -m http.server 4173",
+    "check": "python3 - <<'PY'\nimport json\nfrom pathlib import Path\nfor path in ['index.html','src/style.css','src/data/design-tokens.json','docs/skills/frontend-vibe-coding-skill.md']:\n    text = Path(path).read_text(encoding='utf-8')\n    assert text.strip(), f'{path} is empty'\njson.loads(Path('src/data/design-tokens.json').read_text(encoding='utf-8'))\nprint('component library checks passed')\nPY"
+>>>>>>> theirs
   }
 }
