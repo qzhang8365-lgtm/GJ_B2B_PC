@@ -44,6 +44,22 @@
 - **播放/暂停状态用 `.is-playing` 修饰符驱动图标切换，不是两个独立组件**：Figma 侧 `State=Paused`/`State=Playing` 是同一组件集的两个 Variant，代码侧对应为同一个 `.gj-audio-bar` 根节点加/去 `.is-playing`；真正的播放/暂停业务逻辑（音频对象的 play()/pause() 调用、`aria-pressed` 同步）留给运行时实现，CSS 只负责图标外观切换，已在 `rules.md` 中说明边界。
 - **剩余时长文案宽度锁定 60px**：来自 Figma 实测值（`width:60px`），补充为组件私有 token `--ds-component-audio-duration-width`，避免时长文案变长（两位数分钟）时把关闭按钮位置顶偏。这是本轮补充发现的实现细节，随本次组件上线一并落地，未见于 2026-09-28 之前的草案版本。
 
+## 补充发现（预览页联调反馈，2026-09-28）
+
+组件上线后，在预览页联调中收到两处实现层面的反馈，均已核实并修复：
+
+1. **AUD-004 · 进度条圆点样式与 Figma 不符，已定位为 Audio 自有资产与共享滑块基座的真实差异，非误报**
+   - 反馈：预览页里可拖动圆点渲染为实心蓝色圆点，但 Figma 源文件里应为白色填充、蓝色描边的圆点。
+   - 排查：先核对了 input-number 组件自身的 `Swiper` 节点（`4293:15642`），确认其 Figma 源确实是实心蓝色填充（与本地 `.gj-slider` 共享基座当前实现一致，`references/components/input-number/schema.json` 第 180 行已记录为 `Button/Primary/Bg-pressed` 实心色），说明共享基座本身没有问题。随后专门重新核对 Audio 自己的 `Audio_Bar` 节点（`5026:7663`），确认该节点的圆点确实是白色填充 + 蓝色描边，与 input-number 的圆点视觉不同——两个组件各自的 Figma 源本来就不一致，不是同一份规范的两种误读。
+   - 修复：不修改共享的 `.gj-slider` 基座（避免影响 input-number 等其他正确复用方），改为新增 Audio 私有 token（`--ds-component-audio-slider-thumb-background` / `-border-color` / `-border-width`）与限定选择器 `.gj-audio-bar .gj-slider input[type=range]::-webkit-slider-thumb` / `::-moz-range-thumb`，仅对 Audio 场景覆盖圆点视觉，属于组件级 scoped override，不是基座变更。
+   - 遗留事项（视觉估算，非精确实测）：`Audio_Bar` 是一张已拉平/栅格化的静态图形节点（非可拆解的组件层级结构），`get_variable_defs` 无法获取圆点描边宽度的具体绑定值，组织网络策略又阻断了原始 SVG 下载（同 AUD-002 的网络限制），因此边框宽度 `2px` 是基于 `get_design_context` 截图的视觉估算，不是 Figma 实测像素值。后续如需精确值，需要设计师协助导出该节点的矢量源文件或补充标注。
+
+2. **AUD-005 · 拖拽圆点时蓝色进度条不跟随，定位为预览页基座缺失事件绑定，已抽取为共享脚本修复**
+   - 反馈：拖动进度条圆点时，右侧蓝色（激活态）轨道的终点没有跟随圆点位置一起移动。
+   - 排查：`.gj-slider` 的填充轨道由 `.gj-slider` 容器上的 `--start`/`--end` CSS 自定义属性驱动（见 `gj-b2b-components.css` 的 `.gj-slider-track` 渐变定义），这两个属性只有在显式监听 `input` 事件并重新计算时才会更新。`preview/audio/index.html` 的「交互演示」区块有自己手写的 `renderProgress()` 逻辑正确处理了这一点，但「组件结构」静态演示区块的 `.gj-slider` 完全没有绑定任何事件——这不是 Audio 独有的疏漏，`preview/input-number/index.html` 也是靠页面私有的 `initStaticSliders()` 函数才让同样的静态演示区块正确联动，这段逻辑此前从未被抽成可复用的基座能力，每个新页面都要重新手写一遍，容易遗漏。
+   - 修复：将 `initStaticSliders()` 的核心逻辑（单滑块/双滑块区间两种场景、`--start`/`--end`/`--tip*` 计算、可选的 `.gj-slider-tooltip` 文案同步）抽取为共享基座脚本 `assets/scripts/gj-slider.js`，通过 `MutationObserver` 自动发现页面上所有 `.gj-slider` 并绑定，无需每个消费页面手动调用初始化函数。`preview/audio/index.html` 的 `<head>` 中新增 `<script src="../../assets/scripts/gj-slider.js" defer></script>` 引入；交互演示区块保留自己原有的 `renderProgress()`（还需要联动播放状态、时长文案等业务逻辑），两者对同一批 `--start`/`--end` 属性的写入是幂等的，不会冲突。
+   - 范围说明：未回头把 `preview/input-number/index.html` 迁移到这个共享脚本——该页面的 `initStaticSliders()` 已验证工作正常，迁移属于额外重构，存在引入回归的风险且未被要求，本次不做，仅记录共享脚本已存在，供未来页面直接复用。
+
 ## 归组说明
 
 本组件在 `references/components/inventory.json` 的 `schemaRegistry.executionOrder` 中归入 `data-display` 分组（第 42 项）。理由：Audio 播放条的核心功能是「呈现一段既有录音的状态」（时间戳、播放进度、时长），交互控制（播放/暂停/上一首/下一首/关闭）服务于这个展示目的，而不是采集用户输入；这与 Table/Avatar/Badge/Timeline 等 `data-display` 组件的定位一致，区别于 `data-entry`（InputNumber 等采集型组件）。进度条内部复用 `.gj-slider` 不改变这个归组判断——`.gj-slider` 是被复用的实现细节，不代表 Audio 整体承担数据录入职责。

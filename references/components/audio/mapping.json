@@ -4,11 +4,21 @@
   "codeComponent": "GjAudioBar",
   "source": "2026-09-28 Figma 页 5026:7599「音频Audio」：Audio_Bar 1（200×16px 静态图形）、Audio_controller 组件集 2 Variant（State=Paused / State=Playing，均 640×34px）。",
   "propertyMap": {
-    "state": { "values": ["paused", "playing"], "default": "paused" },
+    "state": {
+      "values": [
+        "paused",
+        "playing"
+      ],
+      "default": "paused"
+    },
     "recordedAt": "string（时间戳文案，业务传入）",
     "progress": "number（透传给内部 .gj-slider）",
     "elapsed / duration": "string（拼接为 0:01/0:16 形式，duration 文案容器宽度锁定 60px）",
-    "closable": { "type": "boolean", "default": true, "note": "为 false 时由使用方不渲染 .gj-audio-close 节点" }
+    "closable": {
+      "type": "boolean",
+      "default": true,
+      "note": "为 false 时由使用方不渲染 .gj-audio-close 节点"
+    }
   },
   "structureMap": {
     "root": ".gj-audio-bar（容器，display:flex，间距 21px，最大宽度 640px，描边+浅蓝底）",
@@ -16,36 +26,58 @@
     "controls": ".gj-audio-bar-controls（控制区容器，内部 gap 18px）",
     "controlButtons": ".gj-audio-btn（控制按钮公共基座，16×16px 图标热区）+ .gj-audio-btn-prev / .gj-audio-btn-toggle / .gj-audio-btn-next（三个位置修饰符，通过 ::after 伪元素 mask 出图标，颜色 Brand/gj_blue）",
     "toggleStateSwap": ".gj-audio-bar.is-playing .gj-audio-btn-toggle::after（根节点加 is-playing 后把播放图标换成暂停图标，icf_media_play-triangle-fill → icf_media_pause-regular）",
-    "progress": ".gj-audio-bar .gj-slider（直接复用 input-number 组件的 .gj-slider 基座，追加 flex:none 使其在横向布局中保持 200px 参考宽度不被拉伸；不新增 Audio 私有的滑块类名）",
+    "progress": ".gj-audio-bar .gj-slider（直接复用 input-number 组件的 .gj-slider 基座，追加 flex:none 使其在横向布局中保持 200px 参考宽度不被拉伸；不新增 Audio 私有的滑块类名，但用限定选择器 .gj-audio-bar .gj-slider input[type=range]::-webkit-slider-thumb / ::-moz-range-thumb 覆盖圆点视觉为白色填充+蓝色描边，与 Audio 自有 Figma 资产一致，2026-09-28 新增）",
     "duration": ".gj-audio-bar-duration（剩余时长文案，宽度锁定 60px，样式同 .gj-audio-bar-time）",
     "spacer": ".gj-audio-bar-spacer（flex:1 0 0，min-width:8px，把关闭按钮推到最右侧）",
     "close": ".gj-audio-close（关闭按钮，16×16px，::after 伪元素 mask 出 icf_system_close-md 图标，默认 Text/Tertiary，悬停 Text/Primary，仅换色不做位移/缩放）"
   },
   "tokenMap": {
-    "container.height": "34px", "container.maxWidth": "640px",
-    "container.paddingBlock": "8px", "container.paddingInline": "12px",
-    "container.gap": "21px", "container.radius": "Radius/Radius-md (8px)",
-    "container.background": "Background/BG_blue (#E5F0FF)", "container.border": "Brand/gj_blue (#2B73FF)",
-    "controls.gap": "18px", "controls.iconSize": "16px", "controls.iconColor": "Brand/gj_blue",
-    "progress": "复用 --ds-component-input-number-slider-* 全套 token，不新建独立滑块 token",
-    "text.style": "中文/S9-CN-R，颜色 Text/Primary", "text.durationWidth": "60px（组件私有 token，Figma 实测值）",
-    "close.size": "16px", "close.defaultColor": "Text/Tertiary", "close.hoverColor": "Text/Primary"
+    "container.height": "34px",
+    "container.maxWidth": "640px",
+    "container.paddingBlock": "8px",
+    "container.paddingInline": "12px",
+    "container.gap": "21px",
+    "container.radius": "Radius/Radius-md (8px)",
+    "container.background": "Background/BG_blue (#E5F0FF)",
+    "container.border": "Brand/gj_blue (#2B73FF)",
+    "controls.gap": "18px",
+    "controls.iconSize": "16px",
+    "controls.iconColor": "Brand/gj_blue",
+    "progress": "复用 --ds-component-input-number-slider-* 全套 token；圆点视觉另有 Audio 私有 token 覆盖：--ds-component-audio-slider-thumb-background（白色）、-border-color（品牌蓝）、-border-width（2px，视觉估算）",
+    "text.style": "中文/S9-CN-R，颜色 Text/Primary",
+    "text.durationWidth": "60px（组件私有 token，Figma 实测值）",
+    "close.size": "16px",
+    "close.defaultColor": "Text/Tertiary",
+    "close.hoverColor": "Text/Primary"
   },
   "implementation": {
     "runtime": {
       "status": "shared-css-base",
-      "note": "2026-09-28：新增 assets/styles/gj-b2b-components.css 的 .gj-audio-bar* 共享类（.gj-audio-bar/-time/-controls/.gj-audio-btn(+prev/toggle/next)/-duration/-spacer/.gj-audio-close），对应结构与颜色 token 同步写进 assets/styles/gj-b2b-tokens.css（--ds-component-audio-* 前缀）。进度条不新建类，直接复用已有 .gj-slider。预览页 preview/audio/index.html 直接引用这些共享类。"
+      "note": "2026-09-28：新增 assets/styles/gj-b2b-components.css 的 .gj-audio-bar* 共享类（.gj-audio-bar/-time/-controls/.gj-audio-btn(+prev/toggle/next)/-duration/-spacer/.gj-audio-close），对应结构与颜色 token 同步写进 assets/styles/gj-b2b-tokens.css（--ds-component-audio-* 前缀）。进度条不新建类，直接复用已有 .gj-slider。预览页 preview/audio/index.html 直接引用这些共享类。 2026-09-28 预览页联调修复：新增 Audio 私有的滑块圆点 scoped override（见上）；并新增共享基座脚本 assets/scripts/gj-slider.js，自动为任意页面上的 .gj-slider 绑定拖拽联动（--start/--end 同步），preview/audio/index.html 已引入该脚本。"
     },
     "specPreview": {
       "page": "preview/audio/index.html",
-      "classes": [".gj-audio-bar", ".gj-audio-bar-time", ".gj-audio-bar-controls", ".gj-audio-btn", ".gj-audio-btn-prev", ".gj-audio-btn-toggle", ".gj-audio-btn-next", ".gj-audio-bar-duration", ".gj-audio-bar-spacer", ".gj-audio-close", ".is-playing"],
+      "classes": [
+        ".gj-audio-bar",
+        ".gj-audio-bar-time",
+        ".gj-audio-bar-controls",
+        ".gj-audio-btn",
+        ".gj-audio-btn-prev",
+        ".gj-audio-btn-toggle",
+        ".gj-audio-btn-next",
+        ".gj-audio-bar-duration",
+        ".gj-audio-bar-spacer",
+        ".gj-audio-close",
+        ".is-playing"
+      ],
       "sharedBase": "assets/styles/gj-b2b-components.css（.gj-audio-bar* 规则块，2026-09-28 新增）+ assets/styles/gj-b2b-tokens.css（--ds-component-audio-* 变量，2026-09-28 新增）"
     }
   },
   "composition": {
     "sliderReuse": "进度条必须复用 .gj-slider，不得为 Audio 单独实现新的滑块视觉或交互；.gj-slider 自身的轨道/滑块/激活色规则不在 Audio 层重复定义。",
     "widthLock": "剩余时长文案容器宽度锁定 60px（--ds-component-audio-duration-width），避免时长位数变化顶偏后续的弹性留白与关闭按钮位置。",
-    "prevNextWithoutList": "单条音频、无列表切换语义时，上一首/下一首按钮建议 disabled 而非移除，保持宽度与间距节奏；是否禁用由业务判断，本文件不替业务做默认值假设。"
+    "prevNextWithoutList": "单条音频、无列表切换语义时，上一首/下一首按钮建议 disabled 而非移除，保持宽度与间距节奏；是否禁用由业务判断，本文件不替业务做默认值假设。",
+    "dragSyncFoundation": "静态/演示用途的 .gj-slider（未手写业务级 oninput 逻辑的场景）依赖共享脚本 assets/scripts/gj-slider.js 自动完成拖拽时的 --start/--end 联动，避免每个新消费页面重复手写 initStaticSliders() 这类逻辑；带业务逻辑的交互演示（如需要同步播放时长/状态）仍可保留自己的 oninput 处理，与共享脚本的写入是幂等的，不冲突。"
   },
   "accessibility": {
     "toggle": "播放/暂停按钮需要 aria-pressed 与随状态切换的 aria-label（“播放”/“暂停”），不能只靠图标传达状态。",

@@ -27,7 +27,10 @@
     "state": {
       "type": "enum",
       "default": "paused",
-      "values": ["paused", "playing"],
+      "values": [
+        "paused",
+        "playing"
+      ],
       "figmaProperty": "state#Paused|Playing"
     },
     "recordedAt": {
@@ -53,11 +56,27 @@
       "default": true,
       "note": "为 false 时由使用方在渲染时不插入 .gj-audio-close 节点，组件本身不提供隐藏占位开关"
     },
-    "onTogglePlay": { "type": "event", "payload": "void" },
-    "onPrev": { "type": "event", "payload": "void" },
-    "onNext": { "type": "event", "payload": "void" },
-    "onClose": { "type": "event", "payload": "void" },
-    "onSeek": { "type": "event", "payload": "number", "note": "透传自内部 .gj-slider 的拖拽/点击事件" }
+    "onTogglePlay": {
+      "type": "event",
+      "payload": "void"
+    },
+    "onPrev": {
+      "type": "event",
+      "payload": "void"
+    },
+    "onNext": {
+      "type": "event",
+      "payload": "void"
+    },
+    "onClose": {
+      "type": "event",
+      "payload": "void"
+    },
+    "onSeek": {
+      "type": "event",
+      "payload": "number",
+      "note": "透传自内部 .gj-slider 的拖拽/点击事件"
+    }
   },
   "layout": {
     "display": "flex",
@@ -74,7 +93,11 @@
   "controls": {
     "gap": 18,
     "iconSize": 16,
-    "items": ["prev", "toggle", "next"],
+    "items": [
+      "prev",
+      "toggle",
+      "next"
+    ],
     "iconColor": "Brand/gj_blue",
     "toggleIcons": {
       "paused": "icf_media_play-triangle-fill",
@@ -87,7 +110,7 @@
     "reuses": "gj-slider (input-number component)",
     "referenceWidth": 200,
     "height": 16,
-    "note": "Figma 的 Audio_Bar 节点是 200×16px 静态图形，代码侧直接复用已有 .gj-slider 组件获得真实拖拽交互，不重建或内嵌静态图"
+    "note": "Figma 的 Audio_Bar 节点是 200×16px 静态图形，代码侧直接复用已有 .gj-slider 组件获得真实拖拽交互，不重建或内嵌静态图；但 Audio_Bar 自身圆点视觉（白色填充+蓝色描边）与 .gj-slider 共享基座默认的实心蓝色圆点不同，已用 Audio 私有 token + 限定选择器做 scoped override（见 confirmedDecisions AUD-004），不影响其他复用 .gj-slider 的组件。"
   },
   "timeText": {
     "textStyle": "中文/S9-CN-R",
@@ -117,7 +140,10 @@
     "closeSize": "--ds-component-audio-close-size",
     "closeColor": "--ds-component-audio-close-color",
     "closeHoverColor": "--ds-component-audio-close-hover-color",
-    "durationWidth": "--ds-component-audio-duration-width"
+    "durationWidth": "--ds-component-audio-duration-width",
+    "sliderThumbBackground": "--ds-component-audio-slider-thumb-background",
+    "sliderThumbBorderColor": "--ds-component-audio-slider-thumb-border-color",
+    "sliderThumbBorderWidth": "--ds-component-audio-slider-thumb-border-width"
   },
   "behavior": {
     "nativeElement": "div[role=group] 容器，内部三个控制按钮与关闭按钮均为 button",
@@ -156,6 +182,12 @@
       "date": "2026-09-28",
       "decision": "进度条复用 .gj-slider（input-number 组件），不重建滑块或使用 Audio_Bar 静态图形资源；Audio 组件归入 inventory.json 的 data-display 分组（第 42 项）。",
       "source": "设计-代码映射决策，详见 audit.md「实现决策」与「归组说明」。"
+    },
+    {
+      "id": "AUD-004",
+      "date": "2026-09-28",
+      "decision": "进度条圆点样式在 Audio 场景下覆盖为白色填充+蓝色描边（.gj-audio-bar .gj-slider 限定选择器 + 私有 token），不改动 .gj-slider 共享基座；边框宽度 2px 为视觉估算值（Audio_Bar 为拉平静态图形，无法取得精确变量值）。同时将拖拽联动逻辑抽取为共享脚本 assets/scripts/gj-slider.js，供 Audio 及未来组件的静态演示页复用。",
+      "source": "预览页联调反馈核实，详见 audit.md「补充发现」AUD-004/AUD-005。"
     }
   ]
 }

@@ -3,7 +3,11 @@
   "component": "Audio",
   "source": {
     "figmaNode": "5026:7599",
-    "figmaNodes": ["5026:7663", "5026:7664", "5026:7665"],
+    "figmaNodes": [
+      "5026:7663",
+      "5026:7664",
+      "5026:7665"
+    ],
     "figmaReadDate": "2026-09-28",
     "componentSchema": "references/components/audio/schema.json",
     "componentMapping": "references/components/audio/mapping.json",
@@ -13,7 +17,10 @@
   "properties": {
     "state": {
       "default": "paused",
-      "values": ["paused", "playing"],
+      "values": [
+        "paused",
+        "playing"
+      ],
       "figmaSets": {
         "paused": "State=Paused",
         "playing": "State=Playing"
@@ -21,7 +28,10 @@
     },
     "closable": {
       "default": true,
-      "values": [true, false]
+      "values": [
+        true,
+        false
+      ]
     }
   },
   "tokens": {
@@ -98,7 +108,24 @@
     },
     "progressTrack": {
       "value": "reuses --ds-component-input-number-slider-* (input-number 组件)",
-      "note": "不新建独立滑块 token；默认参考宽度 200px 与 Figma Audio_Bar symbol 尺寸一致"
+      "note": "不新建独立滑块 token；默认参考宽度 200px 与 Figma Audio_Bar symbol 尺寸一致",
+      "thumbBackground": {
+        "value": "{Background/BG_container}",
+        "resolved": "#FFFFFF",
+        "cssVariable": "--ds-component-audio-slider-thumb-background",
+        "note": "Audio 自有 Figma 资产 Audio_Bar（5026:7663）圆点为白色填充，与共享 .gj-slider 基座默认实心蓝色不同，scoped 覆盖仅作用于 .gj-audio-bar 内"
+      },
+      "thumbBorderColor": {
+        "value": "{Brand/gj_blue}",
+        "resolved": "#2B73FF",
+        "cssVariable": "--ds-component-audio-slider-thumb-border-color"
+      },
+      "thumbBorderWidth": {
+        "value": 2,
+        "unit": "px",
+        "cssVariable": "--ds-component-audio-slider-thumb-border-width",
+        "note": "视觉估算值，非 Figma 实测：Audio_Bar 为拉平静态图形节点，get_variable_defs 无法取得描边宽度绑定值，组织网络策略又阻断原始 SVG 下载（同 AUD-002）"
+      }
     },
     "close.size": {
       "value": 16,

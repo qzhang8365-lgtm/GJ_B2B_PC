@@ -1224,6 +1224,9 @@
   --ds-component-audio-close-color: var(--ds-text-tertiary);
   --ds-component-audio-close-hover-color: var(--ds-text-primary);
   --ds-component-audio-duration-width: 60px;
+  --ds-component-audio-slider-thumb-background: var(--ds-background-container);
+  --ds-component-audio-slider-thumb-border-color: var(--ds-brand-gj-blue);
+  --ds-component-audio-slider-thumb-border-width: 2px;
   --ds-component-image-thumb-size: 104px;
   --ds-component-image-thumb-radius: var(--ds-radius-sm);
   --ds-component-image-thumb-border-color: var(--ds-border-secondary);
