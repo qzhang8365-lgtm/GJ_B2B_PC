@@ -71,6 +71,12 @@
     }
   },
   "scripts": {
+    "updateCheck": {
+      "path": "../scripts/check-update.sh",
+      "audience": "agent-preflight",
+      "runWhen": "SKILL.md 第 0 步：有 bash 时进入工作流前运行一次；无 bash / 无网直接跳过，永不阻断。",
+      "outputs": []
+    },
     "tokenBuild": {
       "path": "../scripts/build-tokens.mjs",
       "audience": "maintenance-script",

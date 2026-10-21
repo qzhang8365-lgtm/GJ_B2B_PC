@@ -17,6 +17,22 @@ description: 使用国金 PC 端 B 端设计系统的设计 Token、组件规则
 - 真实组件实现、事件接口、无障碍能力和发布版本由前端组件库确定。
 - 信息缺失或不同来源冲突时，标记为“待确认”，不得自行补造设计真值。
 
+## 第 0 步：升级自检（可选，能跑则跑，绝不阻断）
+
+**有 bash 环境**时，进入工作流前先跑一次：
+
+```bash
+bash scripts/check-update.sh
+```
+
+- 输出含「已更新到」→ 告知用户已升级到 V{版本}，并**重新读取本 SKILL.md** 再继续（旧内容已失效）。
+- 其它输出（如「发现新版本…未自动升级」）→ 一句话转告用户，然后继续。
+- 无输出 → 已是最新、12 小时内已查过或网络不通，静默继续，不打断用户。
+
+**无 bash / 无网 / 内网访问不到 GitHub / widget 沙盒等环境 → 直接跳过本步，不影响使用**。自检永不阻断、失败一律放行、退出码恒为 0，不是流程前置条件。
+
+机制：本地版本 = 根目录 `package.json` 的 `version`；版本源 = GitHub Releases 的 latest（与规范站「下载 Skill」按钮同源）。落后则下载对应 zip、校验包内版本号一致后整目录替换，旧版备份到 `~/.cache/gj-b2b-pc-design-skill/`，并保留用户已安装的 `node_modules`。带 `.git` 的目录（维护方开发仓库）不会被覆盖。
+
 ## 工作流
 
 1. 明确页面目标、使用角色、核心任务和信息优先级。
@@ -180,3 +196,4 @@ description: 使用国金 PC 端 B 端设计系统的设计 Token、组件规则
 - 不直接手工修改标记为派生产物的文件。
 - `preview/*/index.html` 里对共享文件（`gj-b2b-tokens.css`/`gj-b2b-components.css`/`component-docs.css`/`data-table.css`/`font-runtime.js`）的引用一律不带 `?v=` 版本号，全站共用同一份浏览器缓存。不要在修某个组件时顺手给这几个共享文件的引用加专属版本号——历史上曾经这样做（如 `carousel-1`→`carousel-2`），导致同一份共享文件在 40+ 个页面下被切成了几十份互不相认的缓存，浏览器完全无法复用，实测切页会多出几百毫秒到一秒的等待。共享文件内容变更后如需要强制浏览器重新拉取，应统一在 Netlify 缓存策略（`_headers`）层面处理，不要靠改单个页面的引用字符串。
 - 仓库配置了本地提交门禁（`scripts/git-hooks/`，`npm run install-hooks` 安装，等价于 `git config core.hooksPath scripts/git-hooks`）：提交前自动检查 JSON/CSS/HTML 结构完整性、`audit.md` 与 `audit-tracker.md` 是否同一提交同步更新、预览页/共享样式改动是否已按 `generation-verification.md` 完成渲染实测（`scripts/verify-page.mjs`），以及三项静态一致性检查——组件覆盖看板是否与实际文件同步（自动跑 `scripts/build-coverage.mjs --check`）、`references/components/` 下是否存在建好了但未在 `inventory.json` 登记的“孤儿组件目录”、组件 `rules.md` 里形如“8px（Radius/Radius-MD）”的标注是否与 `references/tokens/dimensions.json` 里的真实数值一致。命中明确违规会阻断提交；命中历史上已确认的合理例外类型（详见该脚本文件头注释）只提示、不阻断。紧急情况可用 `git commit --no-verify` 跳过，但应在提交信息中注明原因。
+- 发版约定（升级自检依赖它）：① 改 `package.json` 的 `version`（唯一版本号来源，不另设 VERSION 文件）；② 打包为 `gj-b2b-pc-design-skill-v{版本}.zip`，包内顶层目录含 `SKILL.md`、`package.json`、`scripts/check-update.sh`，不要带 `.git`、`node_modules`、`.update-check`；③ 在 GitHub 建 tag 为 `v{版本}` 的 Release、上传该 zip 并设为 Latest，且 zip 内 `package.json` 版本必须与 tag 一致，否则自检会拒绝覆盖；④ 同步更新规范站 `preview/overview`、`preview/guide` 里的下载链接。
