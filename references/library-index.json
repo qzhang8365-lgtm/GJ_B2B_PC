@@ -8,6 +8,7 @@
     "ai-readable": "AI 在选择规则、Token、组件和图标时可按需读取。",
     "output-asset": "AI 可在 HTML/CSS 原型中加载或复用，但不得当作指令文档或真实前端组件库 API。",
     "maintenance-script": "仅在对应来源更新、校验或显式迁移任务中运行，不作为规则来源读取。",
+    "prototype-delivery-tool": "只用于原型、验证页与 Figma 网页导入交付；真实前端源码是否采用内嵌转换必须由用户确认。",
     "human-preview-only": "只用于人工视觉与交互验收；不是设计真值、生产组件源码或 AI 默认参考入口。"
   },
   "aiWorkflow": {
@@ -112,7 +113,8 @@
     "localFileDelivery": {
       "path": "../scripts/prepare-file-delivery.mjs",
       "audience": "maintenance-script",
-      "runWhen": "当 HTML 需要通过双击、邮件或共享盘以 file:// 直接打开时，在交付前检查并内嵌外部 SVG mask 资源。",
+      "status": "retained-lower-level",
+      "runWhen": "仅在明确要求单独检查或迁移外部 SVG mask URL 时使用；它不处理伪元素、图片、CSS 背景图或 inset 描边，不能替代 scripts.figmaImportEmbedding。",
       "usage": "node scripts/prepare-file-delivery.mjs <html文件路径> --check | --write"
     },
     "projectAssetStaging": {
@@ -120,6 +122,22 @@
       "audience": "maintenance-script",
       "runWhen": "生成或覆盖业务页面后，将页面实际使用的设计系统资源及其依赖复制到目标项目 assets/，并移除对公共 Skill 安装目录的运行时引用。",
       "usage": "node <skill目录>/scripts/stage-project-assets.mjs <页面HTML或目录> --write | --check [--project-root=<项目根目录>]"
+    },
+    "figmaImportEmbedding": {
+      "path": "../scripts/embed-icons.cjs",
+      "runtimePath": "../assets/scripts/gj-b2b-inline-icons.js",
+      "audience": "prototype-delivery-tool",
+      "runWhen": "生成原型、验证页或需要通过 Figma Capture design / 网页导入的 HTML 后运行；把实际依赖的图标、图片和转换运行时写入页面本身，并在交付前用 --check 阻断缺失或过期内嵌块。",
+      "usage": "node <skill目录>/scripts/embed-icons.cjs <页面.html> [更多页面] [--check]"
+    },
+    "deliveryRuntimes": {
+      "audience": "prototype-delivery-only",
+      "inlineIcons": {
+        "path": "../assets/scripts/gj-b2b-inline-icons.js",
+        "initializes": "把 CSS mask 图标、伪元素图标、本地图片和 border-like inset shadow 转为 Figma 网页导入可识别的页面内实现",
+        "embeddedBy": "scripts.figmaImportEmbedding",
+        "policy": "仅由 embed-icons.cjs 内嵌到原型/验证页；不得作为设计真值，真实前端源码是否内嵌需先由用户确认。"
+      }
     },
     "previewRuntimes": {
       "audience": "human-preview-only",
@@ -218,7 +236,8 @@
     "Resolve components and icons through their single child indexes instead of duplicating their catalogs here.",
     "HTML/CSS prototypes load outputAssets.styles.loadOrder in order.",
     "Before delivering a generated or covered business page, stage only its referenced output assets and dependency closure into the target project's assets/ by following aiWorkflow.core.projectAssetDelivery.",
+    "After generating a prototype, validation page, or Figma web-import HTML, run scripts.figmaImportEmbedding and then rerun it with --check; do not use this delivery transform as production frontend source without user confirmation.",
     "Run scripts.tokenBuild after Token sources change, scripts.coverageBuild after component coverage changes, and scripts.validation before delivery.",
-    "Do not read humanPreviewSite or scripts.previewRuntimes as design truth; use them only for implementation and human acceptance when the task requires a preview."
+    "Do not read humanPreviewSite, scripts.previewRuntimes, or scripts.deliveryRuntimes as design truth; use them only for their declared preview or delivery purpose."
   ]
 }

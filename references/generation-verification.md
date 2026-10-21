@@ -20,14 +20,30 @@
 - 依据本 Skill 生成或覆盖业务页面后，先按 `project-asset-delivery.md` 将页面直接依赖及其依赖闭包归档到目标项目 `assets/`；不得复制整个 Skill、完整 Icon 库或未使用资源。
 - 从目标项目根目录运行 `node <skill目录>/scripts/stage-project-assets.mjs <页面HTML或目录> --write`，再以 `--check` 复核。公共 Skill 路径、项目外绝对路径、项目内缺失资源任一命中即为阻断。
 - 交付前临时移走或不可用化公共 Skill 路径，并在断网环境重新加载页面；样式、运行时、Icon、字体和图片必须仍能完整工作。
-- `file://` 交付在通过本门禁后，还需执行下一节的 SVG Mask 内嵌与双内核验收；两套检查不能互相替代。
+- 原型、验证页和 Figma 网页导入用 HTML 在完成依赖闭包归档后，还必须执行下一节的内嵌转换门禁。资源归档解决“资源在哪里”，内嵌转换解决“导入工具能否识别”，两套检查不能互相替代。
+
+### 原型与 Figma 网页导入的强制内嵌转换
+
+Figma Capture design / 网页导入工具不能可靠识别 CSS `mask` / `-webkit-mask`、伪元素中的遮罩图标、`file://` 本地图片，以及用 `inset box-shadow` 表达的 1px 描边或分割线。浏览器预览正常也不能证明导入结果完整。原型、验证页及 Figma 网页导入用 HTML 必须在生成完成、项目资源归档之后执行：
+
+```bash
+node <skill目录>/scripts/embed-icons.cjs <页面.html> [更多页面]
+node <skill目录>/scripts/embed-icons.cjs <页面.html> [更多页面] --check
+```
+
+- 脚本会扫描页面、页面引用的本地 CSS/JS、共享组件 CSS 与组件运行时，把依赖的 SVG 源码写入 `window.GJ_PC_ICONS`，把 Skill 图片写入 `window.GJ_PC_ASSETS`，并把 `assets/scripts/gj-b2b-inline-icons.js` 的全文写在固定的 `<!-- gj-pc-icons:start -->` 与 `<!-- gj-pc-icons:end -->` 标记之间。
+- 重复执行必须原位替换整个标记块，不得追加第二份；`--check` 在标记块缺失、依赖集合变化或内嵌数据过期时返回退出码 1。
+- 运行时把自身 mask 图标转为 `currentColor` 内联 SVG；把伪元素 mask 转为按当前颜色生成的数据背景；把本地 `<img>` 和 CSS `background-image` 换为内嵌数据；把只承担 1px 描边/分割线语义的 inset shadow 换为等宽等色 border，并扣减同侧 padding 保持尺寸和内容位置。动态 DOM 通过 MutationObserver 节流重处理。
+- 转换前后必须在同一视口、同一字体和同一交互状态逐像素对比。默认态、Hover、Selected、Disabled、弹层打开与动态重渲染均不得出现视觉或交互变化。
+- 转换后实测 DOM：图标元素不再依赖 mask；Skill 本地图片不再引用文件路径；不再存在承担边框语义的 inset shadow；HTTP 与 `file://` 均无控制台资源错误。
+- 该转换层只服务原型、验证页和 Figma 网页导入。给前端的真实生产代码是否采用内嵌实现，必须由用户明确确认后再写，不得默认扩散。
 
 ### 本地 `file://` 交付的浏览器矩阵
 
 - 只要交付说明包含“可直接双击 HTML”“离线打开”或“拷贝给同事”，就必须把 `file://` 视为独立运行环境；HTTP/localhost 验收不能替代本地文件验收。
 - 至少使用一个 Chromium 内核浏览器（Chrome 或 Edge）直接打开 `file://` 页面。若本机具备 Safari/WebKit，再用 WebKit 内核复核。Safari 显示正常不能推断 Chrome 正常，反之亦然。
-- 验收前运行 `node scripts/prepare-file-delivery.mjs <html> --check`。出现外部 SVG mask 即为阻断项；使用 `--write` 内嵌后必须重新执行 `--check`。
-- 分别检查 Sidebar、Navbar、Search、Button、Pagination 等含 Icon 的组件，以及 hover / selected / disabled 等会改变 `currentColor` 的状态。静态 `<img src="*.svg">` 可以继续外链，但不能替代需要随状态变色的 mask 或内联 SVG。
+- 验收前运行 `node <skill目录>/scripts/embed-icons.cjs <html> --check`。内嵌块缺失或与页面当前依赖不一致即为阻断项；先不带 `--check` 更新，再重新检查。`prepare-file-delivery.mjs` 只处理外部 SVG mask URL，不能替代本门禁。
+- 分别检查 Sidebar、Navbar、Search、Button、Pagination 等含 Icon 的组件，以及 hover / selected / disabled 等会改变 `currentColor` 的状态；同时检查普通图片、背景图、伪元素与 1px 描边。
 - 字体、图片和脚本也需在断网条件下可用；任何依赖远程 CDN、绝对本机路径或开发服务器的资源都视为本地交付失败。
 
 ## 四类高频问题的判定标准与检查方式

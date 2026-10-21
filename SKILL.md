@@ -20,18 +20,18 @@ description: 使用国金 PC 端 B 端设计系统的设计 Token、组件规则
 ## 工作流
 
 1. 明确页面目标、使用角色、核心任务和信息优先级。
-2. 读取 `references/library-index.json`，只从 `aiWorkflow` 分支按需解析规则、页面模式、Token、组件和图标入口；不把 `humanPreviewSite` 或 `scripts.previewRuntimes` 当作设计真值。
+2. 读取 `references/library-index.json`，只从 `aiWorkflow` 分支按需解析规则、页面模式、Token、组件和图标入口；不把 `humanPreviewSite`、`scripts.previewRuntimes` 或 `scripts.deliveryRuntimes` 当作设计真值。
 3. 从 `aiWorkflow.core.pagePatterns` 选择最接近的页面骨架，并读取 `aiWorkflow.core.pagePatternMetadata` 中该模式的任务目标、布局骨架、必选/可选组件、状态、响应式、交互、数据口径和文案约束；再读取 `aiWorkflow.tokens.unified` 使用统一设计 Token。页面涉及已工程化组件时，按 `componentTokenPattern` 定位文件，并使用对应 `component.<name>.tokens` 和 `stateMatrix`，不得从文字规则临时猜测状态值。
 4. 先从 `aiWorkflow.core.coverage` 查看目标组件的覆盖行，一次确认叙述规则、结构化契约、组件 Token 和预览页状态；再从 `aiWorkflow.components` 指向的组件子索引查询组件，由其 `schemaRegistry` 定位对应 `schema.json`，按需读取同目录资源。不在 `SKILL.md` 维护第二份组件路径或状态表。
 5. 从 `aiWorkflow.icons` 指向的图标子索引先判断类型，再按其 catalog 打开对应 manifest 并解析资源路径。`library-index.json` 不重复图标清单。不得使用 Emoji、临时 Unicode 字符、CSS 手绘或清单外名称。
 6. 检查层级、间距、状态、异常内容、响应式和组件组合关系。
-7. 输出结果前按本文件的自检清单复核。
+7. 输出结果前按本文件的自检清单复核。原型、验证页或 Figma Capture design / 网页导入用 HTML 还必须运行 `scripts/embed-icons.cjs` 写入交付转换块，再以 `--check` 复核；不得用浏览器里“看起来正常”替代该门禁。
 
 ## 按需读取
 
 - 颜色、字体、效果、栅格、断点、圆角等全局规范：读取 `references/design-system-rules.md` 中的相关章节。组件详细规则（用途、属性枚举、组合规则、边界）：读取 `references/components/<name>/rules.md`；design-system-rules.md 里的组件章节现在只是指向对应 rules.md 的重定向，不重复正文。
 - 完整统一 Token：从 `references/library-index.json` 的 `aiWorkflow.tokens.unified` 定位，不另行猜测文件名。
-- HTML/CSS 原型：按 `references/library-index.json` 的 `outputAssets.styles.loadOrder` 顺序加载工作流 CSS，页面基础组件必须优先使用其共享 `gj-*` 静态组件类。需要人工预览交互增强时，才按 `scripts.previewRuntimes` 登记加载脚本；这些脚本不是生产组件库源码。生成或覆盖业务页面时必须读取 `references/project-asset-delivery.md`：公共 Skill 目录只作为复制源，页面所需 CSS、运行时、Icon、字体和图片按依赖闭包复制到目标项目 `assets/`，最终页面不得继续引用公共 Skill 路径。若页面要通过双击 HTML、邮件或共享盘以 `file://` 直接交付，还必须读取 `references/local-file-delivery.md`，按其中的 Icon 传输与跨浏览器验收协议处理，不能把 HTTP 预览成功当作本地交付成功。
+- HTML/CSS 原型：按 `references/library-index.json` 的 `outputAssets.styles.loadOrder` 顺序加载工作流 CSS，页面基础组件必须优先使用其共享 `gj-*` 静态组件类。需要人工预览交互增强时，才按 `scripts.previewRuntimes` 登记加载脚本；这些脚本不是生产组件库源码。生成或覆盖业务页面时必须读取 `references/project-asset-delivery.md`：公共 Skill 目录只作为复制源，页面所需 CSS、运行时、Icon、字体和图片按依赖闭包复制到目标项目 `assets/`，最终页面不得继续引用公共 Skill 路径。原型、验证页及 Figma 网页导入用 HTML 在资源归档后必须运行 `node <skill目录>/scripts/embed-icons.cjs <页面.html>`，交付前再运行同命令并加 `--check`；转换会把页面实际依赖的 Icon、图片与兼容运行时写进 HTML，使 CSS mask、伪元素图标、本地图片和内阴影描边能被导入工具识别。若页面还需通过双击、邮件或共享盘以 `file://` 交付，继续读取 `references/local-file-delivery.md` 并完成 Chromium/WebKit 复核，不能把 HTTP 预览成功当作本地交付成功。
 - 规范站外壳：仅维护规范网页时读取 `references/tokens/docs-site.tokens.json`；其中 `--docs-*` 禁止用于业务产品页面。
 - 业务方接入验收：审计业务团队自己编写、消费本 skill 共享资产的页面（而非本仓库自己生成的规范页/组件预览页）时，读取 `references/business-integration-checklist.md`——里面收录的是已核实的真实翻车模式（如表单标签宽度写死导致溢出、程序化设置组件默认值未走共享事件机制导致视觉不同步），发现新的同类问题时应补充进这份清单，而不是只写进当次审计报告。
 - 页面结构与组合：从 `aiWorkflow.core.pagePatterns` 读取文字规则，并从 `aiWorkflow.core.pagePatternMetadata` 读取所选模式的结构化元信息。生成前必须逐项解析十个字段，未知业务信息标记“待确认”，不得留空后自行补造；只在需要人工视觉验收时打开 `humanPreviewSite.entryPoints.pagePatterns` 及对应页面。页面模式不得重新并入组件工作台。
@@ -123,6 +123,7 @@ description: 使用国金 PC 端 B 端设计系统的设计 Token、组件规则
 ## 全局硬规则
 
 - 公共 Skill 安装目录只允许在生成阶段读取，禁止成为业务页面运行时依赖。不得复制整个 Skill 或完整资源库；只把本页实际引用的文件及其 CSS/运行时静态依赖复制到目标项目根目录 `assets/`，并将 HTML/CSS/JS 改为项目内相对路径。不得使用指回公共 Skill 的绝对路径、`file://` URL 或符号链接。
+- 原型、验证页或 Figma 网页导入用 HTML 生成后必须执行 `scripts/embed-icons.cjs`，并在交付前执行 `--check`。导入工具无法可靠读取 CSS mask、伪元素 mask、本地图片和作为 1px 描边使用的 inset box-shadow；兼容运行时只改变载体，不得改变任何视觉、布局或交互。此内嵌交付层默认不写入真实前端生产源码；是否对真实前端代码使用，必须先由用户确认。
 - 优先使用语义 Token；已有语义变量时不直接写 HEX、随意尺寸或近似阴影。
 - UI 字体只调用用户本机字体，并固定成对使用：苹方 + SF Pro、微软雅黑 + Arial、思源黑体 + Source Sans Pro；同一页面不得任意混搭。Figma 字体仅作视觉参考。
 - GJType 仅允许用于 Metric、Gauge、Progress、Progress Ring 的核心指标；表格数据、普通图表标签、日期时间、分页、Badge 和正文即使包含数字也必须使用当前 UI 字体配对。
@@ -168,7 +169,8 @@ description: 使用国金 PC 端 B 端设计系统的设计 Token、组件规则
 - 是否把待确认事项与已确认规范明确区分？
 - 是否避免虚构前端组件库、API、依赖和设计变量？
 - 是否已按 `references/project-asset-delivery.md` 只归档本页依赖，并运行 `scripts/stage-project-assets.mjs --check`，确认页面换目录、换电脑或移除公共 Skill 后仍能加载全部样式、脚本、Icon、字体和图片？
-- 若交付方式包含直接双击 HTML，是否已运行 `scripts/prepare-file-delivery.mjs --check`，并分别用 Chromium 内核与 WebKit/Safari 直接打开 `file://` 页面验证 Icon、字体、样式和交互？
+- 原型、验证页或 Figma 网页导入用 HTML 是否已运行 `scripts/embed-icons.cjs`，并以 `--check` 验证内嵌块与当前页面依赖一致？
+- 若交付方式包含直接双击 HTML，是否已用 Chromium 内核与 WebKit/Safari 直接打开 `file://` 页面验证 Icon、图片、描边、字体、样式和交互，并确认控制台无本地资源加载错误？
 
 ## 维护
 

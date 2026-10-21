@@ -7,7 +7,7 @@
 - 页面实际使用的设计系统 CSS、运行时、Icon、字体和图片，必须复制到目标项目根目录的 `assets/` 下，并改用项目内相对路径。
 - 最终 HTML、CSS、JS 不得引用 `~/.codex/skills/`、`.claude/skills/`、其他 AI 工具的公共 Skill 目录、`file:///Users/...` 或作者电脑上的绝对路径。
 - “复制到项目”是复制，不是移动或删除公共 Skill 中的源文件。公共 Skill 必须保持可供其他项目继续使用。
-- HTTP 部署、本地服务器和 `file://` 交付都执行本规则；`file://` 还需继续执行 `local-file-delivery.md` 的 SVG Mask 内嵌规则。
+- HTTP 部署、本地服务器和 `file://` 交付都执行本规则；原型、验证页与 Figma 网页导入用 HTML 在资源归档后继续执行 `generation-verification.md` 的内嵌转换门禁，`file://` 再执行 `local-file-delivery.md` 的双内核验收。
 
 ## 只复制依赖闭包
 
@@ -50,6 +50,15 @@
 node <skill目录>/scripts/stage-project-assets.mjs <页面HTML或页面目录> --write
 node <skill目录>/scripts/stage-project-assets.mjs <页面HTML或页面目录> --check
 ```
+
+资源归档完成后，原型、验证页或 Figma 网页导入用 HTML 再运行：
+
+```bash
+node <skill目录>/scripts/embed-icons.cjs <页面HTML> [更多页面]
+node <skill目录>/scripts/embed-icons.cjs <页面HTML> [更多页面] --check
+```
+
+顺序不能颠倒：先复制页面实际依赖，再把最终依赖集合与兼容运行时写进 HTML。内嵌脚本不会授权复制整个 Skill，仍只处理页面及共享组件链实际需要的资源。
 
 可用 `--project-root=<项目根目录>` 显式指定根目录。脚本会：
 

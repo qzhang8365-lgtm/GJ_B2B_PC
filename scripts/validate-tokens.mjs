@@ -160,7 +160,11 @@ for (const duplicatedIconCatalog of ["icons/manifest.json", "icons/glass-manifes
 }
 if (libraryIndex.humanPreviewSite?.audience !== "human-preview-only") fail("Library index must isolate the human preview site branch");
 if (libraryIndex.scripts?.previewRuntimes?.audience !== "human-preview-only") fail("Preview runtimes must be marked human-preview-only");
+if (libraryIndex.scripts?.deliveryRuntimes?.audience !== "prototype-delivery-only") fail("Delivery runtimes must be marked prototype-delivery-only");
 const referencesRoot = path.join(root, "references");
+// 正式 Skill 发布包不包含人工预览站；仓库内存在 preview/ 时才校验其页面入口。
+// AI 工作流、输出资产与交付脚本无论在哪种形态下都必须继续通过路径校验。
+const hasHumanPreviewSite = fs.existsSync(path.join(root, "preview"));
 const assertLibraryPath = (relativePath, label) => {
   if (!relativePath || relativePath.includes("<") || relativePath.includes("*") || relativePath === "aiWorkflow.icons") return;
   if (!fs.existsSync(path.resolve(referencesRoot, relativePath))) fail(`Library index path missing: ${label} -> ${relativePath}`);
@@ -173,23 +177,32 @@ assertLibraryPath(libraryIndex.aiWorkflow.components, "aiWorkflow.components");
 assertLibraryPath(libraryIndex.aiWorkflow.icons, "aiWorkflow.icons");
 for (const [index, relativePath] of libraryIndex.outputAssets.styles.loadOrder.entries()) assertLibraryPath(relativePath, `outputAssets.styles.loadOrder[${index}]`);
 assertLibraryPath(libraryIndex.outputAssets.fonts.root, "outputAssets.fonts.root");
-const maintenanceScriptNames = ["tokenBuild", "coverageBuild", "validation", "semanticColorMigration", "previewServer", "pageVerification", "localFileDelivery", "projectAssetStaging"];
+const maintenanceScriptNames = ["tokenBuild", "coverageBuild", "validation", "semanticColorMigration", "previewServer", "pageVerification", "localFileDelivery", "projectAssetStaging", "figmaImportEmbedding"];
 for (const name of maintenanceScriptNames) assertLibraryPath(libraryIndex.scripts[name].path, `scripts.${name}.path`);
+assertLibraryPath(libraryIndex.scripts.figmaImportEmbedding.runtimePath, "scripts.figmaImportEmbedding.runtimePath");
 for (const [name, runtime] of Object.entries(libraryIndex.scripts.previewRuntimes)) {
   if (runtime && typeof runtime === "object" && runtime.path) assertLibraryPath(runtime.path, `scripts.previewRuntimes.${name}.path`);
 }
-for (const [name, relativePath] of Object.entries(libraryIndex.humanPreviewSite.entryPoints)) assertLibraryPath(relativePath, `humanPreviewSite.entryPoints.${name}`);
-for (const [name, relativePath] of Object.entries(libraryIndex.humanPreviewSite.pagePatternSharedFiles)) assertLibraryPath(relativePath, `humanPreviewSite.pagePatternSharedFiles.${name}`);
+for (const [name, runtime] of Object.entries(libraryIndex.scripts.deliveryRuntimes)) {
+  if (runtime && typeof runtime === "object" && runtime.path) assertLibraryPath(runtime.path, `scripts.deliveryRuntimes.${name}.path`);
+}
+if (hasHumanPreviewSite) {
+  for (const [name, relativePath] of Object.entries(libraryIndex.humanPreviewSite.entryPoints)) assertLibraryPath(relativePath, `humanPreviewSite.entryPoints.${name}`);
+  for (const [name, relativePath] of Object.entries(libraryIndex.humanPreviewSite.pagePatternSharedFiles)) assertLibraryPath(relativePath, `humanPreviewSite.pagePatternSharedFiles.${name}`);
+}
 assertLibraryPath(libraryIndex.humanPreviewSite.siteOnlyTokens, "humanPreviewSite.siteOnlyTokens");
 assertLibraryPath(libraryIndex.humanPreviewSite.previewImagesRoot, "humanPreviewSite.previewImagesRoot");
 assertLibraryPath(libraryIndex.humanPreviewSite.legacyStyles.path, "humanPreviewSite.legacyStyles.path");
 const normalizeRegisteredScript = relativePath => path.relative(root, path.resolve(referencesRoot, relativePath));
 const registeredMaintenanceScripts = new Set(maintenanceScriptNames.map(name => normalizeRegisteredScript(libraryIndex.scripts[name].path)));
-const actualMaintenanceScripts = fs.readdirSync(path.join(root, "scripts"), { withFileTypes: true }).filter(entry => entry.isFile() && /\.(?:mjs|js)$/.test(entry.name)).map(entry => path.join("scripts", entry.name));
+const actualMaintenanceScripts = fs.readdirSync(path.join(root, "scripts"), { withFileTypes: true }).filter(entry => entry.isFile() && /\.(?:mjs|cjs|js)$/.test(entry.name)).map(entry => path.join("scripts", entry.name));
 for (const scriptPath of actualMaintenanceScripts) if (!registeredMaintenanceScripts.has(scriptPath)) fail(`Unregistered maintenance script: ${scriptPath}`);
-const registeredPreviewScripts = new Set(Object.values(libraryIndex.scripts.previewRuntimes).filter(runtime => runtime && typeof runtime === "object" && runtime.path).map(runtime => normalizeRegisteredScript(runtime.path)));
+const registeredAssetScripts = new Set([
+  ...Object.values(libraryIndex.scripts.previewRuntimes),
+  ...Object.values(libraryIndex.scripts.deliveryRuntimes)
+].filter(runtime => runtime && typeof runtime === "object" && runtime.path).map(runtime => normalizeRegisteredScript(runtime.path)));
 const actualPreviewScripts = fs.readdirSync(path.join(root, "assets/scripts"), { withFileTypes: true }).filter(entry => entry.isFile() && /\.js$/.test(entry.name)).map(entry => path.join("assets/scripts", entry.name));
-for (const scriptPath of actualPreviewScripts) if (!registeredPreviewScripts.has(scriptPath)) fail(`Unregistered preview runtime: ${scriptPath}`);
+for (const scriptPath of actualPreviewScripts) if (!registeredAssetScripts.has(scriptPath)) fail(`Unregistered asset runtime: ${scriptPath}`);
 if (coverage["$schema"] !== "gj-design-skill/component-coverage/v1") fail("Component coverage dashboard schema is invalid");
 if (coverage.components.length !== coverage.summary.components) fail("Component coverage row count does not match its summary");
 if (new Set(coverage.components.map(component => component.id)).size !== coverage.components.length) fail("Component coverage contains duplicate component ids");
@@ -198,8 +211,10 @@ for (const component of coverage.components) {
     if (!component[dimension]?.status) fail(`Component coverage missing ${dimension} status: ${component.component}`);
   }
 }
-const coverageCheck = spawnSync(process.execPath, [path.join(root, "scripts/build-coverage.mjs"), "--check"], { cwd: root, encoding: "utf8" });
-if (coverageCheck.status !== 0) fail(coverageCheck.stderr.trim() || coverageCheck.stdout.trim() || "Component coverage dashboard is stale");
+if (hasHumanPreviewSite) {
+  const coverageCheck = spawnSync(process.execPath, [path.join(root, "scripts/build-coverage.mjs"), "--check"], { cwd: root, encoding: "utf8" });
+  if (coverageCheck.status !== 0) fail(coverageCheck.stderr.trim() || coverageCheck.stdout.trim() || "Component coverage dashboard is stale");
+}
 
 const componentRoot = path.join(root, "references/components");
 const inventoryEntries = componentInventory.schemaRegistry?.executionOrder;
@@ -269,29 +284,31 @@ for (const file of componentTokenFiles) {
   const inventoryEntry = inventoryEntries.find(entry => path.posix.dirname(entry.path) === directoryName);
   if (normalizedComponentName(token.component) !== normalizedComponentName(inventoryEntry.component)) fail(`Inventory/component-token name mismatch: ${inventoryEntry.component} != ${token.component}`);
 }
-for (const retiredName of ["patterns.css", "patterns.js"]) {
-  if (fs.existsSync(path.join(root, "preview/patterns", retiredName))) fail(`Retired generic page-pattern asset still exists: preview/patterns/${retiredName}`);
-}
-for (const filename of ["search-list.html", "form-edit.html", "object-detail.html", "step-task.html", "dashboard.html"]) {
-  const source = fs.readFileSync(path.join(root, "preview/patterns", filename), "utf8");
-  if (!source.includes("page-patterns.css")) fail(`Page pattern missing namespaced stylesheet: ${filename}`);
-  if (/(?:^|[/'"=])patterns\.(?:css|js)(?:[?"'\s]|$)/m.test(source)) fail(`Page pattern retains generic shared asset name: ${filename}`);
-  const navbar = source.match(/<header class="gj-navbar"[^>]*>[\s\S]*?<\/header>/)?.[0];
-  if (!navbar || !navbar.includes("data-gj-navbar") || !navbar.includes('aria-label="全局顶部导航"')) fail(`Page pattern must compose one semantic shared Navbar: ${filename}`);
-  for (const sharedClass of ["gj-navbar-spacer", "gj-navbar-actions", "gj-search", "gj-navbar-icon-group", "gj-navbar-divider", "gj-navbar-user", "gj-avatar"]) {
-    if (!navbar.includes(sharedClass)) fail(`Page pattern Navbar missing shared ${sharedClass}: ${filename}`);
+if (hasHumanPreviewSite) {
+  for (const retiredName of ["patterns.css", "patterns.js"]) {
+    if (fs.existsSync(path.join(root, "preview/patterns", retiredName))) fail(`Retired generic page-pattern asset still exists: preview/patterns/${retiredName}`);
   }
-  if (!navbar.includes('data-surface="white"') || !navbar.includes('data-menu="false"')) fail(`Sidebar page Navbar must explicitly use the standard White / Menu=false combination: ${filename}`);
-  if (!navbar.includes('gj-search-icon') || !navbar.includes('icf_system_search.svg')) fail(`Page pattern Navbar Search must use the shared icon-library search icon: ${filename}`);
-  if (/class="(?:navbar|menu-item|dropdown)(?:\s|")/.test(navbar)) fail(`Page pattern Navbar retains a private implementation: ${filename}`);
-  const sidebar = source.match(/<aside class="gj-sidebar"[^>]*>[\s\S]*?<\/aside>/)?.[0];
-  if (!sidebar || !sidebar.includes('data-gj-sidebar') || !sidebar.includes('data-gj-sidebar-toggle')) fail(`Page pattern Sidebar must bind the shared collapse runtime: ${filename}`);
-  if ((source.match(/gj-sidebar\.js/g) || []).length !== 1) fail(`Page pattern must load the shared Sidebar runtime exactly once: ${filename}`);
-  for (const page of ["search-list.html", "form-edit.html", "object-detail.html", "dashboard.html", "step-task.html"]) {
-    if (!sidebar.includes(`href="${page}"`) || !sidebar.includes('data-pattern-page')) fail(`Page pattern Sidebar missing mode entry ${page}: ${filename}`);
+  for (const filename of ["search-list.html", "form-edit.html", "object-detail.html", "step-task.html", "dashboard.html"]) {
+    const source = fs.readFileSync(path.join(root, "preview/patterns", filename), "utf8");
+    if (!source.includes("page-patterns.css")) fail(`Page pattern missing namespaced stylesheet: ${filename}`);
+    if (/(?:^|[/'"=])patterns\.(?:css|js)(?:[?"'\s]|$)/m.test(source)) fail(`Page pattern retains generic shared asset name: ${filename}`);
+    const navbar = source.match(/<header class="gj-navbar"[^>]*>[\s\S]*?<\/header>/)?.[0];
+    if (!navbar || !navbar.includes("data-gj-navbar") || !navbar.includes('aria-label="全局顶部导航"')) fail(`Page pattern must compose one semantic shared Navbar: ${filename}`);
+    for (const sharedClass of ["gj-navbar-spacer", "gj-navbar-actions", "gj-search", "gj-navbar-icon-group", "gj-navbar-divider", "gj-navbar-user", "gj-avatar"]) {
+      if (!navbar.includes(sharedClass)) fail(`Page pattern Navbar missing shared ${sharedClass}: ${filename}`);
+    }
+    if (!navbar.includes('data-surface="white"') || !navbar.includes('data-menu="false"')) fail(`Sidebar page Navbar must explicitly use the standard White / Menu=false combination: ${filename}`);
+    if (!navbar.includes('gj-search-icon') || !navbar.includes('icf_system_search.svg')) fail(`Page pattern Navbar Search must use the shared icon-library search icon: ${filename}`);
+    if (/class="(?:navbar|menu-item|dropdown)(?:\s|")/.test(navbar)) fail(`Page pattern Navbar retains a private implementation: ${filename}`);
+    const sidebar = source.match(/<aside class="gj-sidebar"[^>]*>[\s\S]*?<\/aside>/)?.[0];
+    if (!sidebar || !sidebar.includes('data-gj-sidebar') || !sidebar.includes('data-gj-sidebar-toggle')) fail(`Page pattern Sidebar must bind the shared collapse runtime: ${filename}`);
+    if ((source.match(/gj-sidebar\.js/g) || []).length !== 1) fail(`Page pattern must load the shared Sidebar runtime exactly once: ${filename}`);
+    for (const page of ["search-list.html", "form-edit.html", "object-detail.html", "dashboard.html", "step-task.html"]) {
+      if (!sidebar.includes(`href="${page}"`) || !sidebar.includes('data-pattern-page')) fail(`Page pattern Sidebar missing mode entry ${page}: ${filename}`);
+    }
+    const currentLink = new RegExp(`<a class="gj-sidebar-item[^"]*is-selected[^"]*" href="${filename}"[^>]*aria-current="page"`);
+    if (!currentLink.test(sidebar)) fail(`Page pattern Sidebar must mark the current mode selected: ${filename}`);
   }
-  const currentLink = new RegExp(`<a class="gj-sidebar-item[^"]*is-selected[^"]*" href="${filename}"[^>]*aria-current="page"`);
-  if (!currentLink.test(sidebar)) fail(`Page pattern Sidebar must mark the current mode selected: ${filename}`);
 }
 
 const knownColorNames = new Set([...Object.keys(primitive), ...Object.keys(semantic)]);
@@ -389,6 +406,7 @@ const selectorRuntime = fs.readFileSync(path.join(root, "assets/scripts/gj-selec
 const datePickerRuntime = fs.readFileSync(path.join(root, "assets/scripts/gj-date-picker.js"), "utf8");
 const componentCss = fs.readFileSync(path.join(root, "assets/styles/gj-b2b-components.css"), "utf8");
 const componentDocsCss = fs.readFileSync(path.join(root, "assets/styles/component-docs.css"), "utf8");
+if (hasHumanPreviewSite) {
 const queryListHtml = fs.readFileSync(path.join(root, "preview/patterns/search-list.html"), "utf8");
 const queryListRuntime = fs.readFileSync(path.join(root, "preview/patterns/search-list.js"), "utf8");
 const tablePreviewHtml = fs.readFileSync(path.join(root, "preview/table/index.html"), "utf8");
@@ -563,6 +581,7 @@ if (!/\.card\{[^}]*border:0[^}]*background:var\(--ds-background-container\)/.tes
 if (!queryPatternCss.includes(".query-filter-grid>.query-filter-pair{flex:0 0 240px}")) fail("Query-list filter items must retain stable left-aligned widths");
 if (queryPatternCss.includes(".query-filter-grid{display:grid;grid-template-columns:repeat(4")) fail("Query-list filters must not use an equal-fill four-column grid");
 if (queryPatternCss.includes(".query-sort") || queryPatternCss.includes(".query-sort-icon")) fail("Page CSS must not redraw the shared Table sort control");
+}
 
 const cssVariables = [
   ...Object.values(unified.color.primitive),
@@ -588,6 +607,7 @@ for (const token of Object.values(typography.styles)) {
   if (!css.includes(`.${token.cssClass} {`)) fail(`Generated CSS missing typography class: ${token.cssClass}`);
 }
 
+if (hasHumanPreviewSite) {
 const previewRoot = path.join(root, "preview");
 const previewFiles = [];
 const walkPreview = directory => {
@@ -606,6 +626,7 @@ for (const file of previewFiles) {
   if (file.endsWith(".html") && !source.includes("font-runtime.js")) fail(`Local font runtime missing: ${path.relative(root, file)}`);
   if (file.endsWith(".html") && /<select[^>]*class="[^"]*gj-select/.test(source) && !source.includes("assets/scripts/gj-selector.js")) fail(`Shared Selector runtime missing: ${path.relative(root, file)}`);
   if (/font(?:-family)?\s*:[^;}]*(?:PingFang|Microsoft YaHei|Source Han Sans|Noto Sans CJK|Roboto)/i.test(source)) fail(`Direct UI font family binding remains: ${path.relative(root, file)}`);
+}
 }
 
 console.log(JSON.stringify({
