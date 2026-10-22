@@ -1,7 +1,7 @@
 {
   "name": "gj-b2b-pc-design-skill",
   "private": true,
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "国金 PC 端 B 端设计系统 Skill 的生成后校验与维护脚本依赖清单；不改变 Figma 只读策略与 AI 工作流本身，仅用于本地生成/提交前的自动化检查。",
   "scripts": {
     "verify-page": "node scripts/verify-page.mjs",
