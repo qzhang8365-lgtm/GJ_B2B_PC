@@ -14,6 +14,7 @@
 // This script serves the repo root over plain HTTP, honors the (simple, exact-match)
 // rules in `_redirects` the same way Netlify would, and opens the workbench in the
 // default browser. Run with `npm run serve` (or `node scripts/serve-preview.mjs`).
+// Pass `--no-open` when a wrapper wants to choose a specific browser itself.
 
 import fs from "node:fs";
 import path from "node:path";
@@ -24,7 +25,10 @@ import { fileURLToPath } from "node:url";
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(scriptDir, "..");
 
-const port = Number(process.env.PORT || process.argv[2] || 4173);
+const args = process.argv.slice(2);
+const noOpen = args.includes("--no-open");
+const portArgument = args.find(argument => /^\d+$/.test(argument));
+const port = Number(process.env.PORT || portArgument || 4173);
 
 const mimeTypes = {
   ".html": "text/html; charset=utf-8",
@@ -98,10 +102,11 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(port, "127.0.0.1", () => {
-  const url = `http://localhost:${port}/`;
+  const url = `http://localhost:${port}/preview/`;
   console.log(`GJ B端设计系统 · 本地预览已启动: ${url}`);
   console.log("按 Ctrl+C 停止。");
 
+  if (noOpen) return;
   const opener = process.platform === "darwin" ? "open" : process.platform === "win32" ? "start" : "xdg-open";
   try {
     const child = spawn(opener, [url], { stdio: "ignore", detached: true, shell: process.platform === "win32" });
