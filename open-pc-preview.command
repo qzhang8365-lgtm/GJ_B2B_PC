@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# 双击此文件：启动本地 HTTP 预览，并使用 Safari 打开 PC 端规范站。
+# Double-click this file to start the local HTTP preview and open the PC design system in Safari.
 # 关闭此终端窗口或按 Control+C，会同步停止本地预览服务。
 
 PROJECT_DIR="$(cd "$(dirname "$0")" 2>/dev/null && pwd)" || exit 1
