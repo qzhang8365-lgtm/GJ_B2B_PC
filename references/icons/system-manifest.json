@@ -1,9 +1,9 @@
 {
   "$schema": "gj-design-skill/icon-manifest/v1",
   "source": "/Users/gjzq_imac/Desktop/国金B端设计系统/iconfont/system",
-  "count": 115,
+  "count": 117,
   "relationship": {
-    "role": "source-svg-audit",
+    "role": "derived-svg-audit-mirror",
     "assetRoot": "../../assets/icons/general/",
     "svgRoot": "../../assets/icons/general/system/",
     "compiledCatalog": "../icons/manifest.json",
@@ -12,16 +12,14 @@
     "compiledMap": "../../assets/icons/iconfont/font/iconfont-map.js",
     "rule": "This manifest and the System category in icons/manifest.json are two delivery forms of one icon lineage, not two independent icon libraries. Use this file for source SVG audit and the compiled catalog for page/component icon selection.",
     "verification": {
-      "sourceCount": 115,
-      "compiledSystemCount": 113,
-      "byteIdenticalSvgCount": 113,
-      "sourceOnly": "无（两项分类迁移已确认，见下）",
-      "compiledSystemOnly": "无（两项分类迁移已确认，见下）",
+      "sourceCount": 117,
+      "compiledSystemCount": 115,
+      "byteIdenticalSvgCount": 115,
       "categoryReassignments": [
-        "system/icon-attachment.svg 编译归入 File/icf_file_attachment —— 2026-09-10 用户确认为最终分类（ICO-001 已关闭；旧源名 system/icon_attachment 仅保留为兼容别名）",
-        "system/link-line.svg（2026-09-10 因 ICO-002 补入本快照）编译归入 File/icf_file_link-line，不是 System —— 2026-09-10 用户确认改判（原 ICO-002 结论已按此修正）"
+        "system/icon-attachment.svg → File/icf_file_attachment",
+        "system/link-line.svg → File/icf_file_link-line"
       ],
-      "note": "sourceCount(115) 与 compiledSystemCount(113) 不相等是预期结果：115 个源文件里有 2 个（icon-attachment、link-line）编译归入了 File 分类而非 System，见 categoryReassignments；剩余 113 个源文件与编译 System 分类逐一字节一致。"
+      "note": "Derived audit mirror synchronized 2026-10-26 from current canonical SVG. Includes 2 File-class aliases; not an independent selectable catalog or original Figma export. Existing source filenames preserved."
     }
   },
   "icons": [
@@ -33,7 +31,8 @@
       "keywords": [
         "horn",
         "fill"
-      ]
+      ],
+      "compiledName": "icf_system_horn-fill"
     },
     {
       "name": "system/horn",
@@ -42,7 +41,8 @@
       "file": "system/horn.svg",
       "keywords": [
         "horn"
-      ]
+      ],
+      "compiledName": "icf_system_horn"
     },
     {
       "name": "system/icon-add-circle-fill",
@@ -54,7 +54,8 @@
         "add",
         "circle",
         "fill"
-      ]
+      ],
+      "compiledName": "icf_system_add-circle-fill"
     },
     {
       "name": "system/icon-add-circle",
@@ -65,7 +66,8 @@
         "icon",
         "add",
         "circle"
-      ]
+      ],
+      "compiledName": "icf_system_add-circle"
     },
     {
       "name": "system/icon-add-classify-fill",
@@ -77,7 +79,8 @@
         "add",
         "classify",
         "fill"
-      ]
+      ],
+      "compiledName": "icf_system_add-classify-fill"
     },
     {
       "name": "system/icon-add-classify",
@@ -88,7 +91,8 @@
         "icon",
         "add",
         "classify"
-      ]
+      ],
+      "compiledName": "icf_system_add-classify"
     },
     {
       "name": "system/icon-add",
@@ -98,7 +102,8 @@
       "keywords": [
         "icon",
         "add"
-      ]
+      ],
+      "compiledName": "icf_system_add"
     },
     {
       "name": "system/icon-alert-fill",
@@ -109,7 +114,8 @@
         "icon",
         "alert",
         "fill"
-      ]
+      ],
+      "compiledName": "icf_system_alert-fill"
     },
     {
       "name": "system/icon-alert",
@@ -119,7 +125,8 @@
       "keywords": [
         "icon",
         "alert"
-      ]
+      ],
+      "compiledName": "icf_system_alert"
     },
     {
       "name": "system/icon-bell-fill",
@@ -130,7 +137,8 @@
         "icon",
         "bell",
         "fill"
-      ]
+      ],
+      "compiledName": "icf_system_bell-fill"
     },
     {
       "name": "system/icon-bell",
@@ -140,7 +148,8 @@
       "keywords": [
         "icon",
         "bell"
-      ]
+      ],
+      "compiledName": "icf_system_bell"
     },
     {
       "name": "system/icon-calendar-fill",
@@ -151,7 +160,8 @@
         "icon",
         "calendar",
         "fill"
-      ]
+      ],
+      "compiledName": "icf_system_calendar-fill"
     },
     {
       "name": "system/icon-calendar",
@@ -161,7 +171,8 @@
       "keywords": [
         "icon",
         "calendar"
-      ]
+      ],
+      "compiledName": "icf_system_calendar"
     },
     {
       "name": "system/icon-check-circle-fill",
@@ -173,7 +184,8 @@
         "check",
         "circle",
         "fill"
-      ]
+      ],
+      "compiledName": "icf_system_check-circle-fill"
     },
     {
       "name": "system/icon-check-circle",
@@ -184,7 +196,8 @@
         "icon",
         "check",
         "circle"
-      ]
+      ],
+      "compiledName": "icf_system_check-circle"
     },
     {
       "name": "system/icon-check",
@@ -194,7 +207,8 @@
       "keywords": [
         "icon",
         "check"
-      ]
+      ],
+      "compiledName": "icf_system_check"
     },
     {
       "name": "system/icon-checkbox-fill",
@@ -205,7 +219,8 @@
         "icon",
         "checkbox",
         "fill"
-      ]
+      ],
+      "compiledName": "icf_system_checkbox-fill"
     },
     {
       "name": "system/icon-checkbox",
@@ -215,7 +230,8 @@
       "keywords": [
         "icon",
         "checkbox"
-      ]
+      ],
+      "compiledName": "icf_system_checkbox"
     },
     {
       "name": "system/icon-choice-fill",
@@ -226,7 +242,8 @@
         "icon",
         "choice",
         "fill"
-      ]
+      ],
+      "compiledName": "icf_system_choice-fill"
     },
     {
       "name": "system/icon-choice",
@@ -236,7 +253,8 @@
       "keywords": [
         "icon",
         "choice"
-      ]
+      ],
+      "compiledName": "icf_system_choice"
     },
     {
       "name": "system/icon-classify-fill",
@@ -247,7 +265,8 @@
         "icon",
         "classify",
         "fill"
-      ]
+      ],
+      "compiledName": "icf_system_classify-fill"
     },
     {
       "name": "system/icon-classify",
@@ -257,7 +276,8 @@
       "keywords": [
         "icon",
         "classify"
-      ]
+      ],
+      "compiledName": "icf_system_classify"
     },
     {
       "name": "system/icon-close-circle-fill",
@@ -269,7 +289,8 @@
         "close",
         "circle",
         "fill"
-      ]
+      ],
+      "compiledName": "icf_system_close-circle-fill"
     },
     {
       "name": "system/icon-close-circle",
@@ -280,7 +301,8 @@
         "icon",
         "close",
         "circle"
-      ]
+      ],
+      "compiledName": "icf_system_close-circle"
     },
     {
       "name": "system/icon-close-md",
@@ -291,7 +313,8 @@
         "icon",
         "close",
         "md"
-      ]
+      ],
+      "compiledName": "icf_system_close-md"
     },
     {
       "name": "system/icon-close-sm",
@@ -302,7 +325,8 @@
         "icon",
         "close",
         "sm"
-      ]
+      ],
+      "compiledName": "icf_system_close-sm"
     },
     {
       "name": "system/icon-close",
@@ -312,7 +336,8 @@
       "keywords": [
         "icon",
         "close"
-      ]
+      ],
+      "compiledName": "icf_system_close"
     },
     {
       "name": "system/icon-code-regular",
@@ -326,7 +351,8 @@
         "icon",
         "code",
         "regular"
-      ]
+      ],
+      "compiledName": "icf_system_code-regular"
     },
     {
       "name": "system/icon-copy-fill",
@@ -337,7 +363,8 @@
         "icon",
         "copy",
         "fill"
-      ]
+      ],
+      "compiledName": "icf_system_copy-fill"
     },
     {
       "name": "system/icon-copy",
@@ -347,7 +374,8 @@
       "keywords": [
         "icon",
         "copy"
-      ]
+      ],
+      "compiledName": "icf_system_copy"
     },
     {
       "name": "system/icon-delete-fill",
@@ -358,7 +386,10 @@
         "icon",
         "delete",
         "fill"
-      ]
+      ],
+      "compiledName": "icf_system_delete-fill",
+      "sourceNodeId": "5396:3700",
+      "sourceVerifiedOn": "2026-10-27"
     },
     {
       "name": "system/icon-delete",
@@ -368,7 +399,8 @@
       "keywords": [
         "icon",
         "delete"
-      ]
+      ],
+      "compiledName": "icf_system_delete"
     },
     {
       "name": "system/icon-delete-back-fill",
@@ -383,7 +415,8 @@
         "delete",
         "back",
         "fill"
-      ]
+      ],
+      "compiledName": "icf_system_delete-back-fill"
     },
     {
       "name": "system/icon-delete-back",
@@ -397,7 +430,8 @@
         "icon",
         "delete",
         "back"
-      ]
+      ],
+      "compiledName": "icf_system_delete-back"
     },
     {
       "name": "system/icon-download1",
@@ -407,7 +441,8 @@
       "keywords": [
         "icon",
         "download1"
-      ]
+      ],
+      "compiledName": "icf_system_download1"
     },
     {
       "name": "system/icon-edit-fill",
@@ -418,7 +453,8 @@
         "icon",
         "edit",
         "fill"
-      ]
+      ],
+      "compiledName": "icf_system_edit-fill"
     },
     {
       "name": "system/icon-edit",
@@ -428,7 +464,8 @@
       "keywords": [
         "icon",
         "edit"
-      ]
+      ],
+      "compiledName": "icf_system_edit"
     },
     {
       "name": "system/icon-eye-close",
@@ -439,7 +476,8 @@
         "icon",
         "eye",
         "close"
-      ]
+      ],
+      "compiledName": "icf_system_eye-close"
     },
     {
       "name": "system/icon-eye",
@@ -449,7 +487,8 @@
       "keywords": [
         "icon",
         "eye"
-      ]
+      ],
+      "compiledName": "icf_system_eye"
     },
     {
       "name": "system/icon-filter-fill",
@@ -460,7 +499,8 @@
         "icon",
         "filter",
         "fill"
-      ]
+      ],
+      "compiledName": "icf_system_filter-fill"
     },
     {
       "name": "system/icon-filter",
@@ -470,7 +510,8 @@
       "keywords": [
         "icon",
         "filter"
-      ]
+      ],
+      "compiledName": "icf_system_filter"
     },
     {
       "name": "system/icon-grid-fill",
@@ -481,7 +522,8 @@
         "icon",
         "grid",
         "fill"
-      ]
+      ],
+      "compiledName": "icf_system_grid-fill"
     },
     {
       "name": "system/icon-grid",
@@ -491,7 +533,8 @@
       "keywords": [
         "icon",
         "grid"
-      ]
+      ],
+      "compiledName": "icf_system_grid"
     },
     {
       "name": "system/icon-history",
@@ -501,7 +544,8 @@
       "keywords": [
         "icon",
         "history"
-      ]
+      ],
+      "compiledName": "icf_system_history"
     },
     {
       "name": "system/icon-history1",
@@ -511,7 +555,8 @@
       "keywords": [
         "icon",
         "history1"
-      ]
+      ],
+      "compiledName": "icf_system_history1"
     },
     {
       "name": "system/icon-home-fill",
@@ -522,7 +567,8 @@
         "icon",
         "home",
         "fill"
-      ]
+      ],
+      "compiledName": "icf_system_home-fill"
     },
     {
       "name": "system/icon-home",
@@ -532,7 +578,8 @@
       "keywords": [
         "icon",
         "home"
-      ]
+      ],
+      "compiledName": "icf_system_home"
     },
     {
       "name": "system/icon-info-fill",
@@ -543,7 +590,8 @@
         "icon",
         "info",
         "fill"
-      ]
+      ],
+      "compiledName": "icf_system_info-fill"
     },
     {
       "name": "system/icon-info",
@@ -553,7 +601,8 @@
       "keywords": [
         "icon",
         "info"
-      ]
+      ],
+      "compiledName": "icf_system_info"
     },
     {
       "name": "system/icon-list",
@@ -563,7 +612,8 @@
       "keywords": [
         "icon",
         "list"
-      ]
+      ],
+      "compiledName": "icf_system_list"
     },
     {
       "name": "system/icon-list1",
@@ -573,7 +623,8 @@
       "keywords": [
         "icon",
         "list1"
-      ]
+      ],
+      "compiledName": "icf_system_list1"
     },
     {
       "name": "system/icon-loading",
@@ -583,7 +634,8 @@
       "keywords": [
         "icon",
         "loading"
-      ]
+      ],
+      "compiledName": "icf_system_loading"
     },
     {
       "name": "system/icon-loading1",
@@ -593,7 +645,8 @@
       "keywords": [
         "icon",
         "loading1"
-      ]
+      ],
+      "compiledName": "icf_system_loading1"
     },
     {
       "name": "system/icon-loading2",
@@ -603,7 +656,8 @@
       "keywords": [
         "icon",
         "loading2"
-      ]
+      ],
+      "compiledName": "icf_system_loading2"
     },
     {
       "name": "system/icon-lock-fill",
@@ -614,7 +668,8 @@
         "icon",
         "lock",
         "fill"
-      ]
+      ],
+      "compiledName": "icf_system_lock-fill"
     },
     {
       "name": "system/icon-lock",
@@ -624,7 +679,8 @@
       "keywords": [
         "icon",
         "lock"
-      ]
+      ],
+      "compiledName": "icf_system_lock"
     },
     {
       "name": "system/icon-menu",
@@ -634,7 +690,8 @@
       "keywords": [
         "icon",
         "menu"
-      ]
+      ],
+      "compiledName": "icf_system_menu"
     },
     {
       "name": "system/icon-minimize",
@@ -644,7 +701,8 @@
       "keywords": [
         "icon",
         "minimize"
-      ]
+      ],
+      "compiledName": "icf_system_minimize"
     },
     {
       "name": "system/icon-minus-fill",
@@ -655,7 +713,8 @@
         "icon",
         "minus",
         "fill"
-      ]
+      ],
+      "compiledName": "icf_system_minus-fill"
     },
     {
       "name": "system/icon-minus",
@@ -665,7 +724,8 @@
       "keywords": [
         "icon",
         "minus"
-      ]
+      ],
+      "compiledName": "icf_system_minus"
     },
     {
       "name": "system/icon-more",
@@ -675,7 +735,8 @@
       "keywords": [
         "icon",
         "more"
-      ]
+      ],
+      "compiledName": "icf_system_more"
     },
     {
       "name": "system/icon-more1",
@@ -685,7 +746,8 @@
       "keywords": [
         "icon",
         "more1"
-      ]
+      ],
+      "compiledName": "icf_system_more1"
     },
     {
       "name": "system/icon-notification1-fill",
@@ -696,7 +758,8 @@
         "icon",
         "notification1",
         "fill"
-      ]
+      ],
+      "compiledName": "icf_system_notification1-fill"
     },
     {
       "name": "system/icon-notification1",
@@ -706,7 +769,8 @@
       "keywords": [
         "icon",
         "notification1"
-      ]
+      ],
+      "compiledName": "icf_system_notification1"
     },
     {
       "name": "system/icon-question-fill",
@@ -717,7 +781,8 @@
         "icon",
         "question",
         "fill"
-      ]
+      ],
+      "compiledName": "icf_system_question-fill"
     },
     {
       "name": "system/icon-question",
@@ -727,7 +792,8 @@
       "keywords": [
         "icon",
         "question"
-      ]
+      ],
+      "compiledName": "icf_system_question"
     },
     {
       "name": "system/icon-question1",
@@ -737,7 +803,8 @@
       "keywords": [
         "icon",
         "question1"
-      ]
+      ],
+      "compiledName": "icf_system_question1"
     },
     {
       "name": "system/icon-refresh",
@@ -747,7 +814,8 @@
       "keywords": [
         "icon",
         "refresh"
-      ]
+      ],
+      "compiledName": "icf_system_refresh"
     },
     {
       "name": "system/icon-refresh1",
@@ -757,7 +825,8 @@
       "keywords": [
         "icon",
         "refresh1"
-      ]
+      ],
+      "compiledName": "icf_system_refresh1"
     },
     {
       "name": "system/icon-refresh2",
@@ -767,7 +836,8 @@
       "keywords": [
         "icon",
         "refresh2"
-      ]
+      ],
+      "compiledName": "icf_system_refresh2"
     },
     {
       "name": "system/icon-safe-alert-fill",
@@ -779,7 +849,8 @@
         "safe",
         "alert",
         "fill"
-      ]
+      ],
+      "compiledName": "icf_system_safe-alert-fill"
     },
     {
       "name": "system/icon-safe-flash-line",
@@ -791,7 +862,8 @@
         "safe",
         "flash",
         "line"
-      ]
+      ],
+      "compiledName": "icf_system_safe-flash-line"
     },
     {
       "name": "system/icon-safe-flash-lineh-fill",
@@ -804,7 +876,8 @@
         "flash",
         "lineh",
         "fill"
-      ]
+      ],
+      "compiledName": "icf_system_safe-flash-fill"
     },
     {
       "name": "system/icon-safety",
@@ -814,7 +887,8 @@
       "keywords": [
         "icon",
         "safety"
-      ]
+      ],
+      "compiledName": "icf_system_safety"
     },
     {
       "name": "system/icon-safety1-fill",
@@ -825,7 +899,8 @@
         "icon",
         "safety1",
         "fill"
-      ]
+      ],
+      "compiledName": "icf_system_safety1-fill"
     },
     {
       "name": "system/icon-safety1",
@@ -835,7 +910,8 @@
       "keywords": [
         "icon",
         "safety1"
-      ]
+      ],
+      "compiledName": "icf_system_safety1"
     },
     {
       "name": "system/icon-save-fill",
@@ -846,7 +922,8 @@
         "icon",
         "save",
         "fill"
-      ]
+      ],
+      "compiledName": "icf_system_save-fill"
     },
     {
       "name": "system/icon-save",
@@ -856,7 +933,8 @@
       "keywords": [
         "icon",
         "save"
-      ]
+      ],
+      "compiledName": "icf_system_save"
     },
     {
       "name": "system/icon-scan-line",
@@ -867,7 +945,8 @@
         "icon",
         "scan",
         "line"
-      ]
+      ],
+      "compiledName": "icf_system_scan-line"
     },
     {
       "name": "system/icon-search-ai-fill",
@@ -879,7 +958,8 @@
         "search",
         "ai",
         "fill"
-      ]
+      ],
+      "compiledName": "icf_system_search-ai-fill"
     },
     {
       "name": "system/icon-search-ai",
@@ -890,7 +970,8 @@
         "icon",
         "search",
         "ai"
-      ]
+      ],
+      "compiledName": "icf_system_search-ai"
     },
     {
       "name": "system/icon-search-fill",
@@ -901,7 +982,8 @@
         "icon",
         "search",
         "fill"
-      ]
+      ],
+      "compiledName": "icf_system_search-fill"
     },
     {
       "name": "system/icon-search",
@@ -911,7 +993,8 @@
       "keywords": [
         "icon",
         "search"
-      ]
+      ],
+      "compiledName": "icf_system_search"
     },
     {
       "name": "system/icon-settings-fill",
@@ -922,7 +1005,8 @@
         "icon",
         "settings",
         "fill"
-      ]
+      ],
+      "compiledName": "icf_system_settings-fill"
     },
     {
       "name": "system/icon-settings",
@@ -932,7 +1016,8 @@
       "keywords": [
         "icon",
         "settings"
-      ]
+      ],
+      "compiledName": "icf_system_settings"
     },
     {
       "name": "system/icon-settings1-fill",
@@ -943,7 +1028,8 @@
         "icon",
         "settings1",
         "fill"
-      ]
+      ],
+      "compiledName": "icf_system_settings1-fill"
     },
     {
       "name": "system/icon-settings1",
@@ -953,7 +1039,8 @@
       "keywords": [
         "icon",
         "settings1"
-      ]
+      ],
+      "compiledName": "icf_system_settings1"
     },
     {
       "name": "system/icon-settings2-fill",
@@ -964,7 +1051,8 @@
         "icon",
         "settings2",
         "fill"
-      ]
+      ],
+      "compiledName": "icf_system_settings2-fill"
     },
     {
       "name": "system/icon-settings2",
@@ -974,7 +1062,8 @@
       "keywords": [
         "icon",
         "settings2"
-      ]
+      ],
+      "compiledName": "icf_system_settings2"
     },
     {
       "name": "system/icon-share-fill",
@@ -985,7 +1074,8 @@
         "icon",
         "share",
         "fill"
-      ]
+      ],
+      "compiledName": "icf_system_share-fill"
     },
     {
       "name": "system/icon-share",
@@ -995,7 +1085,8 @@
       "keywords": [
         "icon",
         "share"
-      ]
+      ],
+      "compiledName": "icf_system_share"
     },
     {
       "name": "system/icon-share1-fill",
@@ -1006,7 +1097,8 @@
         "icon",
         "share1",
         "fill"
-      ]
+      ],
+      "compiledName": "icf_system_share1-fill"
     },
     {
       "name": "system/icon-share1",
@@ -1016,7 +1108,8 @@
       "keywords": [
         "icon",
         "share1"
-      ]
+      ],
+      "compiledName": "icf_system_share1"
     },
     {
       "name": "system/icon-star-fill",
@@ -1027,7 +1120,8 @@
         "icon",
         "star",
         "fill"
-      ]
+      ],
+      "compiledName": "icf_system_star-fill"
     },
     {
       "name": "system/icon-star",
@@ -1037,7 +1131,8 @@
       "keywords": [
         "icon",
         "star"
-      ]
+      ],
+      "compiledName": "icf_system_star"
     },
     {
       "name": "system/icon-textarea",
@@ -1047,7 +1142,8 @@
       "keywords": [
         "icon",
         "textarea"
-      ]
+      ],
+      "compiledName": "icf_system_textarea"
     },
     {
       "name": "system/icon-thumbdown-fill",
@@ -1058,7 +1154,8 @@
         "icon",
         "thumbdown",
         "fill"
-      ]
+      ],
+      "compiledName": "icf_system_thumbdown-fill"
     },
     {
       "name": "system/icon-thumbdown",
@@ -1068,7 +1165,8 @@
       "keywords": [
         "icon",
         "thumbdown"
-      ]
+      ],
+      "compiledName": "icf_system_thumbdown"
     },
     {
       "name": "system/icon-thumbup-fill",
@@ -1079,7 +1177,8 @@
         "icon",
         "thumbup",
         "fill"
-      ]
+      ],
+      "compiledName": "icf_system_thumbup-fill"
     },
     {
       "name": "system/icon-thumbup",
@@ -1089,7 +1188,8 @@
       "keywords": [
         "icon",
         "thumbup"
-      ]
+      ],
+      "compiledName": "icf_system_thumbup"
     },
     {
       "name": "system/icon-time-fill",
@@ -1100,7 +1200,8 @@
         "icon",
         "time",
         "fill"
-      ]
+      ],
+      "compiledName": "icf_system_time-fill"
     },
     {
       "name": "system/icon-time",
@@ -1110,7 +1211,8 @@
       "keywords": [
         "icon",
         "time"
-      ]
+      ],
+      "compiledName": "icf_system_time"
     },
     {
       "name": "system/icon-unlock-fill",
@@ -1121,7 +1223,8 @@
         "icon",
         "unlock",
         "fill"
-      ]
+      ],
+      "compiledName": "icf_system_unlock-fill"
     },
     {
       "name": "system/icon-unlock",
@@ -1131,7 +1234,8 @@
       "keywords": [
         "icon",
         "unlock"
-      ]
+      ],
+      "compiledName": "icf_system_unlock"
     },
     {
       "name": "system/icon-upload1",
@@ -1141,7 +1245,8 @@
       "keywords": [
         "icon",
         "upload1"
-      ]
+      ],
+      "compiledName": "icf_system_upload1"
     },
     {
       "name": "system/icon-version-fill",
@@ -1152,7 +1257,8 @@
         "icon",
         "version",
         "fill"
-      ]
+      ],
+      "compiledName": "icf_system_version-fill"
     },
     {
       "name": "system/icon-version",
@@ -1162,7 +1268,8 @@
       "keywords": [
         "icon",
         "version"
-      ]
+      ],
+      "compiledName": "icf_system_version"
     },
     {
       "name": "system/icon-warning-fill",
@@ -1173,7 +1280,8 @@
         "icon",
         "warning",
         "fill"
-      ]
+      ],
+      "compiledName": "icf_system_warning-fill"
     },
     {
       "name": "system/icon-warning",
@@ -1183,7 +1291,8 @@
       "keywords": [
         "icon",
         "warning"
-      ]
+      ],
+      "compiledName": "icf_system_warning"
     },
     {
       "name": "system/icon-zoom-in-fill",
@@ -1195,7 +1304,8 @@
         "zoom",
         "in",
         "fill"
-      ]
+      ],
+      "compiledName": "icf_system_zoom-in-fill"
     },
     {
       "name": "system/icon-zoom-in",
@@ -1206,7 +1316,8 @@
         "icon",
         "zoom",
         "in"
-      ]
+      ],
+      "compiledName": "icf_system_zoom-in"
     },
     {
       "name": "system/icon-zoom-out-fill",
@@ -1218,7 +1329,8 @@
         "zoom",
         "out",
         "fill"
-      ]
+      ],
+      "compiledName": "icf_system_zoom-out-fill"
     },
     {
       "name": "system/icon-zoom-out",
@@ -1229,7 +1341,8 @@
         "icon",
         "zoom",
         "out"
-      ]
+      ],
+      "compiledName": "icf_system_zoom-out"
     },
     {
       "name": "system/icon-attachment",
@@ -1242,7 +1355,8 @@
       "keywords": [
         "icon",
         "attachment"
-      ]
+      ],
+      "compiledName": "icf_file_attachment"
     },
     {
       "name": "system/link-line",
@@ -1252,7 +1366,30 @@
       "keywords": [
         "link",
         "line"
-      ]
+      ],
+      "compiledName": "icf_file_link-line"
+    },
+    {
+      "name": "system/icon-login",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-login.svg",
+      "keywords": [
+        "login"
+      ],
+      "role": "compiled-resource-mirror",
+      "compiledName": "icf_system_login"
+    },
+    {
+      "name": "system/icon-logout",
+      "category": "System",
+      "style": "line",
+      "file": "system/icon-logout.svg",
+      "keywords": [
+        "logout"
+      ],
+      "role": "compiled-resource-mirror",
+      "compiledName": "icf_system_logout"
     }
   ]
 }

@@ -6,7 +6,7 @@
     "readOnly": true,
     "catalog": "assets/icons/iconfont/all-icons.js"
   },
-  "count": 369,
+  "count": 382,
   "rules": {
     "canvas": 24,
     "stroke": 2,
@@ -281,6 +281,8 @@
       "category": "System",
       "style": "fill",
       "file": "iconfont/icf_system_delete-fill.svg",
+      "sourceNodeId": "5396:3700",
+      "sourceVerifiedOn": "2026-10-27",
       "keywords": [
         "delete",
         "fill",
@@ -2462,7 +2464,9 @@
       "keywords": [
         "file",
         "zip",
-        "fill"
+        "fill",
+        "压缩",
+        "archive"
       ]
     },
     {
@@ -2473,7 +2477,9 @@
       "keywords": [
         "file",
         "zip",
-        "line"
+        "line",
+        "压缩",
+        "archive"
       ]
     },
     {
@@ -3419,6 +3425,34 @@
       ]
     },
     {
+      "name": "icf_media_volume-down-fill",
+      "category": "Media",
+      "style": "fill",
+      "file": "iconfont/icf_media_volume-down-fill.svg",
+      "keywords": [
+        "volume",
+        "down",
+        "fill",
+        "media",
+        "音量"
+      ]
+    },
+    {
+      "name": "icf_media_volumeoff-fill",
+      "category": "Media",
+      "style": "fill",
+      "file": "iconfont/icf_media_volumeoff-fill.svg",
+      "keywords": [
+        "volumeoff",
+        "volume",
+        "off",
+        "mute",
+        "fill",
+        "media",
+        "静音"
+      ]
+    },
+    {
       "name": "icf_data_chart-fill",
       "category": "Data",
       "style": "fill",
@@ -4200,6 +4234,141 @@
         "unhappy",
         "emoji",
         "line"
+      ]
+    },
+    {
+      "name": "icf_media_volume-down-line",
+      "category": "Media",
+      "style": "line",
+      "file": "iconfont/icf_media_volume-down-line.svg",
+      "keywords": [
+        "volume",
+        "media",
+        "line",
+        "down",
+        "音量"
+      ]
+    },
+    {
+      "name": "icf_media_volumeoff-line",
+      "category": "Media",
+      "style": "line",
+      "file": "iconfont/icf_media_volumeoff-line.svg",
+      "keywords": [
+        "volume",
+        "media",
+        "line",
+        "mute",
+        "off",
+        "静音"
+      ]
+    },
+    {
+      "name": "icf_contact_chat_add",
+      "category": "Contact",
+      "style": "line",
+      "file": "iconfont/icf_contact_chat_add.svg",
+      "keywords": [
+        "chat",
+        "add",
+        "line",
+        "contact"
+      ]
+    },
+    {
+      "name": "icf_file_file-zip-line-1",
+      "category": "File",
+      "style": "line",
+      "file": "iconfont/icf_file_file-zip-line-1.svg",
+      "keywords": [
+        "file",
+        "zip",
+        "line",
+        "1",
+        "压缩",
+        "archive"
+      ]
+    },
+    {
+      "name": "icf_system_logout",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_logout.svg",
+      "keywords": [
+        "logout",
+        "line",
+        "system"
+      ]
+    },
+    {
+      "name": "icf_system_login",
+      "category": "System",
+      "style": "line",
+      "file": "iconfont/icf_system_login.svg",
+      "keywords": [
+        "login",
+        "line",
+        "system"
+      ]
+    },
+    {
+      "name": "icf_user_cake",
+      "category": "User",
+      "style": "line",
+      "file": "iconfont/icf_user_cake.svg",
+      "keywords": [
+        "cake",
+        "line",
+        "user"
+      ]
+    },
+    {
+      "name": "icf_Arrow_transfer3",
+      "category": "Arrow",
+      "style": "line",
+      "file": "iconfont/icf_Arrow_transfer3.svg",
+      "keywords": [
+        "transfer3",
+        "line",
+        "arrow"
+      ]
+    },
+    {
+      "name": "icf_Arrow_transfer3_forward",
+      "category": "Arrow",
+      "style": "line",
+      "file": "iconfont/icf_Arrow_transfer3_forward.svg",
+      "keywords": [
+        "transfer3",
+        "forward",
+        "line",
+        "arrow"
+      ]
+    },
+    {
+      "name": "icf_Arrow_transfer3_reverse",
+      "category": "Arrow",
+      "style": "line",
+      "file": "iconfont/icf_Arrow_transfer3_reverse.svg",
+      "keywords": [
+        "transfer3",
+        "reverse",
+        "line",
+        "arrow"
+      ]
+    },
+    {
+      "name": "icf_file_file-zip-fill-1",
+      "category": "File",
+      "style": "fill",
+      "file": "iconfont/icf_file_file-zip-fill-1.svg",
+      "keywords": [
+        "file",
+        "zip",
+        "fill",
+        "1",
+        "压缩",
+        "archive"
       ]
     }
   ]

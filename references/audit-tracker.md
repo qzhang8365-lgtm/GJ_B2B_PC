@@ -34,6 +34,9 @@
 | ICO-003 | 4 个源文件名仍包含下划线 | P3 | 已关闭 | [icons/system-audit.md](icons/system-audit.md) | 2026-09-10 已统一为 `icon-code-regular`、`icon-delete-back`、`icon-delete-back-fill`、`icon-attachment`；编译名同步为 `icf_system_delete-back-fill`。旧下划线名仅作为 manifest/runtime 兼容别名，不进入主清单或重复展示；SVG 几何与码点不变 |
 | ICO-004 | 20 个图标使用无语义数字后缀 | P2 | 已关闭 | [icons/system-audit.md](icons/system-audit.md) | 2026-09-10 设计确认暂不补充语义英文名和兼容别名；继续使用现有数字后缀调用名 |
 | ICO-005 | preview/icons/index.html 内嵌 `<style>` 残留一批未被引用的旧版 mock/占位 CSS（沿用 MDL-010 方法排查） | P3 | 已关闭 | [system-audit.md](icons/system-audit.md) | 2026-09-11 用户确认原则（同 MDL-010）：预览页展示区与交互区都应只用标准组件基座，不留旧 CSS；逐条核对页面 class/JS 引用后清理死代码（2 条整条删除），brace 平衡与结构校验通过 |
+| ICO-006 | `icf_media_volume-down-fill`、`icf_media_volumeoff-fill` 在 Figma 图标页存在、本地图标库缺失 | P3 | 已关闭（2026-10-26） | [icons/system-audit.md](icons/system-audit.md) | line/fill 音量及静音四枚均已接入 PC 与移动端 SVG、TTF/OTF/WOFF/WOFF2、CSS 和映射；预览、旧编码与资源加载验收通过 |
+| ICO-007 | 旧 line 字体压缩文件图标空心填实；重名图标 SVG 被覆盖 / 缺失 | P2 | 已关闭（2026-10-26） | [icons/system-audit.md](icons/system-audit.md) | 两端 line 240 / fill 142 资源与字体均已更新；重名项独立保留，压缩文件的空心与拉链完整，旧编码、CSS 类名与调用名不变 |
+| ICO-008 | 旧 `icf_system_delete-fill`（U+F080）在此前审计范围内未定位到 Figma 来源 | P3 | 已关闭（2026-10-27） | [icons/system-audit.md](icons/system-audit.md) | 用户提供 Figma 节点 `5396:3700`；节点名称、24px 画布内几何与本地保留字形一致，确认其为设计来源。现有 SVG、Unicode、CSS 类与四种字体无需改写 |
 
 ## 规范页基础设施
 

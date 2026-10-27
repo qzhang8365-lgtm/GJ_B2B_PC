@@ -6,7 +6,7 @@
       "id": "general",
       "kind": "iconfont",
       "manifest": "manifest.json",
-      "count": 369,
+      "count": 382,
       "when": "普通线性或填充图标；页面用 gj-icon + --gj-icon。",
       "catalog": "assets/icons/iconfont/all-icons.js"
     },
@@ -42,8 +42,9 @@
       "detail": "component-internal.md"
     },
     "sourceAuditOnly": {
-      "note": "system-manifest.json 与 assets/icons/general/system/ 是 iconfont System 分类的源 SVG 审计层，只在核对源图或重新编译时读取，不是可叠加的第二套图标库；两侧的分类迁移与快照差异见 system-audit.md。",
+      "note": "system-manifest.json 与 assets/icons/general/system/ 是当前canonical SVG的派生审计镜像，保留旧文件名与别名；不作为第二套图标库。",
       "detail": "system-manifest.json, system-audit.md"
     }
-  }
+  },
+  "usage": "USAGE.md"
 }

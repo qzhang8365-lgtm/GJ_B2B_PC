@@ -51,7 +51,7 @@ bash scripts/check-update.sh
 - 规范站外壳：仅维护规范网页时读取 `references/tokens/docs-site.tokens.json`；其中 `--docs-*` 禁止用于业务产品页面。
 - 业务方接入验收：审计业务团队自己编写、消费本 skill 共享资产的页面（而非本仓库自己生成的规范页/组件预览页）时，读取 `references/business-integration-checklist.md`——里面收录的是已核实的真实翻车模式（如表单标签宽度写死导致溢出、程序化设置组件默认值未走共享事件机制导致视觉不同步），发现新的同类问题时应补充进这份清单，而不是只写进当次审计报告。
 - 页面结构与组合：从 `aiWorkflow.core.pagePatterns` 读取文字规则，并从 `aiWorkflow.core.pagePatternMetadata` 读取所选模式的结构化元信息。生成前必须逐项解析十个字段，未知业务信息标记“待确认”，不得留空后自行补造；只在需要人工视觉验收时打开 `humanPreviewSite.entryPoints.pagePatterns` 及对应页面。页面模式不得重新并入组件工作台。
-- 图标查找：始终从 `aiWorkflow.icons` 指向的唯一图标索引进入；具体 catalog、manifest、资源根目录和 System 源 SVG 审计关系均由图标子索引维护，`SKILL.md` 不再复制该清单。
+- 图标查找：始终从 `aiWorkflow.icons` 指向的唯一图标索引进入；具体 catalog、manifest、资源根目录和 System 源 SVG 审计关系均由图标子索引维护，`SKILL.md` 不再复制该清单。General 图标的分类与 line/fill 风格以 manifest 和字体映射为准，不根据名称是否包含 `line`、`fill`、`regular`、`filled` 推断。
 - 组件预览：在 `preview/` 查找对应组件页面，仅用于理解和验收。
 - 术语与前缀速查：遇到不熟悉的 Token 前缀、状态取值枚举或文件缩写，先查 `GLOSSARY.md`，不在 `SKILL.md` 或各组件 `rules.md` 里重复解释；`GLOSSARY.md` 与正文冲突时以正文为准。
 - 待确认项总览：读取 `references/audit-tracker.md`。各组件与 Token/Styles/Icon 的 `audit.md` 保存证据详情，跟踪表是开放项、优先级和状态的唯一汇总入口；处理或关闭审计问题时必须同步两处。禁止整份 Read 该文件；按组件代号或问题 ID（如 `AVT-`、`TBL-`）定点检索命中的行及其上下文，只加载命中条目。

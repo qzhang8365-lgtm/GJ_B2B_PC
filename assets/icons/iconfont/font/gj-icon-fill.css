@@ -1,11 +1,11 @@
 /* GJ B端设计系统 - GJB2B_general_fill iconfont CSS */
-/* Auto-generated from icomoon.json — 140 icons */
+/* Auto-generated from icomoon.json — 142 icons */
 
 @font-face {
   font-family: "GJB2B_general_fill";
-  src: url("fill/GJB2B_general_fill.woff2") format("woff2"),
-    url("fill/GJB2B_general_fill.woff") format("woff"),
-    url("fill/GJB2B_general_fill.ttf") format("truetype");
+  src: url("fill/GJB2B_general_fill.woff2?v=93e6565708d1") format("woff2"),
+    url("fill/GJB2B_general_fill.woff?v=4027c7fb518c") format("woff"),
+    url("fill/GJB2B_general_fill.ttf?v=0ad8c4309c79") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -154,9 +154,6 @@
 .gj-fill-icf-system-delete-fill:before { content: "\F080"; }
 .gj-fill-icf-AI-chat-4-ai-fill:before { content: "\F081"; }
 .gj-fill-icf-system-delete-back-fill:before { content: "\F082"; }
-
-/* ICO-003 compatibility alias; new code must use the canonical hyphenated class. */
-.gj-fill-icf-system-delete_back-fill:before { content: "\F082"; }
 .gj-fill-icf-AI-chat-1-ai-fill:before { content: "\F083"; }
 .gj-fill-icf-system-copy-fill:before { content: "\F084"; }
 .gj-fill-icf-AI-cellphone-2-ai-fill:before { content: "\F085"; }
@@ -166,3 +163,9 @@
 .gj-fill-icf-AI-bulb-2-ai-fill:before { content: "\F089"; }
 .gj-fill-icf-system-choice-fill:before { content: "\F08A"; }
 .gj-fill-icf-AI-ai-fill:before { content: "\F08B"; }
+.gj-fill-icf-media-volumeoff-fill:before { content: "\F08C"; }
+.gj-fill-icf-media-volume-down-fill:before { content: "\F08D"; }
+
+/* Preserve legacy aliases. */
+/* ICO-003 compatibility alias; new code must use the canonical hyphenated class. */
+.gj-fill-icf-system-delete_back-fill:before { content: "\F082"; }

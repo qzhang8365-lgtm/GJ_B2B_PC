@@ -1,11 +1,11 @@
 /* GJ B端设计系统 - GJB2B_general_line iconfont CSS */
-/* Auto-generated from icomoon.json — 231 icons */
+/* Auto-generated from icomoon.json — 240 icons */
 
 @font-face {
   font-family: "GJB2B_general_line";
-  src: url("line/GJB2B_general_line.woff2") format("woff2"),
-    url("line/GJB2B_general_line.woff") format("woff"),
-    url("line/GJB2B_general_line.ttf") format("truetype");
+  src: url("line/GJB2B_general_line.woff2?v=978895479dad") format("woff2"),
+    url("line/GJB2B_general_line.woff?v=0e1c4030fad6") format("woff"),
+    url("line/GJB2B_general_line.ttf?v=d7282459faae") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -80,10 +80,6 @@
 .gj-line-icf-system-delete:before { content: "\F036"; }
 .gj-line-icf-contact-phone:before { content: "\F037"; }
 .gj-line-icf-system-delete-back:before { content: "\F038"; }
-
-/* ICO-003 compatibility aliases; new code must use the canonical hyphenated classes. */
-.gj-line-icf-system-code_regular:before { content: "\F03C"; }
-.gj-line-icf-system-delete_back:before { content: "\F038"; }
 .gj-line-icf-contact-message1:before { content: "\F039"; }
 .gj-line-icf-system-copy:before { content: "\F03A"; }
 .gj-line-icf-contact-message:before { content: "\F03B"; }
@@ -258,3 +254,19 @@
 .gj-line-icf-system-refresh1:before { content: "\F0E4"; }
 .gj-line-icf-file-box:before { content: "\F0E5"; }
 .gj-line-icf-AI-ai-line:before { content: "\F0E6"; }
+.gj-line-icf-contact-chat-add:before { content: "\F0E7"; }
+.gj-line-icf-system-logout:before { content: "\F0E8"; }
+.gj-line-icf-system-login:before { content: "\F0E9"; }
+.gj-line-icf-user-cake:before { content: "\F0EA"; }
+.gj-line-icf-Arrow-transfer3:before { content: "\F0EB"; }
+.gj-line-icf-Arrow-transfer3-forward:before { content: "\F0EC"; }
+.gj-line-icf-Arrow-transfer3-reverse:before { content: "\F0ED"; }
+.gj-line-icf-media-volume-down-line:before { content: "\F0EE"; }
+.gj-line-icf-media-volumeoff-line:before { content: "\F0EF"; }
+
+/* Preserve legacy CSS aliases. */
+/* ICO-003 compatibility aliases; new code must use the canonical hyphenated classes. */
+.gj-line-icf-system-code_regular:before { content: "\F03C"; }
+
+/* Preserve legacy CSS aliases. */
+.gj-line-icf-system-delete_back:before { content: "\F038"; }

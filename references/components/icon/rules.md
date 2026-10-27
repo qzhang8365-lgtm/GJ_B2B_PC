@@ -4,7 +4,7 @@
 
 #### 资源类型
 
-- General：无渐变、无动效的普通线性或填充图标，采用 Icon Font 或已上传的普通 SVG 资源调用。清单为 `icons/manifest.json`。
+- General：无渐变、无动效的普通线性或填充图标，采用 Icon Font 或已上传的普通 SVG 资源调用。当前 382 枚（line 240 / fill 142），唯一清单为 `icons/manifest.json`；风格与分类读清单及字体映射，不从名称后缀推断。
 - Effect Icon / Glass Icon：包含渐变、毛玻璃或复杂视觉效果的图标，以独立 SVG 维护；页面 `<img>` 必须使用配套 PNG。清单为 `icons/glass-manifest.json`。
 - File Icon：仅表示文件类型（上传列表、附件）。清单为 `icons/file-manifest.json`。
 - Motion Icon：Lottie JSON 动效图标。清单为 `icons/motion-manifest.json`。

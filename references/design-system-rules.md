@@ -78,7 +78,7 @@
 
 - 图标必须来自已维护的图标资源库，不使用 Emoji、Unicode 临时符号、CSS 手绘或近似替代图标。
 - 普通 General 图标采用 Icon Font 或对应资源调用；复杂渐变 Effect 图标采用 SVG；动效图标采用 SVG + CSS 或外部 Lottie 资源。
-- System 图标只有一套图标血缘、两种交付形态：`references/icons/system-manifest.json` + `assets/icons/general/system/` 是 115 个源 SVG 的审计层；`references/icons/manifest.json` 的 System 分类 + `assets/icons/iconfont/` 是编译调用层。页面和组件选图使用后者，源图审计或重新编译才使用前者；不得将两边合并或因路径不同重复使用。115 个源文件中 113 个编译进 System 分类且逐字节一致，另外 2 个（`icon-attachment`、`link-line`）已由用户对照 Figma 节点确认最终编译分类为 File（`icf_file_attachment`、`icf_file_link-line`），不是 System；源文件物理路径含 `system/` 不代表编译分类必然是 System。详见 `references/icons/system-audit.md`。
+- System 图标只有一套图标血缘、两种交付形态：`references/icons/system-manifest.json` + `assets/icons/general/system/` 是由当前 canonical 资源同步的 117 个 SVG 审计镜像；`references/icons/manifest.json` 的 System 分类 + `assets/icons/iconfont/` 是 115 个可调用的编译产物。页面和组件选图只从 `references/icons/index.json` 进入并使用后者；前者只用于血缘、兼容名和重新编译审计，不是第二套图标库。117 个镜像中 115 个对应 System 分类，另外 2 个（`icon-attachment`、`link-line`）已确认编译分类为 File（`icf_file_attachment`、`icf_file_link-line`）；物理路径含 `system/` 不代表编译分类必然是 System。详见 `references/icons/system-audit.md`。
 - 默认画布 24×24px；标准线宽 2px并轮廓化；圆角和边缘半径原则上保持 2px。
 - 尺寸使用 `12 / 16 / 20 / 24 / 28 / 32 / 36 ...` 的 4px 梯度，并随文字大小适配。
 - 图标默认继承周围文字颜色；仅在表达独立状态时使用状态语义色。
