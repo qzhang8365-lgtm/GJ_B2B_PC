@@ -62,10 +62,12 @@ const componentAudio = read("references/tokens/components/audio.tokens.json");
 const componentImage = read("references/tokens/components/image.tokens.json");
 const componentBadge = read("references/tokens/components/badge.tokens.json");
 const componentTimeline = read("references/tokens/components/timeline.tokens.json");
+const componentNews = read("references/tokens/components/news.tokens.json");
+const componentVideo = read("references/tokens/components/video.tokens.json");
 // Structural components (no interactive stateMatrix): checked for schema validity and token
 // alias resolution below, but excluded from the interactive requiredStates check via the `?? []`
 // guard further down, since they are not form controls with hover/focus/disabled states.
-const componentSources = [componentButton, componentTextButton, componentInput, componentTable, componentSelector, componentDropdown, componentCheckbox, componentRadio, componentSwitch, componentTag, componentDatePicker, componentSearch, componentTimePicker, componentUpload, componentCarousel, componentSteps, componentDivider, componentTooltip, componentNavbar, componentBreadcrumb, componentPagination, componentCascader, componentForm, componentTabs, componentMetric, componentChart, componentEmpty, componentToast, componentAvatar, componentIcon, componentDrawer, componentModal, componentSkeleton, componentNotification, componentPopover, componentSidebar, componentGridNav, componentInputNumber, componentAudio, componentImage, componentBadge, componentTimeline];
+const componentSources = [componentButton, componentTextButton, componentInput, componentTable, componentSelector, componentDropdown, componentCheckbox, componentRadio, componentSwitch, componentTag, componentDatePicker, componentSearch, componentTimePicker, componentUpload, componentCarousel, componentSteps, componentDivider, componentTooltip, componentNavbar, componentBreadcrumb, componentPagination, componentCascader, componentForm, componentTabs, componentMetric, componentChart, componentEmpty, componentToast, componentAvatar, componentIcon, componentDrawer, componentModal, componentSkeleton, componentNotification, componentPopover, componentSidebar, componentGridNav, componentInputNumber, componentAudio, componentImage, componentBadge, componentTimeline, componentNews, componentVideo];
 const selectorContract = read("references/components/selector/schema.json");
 const dropdownContract = read("references/components/dropdown/schema.json");
 const tableContract = read("references/components/table/schema.json");
@@ -113,7 +115,7 @@ const expectedCounts = {
 for (const [name, expected] of Object.entries(expectedCounts)) {
   if (unified.meta.counts[name] !== expected) fail(`Count mismatch for ${name}: ${unified.meta.counts[name]} != ${expected}`);
 }
-const expectedComponentIds = ["button", "textButton", "input", "table", "selector", "dropdown", "checkbox", "radio", "switch", "tag", "date-picker", "search", "time-picker", "upload", "carousel", "steps", "toast", "divider", "tooltip", "navbar", "breadcrumb", "pagination", "cascader", "form", "tabs", "metric", "chart", "empty", "avatar", "icon", "drawer", "modal", "skeleton", "notification", "popover", "sidebar", "grid-nav", "input-number", "audio", "image", "badge", "timeline"];
+const expectedComponentIds = ["button", "textButton", "input", "table", "selector", "dropdown", "checkbox", "radio", "switch", "tag", "date-picker", "search", "time-picker", "upload", "carousel", "steps", "toast", "divider", "tooltip", "navbar", "breadcrumb", "pagination", "cascader", "form", "tabs", "metric", "chart", "empty", "avatar", "icon", "drawer", "modal", "skeleton", "notification", "popover", "sidebar", "grid-nav", "input-number", "audio", "image", "badge", "timeline", "news", "video"];
 if (JSON.stringify(Object.keys(unified.component)) !== JSON.stringify(expectedComponentIds)) fail("Unified component token registry is incomplete or out of order");
 
 if (libraryIndex["$schema"] !== "gj-design-skill/library-index/v2") fail("Library index must use the complete v2 resource schema");
@@ -382,6 +384,9 @@ for (const pair of expectedFontPairs) {
 const expectedNumericComponents = ["Metric", "Chart/Gauge", "Chart/Progress", "Chart/ProgressRing"];
 if (JSON.stringify(fontPolicy.rules.numeric.allowedComponents) !== JSON.stringify(expectedNumericComponents)) {
   fail("Numeric font component whitelist changed without an explicit policy update");
+}
+for (const exception of fontPolicy.rules.numeric.confirmedExceptions || []) {
+  if (!exception.component || !exception.figmaNode || !exception.scope || !exception.source) fail("Numeric font exception must be scoped and backed by an explicit Figma source");
 }
 for (const filename of ["GJType-Regular.ttf", "GJType-Medium.ttf", "GJType-Bold.ttf"]) {
   if (!fs.existsSync(path.join(root, "assets/fonts", filename))) fail(`Missing bundled font: ${filename}`);

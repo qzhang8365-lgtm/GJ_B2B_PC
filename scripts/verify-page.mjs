@@ -28,6 +28,8 @@
  *   （例如分步任务组件 `.gj-step` 的步骤名文案比 32px 的圆点列宽很多，
  *   两侧对称溢出但不会被裁切、也不会盖住相邻步骤），这类"有意更宽、不裁剪"
  *   的标签需要人工确认是否真的视觉溢出，不能只看 scrollWidth/clientWidth。
+ * - 设计内截断：元素自身声明 text-overflow:ellipsis（横向）或 -webkit-line-clamp（纵向）时，
+ *   对应方向的裁切视为组件规则内的省略，不报 overflow。
  * - sibling-overlap：脚本已排除 SVG 内部元素（图表的网格线层、数值标签层等
  *   `<g>` 天然共享同一 viewBox 包围盒，不代表真的互相遮挡）；如果换用其他
  *   图表实现（非内联 SVG），需要自行确认是否要追加类似排除。
@@ -51,6 +53,9 @@
  *   用来提示这里还有更多内容（见 TBL-007）；这类重叠先看是否伴随
  *   scrollable-needs-affordance-check 一起出现、且重叠方是 `.gj-table-action`，
  *   是的话不是缺陷，跳过。
+ * - Audio 的 `.gj-audio-progress-track` 与同容器 range input 是同一滑块的视觉轨道和
+ *   命中层，必须重叠；Mini 21px、控制区 18px、Full 控制区 26px gap 为 Figma
+ *   实测组件值，不套页面布局间距阶梯。
  */
 
 import path from 'node:path';
@@ -130,6 +135,31 @@ function collectFindingsInPage({ spacingLadder, overlayClassSource }) {
     return el.namespaceURI === SVG_NS;
   }
 
+  function isIntentionalAudioOverlap(parent, a, b) {
+    if (!parent.classList.contains('gj-audio-progress')) return false;
+    const pair = [a, b];
+    return pair.some((el) => el.classList.contains('gj-audio-progress-track')) &&
+      pair.some((el) => el.matches('input[type="range"]'));
+  }
+
+  function isComponentGapException(el) {
+    return el.matches('.gj-audio-mini,.gj-audio-bar,.gj-audio-controls,.gj-audio-bar-controls,.gj-audio-full-controls');
+  }
+
+  function matchesComponentGapToken(el, value) {
+    const tokens = [
+      ['.gj-search', ['--gj-search-gap']],
+      ['.gj-carousel-indicator', ['--ds-component-carousel-indicator-gap']],
+      ['.gj-calendar-weekdays,.gj-calendar-days', ['--ds-component-date-picker-compact-grid-column-gap', '--ds-component-date-picker-compact-grid-row-gap']],
+      ['.gj-timeline-v-item', ['--ds-component-timeline-v-item-column-gap']],
+    ];
+    const cs = getComputedStyle(el);
+    return tokens.some(([selector, names]) => el.matches(selector) && names.some(name => {
+      const expected = parseFloat(cs.getPropertyValue(name));
+      return Number.isFinite(expected) && Math.abs(expected - value) < 0.05;
+    }));
+  }
+
   // ---- 1. 内容溢出 ----
   const allEls = Array.from(document.querySelectorAll('body *'));
   for (const el of allEls) {
@@ -146,8 +176,17 @@ function collectFindingsInPage({ spacingLadder, overlayClassSource }) {
     const clipsY = overflowY === 'hidden' || overflowY === 'clip';
     const scrollableX = isScrollable(overflowX);
     const scrollableY = isScrollable(overflowY);
-    const overflowsX = el.scrollWidth > el.clientWidth + tolerance;
-    const overflowsY = el.scrollHeight > el.clientHeight + tolerance;
+    // 组件规则明确声明的截断不是内容丢失：单行 text-overflow:ellipsis 的横向裁切、
+    // -webkit-line-clamp 多行截断的纵向裁切（例如 News 标题单行省略、摘要两行省略，2026-10-26）。
+    const designedEllipsisX = cs.textOverflow === 'ellipsis';
+    const lineClamp = cs.webkitLineClamp || cs.getPropertyValue('-webkit-line-clamp');
+    const designedClampY = lineClamp && lineClamp !== 'none';
+    // Library-defined viewports intentionally crop slides / a sole cover image, not page content.
+    const carouselViewport = el.matches('.gj-carousel') && el.querySelector(':scope > .gj-carousel-track > .gj-carousel-slide');
+    const coverImage = el.matches('.gj-image-thumb') && el.querySelector(':scope > img.gj-image-thumb-img:only-child');
+    const designedCover = coverImage && getComputedStyle(coverImage).objectFit === 'cover';
+    const overflowsX = el.scrollWidth > el.clientWidth + tolerance && !designedEllipsisX && !carouselViewport && !designedCover;
+    const overflowsY = el.scrollHeight > el.clientHeight + tolerance && !designedClampY && !designedCover;
     if ((overflowsX && clipsX) || (overflowsY && clipsY)) {
       findings.push({
         type: 'overflow',
@@ -176,6 +215,7 @@ function collectFindingsInPage({ spacingLadder, overlayClassSource }) {
         const b = kids[j];
         if (isOverlayEl(a) || isOverlayEl(b)) continue;
         if (isSvgInternal(a) || isSvgInternal(b)) continue;
+        if (isIntentionalAudioOverlap(parent, a, b)) continue;
         const ra = a.getBoundingClientRect();
         const rb = b.getBoundingClientRect();
         const overlapX = Math.min(ra.right, rb.right) - Math.max(ra.left, rb.left);
@@ -197,6 +237,7 @@ function collectFindingsInPage({ spacingLadder, overlayClassSource }) {
     return (cs.display === 'flex' || cs.display === 'inline-flex' || cs.display === 'grid') && isVisible(el);
   });
   for (const el of containers) {
+    if (isComponentGapException(el)) continue;
     const cs = getComputedStyle(el);
     const gapProps = [
       ['gap', cs.gap],
@@ -211,7 +252,7 @@ function collectFindingsInPage({ spacingLadder, overlayClassSource }) {
         .filter((v) => Number.isFinite(v) && v !== 0);
       for (const v of values) {
         const rounded = Math.round(v);
-        if (!spacingLadder.includes(rounded)) {
+        if (!spacingLadder.includes(rounded) && !matchesComponentGapToken(el, v)) {
           findings.push({
             type: 'spacing-off-ladder',
             selector: describe(el),

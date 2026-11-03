@@ -61,7 +61,9 @@ const input = {
   componentAudio: "references/tokens/components/audio.tokens.json",
   componentImage: "references/tokens/components/image.tokens.json",
   componentBadge: "references/tokens/components/badge.tokens.json",
-  componentTimeline: "references/tokens/components/timeline.tokens.json"
+  componentTimeline: "references/tokens/components/timeline.tokens.json",
+  componentNews: "references/tokens/components/news.tokens.json",
+  componentVideo: "references/tokens/components/video.tokens.json"
 };
 
 const output = {
@@ -215,8 +217,8 @@ const flatComponents = Object.fromEntries(Object.entries(flatComponentSources).m
   ...component,
   stateMatrix: enrichFlatStateMatrix(id, component.stateMatrix)
 }]));
-// Structural components: no interactive stateMatrix (not form controls), so their tokens are
-// emitted as-is without the enrichFlatStateMatrix pass used for flatComponentSources.
+// Structural/business components keep authored tokens; optional grouped state matrices
+// (for example Audio transport-control / primary-toggle) are enriched below.
 const structuralComponentSources = {
   divider: data.componentDivider,
   tooltip: data.componentTooltip,
@@ -242,8 +244,14 @@ const structuralComponentSources = {
   audio: data.componentAudio,
   image: data.componentImage,
   badge: data.componentBadge,
-  timeline: data.componentTimeline
+  timeline: data.componentTimeline,
+  news: data.componentNews,
+  video: data.componentVideo
 };
+const structuralComponents = Object.fromEntries(Object.entries(structuralComponentSources).map(([id, component]) => [id, {
+  ...component,
+  ...(component.stateMatrix ? { stateMatrix: enrichStateMatrix(id, component.stateMatrix) } : {})
+}]));
 const componentSources = [data.componentButton, data.componentTextButton, ...Object.values(flatComponentSources), ...Object.values(structuralComponentSources)];
 const countCssVariableLeaves = value => {
   if (!value || typeof value !== "object") return 0;
@@ -269,7 +277,7 @@ const unified = {
       breakpoints: Object.keys(data.responsive.breakpoints).length,
       components: componentSources.length,
       componentTokens: componentSources.reduce((sum, component) => sum + Object.keys(component.tokens).length, 0),
-      componentStateTokens: countCssVariableLeaves(componentButton.stateMatrix) + countCssVariableLeaves(componentTextButton.stateMatrix) + countCssVariableLeaves(componentTextButton.blueStateMatrix) + countCssVariableLeaves(componentButton.intentMatrix) + Object.values(flatComponents).reduce((sum, component) => sum + countCssVariableLeaves(component.stateMatrix), 0),
+      componentStateTokens: countCssVariableLeaves(componentButton.stateMatrix) + countCssVariableLeaves(componentTextButton.stateMatrix) + countCssVariableLeaves(componentTextButton.blueStateMatrix) + countCssVariableLeaves(componentButton.intentMatrix) + Object.values(flatComponents).reduce((sum, component) => sum + countCssVariableLeaves(component.stateMatrix), 0) + Object.values(structuralComponents).reduce((sum, component) => sum + countCssVariableLeaves(component.stateMatrix), 0),
       docsSiteTokens: Object.keys(data.docsSite.tokens).length
     }
   },
@@ -287,7 +295,7 @@ const unified = {
     button: componentButton,
     textButton: componentTextButton,
     ...flatComponents,
-    ...structuralComponentSources
+    ...structuralComponents
   },
   site: { docs: data.docsSite },
   layout: {

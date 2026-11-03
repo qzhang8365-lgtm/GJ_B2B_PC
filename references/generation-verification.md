@@ -116,6 +116,8 @@ node <skill目录>/scripts/embed-icons.cjs <页面.html> [更多页面] --check
 
 ## 最小验证脚本
 
+维护说明（2026-11-03）：间距检查对Search、Carousel指示器、紧凑Calendar和Timeline竖向单元仅接受与各自现有组件CSS Token精确匹配的值；页面自定义偏差仍报告。Carousel横向轨道的视口裁切、Image缩略图内唯一cover图片的裁切属于组件结构，不视为正文溢出。提交门禁对内联JavaScript使用Node语法解析且不执行，避免把正则、字符串或注释中的括号误判为语法错误；JSON数据脚本不按JavaScript解析。
+
 `scripts/verify-page.mjs` 实现了上述内容溢出、包围盒重叠、间距阶梯、图标颜色一致性、同行尺寸一致性五类检查的可执行版本，输出结构化 JSON 报告。用法：
 
 ```bash

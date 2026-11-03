@@ -203,6 +203,13 @@
           "../preview/audio/index.html"
         ]
       },
+      "audio": {
+        "path": "../assets/scripts/gj-audio.js",
+        "initializes": "[data-gj-audio] Mini/Full 播放暂停、进度、音量、上一首/下一首和关闭；.gj-audio-item-button 独立播放暂停",
+        "consumers": [
+          "../preview/audio/index.html"
+        ]
+      },
       "iconWorkbench": {
         "path": "../assets/icons/icon-content.json",
         "initializes": "preview/icons/index.html 复制/下载按钮（首次点击时按需 fetch，不再随页面预加载；2026-09 性能优化前是 icon-content.js，随页面同步加载）",
@@ -211,7 +218,21 @@
         ]
       },
       "pageLocalPattern": "../preview/**/*.js",
-      "policy": "These scripts support the human preview and page-pattern prototypes. They are not production component-library source or a frontend API contract."
+      "policy": "These scripts support the human preview and page-pattern prototypes. They are not production component-library source or a frontend API contract.",
+      "video": {
+        "path": "../assets/scripts/gj-video.js",
+        "initializes": "[data-gj-video] play/pause, volume, seek, time, fullscreen; [data-gj-video-progress] standalone range/keyboard/value synchronization, optional data-player two-way media sync; [data-gj-video-playlist] unique current item, keyboard navigation, counts, previous/next and playback state; binds to real media when supplied, otherwise simulates playback",
+        "consumers": [
+          "../preview/video/index.html"
+        ]
+      },
+      "news": {
+        "path": "../assets/scripts/gj-news.js",
+        "initializes": "资讯封面加载失败时显示已有占位背景；捕获初始和动态图片事件，不拦截导航",
+        "consumers": [
+          "../preview/news/index.html"
+        ]
+      }
     }
   },
   "humanPreviewSite": {

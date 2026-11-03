@@ -1,0 +1,103 @@
+{
+  "$schema": "gj-design-skill/component-mapping/v1",
+  "component": "News",
+  "figmaComponent": "News_List / News_item / News_item/*",
+  "codeComponent": "GjNews",
+  "sourceNodes": [
+    "5153:14",
+    "5153:183",
+    "5153:122",
+    "5153:204",
+    "5153:89",
+    "5153:115",
+    "5153:182",
+    "5153:70",
+    "5153:71",
+    "5377:145",
+    "5377:358",
+    "5377:359",
+    "5377:383",
+    "5377:980"
+  ],
+  "propertyMap": {
+    "state": "list.state（Default / hover；hover 由 :hover 伪类驱动，静态示意用 .is-hover）",
+    "author": "list.author → 是否渲染 .gj-news-meta-item[data-meta=author]",
+    "date": "list.date → 是否渲染 .gj-news-meta-item[data-meta=date]",
+    "view": "list.view → 是否渲染 .gj-news-meta-item[data-meta=view]",
+    "leftTag": "LeftTag#5376:4 → title.leftTag",
+    "rightTag": "RightTag#5153:0 → title.rightTag",
+    "text": "Text#5153:1 → title.text",
+    "cornertag": "Cornertag#5377:9 → .gj-news-thumb 内 .gj-tag-corner",
+    "摘要 (BOOLEAN 摘要#5376:1)": "list.summary → 是否渲染 .gj-news-summary",
+    "摘要 (TEXT 摘要#5153:3)": "list.summaryText → .gj-news-summary 内容",
+    "type": "thumbnail.type：image=放 <img>；placeholder=不放 <img>，显示基座占位封面"
+  },
+  "structureMap": {
+    "list": ".gj-news-list（纵向排列，gap 0）；分割线列表加 .gj-news-list-divided（列表项 ::after 画线）",
+    "item": ".gj-news-item（a/button 热区；padding 12、gap 20、radius 12；hover Background/Hover）",
+    "thumbnail": ".gj-news-thumb（母版 180×120，radius 8）；在 .gj-news-item 内高度=内容列高度、aspect-ratio 180/120 推宽；有图放 img（绝对定位 cover），无图露出背景占位封面",
+    "cornerTag": ".gj-news-thumb > .gj-tag-corner（Tag_corner black/medium/top_left）",
+    "content": ".gj-news-content（flex:1，纵向 gap 12）",
+    "title": ".gj-news-title（gap 8）> Tag + .gj-news-title-text + Tag",
+    "summary": ".gj-news-summary（14/22，2 行截断）",
+    "meta": ".gj-news-meta（padding-top 8，gap 16）> .gj-news-meta-item（gap 6，icon 16 + 12/18 文本）",
+    "metaIcon": ".gj-news-meta-icon（mask 组件库图标，currentColor）",
+    "large": ".gj-news-card（310:207，radius 12）> img + .gj-news-card-overlay",
+    "largeOverlay": ".gj-news-card-overlay（渐变 MK_3→MK_80，padding 12/16/16，gap 8）",
+    "largeTitle": ".gj-news-card-title（16/24/600，Text/reversal，单行省略）",
+    "largeMeta": ".gj-news-card-meta（两端对齐：作者 .gj-news-meta-item + 日期文本）",
+    "stats": ".gj-news-stats（两端对齐，左右 12）> .gj-news-stats-summary（gap 4：文字 + .gj-news-stats-count + 单位）+ .gj-news-stats-sort"
+  },
+  "valueMap": {
+    "state.Default": "背景 transparent",
+    "state.hover": "背景 Background/Hover，圆角 12",
+    "news_time.text": "YYYY-MM-DD 星期X（列表）；大卡片仅 YYYY-MM-DD 且无图标",
+    "news_view.text": "阅读量整数；≥10000 建议显示为 x.x万（NEWS-005 实现惯例）",
+    "type.image": "有图封面",
+    "type.placeholder": "无图片占位封面（assets/images/news/thumbnail-placeholder.png）"
+  },
+  "tokenMap": {
+    "item.padding": "--ds-component-news-item-padding（Interval/space4 12）",
+    "item.gap": "--ds-component-news-item-gap（Interval/space6 20）",
+    "item.radius": "--ds-component-news-item-radius（Radius-LG 12）",
+    "item.hover.background": "--ds-component-news-item-hover-background（Background/Hover）",
+    "item.focus.ring": "--ds-component-news-item-focus-ring（Border/focused）",
+    "thumbnail.size": "--ds-component-news-thumbnail-width / -height（180 / 120）",
+    "thumbnail.radius": "--ds-component-news-thumbnail-radius（Radius-MD 8）",
+    "content.gap": "--ds-component-news-content-gap（12）",
+    "title.gap": "--ds-component-news-title-gap（8）",
+    "title.color": "--ds-component-news-title-color（Text/Primary）",
+    "summary.color": "--ds-component-news-summary-color（Text/Secondary）",
+    "summary.lines": "--ds-component-news-summary-lines（2）",
+    "meta.paddingTop": "--ds-component-news-meta-padding-top（8）",
+    "meta.gap": "--ds-component-news-meta-gap（16）",
+    "meta.itemGap": "--ds-component-news-meta-item-gap（Interval/space2 4）",
+    "meta.iconSize": "--ds-component-news-meta-icon-size（16）",
+    "meta.color": "--ds-component-news-meta-color（Text/Tertiary）",
+    "large.radius": "--ds-component-news-large-radius（Radius-LG 12）",
+    "large.overlay": "--ds-component-news-large-overlay-from / -to（MK_3 / MK_80）",
+    "large.text": "--ds-component-news-large-text（Text/reversal）",
+    "thumbnail.placeholderImage": "url(\"../images/news/thumbnail-placeholder.png\")，写在 .gj-news-thumb / .gj-news-card 背景",
+    "list.gap": "--ds-component-news-list-gap（Interval/space1 0）",
+    "list.divider": "--ds-component-news-list-divider-color / -thickness / -inset / -spacing（Border/default / 1px / 12 / 4）；.gj-news-list-divided gap = spacing×2（8），非末项 margin-bottom = thickness（1），线位于间隙内，上下各 4",
+    "thumbnail.aspectRatio": "--ds-component-news-thumbnail-aspect-ratio（180 / 120）",
+    "stats": "--ds-component-news-stats-*（height 22 / summary-gap 4 / padding-inline 12 / list-gap 4 / text Text/Secondary / count Text/Primary）"
+  },
+  "dependencyMap": {
+    "Tag": "标题前后标签复用 .gj-tag 基座（Light Blue Regular / Filled Red Small Pill）",
+    "Tag_corner": "封面角标复用 .gj-tag-corner（2026-10-26 随本组件新增的共享基座，取值 --ds-component-tag-corner-*）",
+    "Icon": "icf_user_user / icf_system_calendar / icf_system_eye，assets/icons/iconfont/"
+  },
+  "implementation": {
+    "status": "shared-css-base + image fallback runtime",
+    "css": "assets/styles/gj-b2b-components.css（.gj-news-* 段）",
+    "preview": "preview/news/index.html",
+    "runtime": "assets/scripts/gj-news.js；捕获初始/动态封面error与load，失败图片.is-error露出已有占位背景。"
+  },
+  "dependencyRules": {
+    "leftTag×cornertag": "默认互斥（NEWS-015）；例外需业务明确两者为不同标签类型"
+  },
+  "pageTemplateMap": {
+    "detail": "rules.md「资讯详情页模板」+ schema.pageTemplates.detail；无 gj-* 基座，生成时组合 Tag / Divider / Icon / fileicon 与 L1 卡片布局"
+  }
+}

@@ -58,7 +58,9 @@
       "references/tokens/components/audio.tokens.json",
       "references/tokens/components/image.tokens.json",
       "references/tokens/components/badge.tokens.json",
-      "references/tokens/components/timeline.tokens.json"
+      "references/tokens/components/timeline.tokens.json",
+      "references/tokens/components/news.tokens.json",
+      "references/tokens/components/video.tokens.json"
     ],
     "counts": {
       "primitiveColors": 112,
@@ -69,9 +71,9 @@
       "gradients": 12,
       "grids": 4,
       "breakpoints": 5,
-      "components": 42,
-      "componentTokens": 1115,
-      "componentStateTokens": 557,
+      "components": 44,
+      "componentTokens": 1299,
+      "componentStateTokens": 628,
       "docsSiteTokens": 18
     }
   },
@@ -1556,7 +1558,20 @@
             "badges",
             "ordinary text"
           ],
-          "defaultOutsideAllowedComponents": "Use the active UI font pair, even when the content is numeric."
+          "defaultOutsideAllowedComponents": "Use the active UI font pair, even when numeric, except for the exact component slots recorded in confirmedExceptions.",
+          "confirmedExceptions": [
+            {
+              "component": "Video/PlaylistItem/index",
+              "figmaNode": "5422:5211",
+              "textStyle": "数字/S6-NUM-S",
+              "font": "GJType",
+              "weight": 700,
+              "fontSize": 14,
+              "lineHeight": 22,
+              "scope": "只限播放列表项左侧序号，不含时长、计数、状态或标题。",
+              "source": "用户指定Figma组件5422:5202，2026-10-29只读核实。"
+            }
+          ]
         }
       },
       "assetContract": {
@@ -12354,25 +12369,46 @@
         "figmaNodes": [
           "5026:7663",
           "5026:7664",
-          "5026:7665"
+          "5026:7665",
+          "5404:658",
+          "5404:660",
+          "5404:693",
+          "5404:932",
+          "5404:957",
+          "5404:1177",
+          "5404:1178"
         ],
-        "figmaReadDate": "2026-09-28",
+        "figmaReadDate": "2026-10-27",
+        "interactionPolicy": "Hover 为用户确认的默认交互补充，2026-10-29 确认采用 Background/MK_20（黑色20%）加深：圆形按钮覆盖蓝色背景，独立图标仅作用于 SVG 图形；不宣称为 Figma 新增变体。",
         "componentSchema": "references/components/audio/schema.json",
         "componentMapping": "references/components/audio/mapping.json",
         "confirmedRules": "references/components/audio/rules.md",
-        "implementation": "assets/styles/gj-b2b-components.css#.gj-audio-bar"
+        "implementation": "assets/styles/gj-b2b-components.css#.gj-audio-*"
       },
       "properties": {
+        "variant": {
+          "default": "mini",
+          "values": [
+            "mini",
+            "full",
+            "list",
+            "list-item",
+            "item-button"
+          ]
+        },
         "state": {
           "default": "paused",
           "values": [
             "paused",
             "playing"
-          ],
-          "figmaSets": {
-            "paused": "State=Paused",
-            "playing": "State=Playing"
-          }
+          ]
+        },
+        "listItemState": {
+          "default": "default",
+          "values": [
+            "default",
+            "hover"
+          ]
         },
         "closable": {
           "default": true,
@@ -12380,100 +12416,289 @@
             true,
             false
           ]
+        },
+        "showDate": {
+          "default": true,
+          "values": [
+            true,
+            false
+          ]
+        },
+        "showTime": {
+          "default": true,
+          "values": [
+            true,
+            false
+          ]
+        }
+      },
+      "stateMatrix": {
+        "transport-control": {
+          "default": {
+            "background": {
+              "value": "transparent",
+              "cssVariable": "--ds-component-audio-transport-control-default-background"
+            },
+            "icon": {
+              "value": "currentColor",
+              "cssVariable": "--ds-component-audio-transport-control-default-icon"
+            }
+          },
+          "hover": {
+            "background": {
+              "value": "transparent",
+              "cssVariable": "--ds-component-audio-transport-control-hover-background"
+            },
+            "icon": {
+              "value": "currentColor",
+              "cssVariable": "--ds-component-audio-transport-control-hover-icon"
+            },
+            "overlay": {
+              "value": "Background/MK_20",
+              "cssVariable": "--ds-component-audio-transport-control-hover-overlay"
+            }
+          },
+          "disabled": {
+            "opacity": {
+              "value": 0.5,
+              "cssVariable": "--ds-component-audio-transport-control-disabled-opacity"
+            },
+            "interactive": {
+              "value": false,
+              "cssVariable": "--ds-component-audio-transport-control-disabled-interactive"
+            }
+          }
+        },
+        "primary-toggle": {
+          "default": {
+            "background": {
+              "value": "Button/Primary/Bg-default",
+              "cssVariable": "--ds-component-audio-primary-toggle-default-background"
+            },
+            "icon": {
+              "value": "Text/reversal",
+              "cssVariable": "--ds-component-audio-primary-toggle-default-icon"
+            }
+          },
+          "hover": {
+            "background": {
+              "value": "Button/Primary/Bg-default",
+              "cssVariable": "--ds-component-audio-primary-toggle-hover-background"
+            },
+            "icon": {
+              "value": "Text/reversal",
+              "cssVariable": "--ds-component-audio-primary-toggle-hover-icon"
+            },
+            "overlay": {
+              "value": "Background/MK_20",
+              "cssVariable": "--ds-component-audio-primary-toggle-hover-overlay"
+            }
+          },
+          "disabled": {
+            "opacity": {
+              "value": 0.5,
+              "cssVariable": "--ds-component-audio-primary-toggle-disabled-opacity"
+            },
+            "interactive": {
+              "value": false,
+              "cssVariable": "--ds-component-audio-primary-toggle-disabled-interactive"
+            }
+          }
+        },
+        "close": {
+          "default": {
+            "background": {
+              "value": "transparent",
+              "cssVariable": "--ds-component-audio-close-default-background"
+            },
+            "icon": {
+              "value": "Text/Tertiary",
+              "cssVariable": "--ds-component-audio-close-default-icon"
+            }
+          },
+          "hover": {
+            "background": {
+              "value": "transparent",
+              "cssVariable": "--ds-component-audio-close-hover-background"
+            },
+            "icon": {
+              "value": "Text/Tertiary",
+              "cssVariable": "--ds-component-audio-close-hover-icon"
+            },
+            "overlay": {
+              "value": "Background/MK_20",
+              "cssVariable": "--ds-component-audio-close-hover-overlay"
+            }
+          },
+          "disabled": {
+            "opacity": {
+              "value": 0.5,
+              "cssVariable": "--ds-component-audio-close-disabled-opacity"
+            },
+            "interactive": {
+              "value": false,
+              "cssVariable": "--ds-component-audio-close-disabled-interactive"
+            }
+          }
         }
       },
       "tokens": {
-        "container.height": {
+        "mini.height": {
           "value": 34,
           "unit": "px",
-          "cssVariable": "--ds-component-audio-height"
+          "cssVariable": "--ds-component-audio-mini-height"
         },
-        "container.maxWidth": {
-          "value": 640,
+        "mini.referenceWidth": {
+          "value": 587,
           "unit": "px",
-          "cssVariable": "--ds-component-audio-max-width"
+          "cssVariable": "--ds-component-audio-mini-width"
         },
-        "container.paddingBlock": {
+        "mini.paddingBlock": {
           "value": 8,
           "unit": "px",
-          "cssVariable": "--ds-component-audio-padding-block"
+          "cssVariable": "--ds-component-audio-mini-padding-block"
         },
-        "container.paddingInline": {
+        "mini.paddingInline": {
           "value": 12,
           "unit": "px",
-          "cssVariable": "--ds-component-audio-padding-inline"
+          "cssVariable": "--ds-component-audio-mini-padding-inline"
         },
-        "container.gap": {
+        "mini.gap": {
           "value": 21,
           "unit": "px",
-          "cssVariable": "--ds-component-audio-gap"
+          "cssVariable": "--ds-component-audio-mini-gap"
         },
-        "container.radius": {
+        "mini.radius": {
           "value": "{Radius/Radius-MD}",
           "resolved": 8,
           "unit": "px",
-          "cssVariable": "--ds-component-audio-radius"
+          "cssVariable": "--ds-component-audio-mini-radius"
         },
-        "container.background": {
+        "mini.background": {
           "value": "{Background/BG_blue}",
           "resolved": "#E5F0FF",
-          "cssVariable": "--ds-component-audio-background"
+          "cssVariable": "--ds-component-audio-mini-background"
         },
-        "container.border": {
+        "mini.border": {
           "value": "{Brand/GJ_Blue}",
           "resolved": "#2B73FF",
-          "cssVariable": "--ds-component-audio-border"
+          "cssVariable": "--ds-component-audio-mini-border"
         },
-        "text.color": {
+        "text.primary": {
           "value": "{Text/Primary}",
           "resolved": "#101828",
-          "cssVariable": "--ds-component-audio-text"
+          "cssVariable": "--ds-component-audio-text-primary"
         },
-        "text.style": {
-          "value": "{中文/S9-CN-R}",
-          "note": "12px/18px Regular，直接引用 --ds-type-cn-s9-* 变量，不使用 .gj-type-cn-s9 工具类"
+        "text.secondary": {
+          "value": "{Text/Secondary}",
+          "resolved": "#475467",
+          "cssVariable": "--ds-component-audio-text-secondary"
         },
-        "text.durationWidth": {
-          "value": 60,
-          "unit": "px",
-          "cssVariable": "--ds-component-audio-duration-width",
-          "note": "Figma 实测值，锁定剩余时长文案宽度，避免位数变化顶偏后续元素"
-        },
-        "controls.gap": {
+        "transport.miniGap": {
           "value": 18,
           "unit": "px",
-          "cssVariable": "--ds-component-audio-controls-gap"
+          "cssVariable": "--ds-component-audio-mini-controls-gap"
         },
-        "controls.iconSize": {
+        "transport.miniIconSize": {
           "value": 16,
           "unit": "px",
-          "cssVariable": "--ds-component-audio-icon-size"
+          "cssVariable": "--ds-component-audio-mini-icon-size"
         },
-        "controls.iconColor": {
+        "transport.miniIconColor": {
           "value": "{Brand/GJ_Blue}",
           "resolved": "#2B73FF",
-          "cssVariable": "--ds-component-audio-icon-color"
+          "cssVariable": "--ds-component-audio-mini-icon-color"
         },
-        "progressTrack": {
-          "value": "reuses --ds-component-input-number-slider-* (input-number 组件)",
-          "note": "不新建独立滑块 token；默认参考宽度 200px 与 Figma Audio_Bar symbol 尺寸一致",
-          "thumbBackground": {
-            "value": "{Background/Container}",
-            "resolved": "#FFFFFF",
-            "cssVariable": "--ds-component-audio-slider-thumb-background",
-            "note": "Audio 自有 Figma 资产 Audio_Bar（5026:7663）圆点为白色填充，与共享 .gj-slider 基座默认实心蓝色不同，scoped 覆盖仅作用于 .gj-audio-bar 内"
-          },
-          "thumbBorderColor": {
-            "value": "{Brand/GJ_Blue}",
-            "resolved": "#2B73FF",
-            "cssVariable": "--ds-component-audio-slider-thumb-border-color"
-          },
-          "thumbBorderWidth": {
-            "value": 2,
-            "unit": "px",
-            "cssVariable": "--ds-component-audio-slider-thumb-border-width",
-            "note": "视觉估算值，非 Figma 实测：Audio_Bar 为拉平静态图形节点，get_variable_defs 无法取得描边宽度绑定值，组织网络策略又阻断原始 SVG 下载（同 AUD-002）"
-          }
+        "transport.fullGap": {
+          "value": 26,
+          "unit": "px",
+          "cssVariable": "--ds-component-audio-full-controls-gap"
+        },
+        "transport.fullIconSize": {
+          "value": 20,
+          "unit": "px",
+          "cssVariable": "--ds-component-audio-full-icon-size"
+        },
+        "transport.fullIconColor": {
+          "value": "{Text/Tertiary}",
+          "cssVariable": "--ds-component-audio-full-icon-color"
+        },
+        "transport.hoverBrightness": {
+          "value": 0.8,
+          "cssVariable": "--ds-component-audio-control-hover-brightness",
+          "note": "Background/MK_20 = #00000033；brightness = 1 - 51/255 = 0.8，等效20%黑色叠加且仅作用于已绘制图标像素，保持透明区域透明。"
+        },
+        "toggle.size": {
+          "value": 28,
+          "unit": "px",
+          "cssVariable": "--ds-component-audio-toggle-size"
+        },
+        "toggle.iconSize": {
+          "value": 16,
+          "unit": "px",
+          "cssVariable": "--ds-component-audio-toggle-icon-size"
+        },
+        "toggle.background": {
+          "value": "{Brand/GJ_Blue}",
+          "resolved": "#2B73FF",
+          "cssVariable": "--ds-component-audio-toggle-background"
+        },
+        "toggle.iconColor": {
+          "value": "{Background/Container}",
+          "resolved": "#FFFFFF",
+          "cssVariable": "--ds-component-audio-toggle-icon-color"
+        },
+        "progress.referenceWidth": {
+          "value": 400,
+          "unit": "px",
+          "cssVariable": "--ds-component-audio-progress-reference-width"
+        },
+        "progress.height": {
+          "value": 16,
+          "unit": "px",
+          "cssVariable": "--ds-component-audio-progress-height"
+        },
+        "progress.trackHeight": {
+          "value": 4,
+          "unit": "px",
+          "cssVariable": "--ds-component-audio-progress-track-height"
+        },
+        "progress.trackInactive": {
+          "value": "{Background/MK_10}",
+          "cssVariable": "--ds-component-audio-progress-track-inactive"
+        },
+        "progress.trackActive": {
+          "value": "{Brand/GJ_Blue}",
+          "cssVariable": "--ds-component-audio-progress-track-active"
+        },
+        "progress.thumbSize": {
+          "value": 8,
+          "unit": "px",
+          "cssVariable": "--ds-component-audio-progress-thumb-size"
+        },
+        "progress.thumbBackground": {
+          "value": "{Background/Container}",
+          "resolved": "#FFFFFF",
+          "cssVariable": "--ds-component-audio-progress-thumb-background"
+        },
+        "progress.thumbBorderColor": {
+          "value": "{Brand/GJ_Blue}",
+          "resolved": "#2B73FF",
+          "cssVariable": "--ds-component-audio-progress-thumb-border-color"
+        },
+        "progress.thumbBorderWidth": {
+          "value": 2,
+          "unit": "px",
+          "cssVariable": "--ds-component-audio-progress-thumb-border-width"
+        },
+        "progress.thumbShadow": {
+          "value": "{shadow_small}",
+          "cssVariable": "--ds-component-audio-progress-thumb-shadow"
+        },
+        "duration.width": {
+          "value": 60,
+          "unit": "px",
+          "cssVariable": "--ds-component-audio-duration-width"
         },
         "close.size": {
           "value": 16,
@@ -12484,21 +12709,139 @@
           "value": "{Text/Tertiary}",
           "cssVariable": "--ds-component-audio-close-color"
         },
-        "close.hoverColor": {
-          "value": "{Text/Primary}",
-          "cssVariable": "--ds-component-audio-close-hover-color"
+        "listItem.width": {
+          "value": 440,
+          "unit": "px",
+          "cssVariable": "--ds-component-audio-list-item-width"
+        },
+        "listItem.height": {
+          "value": 60,
+          "unit": "px",
+          "cssVariable": "--ds-component-audio-list-item-height"
+        },
+        "listItem.paddingBlock": {
+          "value": 8,
+          "unit": "px",
+          "cssVariable": "--ds-component-audio-list-item-padding-block"
+        },
+        "listItem.paddingInline": {
+          "value": 12,
+          "unit": "px",
+          "cssVariable": "--ds-component-audio-list-item-padding-inline"
+        },
+        "listItem.gap": {
+          "value": 4,
+          "unit": "px",
+          "cssVariable": "--ds-component-audio-list-item-gap"
+        },
+        "listItem.radius": {
+          "value": "{Radius/Radius-MD}",
+          "resolved": 8,
+          "unit": "px",
+          "cssVariable": "--ds-component-audio-list-item-radius"
+        },
+        "listItem.hoverBackground": {
+          "value": "{Background/Hover}",
+          "resolved": "#2B73FF0D",
+          "cssVariable": "--ds-component-audio-list-item-hover-background"
+        },
+        "listItem.hoverIconSize": {
+          "value": 16,
+          "unit": "px",
+          "cssVariable": "--ds-component-audio-list-item-hover-icon-size"
+        },
+        "listItem.hoverIconColor": {
+          "value": "{Brand/GJ_Blue}",
+          "resolved": "#2B73FF",
+          "cssVariable": "--ds-component-audio-list-item-hover-icon-color"
+        },
+        "list.width": {
+          "value": 357,
+          "unit": "px",
+          "cssVariable": "--ds-component-audio-list-width"
+        },
+        "full.width": {
+          "value": 656,
+          "unit": "px",
+          "cssVariable": "--ds-component-audio-full-width"
+        },
+        "full.gap": {
+          "value": 8,
+          "unit": "px",
+          "cssVariable": "--ds-component-audio-full-gap"
+        },
+        "full.controlRowGap": {
+          "value": 16,
+          "unit": "px",
+          "cssVariable": "--ds-component-audio-full-row-gap"
+        },
+        "volume.iconSize": {
+          "value": 20,
+          "unit": "px",
+          "cssVariable": "--ds-component-audio-volume-icon-size"
+        },
+        "volume.gap": {
+          "value": 8,
+          "unit": "px",
+          "cssVariable": "--ds-component-audio-volume-gap"
+        },
+        "volume.sliderWidth": {
+          "value": 80,
+          "unit": "px",
+          "cssVariable": "--ds-component-audio-volume-slider-width"
+        },
+        "volume.sliderHeight": {
+          "value": 6,
+          "unit": "px",
+          "cssVariable": "--ds-component-audio-volume-slider-height"
+        },
+        "volume.trackHeight": {
+          "value": 2,
+          "unit": "px",
+          "cssVariable": "--ds-component-audio-volume-track-height"
+        },
+        "volume.trackInactive": {
+          "value": "{Background/MK_20}",
+          "cssVariable": "--ds-component-audio-volume-track-inactive"
+        },
+        "volume.trackActive": {
+          "value": "{Brand/GJ_Blue}",
+          "cssVariable": "--ds-component-audio-volume-track-active"
+        },
+        "volume.thumbSize": {
+          "value": 6,
+          "unit": "px",
+          "cssVariable": "--ds-component-audio-volume-thumb-size"
+        },
+        "volume.thumbBackground": {
+          "value": "{Brand/GJ_Blue}",
+          "resolved": "#2B73FF",
+          "cssVariable": "--ds-component-audio-volume-thumb-background",
+          "note": "2026-10-29 复核 Figma 5404:933 / 圆点5404:917：6px品牌蓝实心圆，与主进度白底蓝描边圆点区分。"
+        },
+        "volume.thumbShadow": {
+          "value": "{shadow_small}",
+          "cssVariable": "--ds-component-audio-volume-thumb-shadow"
+        },
+        "disabled.opacity": {
+          "value": 0.5,
+          "cssVariable": "--ds-component-audio-disabled-opacity",
+          "note": "Figma未发布Disabled；按Skill通用50%兜底，仅作用于实际禁用控件一次。"
         }
       },
       "icons": {
-        "prev": "assets/icons/iconfont/icf_media_skip-previous-fill.svg",
-        "next": "assets/icons/iconfont/icf_media_skip-forward-fill.svg",
-        "togglePaused": "assets/icons/iconfont/icf_media_play-triangle-fill.svg",
-        "togglePlaying": "assets/icons/iconfont/icf_media_pause-regular.svg",
+        "miniPrev": "assets/icons/iconfont/icf_media_skip-previous-fill.svg",
+        "miniNext": "assets/icons/iconfont/icf_media_skip-forward-fill.svg",
+        "miniPaused": "assets/icons/iconfont/icf_media_play-triangle-fill.svg",
+        "miniPlaying": "assets/icons/iconfont/icf_media_pause-regular.svg",
+        "listHover": "assets/icons/iconfont/icf_media_play_fill.svg",
+        "fullPaused": "assets/icons/iconfont/icf_media_play-triangle-fill.svg",
+        "fullPlaying": "assets/icons/iconfont/icf_media_pause-fill.svg",
+        "volume": "assets/icons/iconfont/icf_media_volume-down-fill.svg",
+        "volumeOff": "assets/icons/iconfont/icf_media_volumeoff-fill.svg",
         "close": "assets/icons/iconfont/icf_system_close-md.svg"
       },
-      "openItems": {
-        "AUD-001": "播放三角图标 Figma 节点命名未带 fill/line 后缀，已按视觉核实选用 -fill 变体，详见 audit.md。"
-      }
+      "openItems": {}
     },
     "image": {
       "$schema": "gj-design-skill/component-tokens/v1",
@@ -13263,6 +13606,1208 @@
         }
       },
       "openItems": {}
+    },
+    "news": {
+      "$schema": "gj-design-skill/component-tokens/v1",
+      "component": "News",
+      "source": {
+        "figmaNode": "5153:14",
+        "figmaReadDate": "2026-10-26",
+        "componentSchema": "references/components/news/schema.json",
+        "componentMapping": "references/components/news/mapping.json",
+        "confirmedRules": "references/components/news/rules.md",
+        "statsFigmaNode": "5377:383"
+      },
+      "properties": {
+        "listState": {
+          "default": "Default",
+          "values": [
+            "Default",
+            "hover"
+          ],
+          "note": "News_List 组件集 state 轴。hover 只改背景；focus-visible 为实现层补充（NEWS-003）。"
+        },
+        "author": {
+          "default": true,
+          "values": [
+            true,
+            false
+          ]
+        },
+        "date": {
+          "default": true,
+          "values": [
+            true,
+            false
+          ]
+        },
+        "view": {
+          "default": true,
+          "values": [
+            true,
+            false
+          ]
+        },
+        "summary": {
+          "default": true,
+          "values": [
+            true,
+            false
+          ],
+          "note": "Figma 属性名「摘要」（BOOLEAN 摘要#5376:1 + TEXT 摘要#5153:3），代码命名 summary / summaryText。"
+        },
+        "titleLeftTag": {
+          "default": true,
+          "values": [
+            true,
+            false
+          ]
+        },
+        "titleRightTag": {
+          "default": true,
+          "values": [
+            true,
+            false
+          ]
+        },
+        "thumbnailCornerTag": {
+          "default": false,
+          "values": [
+            true,
+            false
+          ],
+          "note": "Figma 属性名 Cornertag。与 titleLeftTag 默认互斥（NEWS-015）；Figma 母版默认值为 true，生成时按互斥规则取其一。"
+        },
+        "thumbnailType": {
+          "default": "image",
+          "values": [
+            "image",
+            "placeholder"
+          ],
+          "note": "Figma News_item 组件集 type 轴（2026-10-26 由 Property 1=thumbnail/Variant2 改名，NEWS-007 关闭）。"
+        },
+        "listDivider": {
+          "default": false,
+          "values": [
+            false,
+            true
+          ],
+          "note": "列表是否在条目之间显示分割线（.gj-news-list-divided），NEWS-010。"
+        },
+        "stats": {
+          "default": false,
+          "values": [
+            false,
+            true
+          ],
+          "note": "列表统计栏只在筛选或搜索后显示（NEWS-016）。"
+        }
+      },
+      "tokens": {
+        "list.gap": {
+          "value": "{Interval/space1}",
+          "resolved": 0,
+          "unit": "px",
+          "cssVariable": "--ds-component-news-list-gap",
+          "note": "2026-10-26 用户确认：列表项之间上下间距为 0，视觉间隔由列表项自身 12px 内边距提供（NEWS-009）。"
+        },
+        "list.divider.color": {
+          "value": "{Border/default}",
+          "resolved": "#EBEEF2",
+          "cssVariable": "--ds-component-news-list-divider-color",
+          "note": "NEWS-010：分割线列表复用 Divider 规格（Border/default、1px、content 缩进）。"
+        },
+        "list.divider.thickness": {
+          "value": 1,
+          "unit": "px",
+          "cssVariable": "--ds-component-news-list-divider-thickness"
+        },
+        "list.divider.inset": {
+          "value": "{Interval/space4}",
+          "resolved": 12,
+          "unit": "px",
+          "cssVariable": "--ds-component-news-list-divider-inset",
+          "note": "Divider inset=content：左右与列表项内边距对齐。"
+        },
+        "list.divider.spacing": {
+          "value": "{Interval/space2}",
+          "resolved": 4,
+          "unit": "px",
+          "cssVariable": "--ds-component-news-list-divider-spacing",
+          "note": "2026-10-26 用户确认：分割线上下各留 4px 空白，分割线列表的项间距 = 4 + 1 + 4。"
+        },
+        "item.padding": {
+          "value": "{Interval/space4}",
+          "resolved": 12,
+          "unit": "px",
+          "cssVariable": "--ds-component-news-item-padding",
+          "note": "生成代码 p-[12px]，四边一致。"
+        },
+        "item.gap": {
+          "value": "{Interval/space6}",
+          "resolved": 20,
+          "unit": "px",
+          "cssVariable": "--ds-component-news-item-gap",
+          "note": "封面与内容列间距，生成代码 gap-[20px]。"
+        },
+        "item.radius": {
+          "value": "{Radius/Radius-LG}",
+          "resolved": 12,
+          "unit": "px",
+          "cssVariable": "--ds-component-news-item-radius",
+          "note": "2026-10-26 用户指示由 16（Figma hover 变体 rounded-16）改为 12（NEWS-014）。"
+        },
+        "item.default.background": {
+          "value": "transparent",
+          "cssVariable": "--ds-component-news-item-default-background"
+        },
+        "item.hover.background": {
+          "value": "{Background/Hover}",
+          "resolved": "#2B73FF0D",
+          "cssVariable": "--ds-component-news-item-hover-background"
+        },
+        "item.focus.ring": {
+          "value": "{Border/focused}",
+          "resolved": "#2B73FF",
+          "cssVariable": "--ds-component-news-item-focus-ring",
+          "note": "NEWS-003：Figma 无 focus 变体，按通用无障碍惯例补 2px 焦点环。"
+        },
+        "thumbnail.width": {
+          "value": 180,
+          "unit": "px",
+          "cssVariable": "--ds-component-news-thumbnail-width",
+          "note": "母版宽度；单独使用封面时的尺寸。列表内由 aspectRatio 与内容高度推导。"
+        },
+        "thumbnail.height": {
+          "value": 120,
+          "unit": "px",
+          "cssVariable": "--ds-component-news-thumbnail-height",
+          "note": "母版高度；列表内不固定，跟随内容列高度（有摘要约 118，无摘要约 62）。"
+        },
+        "thumbnail.aspectRatio": {
+          "value": "180 / 120",
+          "cssVariable": "--ds-component-news-thumbnail-aspect-ratio",
+          "note": "NEWS-001（2026-10-26 修订）：列表内封面 layoutAlign=STRETCH + targetAspectRatio 180:120，高度跟随右侧内容、宽度按 3:2 缩放。"
+        },
+        "thumbnail.radius": {
+          "value": "{Radius/Radius-MD}",
+          "resolved": 8,
+          "unit": "px",
+          "cssVariable": "--ds-component-news-thumbnail-radius"
+        },
+        "thumbnail.placeholder": {
+          "value": "{Background/Secondary}",
+          "cssVariable": "--ds-component-news-thumbnail-placeholder",
+          "note": "占位图加载前的底色；实际无封面时显示 thumbnail.placeholderImage。"
+        },
+        "thumbnail.placeholderImage": {
+          "value": "assets/images/news/thumbnail-placeholder.png",
+          "asset": "assets/images/news/thumbnail-placeholder.png",
+          "figmaNode": "5377:359",
+          "note": "News_item Property 1=Variant2 的原始图片填充（360×240 @2x，imageHash 1589e52e…）。直接写在 .gj-news-thumb / .gj-news-card 背景里，不经 CSS 变量传递相对 URL。"
+        },
+        "content.gap": {
+          "value": "{Interval/space4}",
+          "resolved": 12,
+          "unit": "px",
+          "cssVariable": "--ds-component-news-content-gap"
+        },
+        "title.gap": {
+          "value": "{Interval/space3}",
+          "resolved": 8,
+          "unit": "px",
+          "cssVariable": "--ds-component-news-title-gap"
+        },
+        "title.textStyle": {
+          "value": "{中文/S4-CN-S}",
+          "cssClass": "gj-type-cn-s4"
+        },
+        "title.color": {
+          "value": "{Text/Primary}",
+          "resolved": "#101828",
+          "cssVariable": "--ds-component-news-title-color"
+        },
+        "summary.textStyle": {
+          "value": "{中文/S8-CN-R}",
+          "cssClass": "gj-type-cn-s8"
+        },
+        "summary.color": {
+          "value": "{Text/Secondary}",
+          "resolved": "#475467",
+          "cssVariable": "--ds-component-news-summary-color"
+        },
+        "summary.lines": {
+          "value": 2,
+          "cssVariable": "--ds-component-news-summary-lines",
+          "note": "max-h 44 = 2 × 22，超出省略。"
+        },
+        "meta.paddingTop": {
+          "value": "{Interval/space3}",
+          "resolved": 8,
+          "unit": "px",
+          "cssVariable": "--ds-component-news-meta-padding-top"
+        },
+        "meta.gap": {
+          "value": "{Interval/space5}",
+          "resolved": 16,
+          "unit": "px",
+          "cssVariable": "--ds-component-news-meta-gap"
+        },
+        "meta.itemGap": {
+          "value": "{Interval/space2}",
+          "resolved": 4,
+          "unit": "px",
+          "cssVariable": "--ds-component-news-meta-item-gap",
+          "note": "2026-10-26 Figma 由 6 改为 4（author/news_time/news_view itemSpacing=4）。"
+        },
+        "meta.iconSize": {
+          "value": 16,
+          "unit": "px",
+          "cssVariable": "--ds-component-news-meta-icon-size"
+        },
+        "meta.textStyle": {
+          "value": "{中文/S9-CN-R}",
+          "cssClass": "gj-type-cn-s9"
+        },
+        "meta.color": {
+          "value": "{Text/Tertiary}",
+          "resolved": "#8D96A3",
+          "cssVariable": "--ds-component-news-meta-color",
+          "note": "2026-10-26 用户指示由 Text/Secondary 改为 Text/Tertiary（NEWS-013）；图标跟随文字色。"
+        },
+        "large.width": {
+          "value": 310,
+          "unit": "px",
+          "cssVariable": "--ds-component-news-large-width",
+          "note": "Figma 母版宽；运行时可由父级网格等分，高宽比保持 310:207。"
+        },
+        "large.height": {
+          "value": 207,
+          "unit": "px",
+          "cssVariable": "--ds-component-news-large-height"
+        },
+        "large.gridGap": {
+          "value": "{Interval/space5}",
+          "resolved": 16,
+          "unit": "px",
+          "cssVariable": "--ds-component-news-large-grid-gap",
+          "note": "NEWS-004 默认：大卡网格间距 16（L1 卡片组）。"
+        },
+        "large.radius": {
+          "value": "{Radius/Radius-LG}",
+          "resolved": 12,
+          "unit": "px",
+          "cssVariable": "--ds-component-news-large-radius"
+        },
+        "large.overlay.from": {
+          "value": "{Background/MK_3}",
+          "resolved": "#00000008",
+          "cssVariable": "--ds-component-news-large-overlay-from"
+        },
+        "large.overlay.to": {
+          "value": "{Background/MK_80}",
+          "resolved": "#000000CC",
+          "cssVariable": "--ds-component-news-large-overlay-to"
+        },
+        "large.overlay.paddingTop": {
+          "value": "{Interval/space4}",
+          "resolved": 12,
+          "unit": "px",
+          "cssVariable": "--ds-component-news-large-overlay-padding-top"
+        },
+        "large.overlay.paddingInline": {
+          "value": "{Interval/space5}",
+          "resolved": 16,
+          "unit": "px",
+          "cssVariable": "--ds-component-news-large-overlay-padding-inline"
+        },
+        "large.overlay.paddingBottom": {
+          "value": "{Interval/space5}",
+          "resolved": 16,
+          "unit": "px",
+          "cssVariable": "--ds-component-news-large-overlay-padding-bottom"
+        },
+        "large.overlay.gap": {
+          "value": "{Interval/space3}",
+          "resolved": 8,
+          "unit": "px",
+          "cssVariable": "--ds-component-news-large-overlay-gap"
+        },
+        "large.text": {
+          "value": "{Text/reversal}",
+          "resolved": "#FFFFFF",
+          "cssVariable": "--ds-component-news-large-text"
+        },
+        "large.title.textStyle": {
+          "value": "{中文/S4-CN-S}",
+          "cssClass": "gj-type-cn-s4"
+        },
+        "large.meta.textStyle": {
+          "value": "{中文/S9-CN-R}",
+          "cssClass": "gj-type-cn-s9"
+        },
+        "stats.paddingInline": {
+          "value": "{Interval/space4}",
+          "resolved": 12,
+          "unit": "px",
+          "cssVariable": "--ds-component-news-stats-padding-inline",
+          "note": "NEWS-016 默认：左右与列表项内容对齐（列表项内边距 12）；Figma 母版为 0 内边距的 784 宽独立件。"
+        },
+        "stats.height": {
+          "value": 22,
+          "unit": "px",
+          "cssVariable": "--ds-component-news-stats-height",
+          "note": "Figma 列表统计栏 HUG 高度 22（数字行高）。"
+        },
+        "stats.summaryGap": {
+          "value": "{Interval/space2}",
+          "resolved": 4,
+          "unit": "px",
+          "cssVariable": "--ds-component-news-stats-summary-gap"
+        },
+        "stats.listGap": {
+          "value": "{Interval/space2}",
+          "resolved": 4,
+          "unit": "px",
+          "cssVariable": "--ds-component-news-stats-list-gap",
+          "note": "NEWS-016 默认：结果条与下方列表间距 4，加上列表项内边距 12，文字到首条内容 16。"
+        },
+        "stats.text.textStyle": {
+          "value": "{中文/S9-CN-R}",
+          "cssClass": "gj-type-cn-s9"
+        },
+        "stats.text.color": {
+          "value": "{Text/Secondary}",
+          "resolved": "#475467",
+          "cssVariable": "--ds-component-news-stats-text-color"
+        },
+        "stats.count.textStyle": {
+          "value": "{中文/S5-CN-S}",
+          "cssClass": "gj-type-cn-s5"
+        },
+        "stats.count.color": {
+          "value": "{Text/Primary}",
+          "resolved": "#101828",
+          "cssVariable": "--ds-component-news-stats-count-color"
+        }
+      },
+      "composition": {
+        "titleLeftTag": "Tag：Light + Blue + Regular（22px，Primitive/Blue/B02 底 / B07 字），类名 gj-tag gj-tag-light gj-tag-blue",
+        "titleRightTag": "Tag：Filled + Red + Small + Pill（18px，Primitive/Red/R06 底 / 白字 10/14），类名 gj-tag gj-tag-filled gj-tag-red gj-tag-small gj-tag-pill",
+        "thumbnailCornerTag": "Tag_corner：black + medium + top_left（22px，Background/MK_45，左上/右下 8px），类名 gj-tag-corner",
+        "metaIcons": "icf_user_user（作者）、icf_system_calendar（日期）、icf_system_eye（阅读量），16px，跟随 Text/Tertiary"
+      },
+      "openItems": {},
+      "stateMatrix": {
+        "list-item": {
+          "default": {
+            "background": {
+              "value": "transparent",
+              "cssVariable": "--ds-component-news-list-item-default-background"
+            },
+            "text": {
+              "value": "Text/Primary",
+              "cssVariable": "--ds-component-news-list-item-default-text"
+            }
+          },
+          "hover": {
+            "background": {
+              "value": "Background/Hover",
+              "cssVariable": "--ds-component-news-list-item-hover-background"
+            },
+            "text": {
+              "value": "Text/Primary",
+              "cssVariable": "--ds-component-news-list-item-hover-text"
+            }
+          },
+          "focused": {
+            "focusRing": {
+              "value": "Border/focused",
+              "cssVariable": "--ds-component-news-list-item-focused-focusring"
+            }
+          }
+        },
+        "large-card": {
+          "default": {
+            "text": {
+              "value": "Text/reversal",
+              "cssVariable": "--ds-component-news-large-card-default-text"
+            },
+            "overlayFrom": {
+              "value": "Background/MK_3",
+              "cssVariable": "--ds-component-news-large-card-default-overlayfrom"
+            },
+            "overlayTo": {
+              "value": "Background/MK_80",
+              "cssVariable": "--ds-component-news-large-card-default-overlayto"
+            }
+          },
+          "hover": {
+            "inherits": {
+              "value": "default",
+              "cssVariable": "--ds-component-news-large-card-hover-inherits"
+            }
+          },
+          "focused": {
+            "focusRing": {
+              "value": "Border/focused",
+              "cssVariable": "--ds-component-news-large-card-focused-focusring"
+            }
+          }
+        }
+      }
+    },
+    "video": {
+      "$schema": "gj-design-skill/component-tokens/v1",
+      "component": "Video",
+      "source": {
+        "figmaNode": "3936:2570",
+        "figmaReadDate": "2026-10-26",
+        "progressAndPlayerReadDate": "2026-11-03",
+        "componentSchema": "references/components/video/schema.json",
+        "componentMapping": "references/components/video/mapping.json",
+        "confirmedRules": "references/components/video/rules.md",
+        "playlistNodes": [
+          "5422:5202",
+          "5422:5203",
+          "5422:5210",
+          "5377:2202",
+          "5377:2203",
+          "5377:2209"
+        ]
+      },
+      "properties": {
+        "buttonType": {
+          "default": "play",
+          "values": [
+            "play",
+            "pause",
+            "full_screen",
+            "fullscreen_exit",
+            "volume",
+            "Video_item_listplaybutton"
+          ],
+          "note": "2026-10-26 Figma type 已修正为 volume（VID-002 已关闭）。"
+        },
+        "volumeState": {
+          "default": "default",
+          "values": [
+            "default",
+            "slider",
+            "mute"
+          ]
+        },
+        "unitState": {
+          "default": "Default",
+          "values": [
+            "Default",
+            "hover"
+          ]
+        },
+        "viewcount": {
+          "default": true,
+          "values": [
+            true,
+            false
+          ]
+        },
+        "controllerState": {
+          "default": "Pause",
+          "values": [
+            "Pause",
+            "Playing"
+          ]
+        },
+        "controllerList": {
+          "default": "False",
+          "values": [
+            "False",
+            "True"
+          ]
+        }
+      },
+      "tokens": {
+        "button.size": {
+          "value": 36,
+          "unit": "px",
+          "cssVariable": "--ds-component-video-button-size",
+          "note": "控制按钮 36×36 圆形。"
+        },
+        "button.radius": {
+          "value": "{Radius/Radius-full}",
+          "resolved": 999,
+          "unit": "px",
+          "cssVariable": "--ds-component-video-button-radius"
+        },
+        "button.background": {
+          "value": "{Background/MK_30}",
+          "resolved": "#0000004D",
+          "cssVariable": "--ds-component-video-button-background"
+        },
+        "button.hover.background": {
+          "value": "{Background/MK_45}",
+          "resolved": "#00000073",
+          "note": "VID-008：Figma 无 hover 态，按惯例加深一级。",
+          "cssVariable": "--ds-component-video-button-hover-background"
+        },
+        "button.icon": {
+          "value": 20,
+          "unit": "px",
+          "cssVariable": "--ds-component-video-button-icon",
+          "note": "36 内 inset 22.22% = 20。"
+        },
+        "button.color": {
+          "value": "{Text/reversal}",
+          "resolved": "#FFFFFF",
+          "cssVariable": "--ds-component-video-button-color"
+        },
+        "button.focus.ring": {
+          "value": "{Border/focused}",
+          "resolved": "#2B73FF",
+          "cssVariable": "--ds-component-video-button-focus-ring"
+        },
+        "controller.gap": {
+          "value": "{Interval/space4}",
+          "resolved": 12,
+          "unit": "px",
+          "cssVariable": "--ds-component-video-controller-gap",
+          "note": "VID-004 已关闭：Figma Pause / Playing 两态 gap 均为 12。"
+        },
+        "time.color": {
+          "value": "rgba(255, 255, 255, 0.85)",
+          "note": "VID-006：Figma 未绑定变量的白色 85%。",
+          "cssVariable": "--ds-component-video-time-color"
+        },
+        "time.textStyle": {
+          "value": "{中文/S9-CN-R}",
+          "cssClass": "gj-type-cn-s9"
+        },
+        "progress.height": {
+          "value": 4,
+          "unit": "px",
+          "cssVariable": "--ds-component-video-progress-height"
+        },
+        "progress.authoredWidth": {
+          "value": 838,
+          "unit": "px",
+          "cssVariable": "--ds-component-video-progress-authored-width",
+          "note": "5387:3344独立controller_slider母版宽；运行时宽度随容器收缩。"
+        },
+        "progress.radius": {
+          "value": 2,
+          "unit": "px",
+          "cssVariable": "--ds-component-video-progress-radius"
+        },
+        "progress.track": {
+          "value": "{Background/MK_30}",
+          "resolved": "#0000004D",
+          "cssVariable": "--ds-component-video-progress-track"
+        },
+        "progress.fill": {
+          "value": "{Brand/GJ_Blue}",
+          "resolved": "#2B73FF",
+          "cssVariable": "--ds-component-video-progress-fill"
+        },
+        "progress.thumb.size": {
+          "value": 12,
+          "unit": "px",
+          "cssVariable": "--ds-component-video-progress-thumb-size"
+        },
+        "progress.thumb.color": {
+          "value": "{Text/blue}",
+          "resolved": "#2B73FF",
+          "cssVariable": "--ds-component-video-progress-thumb-color"
+        },
+        "progress.thumb.shadow": {
+          "value": "{shadow-center}",
+          "cssVariable": "--ds-component-video-progress-thumb-shadow"
+        },
+        "volume.paddingInline": {
+          "value": "{Interval/space3}",
+          "resolved": 8,
+          "unit": "px",
+          "cssVariable": "--ds-component-video-volume-padding-inline"
+        },
+        "volume.gap": {
+          "value": "{Interval/space2}",
+          "resolved": 4,
+          "unit": "px",
+          "cssVariable": "--ds-component-video-volume-gap"
+        },
+        "volume.slider.width": {
+          "value": 40,
+          "unit": "px",
+          "cssVariable": "--ds-component-video-volume-slider-width"
+        },
+        "volume.track.height": {
+          "value": 2,
+          "unit": "px",
+          "cssVariable": "--ds-component-video-volume-track-height"
+        },
+        "volume.track.radius": {
+          "value": 2,
+          "unit": "px",
+          "cssVariable": "--ds-component-video-volume-track-radius"
+        },
+        "volume.track.background": {
+          "value": "{Background/WT_20}",
+          "resolved": "#FFFFFF33",
+          "cssVariable": "--ds-component-video-volume-track-background"
+        },
+        "volume.fill": {
+          "value": "{Background/Container}",
+          "resolved": "#FFFFFF",
+          "cssVariable": "--ds-component-video-volume-fill"
+        },
+        "volume.thumb.size": {
+          "value": 6,
+          "unit": "px",
+          "cssVariable": "--ds-component-video-volume-thumb-size"
+        },
+        "volume.thumb.color": {
+          "value": "{Background/Container}",
+          "resolved": "#FFFFFF",
+          "cssVariable": "--ds-component-video-volume-thumb-color"
+        },
+        "volume.thumb.shadow": {
+          "value": "{shadow_small}",
+          "cssVariable": "--ds-component-video-volume-thumb-shadow"
+        },
+        "player.authoredWidth": {
+          "value": 1168,
+          "unit": "px",
+          "cssVariable": "--ds-component-video-player-authored-width"
+        },
+        "player.authoredHeight": {
+          "value": 648,
+          "unit": "px",
+          "cssVariable": "--ds-component-video-player-authored-height"
+        },
+        "player.aspectRatio": {
+          "value": "1168 / 648",
+          "note": "Figma 母版比例；视频画面在其中 object-fit:contain。",
+          "cssVariable": "--ds-component-video-player-aspect-ratio"
+        },
+        "player.radius": {
+          "value": "{Radius/Radius-XL}",
+          "resolved": 16,
+          "unit": "px",
+          "cssVariable": "--ds-component-video-player-radius"
+        },
+        "player.padding": {
+          "value": "{Interval/space6}",
+          "resolved": 20,
+          "unit": "px",
+          "cssVariable": "--ds-component-video-player-padding"
+        },
+        "player.background": {
+          "value": "var(--ds-gradient-deep-blue)",
+          "note": "2026-11-03只读复核5157:2015已绑定深蓝渐变（DB09→DB06）；光效已删除。",
+          "figmaStyleId": "S:ff6fadb6c68e0d7bb1864eee83ef52e93fbf7b14,",
+          "cssVariable": "--ds-component-video-player-background"
+        },
+        "thumbnail.authoredWidth": {
+          "value": 280,
+          "unit": "px",
+          "cssVariable": "--ds-component-video-thumbnail-authored-width"
+        },
+        "thumbnail.authoredHeight": {
+          "value": 180,
+          "unit": "px",
+          "cssVariable": "--ds-component-video-thumbnail-authored-height"
+        },
+        "thumbnail.aspectRatio": {
+          "value": "280 / 180",
+          "cssVariable": "--ds-component-video-thumbnail-aspect-ratio"
+        },
+        "thumbnail.radius": {
+          "value": "{Radius/Radius-MD}",
+          "resolved": 8,
+          "unit": "px",
+          "cssVariable": "--ds-component-video-thumbnail-radius"
+        },
+        "thumbnail.padding": {
+          "value": "{Interval/space4}",
+          "resolved": 12,
+          "unit": "px",
+          "cssVariable": "--ds-component-video-thumbnail-padding"
+        },
+        "thumbnail.background": {
+          "value": "var(--ds-gradient-deep-blue)",
+          "note": "Figma 已绑定深蓝渐变样式与 DB09 / DB06 色标变量。",
+          "cssVariable": "--ds-component-video-thumbnail-background",
+          "figmaStyleId": "S:ff6fadb6c68e0d7bb1864eee83ef52e93fbf7b14,"
+        },
+        "timeTag.height": {
+          "value": 18,
+          "unit": "px",
+          "cssVariable": "--ds-component-video-time-tag-height"
+        },
+        "timeTag.paddingInline": {
+          "value": "{Interval/space2}",
+          "resolved": 4,
+          "unit": "px",
+          "cssVariable": "--ds-component-video-time-tag-padding-inline"
+        },
+        "timeTag.radius": {
+          "value": "{Radius/Radius-XS}",
+          "resolved": 4,
+          "unit": "px",
+          "cssVariable": "--ds-component-video-time-tag-radius"
+        },
+        "timeTag.background": {
+          "value": "{Background/MK_45}",
+          "resolved": "#00000073",
+          "cssVariable": "--ds-component-video-time-tag-background"
+        },
+        "timeTag.textStyle": {
+          "value": "{中文/S10-CN-R}",
+          "cssClass": "gj-type-cn-s10"
+        },
+        "overlayText.color": {
+          "value": "{Text/reversal}",
+          "resolved": "#FFFFFF",
+          "cssVariable": "--ds-component-video-overlay-text-color"
+        },
+        "playcount.gap": {
+          "value": "{Interval/space2}",
+          "resolved": 4,
+          "unit": "px",
+          "cssVariable": "--ds-component-video-playcount-gap"
+        },
+        "playcount.icon": {
+          "value": 16,
+          "unit": "px",
+          "cssVariable": "--ds-component-video-playcount-icon"
+        },
+        "unit.padding": {
+          "value": "{Interval/space3}",
+          "resolved": 8,
+          "unit": "px",
+          "cssVariable": "--ds-component-video-unit-padding"
+        },
+        "unit.radius": {
+          "value": "{Radius/Radius-XL}",
+          "resolved": 16,
+          "unit": "px",
+          "cssVariable": "--ds-component-video-unit-radius"
+        },
+        "unit.hover.background": {
+          "value": "{Background/Hover}",
+          "resolved": "#2B73FF0D",
+          "cssVariable": "--ds-component-video-unit-hover-background"
+        },
+        "unit.content.paddingTop": {
+          "value": "{Interval/space4}",
+          "resolved": 12,
+          "unit": "px",
+          "cssVariable": "--ds-component-video-unit-content-padding-top"
+        },
+        "unit.content.paddingInline": {
+          "value": "{Interval/space2}",
+          "resolved": 4,
+          "unit": "px",
+          "cssVariable": "--ds-component-video-unit-content-padding-inline"
+        },
+        "unit.content.paddingBottom": {
+          "value": "{Interval/space2}",
+          "resolved": 4,
+          "unit": "px",
+          "cssVariable": "--ds-component-video-unit-content-padding-bottom"
+        },
+        "unit.content.gap": {
+          "value": "{Interval/space5}",
+          "resolved": 16,
+          "unit": "px",
+          "cssVariable": "--ds-component-video-unit-content-gap"
+        },
+        "unit.title.textStyle": {
+          "value": "{中文/S4-CN-S}",
+          "cssClass": "gj-type-cn-s4"
+        },
+        "unit.title.color": {
+          "value": "{Text/Primary}",
+          "resolved": "#101828",
+          "cssVariable": "--ds-component-video-unit-title-color"
+        },
+        "unit.title.hoverColor": {
+          "value": "{Text/blue}",
+          "resolved": "#2B73FF",
+          "cssVariable": "--ds-component-video-unit-title-hover-color"
+        },
+        "unit.title.lines": {
+          "value": 2,
+          "cssVariable": "--ds-component-video-unit-title-lines"
+        },
+        "unit.meta.gap": {
+          "value": "{Interval/space4}",
+          "resolved": 12,
+          "unit": "px",
+          "cssVariable": "--ds-component-video-unit-meta-gap"
+        },
+        "unit.meta.color": {
+          "value": "{Text/Secondary}",
+          "resolved": "#475467",
+          "cssVariable": "--ds-component-video-unit-meta-color"
+        },
+        "unit.meta.textStyle": {
+          "value": "{中文/S9-CN-R}",
+          "cssClass": "gj-type-cn-s9"
+        },
+        "grid.gap": {
+          "value": "{Interval/space3}",
+          "resolved": 8,
+          "unit": "px",
+          "cssVariable": "--ds-component-video-grid-gap",
+          "note": "VID-010 默认：卡片自带 8 内边距，网格间距 8，封面之间视觉间隔 24。"
+        },
+        "listplaybutton.width": {
+          "value": 76,
+          "unit": "px",
+          "cssVariable": "--ds-component-video-listplaybutton-width"
+        },
+        "listplaybutton.paddingInline": {
+          "value": 12,
+          "unit": "px",
+          "cssVariable": "--ds-component-video-listplaybutton-padding-inline"
+        },
+        "listplaybutton.paddingBlock": {
+          "value": 8,
+          "unit": "px",
+          "cssVariable": "--ds-component-video-listplaybutton-padding-block"
+        },
+        "listplaybutton.gap": {
+          "value": 12,
+          "unit": "px",
+          "cssVariable": "--ds-component-video-listplaybutton-gap"
+        },
+        "disabled.opacity": {
+          "value": 0.5,
+          "cssVariable": "--ds-component-video-disabled-opacity",
+          "note": "Figma未发布Disabled；按Skill通用50%兜底。"
+        },
+        "playlist.width": {
+          "value": 336,
+          "cssVariable": "--ds-component-video-playlist-width",
+          "unit": "px"
+        },
+        "playlist.radius": {
+          "value": "{Radius/Radius-LG}",
+          "cssVariable": "--ds-component-video-playlist-radius",
+          "unit": "px"
+        },
+        "playlist.background": {
+          "value": "{Background/Background}",
+          "cssVariable": "--ds-component-video-playlist-background"
+        },
+        "playlist.border": {
+          "value": "{Border/default}",
+          "cssVariable": "--ds-component-video-playlist-border"
+        },
+        "playlist.header.height": {
+          "value": 48,
+          "cssVariable": "--ds-component-video-playlist-header-height",
+          "unit": "px"
+        },
+        "playlist.header.padding": {
+          "value": 12,
+          "cssVariable": "--ds-component-video-playlist-header-padding",
+          "unit": "px"
+        },
+        "playlist.header.gap": {
+          "value": 8,
+          "cssVariable": "--ds-component-video-playlist-header-gap",
+          "unit": "px"
+        },
+        "playlist.header.icon": {
+          "value": 24,
+          "cssVariable": "--ds-component-video-playlist-header-icon",
+          "unit": "px"
+        },
+        "playlist.body.paddingInline": {
+          "value": 8,
+          "cssVariable": "--ds-component-video-playlist-body-padding-inline",
+          "unit": "px"
+        },
+        "playlist.body.maxHeight": {
+          "value": 432,
+          "cssVariable": "--ds-component-video-playlist-body-max-height",
+          "unit": "px"
+        },
+        "playlist.item.height": {
+          "value": 72,
+          "cssVariable": "--ds-component-video-playlist-item-height",
+          "unit": "px"
+        },
+        "playlist.item.paddingBlock": {
+          "value": 12,
+          "cssVariable": "--ds-component-video-playlist-item-padding-block",
+          "unit": "px"
+        },
+        "playlist.item.paddingInline": {
+          "value": 8,
+          "cssVariable": "--ds-component-video-playlist-item-padding-inline",
+          "unit": "px"
+        },
+        "playlist.item.gap": {
+          "value": 8,
+          "cssVariable": "--ds-component-video-playlist-item-gap",
+          "unit": "px"
+        },
+        "playlist.item.radius": {
+          "value": "{Radius/Radius-MD}",
+          "cssVariable": "--ds-component-video-playlist-item-radius",
+          "unit": "px"
+        },
+        "playlist.marker.size": {
+          "value": 20,
+          "cssVariable": "--ds-component-video-playlist-marker-size",
+          "unit": "px"
+        },
+        "playlist.info.paddingRight": {
+          "value": 8,
+          "cssVariable": "--ds-component-video-playlist-info-padding-right",
+          "unit": "px"
+        },
+        "playlist.info.gap": {
+          "value": 8,
+          "cssVariable": "--ds-component-video-playlist-info-gap",
+          "unit": "px"
+        },
+        "playlist.item.background": {
+          "value": "transparent",
+          "cssVariable": "--ds-component-video-playlist-item-background"
+        },
+        "playlist.item.hoverBackground": {
+          "value": "{Background/Hover}",
+          "cssVariable": "--ds-component-video-playlist-item-hover-fill"
+        },
+        "playlist.item.currentBackground": {
+          "value": "{Background/Selected}",
+          "cssVariable": "--ds-component-video-playlist-item-current-fill"
+        },
+        "playlist.title.color": {
+          "value": "{Text/Primary}",
+          "cssVariable": "--ds-component-video-playlist-title-color"
+        },
+        "playlist.current.color": {
+          "value": "{Text/blue}",
+          "cssVariable": "--ds-component-video-playlist-current-color"
+        },
+        "playlist.meta.color": {
+          "value": "{Text/Secondary}",
+          "cssVariable": "--ds-component-video-playlist-meta-color"
+        },
+        "playlist.index.color": {
+          "value": "{Text/Tertiary}",
+          "cssVariable": "--ds-component-video-playlist-index-color"
+        }
+      },
+      "openItems": {
+        "VID-006": "2026-11-03播放器背景已绑定深蓝渐变；三个控制条时间文字5157:1890/5387:3362/5389:3395仍为未绑定白85%，仅此项保留。"
+      },
+      "stateMatrix": {
+        "progress": {
+          "default": {
+            "track": {
+              "value": "Background/MK_30",
+              "cssVariable": "--ds-component-video-progress-default-track"
+            },
+            "fill": {
+              "value": "Brand/GJ_Blue",
+              "cssVariable": "--ds-component-video-progress-default-fill"
+            },
+            "thumb": {
+              "value": "Text/blue",
+              "cssVariable": "--ds-component-video-progress-default-thumb"
+            }
+          },
+          "hover": {
+            "track": {
+              "value": "Background/MK_30",
+              "cssVariable": "--ds-component-video-progress-hover-track"
+            },
+            "fill": {
+              "value": "Brand/GJ_Blue",
+              "cssVariable": "--ds-component-video-progress-hover-fill"
+            },
+            "thumb": {
+              "value": "Text/blue",
+              "cssVariable": "--ds-component-video-progress-hover-thumb"
+            }
+          },
+          "dragging": {
+            "track": {
+              "value": "Background/MK_30",
+              "cssVariable": "--ds-component-video-progress-dragging-track"
+            },
+            "fill": {
+              "value": "Brand/GJ_Blue",
+              "cssVariable": "--ds-component-video-progress-dragging-fill"
+            },
+            "thumb": {
+              "value": "Text/blue",
+              "cssVariable": "--ds-component-video-progress-dragging-thumb"
+            }
+          },
+          "focused": {
+            "focusRing": {
+              "value": "Border/focused",
+              "cssVariable": "--ds-component-video-progress-focused-focusring"
+            }
+          },
+          "disabled": {
+            "opacity": {
+              "value": 0.5,
+              "cssVariable": "--ds-component-video-progress-disabled-opacity"
+            },
+            "interactive": {
+              "value": false,
+              "cssVariable": "--ds-component-video-progress-disabled-interactive"
+            }
+          }
+        },
+        "control": {
+          "default": {
+            "background": {
+              "value": "Background/MK_30",
+              "cssVariable": "--ds-component-video-control-default-background"
+            },
+            "icon": {
+              "value": "Text/reversal",
+              "cssVariable": "--ds-component-video-control-default-icon"
+            }
+          },
+          "hover": {
+            "background": {
+              "value": "Background/MK_45",
+              "cssVariable": "--ds-component-video-control-hover-background"
+            },
+            "icon": {
+              "value": "Text/reversal",
+              "cssVariable": "--ds-component-video-control-hover-icon"
+            }
+          },
+          "focused": {
+            "focusRing": {
+              "value": "Border/focused",
+              "cssVariable": "--ds-component-video-control-focused-focusring"
+            }
+          },
+          "disabled": {
+            "opacity": {
+              "value": 0.5,
+              "cssVariable": "--ds-component-video-control-disabled-opacity"
+            },
+            "interactive": {
+              "value": false,
+              "cssVariable": "--ds-component-video-control-disabled-interactive"
+            }
+          }
+        },
+        "list-unit": {
+          "default": {
+            "background": {
+              "value": "transparent",
+              "cssVariable": "--ds-component-video-list-unit-default-background"
+            },
+            "text": {
+              "value": "Text/Primary",
+              "cssVariable": "--ds-component-video-list-unit-default-text"
+            },
+            "playIcon": {
+              "value": false,
+              "cssVariable": "--ds-component-video-list-unit-default-playicon"
+            }
+          },
+          "hover": {
+            "background": {
+              "value": "Background/Hover",
+              "cssVariable": "--ds-component-video-list-unit-hover-background"
+            },
+            "text": {
+              "value": "Text/blue",
+              "cssVariable": "--ds-component-video-list-unit-hover-text"
+            },
+            "playIcon": {
+              "value": true,
+              "cssVariable": "--ds-component-video-list-unit-hover-playicon"
+            }
+          }
+        },
+        "playlist-item": {
+          "default": {
+            "background": {
+              "value": "transparent",
+              "cssVariable": "--ds-component-video-playlist-item-default-background"
+            },
+            "title": {
+              "value": "Text/Primary",
+              "cssVariable": "--ds-component-video-playlist-item-default-title"
+            },
+            "status": {
+              "value": "Text/Secondary",
+              "cssVariable": "--ds-component-video-playlist-item-default-status"
+            },
+            "duration": {
+              "value": "Text/Secondary",
+              "cssVariable": "--ds-component-video-playlist-item-default-duration"
+            },
+            "marker": {
+              "value": "Text/Tertiary",
+              "cssVariable": "--ds-component-video-playlist-item-default-marker"
+            }
+          },
+          "hover": {
+            "background": {
+              "value": "Background/Hover",
+              "cssVariable": "--ds-component-video-playlist-item-hover-background"
+            },
+            "title": {
+              "value": "Text/Primary",
+              "cssVariable": "--ds-component-video-playlist-item-hover-title"
+            }
+          },
+          "current": {
+            "background": {
+              "value": "Background/Selected",
+              "cssVariable": "--ds-component-video-playlist-item-current-background"
+            },
+            "title": {
+              "value": "Text/blue",
+              "cssVariable": "--ds-component-video-playlist-item-current-title"
+            },
+            "status": {
+              "value": "Text/blue",
+              "cssVariable": "--ds-component-video-playlist-item-current-status"
+            },
+            "duration": {
+              "value": "Text/Secondary",
+              "cssVariable": "--ds-component-video-playlist-item-current-duration"
+            },
+            "marker": {
+              "value": "Text/blue",
+              "cssVariable": "--ds-component-video-playlist-item-current-marker"
+            }
+          },
+          "focused": {
+            "focusRing": {
+              "value": "Border/focused",
+              "cssVariable": "--ds-component-video-playlist-item-focused-focusring"
+            }
+          },
+          "disabled": {
+            "opacity": {
+              "value": 0.5,
+              "cssVariable": "--ds-component-video-playlist-item-disabled-opacity"
+            },
+            "interactive": {
+              "value": false,
+              "cssVariable": "--ds-component-video-playlist-item-disabled-interactive"
+            }
+          }
+        }
+      }
     }
   },
   "site": {

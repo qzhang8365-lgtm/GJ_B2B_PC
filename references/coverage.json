@@ -2,7 +2,7 @@
   "$schema": "gj-design-skill/component-coverage/v1",
   "title": "GJ B2B PC Component Coverage",
   "generatedBy": "../scripts/build-coverage.mjs",
-  "sourcePolicy": "Generated from the component inventory plus actual rules, contract, component-token, and preview files. Do not hand-edit component rows.",
+  "sourcePolicy": "Generated from the component inventory, actual rules/contract/token/preview files, and explicit schema implementationCoverage gaps. Do not hand-edit component rows.",
   "sources": {
     "figmaInventory": "components/inventory.json",
     "narrativeRulesIndex": "design-system-rules.md",
@@ -17,26 +17,26 @@
     "not-required": "A recorded component decision explicitly excludes this artifact.",
     "pageMarkedComplete": "Mirrors the ✅ character in the Figma page name only; it is not an engineering completion claim."
   },
-  "completionRule": "A component is complete only when narrativeRules, structuredContract, componentToken, and previewPage are complete or explicitly not-required.",
+  "completionRule": "A component is complete only when narrativeRules, structuredContract, componentToken, and previewPage are complete or explicitly not-required, and any explicit schema implementationCoverage is also complete or not-required.",
   "summary": {
-    "components": 43,
-    "registeredComponents": 43,
+    "components": 45,
+    "registeredComponents": 45,
     "unregisteredInventoryComponents": 0,
     "overall": {
-      "complete": 43
+      "complete": 45
     },
     "narrativeRules": {
-      "complete": 43
+      "complete": 45
     },
     "structuredContract": {
-      "complete": 43
+      "complete": 45
     },
     "componentToken": {
-      "complete": 42,
+      "complete": 44,
       "not-required": 1
     },
     "previewPage": {
-      "complete": 42,
+      "complete": 44,
       "not-required": 1
     }
   },
@@ -1976,16 +1976,16 @@
     {
       "id": "audio",
       "component": "Audio",
-      "group": "data-display",
+      "group": "business",
       "order": 42,
       "figmaInventory": {
-        "status": "missing",
-        "page": null,
+        "status": "listed",
+        "page": "音频Audio🆕",
         "pageMarkedComplete": false,
-        "componentSets": 0,
-        "variants": 0,
-        "standaloneComponents": 0,
-        "relation": "none",
+        "componentSets": 5,
+        "variants": 9,
+        "standaloneComponents": 1,
+        "relation": "direct-page",
         "registryStatus": "figma-audited"
       },
       "narrativeRules": {
@@ -2015,6 +2015,103 @@
       "previewPage": {
         "status": "complete",
         "path": "../preview/audio/index.html"
+      },
+      "overallStatus": "complete",
+      "needs": []
+    },
+    {
+      "id": "news",
+      "component": "News",
+      "group": "business",
+      "order": 43,
+      "figmaInventory": {
+        "status": "listed",
+        "page": "资讯News🆕",
+        "pageMarkedComplete": false,
+        "componentSets": 2,
+        "variants": 4,
+        "standaloneComponents": 6,
+        "relation": "direct-page",
+        "registryStatus": "figma-audited"
+      },
+      "narrativeRules": {
+        "status": "complete",
+        "path": "components/news/rules.md"
+      },
+      "structuredContract": {
+        "status": "complete",
+        "maturity": "figma-audited",
+        "schema": {
+          "status": "present",
+          "path": "components/news/schema.json"
+        },
+        "mapping": {
+          "status": "present",
+          "path": "components/news/mapping.json"
+        },
+        "audit": {
+          "status": "present",
+          "path": "components/news/audit.md"
+        }
+      },
+      "componentToken": {
+        "status": "complete",
+        "path": "tokens/components/news.tokens.json"
+      },
+      "previewPage": {
+        "status": "complete",
+        "path": "../preview/news/index.html"
+      },
+      "overallStatus": "complete",
+      "needs": []
+    },
+    {
+      "id": "video",
+      "component": "Video",
+      "group": "business",
+      "order": 44,
+      "figmaInventory": {
+        "status": "listed",
+        "page": "视频Video🆕",
+        "pageMarkedComplete": false,
+        "componentSets": 6,
+        "variants": 18,
+        "standaloneComponents": 6,
+        "relation": "direct-page",
+        "registryStatus": "figma-audited"
+      },
+      "narrativeRules": {
+        "status": "complete",
+        "path": "components/video/rules.md"
+      },
+      "structuredContract": {
+        "status": "complete",
+        "maturity": "figma-audited",
+        "schema": {
+          "status": "present",
+          "path": "components/video/schema.json"
+        },
+        "mapping": {
+          "status": "present",
+          "path": "components/video/mapping.json"
+        },
+        "audit": {
+          "status": "present",
+          "path": "components/video/audit.md"
+        }
+      },
+      "componentToken": {
+        "status": "complete",
+        "path": "tokens/components/video.tokens.json"
+      },
+      "previewPage": {
+        "status": "complete",
+        "path": "../preview/video/index.html"
+      },
+      "implementation": {
+        "status": "complete",
+        "scope": "列表卡、播放器、控制按钮、播放列表项、组合列表及独立controller_slider均已实现；设计来源剩余VID-006时间颜色绑定单独跟踪。",
+        "gaps": []
       },
       "overallStatus": "complete",
       "needs": []

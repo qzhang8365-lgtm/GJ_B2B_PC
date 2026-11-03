@@ -1,7 +1,7 @@
 {
   "$comment": "静态快照，由 build-package.mjs 从 references/tokens/gj-b2b.tokens.json 自动生成，不要手工编辑。",
   "generatedFrom": "references/tokens/gj-b2b.tokens.json",
-  "generatedAt": "2026-09-16",
+  "generatedAt": "2026-11-03",
   "hexToTokenNames": {
     "#F2F7FF": [
       "Primitive/Blue/B01"

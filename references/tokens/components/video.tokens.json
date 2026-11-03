@@ -1,0 +1,615 @@
+{
+  "$schema": "gj-design-skill/component-tokens/v1",
+  "component": "Video",
+  "source": {
+    "figmaNode": "3936:2570",
+    "figmaReadDate": "2026-10-26",
+    "progressAndPlayerReadDate": "2026-11-03",
+    "componentSchema": "references/components/video/schema.json",
+    "componentMapping": "references/components/video/mapping.json",
+    "confirmedRules": "references/components/video/rules.md",
+    "playlistNodes": [
+      "5422:5202",
+      "5422:5203",
+      "5422:5210",
+      "5377:2202",
+      "5377:2203",
+      "5377:2209"
+    ]
+  },
+  "properties": {
+    "buttonType": {
+      "default": "play",
+      "values": [
+        "play",
+        "pause",
+        "full_screen",
+        "fullscreen_exit",
+        "volume",
+        "Video_item_listplaybutton"
+      ],
+      "note": "2026-10-26 Figma type 已修正为 volume（VID-002 已关闭）。"
+    },
+    "volumeState": {
+      "default": "default",
+      "values": [
+        "default",
+        "slider",
+        "mute"
+      ]
+    },
+    "unitState": {
+      "default": "Default",
+      "values": [
+        "Default",
+        "hover"
+      ]
+    },
+    "viewcount": {
+      "default": true,
+      "values": [
+        true,
+        false
+      ]
+    },
+    "controllerState": {
+      "default": "Pause",
+      "values": [
+        "Pause",
+        "Playing"
+      ]
+    },
+    "controllerList": {
+      "default": "False",
+      "values": [
+        "False",
+        "True"
+      ]
+    }
+  },
+  "tokens": {
+    "button.size": {
+      "value": 36,
+      "unit": "px",
+      "cssVariable": "--ds-component-video-button-size",
+      "note": "控制按钮 36×36 圆形。"
+    },
+    "button.radius": {
+      "value": "{Radius/Radius-full}",
+      "resolved": 999,
+      "unit": "px",
+      "cssVariable": "--ds-component-video-button-radius"
+    },
+    "button.background": {
+      "value": "{Background/MK_30}",
+      "resolved": "#0000004D",
+      "cssVariable": "--ds-component-video-button-background"
+    },
+    "button.hover.background": {
+      "value": "{Background/MK_45}",
+      "resolved": "#00000073",
+      "note": "VID-008：Figma 无 hover 态，按惯例加深一级。",
+      "cssVariable": "--ds-component-video-button-hover-background"
+    },
+    "button.icon": {
+      "value": 20,
+      "unit": "px",
+      "cssVariable": "--ds-component-video-button-icon",
+      "note": "36 内 inset 22.22% = 20。"
+    },
+    "button.color": {
+      "value": "{Text/reversal}",
+      "resolved": "#FFFFFF",
+      "cssVariable": "--ds-component-video-button-color"
+    },
+    "button.focus.ring": {
+      "value": "{Border/focused}",
+      "resolved": "#2B73FF",
+      "cssVariable": "--ds-component-video-button-focus-ring"
+    },
+    "controller.gap": {
+      "value": "{Interval/space4}",
+      "resolved": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-video-controller-gap",
+      "note": "VID-004 已关闭：Figma Pause / Playing 两态 gap 均为 12。"
+    },
+    "time.color": {
+      "value": "rgba(255, 255, 255, 0.85)",
+      "note": "VID-006：Figma 未绑定变量的白色 85%。",
+      "cssVariable": "--ds-component-video-time-color"
+    },
+    "time.textStyle": {
+      "value": "{中文/S9-CN-R}",
+      "cssClass": "gj-type-cn-s9"
+    },
+    "progress.height": {
+      "value": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-video-progress-height"
+    },
+    "progress.authoredWidth": {
+      "value": 838,
+      "unit": "px",
+      "cssVariable": "--ds-component-video-progress-authored-width",
+      "note": "5387:3344独立controller_slider母版宽；运行时宽度随容器收缩。"
+    },
+    "progress.radius": {
+      "value": 2,
+      "unit": "px",
+      "cssVariable": "--ds-component-video-progress-radius"
+    },
+    "progress.track": {
+      "value": "{Background/MK_30}",
+      "resolved": "#0000004D",
+      "cssVariable": "--ds-component-video-progress-track"
+    },
+    "progress.fill": {
+      "value": "{Brand/GJ_Blue}",
+      "resolved": "#2B73FF",
+      "cssVariable": "--ds-component-video-progress-fill"
+    },
+    "progress.thumb.size": {
+      "value": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-video-progress-thumb-size"
+    },
+    "progress.thumb.color": {
+      "value": "{Text/blue}",
+      "resolved": "#2B73FF",
+      "cssVariable": "--ds-component-video-progress-thumb-color"
+    },
+    "progress.thumb.shadow": {
+      "value": "{shadow-center}",
+      "cssVariable": "--ds-component-video-progress-thumb-shadow"
+    },
+    "volume.paddingInline": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-video-volume-padding-inline"
+    },
+    "volume.gap": {
+      "value": "{Interval/space2}",
+      "resolved": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-video-volume-gap"
+    },
+    "volume.slider.width": {
+      "value": 40,
+      "unit": "px",
+      "cssVariable": "--ds-component-video-volume-slider-width"
+    },
+    "volume.track.height": {
+      "value": 2,
+      "unit": "px",
+      "cssVariable": "--ds-component-video-volume-track-height"
+    },
+    "volume.track.radius": {
+      "value": 2,
+      "unit": "px",
+      "cssVariable": "--ds-component-video-volume-track-radius"
+    },
+    "volume.track.background": {
+      "value": "{Background/WT_20}",
+      "resolved": "#FFFFFF33",
+      "cssVariable": "--ds-component-video-volume-track-background"
+    },
+    "volume.fill": {
+      "value": "{Background/Container}",
+      "resolved": "#FFFFFF",
+      "cssVariable": "--ds-component-video-volume-fill"
+    },
+    "volume.thumb.size": {
+      "value": 6,
+      "unit": "px",
+      "cssVariable": "--ds-component-video-volume-thumb-size"
+    },
+    "volume.thumb.color": {
+      "value": "{Background/Container}",
+      "resolved": "#FFFFFF",
+      "cssVariable": "--ds-component-video-volume-thumb-color"
+    },
+    "volume.thumb.shadow": {
+      "value": "{shadow_small}",
+      "cssVariable": "--ds-component-video-volume-thumb-shadow"
+    },
+    "player.authoredWidth": {
+      "value": 1168,
+      "unit": "px",
+      "cssVariable": "--ds-component-video-player-authored-width"
+    },
+    "player.authoredHeight": {
+      "value": 648,
+      "unit": "px",
+      "cssVariable": "--ds-component-video-player-authored-height"
+    },
+    "player.aspectRatio": {
+      "value": "1168 / 648",
+      "note": "Figma 母版比例；视频画面在其中 object-fit:contain。",
+      "cssVariable": "--ds-component-video-player-aspect-ratio"
+    },
+    "player.radius": {
+      "value": "{Radius/Radius-XL}",
+      "resolved": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-video-player-radius"
+    },
+    "player.padding": {
+      "value": "{Interval/space6}",
+      "resolved": 20,
+      "unit": "px",
+      "cssVariable": "--ds-component-video-player-padding"
+    },
+    "player.background": {
+      "value": "var(--ds-gradient-deep-blue)",
+      "note": "2026-11-03只读复核5157:2015已绑定深蓝渐变（DB09→DB06）；光效已删除。",
+      "figmaStyleId": "S:ff6fadb6c68e0d7bb1864eee83ef52e93fbf7b14,",
+      "cssVariable": "--ds-component-video-player-background"
+    },
+    "thumbnail.authoredWidth": {
+      "value": 280,
+      "unit": "px",
+      "cssVariable": "--ds-component-video-thumbnail-authored-width"
+    },
+    "thumbnail.authoredHeight": {
+      "value": 180,
+      "unit": "px",
+      "cssVariable": "--ds-component-video-thumbnail-authored-height"
+    },
+    "thumbnail.aspectRatio": {
+      "value": "280 / 180",
+      "cssVariable": "--ds-component-video-thumbnail-aspect-ratio"
+    },
+    "thumbnail.radius": {
+      "value": "{Radius/Radius-MD}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-video-thumbnail-radius"
+    },
+    "thumbnail.padding": {
+      "value": "{Interval/space4}",
+      "resolved": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-video-thumbnail-padding"
+    },
+    "thumbnail.background": {
+      "value": "var(--ds-gradient-deep-blue)",
+      "note": "Figma 已绑定深蓝渐变样式与 DB09 / DB06 色标变量。",
+      "cssVariable": "--ds-component-video-thumbnail-background",
+      "figmaStyleId": "S:ff6fadb6c68e0d7bb1864eee83ef52e93fbf7b14,"
+    },
+    "timeTag.height": {
+      "value": 18,
+      "unit": "px",
+      "cssVariable": "--ds-component-video-time-tag-height"
+    },
+    "timeTag.paddingInline": {
+      "value": "{Interval/space2}",
+      "resolved": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-video-time-tag-padding-inline"
+    },
+    "timeTag.radius": {
+      "value": "{Radius/Radius-XS}",
+      "resolved": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-video-time-tag-radius"
+    },
+    "timeTag.background": {
+      "value": "{Background/MK_45}",
+      "resolved": "#00000073",
+      "cssVariable": "--ds-component-video-time-tag-background"
+    },
+    "timeTag.textStyle": {
+      "value": "{中文/S10-CN-R}",
+      "cssClass": "gj-type-cn-s10"
+    },
+    "overlayText.color": {
+      "value": "{Text/reversal}",
+      "resolved": "#FFFFFF",
+      "cssVariable": "--ds-component-video-overlay-text-color"
+    },
+    "playcount.gap": {
+      "value": "{Interval/space2}",
+      "resolved": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-video-playcount-gap"
+    },
+    "playcount.icon": {
+      "value": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-video-playcount-icon"
+    },
+    "unit.padding": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-video-unit-padding"
+    },
+    "unit.radius": {
+      "value": "{Radius/Radius-XL}",
+      "resolved": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-video-unit-radius"
+    },
+    "unit.hover.background": {
+      "value": "{Background/Hover}",
+      "resolved": "#2B73FF0D",
+      "cssVariable": "--ds-component-video-unit-hover-background"
+    },
+    "unit.content.paddingTop": {
+      "value": "{Interval/space4}",
+      "resolved": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-video-unit-content-padding-top"
+    },
+    "unit.content.paddingInline": {
+      "value": "{Interval/space2}",
+      "resolved": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-video-unit-content-padding-inline"
+    },
+    "unit.content.paddingBottom": {
+      "value": "{Interval/space2}",
+      "resolved": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-video-unit-content-padding-bottom"
+    },
+    "unit.content.gap": {
+      "value": "{Interval/space5}",
+      "resolved": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-video-unit-content-gap"
+    },
+    "unit.title.textStyle": {
+      "value": "{中文/S4-CN-S}",
+      "cssClass": "gj-type-cn-s4"
+    },
+    "unit.title.color": {
+      "value": "{Text/Primary}",
+      "resolved": "#101828",
+      "cssVariable": "--ds-component-video-unit-title-color"
+    },
+    "unit.title.hoverColor": {
+      "value": "{Text/blue}",
+      "resolved": "#2B73FF",
+      "cssVariable": "--ds-component-video-unit-title-hover-color"
+    },
+    "unit.title.lines": {
+      "value": 2,
+      "cssVariable": "--ds-component-video-unit-title-lines"
+    },
+    "unit.meta.gap": {
+      "value": "{Interval/space4}",
+      "resolved": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-video-unit-meta-gap"
+    },
+    "unit.meta.color": {
+      "value": "{Text/Secondary}",
+      "resolved": "#475467",
+      "cssVariable": "--ds-component-video-unit-meta-color"
+    },
+    "unit.meta.textStyle": {
+      "value": "{中文/S9-CN-R}",
+      "cssClass": "gj-type-cn-s9"
+    },
+    "grid.gap": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-video-grid-gap",
+      "note": "VID-010 默认：卡片自带 8 内边距，网格间距 8，封面之间视觉间隔 24。"
+    },
+    "listplaybutton.width": {
+      "value": 76,
+      "unit": "px",
+      "cssVariable": "--ds-component-video-listplaybutton-width"
+    },
+    "listplaybutton.paddingInline": {
+      "value": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-video-listplaybutton-padding-inline"
+    },
+    "listplaybutton.paddingBlock": {
+      "value": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-video-listplaybutton-padding-block"
+    },
+    "listplaybutton.gap": {
+      "value": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-video-listplaybutton-gap"
+    },
+    "disabled.opacity": {
+      "value": 0.5,
+      "cssVariable": "--ds-component-video-disabled-opacity",
+      "note": "Figma未发布Disabled；按Skill通用50%兜底。"
+    },
+    "playlist.width": {
+      "value": 336,
+      "cssVariable": "--ds-component-video-playlist-width",
+      "unit": "px"
+    },
+    "playlist.radius": {
+      "value": "{Radius/Radius-LG}",
+      "cssVariable": "--ds-component-video-playlist-radius",
+      "unit": "px"
+    },
+    "playlist.background": {
+      "value": "{Background/Background}",
+      "cssVariable": "--ds-component-video-playlist-background"
+    },
+    "playlist.border": {
+      "value": "{Border/default}",
+      "cssVariable": "--ds-component-video-playlist-border"
+    },
+    "playlist.header.height": {
+      "value": 48,
+      "cssVariable": "--ds-component-video-playlist-header-height",
+      "unit": "px"
+    },
+    "playlist.header.padding": {
+      "value": 12,
+      "cssVariable": "--ds-component-video-playlist-header-padding",
+      "unit": "px"
+    },
+    "playlist.header.gap": {
+      "value": 8,
+      "cssVariable": "--ds-component-video-playlist-header-gap",
+      "unit": "px"
+    },
+    "playlist.header.icon": {
+      "value": 24,
+      "cssVariable": "--ds-component-video-playlist-header-icon",
+      "unit": "px"
+    },
+    "playlist.body.paddingInline": {
+      "value": 8,
+      "cssVariable": "--ds-component-video-playlist-body-padding-inline",
+      "unit": "px"
+    },
+    "playlist.body.maxHeight": {
+      "value": 432,
+      "cssVariable": "--ds-component-video-playlist-body-max-height",
+      "unit": "px"
+    },
+    "playlist.item.height": {
+      "value": 72,
+      "cssVariable": "--ds-component-video-playlist-item-height",
+      "unit": "px"
+    },
+    "playlist.item.paddingBlock": {
+      "value": 12,
+      "cssVariable": "--ds-component-video-playlist-item-padding-block",
+      "unit": "px"
+    },
+    "playlist.item.paddingInline": {
+      "value": 8,
+      "cssVariable": "--ds-component-video-playlist-item-padding-inline",
+      "unit": "px"
+    },
+    "playlist.item.gap": {
+      "value": 8,
+      "cssVariable": "--ds-component-video-playlist-item-gap",
+      "unit": "px"
+    },
+    "playlist.item.radius": {
+      "value": "{Radius/Radius-MD}",
+      "cssVariable": "--ds-component-video-playlist-item-radius",
+      "unit": "px"
+    },
+    "playlist.marker.size": {
+      "value": 20,
+      "cssVariable": "--ds-component-video-playlist-marker-size",
+      "unit": "px"
+    },
+    "playlist.info.paddingRight": {
+      "value": 8,
+      "cssVariable": "--ds-component-video-playlist-info-padding-right",
+      "unit": "px"
+    },
+    "playlist.info.gap": {
+      "value": 8,
+      "cssVariable": "--ds-component-video-playlist-info-gap",
+      "unit": "px"
+    },
+    "playlist.item.background": {
+      "value": "transparent",
+      "cssVariable": "--ds-component-video-playlist-item-background"
+    },
+    "playlist.item.hoverBackground": {
+      "value": "{Background/Hover}",
+      "cssVariable": "--ds-component-video-playlist-item-hover-fill"
+    },
+    "playlist.item.currentBackground": {
+      "value": "{Background/Selected}",
+      "cssVariable": "--ds-component-video-playlist-item-current-fill"
+    },
+    "playlist.title.color": {
+      "value": "{Text/Primary}",
+      "cssVariable": "--ds-component-video-playlist-title-color"
+    },
+    "playlist.current.color": {
+      "value": "{Text/blue}",
+      "cssVariable": "--ds-component-video-playlist-current-color"
+    },
+    "playlist.meta.color": {
+      "value": "{Text/Secondary}",
+      "cssVariable": "--ds-component-video-playlist-meta-color"
+    },
+    "playlist.index.color": {
+      "value": "{Text/Tertiary}",
+      "cssVariable": "--ds-component-video-playlist-index-color"
+    }
+  },
+  "openItems": {
+    "VID-006": "2026-11-03播放器背景已绑定深蓝渐变；三个控制条时间文字5157:1890/5387:3362/5389:3395仍为未绑定白85%，仅此项保留。"
+  },
+  "stateMatrix": {
+    "progress": {
+      "default": { "track": "Background/MK_30", "fill": "Brand/GJ_Blue", "thumb": "Text/blue" },
+      "hover": { "track": "Background/MK_30", "fill": "Brand/GJ_Blue", "thumb": "Text/blue" },
+      "dragging": { "track": "Background/MK_30", "fill": "Brand/GJ_Blue", "thumb": "Text/blue" },
+      "focused": { "focusRing": "Border/focused" },
+      "disabled": { "opacity": 0.5, "interactive": false }
+    },
+    "control": {
+      "default": {
+        "background": "Background/MK_30",
+        "icon": "Text/reversal"
+      },
+      "hover": {
+        "background": "Background/MK_45",
+        "icon": "Text/reversal"
+      },
+      "focused": {
+        "focusRing": "Border/focused"
+      },
+      "disabled": {
+        "opacity": 0.5,
+        "interactive": false
+      }
+    },
+    "list-unit": {
+      "default": {
+        "background": "transparent",
+        "text": "Text/Primary",
+        "playIcon": false
+      },
+      "hover": {
+        "background": "Background/Hover",
+        "text": "Text/blue",
+        "playIcon": true
+      }
+    },
+    "playlist-item": {
+      "default": {
+        "background": "transparent",
+        "title": "Text/Primary",
+        "status": "Text/Secondary",
+        "duration": "Text/Secondary",
+        "marker": "Text/Tertiary"
+      },
+      "hover": {
+        "background": "Background/Hover",
+        "title": "Text/Primary"
+      },
+      "current": {
+        "background": "Background/Selected",
+        "title": "Text/blue",
+        "status": "Text/blue",
+        "duration": "Text/Secondary",
+        "marker": "Text/blue"
+      },
+      "focused": {
+        "focusRing": "Border/focused"
+      },
+      "disabled": {
+        "opacity": 0.5,
+        "interactive": false
+      }
+    }
+  }
+}

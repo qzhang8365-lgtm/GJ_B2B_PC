@@ -1,0 +1,420 @@
+{
+  "$schema": "gj-design-skill/component-tokens/v1",
+  "component": "News",
+  "source": {
+    "figmaNode": "5153:14",
+    "figmaReadDate": "2026-10-26",
+    "componentSchema": "references/components/news/schema.json",
+    "componentMapping": "references/components/news/mapping.json",
+    "confirmedRules": "references/components/news/rules.md",
+    "statsFigmaNode": "5377:383"
+  },
+  "properties": {
+    "listState": {
+      "default": "Default",
+      "values": [
+        "Default",
+        "hover"
+      ],
+      "note": "News_List 组件集 state 轴。hover 只改背景；focus-visible 为实现层补充（NEWS-003）。"
+    },
+    "author": {
+      "default": true,
+      "values": [
+        true,
+        false
+      ]
+    },
+    "date": {
+      "default": true,
+      "values": [
+        true,
+        false
+      ]
+    },
+    "view": {
+      "default": true,
+      "values": [
+        true,
+        false
+      ]
+    },
+    "summary": {
+      "default": true,
+      "values": [
+        true,
+        false
+      ],
+      "note": "Figma 属性名「摘要」（BOOLEAN 摘要#5376:1 + TEXT 摘要#5153:3），代码命名 summary / summaryText。"
+    },
+    "titleLeftTag": {
+      "default": true,
+      "values": [
+        true,
+        false
+      ]
+    },
+    "titleRightTag": {
+      "default": true,
+      "values": [
+        true,
+        false
+      ]
+    },
+    "thumbnailCornerTag": {
+      "default": false,
+      "values": [
+        true,
+        false
+      ],
+      "note": "Figma 属性名 Cornertag。与 titleLeftTag 默认互斥（NEWS-015）；Figma 母版默认值为 true，生成时按互斥规则取其一。"
+    },
+    "thumbnailType": {
+      "default": "image",
+      "values": [
+        "image",
+        "placeholder"
+      ],
+      "note": "Figma News_item 组件集 type 轴（2026-10-26 由 Property 1=thumbnail/Variant2 改名，NEWS-007 关闭）。"
+    },
+    "listDivider": {
+      "default": false,
+      "values": [
+        false,
+        true
+      ],
+      "note": "列表是否在条目之间显示分割线（.gj-news-list-divided），NEWS-010。"
+    },
+    "stats": {
+      "default": false,
+      "values": [
+        false,
+        true
+      ],
+      "note": "列表统计栏只在筛选或搜索后显示（NEWS-016）。"
+    }
+  },
+  "tokens": {
+    "list.gap": {
+      "value": "{Interval/space1}",
+      "resolved": 0,
+      "unit": "px",
+      "cssVariable": "--ds-component-news-list-gap",
+      "note": "2026-10-26 用户确认：列表项之间上下间距为 0，视觉间隔由列表项自身 12px 内边距提供（NEWS-009）。"
+    },
+    "list.divider.color": {
+      "value": "{Border/default}",
+      "resolved": "#EBEEF2",
+      "cssVariable": "--ds-component-news-list-divider-color",
+      "note": "NEWS-010：分割线列表复用 Divider 规格（Border/default、1px、content 缩进）。"
+    },
+    "list.divider.thickness": {
+      "value": 1,
+      "unit": "px",
+      "cssVariable": "--ds-component-news-list-divider-thickness"
+    },
+    "list.divider.inset": {
+      "value": "{Interval/space4}",
+      "resolved": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-news-list-divider-inset",
+      "note": "Divider inset=content：左右与列表项内边距对齐。"
+    },
+    "list.divider.spacing": {
+      "value": "{Interval/space2}",
+      "resolved": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-news-list-divider-spacing",
+      "note": "2026-10-26 用户确认：分割线上下各留 4px 空白，分割线列表的项间距 = 4 + 1 + 4。"
+    },
+    "item.padding": {
+      "value": "{Interval/space4}",
+      "resolved": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-news-item-padding",
+      "note": "生成代码 p-[12px]，四边一致。"
+    },
+    "item.gap": {
+      "value": "{Interval/space6}",
+      "resolved": 20,
+      "unit": "px",
+      "cssVariable": "--ds-component-news-item-gap",
+      "note": "封面与内容列间距，生成代码 gap-[20px]。"
+    },
+    "item.radius": {
+      "value": "{Radius/Radius-LG}",
+      "resolved": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-news-item-radius",
+      "note": "2026-10-26 用户指示由 16（Figma hover 变体 rounded-16）改为 12（NEWS-014）。"
+    },
+    "item.default.background": {
+      "value": "transparent",
+      "cssVariable": "--ds-component-news-item-default-background"
+    },
+    "item.hover.background": {
+      "value": "{Background/Hover}",
+      "resolved": "#2B73FF0D",
+      "cssVariable": "--ds-component-news-item-hover-background"
+    },
+    "item.focus.ring": {
+      "value": "{Border/focused}",
+      "resolved": "#2B73FF",
+      "cssVariable": "--ds-component-news-item-focus-ring",
+      "note": "NEWS-003：Figma 无 focus 变体，按通用无障碍惯例补 2px 焦点环。"
+    },
+    "thumbnail.width": {
+      "value": 180,
+      "unit": "px",
+      "cssVariable": "--ds-component-news-thumbnail-width",
+      "note": "母版宽度；单独使用封面时的尺寸。列表内由 aspectRatio 与内容高度推导。"
+    },
+    "thumbnail.height": {
+      "value": 120,
+      "unit": "px",
+      "cssVariable": "--ds-component-news-thumbnail-height",
+      "note": "母版高度；列表内不固定，跟随内容列高度（有摘要约 118，无摘要约 62）。"
+    },
+    "thumbnail.aspectRatio": {
+      "value": "180 / 120",
+      "cssVariable": "--ds-component-news-thumbnail-aspect-ratio",
+      "note": "NEWS-001（2026-10-26 修订）：列表内封面 layoutAlign=STRETCH + targetAspectRatio 180:120，高度跟随右侧内容、宽度按 3:2 缩放。"
+    },
+    "thumbnail.radius": {
+      "value": "{Radius/Radius-MD}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-news-thumbnail-radius"
+    },
+    "thumbnail.placeholder": {
+      "value": "{Background/Secondary}",
+      "cssVariable": "--ds-component-news-thumbnail-placeholder",
+      "note": "占位图加载前的底色；实际无封面时显示 thumbnail.placeholderImage。"
+    },
+    "thumbnail.placeholderImage": {
+      "value": "assets/images/news/thumbnail-placeholder.png",
+      "asset": "assets/images/news/thumbnail-placeholder.png",
+      "figmaNode": "5377:359",
+      "note": "News_item Property 1=Variant2 的原始图片填充（360×240 @2x，imageHash 1589e52e…）。直接写在 .gj-news-thumb / .gj-news-card 背景里，不经 CSS 变量传递相对 URL。"
+    },
+    "content.gap": {
+      "value": "{Interval/space4}",
+      "resolved": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-news-content-gap"
+    },
+    "title.gap": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-news-title-gap"
+    },
+    "title.textStyle": {
+      "value": "{中文/S4-CN-S}",
+      "cssClass": "gj-type-cn-s4"
+    },
+    "title.color": {
+      "value": "{Text/Primary}",
+      "resolved": "#101828",
+      "cssVariable": "--ds-component-news-title-color"
+    },
+    "summary.textStyle": {
+      "value": "{中文/S8-CN-R}",
+      "cssClass": "gj-type-cn-s8"
+    },
+    "summary.color": {
+      "value": "{Text/Secondary}",
+      "resolved": "#475467",
+      "cssVariable": "--ds-component-news-summary-color"
+    },
+    "summary.lines": {
+      "value": 2,
+      "cssVariable": "--ds-component-news-summary-lines",
+      "note": "max-h 44 = 2 × 22，超出省略。"
+    },
+    "meta.paddingTop": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-news-meta-padding-top"
+    },
+    "meta.gap": {
+      "value": "{Interval/space5}",
+      "resolved": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-news-meta-gap"
+    },
+    "meta.itemGap": {
+      "value": "{Interval/space2}",
+      "resolved": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-news-meta-item-gap",
+      "note": "2026-10-26 Figma 由 6 改为 4（author/news_time/news_view itemSpacing=4）。"
+    },
+    "meta.iconSize": {
+      "value": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-news-meta-icon-size"
+    },
+    "meta.textStyle": {
+      "value": "{中文/S9-CN-R}",
+      "cssClass": "gj-type-cn-s9"
+    },
+    "meta.color": {
+      "value": "{Text/Tertiary}",
+      "resolved": "#8D96A3",
+      "cssVariable": "--ds-component-news-meta-color",
+      "note": "2026-10-26 用户指示由 Text/Secondary 改为 Text/Tertiary（NEWS-013）；图标跟随文字色。"
+    },
+    "large.width": {
+      "value": 310,
+      "unit": "px",
+      "cssVariable": "--ds-component-news-large-width",
+      "note": "Figma 母版宽；运行时可由父级网格等分，高宽比保持 310:207。"
+    },
+    "large.height": {
+      "value": 207,
+      "unit": "px",
+      "cssVariable": "--ds-component-news-large-height"
+    },
+    "large.gridGap": {
+      "value": "{Interval/space5}",
+      "resolved": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-news-large-grid-gap",
+      "note": "NEWS-004 默认：大卡网格间距 16（L1 卡片组）。"
+    },
+    "large.radius": {
+      "value": "{Radius/Radius-LG}",
+      "resolved": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-news-large-radius"
+    },
+    "large.overlay.from": {
+      "value": "{Background/MK_3}",
+      "resolved": "#00000008",
+      "cssVariable": "--ds-component-news-large-overlay-from"
+    },
+    "large.overlay.to": {
+      "value": "{Background/MK_80}",
+      "resolved": "#000000CC",
+      "cssVariable": "--ds-component-news-large-overlay-to"
+    },
+    "large.overlay.paddingTop": {
+      "value": "{Interval/space4}",
+      "resolved": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-news-large-overlay-padding-top"
+    },
+    "large.overlay.paddingInline": {
+      "value": "{Interval/space5}",
+      "resolved": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-news-large-overlay-padding-inline"
+    },
+    "large.overlay.paddingBottom": {
+      "value": "{Interval/space5}",
+      "resolved": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-news-large-overlay-padding-bottom"
+    },
+    "large.overlay.gap": {
+      "value": "{Interval/space3}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-news-large-overlay-gap"
+    },
+    "large.text": {
+      "value": "{Text/reversal}",
+      "resolved": "#FFFFFF",
+      "cssVariable": "--ds-component-news-large-text"
+    },
+    "large.title.textStyle": {
+      "value": "{中文/S4-CN-S}",
+      "cssClass": "gj-type-cn-s4"
+    },
+    "large.meta.textStyle": {
+      "value": "{中文/S9-CN-R}",
+      "cssClass": "gj-type-cn-s9"
+    },
+    "stats.paddingInline": {
+      "value": "{Interval/space4}",
+      "resolved": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-news-stats-padding-inline",
+      "note": "NEWS-016 默认：左右与列表项内容对齐（列表项内边距 12）；Figma 母版为 0 内边距的 784 宽独立件。"
+    },
+    "stats.height": {
+      "value": 22,
+      "unit": "px",
+      "cssVariable": "--ds-component-news-stats-height",
+      "note": "Figma 列表统计栏 HUG 高度 22（数字行高）。"
+    },
+    "stats.summaryGap": {
+      "value": "{Interval/space2}",
+      "resolved": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-news-stats-summary-gap"
+    },
+    "stats.listGap": {
+      "value": "{Interval/space2}",
+      "resolved": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-news-stats-list-gap",
+      "note": "NEWS-016 默认：结果条与下方列表间距 4，加上列表项内边距 12，文字到首条内容 16。"
+    },
+    "stats.text.textStyle": {
+      "value": "{中文/S9-CN-R}",
+      "cssClass": "gj-type-cn-s9"
+    },
+    "stats.text.color": {
+      "value": "{Text/Secondary}",
+      "resolved": "#475467",
+      "cssVariable": "--ds-component-news-stats-text-color"
+    },
+    "stats.count.textStyle": {
+      "value": "{中文/S5-CN-S}",
+      "cssClass": "gj-type-cn-s5"
+    },
+    "stats.count.color": {
+      "value": "{Text/Primary}",
+      "resolved": "#101828",
+      "cssVariable": "--ds-component-news-stats-count-color"
+    }
+  },
+  "composition": {
+    "titleLeftTag": "Tag：Light + Blue + Regular（22px，Primitive/Blue/B02 底 / B07 字），类名 gj-tag gj-tag-light gj-tag-blue",
+    "titleRightTag": "Tag：Filled + Red + Small + Pill（18px，Primitive/Red/R06 底 / 白字 10/14），类名 gj-tag gj-tag-filled gj-tag-red gj-tag-small gj-tag-pill",
+    "thumbnailCornerTag": "Tag_corner：black + medium + top_left（22px，Background/MK_45，左上/右下 8px），类名 gj-tag-corner",
+    "metaIcons": "icf_user_user（作者）、icf_system_calendar（日期）、icf_system_eye（阅读量），16px，跟随 Text/Tertiary"
+  },
+  "openItems": {},
+  "stateMatrix": {
+    "list-item": {
+      "default": {
+        "background": "transparent",
+        "text": "Text/Primary"
+      },
+      "hover": {
+        "background": "Background/Hover",
+        "text": "Text/Primary"
+      },
+      "focused": {
+        "focusRing": "Border/focused"
+      }
+    },
+    "large-card": {
+      "default": {
+        "text": "Text/reversal",
+        "overlayFrom": "Background/MK_3",
+        "overlayTo": "Background/MK_80"
+      },
+      "hover": {
+        "inherits": "default"
+      },
+      "focused": {
+        "focusRing": "Border/focused"
+      }
+    }
+  }
+}

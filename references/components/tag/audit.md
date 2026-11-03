@@ -60,3 +60,16 @@ Tag 的 1 个主组件集（132 variants）、1 个附属图标组件（2 varian
 验证：脚本二次扫描确认页面残留死选择器为 0；`<style>` 块大括号计数与逐字符深度校验均通过（与 button.html 同批次校验时一并发现并排除结构性错误）；本文件删除/裁剪的选择器均逐一比对过页面真实 `class="..."` 与 `classList` 调用，确认为未引用的旧代码，属于低风险清理，未单独截图复核。
 
 结论：TAG-006 已关闭。`preview/tag/index.html` 内嵌 CSS 现在只包含仍被页面实际使用的选择器。
+
+## 2026-10-26：Tag_corner 共享基座（新增 TAG-007）
+
+背景：业务组件 News（资讯）的封面角标直接使用 Tag_corner black/medium/top_left（Figma `5153:110` 实例）。此前共享 CSS 没有边角标签基座，只有 `preview/tag/index.html` 的页面私有 `.corner-tag`。按「可复用部分回收到共享组件层」规则，在 `assets/styles/gj-b2b-components.css` 新增：
+
+- `.gj-tag-corner`：高 `--ds-component-tag-corner-medium-height`（22）、最小宽 40、横向内边距 8、文字 12/18 Semibold 白色、默认 black（`Background/MK_45`），圆角左上/右下 `--ds-component-tag-corner-medium-radius`（8）。
+- `.gj-tag-corner-tr`：右上角位置，圆角改为右上/左下。
+- `.gj-tag-corner-small`：18 高 / 最小宽 36 / 圆角 4 / 文字 10/14。
+- 颜色 `.gj-tag-corner-red / -blue / -green / -grey / -orange`，绑定 rules.md 已审计的语义色。
+
+未新增 Token，全部取自既有 `--ds-component-tag-corner-*` 与语义色变量。
+
+- **TAG-007**（待前端验证，P3）：`preview/tag/index.html` 的边角标签示例仍是私有 `.corner-tag` + 内联背景色，应迁移到 `.gj-tag-corner` 并清理私有 CSS；迁移后关闭本项。

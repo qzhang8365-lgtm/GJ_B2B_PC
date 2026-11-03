@@ -29,8 +29,8 @@
 <script>
   const catalog=[
     {label:'开始',children:[
-      {id:'overview',label:'总览 Overview',url:'overview/index.html?v=7'},
-      {id:'guide',label:'使用指南 Guide',url:'guide/index.html?v=4'}
+      {id:'overview',label:'总览 Overview',url:'overview/index.html?v=8'},
+      {id:'guide',label:'使用指南 Guide',url:'guide/index.html?v=5'}
     ]},
     {label:'基础规范',children:[
       {id:'color',label:'颜色 Color',url:'color/index.html?v=26',children:[
@@ -84,7 +84,6 @@
       {id:'table',label:'表格 Table',url:'table/index.html?v=23'},
       {id:'avatar',label:'头像 Avatar',url:'avatar/index.html?v=5'},
       {id:'badge',label:'徽标 Badge',url:'badge/index.html?v=2'},
-      {id:'audio',label:'音频 Audio',url:'audio/index.html?v=1'},
       {id:'empty',label:'空状态 Empty',url:'empty/index.html?v=1'},
       {id:'steps',label:'步骤条 Steps',url:'steps/index.html?v=1'},
       {id:'timeline',label:'时间轴 Timeline',url:'timeline/index.html?v=2'},
@@ -113,8 +112,9 @@
       {id:'skeleton',label:'骨架屏 Skeleton',url:'skeleton/index.html?v=4'}
     ]},
     {label:'业务组件',children:[
-      {id:'news',label:'资讯 News',url:'news/index.html?v=5'},
-      {id:'video',label:'视频 Video',url:'video/index.html?v=1'}
+      {id:'audio',label:'音频 Audio',url:'audio/index.html?v=15'},
+      {id:'news',label:'资讯 News',url:'news/index.html?v=6'},
+      {id:'video',label:'视频 Video',url:'video/index.html?v=4'}
     ]}
   ];
   const nav=document.getElementById('navigation'),frame=document.getElementById('contentFrame'),placeholder=document.getElementById('placeholder'),sidebar=document.getElementById('sidebar'),frameLoading=document.getElementById('frameLoading');
@@ -160,7 +160,19 @@
   function itemMarkup(item,level){allPages.push(item);const pending=item.url||item.anchor?'':' pending';const hasChildren=!!(item.children&&item.children.length);const children=hasChildren?`<div class="nav-subchildren">${item.children.map(child=>itemMarkup(child,level+1)).join('')}</div>`:'';return `<div class="nav-entry${hasChildren?' has-sub':''}"><button class="nav-item nav-level-${level}${pending}" data-id="${item.id}"><span class="dot"></span><span>${item.label}</span>${hasChildren?navChevron:''}</button>${children}</div>`}
   nav.innerHTML=catalog.map(group=>`<section class="nav-section"><button class="nav-level-1" aria-expanded="true"><span>${group.label}</span>${navChevron}</button><div class="nav-children">${group.children.map(item=>itemMarkup(item,2)).join('')}</div></section>`).join('');
   function findPage(id){for(const group of catalog){for(const item of group.children){if(item.id===id)return {group:group.label,item,parent:null};for(const child of item.children||[])if(child.id===id)return {group:group.label,item:child,parent:item}}}return null}
-  function openPage(id,push=true){const found=findPage(id)||findPage('overview'),item=found.item,effectiveUrl=item.url||found.parent?.url;document.querySelectorAll('.nav-item').forEach(el=>{el.classList.toggle('active',el.dataset.id===item.id);el.classList.toggle('parent-active',found.parent?.id===el.dataset.id)});const expandedParent=found.parent||((item.children?.length)?item:null);if(expandedParent){const pbtn=nav.querySelector('.nav-item[data-id="'+expandedParent.id+'"]');if(pbtn)pbtn.closest('.nav-entry').classList.add('expanded')}document.getElementById('crumbGroup').textContent=found.group;document.getElementById('crumbPage').textContent=found.parent?`${found.parent.label} / ${item.label}`:item.label;if(effectiveUrl){placeholder.classList.remove('show');frame.style.display='block';if(frame.getAttribute('src')!==effectiveUrl){pendingAnchor=item.anchor||'';frame.style.height='400px';frameLoading.classList.add('show');frame.src=effectiveUrl}else if(item.anchor){scrollToFrameAnchor(item.anchor)}else{window.scrollTo({top:0,behavior:'smooth'})}}else{frame.style.display='none';placeholder.classList.add('show');document.getElementById('placeholderTitle').textContent=item.label}if(push)location.hash=item.id;sidebar.classList.remove('open')}
+  function openPage(id,push=true){
+    const found=findPage(id)||findPage('overview'),item=found.item,effectiveUrl=item.url||found.parent?.url;
+    document.querySelectorAll('.nav-item').forEach(el=>{el.classList.toggle('active',el.dataset.id===item.id);el.classList.toggle('parent-active',found.parent?.id===el.dataset.id)});
+    const expandedParent=found.parent||((item.children?.length)?item:null);
+    if(expandedParent){const pbtn=nav.querySelector('.nav-item[data-id="'+expandedParent.id+'"]');if(pbtn)pbtn.closest('.nav-entry').classList.add('expanded')}
+    const activeNavItem=nav.querySelector('.nav-item[data-id="'+item.id+'"]');
+    if(activeNavItem)requestAnimationFrame(()=>activeNavItem.scrollIntoView({block:'center'}));
+    document.getElementById('crumbGroup').textContent=found.group;
+    document.getElementById('crumbPage').textContent=found.parent?`${found.parent.label} / ${item.label}`:item.label;
+    if(effectiveUrl){placeholder.classList.remove('show');frame.style.display='block';if(frame.getAttribute('src')!==effectiveUrl){pendingAnchor=item.anchor||'';frame.style.height='400px';frameLoading.classList.add('show');frame.src=effectiveUrl}else if(item.anchor){scrollToFrameAnchor(item.anchor)}else{window.scrollTo({top:0,behavior:'smooth'})}}else{frame.style.display='none';placeholder.classList.add('show');document.getElementById('placeholderTitle').textContent=item.label}
+    if(push)location.hash=item.id;
+    sidebar.classList.remove('open')
+  }
   nav.addEventListener('click',e=>{const sectionButton=e.target.closest('.nav-level-1');if(sectionButton){const section=sectionButton.closest('.nav-section');section.classList.toggle('collapsed');sectionButton.setAttribute('aria-expanded',String(!section.classList.contains('collapsed')));return}const item=e.target.closest('.nav-item');if(item){const entry=item.closest('.nav-entry');if(entry.classList.contains('has-sub')){if(e.target.closest('.chevron')){entry.classList.toggle('expanded');return}entry.classList.add('expanded')}openPage(item.dataset.id)}});
   const globalToast=document.getElementById('globalToast');let globalToastTimer;window.addEventListener('message',event=>{if(event.origin!==location.origin||event.data?.type!=='gj-copy-feedback')return;globalToast.textContent=String(event.data.text||'已复制');globalToast.classList.add('show');clearTimeout(globalToastTimer);globalToastTimer=setTimeout(()=>globalToast.classList.remove('show'),1600)});
   document.getElementById('mobileToggle').addEventListener('click',()=>sidebar.classList.toggle('open'));window.addEventListener('hashchange',()=>openPage(location.hash.slice(1)||'overview',false));openPage(location.hash.slice(1)||'overview',false);

@@ -53,10 +53,10 @@
 
 - UI 字体只调用用户操作系统已安装字体；Figma 中的字体名称只作为视觉参考，不要求为还原设计而下载或打包 UI 字体。
 - 中西文字体必须按完整配对使用：macOS 使用“苹方 + SF Pro”，Windows 使用“微软雅黑 + Arial”，跨平台开源回退使用“思源黑体 + Source Sans Pro”。同一页面或产品表面不得任意交叉混搭。
-- GJType 仅允许用于 Metric、Gauge、Progress、Progress Ring 的核心指标。表格数据、柱状图标签、折线/饼图等普通图表标签、Calendar 日期、Time Picker 时间、Pagination、Badge 和正文中的数字均使用当前 UI 字体配对。
+- GJType 默认仅用于Metric、Gauge、Progress、Progress Ring核心指标；精确组件例外见 `styles/font-policy.json#rules.numeric.confirmedExceptions`，当前仅新增视频播放列表项左侧序号（Figma 5422:5211，14/22 Bold）。表格数据、普通图表标签、日期时间、分页、Badge和正文数字仍使用UI字体。
 - GJType 必须通过字体资源导入；加载失败时提示或回退 DIN 系列，不单独建立 number fallback Token。
 - 中文字重：正文、列表项、说明文字 400；标题、Tab、按钮、标签 500；大标题和强调 600。
-- GJType 字重只在上述白名单组件内选择：小型指标 400、中小型指标 500、大型核心指标 700。
+- GJType字重默认在上述指标白名单内选择：小型指标400、中小型指标500、大型核心指标700；登记的精确组件例外使用其Figma指定字重（播放列表序号700）。
 
 ### 布局、间距与圆角
 
@@ -115,6 +115,9 @@
    - Table、Avatar、Badge、Empty、Steps、Timeline、Metric、Chart：已整理
 6. 操作反馈组件
    - Toast、Modal、Notification、Popover、Drawer、Skeleton：已整理
+7. 业务组件
+   - 资讯组件 News（新闻、资讯、报告列表与图片大卡）：已整理
+   - 视频组件 Video（视频列表卡与播放器）：已整理
 
 ## 基础规范
 
@@ -193,7 +196,7 @@
 
 - UI 字体从用户本机读取，并在页面级选择一套完整配对：苹方 + SF Pro、微软雅黑 + Arial、思源黑体 + Source Sans Pro。不得只替换中文或西文字体中的一方。
 - GJType 是国金版权数字字体，但属于受限组件字体，不是所有金融数字的默认字体。
-- 仅 Metric、Gauge、Progress、Progress Ring 的核心指标允许使用 GJType；其它位置只因内容是金额、百分比或时间也不得调用。
+- 默认仅Metric、Gauge、Progress、Progress Ring核心指标可用GJType；精确例外只按font-policy的confirmedExceptions使用（当前为视频播放列表项序号），不得因其它位置是金额、百分比或时间而扩散。
 
 #### 中文 Text Style 枚举
 
@@ -380,6 +383,10 @@
 
 > 各组件专属规则已拆分至 `references/components/<组件目录>/rules.md`：Toast、Modal、Notification、Popover、Drawer、Skeleton。
 
+## 业务组件规则
+
+> 业务组件是面向特定业务内容、由基础组件组合而成的一级分类，在 inventory 中归入 `business` 分组。各组件专属规则见 `references/components/<组件目录>/rules.md`：音频 Audio（`audio/`）、资讯 News（`news/`）、视频 Video（`video/`）。业务组件必须复用 Slider、Tag、Icon 等基础组件基座，不得重新定义其尺寸或配色。
+
 ## 规则记录模板
 
 后续每个组件统一补充以下内容，但只记录影响设计判断的信息：
@@ -394,3 +401,9 @@
 - 组合规则
 - 设计稿实例覆盖规则
 - 待确认问题
+
+### 特殊形状的比例与缩放
+
+盾牌、六边形等正多边形、圆形及Logo等固定比例图形必须等比缩放，保留原始宽高比、角度和对称性。统一尺寸指最大容纳框，不要求宽高同时撑满；允许短边留白，通过平移居中与容器留白对齐。禁止非等比scale、skew或强制拉满宽高改变原型。前层、后层、遮罩和裁切路径必须使用一致的等比轮廓。验收应同时检查SVG与导出图片，核对源轮廓和成品的比例、尖角与边长关系。
+
+图标矩形轮廓同样以目标参考的宽高比为准，区分横向、纵向与正方形，不得为了统一占幅全部方化。容纳框仅限制最大尺寸；参考前后层具有不同轮廓或比例时，保留其层间比例与相对位置，不用同形复制加固定偏移替代。

@@ -45,6 +45,9 @@ bash scripts/check-update.sh
 
 ## 按需读取
 
+- 音频播放与录音列表：先读业务组件 `references/components/audio/schema.json` 和 `rules.md`；Mini/Full 复用 `.gj-audio-*` 基座并加载 `assets/scripts/gj-audio.js`，保留容器自适应、进度联动、静音恢复和ARIA状态。不得仅复制预览标记而漏接共享运行时。
+- 业务组件的“文件齐全”不等于“所有子组件已实现”。若 schema 声明 `implementationCoverage`，必须检查其 `gaps`。Video播放列表与独立controller_slider均已有共享基座和运行时入口；独立滑块使用`[data-gj-video-progress]`并加载`gj-video.js`，不得只复制预览标记而漏接交互。不能用相似组件代替缺项并声称命中库。
+
 - 颜色、字体、效果、栅格、断点、圆角等全局规范：读取 `references/design-system-rules.md` 中的相关章节。组件详细规则（用途、属性枚举、组合规则、边界）：读取 `references/components/<name>/rules.md`；design-system-rules.md 里的组件章节现在只是指向对应 rules.md 的重定向，不重复正文。
 - 完整统一 Token：从 `references/library-index.json` 的 `aiWorkflow.tokens.unified` 定位，不另行猜测文件名。
 - HTML/CSS 原型：按 `references/library-index.json` 的 `outputAssets.styles.loadOrder` 顺序加载工作流 CSS，页面基础组件必须优先使用其共享 `gj-*` 静态组件类。需要人工预览交互增强时，才按 `scripts.previewRuntimes` 登记加载脚本；这些脚本不是生产组件库源码。生成或覆盖业务页面时必须读取 `references/project-asset-delivery.md`：公共 Skill 目录只作为复制源，页面所需 CSS、运行时、Icon、字体和图片按依赖闭包复制到目标项目 `assets/`，最终页面不得继续引用公共 Skill 路径。原型、验证页及 Figma 网页导入用 HTML 在资源归档后必须运行 `node <skill目录>/scripts/embed-icons.cjs <页面.html>`，交付前再运行同命令并加 `--check`；转换会把页面实际依赖的 Icon、图片与兼容运行时写进 HTML，使 CSS mask、伪元素图标、本地图片和内阴影描边能被导入工具识别。若页面还需通过双击、邮件或共享盘以 `file://` 交付，继续读取 `references/local-file-delivery.md` 并完成 Chromium/WebKit 复核，不能把 HTTP 预览成功当作本地交付成功。
@@ -111,6 +114,8 @@ bash scripts/check-update.sh
 - Table 操作列的表头文字、正文单元格及其文字/图标操作组必须统一居中对齐，不得贴左或贴右；文字操作必须使用 Small Text Button，并以 `--ds-component-button-group-gap-medium` 保持8px相邻间距，避免无可见内边距的中文操作文字粘连；16px图标操作使用12px间距，两类规则不得混用。操作列页面样式不得把按钮间距压缩为0。
 - 页面中的表格必须优先组合共享 Table 组件，不得在页面 CSS 中重画表头背景、行高、单元格、固定列或排序/筛选图标。Table 默认使用 Medium；只有用户明确要求更紧凑或更疏松，或具体设计稿有依据时，才切换整张表格为 Small 或 Large。表头与所有数据单元格必须使用同一 Table 尺寸变体，禁止表头、普通行、固定列分别混用尺寸。排序与筛选必须调用 Table contract 指定的图标和状态，不得从图标库挑选近似图标代替。
 - Table 外框和内部结构线必须分别引用 `Table/border` 与 `Table/divider`；当前 PC 模式两者都解析为 `Primitive/Neutral/N04`（`#EBEEF2`）。禁止在页面层用 `Border/secondary`、硬编码颜色或近似灰色替代。
+- 资讯类内容（新闻、资讯、公告、研报列表与头条图片卡）必须组合业务组件 News 的共享基座：列表 `gj-news-list`（项间距 0，需分隔时加 `gj-news-list-divided`）/ `gj-news-item / gj-news-thumb / gj-news-content / gj-news-title / gj-news-summary / gj-news-meta`，大卡 `gj-news-card-grid / gj-news-card`；标题标签复用 `gj-tag`，封面角标复用 `gj-tag-corner`，元信息图标用 `gj-news-meta-icon-author / -date / -view`。筛选或搜索后的结果统计用 `gj-news-stats`（未筛选时不显示）；前置标签与封面角标默认二选一（业务明确为不同标签类型时例外）；无封面（研报、公告等）时不放 `<img>`，由基座显示 Figma 无图片占位封面，不得隐藏封面位或自行替换图片。不得在页面里另写资讯卡片、角标或摘要截断样式；规则见 `references/components/news/rules.md`；资讯 / 研报详情页的卡片结构与间距按同文件「资讯详情页模板」一节组织（页面规则，无组件基座）。
+- 视频内容必须组合业务组件 Video 的共享基座：列表卡 `gj-video-grid / gj-video-unit / gj-video-thumb`，播放器 `gj-video-player`（`data-gj-video`）+ `gj-video-controls / gj-video-btn / gj-video-volume / gj-video-progress`；不得在页面里重画控制按钮、进度条或封面标签。规则见 `references/components/video/rules.md`。
 - 五个页面模式的根容器使用 `width:100%`、`max-width:1244px`、`margin-inline:auto` 和四边 20px 页面边距，形成最大 1204px 内容区。响应式断点只允许调整栅格列数、模块堆叠、筛选换行和局部滚动，不得改变页面边距或最大宽度。
 
 ### 页面生成组件门禁
@@ -142,13 +147,14 @@ bash scripts/check-update.sh
 - 原型、验证页或 Figma 网页导入用 HTML 生成后必须执行 `scripts/embed-icons.cjs`，并在交付前执行 `--check`。导入工具无法可靠读取 CSS mask、伪元素 mask、本地图片和作为 1px 描边使用的 inset box-shadow；兼容运行时只改变载体，不得改变任何视觉、布局或交互。此内嵌交付层默认不写入真实前端生产源码；是否对真实前端代码使用，必须先由用户确认。
 - 优先使用语义 Token；已有语义变量时不直接写 HEX、随意尺寸或近似阴影。
 - UI 字体只调用用户本机字体，并固定成对使用：苹方 + SF Pro、微软雅黑 + Arial、思源黑体 + Source Sans Pro；同一页面不得任意混搭。Figma 字体仅作视觉参考。
-- GJType 仅允许用于 Metric、Gauge、Progress、Progress Ring 的核心指标；表格数据、普通图表标签、日期时间、分页、Badge 和正文即使包含数字也必须使用当前 UI 字体配对。
+- GJType 默认仅用于 Metric、Gauge、Progress、Progress Ring 的核心指标；精确Figma组件例外只按 `references/styles/font-policy.json` 的 `confirmedExceptions` 使用（当前为视频播放列表项左侧序号）。表格数据、普通图表标签、日期时间、分页、Badge 和正文仍使用UI字体，不能扩散例外。
 - 默认设计基准宽度为 1440px；最低支持视口暂定 1280px，按已有 PC 断点适配。
 - 页面结构和内容布局以 4px 倍数为基础，主要间距优先使用 `8 / 12 / 16 / 20 / 24 / 32 / 40 / 48`。
 - 页面与组件优先复用现有模式；具体设计稿中的已确认实例可覆盖默认规则。
 - 必须考虑 default、hover、focus、pressed、disabled、loading、empty、error 和无权限等与任务相关的状态。
 - 不输出不存在的组件名、属性名、导入路径或包名。技术栈未指定时，输出设计中立的结构、HTML/CSS 原型或清晰伪代码，并标注前端映射点。
 - Button 内的 Icon 必须使用 `currentColor` 与按钮文字保持同色，并随 default、hover、pressed、disabled、loading 等状态同步变化；不得保留 SVG 资源自身的固定填充色或描边色。HTTP/HTTPS 页面可优先使用外部 SVG CSS mask；`file://` 本地交付必须把 mask 源内嵌为 `data:` URL 或使用内联 SVG，禁止引用外部 SVG mask。前端 SVG 使用 `fill="currentColor"` 或 `stroke="currentColor"`。
+- 特殊形状（盾牌、正多边形含六边形、圆形、Logo等）必须保留原始宽高比、角度及对称性，等比缩放适配目标框；禁止为统一尺寸或占幅分别拉伸X/Y。图标中的矩形也必须按目标参考的宽高比适配，不得为统一占幅强行方化。允许短边留白，通过容器留白和平移对齐；前后层、遮罩与裁切路径使用同一等比轮廓。
 - 内联 SVG 图表/图形元素禁止使用 `preserveAspectRatio="none"` 等会让内部文字、图标等内容随容器宽高比非等比拉伸变形的缩放方式；`viewBox` 宽高比与实际渲染容器不一致时，使用默认或显式的 `xMidYMid meet`（允许留白），或让 `viewBox` 动态匹配容器实际像素尺寸，不得整体非等比拉伸。
 
 ## 默认交付内容

@@ -8,13 +8,13 @@
   "auditTracker": "../audit-tracker.md",
   "coverageDashboard": "../coverage.json",
   "scope": {
-    "pagesScanned": 55,
-    "pagesWithComponents": 43,
-    "componentSets": 153,
-    "variants": 1697,
-    "standaloneComponents": 330,
+    "pagesScanned": 57,
+    "pagesWithComponents": 46,
+    "componentSets": 164,
+    "variants": 1723,
+    "standaloneComponents": 342,
     "standaloneIcons": 267,
-    "nonIconStandaloneComponents": 67
+    "nonIconStandaloneComponents": 79
   },
   "interpretationRules": [
     "页面名称中的 ✅ 仅记录 Figma 当前标记，不自动等同于已通过代码化验收。",
@@ -477,7 +477,7 @@
       },
       {
         "order": 42,
-        "group": "data-display",
+        "group": "business",
         "component": "Audio",
         "aliases": [
           "audio",
@@ -486,6 +486,40 @@
           "recording-player"
         ],
         "path": "audio/schema.json",
+        "status": "figma-audited"
+      },
+      {
+        "order": 43,
+        "group": "business",
+        "component": "News",
+        "aliases": [
+          "news",
+          "资讯",
+          "资讯组件",
+          "news list",
+          "newslist",
+          "news-list"
+        ],
+        "path": "news/schema.json",
+        "status": "figma-audited"
+      },
+      {
+        "order": 44,
+        "group": "business",
+        "component": "Video",
+        "aliases": [
+          "video",
+          "视频",
+          "视频组件",
+          "video-player",
+          "player",
+          "video-list",
+          "playlist",
+          "video-playlist",
+          "播放列表",
+          "播放列表项"
+        ],
+        "path": "video/schema.json",
         "status": "figma-audited"
       }
     ]
@@ -781,10 +815,25 @@
       "name": "business",
       "pages": [
         {
-          "page": "Video",
-          "sets": 0,
-          "variants": 0,
-          "standalone": 0
+          "page": "音频Audio🆕",
+          "sets": 5,
+          "variants": 9,
+          "standalone": 1,
+          "note": "2026-10-27 只读复核节点 5026:7599：Mini Controller 2、Listitem 2、List 1、Full Controller 2、Item Button 2；Audio_Bar 为独立组件。用户确认归入业务组件。"
+        },
+        {
+          "page": "资讯News🆕",
+          "sets": 2,
+          "variants": 4,
+          "standalone": 6,
+          "note": "2026-10-26 业务组件首个页面（资讯组件）。按母版口径：News_List（state=Default·hover）与 News_item 封面（type=image·placeholder 无图占位）共 2 套 / 4 variants；News_item/Title、thumbnail_large、news_time、news_view、author、列表统计栏 共 6 个独立组件。页面无规则说明画板。"
+        },
+        {
+          "page": "视频Video🆕",
+          "sets": 6,
+          "variants": 18,
+          "standalone": 6,
+          "note": "2026-10-29只读盘点6套/18 variants/6 standalone：新增权威播放列表项5422:5202（2态），旧Playlist_item5377:1972仅保留盘点。2026-11-03独立controller_slider 5387:3344已补齐共享入口、运行时和预览，播放列表亦已工程化。"
         }
       ]
     },

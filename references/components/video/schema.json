@@ -1,0 +1,392 @@
+{
+  "$schema": "gj-design-skill/component-schema/v1",
+  "component": "Video",
+  "source": {
+    "rulesSection": "Video 视频",
+    "inventoryPage": "视频Video🆕",
+    "figmaFile": "8b01I1e3TzH1IhYlr3tJzd",
+    "figmaPage": "3936:2570",
+    "status": "figma-audited",
+    "figmaAudit": "done-2026-10-26",
+    "playlistAudit": "done-2026-10-29：5422:5202组件集与5377:1520项目排列样板。",
+    "controllerSliderAudit": "done-2026-11-03：5387:3344独立入口；播放器背景绑定已复核，VID-006仅剩时间颜色绑定。"
+  },
+  "category": {
+    "level1": "业务组件 Business",
+    "level2": "视频组件 Video",
+    "inventoryGroup": "business"
+  },
+  "purpose": "视频内容的列表卡片（封面 + 标题 + 作者日期）与播放器（画面 + 底部控制条：播放/暂停、音量、进度、时间、可选上一个/下一个合并按钮、全屏）。",
+  "figma": {
+    "fileKey": "8b01I1e3TzH1IhYlr3tJzd",
+    "pageNodeId": "3936:2570",
+    "pageName": "视频Video 🆕",
+    "componentSets": [
+      {
+        "nodeId": "5153:434",
+        "name": "Video_item_button",
+        "variants": 6,
+        "note": "type=play / pause / full_screen / fullscreen_exit / volume / Video_item_listplaybutton；切换按钮合并为 76×36 胶囊。"
+      },
+      {
+        "nodeId": "5377:303",
+        "name": "Video_item_volume",
+        "variants": 3,
+        "note": "state=default / slider / mute。已复核独立命名（VID-001 已关闭）。slider 态展开为 80×36 胶囊：padding 8、gap 4、图标 20 + 40 宽滑块。"
+      },
+      {
+        "nodeId": "5153:487",
+        "name": "Video_List_unit",
+        "variants": 2,
+        "note": "state=Default / hover。padding 8、圆角 16；hover 背景 Background/Hover、标题 Text/blue、封面中央出现 36 播放按钮。"
+      },
+      {
+        "nodeId": "5157:2016",
+        "name": "Player_controller",
+        "variants": 3,
+        "note": "State=Pause,List=False；State=Playing,List=False；State=Pause,List=True。gap 均为 12；List=True 时播放按钮后插入合并切换按钮。"
+      },
+      {
+        "nodeId": "5377:1972",
+        "name": "Playlist_item",
+        "variants": 2,
+        "note": "旧Playlist_item母版仍存在；新页面按5422:5202音视频/播放列表项实现，保留此项仅作真实盘点。"
+      },
+      {
+        "nodeId": "5422:5202",
+        "name": "音视频/播放列表项",
+        "variants": 2,
+        "variantNodes": {
+          "State=Playing": "5422:5203",
+          "State=Default": "5422:5210"
+        },
+        "properties": {
+          "序号#3720:0": "TEXT",
+          "视频标题#3720:3": "TEXT",
+          "播放状态#3720:6": "TEXT",
+          "视频时长#3720:9": "TEXT"
+        },
+        "note": "2026-10-29用户指定的当前权威母版；旧Playlist_item 5377:1972仍在画布，仅作为历史盘点，不用于新页面。"
+      }
+    ],
+    "standaloneComponents": [
+      {
+        "nodeId": "5153:440",
+        "name": "Video_List_unit/Video_item/thumbnail",
+        "width": 280,
+        "height": 180,
+        "properties": {}
+      },
+      {
+        "nodeId": "5153:462",
+        "name": "Video_item_button/Video_item/time_tag",
+        "width": 35,
+        "height": 18
+      },
+      {
+        "nodeId": "5153:469",
+        "name": "Video_item/playcount_tag",
+        "width": 45,
+        "height": 18
+      },
+      {
+        "nodeId": "5157:2015",
+        "name": "Video_player/Default",
+        "width": 1168,
+        "height": 648
+      },
+      {
+        "nodeId": "5377:300",
+        "name": "Volumeslider",
+        "width": 40,
+        "height": 6
+      },
+      {
+        "nodeId": "5387:3344",
+        "name": "controller_slider",
+        "width": 838,
+        "height": 12,
+        "note": "独立进度滑块已工程化：.gj-video-progress[data-gj-video-progress]，GjVideo.initProgress；可独立使用或通过data-player连接播放器。2026-11-03复核。"
+      }
+    ]
+  },
+  "properties": {
+    "button": {
+      "type": [
+        "play",
+        "pause",
+        "full_screen",
+        "fullscreen_exit",
+        "volume",
+        "Video_item_listplaybutton"
+      ]
+    },
+    "volume": {
+      "state": [
+        "default",
+        "slider",
+        "mute"
+      ]
+    },
+    "unit": {
+      "state": [
+        "Default",
+        "hover"
+      ],
+      "viewcount": [
+        true,
+        false
+      ]
+    },
+    "thumbnail": {
+      "viewcount": [
+        true,
+        false
+      ]
+    },
+    "controller": {
+      "State": [
+        "Pause",
+        "Playing"
+      ],
+      "List": [
+        "False",
+        "True"
+      ]
+    },
+    "playlistItem": {
+      "State": [
+        "Default",
+        "Playing"
+      ],
+      "index": "positive integer",
+      "title": "string",
+      "status": [
+        "未播放",
+        "正在播放",
+        "已暂停",
+        "已播放"
+      ],
+      "duration": "seconds or mm:ss",
+      "disabled": [
+        false,
+        true
+      ]
+    }
+  },
+  "defaults": {
+    "button.type": "play",
+    "volume.state": "default",
+    "unit.state": "Default",
+    "thumbnail.viewcount": true,
+    "controller.State": "Pause",
+    "controller.List": "False",
+    "playlistItem.State": "Default"
+  },
+  "sizes": {
+    "button": {
+      "size": 36,
+      "icon": 20,
+      "radius": 999
+    },
+    "controller": {
+      "gap": 12,
+      "figmaGap": 12,
+      "height": 36
+    },
+    "progress": {
+      "height": 4,
+      "radius": 2,
+      "thumb": 12,
+      "standaloneAuthoredWidth": 838,
+      "standaloneHeight": 12,
+      "standaloneWidth": "100%收缩，默认max-width为838px；不得改变轨道与圆点尺寸。"
+    },
+    "volume": {
+      "pill": "80×36",
+      "paddingInline": 8,
+      "gap": 4,
+      "icon": 20,
+      "slider": {
+        "width": 40,
+        "trackHeight": 2,
+        "thumb": 6
+      }
+    },
+    "player": {
+      "authored": "1168×648",
+      "radius": 16,
+      "padding": 20
+    },
+    "thumbnail": {
+      "authored": "280×180",
+      "radius": 8,
+      "padding": 12
+    },
+    "timeTag": {
+      "height": 18,
+      "paddingInline": 4,
+      "radius": 4
+    },
+    "playcount": {
+      "gap": 4,
+      "icon": 16
+    },
+    "unit": {
+      "padding": 8,
+      "radius": 16,
+      "content": {
+        "paddingTop": 12,
+        "paddingInline": 4,
+        "paddingBottom": 4,
+        "gap": 16
+      },
+      "title": {
+        "lines": 2,
+        "height": 48
+      },
+      "metaGap": 12
+    },
+    "grid": {
+      "gap": 8
+    },
+    "listplaybutton": {
+      "width": 76,
+      "height": 36,
+      "paddingInline": 12,
+      "paddingBlock": 8,
+      "gap": 12,
+      "icon": 20,
+      "radius": 999
+    },
+    "playlist": {
+      "width": 336,
+      "radius": 12,
+      "headerHeight": 48,
+      "headerPadding": 12,
+      "headerGap": 8,
+      "headerIcon": 24,
+      "bodyPaddingInline": 8,
+      "itemHeight": 72,
+      "itemReferenceWidth": 320,
+      "itemPadding": "12px 8px",
+      "itemRadius": 8,
+      "marker": 20,
+      "itemGap": 8,
+      "infoGap": 8,
+      "infoPaddingRight": 8,
+      "bodyMaxHeight": 432,
+      "layoutGap": 20
+    }
+  },
+  "typography": {
+    "time": "中文/S9-CN-R + rgba(255,255,255,.85)",
+    "timeTag": "中文/S10-CN-R + Text/reversal",
+    "playcount": "中文/S9-CN-R + Text/reversal",
+    "unitTitle": "中文/S4-CN-S + Text/Primary（hover Text/blue）",
+    "unitMeta": "中文/S9-CN-R + Text/Secondary",
+    "playlist": "标题14/22/600 UI；状态与时长12/18 UI；列表标题16/24/600 UI；计数12/18 UI；仅序号使用Figma数字/S6-NUM-S（GJType Bold 14/22）。"
+  },
+  "colorBindings": {
+    "button.background": "Background/MK_30",
+    "button.icon": "Text/reversal",
+    "progress.track": "Background/MK_30",
+    "progress.fill": "Brand/GJ_Blue",
+    "progress.thumb": "Text/blue + shadow-center",
+    "volume.track": "Background/WT_20",
+    "volume.fill": "Background/Container",
+    "volume.thumb": "Background/Container + shadow_small",
+    "timeTag.background": "Background/MK_45",
+    "unit.hover": "Background/Hover",
+    "thumbnail.default": "深蓝渐变（S:ff6fadb6c68e0d7bb1864eee83ef52e93fbf7b14,；Primitive/DeepBlue/DB09 → DB06）",
+    "player.default": "深蓝渐变（S:ff6fadb6c68e0d7bb1864eee83ef52e93fbf7b14,；DB09→DB06；2026-11-03已复核绑定，光效已删除）"
+  },
+  "behavior": {
+    "playPause": "播放与暂停为同一位置的切换按钮（play ↔ pause），aria-pressed 同步。",
+    "volume": "悬停或聚焦音量按钮展开为滑块胶囊（slider 态），点击图标切换静音（mute 态显示 volumeoff 图标）；音量为 0 视为静音。",
+    "progress": "进度条可点击与拖动；圆点始终位于已播放末端（VID-005）。",
+    "standaloneProgress": "入口.gj-video-progress[data-gj-video-progress] > input[type=range]，加载gj-video.js；min/max/step/value使用原生range约束，须提供aria-label。Arrow/Home/End按原生键盘调整；Disabled一次50%透明度、禁止交互；无Figma Hover视觉变化，不虚构颜色。可选data-player=#id与播放器双向同步。GjVideo.initProgress或initAll幂等初始化，程序更新使用__gjVideoProgress.setValue(value)并派发gj-video-progresschange；初始化及媒体回填不派发用户变更事件。",
+    "fullscreen": "全屏按钮切换 full_screen ↔ fullscreen_exit；浏览器拒绝全屏时只切换图标状态并保持页面内播放。",
+    "unit": "整卡为点击热区进入播放；hover 显示浅蓝背景、标题变蓝、封面中央出现播放按钮；标题固定两行高度。",
+    "poster": "有封面/海报时显示图片，无图时显示组件默认渐变画面，不留空白。",
+    "listplaybutton": "List=True 时在播放按钮后显示合并胶囊，上一个与下一个分别可聚焦、触发 gj-video-prev / gj-video-next 事件，由业务接入视频切换。",
+    "nativeMedia": "读取真实媒体初始播放/音量/静音状态；监听volumechange与ended同步控件；动态插入后GjVideo.initAll(容器或根节点)，重复调用只初始化一次。",
+    "disabled": "原生disabled + 一次50%透明度兜底，不响应Hover。",
+    "playlist": "同一列表唯一当前项（.is-current/aria-current=true），Playing视觉表示当前媒体，暂停仍保持高亮并显示已暂停；默认项序号20px占位，当前项改20px圆形播放图标。点击/Enter/Space切换并播放；方向键/Home/End仅移动焦点，不改变当前项；上一首/下一首联动，边界disabled，结束自动下一项，末项停止。计数=currentIndex/真实总项数，无当前项为0/N；已播放记录访问过的项目，不伪称完整观看。",
+    "playlistLayout": "播放器左侧自适应，列表336px右侧，gap20，顶部对齐；局部容器不足800px改上下排列，列表占满宽度。列表项gap0，body超过6行（432px默认可配置）独立滚动，标题栏不滚动；标题单行省略并保留完整title提示。"
+  },
+  "dependencies": [
+    "Icon"
+  ],
+  "knownFigmaIssues": [
+    "VID-006 2026-11-03播放器背景已绑定深蓝渐变；时间文字5157:1890/5387:3362/5389:3395仍无颜色变量绑定（白85%），仅保留此项。"
+  ],
+  "pendingExtraction": [],
+  "partialMeasurements": [
+    "Player_controller 目前有 3 个实际组合，未提供 State=Playing,List=True 母版；运行时允许播放切换，不将此组合宣称为已审计 Figma 变体。"
+  ],
+  "confirmedDecisions": [
+    {
+      "id": "VID-005",
+      "date": "2026-10-26",
+      "decision": "进度圆点放在已播放末端（Figma 圆点 x=326 与已播放 282 宽不一致，属绘制偏差）。",
+      "source": "通用播放器惯例默认处理"
+    },
+    {
+      "id": "VID-008",
+      "date": "2026-10-26",
+      "decision": "控制按钮补 hover（Background/MK_45）与 focus-visible 焦点环；Figma 无对应态。",
+      "source": "通用惯例默认处理"
+    },
+    {
+      "id": "VID-009",
+      "date": "2026-10-26",
+      "decision": "列表卡 hover 播放按钮严格居中（Figma 为 calc(50%+2px) 偏移）。",
+      "source": "通用惯例默认处理"
+    },
+    {
+      "id": "VID-010",
+      "date": "2026-10-26",
+      "decision": "视频卡网格默认间距 8，列数由父容器决定，卡片宽度随列等分、封面保持 280:180。",
+      "source": "通用惯例默认处理"
+    },
+    {
+      "id": "VID-001",
+      "date": "2026-10-26",
+      "decision": "音量组件集 5377:303 已命名 Video_item_volume。",
+      "source": "Figma use_figma 只读复核"
+    },
+    {
+      "id": "VID-002",
+      "date": "2026-10-26",
+      "decision": "5153:434 type 枚举已修正为 volume。",
+      "source": "Figma use_figma 只读复核"
+    },
+    {
+      "id": "VID-003",
+      "date": "2026-10-26",
+      "decision": "5157:2016 已补 State=Pause / Playing，两态首按钮分别为 play / pause。",
+      "source": "Figma use_figma 只读复核"
+    },
+    {
+      "id": "VID-004",
+      "date": "2026-10-26",
+      "decision": "5157:1885 与 5387:3358 实测 itemSpacing=12，与本地 Token 一致。",
+      "source": "Figma use_figma 只读复核"
+    },
+    {
+      "id": "VID-007",
+      "date": "2026-10-26",
+      "decision": "5389:3451 将上一个与下一个合并为 76×36 胶囊；Player_controller List=True 时放在播放按钮后。",
+      "source": "Figma use_figma 只读复核"
+    }
+  ],
+  "implementationCoverage": {
+    "status": "complete",
+    "scope": "列表卡、播放器、控制按钮、播放列表项、组合列表及独立controller_slider均已实现；设计来源剩余VID-006时间颜色绑定单独跟踪。",
+    "gaps": []
+  },
+  "mapping": "references/components/video/mapping.json",
+  "tokens": "references/tokens/components/video.tokens.json",
+  "preview": "preview/video/index.html"
+}

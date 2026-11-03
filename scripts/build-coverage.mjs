@@ -27,7 +27,7 @@ const statusCount = items => Object.fromEntries([...new Set(items)].sort().map(s
 const inventory = readJson(inventoryPath);
 const registry = inventory.schemaRegistry.executionOrder;
 const inventoryPages = inventory.groups
-  .filter(group => !["foundation", "legacy", "business"].includes(group.name))
+  .filter(group => !["foundation", "legacy"].includes(group.name))
   .flatMap(group => group.pages.map(page => ({ ...page, group: group.name })));
 const registeredPageKeys = new Set();
 
@@ -112,7 +112,10 @@ const makeCoverageRow = (entry, figmaPage, registered = true) => {
     }
   };
 
-  const dimensions = [row.narrativeRules.status, row.structuredContract.status, row.componentToken.status, row.previewPage.status];
+  // File presence is not proof that every inventoried subcomponent is implemented.
+  const implementation = schemaPresent ? readJson(path.join(referencesRoot, schemaPath)).implementationCoverage : null;
+  if (implementation) row.implementation = implementation;
+  const dimensions = [row.narrativeRules.status, row.structuredContract.status, row.componentToken.status, row.previewPage.status, ...(implementation ? [implementation.status] : [])];
   row.overallStatus = dimensions.every(status => status === "complete" || status === "not-required")
     ? "complete"
     : dimensions.every(status => status === "missing")
@@ -122,7 +125,8 @@ const makeCoverageRow = (entry, figmaPage, registered = true) => {
     ["narrativeRules", row.narrativeRules.status],
     ["structuredContract", row.structuredContract.status],
     ["componentToken", row.componentToken.status],
-    ["previewPage", row.previewPage.status]
+    ["previewPage", row.previewPage.status],
+    ...(implementation ? [["implementation", implementation.status]] : [])
   ].filter(([, status]) => status === "missing" || status === "partial").map(([name]) => name);
   return row;
 };
@@ -138,7 +142,7 @@ const coverage = {
   "$schema": "gj-design-skill/component-coverage/v1",
   title: "GJ B2B PC Component Coverage",
   generatedBy: "../scripts/build-coverage.mjs",
-  sourcePolicy: "Generated from the component inventory plus actual rules, contract, component-token, and preview files. Do not hand-edit component rows.",
+  sourcePolicy: "Generated from the component inventory, actual rules/contract/token/preview files, and explicit schema implementationCoverage gaps. Do not hand-edit component rows.",
   sources: {
     figmaInventory: "components/inventory.json",
     narrativeRulesIndex: "design-system-rules.md",
@@ -153,7 +157,7 @@ const coverage = {
     "not-required": "A recorded component decision explicitly excludes this artifact.",
     pageMarkedComplete: "Mirrors the ✅ character in the Figma page name only; it is not an engineering completion claim."
   },
-  completionRule: "A component is complete only when narrativeRules, structuredContract, componentToken, and previewPage are complete or explicitly not-required.",
+  completionRule: "A component is complete only when narrativeRules, structuredContract, componentToken, and previewPage are complete or explicitly not-required, and any explicit schema implementationCoverage is also complete or not-required.",
   summary: {
     components: components.length,
     registeredComponents: registeredRows.length,

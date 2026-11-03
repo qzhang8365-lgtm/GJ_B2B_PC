@@ -6,25 +6,46 @@
     "figmaNodes": [
       "5026:7663",
       "5026:7664",
-      "5026:7665"
+      "5026:7665",
+      "5404:658",
+      "5404:660",
+      "5404:693",
+      "5404:932",
+      "5404:957",
+      "5404:1177",
+      "5404:1178"
     ],
-    "figmaReadDate": "2026-09-28",
+    "figmaReadDate": "2026-10-27",
+    "interactionPolicy": "Hover 为用户确认的默认交互补充，2026-10-29 确认采用 Background/MK_20（黑色20%）加深：圆形按钮覆盖蓝色背景，独立图标仅作用于 SVG 图形；不宣称为 Figma 新增变体。",
     "componentSchema": "references/components/audio/schema.json",
     "componentMapping": "references/components/audio/mapping.json",
     "confirmedRules": "references/components/audio/rules.md",
-    "implementation": "assets/styles/gj-b2b-components.css#.gj-audio-bar"
+    "implementation": "assets/styles/gj-b2b-components.css#.gj-audio-*"
   },
   "properties": {
+    "variant": {
+      "default": "mini",
+      "values": [
+        "mini",
+        "full",
+        "list",
+        "list-item",
+        "item-button"
+      ]
+    },
     "state": {
       "default": "paused",
       "values": [
         "paused",
         "playing"
-      ],
-      "figmaSets": {
-        "paused": "State=Paused",
-        "playing": "State=Playing"
-      }
+      ]
+    },
+    "listItemState": {
+      "default": "default",
+      "values": [
+        "default",
+        "hover"
+      ]
     },
     "closable": {
       "default": true,
@@ -32,100 +53,226 @@
         true,
         false
       ]
+    },
+    "showDate": {
+      "default": true,
+      "values": [
+        true,
+        false
+      ]
+    },
+    "showTime": {
+      "default": true,
+      "values": [
+        true,
+        false
+      ]
+    }
+  },
+  "stateMatrix": {
+    "transport-control": {
+      "default": {
+        "background": "transparent",
+        "icon": "currentColor"
+      },
+      "hover": {
+        "background": "transparent",
+        "icon": "currentColor",
+        "overlay": "Background/MK_20"
+      },
+      "disabled": {
+        "opacity": 0.5,
+        "interactive": false
+      }
+    },
+    "primary-toggle": {
+      "default": {
+        "background": "Button/Primary/Bg-default",
+        "icon": "Text/reversal"
+      },
+      "hover": {
+        "background": "Button/Primary/Bg-default",
+        "icon": "Text/reversal",
+        "overlay": "Background/MK_20"
+      },
+      "disabled": {
+        "opacity": 0.5,
+        "interactive": false
+      }
+    },
+    "close": {
+      "default": {
+        "background": "transparent",
+        "icon": "Text/Tertiary"
+      },
+      "hover": {
+        "background": "transparent",
+        "icon": "Text/Tertiary",
+        "overlay": "Background/MK_20"
+      },
+      "disabled": {
+        "opacity": 0.5,
+        "interactive": false
+      }
     }
   },
   "tokens": {
-    "container.height": {
+    "mini.height": {
       "value": 34,
       "unit": "px",
-      "cssVariable": "--ds-component-audio-height"
+      "cssVariable": "--ds-component-audio-mini-height"
     },
-    "container.maxWidth": {
-      "value": 640,
+    "mini.referenceWidth": {
+      "value": 587,
       "unit": "px",
-      "cssVariable": "--ds-component-audio-max-width"
+      "cssVariable": "--ds-component-audio-mini-width"
     },
-    "container.paddingBlock": {
+    "mini.paddingBlock": {
       "value": 8,
       "unit": "px",
-      "cssVariable": "--ds-component-audio-padding-block"
+      "cssVariable": "--ds-component-audio-mini-padding-block"
     },
-    "container.paddingInline": {
+    "mini.paddingInline": {
       "value": 12,
       "unit": "px",
-      "cssVariable": "--ds-component-audio-padding-inline"
+      "cssVariable": "--ds-component-audio-mini-padding-inline"
     },
-    "container.gap": {
+    "mini.gap": {
       "value": 21,
       "unit": "px",
-      "cssVariable": "--ds-component-audio-gap"
+      "cssVariable": "--ds-component-audio-mini-gap"
     },
-    "container.radius": {
+    "mini.radius": {
       "value": "{Radius/Radius-MD}",
       "resolved": 8,
       "unit": "px",
-      "cssVariable": "--ds-component-audio-radius"
+      "cssVariable": "--ds-component-audio-mini-radius"
     },
-    "container.background": {
+    "mini.background": {
       "value": "{Background/BG_blue}",
       "resolved": "#E5F0FF",
-      "cssVariable": "--ds-component-audio-background"
+      "cssVariable": "--ds-component-audio-mini-background"
     },
-    "container.border": {
+    "mini.border": {
       "value": "{Brand/GJ_Blue}",
       "resolved": "#2B73FF",
-      "cssVariable": "--ds-component-audio-border"
+      "cssVariable": "--ds-component-audio-mini-border"
     },
-    "text.color": {
+    "text.primary": {
       "value": "{Text/Primary}",
       "resolved": "#101828",
-      "cssVariable": "--ds-component-audio-text"
+      "cssVariable": "--ds-component-audio-text-primary"
     },
-    "text.style": {
-      "value": "{中文/S9-CN-R}",
-      "note": "12px/18px Regular，直接引用 --ds-type-cn-s9-* 变量，不使用 .gj-type-cn-s9 工具类"
+    "text.secondary": {
+      "value": "{Text/Secondary}",
+      "resolved": "#475467",
+      "cssVariable": "--ds-component-audio-text-secondary"
     },
-    "text.durationWidth": {
-      "value": 60,
-      "unit": "px",
-      "cssVariable": "--ds-component-audio-duration-width",
-      "note": "Figma 实测值，锁定剩余时长文案宽度，避免位数变化顶偏后续元素"
-    },
-    "controls.gap": {
+    "transport.miniGap": {
       "value": 18,
       "unit": "px",
-      "cssVariable": "--ds-component-audio-controls-gap"
+      "cssVariable": "--ds-component-audio-mini-controls-gap"
     },
-    "controls.iconSize": {
+    "transport.miniIconSize": {
       "value": 16,
       "unit": "px",
-      "cssVariable": "--ds-component-audio-icon-size"
+      "cssVariable": "--ds-component-audio-mini-icon-size"
     },
-    "controls.iconColor": {
+    "transport.miniIconColor": {
       "value": "{Brand/GJ_Blue}",
       "resolved": "#2B73FF",
-      "cssVariable": "--ds-component-audio-icon-color"
+      "cssVariable": "--ds-component-audio-mini-icon-color"
     },
-    "progressTrack": {
-      "value": "reuses --ds-component-input-number-slider-* (input-number 组件)",
-      "note": "不新建独立滑块 token；默认参考宽度 200px 与 Figma Audio_Bar symbol 尺寸一致",
-      "thumbBackground": {
-        "value": "{Background/Container}",
-        "resolved": "#FFFFFF",
-        "cssVariable": "--ds-component-audio-slider-thumb-background",
-        "note": "Audio 自有 Figma 资产 Audio_Bar（5026:7663）圆点为白色填充，与共享 .gj-slider 基座默认实心蓝色不同，scoped 覆盖仅作用于 .gj-audio-bar 内"
-      },
-      "thumbBorderColor": {
-        "value": "{Brand/GJ_Blue}",
-        "resolved": "#2B73FF",
-        "cssVariable": "--ds-component-audio-slider-thumb-border-color"
-      },
-      "thumbBorderWidth": {
-        "value": 2,
-        "unit": "px",
-        "cssVariable": "--ds-component-audio-slider-thumb-border-width",
-        "note": "视觉估算值，非 Figma 实测：Audio_Bar 为拉平静态图形节点，get_variable_defs 无法取得描边宽度绑定值，组织网络策略又阻断原始 SVG 下载（同 AUD-002）"
-      }
+    "transport.fullGap": {
+      "value": 26,
+      "unit": "px",
+      "cssVariable": "--ds-component-audio-full-controls-gap"
+    },
+    "transport.fullIconSize": {
+      "value": 20,
+      "unit": "px",
+      "cssVariable": "--ds-component-audio-full-icon-size"
+    },
+    "transport.fullIconColor": {
+      "value": "{Text/Tertiary}",
+      "cssVariable": "--ds-component-audio-full-icon-color"
+    },
+    "transport.hoverBrightness": {
+      "value": 0.8,
+      "cssVariable": "--ds-component-audio-control-hover-brightness",
+      "note": "Background/MK_20 = #00000033；brightness = 1 - 51/255 = 0.8，等效20%黑色叠加且仅作用于已绘制图标像素，保持透明区域透明。"
+    },
+    "toggle.size": {
+      "value": 28,
+      "unit": "px",
+      "cssVariable": "--ds-component-audio-toggle-size"
+    },
+    "toggle.iconSize": {
+      "value": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-audio-toggle-icon-size"
+    },
+    "toggle.background": {
+      "value": "{Brand/GJ_Blue}",
+      "resolved": "#2B73FF",
+      "cssVariable": "--ds-component-audio-toggle-background"
+    },
+    "toggle.iconColor": {
+      "value": "{Background/Container}",
+      "resolved": "#FFFFFF",
+      "cssVariable": "--ds-component-audio-toggle-icon-color"
+    },
+    "progress.referenceWidth": {
+      "value": 400,
+      "unit": "px",
+      "cssVariable": "--ds-component-audio-progress-reference-width"
+    },
+    "progress.height": {
+      "value": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-audio-progress-height"
+    },
+    "progress.trackHeight": {
+      "value": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-audio-progress-track-height"
+    },
+    "progress.trackInactive": {
+      "value": "{Background/MK_10}",
+      "cssVariable": "--ds-component-audio-progress-track-inactive"
+    },
+    "progress.trackActive": {
+      "value": "{Brand/GJ_Blue}",
+      "cssVariable": "--ds-component-audio-progress-track-active"
+    },
+    "progress.thumbSize": {
+      "value": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-audio-progress-thumb-size"
+    },
+    "progress.thumbBackground": {
+      "value": "{Background/Container}",
+      "resolved": "#FFFFFF",
+      "cssVariable": "--ds-component-audio-progress-thumb-background"
+    },
+    "progress.thumbBorderColor": {
+      "value": "{Brand/GJ_Blue}",
+      "resolved": "#2B73FF",
+      "cssVariable": "--ds-component-audio-progress-thumb-border-color"
+    },
+    "progress.thumbBorderWidth": {
+      "value": 2,
+      "unit": "px",
+      "cssVariable": "--ds-component-audio-progress-thumb-border-width"
+    },
+    "progress.thumbShadow": {
+      "value": "{shadow_small}",
+      "cssVariable": "--ds-component-audio-progress-thumb-shadow"
+    },
+    "duration.width": {
+      "value": 60,
+      "unit": "px",
+      "cssVariable": "--ds-component-audio-duration-width"
     },
     "close.size": {
       "value": 16,
@@ -136,19 +283,137 @@
       "value": "{Text/Tertiary}",
       "cssVariable": "--ds-component-audio-close-color"
     },
-    "close.hoverColor": {
-      "value": "{Text/Primary}",
-      "cssVariable": "--ds-component-audio-close-hover-color"
+    "listItem.width": {
+      "value": 440,
+      "unit": "px",
+      "cssVariable": "--ds-component-audio-list-item-width"
+    },
+    "listItem.height": {
+      "value": 60,
+      "unit": "px",
+      "cssVariable": "--ds-component-audio-list-item-height"
+    },
+    "listItem.paddingBlock": {
+      "value": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-audio-list-item-padding-block"
+    },
+    "listItem.paddingInline": {
+      "value": 12,
+      "unit": "px",
+      "cssVariable": "--ds-component-audio-list-item-padding-inline"
+    },
+    "listItem.gap": {
+      "value": 4,
+      "unit": "px",
+      "cssVariable": "--ds-component-audio-list-item-gap"
+    },
+    "listItem.radius": {
+      "value": "{Radius/Radius-MD}",
+      "resolved": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-audio-list-item-radius"
+    },
+    "listItem.hoverBackground": {
+      "value": "{Background/Hover}",
+      "resolved": "#2B73FF0D",
+      "cssVariable": "--ds-component-audio-list-item-hover-background"
+    },
+    "listItem.hoverIconSize": {
+      "value": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-audio-list-item-hover-icon-size"
+    },
+    "listItem.hoverIconColor": {
+      "value": "{Brand/GJ_Blue}",
+      "resolved": "#2B73FF",
+      "cssVariable": "--ds-component-audio-list-item-hover-icon-color"
+    },
+    "list.width": {
+      "value": 357,
+      "unit": "px",
+      "cssVariable": "--ds-component-audio-list-width"
+    },
+    "full.width": {
+      "value": 656,
+      "unit": "px",
+      "cssVariable": "--ds-component-audio-full-width"
+    },
+    "full.gap": {
+      "value": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-audio-full-gap"
+    },
+    "full.controlRowGap": {
+      "value": 16,
+      "unit": "px",
+      "cssVariable": "--ds-component-audio-full-row-gap"
+    },
+    "volume.iconSize": {
+      "value": 20,
+      "unit": "px",
+      "cssVariable": "--ds-component-audio-volume-icon-size"
+    },
+    "volume.gap": {
+      "value": 8,
+      "unit": "px",
+      "cssVariable": "--ds-component-audio-volume-gap"
+    },
+    "volume.sliderWidth": {
+      "value": 80,
+      "unit": "px",
+      "cssVariable": "--ds-component-audio-volume-slider-width"
+    },
+    "volume.sliderHeight": {
+      "value": 6,
+      "unit": "px",
+      "cssVariable": "--ds-component-audio-volume-slider-height"
+    },
+    "volume.trackHeight": {
+      "value": 2,
+      "unit": "px",
+      "cssVariable": "--ds-component-audio-volume-track-height"
+    },
+    "volume.trackInactive": {
+      "value": "{Background/MK_20}",
+      "cssVariable": "--ds-component-audio-volume-track-inactive"
+    },
+    "volume.trackActive": {
+      "value": "{Brand/GJ_Blue}",
+      "cssVariable": "--ds-component-audio-volume-track-active"
+    },
+    "volume.thumbSize": {
+      "value": 6,
+      "unit": "px",
+      "cssVariable": "--ds-component-audio-volume-thumb-size"
+    },
+    "volume.thumbBackground": {
+      "value": "{Brand/GJ_Blue}",
+      "resolved": "#2B73FF",
+      "cssVariable": "--ds-component-audio-volume-thumb-background",
+      "note": "2026-10-29 复核 Figma 5404:933 / 圆点5404:917：6px品牌蓝实心圆，与主进度白底蓝描边圆点区分。"
+    },
+    "volume.thumbShadow": {
+      "value": "{shadow_small}",
+      "cssVariable": "--ds-component-audio-volume-thumb-shadow"
+    },
+    "disabled.opacity": {
+      "value": 0.5,
+      "cssVariable": "--ds-component-audio-disabled-opacity",
+      "note": "Figma未发布Disabled；按Skill通用50%兜底，仅作用于实际禁用控件一次。"
     }
   },
   "icons": {
-    "prev": "assets/icons/iconfont/icf_media_skip-previous-fill.svg",
-    "next": "assets/icons/iconfont/icf_media_skip-forward-fill.svg",
-    "togglePaused": "assets/icons/iconfont/icf_media_play-triangle-fill.svg",
-    "togglePlaying": "assets/icons/iconfont/icf_media_pause-regular.svg",
+    "miniPrev": "assets/icons/iconfont/icf_media_skip-previous-fill.svg",
+    "miniNext": "assets/icons/iconfont/icf_media_skip-forward-fill.svg",
+    "miniPaused": "assets/icons/iconfont/icf_media_play-triangle-fill.svg",
+    "miniPlaying": "assets/icons/iconfont/icf_media_pause-regular.svg",
+    "listHover": "assets/icons/iconfont/icf_media_play_fill.svg",
+    "fullPaused": "assets/icons/iconfont/icf_media_play-triangle-fill.svg",
+    "fullPlaying": "assets/icons/iconfont/icf_media_pause-fill.svg",
+    "volume": "assets/icons/iconfont/icf_media_volume-down-fill.svg",
+    "volumeOff": "assets/icons/iconfont/icf_media_volumeoff-fill.svg",
     "close": "assets/icons/iconfont/icf_system_close-md.svg"
   },
-  "openItems": {
-    "AUD-001": "播放三角图标 Figma 节点命名未带 fill/line 后缀，已按视觉核实选用 -fill 变体，详见 audit.md。"
-  }
+  "openItems": {}
 }

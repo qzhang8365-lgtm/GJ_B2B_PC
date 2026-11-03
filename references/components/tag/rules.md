@@ -66,4 +66,5 @@
 - 使用场景：贴合卡片或媒体容器的左上/右上角，用于强调置顶、精选、热门等状态；`position` 必须与标签实际所在的角一致（不能把 top_left 变体放在右上角）。
 - 边角标签不得遮挡标题、图片主体、按钮或其他可见信息，必须保留内容安全区。
 - 当卡片圆角大于等于 12px 时，通常不建议使用边角标签；具体设计稿明确使用时除外。
+- 共享基座（2026-10-26 起）：`gj-tag-corner`（默认 black / medium / top_left），右上角加 `gj-tag-corner-tr`，小号加 `gj-tag-corner-small`，颜色 `gj-tag-corner-red / -blue / -green / -grey / -orange`。宿主容器需 `position:relative`，角标用 `position:absolute;top:0;left:0`（tr 为 `right:0`）贴角，不得在页面内联注入背景色。
 

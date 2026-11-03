@@ -202,17 +202,18 @@ for (const { file } of files) {
         });
       }
     }
-    const scriptBlocks = content.match(/<script[^>]*>([\s\S]*?)<\/script>/g) || [];
-    for (const block of scriptBlocks) {
-      const braceOpen = countMatches(block, /\{/g);
-      const braceClose = countMatches(block, /\}/g);
-      const parenOpen = countMatches(block, /\(/g);
-      const parenClose = countMatches(block, /\)/g);
-      if (braceOpen !== braceClose) {
-        blocking.push({ file, message: `内联 <script> 花括号不平衡：{ 共 ${braceOpen} 个，} 共 ${braceClose} 个` });
-      }
-      if (parenOpen !== parenClose) {
-        blocking.push({ file, message: `内联 <script> 圆括号不平衡：( 共 ${parenOpen} 个，) 共 ${parenClose} 个` });
+    for (const match of content.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)) {
+      const [, attributes, source] = match;
+      const type = /\btype\s*=\s*["']([^"']+)["']/i.exec(attributes)?.[1].toLowerCase();
+      if (type && !['module', 'text/javascript', 'application/javascript'].includes(type)) continue;
+      if (!source.trim()) continue;
+      // Parse only; never execute. Counting punctuation mistakes regexes, strings and comments for syntax.
+      try {
+        execFileSync(process.execPath, ['--check', '--input-type=' + (type === 'module' ? 'module' : 'commonjs')], {
+          input: source, stdio: ['pipe', 'pipe', 'pipe'], maxBuffer: 2 * 1024 * 1024,
+        });
+      } catch (error) {
+        blocking.push({ file, message: `内联<script>语法错误：${String(error.stderr || error.message).slice(0, 1200)}` });
       }
     }
   }

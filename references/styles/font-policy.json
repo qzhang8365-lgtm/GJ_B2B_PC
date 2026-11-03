@@ -98,7 +98,20 @@
         "badges",
         "ordinary text"
       ],
-      "defaultOutsideAllowedComponents": "Use the active UI font pair, even when the content is numeric."
+      "defaultOutsideAllowedComponents": "Use the active UI font pair, even when numeric, except for the exact component slots recorded in confirmedExceptions.",
+      "confirmedExceptions": [
+        {
+          "component": "Video/PlaylistItem/index",
+          "figmaNode": "5422:5211",
+          "textStyle": "数字/S6-NUM-S",
+          "font": "GJType",
+          "weight": 700,
+          "fontSize": 14,
+          "lineHeight": 22,
+          "scope": "只限播放列表项左侧序号，不含时长、计数、状态或标题。",
+          "source": "用户指定Figma组件5422:5202，2026-10-29只读核实。"
+        }
+      ]
     }
   },
   "assetContract": {

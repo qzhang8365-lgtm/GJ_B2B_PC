@@ -1,0 +1,76 @@
+{
+  "$schema": "gj-design-skill/component-mapping/v1",
+  "component": "Video",
+  "figmaComponent": "Video_item_button / Video_item_volume / Video_List_unit / Player_controller / Video_player / Video_item/*",
+  "codeComponent": "GjVideo",
+  "sourceNodes": [
+    "3936:2570",
+    "5153:434",
+    "5377:303",
+    "5153:487",
+    "5157:2016",
+    "5157:2015",
+    "5153:440",
+    "5153:462",
+    "5153:469",
+    "5377:300",
+    "5389:3451",
+    "5389:3391",
+    "5422:5202",
+    "5422:5203",
+    "5422:5210",
+    "5377:2202",
+    "5377:2203",
+    "5377:2209",
+    "5387:3344",
+    "5387:3340",
+    "5387:3341",
+    "5387:3342"
+  ],
+  "propertyMap": {
+    "type": "Video_item_button：play/pause/full_screen/fullscreen_exit/volume → .gj-video-btn；Video_item_listplaybutton → .gj-video-listplay",
+    "state(音量)": ".gj-video-volume：default / .is-open（slider）/ .is-muted（mute）",
+    "state(列表卡)": ".gj-video-unit：Default / :hover · .is-hover",
+    "type.volume": "Video_item_button 的音量按钮类型（VID-002 已修正）",
+    "State(控制条)": "Pause → play；Playing → pause；对应 .is-playing 与播放按钮 data-icon",
+    "viewcount#5377:10": "Video_List_unit 的播放量可见性（原缩略图属性已移至列表卡）",
+    "List(控制条)": "False 默认隐藏 .gj-video-listplay；True 在播放按钮后显示合并切换胶囊",
+    "playlist.State": "Default → .gj-video-playlist-item；Playing → .is-current + aria-current=true（表示当前媒体，播放/暂停状态文案独立同步）"
+  },
+  "structureMap": {
+    "player": ".gj-video-player[data-gj-video]（比例 1168/648，radius 16，padding 20，默认渐变，光效已删除）> video/img.gj-video-media（可选）+ .gj-video-controls",
+    "controls": ".gj-video-controls（gap 12）> 播放 + 可选 .gj-video-listplay（上一个 / 下一个）+ 音量 + 进度 + 时间 + 全屏",
+    "progress": ".gj-video-progress > input[type=range]（--gj-video-progress 百分比驱动已播放与圆点）",
+    "standaloneProgress": ".gj-video-progress[data-gj-video-progress] > input[type=range]：838×12参考框；轨道4、thumb12，宽度随容器收缩。data-player可选，连接同页播放器；原生range提供min/max/step/disabled/键盘语义。",
+    "volume": ".gj-video-volume > .gj-video-btn + .gj-video-volume-slider > input[type=range]",
+    "thumbnail": ".gj-video-thumb（280/180，radius 8，padding 12，底部两端：.gj-video-playcount + .gj-video-time-tag）",
+    "unit": ".gj-video-unit > .gj-video-thumb（内含.gj-video-unit-play）+ .gj-video-unit-body（标题.gj-video-unit-title + .gj-video-unit-meta）",
+    "grid": ".gj-video-grid（gap 8）",
+    "listplaybutton": ".gj-video-listplay（76×36，px12 py8，gap12，radius999）> 两个 .gj-video-btn（20×20）",
+    "playlist": ".gj-video-playlist[data-gj-video-playlist][data-player=\"#playerId\"] > .gj-video-playlist-header（图标/标题/计数）+ .gj-video-playlist-body > button.gj-video-playlist-item（marker + info/title/meta）"
+  },
+  "iconMap": {
+    "play": "icf_media_play-triangle-fill（Figma icf_media_play-triangle）",
+    "pause": "icf_media_pause-fill",
+    "skip-previous": "icf_media_skip-previous-fill",
+    "skip-forward": "icf_media_skip-forward-fill",
+    "full_screen": "icf_media_fullscreen-regular",
+    "fullscreen_exit": "icf_media_fullscreen-exit-regular",
+    "volume": "icf_media_volume-down-fill（2026-10-26 自 Figma 图标页补入本地库，ICO-006）",
+    "mute": "icf_media_volumeoff-fill（同上）",
+    "playcount": "icf_media_play",
+    "playlist.current": "icf_media_play_fill",
+    "playlist.header": "icf_system_menu"
+  },
+  "tokenMap": {
+    "all": "--ds-component-video-*（见 video.tokens.json）"
+  },
+  "implementation": {
+    "status": "shared-css-base + preview runtime",
+    "css": "assets/styles/gj-b2b-components.css（.gj-video-* 段）",
+    "runtime": "assets/scripts/gj-video.js（[data-gj-video] 播放器交互；有 <video> 时绑定真实媒体，无媒体时为预览模拟）",
+    "preview": "preview/video/index.html",
+    "playlistRuntime": "assets/scripts/gj-video.js：GjVideo.initPlaylist / initAll，选择、键盘、计数、上下首及播放器状态联动；动态插入后显式initAll一次，重复调用幂等。",
+    "progressRuntime": "GjVideo.initProgress / initAll，__gjVideoProgress.setValue/refresh；gj-video-progresschange含value/min/max/ratio/type；媒体回填不反向循环派发。轨道填充位置按原生thumb有效行程修正，宽度变化后CSS calc自动保持对齐。"
+  }
+}

@@ -1,38 +1,53 @@
-# Audio 音频播放条
+# Audio 音频
 
-> 新增于 2026-09-28，来源 Figma `5026:7599`（页面「音频Audio」，文件 `8b01I1e3TzH1IhYlr3tJzd`）。生成代码或检查精确属性时，读取 `tokens/components/audio.tokens.json`；以下文字规则用于解释选择逻辑与组合边界。
+> 来源：Figma `5026:7599`「音频Audio🆕」，2026-10-27 完成全量复核。生成或检查页面时先读 `schema.json` 与 `audio.tokens.json`，不要只按名称猜测播放器结构。
 
-#### Audio 属性枚举
+## 变体选择
 
-- `state`：`paused / playing`，默认 `paused`；控制播放/暂停图标切换（对应 Figma 的 `State=Paused` / `State=Playing` 两个 Variant）。
-- `recordedAt`：录音起始时间戳文案，默认示例 `2025-04-22 08:56:44`；内容由业务传入，不做格式约束。
-- `progress`：播放进度，交由内部复用的 `.gj-slider`（0–100 或时间轴映射，由业务侧决定精度）。
-- `elapsed` / `duration`：形如 `0:01/0:16` 的文案，固定摆放在进度条右侧、宽度锁定 60px（见下）。
-- `closable`：是否显示右侧关闭按钮，默认 `true`；用于从容器（如详情弹窗、行内展开区）里移除该音频条。
+- `mini`：详情、记录、弹窗、抽屉等紧凑区域的播放条。默认宽度参考 587px，高 34px；可显示日期时间、进度、时长和关闭。
+- `full`：独立音频详情或内容区播放器。宽度参考 656px，上方整行进度条，下方为音量、居中的上一首/播放/下一首、右侧时长。
+- `list` / `list-item`：音频列表。列表项默认不显示播放图标，Hover 时出现 16px 播放图标并使用 `Background/Hover`；标题、日期和时间不能因图标出现而换行。
+- `item-button`：28px 圆形播放/暂停按钮，用于列表项、卡片或 Full 控制器；不是通用 Icon Button 的替代品。
 
-#### Audio 尺寸与样式
+## 结构与尺寸
 
-- 容器：高度 34px（内容撑开，非固定行高裁切），左右内边距 12px、上下内边距 8px，圆角 `Radius/Radius-md`（8px），描边 1px `Brand/gj_blue`，背景 `Background/BG_blue`；容器整体 `max-width: 640px`（与 Figma 组件宽度一致），未设最小宽度时随父级收缩。
-- 顶层子项横向间距（gap）21px：时间戳 → 控制区（上一首/播放暂停/下一首）→ 进度条 → 剩余时长 → 弹性留白 → 关闭按钮。
-- 控制区（上一首/播放暂停/下一首）内部间距 18px，三个按钮均为 16×16px 的图标热区，无背景无描边（贴近 Icon Button 的「纯图标、无容器」用法，但本组件的三个控制按钮是 Audio 私有子元素，不复用独立的 `gj-icon-button`，因为它们的尺寸、间距、图标着色都被这一条播放条的场景锁死，没有必要额外抽出通用按钮语义）。
-- 进度条直接复用 `.gj-slider`（`input-number` 组件的滑块基座），默认参考宽度 200px，与 Figma 里 `Audio_Bar` symbol 的 200×16px 规格完全一致；不重新实现滑块或用静态图片刻死进度条外观。
-- 时间戳与剩余时长文案统一绑定 `中文/S9-CN-R`（12px/18px，Regular），颜色 `Text/Primary`；剩余时长文案宽度锁定 60px（Figma 实测值），避免时长位数变化（如从 `0:16` 变成 `59:59`）时把后面的关闭按钮挤动位置。
-- 图标着色：播放控制区三个图标（上一首/播放-暂停/下一首）统一使用 `Brand/gj_blue`；关闭图标默认使用 `Text/Tertiary`，悬停加深为 `Text/Primary`（悬停仅换色，不做位移或缩放）。
-- 播放/暂停为同一个按钮位置的状态切换：`state=paused` 显示三角形播放图标（`icf_media_play-triangle-fill`），`state=playing` 显示暂停图标（`icf_media_pause-regular`）；切换通过在根节点 `.gj-audio-bar` 上加/去 `.is-playing` 完成，运行时还需同步维护 `aria-pressed`/`aria-label`（见下方无障碍说明），CSS 本身不负责这部分。
+- Mini：587×34px，内边距 8/12px，顶层 gap 21px，圆角 8px；浅蓝背景、1px 品牌蓝描边。图标 16px，控制区 gap 18px。
+- Mini 宽度跟随容器收缩，不固化为 587px。当组件自身宽度不足 520px 时隐藏录制时间，不足 340px 时再隐藏时长；优先保留播放控制和可操作进度条，不得溢出父容器。
+- Audio Bar：独立基准为 400×16px；放入 Mini 或 Full 后应弹性适应剩余宽度，不锁死为 200px。轨道 4px、圆点 8px，白底蓝描边并使用小阴影。
+- 进度条与音量条的圆点中心必须与可见轨道中心重合。WebKit 内核应使用 `(trackHeight - thumbSize) / 2` 作为圆点纵向偏移；不得依赖浏览器默认 Range 对齐。
+- List Item：440×60px，内边距 8/12px，纵向 gap 4px；标题 14/22 Semibold，日期时间 12/18 Regular。
+- Audio List：设计稿参考宽 357px，列表项宽度跟随容器；示例 5 行不构成数量上限。
+- Full：656×52px，纵向 gap 8px。控制行 gap 16px；中间控制组 gap 26px，上一首/下一首图标 20px；播放按钮 28px、内部图标 16px。
+- 音量：图标 20px，图标与滑块 gap 8px；滑块 80×6px、轨道 2px、圆点 6px，圆点为 `Brand/GJ_Blue` 实心蓝色，保留 small shadow；不得套用主进度条的白底蓝描边圆点。
 
-#### Audio 静态基座与状态类
+## 状态与交互
 
-- 静态组件基座为 `gj-audio-bar`，语义子元素：`gj-audio-bar-time`（时间戳）、`gj-audio-bar-controls`（控制区容器）、`gj-audio-btn`（三个控制按钮的公共基座，配合 `gj-audio-btn-prev` / `gj-audio-btn-toggle` / `gj-audio-btn-next` 修饰符）、`.gj-slider`（进度条，直接复用已有组件不新起类名）、`gj-audio-bar-duration`（剩余时长）、`gj-audio-bar-spacer`（弹性留白，`flex:1 0 0`）、`gj-audio-close`（关闭按钮）。
-- 播放态用根节点修饰符 `is-playing` 冻结（文档/预览页可用它固定展示某一状态，不依赖真实音频事件）。
-- 关闭按钮默认存在；如业务场景不需要可关闭（`closable=false`），由使用方在渲染时不插入 `.gj-audio-close` 节点，组件本身不提供「隐藏但保留占位」的开关，避免多出不必要的留白判断逻辑。
+- `paused` 与 `playing` 是同一组件位置的状态切换，不渲染两套控件。根节点使用 `.is-playing`；运行时同步 `aria-pressed` 和 `aria-label`。Item Button 与 Full 在图标伪元素上统一通过 `--gj-icon` 切换，不得用另一层 `mask-image` 覆盖基础 mask，也不得把变量放到带背景的按钮根节点上，避免本地/Figma 内嵌转换误把整颗按钮当成纯图标。
+- 所有音频控制按钮必须提供默认 Hover 反馈，统一使用 `Background/MK_20`（黑色20%）加深。Full 与 Item Button 的圆形主播放/暂停按钮在原品牌蓝背景上叠加20%黑色，白色图标保持不变；上一首、Mini 播放/暂停、下一首及关闭只对 SVG 图形像素加深，透明部分保持透明，不出现矩形底色，关闭也不再切换成 Text/Primary。图标层使用等效亮度系数 `0.8` 以兼容 mask、内嵌 SVG 和 Figma 导入；不改变尺寸、描边或位置。Disabled 不响应 Hover。
+- Mini 的暂停图标使用 `icf_media_pause-regular`；Full/Item Button 的暂停图标使用 `icf_media_pause-fill`，保持与 Figma 视觉重量一致。
+- 上一首/下一首表示列表切换，不表示快进/快退；没有列表上下文时用 `disabled` 保留占位。
+- Mini 的关闭只收起播放条，不删除音频数据；`closable=false` 时不渲染关闭按钮。共享基座必须显式支持根节点 `[hidden]`，避免 `display:flex` 覆盖浏览器默认隐藏规则；重新显示清除hidden即可。
+- Full 才显示音量控件；不要把音量、倍速、下载挤入 Mini。
+- 音量为0时，音量图标切换为图标库 `icf_media_volumeoff-fill`；调至大于0时恢复 `icf_media_volume-down-fill`。初始化为0、鼠标拖动、键盘调节和真实媒体 `volumechange` 均须同步图标、轨道与滑块值；媒体 `muted=true` 也显示静音图标，向上调节音量时解除静音。静音不等于暂停，不改变播放状态；共享运行时使用图标 `.is-muted`，range 的 `aria-valuetext` 同步为“静音”或音量百分比。
+- 音量图标使用 `button.gj-audio-volume-icon[data-action="mute"]`，点击切换静音：静音时滑块与填充归0，再次点击恢复最近一次非零音量；初始即为0且无历史值时恢复默认30%。鼠标、Enter与Space均可操作，`aria-pressed` 表达静音状态、标签在“静音/取消静音”之间同步；Hover只加深图形，键盘聚焦显示焦点环。
+- List Item 的 Hover 图标和背景属于同一个状态；触屏环境没有 Hover 时，业务必须提供可发现的播放入口（例如点击整行或常驻 Item Button）。
+- 可交互的 Audio List 默认不固定任何条目的 Hover；仅鼠标当前悬停项显示 Hover，移出后恢复。`.is-hover` 仅供独立、明确标注的静态状态对照样例使用，不得混入同一交互列表，否则会与真实 `:hover` 叠成两条高亮。
 
-#### Audio 适用场景
+## 复用与实现边界
 
-- 详情/记录类场景中展示一段可回放的音频（例如通话录音、语音留言）并提供基础播放控制（播放/暂停、上一段/下一段、进度拖拽、关闭）。
-- 需要嵌入在弹窗、抽屉、展开行等容器内的轻量播放条，不是独立的全功能播放器页面；不承载音量、倍速、下载等扩展控制——这些如业务需要应在 `.gj-audio-bar` 外部另行放置对应控件（如 Text Button 的「下载」入口），不塞进本组件内部撑大宽度。
-- 「上一首/下一首」用于同一列表内的音频切换（如同一通电话的多段录音、播放列表），不是音频内部的快进/快退；如业务只有单条音频、没有上一首/下一首的语义，仍建议保留两个按钮位以维持视觉节奏一致，运行时可将其置为 `disabled`，不建议直接从 DOM 移除（移除会破坏 21px 顶层间距的节奏和整体宽度预期）。
+- 使用共享 `.gj-audio-progress` 作为音频进度基座；不得嵌入 Figma 导出的静态进度图片。
+- `assets/scripts/gj-audio.js` 是原型/预览运行时：有 `audio.gj-audio-media` 时控制真实媒体，没有时只模拟进度。真实前端代码应按项目技术栈实现同一状态契约。
+- 任何允许操作的 Mini/Full 展示实例也必须在根节点挂载 `data-gj-audio`，控制按钮提供 `data-action="play/prev/next/close/mute"`。仅引用 CSS 不能视为接入完成；拖动进度时必须同步圆点、填充和时间，音量拖动必须同步填充；每个实例由共享运行时初始化一次。
+- 进度与音量的可见轨道只由组件基座渲染，必须隐藏浏览器原生 range track，避免出现双轨、断裂或色差。整条进度轨道均可点击/拖拽，不能只让圆点响应。
+- 图标必须取 PC Skill 图标库并继承组件颜色；禁止在页面中重画三角形、暂停线或音量图标。
+- 预览页只用于人工验收，组件真值以本目录 schema/mapping/audit 与组件 Token 为准。
 
-#### Audio 组合边界
+## 无障碍
 
-- 不与 Modal/Drawer 的主操作按钮抢视觉权重：Audio 播放条是内容展示区的一部分，不是表单/弹窗的确认或取消入口。
-- 进度条部分完全遵循 `.gj-slider` 自己的规则（轨道高度、滑块尺寸、激活色等），本组件不重复定义，只在放入 Audio 播放条时追加 `flex:none`，让其在横向 flex 布局里保持固定的参考宽度而不是被拉伸铺满。
+- Figma 未发布 Disabled 变体时，控制按钮使用一次50%透明度兜底并设置原生 `disabled`；不叠加 Hover，不在父子两层重复降低透明度。
+- 动态插入实例后调用 `GjAudio.initAll(容器或根节点)`；初始化必须幂等，控制器内主播放按钮不得再接一套独立 Item Button 监听。未给起始时间时从0开始；真实媒体以自身播放状态为准，结束时恢复播放入口。
+
+- 播放、暂停、上一首、下一首、关闭都使用原生 `button`。
+- 播放按钮必须维护 `aria-pressed` 和随状态变化的“播放/暂停”标签。
+- 进度与音量使用 `input[type=range]`，分别提供“播放进度”“音量”标签。
+- 列表项使用 `button` 或等价键盘语义，不允许只绑定不可聚焦的 `div`。
